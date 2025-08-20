@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<m_Name>aim_mounted_OnHorse</m_Name>
+	<m_AnimName>Bob_Mounted_Saddle</m_AnimName>
+	<m_BlendTime>0.30</m_BlendTime>
+	<m_SpeedScale>IdleSpeed</m_SpeedScale>
+	<m_SyncTrackingEnabled>true</m_SyncTrackingEnabled>
+	<m_Priority>10</m_Priority>
+	<m_Conditions>
+        <m_Name>RidingHorse</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+	<m_Conditions>
+        <m_Name>aim</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01</boneName>
+		<weight>0.00</weight>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_Spine</boneName>
+		<weight>1.00</weight>
+	</m_SubStateBoneWeights>
+</animNode>

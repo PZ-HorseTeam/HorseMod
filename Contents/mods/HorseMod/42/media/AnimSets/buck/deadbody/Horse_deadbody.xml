@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<m_Name>Horse_deadbody</m_Name>
+	<m_AnimName>Horse_Idle</m_AnimName>
+	<m_BlendTime>0.20</m_BlendTime>
+	<m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+</animNode>

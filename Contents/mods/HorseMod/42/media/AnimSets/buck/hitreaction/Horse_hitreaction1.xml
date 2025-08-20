@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<m_Name>Horse_hitreaction1</m_Name>
+	<m_AnimName>Horse_Idle</m_AnimName>
+	<m_deferredBoneAxis>Y</m_deferredBoneAxis>
+	<m_Looped>false</m_Looped>
+	<m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+	<m_BlendTime>0.25</m_BlendTime>
+	<m_Events>
+		<m_EventName>PlayBreedSound</m_EventName>
+		<m_Time>Start</m_Time>
+		<m_ParameterValue>pain</m_ParameterValue>
+	</m_Events>
+</animNode>

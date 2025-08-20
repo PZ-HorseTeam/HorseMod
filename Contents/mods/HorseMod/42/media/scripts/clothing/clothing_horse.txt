@@ -1,0 +1,39 @@
+module HorseMod
+{
+    imports {
+	    Base
+	}
+    item HorseBackpack
+    {
+        DisplayName = Horse Backpack,
+		DisplayCategory = Accessory,
+        Type = Normal,
+		Weight = 0.5,
+		Icon = HatSantaRed,
+		BloodLocation = Head,
+		BodyLocation = Hat,
+		CanHaveHoles = FALSE,
+		ChanceToFall = 80,
+		Insulation = 0.80,
+		WindResistance = 0.25,
+		StaticModel = SpiffoPlushieBig,
+		WorldStaticModel = SpiffoPlushieBig,
+    }
+
+    item HorseSaddle
+    {
+        DisplayName = Horse Saddle,
+		DisplayCategory = Accessory,
+        Type = Normal,
+		Weight = 0.5,
+		Icon = HatSantaRed,
+		BloodLocation = Head,
+		BodyLocation = Hat,
+		CanHaveHoles = FALSE,
+		ChanceToFall = 80,
+		Insulation = 0.80,
+		WindResistance = 0.25,
+		StaticModel = Horse_Saddle1,
+		WorldStaticModel = Horse_Saddle1,
+    }
+}

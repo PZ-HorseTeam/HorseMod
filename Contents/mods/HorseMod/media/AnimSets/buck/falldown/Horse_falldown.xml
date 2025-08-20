@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<m_Name>Horse_falldown</m_Name>
+	<m_AnimName>Horse_Idle</m_AnimName>
+	<m_DeferredBoneName>Bip01</m_DeferredBoneName>
+	<m_deferredBoneAxis>Z</m_deferredBoneAxis>
+	<m_Looped>false</m_Looped>
+	<m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+	<m_BlendTime>0.20</m_BlendTime>
+	<m_Events>
+		<m_EventName>PlayDeathSound</m_EventName>
+		<m_Time>Start</m_Time>
+		<m_ParameterValue></m_ParameterValue>
+	</m_Events>
+	<m_Events>
+		<m_EventName>PlayBreedSound</m_EventName>
+		<m_TimePc>0.35</m_TimePc>
+		<m_ParameterValue>fallover</m_ParameterValue>
+	</m_Events>
+</animNode>

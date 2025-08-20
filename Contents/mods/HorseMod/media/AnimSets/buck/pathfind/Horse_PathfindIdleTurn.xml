@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+    <m_Name>Horse_PathfindIdleTurn</m_Name>
+    <m_AnimName>Horse_Gallop</m_AnimName>
+    <m_ConditionPriority>0</m_ConditionPriority>
+
+    <m_deferredBoneAxis>Y</m_deferredBoneAxis>
+    <m_BlendTime>0.75</m_BlendTime>
+
+    <m_SpeedScale>1</m_SpeedScale>
+</animNode>

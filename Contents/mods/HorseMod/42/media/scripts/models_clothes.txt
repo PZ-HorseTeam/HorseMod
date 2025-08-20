@@ -1,0 +1,10 @@
+module HorseMod
+{
+    model Horse_Saddle1
+	{
+		mesh = HorseMod/HorseSaddle1,
+        texture = Items/Saddle1_tex,
+        static = false,
+		scale = 1,
+	}
+}
