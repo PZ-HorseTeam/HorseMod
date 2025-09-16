@@ -2,13 +2,17 @@
 <animNode x_extends="Horse_idle2.xml">
 	<m_Name>Horse_idle3</m_Name>
 	<m_AnimName>Horse_Idle</m_AnimName>
-    <m_ConditionPriority>10</m_ConditionPriority>
-    <m_Conditions>
-        <m_Name>isHorse</m_Name>
-        <m_Type>BOOL</m_Type>
-        <m_Value>true</m_Value>
-    </m_Conditions>
+  <m_ConditionPriority>10</m_ConditionPriority>
+  <m_Conditions>
+      <m_Name>isHorse</m_Name>
+      <m_Type>BOOL</m_Type>
+      <m_Value>true</m_Value>
+  </m_Conditions>
 	<m_Conditions>
 		<m_StringValue>idle2</m_StringValue>
 	</m_Conditions>
+  <m_Transitions>
+      <m_Target>Horse_idleSit</m_Target>
+      <m_AnimName>Horse_Idle_StandingToLying</m_AnimName>
+  </m_Transitions>
 </animNode>

@@ -1,0 +1,31 @@
+module HorseMod
+{
+    imports {
+	    Base
+	}
+    item Horse_Head
+    {
+		DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        Type = Food,
+        DisplayName = Horse Head,
+        Icon = Head_CowCalf_BlackWhite,
+        DaysFresh =	5,
+        DaysTotallyRotten = 7,
+        Tags = AnimalHead,
+        StaticModel = HorseHead,
+        WorldStaticModel = HorseHead,
+    }
+
+    item Horse_Skull
+    {
+        DisplayCategory = AnimalPart,
+        Weight = 1.2,
+        Type = Normal,
+        DisplayName = Horse Skull,
+        Icon = Skull_CowFemale,
+        Tags = AnimalSkull,
+        StaticModel = HorseSkull,
+        WorldStaticModel = HorseSkull,
+    }
+}

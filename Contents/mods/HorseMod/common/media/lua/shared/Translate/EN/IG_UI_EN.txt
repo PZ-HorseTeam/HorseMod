@@ -4,6 +4,5 @@ IGUI_EN = {
     IGUI_AnimalType_filly = "Filly",
     IGUI_Breed_american_quarter = "American Quarter",
     IGUI_Animal_Group_horse = "Horse",
-    IGUI_Animal_Global_horse = "Horse",
     IGUI_HorseMod_MountHorse = "Mount Horse",
 }

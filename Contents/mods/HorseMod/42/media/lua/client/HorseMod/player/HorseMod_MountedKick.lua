@@ -72,7 +72,6 @@ local function horseKick(key)
     end
     if not closest then return end
 
-    -- pick the nearer mount side (left/right)
     local mountLeft  = horse:getAttachmentWorldPos("mountLeft")
     local mountRight = horse:getAttachmentWorldPos("mountRight")
     local zx, zy     = closest:getX(), closest:getY()
@@ -85,10 +84,8 @@ local function horseKick(key)
     player:setVariable("kickLeft",  kickLeft)
     player:setVariable("kickRight", not kickLeft)
 
-    -- start the cooldown/lock
     KickState[id] = { active = true, timeLeft = KICK_LOCK_SECONDS, left = kickLeft, right = not kickLeft }
 
-    -- apply a little damage/knockdown once per kick
     local zHp = closest:getHealth()
     if zHp > 0 then
         closest:setHealth(zHp * 0.99)

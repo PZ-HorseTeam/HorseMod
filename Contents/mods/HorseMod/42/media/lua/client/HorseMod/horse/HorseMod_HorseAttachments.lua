@@ -8,22 +8,35 @@ HorseMod.HorseAttachments  = HorseMod.HorseAttachments
 -- Attachment locations setup
 -----------------------------------------------------------------------
 local group = AttachedLocations.getGroup("Animal")
-local back       = group:getOrCreateLocation("Back")
-local head       = group:getOrCreateLocation("Head")
-local mountLeft  = group:getOrCreateLocation("MountLeft")
-local mountRight = group:getOrCreateLocation("MountRight")
-back:setAttachmentName("back")
+
+local saddle = group:getOrCreateLocation("Saddle")
+saddle:setAttachmentName("saddle")
+
+local saddlebags = group:getOrCreateLocation("Saddlebags")
+saddlebags:setAttachmentName("saddlebags")
+
+local head = group:getOrCreateLocation("Head")
 head:setAttachmentName("head")
+
+local mountLeft = group:getOrCreateLocation("MountLeft")
 mountLeft:setAttachmentName("mountLeft")
+
+local mountRight = group:getOrCreateLocation("MountRight")
 mountRight:setAttachmentName("mountRight")
 
+
 -- Known slots list
-local SLOTS = { "Back", "Head", "MountLeft", "MountRight" }
+local SLOTS = { "Saddle", "Saddlebags", "Head", "MountLeft", "MountRight" }
+
+local SADDLEBAG_SLOT = "Saddlebags"
+local SADDLEBAG_FULLTYPE = "HorseMod.HorseSaddleBags"
+local SADDLEBAG_CONTAINER_TYPE = "HorseMod.HorseSaddleBagsContainer"
 
 HorseMod.HorseAttachments = HorseMod.HorseAttachments or {
     --EXAMPLE: ["FullType"] = { slot = "AttachmentSlot" }
-    ["HorseMod.HorseSaddle"] = { slot = "Back" },
-    ["HorseMod.HorseBackpack"] = { slot = "Back" },
+    ["HorseMod.HorseSaddle"] = { slot = "Saddle" },
+    ["HorseMod.HorseBackpack"] = { slot = "Saddle" },
+    ["HorseMod.HorseSaddleBags"] = { slot = "Saddlebags" },
 }
 
 -----------------------------------------------------------------------
@@ -75,7 +88,6 @@ local function collectCandidateItems(player, itemsMap)
         end
     end
 
-    -- Nearby floor containers
     if ISInventoryPaneContextMenu and ISInventoryPaneContextMenu.getContainers then
         local containers = ISInventoryPaneContextMenu.getContainers(player)
         for i=0, containers:size()-1 do
@@ -98,13 +110,6 @@ local function ensureHorseModData(animal)
     md.HM_Attach.bySlot  = md.HM_Attach.bySlot  or {}
     md.HM_Attach.ground  = md.HM_Attach.ground  or {}
     return md.HM_Attach.bySlot, md.HM_Attach.ground
-end
-
-local function isContainerItem(item)
-    if not item then return false end
-    if item.IsInventoryContainer and item:IsInventoryContainer() then return true end
-    if instanceof and instanceof(item, "InventoryContainer") then return true end
-    return false
 end
 
 local function getWorldInventoryObjectsAt(x, y, z)
@@ -144,6 +149,369 @@ local function takeWorldItemToInventory(worldObj, sq, inv)
     return item
 end
 
+-----------------------------------------------------------------------
+-- Saddlebags container support
+-----------------------------------------------------------------------
+local SADDLEBAG_UPDATE_INTERVAL = 10
+local saddlebagTick = 0
+local _trackedSaddlebagHorses = setmetatable({}, { __mode = "k" })
+
+local function refreshPlayerInventories(player)
+    if not player then return end
+    if triggerEvent then triggerEvent("OnContainerUpdate") end
+    if not getPlayerData then return end
+    local pdata = getPlayerData(player:getPlayerNum())
+    if not pdata then return end
+    if pdata.playerInventory and pdata.playerInventory.refreshBackpacks then
+        pdata.playerInventory:refreshBackpacks()
+    end
+    if pdata.lootInventory and pdata.lootInventory.refreshBackpacks then
+        pdata.lootInventory:refreshBackpacks()
+    end
+end
+
+local function getSaddlebagData(animal)
+    if not animal or not animal.getModData then return nil end
+    local md = animal:getModData()
+    md.HM_Saddlebags = md.HM_Saddlebags or {}
+    return md.HM_Saddlebags
+end
+
+local function enableSaddlebagTracking(animal)
+    local data = getSaddlebagData(animal)
+    if not data then return nil end
+    data.active = true
+    data.missingCount  = data.missingCount or 0
+    data.lastSpawnTick = data.lastSpawnTick or -99999
+    _trackedSaddlebagHorses[animal] = true
+    return data
+end
+
+local function disableSaddlebagTracking(animal)
+    local data = getSaddlebagData(animal)
+    if not data then return nil end
+    data.active = nil
+    _trackedSaddlebagHorses[animal] = nil
+    data.itemId = nil
+    data.x, data.y, data.z = nil, nil, nil
+    data.equipped = nil       -- ← clear the flag
+    return data
+end
+
+local function findSaddlebagWorldItem(animal, data)
+    data = data or getSaddlebagData(animal)
+    if not data then return nil, nil end
+
+    local fullType = SADDLEBAG_CONTAINER_TYPE
+    local id = data.itemId
+
+    if data.x and data.y and data.z then
+        local wo, sq = findWorldItemOnSquare(data.x, data.y, data.z, fullType, id)
+        if wo then return wo, sq end
+    end
+
+    local sq = animal and animal:getSquare() or nil
+    if sq then
+        local wo, sq2 = findWorldItemOnSquare(sq:getX(), sq:getY(), sq:getZ(), fullType, id)
+        if wo then return wo, sq2 end
+    end
+
+    if id and data.x and data.y and data.z then
+        local cell = getCell and getCell()
+        if cell then
+            for dx = -1, 1 do
+                for dy = -1, 1 do
+                    if dx ~= 0 or dy ~= 0 then
+                        local wo, sq2 = findWorldItemOnSquare(data.x + dx, data.y + dy, data.z, fullType, id)
+                        if wo then return wo, sq2 end
+                    end
+                end
+            end
+        end
+    end
+
+    return nil, sq
+end
+
+local function isInvContainerEmpty(item)
+    if not item then return true end
+    if item.IsInventoryContainer and item:IsInventoryContainer() then
+        local c = item.getItemContainer and item:getItemContainer() or nil
+        return (not c) or c:isEmpty()
+    end
+    return true
+end
+
+local function tryRemoveSaddlebagContainer(player, animal)
+    local data = getSaddlebagData(animal)
+    if not data then return true end
+
+    local worldObj, sq = findSaddlebagWorldItem(animal, data)
+    local invItem = worldObj and worldObj:getItem() or nil
+
+    if invItem and invItem:IsInventoryContainer() then
+        if not isInvContainerEmpty(invItem) then
+            if player and player.Say then
+                player:Say(getText("IGUI_Horse_SaddlebagNotEmpty") or "I should empty the saddlebags first.")
+            end
+            return false
+        end
+        if worldObj.removeFromSquare then worldObj:removeFromSquare() end
+        if worldObj.removeFromWorld then worldObj:removeFromWorld() end
+        disableSaddlebagTracking(animal)
+        refreshPlayerInventories(player)
+        return true
+    end
+
+    local inv = animal and animal:getInventory() or nil
+    if inv then
+        local stray = inv:FindAndReturn(SADDLEBAG_CONTAINER_TYPE)
+        if stray then
+            if not isInvContainerEmpty(stray) then
+                if player and player.Say then
+                    player:Say(getText("IGUI_Horse_SaddlebagNotEmpty") or "I should empty the saddlebags first.")
+                end
+                return false
+            end
+            inv:Remove(stray)
+        end
+    end
+
+    disableSaddlebagTracking(animal)
+    return true
+end
+
+local function takeSaddlebagContainerFromPlayer(player)
+    if not player then return nil end
+    local inv = player:getInventory()
+    if not inv then return nil end
+
+    local item = nil
+    if inv.getAllEvalRecurse then
+        local list = ArrayList.new()
+        inv:getAllEvalRecurse(function(it) return it:getFullType() == SADDLEBAG_FULLTYPE end, list)
+        if list and list:size() > 0 then
+            item = list:get(0)
+        end
+    end
+
+    if not item and inv.FindAndReturn then
+        item = inv:FindAndReturn(SADDLEBAG_FULLTYPE)
+    end
+
+    if not item then return nil end
+
+    local container = item.getContainer and item:getContainer() or nil
+    if container and container.Remove then
+        container:Remove(item)
+    elseif container and container.DoRemoveItem then
+        container:DoRemoveItem(item)
+    end
+
+    refreshPlayerInventories(player)
+
+    return item
+end
+
+local function spawnSaddlebagContainer(animal, item, force)
+    local sq = animal and animal:getSquare() or nil
+    local data = getSaddlebagData(animal)
+
+    if data and data.equipped and not item and not force then
+        return nil, nil
+    end
+    if not sq then return nil, nil end
+
+    local worldObj
+    local pdata = getPlayerData and getPlayerData(0) or nil
+
+    if item then
+        local container = item.getContainer and item:getContainer() or nil
+        if container and container.Remove then container:Remove(item)
+        elseif container and container.DoRemoveItem then container:DoRemoveItem(item) end
+        sq:AddWorldInventoryItem(item, 0.0, 0.0, 0.0)
+        worldObj = item:getWorldItem()
+        if pdata and pdata.playerInventory then
+            pdata.playerInventory:refreshBackpacks()
+            if pdata.lootInventory then pdata.lootInventory:refreshBackpacks() end
+        end
+    else
+        local newItem = sq:AddWorldInventoryItem(SADDLEBAG_CONTAINER_TYPE, 0.0, 0.0, 0.0)
+        if not newItem then return nil, nil end
+        worldObj = newItem:getWorldItem()
+        item = newItem
+        if pdata and pdata.playerInventory then
+            pdata.playerInventory:refreshBackpacks()
+            if pdata.lootInventory then pdata.lootInventory:refreshBackpacks() end
+        end
+    end
+
+    local d = enableSaddlebagTracking(animal)
+    if d then
+        d.x, d.y, d.z = sq:getX(), sq:getY(), sq:getZ()
+        d.itemId = item.getID and item:getID() or nil
+    end
+
+    return worldObj, sq
+end
+
+local function adoptAnySaddlebagWorldItem(animal, data)
+    local sq = animal and animal:getSquare() or nil
+    if not sq then return nil, nil end
+
+    local hx, hy, hz = sq:getX(), sq:getY(), sq:getZ()
+
+    local wo, s = findWorldItemOnSquare(hx, hy, hz, SADDLEBAG_CONTAINER_TYPE, nil)
+    if wo then return wo, s end
+
+    if data and data.x and data.y and data.z then
+        wo, s = findWorldItemOnSquare(data.x, data.y, data.z, SADDLEBAG_CONTAINER_TYPE, nil)
+        if wo then return wo, s end
+        for dx=-1,1 do
+            for dy=-1,1 do
+                if dx ~= 0 or dy ~= 0 then
+                    wo, s = findWorldItemOnSquare(data.x + dx, data.y + dy, data.z, SADDLEBAG_CONTAINER_TYPE, nil)
+                    if wo then return wo, s end
+                end
+            end
+        end
+    end
+    return nil, sq
+end
+
+local function moveSaddlebagContainer(animal)
+    local data = getSaddlebagData(animal)
+    if not data or not data.active then return end
+    if not HorseUtils.isHorse(animal) then return end
+
+    data.missingCount  = data.missingCount or 0
+    data.lastSpawnTick = data.lastSpawnTick or -99999
+
+    local sq = animal:getSquare()
+    if not sq then return end
+
+    local hx, hy, hz = sq:getX(), sq:getY(), sq:getZ()
+
+    local worldObj, curSq = findSaddlebagWorldItem(animal, data)
+
+    if not worldObj then
+        local adoptWO, adoptSq = adoptAnySaddlebagWorldItem(animal, data)
+        if adoptWO then
+            worldObj, curSq = adoptWO, adoptSq
+            local it = worldObj:getItem()
+            if it and it.getID then data.itemId = it:getID() end
+        end
+    end
+
+    if not worldObj then
+        data.missingCount = (data.missingCount or 0) + 1
+        return
+    end
+
+    data.missingCount = 0
+
+    local cx = curSq and curSq:getX() or nil
+    local cy = curSq and curSq:getY() or nil
+    local cz = curSq and curSq:getZ() or nil
+    if cx ~= hx or cy ~= hy or cz ~= hz then
+        local item = worldObj:getItem()
+        if item then
+            if worldObj.removeFromSquare then worldObj:removeFromSquare() end
+            if worldObj.removeFromWorld then worldObj:removeFromWorld() end
+            sq:AddWorldInventoryItem(item, 0.0, 0.0, 0.0)
+            worldObj = item:getWorldItem() or worldObj
+        end
+    end
+
+    data.x, data.y, data.z = hx, hy, hz
+    local item = worldObj:getItem()
+    if item and item.getID then
+        data.itemId = item:getID()
+    end
+end
+
+local function ensureSaddlebagContainer(animal, player, allowInitialSpawn)
+    local data = enableSaddlebagTracking(animal)
+    if not data then return end
+
+    local worldObj = findSaddlebagWorldItem(animal, data)
+    if worldObj then
+        moveSaddlebagContainer(animal)
+        return
+    end
+
+    if allowInitialSpawn then
+        spawnSaddlebagContainer(animal, nil, true)  -- force = true (see §2)
+        local d = getSaddlebagData(animal); if d then d.equipped = true end
+        data.missingCount  = 0
+        data.lastSpawnTick = saddlebagTick
+        return
+    end
+
+    local fromPlayer = player and takeSaddlebagContainerFromPlayer(player) or nil
+    if fromPlayer then
+        spawnSaddlebagContainer(animal, fromPlayer, true)
+        local d = getSaddlebagData(animal); if d then d.equipped = true end
+        data.missingCount  = 0
+        data.lastSpawnTick = saddlebagTick
+    end
+end
+
+local function removeSaddlebagContainer(player, animal)
+    local data = getSaddlebagData(animal)
+    if not data then return end
+
+    local worldObj, sq = findSaddlebagWorldItem(animal, data)
+    local item = worldObj and worldObj:getItem() or nil
+    if worldObj then
+        if worldObj.removeFromSquare then worldObj:removeFromSquare() end
+        if worldObj.removeFromWorld then worldObj:removeFromWorld() end
+    elseif not item and sq and sq.getWorldObjects then
+        local list = sq:getWorldObjects()
+        if list then
+            for i = 0, list:size() - 1 do
+                local wo = list:get(i)
+                local it = wo and wo:getItem() or nil
+                if it and it:getFullType() == SADDLEBAG_CONTAINER_TYPE then
+                    if not data.itemId or (it.getID and it:getID() == data.itemId) then
+                        item = it
+                        if wo.removeFromSquare then wo:removeFromSquare() end
+                        if wo.removeFromWorld then wo:removeFromWorld() end
+                        break
+                    end
+                end
+            end
+        end
+    end
+
+    if item then
+        giveBackToPlayerOrDrop(player, animal, item)
+        refreshPlayerInventories(player)
+    end
+
+    disableSaddlebagTracking(animal)
+end
+
+local function updateTrackedSaddlebags()
+    saddlebagTick = saddlebagTick + 1
+    if saddlebagTick % SADDLEBAG_UPDATE_INTERVAL ~= 0 then return end
+
+    for animal in pairs(_trackedSaddlebagHorses) do
+        if not animal or (animal.isRemovedFromWorld and animal:isRemovedFromWorld()) or (animal.isDead and animal:isDead()) or not HorseUtils.isHorse(animal) then
+            _trackedSaddlebagHorses[animal] = nil
+        else
+            local data = getSaddlebagData(animal)
+            if data and data.active then
+                moveSaddlebagContainer(animal)
+            else
+                _trackedSaddlebagHorses[animal] = nil
+            end
+        end
+    end
+end
+
+Events.OnTick.Add(updateTrackedSaddlebags)
+
 
 -----------------------------------------------------------------------
 -- Equip / Unequip
@@ -164,6 +532,9 @@ local function equipAttachment(player, animal, item, itemsMap)
 
     local old = getAttachedItem(animal, slot)
     if old and old ~= item then
+        if slot == SADDLEBAG_SLOT and old:getFullType() == SADDLEBAG_FULLTYPE then
+            removeSaddlebagContainer(player, animal)
+        end
         setAttachedItem(animal, slot, nil)
         giveBackToPlayerOrDrop(player, animal, old)
     end
@@ -173,11 +544,25 @@ local function equipAttachment(player, animal, item, itemsMap)
     local bySlot, ground = ensureHorseModData(animal)
     bySlot[slot] = ft
     ground[slot] = nil
+
+    if slot == SADDLEBAG_SLOT then
+    if ft == SADDLEBAG_FULLTYPE then
+        ensureSaddlebagContainer(animal, player, true)
+        local d = getSaddlebagData(animal); if d then d.equipped = true end
+    else
+        local d = getSaddlebagData(animal); if d then d.equipped = false end
+        removeSaddlebagContainer(player, animal)
+    end
+end
 end
 
 local function unequipAttachment(player, animal, slot)
     local cur = getAttachedItem(animal, slot)
     if not cur then return end
+    if slot == SADDLEBAG_SLOT then
+        if not tryRemoveSaddlebagContainer(player, animal) then return end
+        local d = getSaddlebagData(animal); if d then d.equipped = false end
+    end
 
     setAttachedItem(animal, slot, nil)
 
@@ -402,15 +787,25 @@ local function reapplyFor(animal)
                     end
 
                     if not getAttachedItem(animal, slot) then
-                        local spawnIt = InventoryItemFactory and InventoryItemFactory.CreateItem and InventoryItemFactory.CreateItem(fullType)
-                        if fullType and not isContainerItem(fullType) then
+                        if fullType ~= SADDLEBAG_CONTAINER_TYPE then
                             inv:AddItem(fullType)
-                            setAttachedItem(animal, slot, spawnIt)
+                            local fetched = inv:FindAndReturn(fullType)
+                            if fetched then setAttachedItem(animal, slot, fetched) end
                         end
                     end
                 end
             end
+            if slot == SADDLEBAG_SLOT then
+                if fullType == SADDLEBAG_FULLTYPE then
+                    ensureSaddlebagContainer(animal, nil)
+                else
+                    removeSaddlebagContainer(nil, animal)
+                end
+            end
         end
+    end
+    if not bySlot[SADDLEBAG_SLOT] then
+        removeSaddlebagContainer(nil, animal)
     end
 end
 
@@ -444,52 +839,52 @@ Events.OnTick.Add(function()
     end
 end)
 
-local DROP_RADIUS = 50
+-- local DROP_RADIUS = 50
 
-local function dropContainerAttachmentsOnSave()
-    for p=0, getNumActivePlayers()-1 do
-        local player = getSpecificPlayer(p)
-        if player then
-            local z  = player:getZ()
-            local px = math.floor(player:getX())
-            local py = math.floor(player:getY())
-            local cell = getCell()
+-- local function dropContainerAttachmentsOnSave()
+--     for p=0, getNumActivePlayers()-1 do
+--         local player = getSpecificPlayer(p)
+--         if player then
+--             local z  = player:getZ()
+--             local px = math.floor(player:getX())
+--             local py = math.floor(player:getY())
+--             local cell = getCell()
 
-            for x = px - DROP_RADIUS, px + DROP_RADIUS do
-                for y = py - DROP_RADIUS, py + DROP_RADIUS do
-                    local sq = cell:getGridSquare(x, y, z)
-                    if sq then
-                        local animals = sq:getAnimals()
-                        if animals then
-                            for i=0, animals:size()-1 do
-                                local a = animals:get(i)
-                                if HorseUtils.isHorse(a) then
-                                    local bySlot, ground = ensureHorseModData(a)
-                                    for j = 1, #SLOTS do
-                                        local slot = SLOTS[j]
-                                        local cur = getAttachedItem(a, slot)
-                                        if cur and isContainerItem(cur) then
-                                            setAttachedItem(a, slot, nil)
+--             for x = px - DROP_RADIUS, px + DROP_RADIUS do
+--                 for y = py - DROP_RADIUS, py + DROP_RADIUS do
+--                     local sq = cell:getGridSquare(x, y, z)
+--                     if sq then
+--                         local animals = sq:getAnimals()
+--                         if animals then
+--                             for i=0, animals:size()-1 do
+--                                 local a = animals:get(i)
+--                                 if HorseUtils.isHorse(a) then
+--                                     local bySlot, ground = ensureHorseModData(a)
+--                                     for j = 1, #SLOTS do
+--                                         local slot = SLOTS[j]
+--                                         local cur = getAttachedItem(a, slot)
+--                                         if cur and isContainerItem(cur) then
+--                                             setAttachedItem(a, slot, nil)
 
-                                            local inv = a:getInventory()
-                                            if inv and inv:contains(cur) then inv:Remove(cur) end
+--                                             local inv = a:getInventory()
+--                                             if inv and inv:contains(cur) then inv:Remove(cur) end
 
-                                            sq:AddWorldInventoryItem(cur, 0.0, 0.0, 0.0)
+--                                             sq:AddWorldInventoryItem(cur, 0.0, 0.0, 0.0)
 
-                                            local id = cur.getID and cur:getID() or nil
-                                            ground[slot] = { x = x + 0.0, y = y + 0.0, z = z, id = id }
-                                            bySlot[slot] = cur:getFullType()
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
-end
+--                                             local id = cur.getID and cur:getID() or nil
+--                                             ground[slot] = { x = x + 0.0, y = y + 0.0, z = z, id = id }
+--                                             bySlot[slot] = cur:getFullType()
+--                                         end
+--                                     end
+--                                 end
+--                             end
+--                         end
+--                     end
+--                 end
+--             end
+--         end
+--     end
+-- end
 
-Events.OnSave.Add(dropContainerAttachmentsOnSave)
+-- Events.OnSave.Add(dropContainerAttachmentsOnSave)
 

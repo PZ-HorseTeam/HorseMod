@@ -1,5 +1,3 @@
-HorseMod.HorseAttachments["Base.SpiffoBig"] = { slot = "Back" }
-
 -- local HorseRiding = require("HorseMod/shared/HorseMod_Riding")
 
 -- local _lastHorseByPid = {}

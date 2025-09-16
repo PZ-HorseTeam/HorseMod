@@ -18,9 +18,9 @@
 		<m_StringValue>idle1</m_StringValue>
 	</m_Conditions>
 	<m_Transitions>
-		<m_Target>Horse_idleSit</m_Target>
-		<m_AnimName>Horse_Idle</m_AnimName>
-	</m_Transitions>
+      <m_Target>Horse_idleSit</m_Target>
+      <m_AnimName>Horse_Idle_StandingToLying</m_AnimName>
+  </m_Transitions>
 	<m_Events>
 		<m_EventName>idleActionEnd</m_EventName>
 		<m_Time>End</m_Time>

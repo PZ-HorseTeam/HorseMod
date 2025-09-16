@@ -1,10 +1,38 @@
 module HorseMod
 {
-    model Horse_Saddle1
+  model Horse_Saddle1
 	{
 		mesh = HorseMod/HorseSaddle1,
-        texture = Items/Saddle1_tex,
-        static = false,
+    texture = Items/Saddle1_tex,
+    static = true,
 		scale = 1.5530,
+    attachment world
+		{
+			offset = 0.0000 -0.0500 0.0000,
+			rotate = 5.0000 90.0000 85.0000,
+      scale = 0.5,
+		}
+	}
+
+  model Horse_SaddleBags1
+	{
+		mesh = HorseMod/HorseSaddlebags1,
+    texture = Items/SaddleBags1_tex,
+    static = true,
+		scale = 1.5530,
+    attachment world
+		{
+			offset = 0.0000 -0.0500 0.0000,
+			rotate = 5.0000 90.0000 85.0000,
+      scale = 0.5,
+		}
+	}
+
+  model Horse_SaddleBagsInvis
+	{
+		mesh = HorseMod/HorseSaddlebags1,
+    texture = Items/SaddleBags1_tex,
+    static = true,
+		scale = 0,
 	}
 }

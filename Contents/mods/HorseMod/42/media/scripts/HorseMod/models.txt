@@ -12,10 +12,19 @@ module HorseMod
 		shader = animalEffect,
 		static = false,
 
-		attachment back
+		attachment saddle
 		{
-			offset = 0.0000 0.2509 0.0429,
+			offset = -0.0000 0.2011 0.0429,
 			rotate = 89.1355 0.4641 178.8851,
+			scale = 1.0853,
+			bone = DEF_Spine2,
+		}
+
+		attachment saddlebags
+		{
+			offset = -0.0000 -0.0826 -0.1536,
+			rotate = 89.1355 0.4641 178.8851,
+			scale = 0.7276,
 			bone = DEF_Spine2,
 		}
 
@@ -40,11 +49,50 @@ module HorseMod
 			bone = Bip01,
 		}
 	}
-    model HorseSkeleton
+	model HorseHeadless
+	{
+		mesh = HorseMod/Horse_NoHead,
+		animationsMesh = HorseMod.Horse,
+		shader = animalEffect,
+		static = false,
+	}
+	model HorseSkeleton
 	{
 		mesh = HorseMod/Horse_Skeleton,
 		animationsMesh = HorseMod.Horse,
 		shader = animalEffect,
 		static = false,
+	}
+	model HorseSkeletonHeadless
+	{
+		mesh = HorseMod/Horse_Skeleton_NoHead,
+		animationsMesh = HorseMod.Horse,
+		shader = animalEffect,
+		static = false,
+	}
+	model HorseHead
+	{
+		mesh = HorseMod/Horse_Head,
+		static = true,
+		scale = 0.3530,
+
+		attachment world
+		{
+			offset = -0.0342 0.0122 -0.0071,
+			rotate = -0.0000 -11.7637 -96.0254,
+			scale = 0.5000,
+		}
+	}
+	model HorseSkull
+	{
+		mesh = HorseMod/Horse_Skull,
+		static = true,
+		scale = 0.3530,
+		attachment world
+		{
+			offset = -0.0000 -0.0000 -0.0000,
+			rotate = 0.0000 -0.0000 0.0000,
+			scale = 0.5000,
+		}
 	}
 }

@@ -8,7 +8,7 @@ local lastEmitterByKey = {}
 
 local STRESS_MIN_INTERVAL = 15
 local IDLE_MIN_INTERVAL   = 60
-local STRESS_THRESHOLD    = 0.70
+local STRESS_THRESHOLD    = 70
 
 local stressAccum   = {}
 local idleAccum     = {}

@@ -76,33 +76,64 @@ local function squareCenterSolid(sq)
     return false
 end
 
--- EDGE blockers only (walls/windows/doors). Do NOT treat “tile has furniture” as edge block.
-local function blockedBetween(fromSq, toSq)
+local function edgeHoppableBetween(a, b)
+    if not a or not b then return nil end
+    local ax, ay = a:getX(), a:getY()
+    local bx, by = b:getX(), b:getY()
+
+    if bx == ax + 1 and by == ay then
+        -- moving EAST: use west edge of destination
+        return b:getHoppable(false)
+    elseif bx == ax - 1 and by == ay then
+        -- moving WEST: use west edge of origin
+        return a:getHoppable(false)
+    elseif by == ay + 1 and bx == ax then
+        -- moving SOUTH: use north edge of destination
+        return b:getHoppable(true)
+    elseif by == ay - 1 and bx == ax then
+        -- moving NORTH: use north edge of origin
+        return a:getHoppable(true)
+    end
+    return nil
+end
+
+-- Edge blockers (walls/windows/doors/fences)
+local function blockedBetween(fromSq, toSq, horse)
     if not fromSq or not toSq then return true end
     if fromSq == toSq then return false end
+
+    -- FENCE
+    local hop = edgeHoppableBetween(fromSq, toSq)
+    if hop and hop.isHoppable and hop:isHoppable() then
+        if horse and horse:getVariableBoolean("HorseJump") then
+            return false
+        else
+            return true
+        end
+    end
+
+    -- Walls / windows / closed doors
     if fromSq:isWallTo(toSq) or toSq:isWallTo(fromSq) then return true end
     if fromSq:isWindowTo(toSq) or toSq:isWindowTo(fromSq) then return true end
     local door = fromSq:getDoorTo(toSq); if door and not door:IsOpen() then return true end
     door = toSq:getDoorTo(fromSq); if door and not door:IsOpen() then return true end
+
     return false
 end
 
 -- crossing helper: edge must be open and destination center must be free
-local function canCross(fx, fy, tx, ty, z)
+local function canCross(fx, fy, tx, ty, z, horse)
     local a = getSq(fx, fy, z)
     local b = getSq(tx, ty, z)
-    if blockedBetween(a, b) then return false end
+    if blockedBetween(a, b, horse) then return false end
     if squareCenterSolid(b) then return false end
     return true
 end
 
--- === collision: coalesce writes to once-per-frame ===
 local EDGE_PAD = 0.01
 local function signf(v) return (v < 0) and -1 or ((v > 0) and 1 or 0) end
 
--- Pure math: clamp a step against edges/solids starting from (x0,y0) at layer z.
--- NOTE: no setX/setY calls here.
-local function collideStepAt(z, x0, y0, dx, dy)
+local function collideStepAt(horse, z, x0, y0, dx, dy)
     if dx == 0 and dy == 0 then return 0, 0 end
 
     local ox, oy = dx, dy
@@ -113,12 +144,12 @@ local function collideStepAt(z, x0, y0, dx, dy)
 
     -- clamp vs vertical edges (X)
     if rx > 0 then
-        if not canCross(fx, fy, fx+1, fy, z) then
+        if not canCross(fx, fy, fx+1, fy, z, horse) then
             local boundary = fx + 1 - EDGE_PAD
             if x0 + rx > boundary then rx = math.max(0, boundary - x0) end
         end
     elseif rx < 0 then
-        if not canCross(fx-1, fy, fx, fy, z) then
+        if not canCross(fx-1, fy, fx, fy, z, horse) then
             local boundary = fx + EDGE_PAD
             if x0 + rx < boundary then rx = math.min(0, boundary - x0) end
         end
@@ -126,12 +157,12 @@ local function collideStepAt(z, x0, y0, dx, dy)
 
     -- clamp vs horizontal edges (Y)
     if ry > 0 then
-        if not canCross(fx, fy, fx, fy+1, z) then
+        if not canCross(fx, fy, fx, fy+1, z, horse) then
             local boundary = fy + 1 - EDGE_PAD
             if y0 + ry > boundary then ry = math.max(0, boundary - y0) end
         end
     elseif ry < 0 then
-        if not canCross(fx, fy-1, fx, fy, z) then
+        if not canCross(fx, fy-1, fx, fy, z, horse) then
             local boundary = fy + EDGE_PAD
             if y0 + ry < boundary then ry = math.min(0, boundary - y0) end
         end
@@ -149,12 +180,12 @@ local function collideStepAt(z, x0, y0, dx, dy)
         local function tryProjectX()
             local px = signf(ox) * stepLen
             if px > 0 then
-                if not canCross(fx, fy, fx+1, fy, z) then
+                if not canCross(fx, fy, fx+1, fy, z, horse) then
                     local b = fx + 1 - EDGE_PAD
                     if x0 + px > b then px = math.max(0, b - x0) end
                 end
             elseif px < 0 then
-                if not canCross(fx-1, fy, fx, fy, z) then
+                if not canCross(fx-1, fy, fx, fy, z, horse) then
                     local b = fx + EDGE_PAD
                     if x0 + px < b then px = math.min(0, b - x0) end
                 end
@@ -165,12 +196,12 @@ local function collideStepAt(z, x0, y0, dx, dy)
         local function tryProjectY()
             local py = signf(oy) * stepLen
             if py > 0 then
-                if not canCross(fx, fy, fx, fy+1, z) then
+                if not canCross(fx, fy, fx, fy+1, z, horse) then
                     local b = fy + 1 - EDGE_PAD
                     if y0 + py > b then py = math.max(0, b - y0) end
                 end
             elseif py < 0 then
-                if not canCross(fx, fy-1, fx, fy, z) then
+                if not canCross(fx, fy-1, fx, fy, z, horse) then
                     local b = fy + EDGE_PAD
                     if y0 + py < b then py = math.min(0, b - y0) end
                 end
@@ -199,12 +230,12 @@ local function collideStepAt(z, x0, y0, dx, dy)
     if killedX and not killedY and ry ~= 0 then
         local py = signf(oy) * stepLen
         if py > 0 then
-            if not canCross(fx, fy, fx, fy+1, z) then
+            if not canCross(fx, fy, fx, fy+1, z, horse) then
                 local b = fy + 1 - EDGE_PAD
                 if y0 + py > b then py = math.max(0, b - y0) end
             end
         elseif py < 0 then
-            if not canCross(fx, fy-1, fx, fy, z) then
+            if not canCross(fx, fy-1, fx, fy, z, horse) then
                 local b = fy + EDGE_PAD
                 if y0 + py < b then py = math.min(0, b - y0) end
             end
@@ -213,12 +244,12 @@ local function collideStepAt(z, x0, y0, dx, dy)
     elseif killedY and not killedX and rx ~= 0 then
         local px = signf(ox) * stepLen
         if px > 0 then
-            if not canCross(fx, fy, fx+1, fy, z) then
+            if not canCross(fx, fy, fx+1, fy, z, horse) then
                 local b = fx + 1 - EDGE_PAD
                 if x0 + px > b then px = math.max(0, b - x0) end
             end
         elseif px < 0 then
-            if not canCross(fx-1, fy, fx, fy, z) then
+            if not canCross(fx-1, fy, fx, fy, z, horse) then
                 local b = fx + EDGE_PAD
                 if x0 + px < b then px = math.min(0, b - x0) end
             end
@@ -230,22 +261,22 @@ local function collideStepAt(z, x0, y0, dx, dy)
     -- diagonal corner rule
     if (tx ~= fx) and (ty ~= fy) and (rx ~= 0) and (ry ~= 0) then
         local xFirstOk = (not midSqX or not squareCenterSolid(midSqX))
-                      and canCross(fx, fy, tx, fy, z)
-                      and canCross(tx, fy, tx, ty, z)
+                      and canCross(fx, fy, tx, fy, z, horse)
+                      and canCross(tx, fy, tx, ty, z, horse)
         local yFirstOk = (not midSqY or not squareCenterSolid(midSqY))
-                      and canCross(fx, fy, fx, ty, z)
-                      and canCross(fx, ty, tx, ty, z)
+                      and canCross(fx, fy, fx, ty, z, horse)
+                      and canCross(fx, ty, tx, ty, z, horse)
         if not xFirstOk and not yFirstOk then
             -- project onto best axis
             local px, py = signf(ox) * stepLen, signf(oy) * stepLen
             local rx1, ry1 = px, 0
             if rx1 > 0 then
-                if not canCross(fx, fy, fx+1, fy, z) then
+                if not canCross(fx, fy, fx+1, fy, z, horse) then
                     local b = fx + 1 - EDGE_PAD
                     if x0 + rx1 > b then rx1 = math.max(0, b - x0) end
                 end
             elseif rx1 < 0 then
-                if not canCross(fx-1, fy, fx, fy, z) then
+                if not canCross(fx-1, fy, fx, fy, z, horse) then
                     local b = fx + EDGE_PAD
                     if x0 + rx1 < b then rx1 = math.min(0, b - x0) end
                 end
@@ -254,12 +285,12 @@ local function collideStepAt(z, x0, y0, dx, dy)
 
             local rx2, ry2 = 0, py
             if ry2 > 0 then
-                if not canCross(fx, fy, fx, fy+1, z) then
+                if not canCross(fx, fy, fx, fy+1, z, horse) then
                     local b = fy + 1 - EDGE_PAD
                     if y0 + ry2 > b then ry2 = math.max(0, b - y0) end
                 end
             elseif ry2 < 0 then
-                if not canCross(fx, fy-1, fx, fy, z) then
+                if not canCross(fx, fy-1, fx, fy, z, horse) then
                     local b = fy + EDGE_PAD
                     if y0 + ry2 < b then ry2 = math.min(0, b - y0) end
                 end
@@ -278,6 +309,7 @@ local function collideStepAt(z, x0, y0, dx, dy)
     return rx, ry
 end
 
+-- Do all substeps in locals; write back ONCE.
 local function moveWithCollision(horse, vx, vy, dt)
     local z = horse:getZ()
     local x = horse:getX()
@@ -287,13 +319,13 @@ local function moveWithCollision(horse, vx, vy, dt)
     local maxVel = math.max(math.abs(vx), math.abs(vy))
     if maxVel == 0 then return end
 
-    local maxStepDist = 0.065
+    local maxStepDist = 0.065  -- keep your precision, but only one final write
 
     while remaining > 0 do
         local s = math.min(remaining, maxStepDist / maxVel)
         local dx, dy = vx * s, vy * s
 
-        local rx, ry = collideStepAt(z, x, y, dx, dy)
+        local rx, ry = collideStepAt(horse, z, x, y, dx, dy)
         if rx == 0 and ry == 0 then break end
 
         local nx, ny = x + rx, y + ry
@@ -303,6 +335,7 @@ local function moveWithCollision(horse, vx, vy, dt)
         remaining = remaining - s
     end
 
+    -- Single commit per frame
     if x ~= horse:getX() or y ~= horse:getY() then
         horse:setX(x); horse:setY(y)
     end
@@ -518,7 +551,6 @@ Events.OnPlayerUpdate.Add(function(player)
     end
 
     player:setX(horse:getX()); player:setY(horse:getY()); player:setZ(horse:getZ())
-    player:setGrappleDeferredOffset(0.0, 0.0, 200.0)
     player:setVariable("mounted", true)
     UpdateHorseAudio(player)
 end)
@@ -532,3 +564,18 @@ function HorseRiding._clearRideCache(pid)
     startDir180[pid] = nil
     goalDir180[pid] = nil
 end
+
+-- local recipe = ScriptManager.instance:getCraftRecipe("SliceHead")
+-- if recipe then
+--     local outputs = recipe:getOutputs()
+--     for i=0, outputs:size()-1 do
+--         local out = outputs:get(i)
+--         local mapper = out:getOutputMapper()
+--         if mapper then
+--             local list = ArrayList.new()
+--             list:add("HorseMod.Horse_Head")
+--             mapper:addOutputEntree("HorseMod.Horse_Skull", list)
+--             mapper:OnPostWorldDictionaryInit(recipe:getName())
+--         end
+--     end
+-- end

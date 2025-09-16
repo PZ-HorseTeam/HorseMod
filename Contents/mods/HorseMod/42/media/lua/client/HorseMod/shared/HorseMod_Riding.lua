@@ -25,6 +25,26 @@ end
 
 function HorseRiding.mountHorse(player, horse)
     if not HorseRiding.canMountHorse(player, horse) then return end
+    local data = horse.getData and horse:getData()
+    if data then
+        -- Detach from tree
+        local tree = data.getAttachedTree and data:getAttachedTree()
+        if tree then
+            sendAttachAnimalToTree(horse, player, tree, true)
+            data:setAttachedTree(nil)
+        end
+        -- Detach from any leading player
+        local leader = data.getAttachedPlayer and data:getAttachedPlayer()
+        if leader and leader.getAttachedAnimals then
+            leader:getAttachedAnimals():remove(horse)
+            data:setAttachedPlayer(nil)
+        end
+    end
+
+    -- Ensure the mounting player isn't leading the horse
+    if player.removeAttachedAnimal then
+        player:removeAttachedAnimal(horse)
+    end
 
     -- Freeze horse and remember direction
     if horse.getPathFindBehavior2 then horse:getPathFindBehavior2():reset() end
@@ -187,6 +207,25 @@ local function toggleTrot(key)
 end
 
 Events.OnKeyPressed.Add(toggleTrot)
+
+local function horseJump(key)
+    local options = PZAPI.ModOptions:getOptions("HorseMod")
+    local jumpKey = Keyboard.KEY_SPACE
+    if options then
+        local opt = options:getOption("HorseJumpButton")
+        if opt and opt.getValue then jumpKey = opt:getValue() end
+    end
+    if key ~= jumpKey then return end
+
+    local player = getSpecificPlayer(0)
+    local horse = HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(player)
+    if horse and player:getVariableBoolean("RidingHorse") and horse:getVariableBoolean("HorseGallop") then
+        horse:setVariable("HorseJump", true)
+        player:setVariable("HorseJump", true)
+    end
+end
+
+Events.OnKeyPressed.Add(horseJump)
 
 local function initHorseMod()
     local player = getPlayer()

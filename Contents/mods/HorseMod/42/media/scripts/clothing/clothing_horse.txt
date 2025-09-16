@@ -1,35 +1,57 @@
 module HorseMod
 {
-    imports {
-	    Base
+  imports {
+    Base
 	}
-    item HorseBackpack
-    {
-        DisplayName = Horse Backpack,
-		DisplayCategory = Bag,
-        Type = Container,
-		Weight = 0.5,
-		Icon = HatSantaRed,
-        Capacity = 20,
-        WeightReduction = 100,
-		StaticModel = SpiffoPlushieBig,
-		WorldStaticModel = SpiffoPlushieBig,
-    }
 
-    item HorseSaddle
-    {
-        DisplayName = Horse Saddle,
-		DisplayCategory = Accessory,
-        Type = Normal,
-		Weight = 0.5,
-		Icon = HatSantaRed,
-		BloodLocation = Head,
-		BodyLocation = Hat,
-		CanHaveHoles = FALSE,
-		ChanceToFall = 80,
-		Insulation = 0.80,
-		WindResistance = 0.25,
-		StaticModel = Horse_Saddle1,
-		WorldStaticModel = Horse_Saddle1,
-    }
+  item HorseBackpack
+  {
+    DisplayName = Horse Backpack,
+    DisplayCategory = Bag,
+    Type = Container,
+    Weight = 0.5,
+    Icon = HatSantaRed,
+    Capacity = 20,
+    WeightReduction = 100,
+    StaticModel = SpiffoPlushieBig,
+    WorldStaticModel = SpiffoPlushieBig,
+  }
+
+  item HorseSaddle
+  {
+    DisplayName = Horse Saddle,
+    DisplayCategory = Accessory,
+    Type = Normal,
+    Weight = 0.5,
+    Icon = HatSantaRed,
+    BloodLocation = Head,
+    BodyLocation = Hat,
+    StaticModel = Horse_Saddle1,
+    WorldStaticModel = Horse_Saddle1,
+  }
+
+  item HorseSaddleBags
+  {
+    DisplayName = Horse Saddlebags,
+    DisplayCategory = Accessory,
+    Type = Normal,
+    Weight = 0.5,
+    Icon = HatSantaRed,
+    BloodLocation = Head,
+    BodyLocation = Hat,
+    StaticModel = Horse_SaddleBags1,
+    WorldStaticModel = Horse_SaddleBags1,
+  }
+
+  item HorseSaddleBagsContainer
+  {
+    DisplayCategory = Bag,
+    Hidden = TRUE,
+    Type = Container,
+    Weight = 0.1,
+    Capacity = 40,
+    Icon = HatSantaRed,
+    StaticModel = Horse_SaddleBagsInvis,
+    WorldStaticModel = Horse_SaddleBagsInvis,
+  }
 }

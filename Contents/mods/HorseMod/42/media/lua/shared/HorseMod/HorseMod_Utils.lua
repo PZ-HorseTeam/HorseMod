@@ -55,11 +55,11 @@ HorseUtils.getAttachedItem = function(animal, slot)
 end
 
 HorseUtils.horseHasSaddleItem = function(animal)
-    local back = HorseUtils.getAttachedItem(animal, "Back")
-    if not back then return nil end
-    local ft = back:getFullType() or ""
-    if ft:lower():find("saddle", 1, true) then return back end
-    if HorseMod and HorseMod.SADDLES and HorseMod.SADDLES[ft] then return back end
+    local saddle = HorseUtils.getAttachedItem(animal, "Saddle")
+    if not saddle then return nil end
+    local ft = saddle:getFullType() or ""
+    if ft:lower():find("saddle", 1, true) then return saddle end
+    if HorseMod and HorseMod.SADDLES and HorseMod.SADDLES[ft] then return saddle end
     return nil
 end
 

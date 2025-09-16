@@ -2,15 +2,19 @@
 <animNode>
 	<m_Name>Horse_Idle4</m_Name>
 	<m_AnimName>Horse_Eat_Hand</m_AnimName>
-    <m_ConditionPriority>10</m_ConditionPriority>
-    <m_Conditions>
-        <m_Name>isHorse</m_Name>
-        <m_Type>BOOL</m_Type>
-        <m_Value>true</m_Value>
-    </m_Conditions>
-    <m_Conditions>
-        <m_Name>HorseEatingHand</m_Name>
-        <m_Type>BOOL</m_Type>
-        <m_Value>true</m_Value>
-    </m_Conditions>
+  <m_ConditionPriority>10</m_ConditionPriority>
+  <m_Conditions>
+      <m_Name>isHorse</m_Name>
+      <m_Type>BOOL</m_Type>
+      <m_Value>true</m_Value>
+  </m_Conditions>
+  <m_Conditions>
+      <m_Name>HorseEatingHand</m_Name>
+      <m_Type>BOOL</m_Type>
+      <m_Value>true</m_Value>
+  </m_Conditions>
+  <m_Transitions>
+      <m_Target>Horse_idleSit</m_Target>
+      <m_AnimName>Horse_Idle_StandingToLying</m_AnimName>
+  </m_Transitions>
 </animNode>

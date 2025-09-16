@@ -9,16 +9,6 @@ local PAIN_RATE_BAREBACK = 0.003
 -- pain per update while riding with a saddle
 local PAIN_RATE_SADDLE = 0.001
 
-local allowedDamageParts = {
-    BodyPartType.Foot_L,
-    BodyPartType.Foot_R,
-    BodyPartType.LowerLeg_L,
-    BodyPartType.LowerLeg_R,
-    BodyPartType.UpperLeg_L,
-    BodyPartType.UpperLeg_R,
-    BodyPartType.Groin,
-}
-
 local function applyRidingPain(player)
     local horse = HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(player)
     if not horse then return end
@@ -38,15 +28,25 @@ local function applyRidingPain(player)
 end
 Events.OnPlayerUpdate.Add(applyRidingPain)
 
+local _ZombieHitGate = {}
+
+local function randf(min, max)
+    return min + (ZombRand(1000) / 1000.0) * (max - min)
+end
+
+local DMG_SCR_MIN, DMG_SCR_MAX = 0.15, 0.6   -- scratch
+local DMG_LAC_MIN, DMG_LAC_MAX = 0.5,  1.3   -- laceration
+local DMG_BIT_MIN, DMG_BIT_MAX = 1.8,  3.2   -- bite
+
 local function addRandomDamageFromZombieOnParts(zombie, hitReaction, parts)
     local player = getSpecificPlayer(0)
     if not player or not zombie then return false end
+    if type(parts) ~= "table" or #parts == 0 then return false end
 
     hitReaction = (hitReaction and hitReaction ~= "") and hitReaction or "Bite"
 
     player:setVariable("hitpvp", false)
 
-    -- Server: hand off to object-change and bail
     if isServer() then
         if zombie.OnlineID then
             player:sendObjectChange("AddRandomDamageFromZombie", { zombie = zombie.OnlineID })
@@ -54,52 +54,46 @@ local function addRandomDamageFromZombieOnParts(zombie, hitReaction, parts)
         return true
     end
 
-    ---- base chances
-    local byte0 = 0
-    local int0 = 0
-    local int1 = 15 + (player.getMeleeCombatMod and player:getMeleeCombatMod() or 0)
-    local int2 = 85
-    local int3 = 65
+    local chanceScratchGate = 15 + (player.getMeleeCombatMod and player:getMeleeCombatMod() or 0) -- int1
+    local chanceLacerGate   = 65  -- int3
+    local chanceBiteSave    = 85  -- int2
 
-    -- Facing side / position of zombie relative to player
     local side = tostring(player:testDotSide(zombie) or ""):lower()
     local isBehind = (side == "behind" or side == "back")
     local isSide   = (side == "left" or side == "right")
 
-    -- Surrounding attackers scale
     local attackers = (player.getSurroundingAttackingZombies and player:getSurroundingAttackingZombies() or 1)
     attackers = math.max(attackers, 1)
-    int1 = int1 - (attackers - 1) * 10
-    int2 = int2 - (attackers - 1) * 30
-    int3 = int3 - (attackers - 1) * 15
+    chanceScratchGate = chanceScratchGate - (attackers - 1) * 10
+    chanceBiteSave    = chanceBiteSave    - (attackers - 1) * 30
+    chanceLacerGate   = chanceLacerGate   - (attackers - 1) * 15
 
-    -- Drag-down check (greatly simplified / guarded)
-    local dragThreshold = 3
-    local canDrag = true
-    local crawlCount = 1 -- (placeholder for crawler drag option)
     if player.getHitReaction and player:getHitReaction() ~= "EndDeath" then
-        if (not (player.isGodMod and player:isGodMod())) and canDrag and crawlCount >= dragThreshold and not (player.isSitOnGround and player:isSitOnGround()) then
-            int1, int2, int3 = 0, 0, 0
-            if player.setHitReaction then player:setHitReaction("EndDeath") end
-            if player.setDeathDragDown then player:setDeathDragDown(true) end
+        local dragThreshold = 3
+        local crawlersNear  = 1
+        if (not (player.isGodMod and player:isGodMod()))
+            and crawlersNear >= dragThreshold
+            and not (player.isSitOnGround and player:isSitOnGround()) then
+            chanceScratchGate, chanceBiteSave, chanceLacerGate = 0, 0, 0
+            if player.setHitReaction   then player:setHitReaction("EndDeath") end
+            if player.setDeathDragDown then player:setDeathDragDown(true)     end
         else
             if player.setHitReaction then player:setHitReaction(hitReaction) end
         end
     end
 
-    -- Rear/side modifiers
     if isBehind then
-        int1 = int1 - 15
-        int2 = int2 - 25
-        int3 = int3 - 35
+        chanceScratchGate = chanceScratchGate - 15
+        chanceBiteSave    = chanceBiteSave    - 25
+        chanceLacerGate   = chanceLacerGate   - 35
         if attackers > 2 then
-            int2 = int2 - 15
-            int3 = int3 - 15
+            chanceBiteSave  = chanceBiteSave  - 15
+            chanceLacerGate = chanceLacerGate - 15
         end
     elseif isSide then
-        int1 = int1 - 30
-        int2 = int2 - 7
-        int3 = int3 - 27
+        chanceScratchGate = chanceScratchGate - 30
+        chanceBiteSave    = chanceBiteSave    - 7
+        chanceLacerGate   = chanceLacerGate   - 27
     end
 
     local isCrawling = (zombie.isCrawling and zombie:isCrawling()) or zombie.bCrawling
@@ -107,141 +101,120 @@ local function addRandomDamageFromZombieOnParts(zombie, hitReaction, parts)
         return false
     end
 
-    if type(parts) ~= "table" or #parts == 0 then
-        return false
-    end
+    local bpType  = parts[ZombRand(#parts) + 1]
+    local bpIndex = BodyPartType.ToIndex(bpType)
 
-    int0 = parts[ZombRand(#parts) + 1] -- pick a bodypart index
-
-    -- Bias to neck if behind & many attackers
     if not isCrawling then
-        local bonus = 10.0 * attackers
-        if isBehind then bonus = bonus + 5.0 end
-        if isSide   then bonus = bonus + 2.0 end
-        if isBehind and ZombRand(100) < bonus then
-            local neckIndex = BodyPartType.ToIndex(BodyPartType.Neck)
+        local bias = 10.0 * attackers + (isBehind and 5.0 or 0) + (isSide and 2.0 or 0)
+        if isBehind and ZombRand(100) < bias then
             for i = 1, #parts do
-                if parts[i] == neckIndex then
-                    int0 = neckIndex
+                if parts[i] == BodyPartType.Neck then
+                    bpType  = BodyPartType.Neck
+                    bpIndex = BodyPartType.ToIndex(bpType)
                     break
                 end
             end
         end
     end
 
-    -- Avoid head/neck too often unless RNG says so
-    local headIdx = BodyPartType.ToIndex(BodyPartType.Head)
-    local neckIdx = BodyPartType.ToIndex(BodyPartType.Neck)
-    if int0 == headIdx or int0 == neckIdx then
-        local chance = 70
-        if isBehind then chance = 90 end
-        if isSide   then chance = 80 end
-        if ZombRand(100) > chance then
+    if bpType == BodyPartType.Head or bpType == BodyPartType.Neck then
+        local keepChance = 70
+        if isBehind then keepChance = 90 end
+        if isSide   then keepChance = 80 end
+        if ZombRand(100) > keepChance then
             local filtered = {}
             for i = 1, #parts do
-                local bp = parts[i]
-                if bp ~= headIdx and bp ~= neckIdx and bp ~= BodyPartType.ToIndex(BodyPartType.Groin) then
-                    filtered[#filtered+1] = bp
+                local t = parts[i]
+                if t ~= BodyPartType.Head and t ~= BodyPartType.Neck and t ~= BodyPartType.Groin then
+                    filtered[#filtered+1] = t
                 end
             end
             if #filtered > 0 then
-                int0 = filtered[ZombRand(#filtered) + 1]
+                bpType  = filtered[ZombRand(#filtered) + 1]
+                bpIndex = BodyPartType.ToIndex(bpType)
             end
         end
     end
 
     if zombie.inactive then
-        int1 = int1 + 20
-        int2 = int2 + 20
-        int3 = int3 + 20
+        chanceScratchGate = chanceScratchGate + 20
+        chanceBiteSave    = chanceBiteSave    + 20
+        chanceLacerGate   = chanceLacerGate   + 20
     end
 
-    -- Final raw damage (randomized)
-    local float1 = (ZombRand(1000) / 1000.0) * (ZombRand(10) + 10)
+    local landed = (ZombRand(100) > chanceScratchGate)
+    if not landed then return false end
 
-    -- Convenience: body damage + body part object
-    local bd = player.getBodyDamage and player:getBodyDamage()
-    if not bd then return false end
-    print("Body part index: ", int0)
-    local bpType  = parts[ZombRand(#parts) + 1]          -- BodyPartType.*
-    local bpIndex = BodyPartType.ToIndex(bpType)         -- integer index
-    local bp  = bd and bd:getBodyPart(bpType)
-
-    -- Scratch / laceration / bite decision
-    local doScratch = ZombRand(100) > int3
-    local doBite    = (ZombRand(100) > int2) and (not (zombie.cantBite and zombie:cantBite()))
+    local doScratch = ZombRand(100) > chanceLacerGate
+    local doBite    = (ZombRand(100) > chanceBiteSave) and (not (zombie.cantBite and zombie:cantBite()))
     local doLacer   = (not doScratch) and (not doBite)
 
-    -- Clothing defense (scratch: false biteFlag, bite: true)
+    local dmg
+    local outcomeCode = 0
+    local bd = player:getBodyDamage()
+
     local scratchDef = player.getBodyPartClothingDefense and player:getBodyPartClothingDefense(bpIndex, false, false) or 0
     local biteDef    = player.getBodyPartClothingDefense and player:getBodyPartClothingDefense(bpIndex, true,  false) or 0
 
-    -- Apply effects
-    if ZombRand(100) > int1 then
-        -- SCRATCH
-        if doScratch then
-            -- clothing save?
-            if ZombRand(100) < scratchDef then
-                player:addHoleFromZombieAttacks(BloodBodyPartType.FromIndex(bpIndex), true)
-                return false
-            end
-            if bp and bp.AddDamage then bp:AddDamage(float1) end
-            if bp and bp.setScratched then bp:setScratched(true) end
-            player:addBlood(BloodBodyPartType.FromIndex(bpIndex), true, false, true)
-            byte0 = 1
-            if player.getEmitter and player:getEmitter() then
-                player:getEmitter():playSoundImpl("ZombieScratch", nil)
-            end
-
-        -- LACERATION
-        elseif doLacer then
-            if bp and bp.AddDamage then bp:AddDamage(float1) end
-            if bp and bp.setCut then bp:setCut(true) end
-            player:addBlood(BloodBodyPartType.FromIndex(bpIndex), true, false, true)
-            byte0 = 1
-            if player.getEmitter and player:getEmitter() then
-                player:getEmitter():playSoundImpl("ZombieScratch", nil)
-            end
-
-        -- BITE
-        else
-            -- clothing save?
-            if ZombRand(100) < biteDef then
-                player:addHoleFromZombieAttacks(BloodBodyPartType.FromIndex(bpIndex), true)
-                return false
-            end
-            if player.getEmitter and player:getEmitter() then
-                local biteSound = zombie.getBiteSoundName and zombie:getBiteSoundName() or "ZombieBite"
-                if bpIndex == neckIdx then biteSound = "NeckBite" end
-                player:getEmitter():playSoundImpl(biteSound, nil)
-            end
-            if bp and bp.AddDamage then bp:AddDamage(float1) end
-            if bp and bp.setBitten then bp:setBitten(true) end
-            player:addBlood(BloodBodyPartType.FromIndex(bpIndex), false, true, true)
-            if bpIndex == neckIdx then
-                player:addBlood(BloodBodyPartType.FromIndex(bpIndex), false, true, true)
-                player:addBlood(BloodBodyPartType.Torso_Upper, false, true, false)
-                if player.splatBloodFloorBig then
-                    player:splatBloodFloorBig(); player:splatBloodFloorBig(); player:splatBloodFloorBig()
-                end
-            end
-            byte0 = 2
+    if doScratch then
+        if ZombRand(100) < scratchDef then
+            player:addHoleFromZombieAttacks(BloodBodyPartType.FromIndex(bpIndex), true)
+            return false
         end
+        dmg = randf(DMG_SCR_MIN, DMG_SCR_MAX)
+        bd:AddDamage(bpIndex, dmg)
+        bd:SetScratched(bpIndex, true)
+        player:addBlood(BloodBodyPartType.FromIndex(bpIndex), true, false, true)
+        outcomeCode = 1
+        if player.getEmitter and player:getEmitter() then
+            player:getEmitter():playSoundImpl("ZombieScratch", nil)
+        end
+
+    elseif doLacer then
+        dmg = randf(DMG_LAC_MIN, DMG_LAC_MAX)
+        bd:AddDamage(bpIndex, dmg)
+        bd:SetCut(bpIndex, true)
+        player:addBlood(BloodBodyPartType.FromIndex(bpIndex), true, false, true)
+        outcomeCode = 1
+        if player.getEmitter and player:getEmitter() then
+            player:getEmitter():playSoundImpl("ZombieScratch", nil)
+        end
+
+    else
+        if ZombRand(100) < biteDef then
+            player:addHoleFromZombieAttacks(BloodBodyPartType.FromIndex(bpIndex), true)
+            return false
+        end
+        dmg = randf(DMG_BIT_MIN, DMG_BIT_MAX)
+        if player.getEmitter and player:getEmitter() then
+            local biteSound = zombie.getBiteSoundName and zombie:getBiteSoundName() or "ZombieBite"
+            if bpType == BodyPartType.Neck then biteSound = "NeckBite" end
+            player:getEmitter():playSoundImpl(biteSound, nil)
+        end
+        bd:AddDamage(bpIndex, dmg)
+        bd:SetBitten(bpIndex, true)
+        player:addBlood(BloodBodyPartType.FromIndex(bpIndex), false, true, true)
+        if bpType == BodyPartType.Neck then
+            player:addBlood(BloodBodyPartType.FromIndex(bpIndex), false, true, true)
+            player:addBlood(BloodBodyPartType.Torso_Upper, false, true, false)
+            if player.splatBloodFloorBig then
+                player:splatBloodFloorBig(); player:splatBloodFloorBig(); player:splatBloodFloorBig()
+            end
+        end
+        outcomeCode = 2
     end
 
-    -- Pain application
     local stats = player.getStats and player:getStats()
     if stats then
-        local pain = stats.Pain or 0
-        if     byte0 == 0 and player.getInitialThumpPain   then pain = pain + player:getInitialThumpPain()   * BodyPartType.getPainModifyer(bpIndex)
-        elseif byte0 == 1 and player.getInitialScratchPain then pain = pain + player:getInitialScratchPain() * BodyPartType.getPainModifyer(bpIndex)
-        elseif byte0 == 2 and player.getInitialBitePain    then pain = pain + player:getInitialBitePain()    * BodyPartType.getPainModifyer(bpIndex)
+        local pain = stats:getPain()
+        if     outcomeCode == 0 and player.getInitialThumpPain   then pain = pain + player:getInitialThumpPain()   * BodyPartType.getPainModifyer(bpIndex)
+        elseif outcomeCode == 1 and player.getInitialScratchPain then pain = pain + player:getInitialScratchPain() * BodyPartType.getPainModifyer(bpIndex)
+        elseif outcomeCode == 2 and player.getInitialBitePain    then pain = pain + player:getInitialBitePain()    * BodyPartType.getPainModifyer(bpIndex)
         end
         if pain > 100.0 then pain = 100.0 end
-        stats.Pain = pain
+        stats:setPain(pain)
     end
 
-    -- Sync for client
     if instanceof(player, "IsoPlayer") and isClient() and player:isLocalPlayer() then
         if player.updateMovementRates then player:updateMovementRates() end
         if GameClient and GameClient.sendPlayerInjuries then GameClient.sendPlayerInjuries(player) end
@@ -251,19 +224,60 @@ local function addRandomDamageFromZombieOnParts(zombie, hitReaction, parts)
     return true
 end
 
-local function onZombieAttack(zombie)
+local allowedDamageParts = allowedDamageParts or {
+    BodyPartType.Foot_L,
+    BodyPartType.Foot_R,
+    BodyPartType.LowerLeg_L,
+    BodyPartType.LowerLeg_R,
+    BodyPartType.UpperLeg_L,
+    BodyPartType.UpperLeg_R,
+    BodyPartType.Groin,
+}
+
+local allowedDamagePartIndices = {}
+do
+    for i = 1, #allowedDamageParts do
+        local v = allowedDamageParts[i]
+        local idx = (type(v) == "number") and v or BodyPartType.ToIndex(v)
+        allowedDamagePartIndices[idx] = true
+    end
+end
+
+local function onZombieAttack_checkAndRedirect(zombie)
+    if not zombie then return end
+    if not getSpecificPlayer(0):getVariableBoolean("RidingHorse") then return end
     local target = zombie:getTarget()
-    -- local currentAttackOutcome = zombie:getVariableString("AttackOutcome")
-    if target then
-        print("Zombie attacking 1: ", zombie:isZombieAttacking())
-        print("Zombie attacking 2: ", zombie:isAttacking())
-        local currentAttackOutcome = zombie:getVariableString("AttackOutcome")
-        if currentAttackOutcome ~= "" then
-            local hitReaction = target:getHitReaction()
-            addRandomDamageFromZombieOnParts(zombie, hitReaction, allowedDamageParts)
+    if not target then return end
+
+    local outcome = zombie:getVariableString("AttackOutcome")
+    if not outcome or outcome == "" then return end
+
+    local bd = target.getBodyDamage and target:getBodyDamage()
+    if not bd then return end
+
+    for i = 0, BodyPartType.MAX:index() - 1 do
+        local bpType = BodyPartType.FromIndex(i)
+        local part = bd:getBodyPart(bpType)
+        if part and (part:bitten() or part:scratched() or part:isCut() or part:bleeding()) then
+            if allowedDamagePartIndices[i] then
+                return
+            end
+
+            part:RestoreToFullHealth()
+            if part.SetInfected            then part:SetInfected(false) end
+            if part.SetFakeInfected        then part:SetFakeInfected(false) end
+            if bd.setInfectionLevel        then bd:setInfectionLevel(0) end
+            if bd.setInfectionTime         then bd:setInfectionTime(-1) end
+            if bd.setInfectionMortalityDuration then bd:setInfectionMortalityDuration(-1) end
+
+            if addRandomDamageFromZombieOnParts then
+                addRandomDamageFromZombieOnParts(zombie, target:getHitReaction(), allowedDamageParts)
+            end
+            return
         end
     end
 end
-Events.OnZombieUpdate.Add(onZombieAttack)
+
+Events.OnZombieUpdate.Add(onZombieAttack_checkAndRedirect)
 
 return {}

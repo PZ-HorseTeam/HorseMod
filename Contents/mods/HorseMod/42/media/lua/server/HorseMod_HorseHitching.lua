@@ -218,4 +218,8 @@ function ISAttachAnimalToTree:new(character, animal, tree, remove)
     return _originalAttachAnimal(self, character, animal, tree, remove)
 end
 
-Events.OnGameBoot.Add(addAttachmentFlag)
+if isServer() then
+    Events.OnGameBoot.Add(addAttachmentFlag)  -- server
+else
+    Events.OnGameStart.Add(addAttachmentFlag) -- client
+end
