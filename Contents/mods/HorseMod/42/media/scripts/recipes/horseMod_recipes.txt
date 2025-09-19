@@ -24,10 +24,52 @@ module HorseMod
             item 3 [Base.LeatherStrips] mode:destroy,
             item 3 [Base.Buckle] mode:destroy,
             item 2 [Base.IronBandSmall] mode:destroy,
+            item 1 [Base.Leather_Crude_Large;Base.Leather_Crude_Large_Tan;2:Base.Leather_Crude_Medium;2:Base.Leather_Crude_Medium_Tan] mode:destroy mappers[SaddleLeather],
         }
         outputs
         {
             item 1 HorseMod.HorseSaddle,
+        }
+        itemMapper SaddleLeather
+        {
+            HorseMod.HorseSaddle = Base.Leather_Crude_Large,
+            HorseMod.HorseSaddle = Base.Leather_Crude_Large_Tan,
+            HorseMod.HorseSaddle = Base.Leather_Crude_Medium,
+            HorseMod.HorseSaddle = Base.Leather_Crude_Medium_Tan,
+        }
+    }
+
+    craftRecipe horseSaddleBags
+    {
+        time = 200,
+        tags = AnySurfaceCraft,
+        skillRequired = Tailoring:6,
+        AutoLearnAll = Tailoring:8,
+        xpAward = Tailoring:40,
+        timedAction = MakingHammer_Surface,
+        category = Tailoring,
+        inputs
+        {
+            item 1 tags[Scissors;SharpKnife] mode:keep flags[MayDegradeLight],
+			item 1 tags[SewingNeedle] mode:keep flags[MayDegradeLight],
+			item 1 tags[Awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[Hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+            item 1 tags[MetalworkingPliers;Tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 5 tags[HeavyThread],
+            item 1 [Base.LeatherStrips] mode:destroy,
+            item 2 [Base.Buckle] mode:destroy,
+            item 1 [Base.Leather_Crude_Medium;Base.Leather_Crude_Medium_Tan;2:Base.Leather_Crude_Small;2:Base.Leather_Crude_Small_Tan] mode:destroy mappers[SaddleLeather],
+        }
+        outputs
+        {
+            item 1 HorseMod.HorseSaddleBags,
+        }
+        itemMapper SaddleLeather
+        {
+            HorseMod.HorseSaddleBags = Base.Leather_Crude_Medium,
+            HorseMod.HorseSaddleBags = Base.Leather_Crude_Medium_Tan,
+            HorseMod.HorseSaddleBags = Base.Leather_Crude_Small,
+            HorseMod.HorseSaddleBags = Base.Leather_Crude_Small_Tan,
         }
     }
 }
