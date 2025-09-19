@@ -11,13 +11,14 @@ module HorseMod
         skillRequired = Tailoring:6,
         AutoLearnAll = Tailoring:8,
         xpAward = Tailoring:40,
+        timedAction = MakingHammer_Surface,
         category = Tailoring,
         inputs
         {
 			item 1 tags[Scissors;SharpKnife] mode:keep flags[MayDegradeLight],
 			item 1 tags[SewingNeedle] mode:keep flags[MayDegradeLight],
 			item 1 tags[Awl] mode:keep flags[MayDegradeLight],
-            item 1 tags[Hammer] mode:keep flags[MayDegradeVeryLight],
+            item 1 tags[Hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
             item 1 tags[MetalworkingPliers;Tongs] mode:keep flags[Prop2;MayDegradeLight],
             item 5 tags[HeavyThread],
             item 3 [Base.LeatherStrips] mode:destroy,
