@@ -22,7 +22,7 @@ module HorseMod
     DisplayName = Horse Saddle,
     DisplayCategory = Accessory,
     Type = Normal,
-    Weight = 0.5,
+    Weight = 8,
     Icon = HatSantaRed,
     BloodLocation = Head,
     BodyLocation = Hat,
