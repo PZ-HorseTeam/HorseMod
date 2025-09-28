@@ -37,7 +37,7 @@ module HorseMod
     Type = Container,
     Weight = 0.5,
     Capacity = 40,
-    Icon = HatSantaRed,
+    Icon = HorseSaddlebags,
     BloodLocation = Head,
     BodyLocation = Hat,
     StaticModel = Horse_SaddleBags1,

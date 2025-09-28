@@ -95,7 +95,7 @@ module HorseMod
 	{
 		mesh = HorseMod/Horse_Head,
 		static = true,
-    texture = HorseMod/HorseAQHP,
+    	texture = HorseMod/HorseAQHP,
 		scale = 0.3530,
 
 		attachment world
@@ -109,6 +109,7 @@ module HorseMod
 	{
 		mesh = HorseMod/Horse_Skull,
 		static = true,
+		texture = WorldItems/HorseSkull,
 		scale = 0.3530,
 		attachment world
 		{
@@ -116,6 +117,19 @@ module HorseMod
 			rotate = 0.0000 -0.0000 0.0000,
 			scale = 0.5000,
 		}
+	}
+
+	model HorseSteak
+	{
+		mesh = HorseMod/HorseSteak,
+		static = true,
+		texture = WorldItems/HorseSteak,
+	}
+	model HorseLoin
+	{
+		mesh = HorseMod/Horse_Loin,
+		static = true,
+		texture = WorldItems/HorseLoin,
 	}
 
 

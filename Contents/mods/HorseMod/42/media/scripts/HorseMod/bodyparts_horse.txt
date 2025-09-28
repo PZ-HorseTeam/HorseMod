@@ -20,19 +20,19 @@ module HorseMod
         Weight = 1.2,
         Type = Normal,
         DisplayName = Horse Skull,
-        Icon = Skull_CowFemale,
+        Icon = Skull_Horse,
         Tags = AnimalSkull,
         StaticModel = HorseSkull,
         WorldStaticModel = HorseSkull,
     }
 
-    /* TODO: needs icon */
-    item HorseMeat {
+    item HorseSteak 
+    {
         Type = Food,
-        DisplayName = Horse Meat,
+        DisplayName = Horse Steak,
         DisplayCategory = Food,
         Weight = 0.5,
-        Icon = HorseMeat,
+        Icon = HorseSteak,
         BadCold = true,
         BadInMicrowave = true,
         DangerousUncooked = true,
@@ -51,7 +51,8 @@ module HorseMod
         FishingLure = true,
         CookingSound = FryingFood,
         UnhappyChange = 50,
-        WorldStaticModel = HorseMeat,
+        StaticModel = HorseSteak,
+        WorldStaticModel = HorseSteak,
     }
 
     item HorseHoof
@@ -60,6 +61,6 @@ module HorseMod
         Weight = 0.5,
         Type = Normal,
         DisplayName = Horse Hoof,
-        Icon = HorseMeat,
+        Icon = HorseHoof,
     }
 }
