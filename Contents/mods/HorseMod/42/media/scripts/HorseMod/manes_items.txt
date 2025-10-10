@@ -1,36 +1,32 @@
-module HorseMod
-{
-  imports {
-    Base
-	}
+module HorseMod {
+    imports {
+        Base
+    }
 
-  item HorseManeStart
-  {
-    DisplayCategory = Accessory,
-    Type = Normal,
-    Weight = 0.1,
-    Icon = HatSantaRed,
-    StaticModel = HorseMod.HorseManeStart,
-    WorldStaticModel = HorseMod.HorseManeStart,
-  }
+    item HorseManeStart {
+        DisplayCategory = Accessory,
+        Type = Normal,
+        Weight = 0.1,
+        Icon = HatSantaRed,
+        StaticModel = HorseMod.HorseManeStart,
+        WorldStaticModel = HorseMod.HorseManeStart,
+    }
 
-  item HorseManeMid
-  {
-    DisplayCategory = Accessory,
-    Type = Normal,
-    Weight = 0.1,
-    Icon = HatSantaRed,
-    StaticModel = HorseMod.HorseManeMid,
-    WorldStaticModel = HorseMod.HorseManeMid,
-  }
+    item HorseManeMid {
+        DisplayCategory = Accessory,
+        Type = Normal,
+        Weight = 0.1,
+        Icon = HatSantaRed,
+        StaticModel = HorseMod.HorseManeMid,
+        WorldStaticModel = HorseMod.HorseManeMid,
+    }
 
-  item HorseManeEnd
-  {
-    DisplayCategory = Accessory,
-    Type = Normal,
-    Weight = 0.1,
-    Icon = HatSantaRed,
-    StaticModel = HorseMod.HorseManeEnd,
-    WorldStaticModel = HorseMod.HorseManeEnd,
-  }
+    item HorseManeEnd {
+        DisplayCategory = Accessory,
+        Type = Normal,
+        Weight = 0.1,
+        Icon = HatSantaRed,
+        StaticModel = HorseMod.HorseManeEnd,
+        WorldStaticModel = HorseMod.HorseManeEnd,
+    }
 }

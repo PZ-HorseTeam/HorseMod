@@ -63,8 +63,7 @@ module HorseMod {
 		WorldStaticModel = HorseHoof,
     }
 
-    item Dung_Horse
-    {
+    item Dung_Horse {
         DisplayCategory = Junk,
         Weight = 0.5,
         Type = Food,

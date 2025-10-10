@@ -1,45 +1,43 @@
-module HorseMod
-{
-  imports {
-    Base
-	}
+module HorseMod {
+    imports {
+        Base
+    }
 
-  item HorseSaddle
-  {
-    DisplayName = Horse Saddle,
-    DisplayCategory = Accessory,
-    Type = Normal,
-    Weight = 0.5,
-    Icon = HorseSaddle,
-    BloodLocation = Head,
-    BodyLocation = Hat,
-    StaticModel = Horse_Saddle1,
-    WorldStaticModel = Horse_Saddle1,
-  }
+    item HorseSaddle {
+        DisplayName = Horse Saddle,
+        DisplayCategory = Accessory,
+        Type = Normal,
+        Weight = 0.5,
+        Icon = HorseSaddle,
+        BloodLocation = Head,
+        BodyLocation = Hat,
+        StaticModel = Horse_Saddle1,
+        WorldStaticModel = Horse_Saddle1_World,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+    }
 
-  item HorseSaddleBags
-  {
-    DisplayName = Horse Saddlebags,
-    DisplayCategory = Bag,
-    Type = Container,
-    Weight = 0.5,
-    Capacity = 40,
-    Icon = HorseSaddlebags,
-    BloodLocation = Head,
-    BodyLocation = Hat,
-    StaticModel = Horse_SaddleBags,
-    WorldStaticModel = Horse_SaddleBags,
-  }
+    item HorseSaddleBags {
+        DisplayName = Horse Saddlebags,
+        DisplayCategory = Bag,
+        Type = Container,
+        Weight = 0.5,
+        Capacity = 40,
+        Icon = HorseSaddlebags,
+        BloodLocation = Head,
+        BodyLocation = Hat,
+        StaticModel = Horse_SaddleBags,
+        WorldStaticModel = Horse_SaddleBags,
+    }
 
-  item HorseSaddleBagsContainer
-  {
-    DisplayCategory = Bag,
-    Hidden = TRUE,
-    Type = Container,
-    Weight = 0.1,
-    Capacity = 40,
-    Icon = HorseSaddlebags,
-    StaticModel = Horse_SaddleBagsInvis,
-    WorldStaticModel = Horse_SaddleBagsInvis,
-  }
+    item HorseSaddleBagsContainer {
+        DisplayCategory = Bag,
+        Hidden = true,
+        Type = Container,
+        Weight = 0.1,
+        Capacity = 40,
+        Icon = HorseSaddlebags,
+        StaticModel = Horse_SaddleBagsInvis,
+        WorldStaticModel = Horse_SaddleBagsInvis,
+    }
 }
