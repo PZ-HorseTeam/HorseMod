@@ -1,63 +1,96 @@
-require "TimedActions/ISPathFindAction"
+require("TimedActions/ISPathFindAction")
+
 local ISMountHorse = require("HorseMod/player/ISMountHorse")
 local ISDismountHorse = require("HorseMod/player/ISDismountHorse")
-local Stamina = require("HorseMod/Stamina")
 local HorseUtils = require("HorseMod/Utils")
 
+
 local HorseRiding = {}
+
+---@type {[integer]: IsoAnimal | nil}
 HorseRiding.playerMounts = {}
+
+---@type {[integer]: IsoAnimal | nil}
 HorseRiding.lastMounted = {}
 
-local function pid(p) return p and p:getPlayerNum() or -1 end
 
+---@param animal IsoAnimal
+---@return boolean
+---@nodiscard
 function HorseRiding.isMountableHorse(animal)
-    if not animal or not animal.getAnimalType then return false end
+    if not animal then
+        return false
+    end
+
     local t = animal:getAnimalType()
     return t == "stallion" or t == "mare"
 end
 
+
+---@param player IsoPlayer
+---@param horse IsoAnimal
+---@return boolean
+---@nodiscard
 function HorseRiding.canMountHorse(player, horse)
-    if not player or not horse then return false end
-    if HorseRiding.playerMounts[pid(player)] then return false end
+    if HorseRiding.playerMounts[pid(player)] then
+        return false
+    end
+
     return HorseRiding.isMountableHorse(horse)
 end
 
+
+---@param player IsoPlayer
+---@return IsoAnimal | nil
+---@nodiscard
+function HorseRiding.getMountedHorse(player)
+    return HorseRiding.playerMounts[pid(player)]
+end
+
+
+-- TODO: mountHorse and dismountHorse are too long and have a lot of redundant code
+
+
+---@param player IsoPlayer
+---@param horse IsoAnimal
 function HorseRiding.mountHorse(player, horse)
     if not HorseRiding.canMountHorse(player, horse) then return end
-    local data = horse.getData and horse:getData()
+
+    local data = horse:getData()
+    -- TODO: check if this nil check is actually necessary
+    --  an animal's data *is* null by default,
+    --  but it seems like it might always gets initialised when the animal spawns
     if data then
         -- Detach from tree
-        local tree = data.getAttachedTree and data:getAttachedTree()
+        local tree = data:getAttachedTree()
         if tree then
             sendAttachAnimalToTree(horse, player, tree, true)
             data:setAttachedTree(nil)
         end
         -- Detach from any leading player
-        local leader = data.getAttachedPlayer and data:getAttachedPlayer()
-        if leader and leader.getAttachedAnimals then
+        local leader = data:getAttachedPlayer()
+        if leader then
             leader:getAttachedAnimals():remove(horse)
             data:setAttachedPlayer(nil)
         end
     end
 
     -- Ensure the mounting player isn't leading the horse
-    if player.removeAttachedAnimal then
-        player:removeAttachedAnimal(horse)
-    end
+    player:removeAttachedAnimal(horse)
 
     -- Freeze horse and remember direction
-    if horse.getPathFindBehavior2 then horse:getPathFindBehavior2():reset() end
-    if horse.getBehavior then
-        local behavior = horse:getBehavior()
-        behavior:setBlockMovement(true)
-        behavior:setDoingBehavior(false)
-    end
-    if horse.stopAllMovementNow then horse:stopAllMovementNow() end
+    horse:getPathFindBehavior2():reset()
+
+    local behavior = horse:getBehavior()
+    behavior:setBlockMovement(true)
+    behavior:setDoingBehavior(false)
+
+    horse:stopAllMovementNow()
     local lockDir = horse:getDir()
 
     -- Keep horse direction locked while walking to
     local function lockTick()
-        if horse and horse:isExistInTheWorld() then horse:setDir(lockDir) end
+        if horse:isExistInTheWorld() then horse:setDir(lockDir) end
     end
     Events.OnTick.Add(lockTick)
 
@@ -80,7 +113,7 @@ function HorseRiding.mountHorse(player, horse)
 
     local function cleanup()
         Events.OnTick.Remove(lockTick)
-        if horse.getBehavior then horse:getBehavior():setBlockMovement(false) end
+        horse:getBehavior():setBlockMovement(false)
     end
 
     path:setOnFail(cleanup)
@@ -105,7 +138,7 @@ function HorseRiding.mountHorse(player, horse)
         end
 
         action.onCanceled = function()
-            if horse.getBehavior then horse:getBehavior():setBlockMovement(false) end
+            horse:getBehavior():setBlockMovement(false)
             horse:setVariable("RidingHorse", false)
             player:setVariable("RidingHorse", false)
             player:setVariable("MountingHorse", false)
@@ -118,22 +151,20 @@ function HorseRiding.mountHorse(player, horse)
     ISTimedActionQueue.add(path)
 end
 
-function HorseRiding.getMountedHorse(player)
-    return HorseRiding.playerMounts[pid(player)]
-end
 
+---@param player IsoPlayer
 function HorseRiding.dismountHorse(player)
-    local id    = player:getPlayerNum()
+    local id = player:getPlayerNum()
     local horse = HorseRiding.playerMounts[id]
     if not horse then return end
 
-    if horse.getPathFindBehavior2 then horse:getPathFindBehavior2():reset() end
-    if horse.getBehavior then
-        local behavior = horse:getBehavior()
-        behavior:setBlockMovement(true)
-        behavior:setDoingBehavior(false)
-    end
-    if horse.stopAllMovementNow then horse:stopAllMovementNow() end
+    horse:getPathFindBehavior2():reset()
+
+    local behavior = horse:getBehavior()
+    behavior:setBlockMovement(true)
+    behavior:setDoingBehavior(false)
+
+    horse:stopAllMovementNow()
     local lockDir = horse:getDir()
 
     local lpos = horse:getAttachmentWorldPos("mountLeft")
@@ -152,32 +183,39 @@ function HorseRiding.dismountHorse(player)
         return false
     end
     if centerBlocked(tx, ty, tz) then
-        local ox, oy, oz = (side=="right") and lpos:x() or rpos:x(), (side=="right") and lpos:y() or rpos:y(), (side=="right") and lpos:z() or rpos:z()
+        local ox = (side=="right") and lpos:x() or rpos:x()
+        local oy = (side=="right") and lpos:y() or rpos:y()
+        local oz = (side=="right") and lpos:z() or rpos:z()
         if not centerBlocked(ox, oy, oz) then
-            if side == "right" then side = "left" else side = "right" end
+            if side == "right" then
+                side = "left"
+            else
+                side = "right"
+            end
             tx, ty, tz = ox, oy, oz
         end
     end
 
     local saddleItem = HorseUtils.horseHasSaddleItem(horse)
 
-    -- Start the timed action
     player:setDir(lockDir)
 
-    -- Start the timed action
-    local act = ISDismountHorse:new(player, horse, side, saddleItem, tx, ty, tz, 200)
-    act.onComplete = function()
-        if player.getAttachedAnimals then player:getAttachedAnimals():remove(horse) end
-        if horse.getData then horse:getData():setAttachedPlayer(nil) end
+    local action = ISDismountHorse:new(
+        player,
+        horse,
+        side,
+        saddleItem,
+        tx,
+        ty,
+        tz,
+        200
+    )
 
-        if HorseRiding._clearRideCache then HorseRiding._clearRideCache(player:getPlayerNum()) end
+    action.onComplete = function()
+        HorseRiding._clearRideCache(player:getPlayerNum())
         player:faceThisObject(horse)
 
-        player:setVariable("RidingHorse", false)
         player:setVariable("HorseTrot", false)
-        player:setVariable("MountingHorse", false)
-        player:setVariable("isTurningLeft", false)
-        player:setVariable("isTurningRight", false)
         player:setAllowRun(true)
         player:setAllowSprint(true)
         player:setTurnDelta(1)
@@ -186,19 +224,24 @@ function HorseRiding.dismountHorse(player)
         HorseRiding.playerMounts[id] = nil
         HorseRiding.lastMounted[id] = horse
     end
-    ISTimedActionQueue.add(act)
+
+    ISTimedActionQueue.add(action)
 end
 
+
+---@param key integer
 local function toggleTrot(key)
     if key ~= Keyboard.KEY_X then return end
+
     local player = getSpecificPlayer(0)
-    local horse = HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(player)
-    local riding = player:getVariableBoolean("RidingHorse")
-    if horse and riding then
-        local cur = horse:getVariableBoolean("HorseTrot")
-        horse:setVariable("HorseTrot", not cur)
-        player:setVariable("HorseTrot", not cur)
-        if cur == true then
+    local horse = HorseRiding.getMountedHorse(player)
+    if horse and player:getVariableBoolean("RidingHorse") then
+        local current = horse:getVariableBoolean("HorseTrot")
+
+        horse:setVariable("HorseTrot", not current)
+        player:setVariable("HorseTrot", not current)
+
+        if current == true then
             player:setTurnDelta(0.65)
         else
             player:setTurnDelta(0.65)
@@ -208,6 +251,8 @@ end
 
 Events.OnKeyPressed.Add(toggleTrot)
 
+
+---@param key integer
 local function horseJump(key)
     local options = PZAPI.ModOptions:getOptions("HorseMod")
     local jumpKey = Keyboard.KEY_SPACE
@@ -218,7 +263,7 @@ local function horseJump(key)
     if key ~= jumpKey then return end
 
     local player = getSpecificPlayer(0)
-    local horse = HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(player)
+    local horse = HorseRiding.getMountedHorse(player)
     if horse and player:getVariableBoolean("RidingHorse") and horse:getVariableBoolean("HorseGallop") then
         horse:setVariable("HorseJump", true)
         player:setVariable("HorseJump", true)
@@ -227,15 +272,17 @@ end
 
 Events.OnKeyPressed.Add(horseJump)
 
+
 local function initHorseMod()
     local player = getPlayer()
     player:setVariable("RidingHorse", false)
     player:setVariable("MountingHorse", false)
     player:setVariable("DismountFinished", false)
     player:setVariable("MountFinished", false)
-    if HorseRiding._clearRideCache then HorseRiding._clearRideCache(player:getPlayerNum()) end
+    HorseRiding._clearRideCache(player:getPlayerNum())
 end
 
 Events.OnGameStart.Add(initHorseMod)
+
 
 return HorseRiding
