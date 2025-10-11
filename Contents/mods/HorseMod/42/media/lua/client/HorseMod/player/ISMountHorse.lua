@@ -98,7 +98,7 @@ function ISMountHorse:new(character, horse, side, saddle)
     o.saddle = saddle
     o.stopOnWalk = true
     o.stopOnRun  = true
-    o.maxTime = 200
+    o.maxTime = -1
     return o
 end
 

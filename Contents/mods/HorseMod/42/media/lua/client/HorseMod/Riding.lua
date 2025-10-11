@@ -165,7 +165,7 @@ function HorseRiding.dismountHorse(player)
     player:setDir(lockDir)
 
     -- Start the timed action
-    local act = ISDismountHorse:new(player, horse, side, saddleItem, tx, ty, tz, 200)
+    local act = ISDismountHorse:new(player, horse, side, saddleItem, tx, ty, tz)
     act.onComplete = function()
         if player.getAttachedAnimals then player:getAttachedAnimals():remove(horse) end
         if horse.getData then horse:getData():setAttachedPlayer(nil) end

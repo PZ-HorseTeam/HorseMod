@@ -92,7 +92,7 @@ function ISDismountHorse:getDuration()
     return self.maxTime or 200
 end
 
-function ISDismountHorse:new(character, horse, side, saddleItem, landX, landY, landZ, maxTime)
+function ISDismountHorse:new(character, horse, side, saddleItem, landX, landY, landZ)
     local o = ISBaseTimedAction.new(self, character)
     o.char     = character
     o.horse    = horse
@@ -101,7 +101,7 @@ function ISDismountHorse:new(character, horse, side, saddleItem, landX, landY, l
     o.landX    = landX
     o.landY    = landY
     o.landZ    = landZ
-    o.maxTime  = maxTime or 200
+    o.maxTime  = -1
     o.stopOnWalk = true
     o.stopOnRun  = true
     return o
