@@ -70,7 +70,7 @@ module HorseMod {
         Tags = AnySurfaceCraft;Cooking,
         category = Cooking,
         inputs {
-            item 1 [HorseMod.HorseHoof] mode:destroy,
+            item 2 [HorseMod.HorseHoof] mode:destroy,
             item 1 [Base.Pot;Base.PotForged] mode:destroy flags[InheritCondition;ItemCount] mappers[potType],
             -fluid 1.5 categories[Water] mode:mixture,
         }
