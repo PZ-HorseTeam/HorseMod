@@ -1,8 +1,10 @@
-require "ISUI/Animal/ISAnimalContextMenu"
+require("ISUI/Animal/ISAnimalContextMenu")
 
 local HorseUtils = require("HorseMod/Utils")
-HorseMod = HorseMod or {}
-HorseMod.HorseAttachments  = HorseMod.HorseAttachments
+local HorseManager = require("HorseMod/HorseManager")
+
+
+local HorseAttachments = {}
 
 -----------------------------------------------------------------------
 -- Attachment locations setup
@@ -94,7 +96,9 @@ local SLOTS = {
     "ManeEnd",
 }
 
-HorseMod.HorseAttachments = HorseMod.HorseAttachments or {
+
+---@type {[string]: {slot: string}}
+HorseAttachments.items = {
     --EXAMPLE: ["FullType"] = { slot = "AttachmentSlot" }
     ["HorseMod.HorseSaddle"] = { slot = "Saddle" },
     ["HorseMod.HorseBackpack"] = { slot = "Saddle" },
@@ -823,7 +827,7 @@ local function addAttachmentOptions(playerNum, context, animals, test)
     local horseSubMenu = context:getSubMenu(horseOption.subOption)
     if not horseSubMenu then return end
 
-    local itemsMap = HorseMod.HorseAttachments or {}
+    local itemsMap = HorseAttachments.items
 
     local function slotFor(fullType)
         local def = itemsMap[fullType]
@@ -1019,7 +1023,7 @@ Events.OnTick.Add(function()
                     for i = 0, animals:size() - 1 do
                         local a = animals:get(i)
                         if HorseUtils.isHorse(a) then
-                            if a.isDead and a:isDead() then
+                            if a:isDead() then
                                 local md = a:getModData()
                                 local already = md and md.HM_Attach and md.HM_Attach.DroppedOnDeath
                                 if not already then
@@ -1037,3 +1041,49 @@ Events.OnTick.Add(function()
     end
 end)
 
+
+---@param character IsoGameCharacter
+local function onCharacterDeath(character)
+    if not character:isAnimal() or not HorseUtils.isHorse(character) then
+        return
+    end
+    ---@cast character IsoAnimal
+
+    dropHorseGearOnDeath(character)
+end
+
+Events.OnCharacterDeath.Add(onCharacterDeath)
+
+
+---@type IsoAnimal[]
+local pendingHorses = {}
+
+local function addAttachmentsToHorses()
+    for i = #pendingHorses, 1, -1 do
+        local horse = pendingHorses[i]
+        if horse:isOnScreen() then
+            table.remove(pendingHorses, i)
+            reapplyFor(horse)
+            ensureManesPresentAndColored(horse)
+        end
+    end
+end
+
+Events.OnTick.Add(addAttachmentsToHorses)
+
+
+HorseManager.onHorseAdded:add(function(horse)
+    pendingHorses[#pendingHorses + 1] = horse
+end)
+
+
+HorseManager.onHorseRemoved:add(function(horse)
+    for i = 1, #pendingHorses do
+        if pendingHorses[i] == horse then
+            table.remove(pendingHorses, i)
+        end
+    end
+end)
+
+
+return HorseAttachments

@@ -1,0 +1,129 @@
+require("TimedActions/ISBaseTimedAction")
+
+
+---@class DismountHorseAction : ISBaseTimedAction
+---
+---@field horse IsoAnimal
+---
+---@field pair MountPair
+---
+---@field _lockDir IsoDirections | nil
+---
+---@field side "left" | "right"
+---
+---@field saddle boolean
+---
+---@field landX number
+---
+---@field landY number
+---
+---@field landZ number
+---
+---@field onComplete function|nil
+local DismountHorseAction = ISBaseTimedAction:derive("DismountHorseAction")
+
+
+---@return boolean
+function DismountHorseAction:isValid()
+    return self.horse:isExistInTheWorld()
+           and self.character:getAttachedAnimals():contains(self.horse) or false
+end
+
+
+function DismountHorseAction:update()
+    assert(self._lockDir ~= nil)
+
+    -- keep the horse locked facing the stored direction
+    self.horse:setDir(self._lockDir)
+    -- keep the player facing the horse's head (same dir as horse)
+    self.character:setDir(self._lockDir)
+
+    if self.character:getVariableBoolean("DismountFinished") == true then
+        self.character:setVariable("DismountFinished", false)
+        self:forceComplete()
+    end
+end
+
+
+function DismountHorseAction:start()
+    self.horse:getPathFindBehavior2():reset()
+    self.horse:getBehavior():setBlockMovement(true)
+    self.horse:stopAllMovementNow()
+
+    self._lockDir  = self.horse:getDir()
+
+    self.character:setDir(self._lockDir)
+
+    if self.side == "right" then
+        if self.saddle then
+            self:setActionAnim("Bob_Dismount_Saddle_Right")
+        else
+            self:setActionAnim("Bob_Dismount_Bareback_Right")
+        end
+    else
+        if self.saddle then
+            self:setActionAnim("Bob_Dismount_Saddle_Left")
+        else
+            self:setActionAnim("Bob_Dismount_Bareback_Left")
+        end
+    end
+end
+
+
+function DismountHorseAction:stop()
+    self.horse:getBehavior():setBlockMovement(false)
+    self.character:setVariable("RidingHorse", true)
+    ISBaseTimedAction.stop(self)
+end
+
+
+function DismountHorseAction:perform()
+    assert(self._lockDir ~= nil)
+
+    self.pair:breakPair()
+
+    self.character:setX(self.landX)
+    self.character:setY(self.landY)
+    self.character:setZ(self.landY)
+    self.character:setDir(self._lockDir)
+
+    self.character:faceThisObject(self.horse)
+
+    if self.onComplete then
+        pcall(self.onComplete)
+    end
+
+    ISBaseTimedAction.perform(self)
+end
+
+
+---@param pair MountPair
+---@param side "left" | "right"
+---@param saddleItem InventoryItem | nil
+---@param landX number
+---@param landY number
+---@param landZ number
+---@return self
+---@nodiscard
+function DismountHorseAction:new(pair, side, saddleItem, landX, landY, landZ)
+    ---@type DismountHorseAction
+    local o = ISBaseTimedAction.new(self, pair.rider)
+    o.horse = pair.mount
+    o.side = side
+    o.saddle = saddleItem ~= nil
+    o.landX = landX
+    o.landY = landY
+    o.landZ = landZ
+    o.stopOnWalk = true
+    o.stopOnRun = true
+
+    o.maxTime = -1
+    if o.character:isTimedActionInstant() then
+        o.maxTime = 1
+    end
+
+    return o
+end
+
+
+return DismountHorseAction

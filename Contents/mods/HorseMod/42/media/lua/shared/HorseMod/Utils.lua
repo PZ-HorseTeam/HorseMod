@@ -10,7 +10,7 @@ local HorseUtils = {}
 ---@param animal IsoAnimal The animal to check.
 ---@return boolean isHorse Whether the animal is a horse.
 HorseUtils.isHorse = function(animal)
-    return HORSE_TYPES[animal:getAnimalType()]
+    return HORSE_TYPES[animal:getAnimalType()] or false
 end
 
 HorseUtils.getMountWorld = function(horse, name)
@@ -45,22 +45,45 @@ HorseUtils.lockHorseForInteraction = function(horse)
     return unlock, lockDir
 end
 
+
+---@param animal IsoAnimal
+---@param slot string
+---@return InventoryItem | nil
+---@nodiscard
 HorseUtils.getAttachedItem = function(animal, slot)
-    if animal.getAttachedItems then
-        local ai = animal:getAttachedItems()
-        if ai and ai.getItem then return ai:getItem(slot) end
+    -- TODO: check if this will actually be nil in real circumstances, doesn't seem like it!
+    local attachedItems = animal:getAttachedItems()
+    if attachedItems then
+        return attachedItems:getItem(slot)
     end
-    if animal.getAttachedItem then return animal:getAttachedItem(slot) end
+
     return nil
 end
 
-HorseUtils.horseHasSaddleItem = function(animal)
+
+---@param animal IsoAnimal
+---@return InventoryItem | nil
+---@nodiscard
+HorseUtils.getSaddle = function(animal)
     local saddle = HorseUtils.getAttachedItem(animal, "Saddle")
-    if not saddle then return nil end
-    local ft = saddle:getFullType() or ""
-    if ft:lower():find("saddle", 1, true) then return saddle end
-    if HorseMod and HorseMod.SADDLES and HorseMod.SADDLES[ft] then return saddle end
+    if not saddle then
+        return nil
+    end
+
+    local ft = saddle:getFullType()
+
+    -- TODO: why are we checking this here? just don't let the animal equip an item that isn't a saddle
+    if ft:lower():find("saddle", 1, true) then
+        return saddle
+    end
+
+    -- FIXME: this doesn't exist ????
+    --  this is preferable to the string check !
+    -- if HorseMod.SADDLES[ft] then
+    --     return saddle 
+    -- end
     return nil
 end
+
 
 return HorseUtils

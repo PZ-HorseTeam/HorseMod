@@ -13,8 +13,8 @@ local function applyRidingPain(player)
     local horse = HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(player)
     if not horse then return end
     if not player:getVariableBoolean("pressedmovement") then return end
-    local rate = HorseUtils.horseHasSaddleItem(horse) and PAIN_RATE_SADDLE or PAIN_RATE_BAREBACK
-    local maxPain = HorseUtils.horseHasSaddleItem(horse) and MAX_PAIN_SADDLE or MAX_PAIN_BAREBACK
+    local rate = HorseUtils.getSaddle(horse) and PAIN_RATE_SADDLE or PAIN_RATE_BAREBACK
+    local maxPain = HorseUtils.getSaddle(horse) and MAX_PAIN_SADDLE or MAX_PAIN_BAREBACK
     local bd = player:getBodyDamage()
     local bodyPartsList = {BodyPartType.UpperLeg_L, BodyPartType.UpperLeg_R, BodyPartType.Groin}
     for i = 1, #bodyPartsList do
