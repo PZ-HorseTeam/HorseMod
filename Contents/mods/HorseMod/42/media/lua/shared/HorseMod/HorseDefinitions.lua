@@ -207,7 +207,7 @@ AnimalDefinitions.animals["filly"] = {
     minEnclosureSize = 40,
     idleSoundVolume = 0.2,
     ---- size
-    collisionSize = 0.6,
+    collisionSize = 0.35,
     minSize = 0.6,
     maxSize = 0.6,
     animalSize = 0.5,
@@ -288,7 +288,7 @@ AnimalDefinitions.animals["stallion"] = {
     minEnclosureSize = 40,
     idleSoundVolume = 0.2,
     ---- size
-    collisionSize = 0.6,
+    collisionSize = 0.35,
     minSize = 0.6,
     maxSize = 0.6,
     animalSize = 0.5,
@@ -371,7 +371,7 @@ AnimalDefinitions.animals["mare"] = {
     minEnclosureSize = 40,
     idleSoundVolume = 0.2,
     ---- size
-    collisionSize = 0.6,
+    collisionSize = 0.35,
     minSize = 0.6,
     maxSize = 0.6,
     animalSize = 0.5,

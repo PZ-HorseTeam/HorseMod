@@ -3,6 +3,8 @@ require("TimedActions/ISBaseTimedAction")
 
 ---@class DismountHorseAction : ISBaseTimedAction
 ---
+---@field character IsoPlayer
+---
 ---@field horse IsoAnimal
 ---
 ---@field pair MountPair
@@ -35,8 +37,6 @@ function DismountHorseAction:update()
 
     -- keep the horse locked facing the stored direction
     self.horse:setDir(self._lockDir)
-    -- keep the player facing the horse's head (same dir as horse)
-    self.character:setDir(self._lockDir)
 
     if self.character:getVariableBoolean("DismountFinished") == true then
         self.character:setVariable("DismountFinished", false)
@@ -51,8 +51,6 @@ function DismountHorseAction:start()
     self.horse:stopAllMovementNow()
 
     self._lockDir  = self.horse:getDir()
-
-    self.character:setDir(self._lockDir)
 
     if self.side == "right" then
         if self.saddle then
@@ -72,7 +70,6 @@ end
 
 function DismountHorseAction:stop()
     self.horse:getBehavior():setBlockMovement(false)
-    self.character:setVariable("RidingHorse", true)
     ISBaseTimedAction.stop(self)
 end
 
@@ -85,9 +82,6 @@ function DismountHorseAction:perform()
     self.character:setX(self.landX)
     self.character:setY(self.landY)
     self.character:setZ(self.landY)
-    self.character:setDir(self._lockDir)
-
-    self.character:faceThisObject(self.horse)
 
     if self.onComplete then
         pcall(self.onComplete)
@@ -98,6 +92,7 @@ end
 
 
 ---@param pair MountPair
+---@param character IsoPlayer
 ---@param side "left" | "right"
 ---@param saddleItem InventoryItem | nil
 ---@param landX number
@@ -105,9 +100,11 @@ end
 ---@param landZ number
 ---@return self
 ---@nodiscard
-function DismountHorseAction:new(pair, side, saddleItem, landX, landY, landZ)
+function DismountHorseAction:new(pair, character, side, saddleItem, landX, landY, landZ)
     ---@type DismountHorseAction
     local o = ISBaseTimedAction.new(self, pair.rider)
+    o.character = character
+    o.pair = pair
     o.horse = pair.mount
     o.side = side
     o.saddle = saddleItem ~= nil

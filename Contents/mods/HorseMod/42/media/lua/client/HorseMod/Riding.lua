@@ -280,7 +280,7 @@ function HorseRiding.dismountHorse(player)
             return true
         end
         if sq:isSolid() or sq:isSolidTrans() then
-            return true 
+            return true
         end
         return false
     end
@@ -305,6 +305,7 @@ function HorseRiding.dismountHorse(player)
 
     local action = DismountHorseAction:new(
         pair,
+        player,
         side,
         saddleItem,
         tx,
