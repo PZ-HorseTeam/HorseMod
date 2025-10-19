@@ -13,7 +13,7 @@ module HorseMod {
     }
 
     model Horse_Saddle1_World {
-        mesh = HorseMod/HorseSaddle1,
+        mesh = HorseMod/HorseSaddle_Ground,
         texture = Items/Saddle1_tex,
         static = true,
         scale = 1,
