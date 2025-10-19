@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animNode>
   <m_Name>Horse_PathfindIdleTurn</m_Name>
-  <m_AnimName>Horse_Gallop</m_AnimName>
+  <m_AnimName>Horse_Walk</m_AnimName>
+  <m_maxTorsoTwist>5.00</m_maxTorsoTwist>
+  <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
   <m_deferredBoneAxis>Y</m_deferredBoneAxis>
-  <m_BlendTime>0.75</m_BlendTime>
+  <m_BlendTime>0.60</m_BlendTime>
   <m_SpeedScale>1</m_SpeedScale>
   <m_ConditionPriority>10</m_ConditionPriority>
+  <m_EarlyTransitionOut>true</m_EarlyTransitionOut>
   <m_Conditions>
     <m_Name>isHorse</m_Name>
     <m_Type>BOOL</m_Type>
     <m_Value>true</m_Value>
   </m_Conditions>
-  <m_Conditions>
-    <m_Name>RidingHorse</m_Name>
-    <m_Type>BOOL</m_Type>
-    <m_Value>false</m_Value>
-  </m_Conditions>
+  <m_Conditions x_name="792da2e3-d4b2-4501-b779-9bbf08b5b3e6">
+		<m_Name>bMoving</m_Name>
+		<m_Type>BOOL</m_Type>
+		<m_Value>true</m_Value>
+    </m_Conditions>
 </animNode>
