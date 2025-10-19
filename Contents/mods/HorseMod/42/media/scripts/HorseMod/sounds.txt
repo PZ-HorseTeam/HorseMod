@@ -1,51 +1,132 @@
 module HorseMod {
+
     /* CONCRETE */
     sound HorseGallopConcrete {
-        category = Animals, loop = true, is3D = true,
-        clip { file = media/sound/HorseMod/gallop-concrete.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/gallop-concrete.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
+
     sound HorseWalkConcrete {
-        category = Animals, loop = true, is3D = true,
-        clip { file = media/sound/HorseMod/walk-concrete.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/walk-concrete.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
+
     sound HorseTrotConcrete {
-        category = Animals, loop = true, is3D = true,
-        clip { file = media/sound/HorseMod/trot-concrete.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/trot-concrete.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
 
     /* DIRT */
     sound HorseGallopDirt {
-        category = Animals, loop = true, is3D = true,
-        clip { file = media/sound/HorseMod/gallop-dirt.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/gallop-dirt.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
+
     sound HorseWalkDirt {
-        category = Animals, loop = true, is3D = true,
-        clip { file = media/sound/HorseMod/walk-dirt.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/walk-dirt.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
+
     sound HorseTrotDirt {
-        category = Animals, loop = true, is3D = true,
-        clip { file = media/sound/HorseMod/trot-dirt.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/trot-dirt.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
 
     /* ACTIONS & IDLES */
     sound HorseDeath {
-        category = Animals, is3D = true,
-        clip { file = media/sound/HorseMod/HorseDeath.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/HorseDeath.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
+
     sound HorseEatingGrass {
-        category = Animals, is3D = true,
-        clip { file = media/sound/HorseMod/HorseEatingGrass.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/HorseEatingGrass.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
+
     sound HorseIdleSnort {
-        category = Animals, is3D = true,
-        clip { file = media/sound/HorseMod/HorseIdleSnort.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/HorseIdleSnort.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
+
     sound HorsePain {
-        category = Animals, is3D = true,
-        clip { file = media/sound/HorseMod/HorsePain.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/HorsePain.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
+
     sound HorseStressed {
-        category = Animals, is3D = true,
-        clip { file = media/sound/HorseMod/HorseStressed.ogg, distanceMin = 1, distanceMax = 30, volume = 0.3 }
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/HorseStressed.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
     }
 }
