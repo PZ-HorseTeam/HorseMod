@@ -1,5 +1,9 @@
 local HorseRiding = require("HorseMod/Riding")
+local Mounting = require("HorseMod/Mounting")
 local Stamina = require("HorseMod/Stamina")
+
+
+local RideDirect = {}
 
 
 local WALK_SPEED = 0.05      -- tiles/sec
@@ -196,15 +200,15 @@ local function handleJoypadMountButton(player)
     local mountedHorse = HorseRiding.getMountedHorse(player)
     if mountedHorse then
         if player:getVariableBoolean("RidingHorse") then
-            HorseRiding.dismountHorse(player)
+            Mounting.dismountHorse(player)
         end
         return
     end
 
-    local horse = HorseRiding.getBestMountableHorse(player, 1.25)
+    local horse = Mounting.getBestMountableHorse(player, 1.25)
     if horse and horse:isExistInTheWorld() then
         player:setIsAiming(false)
-        HorseRiding.mountHorse(player, horse)
+        Mounting.mountHorse(player, horse)
     end
 end
 
@@ -551,24 +555,25 @@ local function dirDist4(a, b)
     return d
 end
 
-Events.OnPlayerUpdate.Add(function(player)
-    if not player then return end
+
+---@param player IsoPlayer
+function RideDirect.update(player)
     handleJoypadMountButton(player)
-    local horse = HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(player)
+    local horse = HorseRiding.getMountedHorse(player)
     if not horse or not horse:isExistInTheWorld() then return end
     if player:getVariableString("RidingHorse") ~= "true" then return end
     player:setSneaking(true)
 
     local id = player:getPlayerNum()
     if not rideInit[id] then
-        if horse.stopAllMovementNow then horse:stopAllMovementNow() end
-        if horse.getPathFindBehavior2 then horse:getPathFindBehavior2():reset() end
-        if horse.setVariable then horse:setVariable("bPathfind", false) end
+        horse:stopAllMovementNow()
+        horse:getPathFindBehavior2():reset()
+        horse:setVariable("bPathfind", false)
         rideInit[id] = true
     end
 
-    if horse.getPathFindBehavior2 then horse:getPathFindBehavior2():reset() end
-    if horse.getBehavior then horse:getBehavior():setBlockMovement(true) end
+    horse:getPathFindBehavior2():reset()
+    horse:getBehavior():setBlockMovement(true)
 
     local dt = math.min(GameTime.getInstance():getTimeDelta(), DT_MAX)
     local sx, sy, run = readInput(player)
@@ -755,7 +760,7 @@ Events.OnPlayerUpdate.Add(function(player)
     player:setX(horse:getX()); player:setY(horse:getY()); player:setZ(horse:getZ())
     player:setVariable("mounted", true)
     UpdateHorseAudio(player)
-end)
+end
 
 
 -- TODO: external modification of a module, gross
@@ -768,3 +773,6 @@ function HorseRiding._clearRideCache(pid)
     startDir180[pid] = nil
     goalDir180[pid] = nil
 end
+
+
+return RideDirect

@@ -1,5 +1,10 @@
 require("TimedActions/ISBaseTimedAction")
 
+local HorseRiding = require("HorseMod/Riding")
+
+
+---@namespace HorseMod
+
 
 ---@class DismountHorseAction : ISBaseTimedAction
 ---
@@ -7,7 +12,7 @@ require("TimedActions/ISBaseTimedAction")
 ---
 ---@field horse IsoAnimal
 ---
----@field pair MountPair
+---@field mount Mount
 ---
 ---@field _lockDir IsoDirections | nil
 ---
@@ -20,8 +25,6 @@ require("TimedActions/ISBaseTimedAction")
 ---@field landY number
 ---
 ---@field landZ number
----
----@field onComplete function|nil
 local DismountHorseAction = ISBaseTimedAction:derive("DismountHorseAction")
 
 
@@ -77,22 +80,17 @@ end
 function DismountHorseAction:perform()
     assert(self._lockDir ~= nil)
 
-    self.pair:breakPair()
-
     self.character:setX(self.landX)
     self.character:setY(self.landY)
     self.character:setZ(self.landZ)
 
-    if self.onComplete then
-        pcall(self.onComplete)
-    end
+    HorseRiding.removeMount(self.character)
 
     ISBaseTimedAction.perform(self)
 end
 
 
----@param pair MountPair
----@param character IsoPlayer
+---@param mount Mount
 ---@param side "left" | "right"
 ---@param saddleItem InventoryItem | nil
 ---@param landX number
@@ -100,12 +98,11 @@ end
 ---@param landZ number
 ---@return self
 ---@nodiscard
-function DismountHorseAction:new(pair, character, side, saddleItem, landX, landY, landZ)
+function DismountHorseAction:new(mount, side, saddleItem, landX, landY, landZ)
     ---@type DismountHorseAction
-    local o = ISBaseTimedAction.new(self, pair.rider)
-    o.character = character
-    o.pair = pair
-    o.horse = pair.mount
+    local o = ISBaseTimedAction.new(self, mount.pair.rider)
+    o.mount = mount
+    o.horse = mount.pair.mount
     o.side = side
     o.saddle = saddleItem ~= nil
     o.landX = landX

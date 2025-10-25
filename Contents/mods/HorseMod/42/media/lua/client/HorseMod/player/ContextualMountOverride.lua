@@ -1,4 +1,5 @@
 local HorseRiding = require("HorseMod/Riding")
+local Mounting = require("HorseMod/Mounting")
 
 ContextualActionHandlers = ContextualActionHandlers or {}
 
@@ -9,16 +10,16 @@ function ContextualActionHandlers.AnimalsInteraction(action, playerObj, animal, 
 
     if mountedHorse == animal then
         if not playerObj:hasTimedActions() then
-            HorseRiding.dismountHorse(playerObj)
+            Mounting.dismountHorse(playerObj)
         end
         return
     end
 
     if HorseRiding.isMountableHorse(animal) and HorseRiding.canMountHorse(playerObj, animal) and not playerObj:hasTimedActions() then
-        local near = HorseRiding.getNearestMountPosition(playerObj, animal, 1.15)
+        local near = Mounting.getNearestMountPosition(playerObj, animal, 1.15)
         if near then
             playerObj:setIsAiming(false)
-            HorseRiding.mountHorse(playerObj, animal)
+            Mounting.mountHorse(playerObj, animal)
             return
         end
     end
