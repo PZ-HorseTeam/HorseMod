@@ -109,7 +109,7 @@ end
 
 ---@param pair MountPair
 ---@param side "left" | "right"
----@param saddle InventoryItem
+---@param saddle InventoryItem | nil
 ---@return self
 ---@nodiscard
 function MountHorseAction:new(pair, side, saddle)

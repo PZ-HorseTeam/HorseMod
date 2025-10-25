@@ -309,16 +309,19 @@ function HorseRiding.mountHorse(player, horse)
     path:setOnComplete(function()
         cleanup()
         player:setDir(lockDir)
-        local action = MountHorseAction:new(pairing, mountPosition.name, saddle)
-
-        action.onMounted = function()
-            HorseRiding.playerMounts[pid(player)] = pairing
-            Events.OnTick.Remove(lockTick)
-        end
-        ISTimedActionQueue.add(action)
     end)
 
     ISTimedActionQueue.add(path)
+    local action = MountHorseAction:new(pairing, mountPosition.name, saddle)
+
+    -- TODO: this is kind of dumb to not be part of the action, but it would require a circular dependency to do so
+    --  consider splitting this file into two modules (it is already too large) to resolve this
+    action.onMounted = function()
+        HorseRiding.playerMounts[pid(player)] = pairing
+        Events.OnTick.Remove(lockTick)
+    end
+
+    ISTimedActionQueue.add(action)
 end
 
 
