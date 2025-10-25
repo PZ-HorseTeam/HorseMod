@@ -7,7 +7,7 @@ module HorseMod {
         DisplayCategory = Accessory,
         Type = Normal,
         Weight = 0.1,
-        Icon = HatSantaRed,
+        Hidden = true,
         StaticModel = HorseMod.HorseManeStart,
         WorldStaticModel = HorseMod.HorseManeStart,
     }
@@ -16,7 +16,7 @@ module HorseMod {
         DisplayCategory = Accessory,
         Type = Normal,
         Weight = 0.1,
-        Icon = HatSantaRed,
+        Hidden = true,
         StaticModel = HorseMod.HorseManeMid,
         WorldStaticModel = HorseMod.HorseManeMid,
     }
@@ -25,7 +25,7 @@ module HorseMod {
         DisplayCategory = Accessory,
         Type = Normal,
         Weight = 0.1,
-        Icon = HatSantaRed,
+        Hidden = true,
         StaticModel = HorseMod.HorseManeEnd,
         WorldStaticModel = HorseMod.HorseManeEnd,
     }

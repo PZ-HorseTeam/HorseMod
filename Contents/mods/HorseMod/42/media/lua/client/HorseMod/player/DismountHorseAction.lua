@@ -81,7 +81,7 @@ function DismountHorseAction:perform()
 
     self.character:setX(self.landX)
     self.character:setY(self.landY)
-    self.character:setZ(self.landY)
+    self.character:setZ(self.landZ)
 
     if self.onComplete then
         pcall(self.onComplete)

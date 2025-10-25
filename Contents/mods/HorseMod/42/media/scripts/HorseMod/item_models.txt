@@ -13,7 +13,7 @@ module HorseMod {
     }
 
     model Horse_Saddle1_World {
-        mesh = HorseMod/HorseSaddle1,
+        mesh = HorseMod/HorseSaddle_Ground,
         texture = Items/Saddle1_tex,
         static = true,
         scale = 1,
@@ -21,6 +21,30 @@ module HorseMod {
 
     model Horse_Bridle {
         mesh = HorseMod/HorseReins,
+        texture = Items/HorseReins,
+        static = true,
+        scale = 1,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -179.9359 89.9720 -89.9442,
+            scale = 0.5000,
+        }
+    }
+
+    model Horse_BridleWalking {
+        mesh = HorseMod/HorseReinsWalking,
+        texture = Items/HorseReins,
+        static = true,
+        scale = 1,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -179.9359 89.9720 -89.9442,
+            scale = 0.5000,
+        }
+    }
+
+    model Horse_BridleRunning {
+        mesh = HorseMod/HorseReinsRunning,
         texture = Items/HorseReins,
         static = true,
         scale = 1,
