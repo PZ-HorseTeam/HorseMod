@@ -1,5 +1,6 @@
 local HorseUtils  = require("HorseMod/Utils")
 local HorseRiding = require("HorseMod/Riding")
+local Mounting = require("HorseMod/Mounting")
 -- local HorseAttachments = require("HorseMod/HorseAttachments")
 
 local function doHorseInteractionMenu(context, player, animal)
@@ -9,7 +10,7 @@ local function doHorseInteractionMenu(context, player, animal)
         -- we should detect when a horse spawns and apply this immediately
         animal:setVariable("isHorse", true)
         context:addOption(getText("IGUI_HorseMod_MountHorse"),
-                          player, HorseRiding.mountHorse, animal)
+                          player, Mounting.mountHorse, animal)
     end
 end
 
