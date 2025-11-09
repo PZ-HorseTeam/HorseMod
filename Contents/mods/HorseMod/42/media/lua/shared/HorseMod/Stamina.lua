@@ -1,5 +1,7 @@
-local HorseRiding = require("HorseMod/Riding")
 local HorseManager = require("HorseMod/HorseManager")
+
+
+---@namespace HorseMod
 
 
 local Stamina = {}
@@ -11,44 +13,55 @@ Stamina.REGEN_TROT     = 1.5     -- moving w/ HorseTrot true
 Stamina.REGEN_WALK     = 3.0     -- moving but not running/trotting
 Stamina.REGEN_IDLE     = 6.0     -- standing still
 
-Stamina.REGEN_SPEED = 0.3
 
+---@param x number
+---@param a number
+---@param b number
+---@return number
+---@nodiscard
 local function clamp(x, a, b)
     return (x < a) and a 
         or ((x > b) and b or x)
 end
 
+
 ---@param horse IsoAnimal
 ---@return number
 function Stamina.get(horse)
-    local md = horse:getModData()
-    if md.hm_stam == nil then
-        md.hm_stam = Stamina.MAX
+    local modData = horse:getModData()
+    if modData.HorseMod_Stamina == nil then
+        modData.HorseMod_Stamina = Stamina.MAX
         horse:transmitModData()
     end
-    return md.hm_stam
+    return modData.HorseMod_Stamina
 end
 
 
 ---@param horse IsoAnimal
----@param v number
+---@param value number
 ---@param transmit boolean
-function Stamina.set(horse, v, transmit)
-    local md = horse:getModData()
-    local nv = clamp(v, 0, Stamina.MAX)
-    if md.hm_stam ~= nv then
-        md.hm_stam = nv
-        if transmit and horse.transmitModData then horse:transmitModData() end
+---@return number
+function Stamina.set(horse, value, transmit)
+    local modData = horse:getModData()
+    local newValue = clamp(value, 0, Stamina.MAX)
+
+    if modData.HorseMod_Stamina ~= newValue then
+        modData.HorseMod_Stamina = newValue
+        if transmit then
+            horse:transmitModData()
+        end
     end
-    return nv
+
+    return newValue
 end
 
 
 ---@param horse IsoAnimal
----@param v number
+---@param valueDelta number
 ---@param transmit boolean
-function Stamina.modify(horse, dv, transmit)
-    return Stamina.set(horse, Stamina.get(horse) + dv, transmit)
+---@return number stamina The horse's new stamina level 
+function Stamina.modify(horse, valueDelta, transmit)
+    return Stamina.set(horse, Stamina.get(horse) + valueDelta, transmit)
 end
 
 
@@ -56,11 +69,11 @@ end
 ---@return number
 ---@nodiscard
 function Stamina.runSpeedFactor(horse)
-    local s = Stamina.get(horse) / Stamina.MAX
-    if s >= 0.5 then
+    local stamina = Stamina.get(horse) / Stamina.MAX
+    if stamina >= 0.5 then
         return 1.0
     end
-    local t = s / 0.5
+    local t = stamina / 0.5
     return t * t
 end
 
@@ -73,13 +86,14 @@ function Stamina.canRun(horse)
 end
 
 
----@class StaminaSystem : HorseMod.System
+---@class StaminaSystem : System
 local StaminaSystem = {}
 
 
 function StaminaSystem:update(horses, delta)
     for i = 1, #horses do
         local horse = horses[i]
+        -- TODO: exclude mounted horses
 
         local regenRate = horse:isAnimalMoving() and Stamina.REGEN_WALK or Stamina.REGEN_IDLE
         -- TODO: it's unideal that we transmit the stamina of horses constantly

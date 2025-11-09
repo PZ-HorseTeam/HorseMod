@@ -44,7 +44,7 @@ local _originalWearClothingValid = ISWearClothing.isValid
 
 function ISWearClothing:isValid()
     if self.item then
-        if HorseRiding and HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(self.character) then
+        if HorseRiding.getMountedHorse(self.character) then
             local location = self.item:getBodyLocation()
             if location and blockedLocations[location] then
                 return false
@@ -58,7 +58,7 @@ local _originalUnequipValid = ISUnequipAction.isValid
 
 function ISUnequipAction:isValid()
     if self.item then
-        if HorseRiding and HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(self.character) then
+        if HorseRiding.getMountedHorse(self.character) then
             local location = self.item:getBodyLocation()
             if location and blockedLocations[location] then
                 return false
@@ -81,7 +81,7 @@ function ISInventoryTransferAction:isValid()
     if invTetris then
         return _originalIsValidTransfer(self)
     end
-    if HorseRiding and HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(self.character)
+    if HorseRiding.getMountedHorse(self.character)
       and self.srcContainer:getType() == "floor" then
         return false
     end
@@ -210,7 +210,7 @@ local function blockAction(name)
     if not (action and action.isValid) then return end
     local original = action.isValid
     action.isValid = function(self, ...)
-        if HorseRiding and HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(self.character) then
+        if HorseRiding.getMountedHorse(self.character) then
             return false
         end
         return original(self, ...)
@@ -233,7 +233,7 @@ local function initOnStart()
     _originalBuildingIsValid = ISBuildIsoEntity.isValid
 
     function ISBuildIsoEntity:isValid(square)
-        if HorseRiding and HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(self.character) then
+        if HorseRiding.getMountedHorse(self.character) then
             return false
         end
 
@@ -250,7 +250,7 @@ Events.OnGameStart.Add(initOnStart)
 local _originalHandCraftValid = ISHandcraftAction.isValid
 
 function ISHandcraftAction:isValid()
-    if HorseRiding.getMountedHorse and HorseRiding.getMountedHorse(self.character) and self.craftBench then
+    if HorseRiding.getMountedHorse(self.character) and self.craftBench then
         return false
     end
     return _originalHandCraftValid(self)

@@ -1,9 +1,12 @@
 require("TimedActions/ISBaseTimedAction")
 
+local HorseRiding = require("HorseMod/Riding")
+
+
+---@namespace HorseMod
+
 
 ---@class MountHorseAction : ISBaseTimedAction
----
----@field onMounted function | nil
 ---
 ---@field sound integer
 ---
@@ -15,7 +18,7 @@ require("TimedActions/ISBaseTimedAction")
 ---
 ---@field saddle InventoryItem | nil
 ---
----@field _lockDir IsoDirections
+---@field lockDir IsoDirections
 local MountHorseAction = ISBaseTimedAction:derive("MountHorseAction")
 
 
@@ -32,14 +35,10 @@ function MountHorseAction:isValid()
 end
 
 
-function MountHorseAction:waitToStart()
-    return false
-end
-
-
 function MountHorseAction:update()
-    assert(self._lockDir ~= nil)
-    self.horse:setDir(self._lockDir)
+    assert(self.lockDir ~= nil)
+    self.horse:setDir(self.lockDir)
+    self.character:setDir(self.lockDir)
 
     if self.character:getVariableBoolean("MountFinished") == true then
         self.character:setVariable("MountFinished", false)
@@ -53,7 +52,10 @@ function MountHorseAction:start()
     self.horse:getPathFindBehavior2():reset()
     self.horse:getBehavior():setBlockMovement(true)
     self.horse:stopAllMovementNow()
-    self._lockDir = self.horse:getDir()
+
+    self.lockDir = self.horse:getDir()
+    self.character:setDir(self.lockDir)
+
     self.character:setVariable("MountingHorse", true)
     self.character:setVariable("MountFinished", false)
 
@@ -97,11 +99,7 @@ end
 function MountHorseAction:perform()
     self.character:stopOrTriggerSound(self.sound)
 
-    self.pair:make()
-
-    if self.onMounted then
-        pcall(self.onMounted, self)
-    end
+    HorseRiding.createMountFromPair(self.pair)
 
     ISBaseTimedAction.perform(self)
 end

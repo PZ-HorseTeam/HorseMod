@@ -123,17 +123,17 @@ function HorseRiding.mountHorse(player, horse)
         ISPathFindAction.stop(self)
     end
 
-    local saddle = HorseUtils.getSaddle(horse)
-
-    local pairing = MountPair.new(player, horse)
+    local saddle = HorseUtils.horseHasSaddleItem(horse)
 
     path:setOnComplete(function()
         cleanup()
         player:setDir(lockDir)
-        local action = MountHorseAction:new(pairing, side, saddle)
+        local action = ISMountHorse:new(player, horse, side, saddle)
 
         action.onMounted = function()
-            HorseRiding.playerMounts[pid(player)] = pairing
+            HorseRiding.playerMounts[player:getPlayerNum()] = horse
+            HorseRiding.lastMounted[player:getPlayerNum()]  = horse
+            player:setTurnDelta(0.65)
             Events.OnTick.Remove(lockTick)
         end
 
@@ -177,16 +177,11 @@ function HorseRiding.dismountHorse(player)
     if dl < dr then side, tx, ty, tz = "left", lpos:x(), lpos:y(), lpos:z() end
 
     local function centerBlocked(nx, ny, nz)
-        local sq = getSquare(nx, ny, nz)
-        if not sq then
-            return true
-        end
-        if sq:isSolid() or sq:isSolidTrans() then
-            return true
-        end
+        local sq = getCell():getGridSquare(math.floor(nx), math.floor(ny), nz or horse:getZ())
+        if not sq then return true end
+        if sq:isSolid() or sq:isSolidTrans() then return true end
         return false
     end
-
     if centerBlocked(tx, ty, tz) then
         local ox = (side=="right") and lpos:x() or rpos:x()
         local oy = (side=="right") and lpos:y() or rpos:y()
@@ -201,7 +196,7 @@ function HorseRiding.dismountHorse(player)
         end
     end
 
-    local saddleItem = HorseUtils.getSaddle(horse)
+    local saddleItem = HorseUtils.horseHasSaddleItem(horse)
 
     player:setDir(lockDir)
 
@@ -219,6 +214,7 @@ function HorseRiding.dismountHorse(player)
     action.onComplete = function()
         HorseRiding._clearRideCache(player:getPlayerNum())
         HorseRiding.playerMounts[id] = nil
+        HorseRiding.lastMounted[id] = horse
     end
 
     ISTimedActionQueue.add(action)
@@ -283,7 +279,7 @@ local function initHorseMod()
     HorseRiding._clearRideCache(player:getPlayerNum())
 end
 
-Events.OnGameStart.Add(initHorseMod)
+Events.OnCreatePlayer.Add(initHorseMod)
 
 
 return HorseRiding
