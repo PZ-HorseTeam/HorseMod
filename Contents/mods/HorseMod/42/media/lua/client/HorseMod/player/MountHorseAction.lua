@@ -1,14 +1,13 @@
 require("TimedActions/ISBaseTimedAction")
 
 local HorseRiding = require("HorseMod/Riding")
+local HorseSounds = require("HorseMod/Sounds")
 
 
 ---@namespace HorseMod
 
 
 ---@class MountHorseAction : ISBaseTimedAction
----
----@field sound integer
 ---
 ---@field pair MountPair
 ---
@@ -74,14 +73,10 @@ function MountHorseAction:start()
             self:setActionAnim("Bob_Mount_Bareback_Left")
         end
     end
-
-    self.sound = self.horse:playBreedSound("pick_up")
 end
 
 
 function MountHorseAction:stop()
-    self.character:stopOrTriggerSound(self.sound)
-
     self.horse:getBehavior():setBlockMovement(false)
 
     self.pair:setAnimationVariable("RidingHorse", false)
@@ -97,9 +92,9 @@ end
 
 
 function MountHorseAction:perform()
-    self.character:stopOrTriggerSound(self.sound)
-
     HorseRiding.createMountFromPair(self.pair)
+
+    HorseSounds.playMountSnort(self.character, self.horse)
 
     ISBaseTimedAction.perform(self)
 end

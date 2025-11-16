@@ -97,11 +97,34 @@ module HorseMod {
         }
     }
 
+    sound HorseGallopTired {
+        category = Animals,
+        is3D = true,
+        loop = true,
+        clip {
+            file = media/sound/HorseMod/HorseGallopTired.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
+    }
+
     sound HorseIdleSnort {
         category = Animals,
         is3D = true,
         clip {
             file = media/sound/HorseMod/HorseIdleSnort.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+            volume = 0.3
+        }
+    }
+
+    sound HorseMountSnort {
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/HorseMountSnort.ogg,
             distanceMin = 1,
             distanceMax = 30,
             volume = 0.3

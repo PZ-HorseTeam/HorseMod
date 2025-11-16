@@ -1,10 +1,14 @@
 local HorseRiding = require("HorseMod/Riding")
 local HorseUtils  = require("HorseMod/Utils")
+local Stamina     = require("HorseMod/Stamina")
+
+local HorseSounds = {}
 
 local secAccum     = {}
 local currentSound = {}
 local currentSoundId   = {}
 local lastEmitterByKey = {}
+local tiredSoundId     = {}
 
 local STRESS_MIN_INTERVAL = 15
 local IDLE_MIN_INTERVAL   = 60
@@ -79,6 +83,22 @@ local function playOneShot(emitter, name, vol)
     if sid and emitter.setVolume then emitter:setVolume(sid, vol or 1.0) end
 end
 
+---Play the mount snort sound effect once.
+---@param rider IsoPlayer | nil
+---@param horse IsoAnimal | nil
+function HorseSounds.playMountSnort(rider, horse)
+    local emitter
+    if horse and horse.getEmitter then
+        emitter = horse:getEmitter()
+    end
+
+    if not emitter and rider and rider.getEmitter then
+        emitter = rider:getEmitter()
+    end
+
+    playOneShot(emitter, "HorseMountSnort", getVolume())
+end
+
 local paramStateByKey = {}
 
 local function checkParamAndTrigger(h, key, emitter, vol, varName, soundName, onTrigger)
@@ -102,6 +122,16 @@ local function stopAllHorseSurfaces(emitter)
     emitter:stopSoundByName("HorseWalkDirt")
     emitter:stopSoundByName("HorseTrotDirt")
     emitter:stopSoundByName("HorseGallopDirt")
+    emitter:stopSoundByName("HorseGallopTired")
+end
+
+local function stopTiredLoopByKey(key, emitter)
+    local wasPlaying = tiredSoundId[key]
+    emitter = emitter or lastEmitterByKey[key]
+    if emitter and (wasPlaying or emitter:isPlaying("HorseGallopTired")) then
+        emitter:stopSoundByName("HorseGallopTired")
+    end
+    tiredSoundId[key] = nil
 end
 
 local function stopHorseLoopByKey(key, emitter)
@@ -113,6 +143,7 @@ local function stopHorseLoopByKey(key, emitter)
         if sid and emitter.stopSound then pcall(function() emitter:stopSound(sid) end) end
         if name then pcall(function() emitter:stopSoundByName(name) end) end
         stopAllHorseSurfaces(emitter)
+        stopTiredLoopByKey(key, emitter)
     end
 
     currentSound[key]   = nil
@@ -121,7 +152,7 @@ local function stopHorseLoopByKey(key, emitter)
     stressAccum[key] = 0
     idleAccum[key]   = 0
     paramStateByKey[key] = nil
-
+    tiredSoundId[key]   = nil
 end
 
 local function ensureEmitterBound(key, emitter)
@@ -168,6 +199,31 @@ local function maybePlayIdleSnort(h, key, emitter, dt, vol)
         end
     else
         idleAccum[key] = 0
+    end
+end
+
+local function shouldPlayTiredGallop(horse)
+    if not (horse and horse.getVariableBoolean and horse:getVariableBoolean("HorseGallop")) then
+        return false
+    end
+    if not (Stamina and Stamina.get) then
+        return false
+    end
+    local stamina = Stamina.get(horse)
+    return stamina and stamina < 30
+end
+
+local function updateTiredGallopLoop(horse, key, emitter, vol)
+    if not emitter then return end
+
+    if shouldPlayTiredGallop(horse) then
+        if not emitter:isPlaying("HorseGallopTired") then
+            local sid = emitter:playSound("HorseGallopTired")
+            if sid and emitter.setVolume then emitter:setVolume(sid, vol) end
+            tiredSoundId[key] = sid or true
+        end
+    else
+        stopTiredLoopByKey(key, emitter)
     end
 end
 
@@ -345,8 +401,11 @@ function UpdateHorseAudio(player, square)
         stopAllHorseSurfaces(emitter)
         currentSound[key] = nil
         secAccum[key]     = 0
+        stopTiredLoopByKey(key, emitter)
         return
     end
+
+    updateTiredGallopLoop(horse, key, emitter, vol)
 
     if currentSound[key] ~= soundName then
         if currentSound[key] and emitter then
@@ -374,3 +433,6 @@ function UpdateHorseAudio(player, square)
 end
 
 Events.OnPlayerUpdate.Add(UpdateNearbyHorsesAudio)
+
+return HorseSounds
+

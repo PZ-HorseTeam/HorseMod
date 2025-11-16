@@ -2,6 +2,7 @@ local HorseUtils = require("HorseMod/Utils")
 local AttachmentUtils = require("HorseMod/horse/attachments/AttachmentUtils")
 local AttachmentLocations = require("HorseMod/horse/attachments/AttachmentLocations")
 local HorseAttachmentSaddlebags = require("HorseMod/horse/attachments/AttachmentSaddlebags")
+local HorseAttachmentManes = require("HorseMod/horse/attachments/AttachmentManes")
 
 
 ---@class HorseAttachmentGear
@@ -131,6 +132,7 @@ function HorseAttachmentGear.dropHorseGearOnDeath(animal)
     end
 
     HorseAttachmentSaddlebags.moveInvisibleToVisibleThenRemove(nil, animal)
+    HorseAttachmentManes.removeManesOnDeath(animal)
 
     for i = 1, #SLOTS do
         local slot = SLOTS[i]

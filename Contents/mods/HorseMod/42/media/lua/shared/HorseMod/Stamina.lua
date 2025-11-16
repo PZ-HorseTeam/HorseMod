@@ -8,7 +8,7 @@ local Stamina = {}
 
 -- Tunables (percent points per second)
 Stamina.MAX            = 100
-Stamina.DRAIN_RUN      = 3      -- while galloping
+Stamina.DRAIN_RUN      = 4      -- while galloping
 Stamina.REGEN_TROT     = 1.5     -- moving w/ HorseTrot true
 Stamina.REGEN_WALK     = 3.0     -- moving but not running/trotting
 Stamina.REGEN_IDLE     = 6.0     -- standing still

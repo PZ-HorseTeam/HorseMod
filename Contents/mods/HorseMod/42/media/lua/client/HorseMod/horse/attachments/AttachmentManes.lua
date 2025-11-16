@@ -75,4 +75,49 @@ function HorseAttachmentManes.ensureManesPresentAndColored(animal)
     end
 end
 
+---@param item InventoryItem|nil
+local function deleteInventoryItem(item)
+    if not item then
+        return
+    end
+
+    local container = item.getContainer and item:getContainer() or nil
+    if container then
+        if container.Remove then
+            container:Remove(item)
+        elseif container.DoRemoveItem then
+            container:DoRemoveItem(item)
+        end
+    end
+
+    local worldItem = item.getWorldItem and item:getWorldItem() or nil
+    if worldItem then
+        if worldItem.removeFromSquare then
+            worldItem:removeFromSquare()
+        end
+        if worldItem.removeFromWorld then
+            worldItem:removeFromWorld()
+        end
+    end
+end
+
+---@param animal IsoAnimal|nil
+function HorseAttachmentManes.removeManesOnDeath(animal)
+    if not (animal and HorseUtils.isHorse(animal)) then
+        return
+    end
+
+    local bySlot, ground = AttachmentUtils.ensureHorseModData(animal)
+
+    for slot, _ in pairs(MANE_ITEM_BY_SLOT) do
+        local attached = AttachmentUtils.getAttachedItem(animal, slot)
+        if attached then
+            AttachmentUtils.setAttachedItem(animal, slot, nil)
+            deleteInventoryItem(attached)
+        end
+        bySlot[slot] = nil
+        ground[slot] = nil
+    end
+end
+
 return HorseAttachmentManes
