@@ -60,7 +60,7 @@ end
 ---@param horse IsoAnimal
 ---@param valueDelta number
 ---@param transmit boolean
----@return number stamina The horse's new stamina level 
+---@return number stamina The horse's new stamina level
 function Stamina.modify(horse, valueDelta, transmit)
     return Stamina.set(horse, Stamina.get(horse) + valueDelta, transmit)
 end
@@ -114,7 +114,6 @@ function Stamina.canRun(horse, input, moving)
             runAllowed = true
         end
     end
-    print("Stamina: ", Stamina.get(horse))
     return runAllowed
 end
 

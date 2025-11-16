@@ -4,7 +4,7 @@
     <m_AnimName>Horse_Walk_Left</m_AnimName>
     <m_ConditionPriority>10</m_ConditionPriority>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
-    <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
+    <m_EarlyTransitionOut>true</m_EarlyTransitionOut>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_SpeedScale>HorseWalkSpeed</m_SpeedScale>
     <m_Scalar>geneSpeed</m_Scalar>

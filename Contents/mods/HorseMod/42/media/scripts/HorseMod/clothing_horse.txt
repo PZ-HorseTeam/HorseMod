@@ -45,6 +45,7 @@ module HorseMod {
         DisplayCategory = Bag,
         Hidden = true,
         Type = Container,
+        Tags = HeavyItem,
         Weight = 0.1,
         Capacity = 40,
         Icon = HorseSaddlebags,

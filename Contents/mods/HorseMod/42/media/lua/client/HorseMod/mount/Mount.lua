@@ -138,6 +138,7 @@ function Mount:cleanup()
     self.pair.rider:setAllowSprint(true)
     self.pair.rider:setTurnDelta(1)
     self.pair.rider:setSneaking(false)
+    self.pair.rider:setIgnoreAutoVault(false)
 
     self.pair.mount:setVariable("bPathfind", false)
     self.pair.mount:setVariable("animalWalking", false)

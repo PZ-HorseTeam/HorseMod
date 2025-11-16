@@ -62,6 +62,10 @@ function HorseRiding.createMountFromPair(pair)
     )
 
     HorseRiding.playerMounts[pair.rider:getPlayerNum()] = Mount.new(pair)
+
+    local modData = pair.rider:getModData()
+    modData.ShouldRemount = true
+    pair.rider:transmitModData()
 end
 
 
@@ -76,6 +80,10 @@ function HorseRiding.removeMount(player)
     mount:cleanup()
 
     HorseRiding.playerMounts[mount.pair.rider:getPlayerNum()] = nil
+
+    local modData = mount.pair.rider:getModData()
+    modData.ShouldRemount = false
+    mount.pair.rider:transmitModData()
 end
 
 

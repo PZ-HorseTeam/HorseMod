@@ -49,7 +49,7 @@
     <m_Conditions>
         <m_Name>targetTwist</m_Name>
         <m_Type>LESS</m_Type>
-        <m_Value>-5</m_Value>
+        <m_Value>-45</m_Value>
     </m_Conditions>
     <m_SubStateBoneWeights>
         <boneName>Bip01</boneName>

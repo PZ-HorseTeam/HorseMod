@@ -537,9 +537,12 @@ end
 ---@param input MountController.Input
 function MountController:update(input)
     -- FIXME: this sometimes fails when dismounting
-    assert(self.mount.pair.rider:getVariableString("RidingHorse") == "true")
+    if not (self.mount.pair.rider and self.mount.pair.rider:getVariableString("RidingHorse") == "true") then
+        return
+    end
 
     self.mount.pair.rider:setSneaking(true)
+    self.mount.pair.rider:setIgnoreAutoVault(true)
 
     -- TODO i'm doubtful this is needed?
     self.mount.pair.mount:getPathFindBehavior2():reset()
@@ -622,7 +625,6 @@ function MountController:update(input)
             gallopMul = gallopMul * f
         end
     end
-    print("gallop speed: ", gallopMul)
 
     self.mount.pair.mount:setVariable("HorseWalkSpeed", walkMul)
     self.mount.pair.mount:setVariable("HorseTrotSpeed",  walkMul * TROT_MULT)
@@ -654,6 +656,9 @@ function MountController:update(input)
 
     if reinsItem then
         self:updateHorseReinsModel(self.mount.pair.mount, movementState, reinsItem)
+        self.mount.pair.rider:setVariable("HasReins", true)
+    else
+        self.mount.pair.rider:setVariable("HasReins", false)
     end
 
     if moving and self.currentSpeed > 0 then
