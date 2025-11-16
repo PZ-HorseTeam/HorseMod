@@ -619,13 +619,37 @@ function MountController:updateStamina(input, deltaTime)
 end
 
 ---@param mount IsoAnimal
----@param state string
 ---@param reinsItem InventoryItem
-function MountController:updateHorseReinsModel(mount, state, reinsItem)
+---@param state string
+function MountController:setReinsState(mount, reinsItem, state)
     local model = HorseUtils.REINS_MODELS[state]
     assert(model ~= nil, "No reins model for state " .. tostring(state))
     reinsItem:setStaticModel(model)
     mount:resetEquippedHandsModels()
+end
+
+
+---@param input MountController.Input
+function MountController:updateReins(input)
+    local reinsItem = HorseUtils.getReins(self.mount.pair.mount)
+
+    if reinsItem then
+        local movementState
+        if (input.movement.x == 0 and input.movement.y == 0) or self.currentSpeed <= 0 then
+            movementState = "idle"
+        elseif input.run then
+            movementState = "gallop"
+        elseif input.trot then
+            movementState = "trot"
+        else
+            movementState = "walking"
+        end
+
+        self:setReinsState(self.mount.pair.mount, reinsItem, movementState)
+        self.mount.pair.rider:setVariable("HasReins", true)
+    else
+        self.mount.pair.rider:setVariable("HasReins", false)
+    end
 end
 
 
@@ -654,26 +678,7 @@ function MountController:update(input)
     self:updateStamina(input, deltaTime)
     self:turn(input, deltaTime)
     self:updateSpeed(input, deltaTime)
-
-    local movementState
-    if not moving or self.currentSpeed <= 0 then
-        movementState = "idle"
-    elseif input.run then
-        movementState = "gallop"
-    elseif input.trot then
-        movementState = "trot"
-    else
-        movementState = "walking"
-    end
-
-    local reinsItem = HorseUtils.getReins(self.mount.pair.mount)
-
-    if reinsItem then
-        self:updateHorseReinsModel(self.mount.pair.mount, movementState, reinsItem)
-        self.mount.pair.rider:setVariable("HasReins", true)
-    else
-        self.mount.pair.rider:setVariable("HasReins", false)
-    end
+    self:updateReins(input)
 
     if moving and self.currentSpeed > 0 then
         local currentDirection = self.mount.pair.mount:getDir()
