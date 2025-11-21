@@ -1,0 +1,43 @@
+module HorseMod {
+    imports {
+        Base
+	}
+
+	craftRecipe horseGlue {
+        timedAction = MixingBowl,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        inputs {
+            item 2 [HorseMod.Horse_Hoof] mode:destroy,
+            item 1 [Base.Pot;Base.PotForged] mode:destroy flags[InheritCondition;ItemCount] mappers[potType],
+            -fluid 1.5 categories[Water] mode:mixture,
+        }
+        outputs {
+            item 1 mapper:potType,
+        }
+        itemMapper potType {
+            HorseMod.PotHorseGlue = Base.Pot,
+            HorseMod.PotForgedHorseGlue = Base.PotForged,
+        }
+    }
+
+    craftRecipe horseGlueToWoodGlue {
+        timedAction = MixingBowl,
+        time = 50,
+        Tags = AnySurfaceCraft;Cooking,
+        category = Cooking,
+        OnCreate = HorseGlueToWoodglue,
+        inputs {
+            item 1 [HorseMod.PotHorseGlue;HorseMod.PotForgedHorseGlue] flags[InheritCondition;ItemCount;IsCookedFoodItem] mode:destroy mappers[potType],
+        }
+        outputs {
+            item 1 Base.Woodglue,
+            item 1 mapper:potType,
+        }
+        itemMapper potType {
+            Base.Pot = HorseMod.PotHorseGlue,
+            Base.PotForged = HorseMod.PotForgedHorseGlue,
+        }
+    }
+}

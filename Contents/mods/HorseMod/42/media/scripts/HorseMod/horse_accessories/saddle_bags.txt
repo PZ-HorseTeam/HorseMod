@@ -3,31 +3,6 @@ module HorseMod {
         Base
     }
 
-    item HorseSaddle {
-        DisplayName = Horse Saddle,
-        DisplayCategory = Accessory,
-        Type = Normal,
-        Weight = 0.5,
-        Icon = items/HorseSaddle,
-        BloodLocation = Head,
-        BodyLocation = Hat,
-        StaticModel = Horse_Saddle1,
-        WorldStaticModel = Horse_Saddle1_World,
-        RequiresEquippedBothHands = true,
-        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
-    }
-
-    item HorseReins {
-        DisplayName = Horse Reins,
-        DisplayCategory = Accessory,
-        Type = Normal,
-        Weight = 0.5,
-        Icon = items/HorseSaddle,
-        BodyLocation = Hat,
-        StaticModel = Horse_Reins,
-        WorldStaticModel = Horse_Reins,
-    }
-
     item HorseSaddleBags {
         DisplayName = Horse Saddlebags,
         DisplayCategory = Bag,

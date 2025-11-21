@@ -1,0 +1,16 @@
+module HorseMod {
+    imports {
+        Base
+    }
+
+	item HorseReins {
+        DisplayName = Horse Reins,
+        DisplayCategory = Accessory,
+        Type = Normal,
+        Weight = 0.5,
+        Icon = items/HorseSaddle,
+        BodyLocation = Hat,
+        StaticModel = Horse_Reins,
+        WorldStaticModel = Horse_Reins,
+    }	
+}

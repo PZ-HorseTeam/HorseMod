@@ -1,24 +1,4 @@
 module HorseMod {
-
-    model Horse_Saddle1 {
-        mesh = HorseMod/HorseSaddle1,
-        texture = Items/Saddle1_tex,
-        static = true,
-        scale = 1,
-        attachment Bip01_Prop1 {
-            offset = 0.0000 0.0000 0.0000,
-            rotate = 0.0000 0.0000 0.0000,
-            scale = 0.8000,
-        }
-    }
-
-    model Horse_Saddle1_World {
-        mesh = HorseMod/HorseSaddle_Ground,
-        texture = Items/Saddle1_tex,
-        static = true,
-        scale = 1,
-    }
-
     model Horse_Reins {
         mesh = HorseMod/HorseReins,
         texture = Items/HorseReins,
