@@ -39,9 +39,25 @@ local function smoothstep(t)
     return t*t*(3 - 2*t)
 end
 
-local function lerp(a, b, t) return a + (b - a) * t end
 
-local function getSq(x,y,z) return getCell():getGridSquare(math.floor(x), math.floor(y), z) end
+---@param a number
+---@param b number
+---@param t number
+---@return number
+local function lerp(a, b, t)
+    return a + (b - a) * t
+end
+
+
+---@deprecated Use getSquare(x, y, z) instead.
+---@param x number
+---@param y number
+---@param z number
+---@return IsoGridSquare | nil
+---@nodiscard
+local function getSq(x,y,z)
+    return getCell():getGridSquare(math.floor(x), math.floor(y), z)
+end
 
 
 ---@param treeMult number
@@ -73,55 +89,75 @@ local function getVegetationTypeAt(square)
 end
 
 -- CENTER blockers only (no WallN/WallW/Window* here!)
+---@param sq IsoGridSquare | nil
+---@return boolean
+---@nodiscard
 local function squareCenterSolid(sq)
-    if not sq then return true end
-    if sq:isSolid() or sq:isSolidTrans() then return true end
-    local objs = sq:getObjects()
-    if objs then
-        for i=0, objs:size()-1 do
-            local o = objs:get(i)
-            if o and o.getProperties then
-                local p = o:getProperties()
-                if p and p.Is then
-                    if p:Is("Solid") or p:Is("SolidTrans") then
-                        return true
-                    end
-                end
-            end
+    if not sq then
+        return true
+    end
+
+    if sq:isSolid() or sq:isSolidTrans() then
+        return true
+    end
+
+    ---@type IsoObject[]
+    local objects = sq:getLuaTileObjectList()
+    for i = 1, #objects do
+        local object = objects[i]
+        local properties = object:getProperties()
+        if properties:Is("Solid") or properties:Is("SolidTrans") then
+            return true
         end
     end
+
     return false
 end
 
+
+---@param a IsoGridSquare
+---@param b IsoGridSquare
+---@return IsoObject | nil
+---@nodiscard
 local function edgeHoppableBetween(a, b)
-    if not a or not b then return nil end
     local ax, ay = a:getX(), a:getY()
     local bx, by = b:getX(), b:getY()
 
-    if bx == ax + 1 and by == ay then
-        -- moving EAST: use west edge of destination
-        return b:getHoppable(false)
-    elseif bx == ax - 1 and by == ay then
-        -- moving WEST: use west edge of origin
-        return a:getHoppable(false)
-    elseif by == ay + 1 and bx == ax then
-        -- moving SOUTH: use north edge of destination
-        return b:getHoppable(true)
-    elseif by == ay - 1 and bx == ax then
-        -- moving NORTH: use north edge of origin
-        return a:getHoppable(true)
+    if by == ay then
+        if bx == ax + 1 then
+            -- moving EAST: use west edge of destination
+            return b:getHoppable(false)
+        elseif bx == ax - 1 then
+            -- moving WEST: use west edge of origin
+            return a:getHoppable(false)
+        end
+    elseif bx == ax then
+        if by == ay + 1 then
+            -- moving SOUTH: use north edge of destination
+            return b:getHoppable(true)
+        elseif by == ay - 1 then
+            -- moving NORTH: use north edge of origin
+            return a:getHoppable(true)
+        end
     end
+
     return nil
 end
 
 -- Edge blockers (walls/windows/doors/fences)
+---@param fromSq IsoGridSquare
+---@param toSq IsoGridSquare
+---@param horse IsoAnimal
+---@return boolean
+---@nodiscard
 local function blockedBetween(fromSq, toSq, horse)
-    if not fromSq or not toSq then return true end
-    if fromSq == toSq then return false end
+    if fromSq == toSq then
+        return false
+    end
 
     -- FENCE
     local hop = edgeHoppableBetween(fromSq, toSq)
-    if hop and hop.isHoppable and hop:isHoppable() then
+    if hop and hop:isHoppable() then
         if horse and horse:getVariableBoolean("HorseJump") then
             return false
         else
@@ -130,26 +166,69 @@ local function blockedBetween(fromSq, toSq, horse)
     end
 
     -- Walls / windows / closed doors
-    if fromSq:isWallTo(toSq) or toSq:isWallTo(fromSq) then return true end
-    if fromSq:isWindowTo(toSq) or toSq:isWindowTo(fromSq) then return true end
-    local door = fromSq:getDoorTo(toSq); if door and not door:IsOpen() then return true end
-    door = toSq:getDoorTo(fromSq); if door and not door:IsOpen() then return true end
+    if fromSq:isWallTo(toSq) or toSq:isWallTo(fromSq) 
+            or fromSq:isWindowTo(toSq) or toSq:isWindowTo(fromSq) then
+        return true
+    end
+
+    local door = fromSq:getDoorTo(toSq) ---@as IsoThumpable | IsoDoor | nil
+    if door and not door:IsOpen() then
+        return true
+    end
+
+    door = toSq:getDoorTo(fromSq) ---@as IsoThumpable | IsoDoor | nil
+    if door and not door:IsOpen() then
+        return true
+    end
 
     return false
 end
 
--- crossing helper: edge must be open and destination center must be free
-local function canCross(fx, fy, tx, ty, z, horse)
-    local a = getSq(fx, fy, z)
-    local b = getSq(tx, ty, z)
-    if blockedBetween(a, b, horse) then return false end
-    if squareCenterSolid(b) then return false end
-    return true
+--- crossing helper: edge must be open and destination center must be free
+---@param fromX number
+---@param fromY number
+---@param toX number
+---@param toY number
+---@param z number
+---@param horse IsoAnimal
+---@return boolean
+---@nodiscard
+local function canCross(fromX, fromY, toX, toY, z, horse)
+    local from = getSquare(fromX, fromY, z)
+    local to = getSquare(toX, toY, z)
+
+    if not from or not to then
+        return false
+    end
+
+    return not blockedBetween(from, to, horse) and not squareCenterSolid(to)
 end
 
 local EDGE_PAD = 0.01
-local function signf(v) return (v < 0) and -1 or ((v > 0) and 1 or 0) end
 
+---@param v number
+---@return -1 | 0 | 1
+---@nodiscard
+local function signf(v)
+    if v < 0 then
+        return -1
+    elseif v > 0 then
+        return 1
+    end
+
+    return 0
+end
+
+
+---@param horse IsoAnimal
+---@param z number
+---@param x0 number
+---@param y0 number
+---@param dx number
+---@param dy number
+---@return number
+---@return number
+---@nodiscard
 local function collideStepAt(horse, z, x0, y0, dx, dy)
     if dx == 0 and dy == 0 then return 0, 0 end
 
@@ -326,64 +405,81 @@ local function collideStepAt(horse, z, x0, y0, dx, dy)
     return rx, ry
 end
 
--- Do all substeps in locals; write back ONCE.
-local function moveWithCollision(horse, vx, vy, dt)
+--- Do all substeps in locals; write back ONCE.
+---@param horse IsoAnimal
+---@param velocity Vector2
+---@param delta number
+local function moveWithCollision(horse, velocity, delta)
     local z = horse:getZ()
     local x = horse:getX()
     local y = horse:getY()
 
-    local remaining = dt
-    local maxVel = math.max(math.abs(vx), math.abs(vy))
+    local velocityX = velocity:getX()
+    local velocityY = velocity:getY()
+
+    local maxVel = math.max(
+        math.abs(velocityX),
+        math.abs(velocityY)
+    )
     if maxVel == 0 then return end
 
-    local maxStepDist = 0.065  -- keep your precision, but only one final write
+    -- collision uses fixed time steps to maintain precision
+    --  i'm kind of sceptical that this does anything though, this is really high
+    --  you'd have to be running below 15fps for this to come into play 
+    local maxStepDist = 0.065
 
+    local remaining = delta
     while remaining > 0 do
         local s = math.min(remaining, maxStepDist / maxVel)
-        local dx, dy = vx * s, vy * s
+        local dx = velocityX * s
+        local dy = velocityY * s
 
         local rx, ry = collideStepAt(horse, z, x, y, dx, dy)
-        if rx == 0 and ry == 0 then break end
+        if rx == 0 and ry == 0 then
+            break
+        end
 
-        local nx, ny = x + rx, y + ry
-        if squareCenterSolid(getSq(nx, ny, z)) then break end
+        local nx = x + rx
+        local ny = y + ry
+        if squareCenterSolid(getSquare(nx, ny, z)) then
+            break
+        end
 
-        x, y = nx, ny
+        x = nx
+        y = ny
         remaining = remaining - s
     end
 
     -- Single commit per frame
-    if x ~= horse:getX() or y ~= horse:getY() then
-        horse:setX(x); horse:setY(y)
-    end
+    horse:setX(x)
+    horse:setY(y)
 end
 
-local function approach(current, target, rate, dt)
+
+---@param current number
+---@param target number
+---@param rate number
+---@param deltaTime number
+---@return number
+local function approach(current, target, rate, deltaTime)
     local delta = target - current
     if delta > 0 then
-        local step = math.min(delta, rate * dt);
+        ---@type number
+        local step = math.min(delta, rate * deltaTime)
         return current + step
     else
-        local step = math.max(delta, -rate * dt); return current + step
+        local step = math.max(delta, -rate * deltaTime)
+        return current + step
     end
-end
-
-
----@param first IsoDirections
----@param second IsoDirections
-local function dirDist4(first, second)
-    local distance = first:compareTo(second)
-
-    if distance < 0 then
-        distance = distance + 4
-    end
-
-    return distance
 end
 
 
 local TWO_PI = math.pi * 2
 
+
+---@param angle number
+---@return number
+---@nodiscard
 local function wrapAnglePi(angle)
     angle = (angle + math.pi) % TWO_PI
     if angle < 0 then
@@ -396,6 +492,7 @@ end
 
 ---@param direction IsoDirections
 ---@return number
+---@nodiscard
 local function directionToAngle(direction)
     return Vector2.getDirection(direction:dx(), direction:dy())
 end
@@ -440,7 +537,7 @@ local PLAYER_SYNC_TUNER = 0.8
 ---Speed multiplier from last vegetation.
 ---@field vegetationLingerStartMult number
 ---
----Current movement speed.
+---Current movement speed in squares/s.
 ---@field currentSpeed number
 local MountController = {}
 MountController.__index = MountController
@@ -673,7 +770,6 @@ end
 
 ---@param input MountController.Input
 function MountController:update(input)
-    -- FIXME: this fails when dismounting
     assert(self.mount.pair.rider:getVariableString("RidingHorse") == "true")
 
     self.mount.pair.rider:setSneaking(true)
@@ -701,8 +797,8 @@ function MountController:update(input)
 
     if moving and self.currentSpeed > 0 then
         local currentDirection = self.mount.pair.mount:getDir()
-        local vx, vy = currentDirection:dx() * self.currentSpeed, currentDirection:dy() * self.currentSpeed
-        moveWithCollision(self.mount.pair.mount, vx, vy, deltaTime)
+        local velocity = currentDirection:ToVector():setLength(self.currentSpeed)
+        moveWithCollision(self.mount.pair.mount, velocity, deltaTime)
 
         self.mount.pair.mount:setVariable("bPathfind", true)
         self.mount.pair.mount:setVariable("animalWalking", not input.run)
