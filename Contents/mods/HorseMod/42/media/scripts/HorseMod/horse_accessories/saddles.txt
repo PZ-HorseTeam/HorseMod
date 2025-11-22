@@ -129,7 +129,7 @@ module HorseMod {
     }
 
 	/* PIG: BLACK */
-	item HorseSaddle_PigAngus {
+	item HorseSaddle_PigBlack {
         DisplayCategory = Accessory,
         Type = Normal,
         Weight = 5,

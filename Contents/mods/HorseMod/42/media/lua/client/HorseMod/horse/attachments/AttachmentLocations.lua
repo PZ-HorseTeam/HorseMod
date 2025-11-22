@@ -123,7 +123,7 @@ function HorseAttachmentLocations.defaultItems()
         ["HorseMod.HorseSaddle_CowHolstein"] = { slot = "Saddle" },
         ["HorseMod.HorseSaddle_CowSimmental"] = { slot = "Saddle" },
         ["HorseMod.HorseSaddle_SheepLeather"] = { slot = "Saddle" },
-        ["HorseMod.HorseSaddle_PigAngus"] = { slot = "Saddle" },
+        ["HorseMod.HorseSaddle_PigBlack"] = { slot = "Saddle" },
 
         -- saddlebags
         ["HorseMod.HorseSaddlebags_Crude"] = { slot = "Saddlebags" },
@@ -131,7 +131,7 @@ function HorseAttachmentLocations.defaultItems()
         ["HorseMod.HorseSaddlebags_CowHolstein"] = { slot = "Saddlebags" },
         ["HorseMod.HorseSaddlebags_CowSimmental"] = { slot = "Saddlebags" },
         ["HorseMod.HorseSaddlebags_SheepLeather"] = { slot = "Saddlebags" },
-        ["HorseMod.HorseSaddlebags_PigAngus"] = { slot = "Saddlebags" },
+        ["HorseMod.HorseSaddlebags_PigBlack"] = { slot = "Saddlebags" },
 
         ["HorseMod.HorseReins_Crude"] = { slot = "Reins" },
 

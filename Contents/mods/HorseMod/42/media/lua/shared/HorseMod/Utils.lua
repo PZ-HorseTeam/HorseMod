@@ -92,6 +92,24 @@ HorseUtils.REINS_MODELS = {
         trot = "HorseMod.HorseReins_Crude_Troting",
         gallop = "HorseMod.HorseReins_Crude_Running",
     },
+    ["HorseMod.HorseReins_Black"] = {
+        idle = "HorseMod.HorseReins_Black",
+        walking = "HorseMod.HorseReins_Black_Walking",
+        trot = "HorseMod.HorseReins_Black_Troting",
+        gallop = "HorseMod.HorseReins_Black_Running",
+    },
+    ["HorseMod.HorseReins_White"] = {
+        idle = "HorseMod.HorseReins_White",
+        walking = "HorseMod.HorseReins_White_Walking",
+        trot = "HorseMod.HorseReins_White_Troting",
+        gallop = "HorseMod.HorseReins_White_Running",
+    },
+    ["HorseMod.HorseReins_Brown"] = {
+        idle = "HorseMod.HorseReins_Brown",
+        walking = "HorseMod.HorseReins_Brown_Walking",
+        trot = "HorseMod.HorseReins_Brown_Troting",
+        gallop = "HorseMod.HorseReins_Brown_Running",
+    },
 }
 
 

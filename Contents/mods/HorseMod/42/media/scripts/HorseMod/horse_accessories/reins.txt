@@ -8,7 +8,7 @@ module HorseMod {
         DisplayCategory = Accessory,
         Type = Normal,
         Weight = 0.5,
-        Icon = items/HorseSaddle_Crude,
+        Icon = items/HorseReins_Crude,
         StaticModel = HorseReins_Crude,
         WorldStaticModel = HorseReins_Crude_Ground,
     }	
@@ -50,6 +50,171 @@ module HorseMod {
     model HorseReins_Crude_Running {
         mesh = HorseMod/HorseReinsRunning,
         texture = Items/HorseReins_Crude,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+
+    item HorseReins_Brown {
+        DisplayName = Horse Reins,
+        DisplayCategory = Accessory,
+        Type = Normal,
+        Weight = 0.5,
+        Icon = items/HorseReins_Brown,
+        StaticModel = HorseReins_Brown,
+        WorldStaticModel = HorseReins_Brown_Ground,
+    }	
+    model HorseReins_Brown {
+        mesh = HorseMod/HorseReins,
+        texture = Items/HorseReins_Brown,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_Brown_Ground {
+        mesh = HorseMod/HorseReins_Ground,
+        texture = Items/HorseReins_Brown,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+        }
+    }
+    model HorseReins_Brown_Walking {
+        mesh = HorseMod/HorseReinsWalking,
+        texture = Items/HorseReins_Brown,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_Brown_Troting {
+        mesh = HorseMod/HorseReinsTroting,
+        texture = Items/HorseReins_Brown,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_Brown_Running {
+        mesh = HorseMod/HorseReinsRunning,
+        texture = Items/HorseReins_Brown,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+
+    item HorseReins_Black {
+        DisplayName = Horse Reins,
+        DisplayCategory = Accessory,
+        Type = Normal,
+        Weight = 0.5,
+        Icon = items/HorseReins_Black,
+        StaticModel = HorseReins_Black,
+        WorldStaticModel = HorseReins_Black_Ground,
+    }	
+    model HorseReins_Black {
+        mesh = HorseMod/HorseReins,
+        texture = Items/HorseReins_Black,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_Black_Ground {
+        mesh = HorseMod/HorseReins_Ground,
+        texture = Items/HorseReins_Black,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+        }
+    }
+    model HorseReins_Black_Walking {
+        mesh = HorseMod/HorseReinsWalking,
+        texture = Items/HorseReins_Black,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_Black_Troting {
+        mesh = HorseMod/HorseReinsTroting,
+        texture = Items/HorseReins_Black,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_Black_Running {
+        mesh = HorseMod/HorseReinsRunning,
+        texture = Items/HorseReins_Black,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+
+    item HorseReins_White {
+        DisplayName = Horse Reins,
+        DisplayCategory = Accessory,
+        Type = Normal,
+        Weight = 0.5,
+        Icon = items/HorseReins_White,
+        StaticModel = HorseReins_White,
+        WorldStaticModel = HorseReins_White_Ground,
+    }	
+    model HorseReins_White {
+        mesh = HorseMod/HorseReins,
+        texture = Items/HorseReins_White,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_White_Ground {
+        mesh = HorseMod/HorseReins_Ground,
+        texture = Items/HorseReins_White,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+        }
+    }
+    model HorseReins_White_Walking {
+        mesh = HorseMod/HorseReinsWalking,
+        texture = Items/HorseReins_White,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_White_Troting {
+        mesh = HorseMod/HorseReinsTroting,
+        texture = Items/HorseReins_White,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_White_Running {
+        mesh = HorseMod/HorseReinsRunning,
+        texture = Items/HorseReins_White,
         static = true,
         attachment world {
             offset = -0.0000 0.0001 -0.0547,

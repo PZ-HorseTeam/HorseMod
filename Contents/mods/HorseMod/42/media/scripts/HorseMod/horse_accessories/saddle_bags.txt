@@ -123,7 +123,7 @@ module HorseMod {
     }
 
     /* PIG: BLACK */
-    item HorseSaddlebags_PigAngus {
+    item HorseSaddlebags_PigBlack {
         DisplayCategory = Bag,
         Type = Container,
         Weight = 2,
