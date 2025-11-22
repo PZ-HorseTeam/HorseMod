@@ -107,11 +107,11 @@ module HorseMod
 		}
 	}
 	model HorseHeadless {
-        mesh = HorseMod/Horse_NoHead,
-        animationsMesh = HorseMod.Horse,
-        shader = animalEffect,
-        static = false,
-    }
+		mesh = HorseMod/Horse_NoHead,
+		animationsMesh = HorseMod.Horse,
+		shader = animalEffect,
+		static = false,
+	}
 	model HorseSkeleton {
         mesh = HorseMod/Horse_Skeleton,
         animationsMesh = HorseMod.Horse,
