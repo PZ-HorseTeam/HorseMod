@@ -4,10 +4,15 @@ ItemName_EN = {
     ItemName_HorseMod.HorseSaddle_CowHolstein = "Horse Saddle (Holstein)",
     ItemName_HorseMod.HorseSaddle_CowSimmental = "Horse Saddle (Simmental)",
     ItemName_HorseMod.HorseSaddle_SheepLeather = "Horse Saddle (Sheep)",
-    ItemName_HorseMod.HorseSaddle_PigBlack = "Horse Saddle (Black)",
+    ItemName_HorseMod.HorseSaddle_PigAngus = "Horse Saddle (Angus)",
 
-    ItemName_HorseMod.HorseSaddleBags = "Horse Saddle Bags",
-    ItemName_HorseMod.HorseSaddleBagsContainer = "Horse Saddle Bags",
+    ItemName_HorseMod.HorseSaddlebagsContainer = "Horse Saddle Bags",
+    ItemName_HorseMod.HorseSaddlebags_Crude = "Horse Saddle Bags (Crude)",
+    ItemName_HorseMod.HorseSaddlebags_CowAngus = "Horse Saddle Bags (Angus)",
+    ItemName_HorseMod.HorseSaddlebags_CowHolstein = "Horse Saddle Bags (Holstein)",
+    ItemName_HorseMod.HorseSaddlebags_CowSimmental = "Horse Saddle Bags (Simmental)",
+    ItemName_HorseMod.HorseSaddlebags_SheepLeather = "Horse Saddle Bags (Sheep)",
+    ItemName_HorseMod.HorseSaddlebags_PigAngus = "Horse Saddle Bags (Angus)",
 
     ItemName_HorseMod.Horse_Head_Foal_AQHP = "American Quarter Foal Head",
     ItemName_HorseMod.Horse_Head_Female_AQHP = "American Quarter Mare Head",

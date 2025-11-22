@@ -57,10 +57,10 @@ module HorseMod {
             item 1 mapper:SaddleLeather,
         }
         itemMapper SaddleLeather {
-            HorseMod.HorseSaddleBags_Crude = Base.Leather_Crude_Medium,
-            HorseMod.HorseSaddleBags_Crude = Base.Leather_Crude_Medium_Tan,
-            HorseMod.HorseSaddleBags_Crude = Base.Leather_Crude_Small,
-            HorseMod.HorseSaddleBags_Crude = Base.Leather_Crude_Small_Tan,
+            HorseMod.HorseSaddlebags_Crude = Base.Leather_Crude_Medium,
+            HorseMod.HorseSaddlebags_Crude = Base.Leather_Crude_Medium_Tan,
+            HorseMod.HorseSaddlebags_Crude = Base.Leather_Crude_Small,
+            HorseMod.HorseSaddlebags_Crude = Base.Leather_Crude_Small_Tan,
         }
     }
 

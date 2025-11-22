@@ -3,35 +3,36 @@ module HorseMod {
         Base
     }
 
-    item HorseSaddleBagsContainer {
+	/* INVISIBLE CONTAINER ITEM FOR ACCESS FROM THE HORSE */
+    item HorseSaddlebagsContainer {
         DisplayCategory = Bag,
         Hidden = true,
         Type = Container,
         Tags = HeavyItem,
         Weight = 0,
         Capacity = 40,
-        Icon = items/HorseSaddlebags,
-        StaticModel = Horse_SaddleBagsInvis,
-        WorldStaticModel = Horse_SaddleBagsInvis,
+        Icon = items/HorseSaddlebags_Crude,
+        StaticModel = Horse_SaddlebagsInvis,
+        WorldStaticModel = Horse_SaddlebagsInvis,
     }
-    model Horse_SaddleBagsInvis {
+    model Horse_SaddlebagsInvis {
         mesh = HorseMod/HorseSaddlebags,
         texture = Items/SaddleBags1_tex,
         static = true,
         scale = 0,
     }
 
-    item HorseSaddleBags_Crude {
-        DisplayName = Horse Saddlebags,
+	/* CRUDE */
+    item HorseSaddlebags_Crude {
         DisplayCategory = Bag,
         Type = Container,
         Weight = 2,
         Capacity = 40,
         Icon = items/HorseSaddlebags_Brown,
-        StaticModel = Horse_SaddleBags_Crude,
-        WorldStaticModel = Horse_SaddleBags_Crude,
+        StaticModel = Horse_Saddlebags_Crude,
+        WorldStaticModel = Horse_Saddlebags_Crude,
     }
-    model Horse_SaddleBags_Crude {
+    model Horse_Saddlebags_Crude {
         mesh = HorseMod/HorseSaddlebags,
         texture = Items/HorseSaddlebags_Brown,
         static = true,
@@ -41,4 +42,94 @@ module HorseMod {
         }
     }
 
+	/* COW: ANGUS */
+    item HorseSaddlebags_CowAngus {
+        DisplayCategory = Bag,
+        Type = Container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = items/HorseSaddlebags_Black,
+        StaticModel = Horse_Saddlebags_CowAngus,
+        WorldStaticModel = Horse_Saddlebags_CowAngus,
+    }
+    model Horse_Saddlebags_CowAngus {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/HorseSaddlebags_Black,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+	/* COW: HOLSTEIN */
+    item HorseSaddlebags_CowHolstein {
+        DisplayCategory = Bag,
+        Type = Container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = items/HorseSaddlebags_CowHolstein,
+        StaticModel = Horse_Saddlebags_CowHolstein,
+        WorldStaticModel = Horse_Saddlebags_CowHolstein,
+    }
+    model Horse_Saddlebags_CowHolstein {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/HorseSaddlebags_CowHolstein,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+	/* COW: SIMMENTAL */
+    item HorseSaddlebags_CowSimmental {
+        DisplayCategory = Bag,
+        Type = Container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = items/HorseSaddlebags_CowSimmental,
+        StaticModel = Horse_Saddlebags_CowSimmental,
+        WorldStaticModel = Horse_Saddlebags_CowSimmental,
+    }
+    model Horse_Saddlebags_CowSimmental {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/HorseSaddlebags_CowSimmental,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+	/* SHEEP LEATHER */
+    item HorseSaddlebags_SheepLeather {
+        DisplayCategory = Bag,
+        Type = Container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = items/HorseSaddlebags_SheepLeather,
+        StaticModel = Horse_Saddlebags_SheepLeather,
+        WorldStaticModel = Horse_Saddlebags_SheepLeather,
+    }
+    model Horse_Saddlebags_SheepLeather {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/HorseSaddlebags_SheepLeather,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* PIG: BLACK */
+    item HorseSaddlebags_PigAngus {
+        DisplayCategory = Bag,
+        Type = Container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = items/HorseSaddlebags_Black,
+        StaticModel = Horse_Saddlebags_CowAngus,
+        WorldStaticModel = Horse_Saddlebags_CowAngus,
+    }
 }

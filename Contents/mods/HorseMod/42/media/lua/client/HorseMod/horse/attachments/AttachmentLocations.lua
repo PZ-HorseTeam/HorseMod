@@ -62,8 +62,8 @@ maneMid5:setAttachmentName("maneMid5")
 maneEnd:setAttachmentName("maneEnd")
 
 HorseAttachmentLocations.SADDLEBAG_SLOT = "Saddlebags"
-HorseAttachmentLocations.SADDLEBAG_FULLTYPE = "HorseMod.HorseSaddleBags"
-HorseAttachmentLocations.SADDLEBAG_CONTAINER_TYPE = "HorseMod.HorseSaddleBagsContainer"
+HorseAttachmentLocations.SADDLEBAG_FULLTYPE = "HorseMod.HorseSaddlebags"
+HorseAttachmentLocations.SADDLEBAG_CONTAINER_TYPE = "HorseMod.HorseSaddlebagsContainer"
 
 HorseAttachmentLocations.MANE_ITEM_BY_SLOT = {
     ManeStart = "HorseMod.HorseManeStart",
@@ -126,12 +126,12 @@ function HorseAttachmentLocations.defaultItems()
         ["HorseMod.HorseSaddle_PigAngus"] = { slot = "Saddle" },
 
         -- ["HorseMod.HorseBackpack"] = { slot = "Saddle" },
-        ["HorseMod.HorseSaddleBags_Crude"] = { slot = "Saddlebags" },
-        ["HorseMod.HorseSaddleBags_CowAngu"] = { slot = "Saddlebags" },
-        ["HorseMod.HorseSaddleBags_CowHolstein"] = { slot = "Saddlebags" },
-        ["HorseMod.HorseSaddleBags_CowSimmental"] = { slot = "Saddlebags" },
-        ["HorseMod.HorseSaddleBags_SheepLeather"] = { slot = "Saddlebags" },
-        ["HorseMod.HorseSaddleBags_PigAngus"] = { slot = "Saddlebags" },
+        ["HorseMod.HorseSaddlebags_Crude"] = { slot = "Saddlebags" },
+        ["HorseMod.HorseSaddlebags_CowAngu"] = { slot = "Saddlebags" },
+        ["HorseMod.HorseSaddlebags_CowHolstein"] = { slot = "Saddlebags" },
+        ["HorseMod.HorseSaddlebags_CowSimmental"] = { slot = "Saddlebags" },
+        ["HorseMod.HorseSaddlebags_SheepLeather"] = { slot = "Saddlebags" },
+        ["HorseMod.HorseSaddlebags_PigAngus"] = { slot = "Saddlebags" },
 
         ["HorseMod.HorseReins"] = { slot = "Reins" },
         ["HorseMod.HorseManeStart"] = { slot = "ManeStart" },
