@@ -88,27 +88,27 @@ end
 HorseUtils.REINS_MODELS = {
     ["HorseMod.HorseReins_Crude"] = {
         idle = "HorseMod.HorseReins_Crude",
-        walking = "HorseMod.HorseReins_Crude_Walking",
-        trot = "HorseMod.HorseReins_Crude_Troting",
-        gallop = "HorseMod.HorseReins_Crude_Running",
+        walking = "HorseMod.HorseReins_Walking_Crude",
+        trot = "HorseMod.HorseReins_Troting_Crude",
+        gallop = "HorseMod.HorseReins_Running_Crude",
     },
     ["HorseMod.HorseReins_Black"] = {
         idle = "HorseMod.HorseReins_Black",
-        walking = "HorseMod.HorseReins_Black_Walking",
-        trot = "HorseMod.HorseReins_Black_Troting",
-        gallop = "HorseMod.HorseReins_Black_Running",
+        walking = "HorseMod.HorseReins_Walking_Black",
+        trot = "HorseMod.HorseReins_Troting_Black",
+        gallop = "HorseMod.HorseReins_Running_Black",
     },
     ["HorseMod.HorseReins_White"] = {
         idle = "HorseMod.HorseReins_White",
-        walking = "HorseMod.HorseReins_White_Walking",
-        trot = "HorseMod.HorseReins_White_Troting",
-        gallop = "HorseMod.HorseReins_White_Running",
+        walking = "HorseMod.HorseReins_Walking_White",
+        trot = "HorseMod.HorseReins_Troting_White",
+        gallop = "HorseMod.HorseReins_Running_White",
     },
     ["HorseMod.HorseReins_Brown"] = {
         idle = "HorseMod.HorseReins_Brown",
-        walking = "HorseMod.HorseReins_Brown_Walking",
-        trot = "HorseMod.HorseReins_Brown_Troting",
-        gallop = "HorseMod.HorseReins_Brown_Running",
+        walking = "HorseMod.HorseReins_Walking_Brown",
+        trot = "HorseMod.HorseReins_Troting_Brown",
+        gallop = "HorseMod.HorseReins_Running_Brown",
     },
 }
 

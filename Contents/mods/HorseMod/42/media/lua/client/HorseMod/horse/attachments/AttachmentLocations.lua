@@ -119,7 +119,7 @@ function HorseAttachmentLocations.defaultItems()
     return {
         -- saddles
         ["HorseMod.HorseSaddle_Crude"] = { slot = "Saddle" },
-        ["HorseMod.HorseSaddle_CowAngus"] = { slot = "Saddle" },
+        ["HorseMod.HorseSaddle_Black"] = { slot = "Saddle" },
         ["HorseMod.HorseSaddle_CowHolstein"] = { slot = "Saddle" },
         ["HorseMod.HorseSaddle_CowSimmental"] = { slot = "Saddle" },
         ["HorseMod.HorseSaddle_SheepLeather"] = { slot = "Saddle" },
