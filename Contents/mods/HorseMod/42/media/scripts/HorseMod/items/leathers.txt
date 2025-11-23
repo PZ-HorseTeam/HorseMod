@@ -1,5 +1,5 @@
 module Base {
-    /* AP */
+    /* American Paint */
     item HorseLeather_AP_Full
     {
         DisplayCategory = Material,
@@ -77,7 +77,7 @@ module Base {
     }
 
 
-    /* APHO */
+    /* American Paint Overo */
     item HorseLeather_APHO_Full
     {
         DisplayCategory = Material,
@@ -155,7 +155,7 @@ module Base {
     }
 
 
-    /* AQHBR */
+    /* Blue Roan */
     item HorseLeather_AQHBR_Full
     {
         DisplayCategory = Material,
@@ -233,7 +233,7 @@ module Base {
     }
 
 
-    /* AQHP */
+    /* American Quarter */
     item HorseLeather_AQHP_Full
     {
         DisplayCategory = Material,
@@ -311,7 +311,7 @@ module Base {
     }
 
 
-    /* FBG */
+    /* Flea-Bitten Grey */
     item HorseLeather_FBG_Full
     {
         DisplayCategory = Material,
@@ -389,7 +389,7 @@ module Base {
     }
 
 
-    /* GDA */
+    /* Appaloosa */
     item HorseLeather_GDA_Full
     {
         DisplayCategory = Material,
@@ -467,7 +467,7 @@ module Base {
     }
 
 
-    /* LPA */
+    /* Spotted Appaloosa */
     item HorseLeather_LPA_Full
     {
         DisplayCategory = Material,
@@ -545,7 +545,7 @@ module Base {
     }
 
 
-    /* T */
+    /* Thoroughbred */
     item HorseLeather_T_Full
     {
         DisplayCategory = Material,
