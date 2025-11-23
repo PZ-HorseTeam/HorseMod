@@ -60,19 +60,19 @@ module HorseMod {
     model Leather_HorseAP
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAP,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAP,
         scale = 0.1,
     }
     model Leather_HorseAP_Medium
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAP,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAP,
         scale = 0.08,
     }
     model Leather_HorseAP_Small
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAP,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAP,
         scale = 0.055,
     }
 
@@ -138,19 +138,19 @@ module HorseMod {
     model Leather_HorseAPHO
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAPHO,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAPHO,
         scale = 0.1,
     }
     model Leather_HorseAPHO_Medium
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAPHO,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAPHO,
         scale = 0.08,
     }
     model Leather_HorseAPHO_Small
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAPHO,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAPHO,
         scale = 0.055,
     }
 
@@ -216,19 +216,19 @@ module HorseMod {
     model Leather_HorseAQHBR
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAQHBR,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAQHBR,
         scale = 0.1,
     }
     model Leather_HorseAQHBR_Medium
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAQHBR,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAQHBR,
         scale = 0.08,
     }
     model Leather_HorseAQHBR_Small
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAQHBR,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAQHBR,
         scale = 0.055,
     }
 
@@ -294,19 +294,19 @@ module HorseMod {
     model Leather_HorseAQHP
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAQHP,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAQHP,
         scale = 0.1,
     }
     model Leather_HorseAQHP_Medium
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAQHP,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAQHP,
         scale = 0.08,
     }
     model Leather_HorseAQHP_Small
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseAQHP,
+        texture = WorldItems/Leathers/LeatherRolled_HorseAQHP,
         scale = 0.055,
     }
 
@@ -372,19 +372,19 @@ module HorseMod {
     model Leather_HorseFBG
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseFBG,
+        texture = WorldItems/Leathers/LeatherRolled_HorseFBG,
         scale = 0.1,
     }
     model Leather_HorseFBG_Medium
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseFBG,
+        texture = WorldItems/Leathers/LeatherRolled_HorseFBG,
         scale = 0.08,
     }
     model Leather_HorseFBG_Small
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseFBG,
+        texture = WorldItems/Leathers/LeatherRolled_HorseFBG,
         scale = 0.055,
     }
 
@@ -450,19 +450,19 @@ module HorseMod {
     model Leather_HorseGDA
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseGDA,
+        texture = WorldItems/Leathers/LeatherRolled_HorseGDA,
         scale = 0.1,
     }
     model Leather_HorseGDA_Medium
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseGDA,
+        texture = WorldItems/Leathers/LeatherRolled_HorseGDA,
         scale = 0.08,
     }
     model Leather_HorseGDA_Small
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseGDA,
+        texture = WorldItems/Leathers/LeatherRolled_HorseGDA,
         scale = 0.055,
     }
 
@@ -528,19 +528,19 @@ module HorseMod {
     model Leather_HorseLPA
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseLPA,
+        texture = WorldItems/Leathers/LeatherRolled_HorseLPA,
         scale = 0.1,
     }
     model Leather_HorseLPA_Medium
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseLPA,
+        texture = WorldItems/Leathers/LeatherRolled_HorseLPA,
         scale = 0.08,
     }
     model Leather_HorseLPA_Small
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseLPA,
+        texture = WorldItems/Leathers/LeatherRolled_HorseLPA,
         scale = 0.055,
     }
 
@@ -606,19 +606,19 @@ module HorseMod {
     model Leather_HorseT
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseT,
+        texture = WorldItems/Leathers/LeatherRolled_HorseT,
         scale = 0.1,
     }
     model Leather_HorseT_Medium
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseT,
+        texture = WorldItems/Leathers/LeatherRolled_HorseT,
         scale = 0.08,
     }
     model Leather_HorseT_Small
     {
         mesh = WorldItems/Leather_Rolled,
-        texture = WorldItems/LeatherRolled_HorseT,
+        texture = WorldItems/Leathers/LeatherRolled_HorseT,
         scale = 0.055,
     }
 
