@@ -19,7 +19,7 @@ end
 function ISHorseUnequipGear:perform()
     local horse = self.horse
     local player = self.character
-    local oldAccessory = self.oldAccessory
+    local accessory = self.accessory
     local attachmentDef = self.attachmentDef
     local slot = attachmentDef.slot
 
@@ -28,31 +28,24 @@ function ISHorseUnequipGear:perform()
 
     self:updateModData(horse, slot, nil, nil)
 
-    self:giveBackToPlayerOrDrop(player, horse, oldAccessory)
+    self:giveBackToPlayerOrDrop(player, horse, accessory)
 
-    if self.unlockFn then
-        self.unlockFn()
+    if self.unlockPerform then
+        self.unlockPerform()
     end
     ISBaseTimedAction.perform(self)
 end
 
 ---@param character IsoGameCharacter
 ---@param horse IsoAnimal
----@param oldAccessory InventoryItem
----@param unlockFn fun()?
+---@param accessory InventoryItem
+---@param unlockPerform fun()?
+---@param unlockStop fun()?
 ---@return ISHorseUnequipGear
 ---@nodiscard
-function ISHorseUnequipGear:new(character, horse, oldAccessory, unlockFn)
-    local o = ISHorseEquipGear.new(self, character, horse, oldAccessory, unlockFn) --[[@as ISHorseUnequipGear]]
-    o.horse   = horse
-    o.oldAccessory = oldAccessory
-    local attachmentDef = Attachments.getAttachmentDefinition(oldAccessory:getFullType())
-    o.maxTime = attachmentDef.unequipTime or 90
-    o.attachmentDef = attachmentDef
-    o.unlockFn = unlockFn
-    o.stopOnWalk = true
-    o.stopOnRun  = true
-    o.stopOnAim  = true
+function ISHorseUnequipGear:new(character, horse, accessory, unlockPerform, unlockStop)
+    local o = ISHorseEquipGear.new(self, character, horse, accessory, unlockPerform, unlockStop) --[[@as ISHorseUnequipGear]]
+    o.maxTime = o.attachmentDef.unequipTime or 90
     return o
 end
 

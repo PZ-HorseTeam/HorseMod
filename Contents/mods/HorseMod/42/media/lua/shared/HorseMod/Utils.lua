@@ -83,6 +83,8 @@ HorseUtils.getClosestMount = function(character, horse)
     return tx, ty, tz
 end
 
+---Adds a timed action to the player to pathfind to the horse location.
+---@TODO the pathfinding to go and equip/unequip the horse do not take into account whenever the square to path to has a direct line of sight on the horse
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@return fun() unlock
@@ -98,7 +100,7 @@ HorseUtils.pathfindToHorse = function(player, horse)
     end
 
     path:setOnFail(cleanupOnFail)
-    path.stop = function(self)
+    function path:stop()
         cleanupOnFail()
         ISPathFindAction.stop(self)
     end

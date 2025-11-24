@@ -1,7 +1,5 @@
 ---@namespace HorseMod
 
----@TODO the pathfinding to go and equip/unequip the horse do not take into account whenever the square to path to has a direct line of sight on the horse
-
 ---REQUIREMENTS
 local HorseUtils = require("HorseMod/Utils")
 local Attachments = require("HorseMod/Attachments")
@@ -12,38 +10,45 @@ local ISHorseUnequipGear = require("HorseMod/TimedActions/ISHorseUnequipGear")
 local AttachmentsManager = {}
 
 
-
+---Equip a new accessory on the horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@param accessory InventoryItem
 AttachmentsManager.equipAccessory = function(context, player, horse, accessory)
+    context:closeAll()
     local unlock = HorseUtils.pathfindToHorse(player, horse)
     ISTimedActionQueue.add(ISHorseEquipGear:new(player, horse, accessory, unlock))
 end
 
+---Unequip a specific accessory on the horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@param oldAccessory InventoryItem
 AttachmentsManager.unequipAccessory = function(context, player, horse, oldAccessory)
+    context:closeAll()
     local unlock = HorseUtils.pathfindToHorse(player, horse)
     ISTimedActionQueue.add(ISHorseUnequipGear:new(player, horse, oldAccessory, unlock))
 end
 
+---Unequip every accessories on the horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@param oldAccessories InventoryItem[]
 AttachmentsManager.unequipAllAccessory = function(context, player, horse, oldAccessories)
+    context:closeAll()
     local unlock = HorseUtils.pathfindToHorse(player, horse)
     
     -- unequip all
-    for i = 1, #oldAccessories do
-        local oldAccessory = oldAccessories[i]
-        ISTimedActionQueue.add(ISHorseUnequipGear:new(player, horse, oldAccessory, unlock))
+    local accessoryCount = #oldAccessories
+    for i = 1, accessoryCount do
+        local oldAccessory = oldAccessories[i] --[[@as InventoryItem]]
+        local shouldUnlockOnPerform = i == accessoryCount and unlock or nil
+        ISTimedActionQueue.add(ISHorseUnequipGear:new(player, horse, oldAccessory, shouldUnlockOnPerform, unlock))
     end
 end
 
 
-
+---Add the equip and unequip context menu options for horse gear.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@param context ISContextMenu
@@ -60,7 +65,6 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
     context:addSubMenu(gearOption, gearSubMenu)
 
     --- EQUIP OPTIONS
-    -- local equipOption = gearSubMenu:addOption(getText("ContextMenu_Horse_Equip"))
     local accessoriesCount = accessories:size()
     local uniques = {}
     local toAddOptionsTo = {}
@@ -168,7 +172,7 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
     end
 end
 
-
+---Main handler for horse context menu.
 ---@param playerNum integer
 ---@param context ISContextMenu
 ---@param animals IsoAnimal[]

@@ -8,7 +8,8 @@ local HorseUtils = require("HorseMod/Utils")
 ---@field horse IsoAnimal
 ---@field accessory InventoryItem
 ---@field attachmentDef AttachmentDefinition
----@field unlockFn fun()?
+---@field unlockPerform fun()?
+---@field unlockStop fun()?
 local ISHorseEquipGear = ISBaseTimedAction:derive("ISHorseEquipGear")
 
 ---@return boolean
@@ -26,7 +27,7 @@ function ISHorseEquipGear:update()
 end
 
 function ISHorseEquipGear:stop()
-    if self.unlockFn then self.unlockFn() end
+    if self.unlockStop then self.unlockStop() end
     ISBaseTimedAction.stop(self)
 end
 
@@ -96,8 +97,8 @@ function ISHorseEquipGear:perform()
     --     end
     -- end
 
-    if self.unlockFn then
-        self.unlockFn()
+    if self.unlockPerform then
+        self.unlockPerform()
     end
     ISBaseTimedAction.perform(self)
 end
@@ -105,17 +106,19 @@ end
 ---@param character IsoGameCharacter
 ---@param horse IsoAnimal
 ---@param accessory InventoryItem
----@param unlockFn fun()?
+---@param unlockPerform fun()?
+---@param unlockStop fun()?
 ---@return ISHorseEquipGear
 ---@nodiscard
-function ISHorseEquipGear:new(character, horse, accessory, unlockFn)
+function ISHorseEquipGear:new(character, horse, accessory, unlockPerform, unlockStop)
     local o = ISBaseTimedAction.new(self,character) --[[@as ISHorseEquipGear]]
     o.horse = horse
     o.accessory = accessory
     local attachmentDef = Attachments.getAttachmentDefinition(accessory:getFullType())
     o.maxTime = attachmentDef.equipTime or 120
     o.attachmentDef = attachmentDef
-    o.unlockFn = unlockFn
+    o.unlockPerform = unlockPerform
+    o.unlockStop = unlockStop or unlockPerform
     o.stopOnWalk = true
     o.stopOnRun  = true
     o.stopOnAim  = true
