@@ -28,11 +28,12 @@ HorseUtils.getModData = function(animal)
     return horseModData
 end
 
+---@param horse IsoAnimal
+---@param name string
 HorseUtils.getMountWorld = function(horse, name)
-    if horse.getAttachmentWorldPos then
-        local v = horse:getAttachmentWorldPos(name)
-        if v then return v:x(), v:y(), v:z() end
-    end
+    local v = horse:getAttachmentWorldPos(name)
+    if v then return v:x(), v:y(), v:z() end
+
     local dx = (name == "mountLeft") and -0.6 or 0.6
     return horse:getX() + dx, horse:getY(), horse:getZ()
 end
@@ -40,6 +41,7 @@ end
 ---@param character IsoGameCharacter
 ---@param horse IsoAnimal
 ---@return number, number, number
+---@nodiscard
 HorseUtils.getClosestMount = function(character, horse)
     local lx, ly, lz = HorseUtils.getMountWorld(horse, "mountLeft")
     local rx, ry, rz = HorseUtils.getMountWorld(horse, "mountRight")
@@ -124,6 +126,7 @@ end
 
 ---@param template string
 ---@param params table<string, string>
+---@nodiscard
 HorseUtils.formatTemplate = function(template, params)
     return template:gsub("{(%w+)}", params)
 end

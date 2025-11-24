@@ -109,6 +109,9 @@ Attachments.isAttachment = function(fullType, _slot)
     return attachmentDef ~= nil
 end
 
+---@param fullType string
+---@return string?
+---@nodiscard
 Attachments.getSlot = function(fullType)
     local def = Attachments.items[fullType]
     return def and def.slot

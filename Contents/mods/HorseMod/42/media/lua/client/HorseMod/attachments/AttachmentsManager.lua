@@ -65,23 +65,26 @@ end
 ---@param horse IsoAnimal
 ---@param oldAccessories InventoryItem[]
 AttachmentsManager.unequipAllAccessory = function(player, horse, oldAccessories)
+    local unlock, lockDir = HorseUtils.lockHorseForInteraction(horse)
+
     local mx, my, mz = HorseUtils.getClosestMount(player, horse)
     local path = ISPathFindAction:pathToLocationF(player, mx, my, mz)
 
-    local unlock, lockDir = HorseUtils.lockHorseForInteraction(horse)
+    -- pathfinding to horse
     local function cleanupOnFail()
         unlock()
     end
-
     path:setOnFail(cleanupOnFail)
     function path:stop()
         cleanupOnFail()
         self:stop()
     end
     path:setOnComplete(function(p)
-        -- p:setDir(lockDir)
+        p:setDir(lockDir)
     end, player)
     ISTimedActionQueue.add(path)
+    
+    -- unequip all
     for i = 1, #oldAccessories do
         local oldAccessory = oldAccessories[i]
         ISTimedActionQueue.add(ISHorseUnequipGear:new(player, horse, oldAccessory, unlock))
@@ -120,6 +123,8 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
         gearSubMenu:addSubMenu(equipOption, equipSubMenu)
         for i = 0, accessoriesCount - 1 do
             local accessory = accessories:get(i)
+
+            -- create the option to equip the accessory
             local option = equipSubMenu:addOption(
                 accessory:getDisplayName(),
                 player,
@@ -160,6 +165,8 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
         gearSubMenu:addSubMenu(unequipOption, unequipSubMenu)
         for i = 1, attachmentsCount do
             local attachment = attachedItems[i] --[[@as InventoryItem]]
+
+            -- create the option to unequip the attachment
             local option = unequipSubMenu:addOption(
                 attachment:getDisplayName(),
                 player,
@@ -170,7 +177,7 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
             option.iconTexture = attachment:getTexture()
         end
 
-        -- unequip option if more than one item is present
+        -- unequip all option if more than one item is present
         if attachmentsCount > 1 then
             unequipSubMenu:addOption(
                 getText("ContextMenu_Horse_Unequip_All"),
