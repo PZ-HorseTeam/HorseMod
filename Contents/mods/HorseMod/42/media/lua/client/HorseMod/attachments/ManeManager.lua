@@ -19,6 +19,7 @@ ManeManager.removeManes = function(horse)
     end
 end
 
+---Retrieve the mane color for a specific horse breed
 ---@param horse IsoAnimal
 ---@return ManeColor
 ---@nodiscard
@@ -42,6 +43,8 @@ ManeManager.setupMane = function(horse, mane, slot, _modData)
     if not maneColor then
         maneColor = ManeManager.getManeColor(horse)
     end
+
+    -- verify the current colors are the right one, else set them
     if mane:getColorRed() ~= maneColor.r
         or mane:getColorGreen() ~= maneColor.g
         or mane:getColorBlue() ~= maneColor.b then

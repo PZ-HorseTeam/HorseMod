@@ -18,6 +18,7 @@
 ---@field equipAnim string?
 ---@field unequipAnim string?
 ---@field model string?
+---@field hidden boolean?
 
 ---Maps items' fulltype to their associated attachment definition.
 ---@alias AttachmentsItemsMap table<string, AttachmentDefinition>

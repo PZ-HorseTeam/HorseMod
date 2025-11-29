@@ -31,24 +31,6 @@ function ISHorseEquipGear:stop()
     ISBaseTimedAction.stop(self)
 end
 
----@param player IsoPlayer
----@param horse IsoAnimal
----@param item InventoryItem
-function ISHorseEquipGear:giveBackToPlayerOrDrop(player, horse, item)
-    -- player:getInventory():addItem(item)
-    if not item then
-        return
-    end
-    local pinv = player and player:getInventory()
-    if pinv and pinv:addItem(item) then
-        return
-    end
-    local sq = horse:getSquare() or (player and player:getSquare())
-    if sq then
-        sq:AddWorldInventoryItem(item, 0.0, 0.0, 0.0)
-    end
-end
-
 function ISHorseEquipGear:updateModData(horse, slot, ft, gr)
     local modData = HorseUtils.getModData(horse)
     modData.bySlot[slot] = ft
@@ -72,7 +54,7 @@ function ISHorseEquipGear:perform()
     local oldAccessory = Attachments.getAttachedItem(horse, slot)
     if oldAccessory then
         Attachments.setAttachedItem(horse, slot, nil)
-        self:giveBackToPlayerOrDrop(player, horse, oldAccessory)
+        Attachments.giveBackToPlayerOrDrop(player, horse, oldAccessory)
     end
 
     -- set new accessory

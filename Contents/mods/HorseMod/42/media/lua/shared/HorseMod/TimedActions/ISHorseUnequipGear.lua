@@ -28,7 +28,7 @@ function ISHorseUnequipGear:perform()
 
     self:updateModData(horse, slot, nil, nil)
 
-    self:giveBackToPlayerOrDrop(player, horse, accessory)
+    Attachments.giveBackToPlayerOrDrop(player, horse, accessory)
 
     if self.unlockPerform then
         self.unlockPerform()

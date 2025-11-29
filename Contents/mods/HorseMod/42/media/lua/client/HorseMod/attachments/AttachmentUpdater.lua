@@ -21,7 +21,7 @@ local IS_REAPPLIED = AttachmentUpdater.IS_REAPPLIED
 ---Reapply attachments to the `horse`.
 ---@param horse IsoAnimal
 AttachmentUpdater.reapplyFor = function(horse)
-    -- DebugLog.log("reapply")
+    DebugLog.log("reapply: "..horse:getFullName())
     local inv = horse:getInventory()
     local modData = HorseUtils.getModData(horse)
     local bySlot = modData.bySlot
@@ -84,6 +84,7 @@ function AttachmentUpdater:update(horses, delta)
 
         -- if horse is visible, set it as needing an update if not already reapplied
         local status = IS_REAPPLIED[horse]
+        horse:addLineChatElement(tostring(status))
         if horse:isOnScreen() then
             if not status then
                 DebugLog.log("set for reapply: "..tostring(horse:getFullName()))
@@ -112,7 +113,7 @@ AttachmentUpdater.onCharacterDeath = function(character)
     ---@cast character IsoAnimal
 
     ManeManager.removeManes(character)
-
+    Attachments.unequipAllAttachments(character)
     -- HorseAttachmentGear.dropHorseGearOnDeath(character)
 end
 

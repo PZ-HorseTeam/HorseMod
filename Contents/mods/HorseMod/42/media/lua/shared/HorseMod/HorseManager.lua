@@ -29,7 +29,7 @@ HorseManager.onHorseRemoved = Event.new() ---@as Event<IsoAnimal>
 function HorseManager.releaseRemovedHorses()
     for i = #HorseManager.horses, 1, -1 do
         local horse = HorseManager.horses[i]
-        if not horse:isExistInTheWorld() then
+        if not horse:isExistInTheWorld() or horse:isDead() then
             table.remove(HorseManager.horses, i)
             HorseManager.onHorseRemoved:trigger(horse)
             HorseManager._detected_horses[horse] = nil
@@ -77,18 +77,16 @@ Events.EveryOneMinute.Add(function()
     for i = TICK_AMOUNT, size - 1, update_rate do
         local isoMovingObject = isoMovingObjects:get(i)
 
-        -- verify is an animal and horse
+        -- verify is an animal and horse and not already checked
         if instanceof(isoMovingObject, "IsoAnimal") 
-            and HorseUtils.isHorse(isoMovingObject) then
+            and HorseUtils.isHorse(isoMovingObject) 
+            and not HorseManager._detected_horses[isoMovingObject] then
             
-            -- verify horse was already checked
-            if not HorseManager._detected_horses[isoMovingObject] then
-                initialiseHorse(isoMovingObject)
-                HorseManager.horses[#HorseManager.horses + 1] = isoMovingObject
-                HorseManager.onHorseAdded:trigger(isoMovingObject)
+            initialiseHorse(isoMovingObject)
+            HorseManager.horses[#HorseManager.horses + 1] = isoMovingObject
+            HorseManager.onHorseAdded:trigger(isoMovingObject)
 
-                HorseManager._detected_horses[isoMovingObject] = true
-            end
+            HorseManager._detected_horses[isoMovingObject] = true
         end
     end
 end)
