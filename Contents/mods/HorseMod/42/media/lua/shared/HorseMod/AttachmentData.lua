@@ -23,20 +23,31 @@
 ---@field model string? model script ID to show when attached [not fully tested]
 ---@field hidden boolean? hide the item in menus [not fully tested]
 
----Maps items' fulltype to their associated attachment definition.
----@alias AttachmentsItemsMap table<string, AttachmentDefinition>
-
 ---Available item slots.
 ---@alias AttachmentSlots AttachmentSlot[]
 
 ---Stores the various attachment data which are required to work with attachments for horses.
 ---@class AttachmentData
----@field items AttachmentsItemsMap
+---
+---Maps items' fulltype to their associated attachment definition.
+---@field items table<string, AttachmentDefinition>
+---
+---Default attachment definitions.
 ---@field DEFAULT_ATTACHMENT_DEFS table<string, AttachmentDefinition>
+---
+---
 ---@field SLOTS AttachmentSlots
+---
+---
 ---@field MANE_SLOTS_SET table<AttachmentSlot, string>
+---
+---
 ---@field MANE_HEX_BY_BREED table<string, HexColor>
+---
+---
+---@field REIN_STATES table<string, string>
 local AttachmentData = {
+    items = {},
     DEFAULT_ATTACHMENT_DEFS = {
         SADDLE = { 
             slot = "Saddle", 
