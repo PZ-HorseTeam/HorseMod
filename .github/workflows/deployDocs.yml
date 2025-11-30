@@ -1,0 +1,51 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'docs/**'
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout self
+        uses: actions/checkout@v6.0.0
+
+      - name: Setup Python
+        uses: actions/setup-python@v6.1.0
+        with:
+          python-version: '3.14'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: | 
+          cd docs
+          pip install -r requirements.txt
+      
+      - name: Build Sphinx
+        run: |
+          cd docs
+          make html
+
+#     deployment commented out because we can't deploy while our repo is private :(
+#
+#      - name: Upload artifact
+#        uses: actions/upload-pages-artifact@v4.0.0
+#        with:
+#          path: build/html
+#
+#   deploy:
+#     needs: build
+#
+#     permissions:
+#       pages: write
+#       id-token: write
+#
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Deploy to pages
+#         uses: actions/deploy-pages@v4.0.5
