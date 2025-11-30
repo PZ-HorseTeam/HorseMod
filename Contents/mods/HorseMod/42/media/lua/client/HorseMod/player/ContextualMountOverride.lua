@@ -26,7 +26,7 @@ function ContextualActionHandlers.AnimalsInteraction(action, playerObj, animal, 
     end
 
     ---RIDE HORSE
-    if HorseRiding.isMountableHorse(animal) and HorseRiding.canMountHorse(playerObj, animal) and not playerObj:hasTimedActions() then
+    if HorseRiding.canMountHorse(playerObj, animal) and not playerObj:hasTimedActions() then
         local near = Mounting.getNearestMountPosition(playerObj, animal, 1.15)
         if near then
             playerObj:setIsAiming(false)

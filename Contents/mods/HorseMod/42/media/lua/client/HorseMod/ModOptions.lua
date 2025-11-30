@@ -1,11 +1,15 @@
----@class ModOptions
----@field HorseSoundVolume number
----@field HorseJumpButton integer
----@field HorseTrotButton integer
+---Holds the mod option values of the HorseMod.
 local ModOptions = {
-    -- default values
+    ---Horse sound volume.
+    ---@type number
     HorseSoundVolume = 0.4,
+
+    ---Horse jump keybind.
+    ---@type integer
     HorseJumpButton = Keyboard.KEY_SPACE,
+    
+    ---Horse trot switch keybind.
+    ---@type integer
     HorseTrotButton = Keyboard.KEY_X,
 }
 

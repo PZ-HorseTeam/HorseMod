@@ -12,6 +12,14 @@ local HorseRiding = {
     playerMounts = {},
 }
 
+---@deprecated
+---@param animal IsoAnimal
+---@return boolean
+---@nodiscard
+function HorseRiding.isMountableHorse(animal)
+    return HorseUtils.isAdult(animal)
+end
+
 ---Verify that the player can mount a horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
