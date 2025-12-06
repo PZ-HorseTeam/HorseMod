@@ -36,6 +36,10 @@ local AttachmentData = {
     ---@type table<string, AttachmentDefinition>
     items = {},
 
+    ---Holds the unique full types of world items for container behaviors.
+    ---@type table<string, true>
+    CONTAINER_ITEMS = {},
+
     ---Default attachment definitions.
     ---@type table<string, AttachmentDefinition>
     DEFAULT_ATTACHMENT_DEFS = {
