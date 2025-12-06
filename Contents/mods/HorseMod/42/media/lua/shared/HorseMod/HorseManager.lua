@@ -12,18 +12,27 @@ local __System = {}
 function __System:update(horses, delta) end
 
 
-local HorseManager = {}
+local HorseManager = {
+    ---Table holding all the available horses in the player cell.
+    ---@type IsoAnimal[]
+    horses = table.newarray(),
 
----@type IsoAnimal[]
-HorseManager.horses = table.newarray()
-HorseManager._detected_horses = {}
+    ---@type table<IsoAnimal, true?>
+    _detected_horses = {},
 
----@type System[]
-HorseManager.systems = table.newarray()
+    ---Systems for horses that are triggered for them every ticks.
+    ---@type System[]
+    systems = table.newarray(),
+}
 
+---Triggers when a horse gets loaded in.
 HorseManager.onHorseAdded = Event.new() ---@as Event<IsoAnimal>
 
+---Triggers when a horse gets unloaded.
 HorseManager.onHorseRemoved = Event.new() ---@as Event<IsoAnimal>
+
+
+
 
 
 function HorseManager.releaseRemovedHorses()
