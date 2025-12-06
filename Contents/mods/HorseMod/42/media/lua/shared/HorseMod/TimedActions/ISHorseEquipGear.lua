@@ -10,6 +10,7 @@ local ContainerManager = require("HorseMod/attachments/ContainerManager")
 ---@field accessory InventoryItem
 ---@field attachmentDef AttachmentDefinition
 ---@field equipBehavior EquipBehavior
+---@field side string
 ---@field unlockPerform fun()?
 ---@field unlockStop fun()?
 local ISHorseEquipGear = ISBaseTimedAction:derive("ISHorseEquipGear")
@@ -24,7 +25,11 @@ function ISHorseEquipGear:start()
     
     -- set the action animation
     self.character:setVariable("EquipFinished", false)
-    self:setActionAnim(equipBehavior.anim or "Loot")
+
+    local anim = equipBehavior.anim
+    DebugLog.log(tostring(self.side))
+    local animationVar = anim and anim[self.side] or "Loot"
+    self:setActionAnim(animationVar)
 
     -- should hold the accessory in hand when equipping
     if equipBehavior.shouldHold then
@@ -76,24 +81,6 @@ function ISHorseEquipGear:perform()
     Attachments.setAttachedItem(horse, slot, accessory)
     self:updateModData(horse, slot, accessory:getFullType(), nil)
 
-    ---@TODO
-    -- if slot == SADDLEBAG_SLOT then
-    --     if ft == SADDLEBAG_FULLTYPE then
-    --         HorseAttachmentSaddlebags.ensureSaddlebagContainer(animal, player, true)
-    --         HorseAttachmentSaddlebags.moveVisibleToInvisibleOnAttach(player, animal)
-    --         local d = HorseAttachmentSaddlebags.getSaddlebagData(animal)
-    --         if d then
-    --             d.equipped = true
-    --         end
-    --     else
-    --         local d = HorseAttachmentSaddlebags.getSaddlebagData(animal)
-    --         if d then
-    --             d.equipped = false
-    --         end
-    --         HorseAttachmentSaddlebags.moveInvisibleToVisibleThenRemove(player, animal)
-    --     end
-    -- end
-
     if self.unlockPerform then
         self.unlockPerform()
     end
@@ -103,11 +90,12 @@ end
 ---@param character IsoGameCharacter
 ---@param horse IsoAnimal
 ---@param accessory InventoryItem
+---@param side string
 ---@param unlockPerform fun()? should unlock after performing the action
 ---@param unlockStop fun()? unlock function when force stop the action, if unlockPerform is not provided
 ---@return ISHorseEquipGear
 ---@nodiscard
-function ISHorseEquipGear:new(character, horse, accessory, unlockPerform, unlockStop)
+function ISHorseEquipGear:new(character, horse, accessory, side, unlockPerform, unlockStop)
     local o = ISBaseTimedAction.new(self,character) --[[@as ISHorseEquipGear]]
     o.horse = horse
     o.accessory = accessory
@@ -120,6 +108,7 @@ function ISHorseEquipGear:new(character, horse, accessory, unlockPerform, unlock
     local equipBehavior = attachmentDef.equipBehavior or {}
     o.maxTime = equipBehavior.time or 120
     o.equipBehavior = equipBehavior
+    o.side = side
 
     -- unlock functions
     o.unlockPerform = unlockPerform

@@ -82,6 +82,10 @@ end
 
 ---@param horse IsoAnimal
 ---@param name string
+---@return number x
+---@return number y
+---@return number z
+---@nodiscard
 HorseUtils.getMountWorld = function(horse, name)
     local v = horse:getAttachmentWorldPos(name)
     if v then return v:x(), v:y(), v:z() end
@@ -93,50 +97,27 @@ end
 
 ---@param character IsoGameCharacter
 ---@param horse IsoAnimal
----@return number, number, number
+---@return number x
+---@return number y
+---@return number z
+---@return string attachment
 ---@nodiscard
 HorseUtils.getClosestMount = function(character, horse)
-    local lx, ly, lz = HorseUtils.getMountWorld(horse, "mountLeft")
-    local rx, ry, rz = HorseUtils.getMountWorld(horse, "mountRight")
+    local ln = "mountLeft"
+    local lx, ly, lz = HorseUtils.getMountWorld(horse, ln)
+    local rn = "mountRight"
+    local rx, ry, rz = HorseUtils.getMountWorld(horse, rn)
     local px, py     = character:getX(), character:getY()
 
     local dl = (px - lx) * (px - lx) + (py - ly) * (py - ly)
     local dr = (px - rx) * (px - rx) + (py - ry) * (py - ry)
 
-    local tx, ty, tz = lx, ly, lz
+    local tx, ty, tz, tn = lx, ly, lz, ln
     if dr < dl then
-        tx, ty, tz = rx, ry, rz
+        tx, ty, tz, tn = rx, ry, rz, rn
     end
 
-    return tx, ty, tz
-end
-
----Adds a timed action to the player to pathfind to the horse location.
----@TODO the pathfinding to go and equip/unequip the horse do not take into account whenever the square to path to has a direct line of sight on the horse
----@param player IsoPlayer
----@param horse IsoAnimal
----@return fun() unlock
-HorseUtils.pathfindToHorse = function(player, horse)
-    local unlock, lockDir = HorseUtils.lockHorseForInteraction(horse)
-
-    local mx, my, mz = HorseUtils.getClosestMount(player, horse)
-    local path = ISPathFindAction:pathToLocationF(player, mx, my, mz)
-
-    -- pathfinding to horse
-    local function cleanupOnFail()
-        unlock()
-    end
-
-    path:setOnFail(cleanupOnFail)
-    function path:stop()
-        cleanupOnFail()
-        ISPathFindAction.stop(self)
-    end
-    path:setOnComplete(function(p)
-        p:setDir(lockDir)
-    end, player)
-    ISTimedActionQueue.add(path)
-    return unlock
+    return tx, ty, tz, tn
 end
 
 
@@ -179,6 +160,47 @@ HorseUtils.lockHorseForInteraction = function(horse)
     _unlocks[horse] = unlock
 
     return unlock, lockDir
+end
+
+
+---@type table<string, string>
+local _attachmentSide = {
+    ["mountLeft"] = "Left",
+    ["mountRight"] = "Right",
+}
+---Adds a timed action to the player to pathfind to the horse location.
+---@TODO the pathfinding to go and equip/unequip the horse do not take into account whenever the square to path to has a direct line of sight on the horse
+---@param player IsoPlayer
+---@param horse IsoAnimal
+---@return fun() unlock
+---@return string side
+HorseUtils.pathfindToHorse = function(player, horse)
+    local unlock, lockDir = HorseUtils.lockHorseForInteraction(horse)
+
+    local mx, my, mz, mn = HorseUtils.getClosestMount(player, horse)
+    local path = ISPathFindAction:pathToLocationF(player, mx, my, mz)
+
+    -- retrieve where the player must look by first making a copy of the lockDir
+    local vec2 = lockDir:ToVector()
+    local tempDir = IsoDirections.fromAngle(vec2)
+    local playerDir = mn == "mountLeft" and tempDir:RotRight() or tempDir:RotLeft()
+    
+    -- pathfinding to horse
+    local function cleanupOnFail()
+        unlock()
+    end
+
+    path:setOnFail(cleanupOnFail)
+    function path:stop()
+        cleanupOnFail()
+        ISPathFindAction.stop(self)
+    end
+    path:setOnComplete(function(p)
+        p:setDir(playerDir)
+    end, player)
+    ISTimedActionQueue.add(path)
+
+    return unlock, _attachmentSide[mn]
 end
 
 

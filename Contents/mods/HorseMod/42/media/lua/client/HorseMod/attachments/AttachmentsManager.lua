@@ -17,7 +17,7 @@ AttachmentsManager.equipAccessory = function(context, player, horse, accessory)
     if context then
         context:closeAll()
     end
-    local unlock = HorseUtils.pathfindToHorse(player, horse)
+    local unlock, side = HorseUtils.pathfindToHorse(player, horse)
     
     -- verify an attachment isn't already equiped, else unequip it
     local attachmentDef = Attachments.getAttachmentDefinition(accessory:getFullType())
@@ -34,7 +34,7 @@ AttachmentsManager.equipAccessory = function(context, player, horse, accessory)
     ISTimedActionQueue.add(equipItemAction)
 
     -- equip the attachment on horse
-    ISTimedActionQueue.add(ISHorseEquipGear:new(player, horse, accessory, unlock))
+    ISTimedActionQueue.add(ISHorseEquipGear:new(player, horse, accessory, side, unlock))
 end
 
 ---Unequip a specific accessory on the horse.
@@ -45,8 +45,8 @@ AttachmentsManager.unequipAccessory = function(context, player, horse, oldAccess
     if context then
         context:closeAll()
     end
-    local unlock = HorseUtils.pathfindToHorse(player, horse)
-    ISTimedActionQueue.add(ISHorseUnequipGear:new(player, horse, oldAccessory, unlock))
+    local unlock, side = HorseUtils.pathfindToHorse(player, horse)
+    ISTimedActionQueue.add(ISHorseUnequipGear:new(player, horse, oldAccessory, side, unlock))
 end
 
 ---Unequip every accessories on the horse.
@@ -57,14 +57,14 @@ AttachmentsManager.unequipAllAccessory = function(context, player, horse, oldAcc
     if context then
         context:closeAll()
     end
-    local unlock = HorseUtils.pathfindToHorse(player, horse)
+    local unlock, side = HorseUtils.pathfindToHorse(player, horse)
     
     -- unequip all
     local accessoryCount = #oldAccessories
     for i = 1, accessoryCount do
         local oldAccessory = oldAccessories[i] --[[@as InventoryItem]]
         local shouldUnlockOnPerform = i == accessoryCount and unlock or nil
-        ISTimedActionQueue.add(ISHorseUnequipGear:new(player, horse, oldAccessory, shouldUnlockOnPerform, unlock))
+        ISTimedActionQueue.add(ISHorseUnequipGear:new(player, horse, oldAccessory, side, shouldUnlockOnPerform, unlock))
     end
 end
 

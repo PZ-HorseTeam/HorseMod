@@ -259,6 +259,7 @@ ContainerManager.getContainer = function(horse, slot)
     return worldItem
 end
 
+---Change the position of the worldItem.
 ---@param squareHorse IsoGridSquare
 ---@param containerInfo ContainerInformation
 ---@param worldItem IsoWorldInventoryObject
@@ -304,9 +305,9 @@ ContainerManager.track = function(horses)
                     ContainerManager.moveWorldItem(squareHorse, containerInfo, worldItem)
                 end
             else
-                local worldItem = ContainerManager.findContainer(horse, containerInfo, squareHorse)
-                if worldItem then
-                    ContainerManager.moveWorldItem(squareHorse, containerInfo, worldItem)
+                local worldItemNew = ContainerManager.findContainer(horse, containerInfo, squareHorse)
+                if worldItemNew then
+                    ContainerManager.moveWorldItem(squareHorse, containerInfo, worldItemNew)
                 end
             end
         until true end

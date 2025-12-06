@@ -15,7 +15,7 @@
 ---Equip behavior to use during equip or unequip actions.
 ---@class EquipBehavior
 ---@field time number time to equip, if `-1` the animation defines the end time
----@field anim string? animation to play during equip
+---@field anim table<string,string>? animation to play during equip
 ---@field shouldHold boolean? whenever the item should be held in hand when equipping it
 
 ---@class ContainerBehavior
@@ -47,7 +47,10 @@ local AttachmentData = {
             slot = "Saddle", 
             equipBehavior = {
                 time = -1,
-                anim = "Horse_EquipSaddle", 
+                anim = {
+                    ["Left"] = "Horse_EquipSaddle_Left",
+                    ["Right"] = "Horse_EquipSaddle_Right",
+                },
                 shouldHold = true,
             },
         },
