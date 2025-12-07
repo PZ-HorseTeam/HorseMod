@@ -1,5 +1,6 @@
 local Stamina = require("HorseMod/Stamina")
 local HorseUtils = require("HorseMod/Utils")
+local AttachmentData = require("HorseMod/attachments/AttachmentData")
 
 
 ---@param state "walk"|"gallop"
@@ -519,6 +520,7 @@ local PLAYER_SYNC_TUNER = 0.8
 ---@namespace HorseMod
 
 
+---Handles the movement aspect of the player mounting horse state.
 ---@class MountController
 ---
 ---@field mount Mount
@@ -719,17 +721,20 @@ end
 ---@param reinsItem InventoryItem
 ---@param state string
 function MountController:setReinsState(mount, reinsItem, state)
-    -- retrieve model states associated to the reins model
+    -- retrieve the model of reins model
     local fullType = reinsItem:getFullType()
-    local reinModels = HorseUtils.REINS_MODELS[fullType]
-    assert(reinModels ~= nil, "No reins models for item " .. tostring(fullType))
+    local attachmentDef = AttachmentData.items[fullType]
+    local model = attachmentDef.model
+    assert(model ~= nil, "No rein model for item " .. tostring(fullType))
 
     -- retrieve the model associated to the current state
-    local model = reinModels[state]
-    assert(model ~= nil, "No reins model for state " .. tostring(state))
+    local suffix = AttachmentData.REIN_STATES[state]
+    assert(suffix ~= nil, "No suffix for specified state " .. tostring(state))
+
+    local state_model = model..AttachmentData.REIN_STATES[state]
 
     -- apply state model
-    reinsItem:setStaticModel(model)
+    reinsItem:setStaticModel(state_model)
     mount:resetEquippedHandsModels()
 end
 

@@ -30,6 +30,7 @@ end
 ---@namespace HorseMod
 
 
+---Main handler of player mounting horse state.
 ---@class Mount
 ---
 ---@field pair MountPair

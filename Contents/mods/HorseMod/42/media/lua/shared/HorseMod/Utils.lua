@@ -1,3 +1,8 @@
+---@namespace HorseMod
+
+---REQUIREMENTS
+local AttachmentData = require("HorseMod/attachments/AttachmentData")
+
 local HORSE_TYPES = {
     ["stallion"] = true,
     ["mare"] = true,
@@ -6,18 +11,22 @@ local HORSE_TYPES = {
 
 local HorseUtils = {}
 
-
-HorseUtils.runAfter = function(seconds, callback)
-    local elapsed = 0
+---@param seconds number
+---@param callback fun(...)
+---@param ... any
+HorseUtils.runAfter = function(seconds, callback, ...)
+    local elapsed = 0 --[[@as number]]
+    local gameTime = GameTime.getInstance()
+    local args = {...}
 
     local function tick()
-        elapsed = elapsed + GameTime.getInstance():getTimeDelta()
+        elapsed = elapsed + gameTime:getTimeDelta()
         if elapsed < seconds then
             return
         end
 
         Events.OnTick.Remove(tick)
-        callback()
+        callback(unpack(args))
     end
 
     Events.OnTick.Add(tick)
@@ -28,54 +37,171 @@ HorseUtils.runAfter = function(seconds, callback)
 end
 
 
----Trims whitespace from both ends of a string.
----@param value string
----@return string
----@nodiscard
-local function trim(value)
-    return value:match("^%s*(.-)%s*$")
-end
-
-
 ---Checks whether an animal is a horse.
 ---@param animal IsoAnimal The animal to check.
 ---@return boolean isHorse Whether the animal is a horse.
+---@nodiscard
 HorseUtils.isHorse = function(animal)
     return HORSE_TYPES[animal:getAnimalType()] or false
 end
 
+---@param animal IsoAnimal
+---@return boolean
+---@nodiscard
+HorseUtils.isAdult = function(animal)
+    local type = animal:getAnimalType()
+    return type == "stallion" or type == "mare"
+end
 
-HorseUtils.getMountWorld = function(horse, name)
-    if horse.getAttachmentWorldPos then
-        local v = horse:getAttachmentWorldPos(name)
-        if v then return v:x(), v:y(), v:z() end
+---@class HorseModData
+---@field bySlot table<AttachmentSlot, string> Attachments of the horse.
+---@field maneColors table<AttachmentSlot, ManeColor|nil> Manes of the horse and their associated color.
+---@field containers table<AttachmentSlot, ContainerInformation>
+
+---@param animal IsoAnimal
+---@return HorseModData
+HorseUtils.getModData = function(animal)
+    local md = animal:getModData()
+    local horseModData = md.horseModData
+    if not horseModData then
+        md.horseModData = {
+            bySlot = HorseUtils.tableCopy(AttachmentData.MANE_SLOTS_SET),
+            maneColors = {},
+            containers = {},
+        } --[[@as HorseModData]]
+        horseModData = md.horseModData
     end
+    return horseModData
+end
+
+---@param horse IsoAnimal
+---@return integer
+HorseUtils.getHorseID = function(horse)
+    return horse:getAnimalID()
+end
+
+---@param horse IsoAnimal
+---@param name string
+---@return number x
+---@return number y
+---@return number z
+---@nodiscard
+HorseUtils.getMountWorld = function(horse, name)
+    local v = horse:getAttachmentWorldPos(name)
+    if v then return v:x(), v:y(), v:z() end
+
     local dx = (name == "mountLeft") and -0.6 or 0.6
     return horse:getX() + dx, horse:getY(), horse:getZ()
 end
 
 
-HorseUtils.lockHorseForInteraction = function(horse)
-    if horse.getPathFindBehavior2 then horse:getPathFindBehavior2():reset() end
-    if horse.getBehavior then
-        local bh = horse:getBehavior()
-        bh:setBlockMovement(true)
-        bh:setDoingBehavior(false)
-    end
-    if horse.stopAllMovementNow then horse:stopAllMovementNow() end
+---@param character IsoGameCharacter
+---@param horse IsoAnimal
+---@return number x
+---@return number y
+---@return number z
+---@return string attachment
+---@nodiscard
+HorseUtils.getClosestMount = function(character, horse)
+    local ln = "mountLeft"
+    local lx, ly, lz = HorseUtils.getMountWorld(horse, ln)
+    local rn = "mountRight"
+    local rx, ry, rz = HorseUtils.getMountWorld(horse, rn)
+    local px, py     = character:getX(), character:getY()
 
+    local dl = (px - lx) * (px - lx) + (py - ly) * (py - ly)
+    local dr = (px - rx) * (px - rx) + (py - ry) * (py - ry)
+
+    local tx, ty, tz, tn = lx, ly, lz, ln
+    if dr < dl then
+        tx, ty, tz, tn = rx, ry, rz, rn
+    end
+
+    return tx, ty, tz, tn
+end
+
+
+---Unlock functions cached for horses.
+---@type table<IsoAnimal, fun()?>
+local _unlocks = {}
+
+---@param horse IsoAnimal
+---@return fun()
+---@return IsoDirections
+HorseUtils.lockHorseForInteraction = function(horse)
+    -- make sure to unlock the horse if it was already unlocked
+    local lastUnlock = _unlocks[horse]
+    if lastUnlock then
+        lastUnlock()
+    end
+
+    -- stop any pathfinding of the horse and lock it in place
+    horse:getPathFindBehavior2():reset()
+    local bh = horse:getBehavior()
+    bh:setBlockMovement(true)
+    bh:setDoingBehavior(false)
+    horse:stopAllMovementNow()
+
+    -- stop the horse from moving
     local lockDir = horse:getDir()
     local function lockTick()
+        ---@diagnostic disable-next-line
         if horse and horse:isExistInTheWorld() then horse:setDir(lockDir) end
     end
     Events.OnTick.Add(lockTick)
 
+    -- unlock function to stop the horse from staying in place
     local function unlock()
+        _unlocks[horse] = nil -- remove the cached unlock
         Events.OnTick.Remove(lockTick)
-        if horse and horse.getBehavior then horse:getBehavior():setBlockMovement(false) end
+        if horse and horse:isExistInTheWorld() then horse:getBehavior():setBlockMovement(false) end
     end
 
+    -- cache unlock
+    _unlocks[horse] = unlock
+
     return unlock, lockDir
+end
+
+
+---@type table<string, string>
+local _attachmentSide = {
+    ["mountLeft"] = "Left",
+    ["mountRight"] = "Right",
+}
+---Adds a timed action to the player to pathfind to the horse location.
+---@TODO the pathfinding to go and equip/unequip the horse do not take into account whenever the square to path to has a direct line of sight on the horse
+---@param player IsoPlayer
+---@param horse IsoAnimal
+---@return fun() unlock
+---@return string side
+HorseUtils.pathfindToHorse = function(player, horse)
+    local unlock, lockDir = HorseUtils.lockHorseForInteraction(horse)
+
+    local mx, my, mz, mn = HorseUtils.getClosestMount(player, horse)
+    local path = ISPathFindAction:pathToLocationF(player, mx, my, mz)
+
+    -- retrieve where the player must look by first making a copy of the lockDir
+    local vec2 = lockDir:ToVector()
+    local tempDir = IsoDirections.fromAngle(vec2)
+    local playerDir = mn == "mountLeft" and tempDir:RotRight() or tempDir:RotLeft()
+    
+    -- pathfinding to horse
+    local function cleanupOnFail()
+        unlock()
+    end
+
+    path:setOnFail(cleanupOnFail)
+    function path:stop()
+        cleanupOnFail()
+        ISPathFindAction.stop(self)
+    end
+    path:setOnComplete(function(p)
+        p:setDir(playerDir)
+    end, player)
+    ISTimedActionQueue.add(path)
+
+    return unlock, _attachmentSide[mn]
 end
 
 
@@ -119,38 +245,65 @@ HorseUtils.getReins = function(animal)
     end
 end
 
+---Formats translation entries that use such a format:
+---```lua
+---local params = {param1 = "Str1", paramNamed = "Str2", helloWorld="Str3",}
+---local txt = formatTemplate("{param1} {paramNamed} {helloWorld}", params)
+---```
+---@param template string
+---@param params table<string, string>
+---@nodiscard
+HorseUtils.formatTemplate = function(template, params)
+    return template:gsub("{(%w+)}", params)
+end
 
-HorseUtils.REINS_MODELS = {
-    ["HorseMod.HorseReins_Crude"] = {
-        idle = "HorseMod.HorseReins_Crude",
-        walking = "HorseMod.HorseReins_Walking_Crude",
-        trot = "HorseMod.HorseReins_Troting_Crude",
-        gallop = "HorseMod.HorseReins_Running_Crude",
-    },
-    ["HorseMod.HorseReins_Black"] = {
-        idle = "HorseMod.HorseReins_Black",
-        walking = "HorseMod.HorseReins_Walking_Black",
-        trot = "HorseMod.HorseReins_Troting_Black",
-        gallop = "HorseMod.HorseReins_Running_Black",
-    },
-    ["HorseMod.HorseReins_White"] = {
-        idle = "HorseMod.HorseReins_White",
-        walking = "HorseMod.HorseReins_Walking_White",
-        trot = "HorseMod.HorseReins_Troting_White",
-        gallop = "HorseMod.HorseReins_Running_White",
-    },
-    ["HorseMod.HorseReins_Brown"] = {
-        idle = "HorseMod.HorseReins_Brown",
-        walking = "HorseMod.HorseReins_Walking_Brown",
-        trot = "HorseMod.HorseReins_Troting_Brown",
-        gallop = "HorseMod.HorseReins_Running_Brown",
-    },
-}
+---Make a copy of a table
+---@param tbl table
+---@return table
+HorseUtils.tableCopy = function(tbl)
+    local copy = {}
+    for k,v in pairs(tbl) do
+        copy[k] = v
+    end
+    return copy
+end
 
+---@param hex string|nil
+---@return number, number, number
+---@nodiscard
+HorseUtils.hexToRGBf = function(hex)
+    if not hex then
+        return 1, 1, 1
+    end
+    hex = tostring(hex):gsub("#", "")
+    if #hex == 3 then
+        hex = hex:sub(1, 1)
+            .. hex:sub(1, 1)
+            .. hex:sub(2, 2)
+            .. hex:sub(2, 2)
+            .. hex:sub(3, 3)
+            .. hex:sub(3, 3)
+    end
+    if #hex ~= 6 then
+        return 1, 1, 1
+    end
+    local r = (tonumber(hex:sub(1, 2), 16) or 255) / 255
+    local g = (tonumber(hex:sub(3, 4), 16) or 255) / 255
+    local b = (tonumber(hex:sub(5, 6), 16) or 255) / 255
+    return r, g, b
+end
+
+---Trims whitespace from both ends of a string.
+---@param value string
+---@return string?
+---@nodiscard
+local function trim(value)
+    return value:match("^%s*(.-)%s*$")
+end
 
 ---@param debugString string The string from getAnimationDebug().
 ---@param matchString string The name of the animation to look for.
----@return table animationData The animation names found between "Anim:" and "Weight".
+---@return table? animationData The animation names found between "Anim:" and "Weight".
 ---@nodiscard
 HorseUtils.getAnimationFromDebugString = function(debugString, matchString)
     local searchStart = 1
@@ -186,6 +339,7 @@ HorseUtils.getAnimationFromDebugString = function(debugString, matchString)
 
         searchStart = weightStart + 1
     end
+    return nil
 end
 
 return HorseUtils

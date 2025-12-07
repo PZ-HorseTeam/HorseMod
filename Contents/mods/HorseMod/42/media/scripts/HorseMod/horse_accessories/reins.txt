@@ -6,11 +6,12 @@ module HorseMod {
 	item HorseReins_Crude {
         DisplayName = Horse Reins,
         DisplayCategory = Accessory,
+        Tags = HorseAccessory,
         Type = Normal,
         Weight = 0.5,
         Icon = accessories/HorseReins_Crude,
         StaticModel = HorseReins_Crude,
-        WorldStaticModel = HorseReins_World_Crude,
+        WorldStaticModel = HorseReins_Crude_World,
     }	
     model HorseReins_Crude {
         mesh = HorseMod/HorseReins,
@@ -21,7 +22,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_World_Crude {
+    model HorseReins_Crude_World {
         mesh = HorseMod/HorseReins_Ground,
         texture = Items/Accessories/HorseReins_Crude,
         static = true,
@@ -29,7 +30,7 @@ module HorseMod {
             offset = -0.0000 0.0001 -0.0547,
         }
     }
-    model HorseReins_Walking_Crude {
+    model HorseReins_Crude_Walking {
         mesh = HorseMod/HorseReinsWalking,
         texture = Items/Accessories/HorseReins_Crude,
         static = true,
@@ -38,7 +39,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_Troting_Crude {
+    model HorseReins_Crude_Troting {
         mesh = HorseMod/HorseReinsTroting,
         texture = Items/Accessories/HorseReins_Crude,
         static = true,
@@ -47,7 +48,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_Running_Crude {
+    model HorseReins_Crude_Running {
         mesh = HorseMod/HorseReinsRunning,
         texture = Items/Accessories/HorseReins_Crude,
         static = true,
@@ -61,11 +62,12 @@ module HorseMod {
     item HorseReins_Brown {
         DisplayName = Horse Reins,
         DisplayCategory = Accessory,
+        Tags = HorseAccessory,
         Type = Normal,
         Weight = 0.5,
         Icon = accessories/HorseReins_Brown,
         StaticModel = HorseReins_Brown,
-        WorldStaticModel = HorseReins_Ground_Brown,
+        WorldStaticModel = HorseReins_Brown_World,
     }	
     model HorseReins_Brown {
         mesh = HorseMod/HorseReins,
@@ -76,7 +78,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_Ground_Brown {
+    model HorseReins_Brown_World {
         mesh = HorseMod/HorseReins_Ground,
         texture = Items/Accessories/HorseReins_Brown,
         static = true,
@@ -84,7 +86,7 @@ module HorseMod {
             offset = -0.0000 0.0001 -0.0547,
         }
     }
-    model HorseReins_Walking_Brown {
+    model HorseReins_Brown_Walking {
         mesh = HorseMod/HorseReinsWalking,
         texture = Items/Accessories/HorseReins_Brown,
         static = true,
@@ -93,7 +95,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_Troting_Brown {
+    model HorseReins_Brown_Troting {
         mesh = HorseMod/HorseReinsTroting,
         texture = Items/Accessories/HorseReins_Brown,
         static = true,
@@ -102,7 +104,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_Running_Brown {
+    model HorseReins_Brown_Running {
         mesh = HorseMod/HorseReinsRunning,
         texture = Items/Accessories/HorseReins_Brown,
         static = true,
@@ -116,11 +118,12 @@ module HorseMod {
     item HorseReins_Black {
         DisplayName = Horse Reins,
         DisplayCategory = Accessory,
+        Tags = HorseAccessory,
         Type = Normal,
         Weight = 0.5,
         Icon = accessories/HorseReins_Black,
         StaticModel = HorseReins_Black,
-        WorldStaticModel = HorseReins_World_Black,
+        WorldStaticModel = HorseReins_Black_World,
     }	
     model HorseReins_Black {
         mesh = HorseMod/HorseReins,
@@ -131,7 +134,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_World_Black {
+    model HorseReins_Black_World {
         mesh = HorseMod/HorseReins_Ground,
         texture = Items/Accessories/HorseReins_Black,
         static = true,
@@ -139,7 +142,7 @@ module HorseMod {
             offset = -0.0000 0.0001 -0.0547,
         }
     }
-    model HorseReins_Walking_Black {
+    model HorseReins_Black_Walking {
         mesh = HorseMod/HorseReinsWalking,
         texture = Items/Accessories/HorseReins_Black,
         static = true,
@@ -148,7 +151,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_Troting_Black {
+    model HorseReins_Black_Troting {
         mesh = HorseMod/HorseReinsTroting,
         texture = Items/Accessories/HorseReins_Black,
         static = true,
@@ -157,7 +160,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_Running_Black {
+    model HorseReins_Black_Running {
         mesh = HorseMod/HorseReinsRunning,
         texture = Items/Accessories/HorseReins_Black,
         static = true,
@@ -171,11 +174,12 @@ module HorseMod {
     item HorseReins_White {
         DisplayName = Horse Reins,
         DisplayCategory = Accessory,
+        Tags = HorseAccessory,
         Type = Normal,
         Weight = 0.5,
         Icon = accessories/HorseReins_White,
         StaticModel = HorseReins_White,
-        WorldStaticModel = HorseReins_World_White,
+        WorldStaticModel = HorseReins_White_World,
     }	
     model HorseReins_White {
         mesh = HorseMod/HorseReins,
@@ -186,7 +190,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_World_White {
+    model HorseReins_White_World {
         mesh = HorseMod/HorseReins_Ground,
         texture = Items/Accessories/HorseReins_White,
         static = true,
@@ -194,7 +198,7 @@ module HorseMod {
             offset = -0.0000 0.0001 -0.0547,
         }
     }
-    model HorseReins_Walking_White {
+    model HorseReins_White_Walking {
         mesh = HorseMod/HorseReinsWalking,
         texture = Items/Accessories/HorseReins_White,
         static = true,
@@ -203,7 +207,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_Troting_White {
+    model HorseReins_White_Troting {
         mesh = HorseMod/HorseReinsTroting,
         texture = Items/Accessories/HorseReins_White,
         static = true,
@@ -212,7 +216,7 @@ module HorseMod {
             rotate = -180 90 -90,
         }
     }
-    model HorseReins_Running_White {
+    model HorseReins_White_Running {
         mesh = HorseMod/HorseReinsRunning,
         texture = Items/Accessories/HorseReins_White,
         static = true,

@@ -5,8 +5,7 @@ module HorseMod
         animationDirectory = Horse,
         animationPrefix = Horse_,
     }
-	model Horse
-	{
+	model Horse {
 		mesh = HorseMod/Horse,
 		animationsMesh = HorseMod.Horse,
 		shader = animalEffect,
@@ -57,12 +56,12 @@ module HorseMod
 			bone = Bip01,
 		}
 
-        attachment deathPosition
-        {
-            offset = 0.5987 0.0000 -0.0000,
+		attachment deathPosition
+		{
+			offset = 0.5987 0.0000 -0.0000,
 			rotate = 0.0000 0.0000 0.0000,
 			bone = Bip01,
-        }
+		}
 
 		attachment maneStart
 		{

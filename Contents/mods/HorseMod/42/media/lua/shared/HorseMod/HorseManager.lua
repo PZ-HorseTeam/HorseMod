@@ -12,25 +12,36 @@ local __System = {}
 function __System:update(horses, delta) end
 
 
-local HorseManager = {}
+local HorseManager = {
+    ---Table holding all the available horses in the player cell.
+    ---@type IsoAnimal[]
+    horses = table.newarray(),
 
----@type IsoAnimal[]
-HorseManager.horses = table.newarray()
+    ---@type table<IsoAnimal, true?>
+    _detected_horses = {},
 
----@type System[]
-HorseManager.systems = table.newarray()
+    ---Systems for horses that are triggered for them every ticks.
+    ---@type System[]
+    systems = table.newarray(),
+}
 
+---Triggers when a horse gets loaded in.
 HorseManager.onHorseAdded = Event.new() ---@as Event<IsoAnimal>
 
+---Triggers when a horse gets unloaded.
 HorseManager.onHorseRemoved = Event.new() ---@as Event<IsoAnimal>
+
+
+
 
 
 function HorseManager.releaseRemovedHorses()
     for i = #HorseManager.horses, 1, -1 do
         local horse = HorseManager.horses[i]
-        if not horse:isExistInTheWorld() then
+        if not horse:isExistInTheWorld() or horse:isDead() then
             table.remove(HorseManager.horses, i)
             HorseManager.onHorseRemoved:trigger(horse)
+            HorseManager._detected_horses[horse] = nil
         end
     end
 end
@@ -51,34 +62,51 @@ local function initialiseHorse(horse)
 end
 
 
--- we delay processing of newly spawned animals until the next tick
---  because their animal type isn't set when the event triggers
----@type IsoAnimal[]
-local newAnimals = table.newarray()
+---Detect newly created horses par parsing the moving objects array list of the player cell 
 
-Events.OnCreateLivingCharacter.Add(function(character, desc)
-    if character:isAnimal() then
-        ---@cast character IsoAnimal
-        newAnimals[#newAnimals + 1] = character
-    end
-end)
+---@TODO set to update rate 8 for performance reasons
+-- local UPDATE_RATE = 8
+local UPDATE_RATE = 1
+local TICK_AMOUNT = 0
 
+---Retrieve newly loaded horses in the world.
+---@TODO find a better method of doing this, less costly
+HorseManager.retrieveNewHorses = function()
+    -- retrieve IsoMovingObjects
+    local isoMovingObjects = getCell():getObjectList()
 
-local function processNewAnimals()
-    for i = #newAnimals, 1, -1 do
-        local animal = newAnimals[i]
-        if HorseUtils.isHorse(animal) then
-            initialiseHorse(animal)
-            HorseManager.horses[#HorseManager.horses + 1] = animal
-            HorseManager.onHorseAdded:trigger(animal)
+    -- check UPDATE_RATE-th IsoMovingObjects per tick
+    local size = isoMovingObjects:size()
+    local update_rate = UPDATE_RATE < size and UPDATE_RATE or size
+    if update_rate == 0 then return end
+
+    -- update to next tick amount offset to parse next selection of the list
+    TICK_AMOUNT = TICK_AMOUNT < update_rate - 1 and TICK_AMOUNT + 1 or 0
+
+    -- iterate every update_rate-th entries
+    for i = TICK_AMOUNT, size - 1, update_rate do
+        local isoMovingObject = isoMovingObjects:get(i)
+
+        -- verify is an animal and horse and not already checked and not dead
+        if instanceof(isoMovingObject, "IsoAnimal") 
+            and HorseUtils.isHorse(isoMovingObject) 
+            and not HorseManager._detected_horses[isoMovingObject]
+            and not isoMovingObject:isDead() then
+            
+            initialiseHorse(isoMovingObject)
+            HorseManager.horses[#HorseManager.horses + 1] = isoMovingObject
+            HorseManager.onHorseAdded:trigger(isoMovingObject)
+
+            HorseManager._detected_horses[isoMovingObject] = true
         end
-        newAnimals[i] = nil
     end
 end
 
+Events.OnTick.Add(HorseManager.retrieveNewHorses)
 
+---Sends
 function HorseManager.update()
-    processNewAnimals()
+    -- processNewAnimals()
     HorseManager.releaseRemovedHorses()
 
     local delta = GameTime.getInstance():getTimeDelta()

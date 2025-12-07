@@ -15,10 +15,14 @@ IGUI_EN = {
     IGUI_Horse_Slot = "Slot",
 
     IGUI_ModOptions_HorseModName = "Horse",
-    IGUI_ModOptions_HorseSoundVolumeDesc = "Change the volume of Horse sounds.",
-    IGUI_ModOptions_HorseSoundVolumeName = "Horse Sound Volume (Default 0.40)",
-    IGUI_ModOptions_HorseSoundVolumeTooltip = "Set sound volume of all horse sounds.",
-    IGUI_ModOptions_HorseKeybind = "Horse keybinds.",
-    IGUI_ModOptions_HorseKeybindJumpName = "Horse Jump Button",
-    IGUI_ModOptions_HorseKeybindJumpTooltip = "Change the keybind for horse jumping.",
+    IGUI_ModOptions_HorseSoundVolume_Desc = "Change the volume of Horse sounds",
+    IGUI_ModOptions_HorseSoundVolume_Name = "Horse Sound Volume (Default 0.40)",
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "Set sound volume of all horse sounds.",
+
+    IGUI_ModOptions_HorseKeybind = "Horse keybinds",
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "Horse Jump",
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "Change the keybind for horse jumping.",
+    
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "Horse Trot",
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Change the keybind for horse trotting.",
 }

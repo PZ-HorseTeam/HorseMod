@@ -3,20 +3,37 @@ local HorseRiding = require("HorseMod/Riding")
 local Mounting = require("HorseMod/Mounting")
 -- local HorseAttachments = require("HorseMod/HorseAttachments")
 
+---@param context ISContextMenu
+---@param player IsoPlayer
+---@param animal IsoAnimal
 local function doHorseInteractionMenu(context, player, animal)
-    if not animal or not HorseUtils.isHorse(animal) then return end
-    if HorseRiding.canMountHorse(player, animal) then
-        -- FIXME: currently we set this variable here because animations are still in testing
-        -- we should detect when a horse spawns and apply this immediately
-        animal:setVariable("isHorse", true)
-        context:addOption(getText("IGUI_HorseMod_MountHorse"),
-                          player, Mounting.mountHorse, animal)
+    local canMount, reason = HorseRiding.canMountHorse(player, animal)
+    local option = context:addOption(
+        getText("IGUI_HorseMod_MountHorse"),
+        player, Mounting.mountHorse, animal
+    )
+    option.iconTexture = animal:getInventoryIconTexture()
+    if not canMount and reason then
+        local tooltip = ISWorldObjectContextMenu.addToolTip()
+        tooltip.description = getText("ContextMenu_Horse_"..reason)
     end
 end
 
 local function onClickedAnimalForContext(playerNum, context, animals, test)
     if test then return end
     if not animals or #animals == 0 then return end
+
+    -- retrieve first horse instance
+    local horse
+    for i = 1, #animals do
+        local animal = animals[i]
+        if HorseUtils.isHorse(animal) then
+            horse = animal
+            break
+        end
+    end
+    if not horse then return end
+
     doHorseInteractionMenu(context, getSpecificPlayer(playerNum), animals[1])
 end
 
