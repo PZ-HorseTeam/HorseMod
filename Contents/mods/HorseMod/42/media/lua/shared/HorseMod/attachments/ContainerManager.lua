@@ -69,6 +69,11 @@ ContainerManager.registerContainerInformation = function(horse, slot, worldItem)
             horseID = horse:getAnimalID(),
         }
 
+        -- mark the world item as a horse mod container to more easily find later
+        local md = worldItem:getItem():getModData()
+        md.HorseMod = md.HorseMod or {}
+        md.HorseMod.isContainer = true
+
         -- store in mod data
         containers[slot] = containerInfo
     end
@@ -80,10 +85,8 @@ end
 ---@param containerBehavior ContainerBehavior
 ---@param accessory InventoryContainer
 ContainerManager.initContainer = function(player, horse, slot, containerBehavior, accessory)
-    print("Init container")
     -- retrieve the container of the accessory
     local srcContainer = accessory:getItemContainer()
-    DebugLog.log(tostring(srcContainer))
     assert(srcContainer ~= nil, "Accessory has container behavior but isn't a container.")
 
     -- retrieve the square the horse is on
@@ -97,9 +100,6 @@ ContainerManager.initContainer = function(player, horse, slot, containerBehavior
 
     local worldItem = containerItem:getWorldItem()
     local destContainer = containerItem:getItemContainer()
-
-    DebugLog.log(tostring(worldItem))
-    DebugLog.log(tostring(destContainer))
 
     -- transfer everything to the invisible container
     ContainerManager.transferAll(player, srcContainer, destContainer)
@@ -177,9 +177,11 @@ ContainerManager.findContainerOnSquare = function(square, itemIDSearched)
     for i = 0, worldItems:size() - 1 do
         local worldItem = worldItems:get(i)
         
-        -- check if the world item corresponds to 
+        -- check if the world item corresponds to an attachment container
         if ContainerManager.isContainer(worldItem) then
             local itemID = worldItem:getItem():getID()
+
+            -- verify it has the right ID
             if itemIDSearched == itemID then
                 return worldItem
             else
@@ -224,7 +226,9 @@ ContainerManager.findContainer = function(horse, containerInfo, squareHorse)
     local sq = getSquare(containerInfo.x, containerInfo.y, containerInfo.z)
     if sq then
         local worldItem = ContainerManager.findContainerOnSquare(sq, itemIDSearched)
-        if worldItem then return worldItem end
+        if worldItem then
+            return worldItem 
+        end
     end
 
     -- check if the world items on the horse square are the container
@@ -233,8 +237,12 @@ ContainerManager.findContainer = function(horse, containerInfo, squareHorse)
     ---and their identity can't link to 2 different horses
     if squareHorse then
         local worldItem = ContainerManager.findContainerOnSquare(squareHorse, itemIDSearched)
-        if worldItem then return worldItem end
+        if worldItem then
+            return worldItem 
+        end
     end
+
+    return nil
 end
 
 ---@param horse IsoAnimal

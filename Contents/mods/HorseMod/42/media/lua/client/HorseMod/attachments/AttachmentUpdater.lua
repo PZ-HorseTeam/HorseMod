@@ -73,14 +73,12 @@ function AttachmentUpdater:update(horses, delta)
         local status = IS_REAPPLIED[horse]
         if horse:getModel() then
             if not status then
-                DebugLog.log("set for reapply: "..tostring(horse:getFullName()).." (tick ".. tostring(os.time()) ..")")
                 AttachmentUpdater.reapplyFor(horse)
             end
 
         -- else set horse as needing to be reapplied until it's visible again
         else
             if status then
-                DebugLog.log("reset for reapply: "..tostring(horse:getFullName()).." (tick ".. tostring(os.time()) ..")")
                 IS_REAPPLIED[horse] = nil
             end
         end
