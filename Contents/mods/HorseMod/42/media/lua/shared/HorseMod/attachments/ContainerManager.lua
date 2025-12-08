@@ -2,7 +2,6 @@
 
 ---REQUIREMENTS
 local HorseUtils = require("HorseMod/Utils")
-local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local HorseManager = require("HorseMod/HorseManager")
 
 ---@class ContainerInformation
@@ -98,6 +97,8 @@ ContainerManager.initContainer = function(player, horse, slot, containerBehavior
     assert(containerItem:IsInventoryContainer(), "Invisible container ("..containerBehavior.worldItem..") used for "..accessory:getFullType().." isn't a container.")
     ---@cast containerItem InventoryContainer
 
+    containerItem:setName(accessory:getDisplayName())
+    containerItem:setIcon(accessory:getIcon())
     local worldItem = containerItem:getWorldItem()
     local destContainer = containerItem:getItemContainer()
 
@@ -279,7 +280,7 @@ ContainerManager.moveWorldItem = function(squareHorse, containerInfo, worldItem)
 
     -- move it to the new square
     local worldItem = squareHorse:AddWorldInventoryItem(item, 0, 0, 0):getWorldItem()
-    
+
     -- mark the world item as a horse mod container to more easily find later
     local md = worldItem:getItem():getModData()
     md.HorseMod = md.HorseMod or {}
