@@ -3,6 +3,7 @@
 ---REQUIREMENTS
 local HorseUtils = require("HorseMod/Utils")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
+local ContainerManager = require("HorseMod/attachments/ContainerManager")
 local rdm = newrandom()
 
 ---Holds utility functions related to the attachment system of horses.
@@ -152,9 +153,16 @@ Attachments.unequipAttachment = function(animal, slot, player)
     if not attachmentDef or attachmentDef.hidden then
         return
     end
-
+    
     Attachments.setAttachedItem(animal, slot, nil)
     Attachments.giveBackToPlayerOrDrop(player, animal, cur)
+
+    -- remove container
+    local containerBehavior = attachmentDef.containerBehavior
+    if containerBehavior then
+        player = player or getPlayer() ---@TODO probably should change that to not be necessary
+        ContainerManager.removeContainer(player, animal, slot, cur)
+    end
 end
 
 ---Unequip all attachments of the horse and add to the player inventory or drop on the ground.

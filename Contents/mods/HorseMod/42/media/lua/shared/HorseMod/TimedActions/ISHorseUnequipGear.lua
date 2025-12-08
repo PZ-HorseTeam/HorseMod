@@ -20,7 +20,7 @@ function ISHorseUnequipGear:perform()
 
     Attachments.giveBackToPlayerOrDrop(character, horse, accessory)
     
-    -- init container
+    -- remove container
     local containerBehavior = attachmentDef.containerBehavior
     if containerBehavior then
         ContainerManager.removeContainer(character, horse, slot, accessory)
