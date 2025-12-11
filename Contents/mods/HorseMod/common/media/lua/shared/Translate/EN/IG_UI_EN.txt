@@ -3,6 +3,26 @@ IGUI_EN = {
     IGUI_AnimalType_mare = "Mare",
     IGUI_AnimalType_filly = "Filly",
     IGUI_Breed_american_quarter = "American Quarter",
+    IGUI_Breed_american_paint = "American Paint",
+    IGUI_Breed_appaloosa = "Appaloosa",
+    IGUI_Breed_thoroughbred = "Thoroughbred",
+    IGUI_Breed_blue_roan = "Blue Roan",
+    IGUI_Breed_spotted_appaloosa = "Spotted Appaloosa",
+    IGUI_Breed_american_paint_overo = "American Paint (Overo)",
+    IGUI_Breed_flea_bitten_grey = "Flea-bitten Grey",
     IGUI_Animal_Group_horse = "Horse",
     IGUI_HorseMod_MountHorse = "Mount Horse",
+    IGUI_Horse_Slot = "Slot",
+
+    IGUI_ModOptions_HorseModName = "Horse",
+    IGUI_ModOptions_HorseSoundVolume_Desc = "Change the volume of Horse sounds",
+    IGUI_ModOptions_HorseSoundVolume_Name = "Horse Sound Volume (Default 0.40)",
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "Set sound volume of all horse sounds.",
+
+    IGUI_ModOptions_HorseKeybind = "Horse keybinds",
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "Horse Jump",
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "Change the keybind for horse jumping.",
+    
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "Horse Trot",
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Change the keybind for horse trotting.",
 }

@@ -1,19 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <animNode>
     <m_Name>Horse_Idle</m_Name>
     <m_AnimName>Horse_Idle</m_AnimName>
     <m_ConditionPriority>10</m_ConditionPriority>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
-
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_BlendTime>0.40</m_BlendTime>
-
-    <m_Events>
-		<m_EventName>SetVariable</m_EventName>
-		<m_Time>Start</m_Time>
-		<m_ParameterValue>GallopToIdle=false</m_ParameterValue>
-	</m_Events>
-
     <m_ConditionPriority>10</m_ConditionPriority>
     <m_Conditions>
         <m_Name>isHorse</m_Name>
@@ -54,14 +46,18 @@
             <m_Value>true</m_Value>
         </m_Conditions>
     </m_Transitions>
-    <m_Events>
-      <m_EventName>SetVariable</m_EventName>
-      <m_Time>Start</m_Time>
-      <m_ParameterValue>HorseGalloping=false</m_ParameterValue>
-    </m_Events>
-
     <m_Transitions>
         <m_Target>Horse_idleSit</m_Target>
         <m_AnimName>Horse_Idle_StandingToLying</m_AnimName>
     </m_Transitions>
+    <m_Events>
+        <m_EventName>SetVariable</m_EventName>
+        <m_Time>Start</m_Time>
+        <m_ParameterValue>HorseGalloping=false</m_ParameterValue>
+    </m_Events>
+    <m_Events>
+        <m_EventName>SetVariable</m_EventName>
+        <m_Time>Start</m_Time>
+        <m_ParameterValue>GallopToIdle=false</m_ParameterValue>
+    </m_Events>
 </animNode>

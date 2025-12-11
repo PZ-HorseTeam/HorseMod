@@ -1,0 +1,10 @@
+<clothingItem>
+	<m_MaleModel>media\models_x\HorseMod\HorseSaddle1.fbx</m_MaleModel>
+	<m_FemaleModel>media\models_x\HorseMod\HorseSaddle1.fbx</m_FemaleModel>
+	<m_GUID>horsesaddle1-spec-0000-000000000001</m_GUID>
+	<m_Static>true</m_Static>
+	<m_AllowRandomHue>false</m_AllowRandomHue>
+	<m_AllowRandomTint>false</m_AllowRandomTint>
+	<m_AttachBone>Dummy01</m_AttachBone>
+	<textureChoices>Items\Saddle1_tex</textureChoices>
+</clothingItem>

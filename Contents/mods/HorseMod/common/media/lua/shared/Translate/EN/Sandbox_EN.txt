@@ -1,0 +1,4 @@
+Sandbox_EN = {
+    Sandbox_HorseMod_WalkSpeed = "Horse Walk Speed",
+    Sandbox_HorseMod_GallopSpeed = "Horse Gallop Speed",
+}

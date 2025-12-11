@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <animNode>
     <m_Name>Horse_PathfindIdleTurn180L</m_Name>
     <m_maxTorsoTwist>5.00</m_maxTorsoTwist>
-    <m_AnimName>Horse_Idle_Turn180L</m_AnimName>
+    <m_AnimName>Horse_Idle_Turn90L</m_AnimName>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_SpeedScale>1</m_SpeedScale>
     <m_blendInTime>0.40</m_blendInTime>
@@ -15,13 +15,13 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions>
-		<m_Name>isTurningAround</m_Name>
-		<m_Type>BOOL</m_Type>
-		<m_Value>true</m_Value>
-	</m_Conditions>
+        <m_Name>isTurningAround</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
     <m_Conditions>
-		<m_Name>targetTwist</m_Name>
-		<m_Type>LESS</m_Type>
-		<m_Value>0</m_Value>
-	</m_Conditions>
+        <m_Name>targetTwist</m_Name>
+        <m_Type>LESS</m_Type>
+        <m_Value>0</m_Value>
+    </m_Conditions>
 </animNode>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <animNode>
-	<m_Name>Horse_Walk</m_Name>
-	<m_AnimName>Horse_Walk</m_AnimName>
-	<m_deferredBoneAxis>Y</m_deferredBoneAxis>
-	<m_BlendTime>0.75</m_BlendTime>
+    <m_Name>Horse_Walk</m_Name>
+    <m_AnimName>Horse_Walk</m_AnimName>
+    <m_deferredBoneAxis>Y</m_deferredBoneAxis>
+    <m_BlendTime>0.75</m_BlendTime>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
     <m_ConditionPriority>10</m_ConditionPriority>
     <m_Conditions>
@@ -16,24 +16,4 @@
         <m_Type>BOOL</m_Type>
         <m_Value>false</m_Value>
     </m_Conditions>
-	<!-- <m_Events>
-		<m_EventName>PlayBreedSound</m_EventName>
-		<m_TimePc>0.22</m_TimePc>
-		<m_ParameterValue>walkFront</m_ParameterValue>
-	</m_Events>
-	<m_Events>
-		<m_EventName>PlayBreedSound</m_EventName>
-		<m_TimePc>0.38</m_TimePc>
-		<m_ParameterValue>walkBack</m_ParameterValue>
-	</m_Events>
-	<m_Events>
-		<m_EventName>PlayBreedSound</m_EventName>
-		<m_TimePc>0.59</m_TimePc>
-		<m_ParameterValue>walkFront</m_ParameterValue>
-	</m_Events>
-	<m_Events>
-		<m_EventName>PlayBreedSound</m_EventName>
-		<m_TimePc>0.97</m_TimePc>
-		<m_ParameterValue>walkBack</m_ParameterValue>
-	</m_Events> -->
 </animNode>

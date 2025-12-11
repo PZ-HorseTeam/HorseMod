@@ -1,0 +1,208 @@
+module HorseMod {
+    imports {
+        Base
+	}
+
+    craftRecipe horseSaddle {
+        time = 600,
+        tags = base:base:AnySurfaceCraft,
+        skillRequired = Tailoring:6,
+        AutoLearnAll = Tailoring:8,
+        xpAward = Tailoring:40,
+        timedAction = MakingHammer_Surface,
+        category = Tailoring,
+        inputs {
+            item 1 tags[Scissors;SharpKnife] mode:keep flags[MayDegradeLight],
+            item 1 tags[SewingNeedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[Awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[Hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+            item 1 tags[MetalworkingPliers;Tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 5 tags[HeavyThread],
+            item 3 [Base.LeatherStrips],
+            item 3 [Base.Buckle],
+            item 2 [Base.IronBandSmall],
+            item 2 [Base.Nails],
+            item 1 [Base.Leather_Crude_Large_Tan;2:Base.Leather_Crude_Medium_Tan;Base.CowLeather_Angus_Fur_Tan;2:Base.CowLeather_Angus_Fur_Tan_Medium;Base.CowLeather_Holstein_Fur_Tan;2:Base.CowLeather_Holstein_Fur_Tan_Medium;Base.CowLeather_Simmental_Fur_Tan;2:Base.CowLeather_Simmental_Fur_Tan_Medium;2:Base.PigLeather_Black_Fur_Tan;2:Base.PigLeather_Landrace_Fur_Tan;2:Base.SheepLeather_Fur_Tan;HorseMod.HorseLeather_AP_Fur_Tan;2:HorseMod.HorseLeather_AP_Fur_Tan_Medium;HorseMod.HorseLeather_APHO_Fur_Tan;2:HorseMod.HorseLeather_APHO_Fur_Tan_Medium;HorseMod.HorseLeather_AQHBR_Fur_Tan;2:HorseMod.HorseLeather_AQHBR_Fur_Tan_Medium;HorseMod.HorseLeather_AQHP_Fur_Tan;2:HorseMod.HorseLeather_AQHP_Fur_Tan_Medium;HorseMod.HorseLeather_FBG_Fur_Tan;2:HorseMod.HorseLeather_FBG_Fur_Tan_Medium;HorseMod.HorseLeather_GDA_Fur_Tan;2:HorseMod.HorseLeather_GDA_Fur_Tan_Medium;HorseMod.HorseLeather_LPA_Fur_Tan;2:HorseMod.HorseLeather_LPA_Fur_Tan_Medium;HorseMod.HorseLeather_T_Fur_Tan;2:HorseMod.HorseLeather_T_Fur_Tan_Medium] mode:destroy mappers[SaddleLeather],
+        }
+        outputs {
+            item 1 mapper:SaddleLeather,
+        }
+        itemMapper SaddleLeather {
+            /* CRUDE */
+            HorseMod.HorseSaddle_Crude = Base.Leather_Crude_Large_Tan,
+            HorseMod.HorseSaddle_Crude = Base.Leather_Crude_Medium_Tan,
+
+            /* COW: ANGUS */
+            HorseMod.HorseSaddle_Black = Base.CowLeather_Angus_Fur_Tan,
+            HorseMod.HorseSaddle_Black = Base.CowLeather_Angus_Fur_Tan_Medium,
+
+        	/* COW: HOLSTEIN */
+            HorseMod.HorseSaddle_CowHolstein = Base.CowLeather_Holstein_Fur_Tan,
+            HorseMod.HorseSaddle_CowHolstein = Base.CowLeather_Holstein_Fur_Tan_Medium,
+
+        	/* COW: SIMMENTAL */
+            HorseMod.HorseSaddle_CowSimmental = Base.CowLeather_Simmental_Fur_Tan,
+            HorseMod.HorseSaddle_CowSimmental = Base.CowLeather_Simmental_Fur_Tan_Medium,
+        
+            /* PIG: BLACK */
+            HorseMod.HorseSaddle_Black = Base.PigLeather_Black_Fur_Tan,
+
+            /* PIG: LANDRACE */
+            HorseMod.HorseSaddle_Landrace = Base.PigLeather_Landrace_Fur_Tan,
+            
+        	/* SHEEP LEATHER */
+            HorseMod.HorseSaddle_White = Base.SheepLeather_Fur_Tan,
+
+            /* HORSE: AMERICAN PAINT */
+            HorseMod.HorseSaddle_AP = HorseMod.HorseLeather_AP_Fur_Tan,
+            HorseMod.HorseSaddle_AP = HorseMod.HorseLeather_AP_Fur_Tan_Medium,
+
+            /* HORSE: AMERICAN PAINT OVERO */
+            HorseMod.HorseSaddle_APHO = HorseMod.HorseLeather_APHO_Fur_Tan,
+            HorseMod.HorseSaddle_APHO = HorseMod.HorseLeather_APHO_Fur_Tan_Medium,
+
+            /* HORSE: BLUE ROAN */
+            HorseMod.HorseSaddle_AQHBR = HorseMod.HorseLeather_AQHBR_Fur_Tan,
+            HorseMod.HorseSaddle_AQHBR = HorseMod.HorseLeather_AQHBR_Fur_Tan_Medium,
+
+            /* HORSE: AMERICAN QUARTER */
+            HorseMod.HorseSaddle_AQHP = HorseMod.HorseLeather_AQHP_Fur_Tan,
+            HorseMod.HorseSaddle_AQHP = HorseMod.HorseLeather_AQHP_Fur_Tan_Medium,
+
+            /* HORSE: FLEA-BITTEN GREY */
+            HorseMod.HorseSaddle_FBG = HorseMod.HorseLeather_FBG_Fur_Tan,
+            HorseMod.HorseSaddle_FBG = HorseMod.HorseLeather_FBG_Fur_Tan_Medium,
+
+            /* HORSE: APPALOOSA */
+            HorseMod.HorseSaddle_GDA = HorseMod.HorseLeather_GDA_Fur_Tan,
+            HorseMod.HorseSaddle_GDA = HorseMod.HorseLeather_GDA_Fur_Tan_Medium,
+
+            /* HORSE: SPOTTED APPALOOSA */
+            HorseMod.HorseSaddle_LPA = HorseMod.HorseLeather_LPA_Fur_Tan,
+            HorseMod.HorseSaddle_LPA = HorseMod.HorseLeather_LPA_Fur_Tan_Medium,
+
+            /* HORSE: THOROUGHBRED */
+            HorseMod.HorseSaddle_T = HorseMod.HorseLeather_T_Fur_Tan,
+            HorseMod.HorseSaddle_T = HorseMod.HorseLeather_T_Fur_Tan_Medium,
+        }
+    }
+
+    craftRecipe horseSaddlebags {
+        time = 200,
+        tags = base:AnySurfaceCraft,
+        skillRequired = Tailoring:6,
+        AutoLearnAll = Tailoring:8,
+        xpAward = Tailoring:40,
+        timedAction = MakingHammer_Surface,
+        category = Tailoring,
+        inputs {
+            item 1 tags[Scissors;SharpKnife] mode:keep flags[MayDegradeLight],
+            item 1 tags[SewingNeedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[Awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[Hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+            item 1 tags[MetalworkingPliers;Tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 5 tags[HeavyThread],
+            item 1 [Base.LeatherStrips],
+            item 2 [Base.Buckle],
+            item 1 [Base.Nails],
+			item 1 [Base.Leather_Crude_Medium_Tan;2:Base.Leather_Crude_Small_Tan;Base.CowLeather_Angus_Fur_Tan_Medium;2:Base.CowLeather_Angus_Fur_Tan_Small;Base.CowLeather_Holstein_Fur_Tan_Medium;2:Base.CowLeather_Holstein_Fur_Tan_Small;Base.CowLeather_Simmental_Fur_Tan_Medium;2:Base.CowLeather_Simmental_Fur_Tan_Small;Base.PigLeather_Black_Fur_Tan;2:Base.PigLeather_Black_Fur_Tan_Small;Base.PigLeather_Landrace_Fur_Tan;2:Base.PigLeather_Landrace_Fur_Tan_Small;Base.SheepLeather_Fur_Tan;2:Base.SheepLeather_Fur_Tan_Small;HorseMod.HorseLeather_AP_Fur_Tan_Medium;2:HorseMod.HorseLeather_AP_Fur_Tan_Small;HorseMod.HorseLeather_APHO_Fur_Tan_Medium;2:HorseMod.HorseLeather_APHO_Fur_Tan_Small;HorseMod.HorseLeather_AQHBR_Fur_Tan_Medium;2:HorseMod.HorseLeather_AQHBR_Fur_Tan_Small;HorseMod.HorseLeather_AQHP_Fur_Tan_Medium;2:HorseMod.HorseLeather_AQHP_Fur_Tan_Small;HorseMod.HorseLeather_FBG_Fur_Tan_Medium;2:HorseMod.HorseLeather_FBG_Fur_Tan_Small;HorseMod.HorseLeather_GDA_Fur_Tan_Medium;2:HorseMod.HorseLeather_GDA_Fur_Tan_Small;HorseMod.HorseLeather_LPA_Fur_Tan_Medium;2:HorseMod.HorseLeather_LPA_Fur_Tan_Small;HorseMod.HorseLeather_T_Fur_Tan_Medium;2:HorseMod.HorseLeather_T_Fur_Tan_Small] mode:destroy mappers[SaddlebagsLeather],
+        }
+        outputs {
+            item 1 mapper:SaddlebagsLeather,
+        }
+        itemMapper SaddlebagsLeather {
+            /* CRUDE */
+            HorseMod.HorseSaddlebags_Crude = Base.Leather_Crude_Medium_Tan,
+            HorseMod.HorseSaddlebags_Crude = Base.Leather_Crude_Small_Tan,
+            
+			/* COW: ANGUS */
+			HorseMod.HorseSaddlebags_Black = Base.CowLeather_Angus_Fur_Tan_Medium,
+            HorseMod.HorseSaddlebags_Black = Base.CowLeather_Angus_Fur_Tan_Small,
+			
+        	/* COW: HOLSTEIN */
+            HorseMod.HorseSaddlebags_CowHolstein = Base.CowLeather_Holstein_Fur_Tan_Medium,
+            HorseMod.HorseSaddlebags_CowHolstein = Base.CowLeather_Holstein_Fur_Tan_Small,
+
+        	/* COW: SIMMENTAL */
+            HorseMod.HorseSaddlebags_CowSimmental = Base.CowLeather_Simmental_Fur_Tan_Medium,
+            HorseMod.HorseSaddlebags_CowSimmental = Base.CowLeather_Simmental_Fur_Tan_Small,
+			
+            /* PIG: BLACK */
+            HorseMod.HorseSaddlebags_Black = Base.PigLeather_Black_Fur_Tan,
+            HorseMod.HorseSaddlebags_Black = Base.PigLeather_Black_Fur_Tan_Small,
+
+            /* PIG: LANDRACE */
+			HorseMod.HorseSaddlebags_Landrace = Base.PigLeather_Landrace_Fur_Tan,
+			HorseMod.HorseSaddlebags_Landrace = Base.PigLeather_Landrace_Fur_Tan_Small,
+
+        	/* SHEEP LEATHER */
+            HorseMod.HorseSaddlebags_White = Base.SheepLeather_Fur_Tan,
+            HorseMod.HorseSaddlebags_White = Base.SheepLeather_Fur_Tan_Small,
+
+			/* HORSE: AMERICAN PAINT */
+			HorseMod.HorseSaddlebags_AP = HorseMod.HorseLeather_AP_Fur_Tan_Medium,
+			HorseMod.HorseSaddlebags_AP = HorseMod.HorseLeather_AP_Fur_Tan_Small,
+
+			/* HORSE: AMERICAN PAINT OVERO */
+			HorseMod.HorseSaddlebags_APHO = HorseMod.HorseLeather_APHO_Fur_Tan_Medium,
+			HorseMod.HorseSaddlebags_APHO = HorseMod.HorseLeather_APHO_Fur_Tan_Small,
+
+			/* HORSE: BLUE ROAN */
+			HorseMod.HorseSaddlebags_AQHBR = HorseMod.HorseLeather_AQHBR_Fur_Tan_Medium,
+			HorseMod.HorseSaddlebags_AQHBR = HorseMod.HorseLeather_AQHBR_Fur_Tan_Small,
+
+			/* HORSE: AMERICAN QUARTER */
+			HorseMod.HorseSaddlebags_AQHP = HorseMod.HorseLeather_AQHP_Fur_Tan_Medium,
+			HorseMod.HorseSaddlebags_AQHP = HorseMod.HorseLeather_AQHP_Fur_Tan_Small,
+
+			/* HORSE: FLEA-BITTEN GREY */
+			HorseMod.HorseSaddlebags_FBG = HorseMod.HorseLeather_FBG_Fur_Tan_Medium,
+			HorseMod.HorseSaddlebags_FBG = HorseMod.HorseLeather_FBG_Fur_Tan_Small,
+
+			/* HORSE: APPALOOSA */
+			HorseMod.HorseSaddlebags_GDA = HorseMod.HorseLeather_GDA_Fur_Tan_Medium,
+			HorseMod.HorseSaddlebags_GDA = HorseMod.HorseLeather_GDA_Fur_Tan_Small,
+
+			/* HORSE: SPOTTED APPALOOSA */
+			HorseMod.HorseSaddlebags_LPA = HorseMod.HorseLeather_LPA_Fur_Tan_Medium,
+			HorseMod.HorseSaddlebags_LPA = HorseMod.HorseLeather_LPA_Fur_Tan_Small,
+
+			/* HORSE: THOROUGHBRED */
+			HorseMod.HorseSaddlebags_T = HorseMod.HorseLeather_T_Fur_Tan_Medium,
+			HorseMod.HorseSaddlebags_T = HorseMod.HorseLeather_T_Fur_Tan_Small,
+        }
+    }
+
+    craftRecipe horseReins {
+        time = 200,
+        tags = base:AnySurfaceCraft,
+        skillRequired = Tailoring:4,
+        AutoLearnAll = Tailoring:6,
+        xpAward = Tailoring:40,
+        timedAction = MakingHammer_Surface,
+        category = Tailoring,
+        inputs {
+            item 1 tags[Scissors;SharpKnife] mode:keep flags[MayDegradeLight],
+            item 1 tags[SewingNeedle] mode:keep flags[MayDegradeLight],
+            item 1 tags[Awl] mode:keep flags[MayDegradeLight],
+            item 1 tags[Hammer] mode:keep flags[Prop1;MayDegradeVeryLight],
+            item 1 tags[MetalworkingPliers;Tongs] mode:keep flags[Prop2;MayDegradeLight],
+            item 1 [Base.LeatherStrips] mode:destroy,
+            item 4 [Base.Buckle] mode:destroy,
+            item 2 [Base.IronBandSmall] mode:destroy,
+            item 1 [Base.IronBarQuarter] mode:destroy,
+            item 1 [Base.Nails],
+            item 1 [2:Base.Leather_Crude_Small_Tan;2:Base.CowLeather_Angus_Fur_Tan_Small;2:Base.CowLeather_Simmental_Fur_Tan_Small;2:Base.PigLeather_Black_Fur_Tan_Small;2:Base.SheepLeather_Fur_Tan_Small] mode:destroy mappers[ReinsLeather],
+        }
+        outputs {
+            item 1 mapper:ReinsLeather,
+        }
+        itemMapper ReinsLeather {
+            HorseMod.HorseReins_Crude = Base.Leather_Crude_Small_Tan,
+            HorseMod.HorseReins_Black = Base.CowLeather_Angus_Fur_Tan_Small,
+            HorseMod.HorseReins_Brown = Base.CowLeather_Simmental_Fur_Tan_Small,
+            HorseMod.HorseReins_Black = Base.PigLeather_Black_Fur_Tan_Small,
+            HorseMod.HorseReins_White = Base.SheepLeather_Fur_Tan_Small,
+        }
+    }
+}

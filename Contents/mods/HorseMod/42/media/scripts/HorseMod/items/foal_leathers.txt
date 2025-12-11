@@ -1,0 +1,339 @@
+module HorseMod {
+    imports {
+        Base
+    }
+    /* American Paint */
+    item FoalLeather_AP_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAP,
+        WorldStaticModel = Leather_HorseAP,
+        Tags = base:LeatherFullLarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_AP_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAP,
+        WorldStaticModel = Leather_HorseAP,
+        Tags = base:LeatherFurLarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_AP_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAP,
+        WorldStaticModel = Leather_HorseAP,
+        Tags = base:LeatherFurWetLarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_AP_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAP,
+        WorldStaticModel = Leather_HorseAP,
+        Tags = base:LeatherFurTannedLarge,
+    }
+
+
+    /* American Paint Overo */
+    item FoalLeather_APHO_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAPHO,
+        WorldStaticModel = Leather_HorseAPHO,
+        Tags = base:LeatherFullLarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_APHO_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAPHO,
+        WorldStaticModel = Leather_HorseAPHO,
+        Tags = base:LeatherFurLarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_APHO_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAPHO,
+        WorldStaticModel = Leather_HorseAPHO,
+        Tags = base:LeatherFurWetLarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_APHO_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAPHO,
+        WorldStaticModel = Leather_HorseAPHO,
+        Tags = base:LeatherFurTannedLarge,
+    }
+
+
+    /* Blue Roan */
+    item FoalLeather_AQHBR_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAQHBR,
+        WorldStaticModel = Leather_HorseAQHBR,
+        Tags = base:LeatherFullLarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_AQHBR_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAQHBR,
+        WorldStaticModel = Leather_HorseAQHBR,
+        Tags = base:LeatherFurLarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_AQHBR_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAQHBR,
+        WorldStaticModel = Leather_HorseAQHBR,
+        Tags = base:LeatherFurWetLarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_AQHBR_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAQHBR,
+        WorldStaticModel = Leather_HorseAQHBR,
+        Tags = base:LeatherFurTannedLarge,
+    }
+
+
+    /* American Quarter */
+    item FoalLeather_AQHP_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAQHP,
+        WorldStaticModel = Leather_HorseAQHP,
+        Tags = base:LeatherFullLarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_AQHP_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAQHP,
+        WorldStaticModel = Leather_HorseAQHP,
+        Tags = base:LeatherFurLarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_AQHP_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAQHP,
+        WorldStaticModel = Leather_HorseAQHP,
+        Tags = base:LeatherFurWetLarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_AQHP_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseAQHP,
+        WorldStaticModel = Leather_HorseAQHP,
+        Tags = base:LeatherFurTannedLarge,
+    }
+
+
+    /* Flea-Bitten Grey */
+    item FoalLeather_FBG_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseFBG,
+        WorldStaticModel = Leather_HorseFBG,
+        Tags = base:LeatherFullLarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_FBG_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseFBG,
+        WorldStaticModel = Leather_HorseFBG,
+        Tags = base:LeatherFurLarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_FBG_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseFBG,
+        WorldStaticModel = Leather_HorseFBG,
+        Tags = base:LeatherFurWetLarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_FBG_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseFBG,
+        WorldStaticModel = Leather_HorseFBG,
+        Tags = base:LeatherFurTannedLarge,
+    }
+
+
+    /* Appaloosa */
+    item FoalLeather_GDA_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseGDA,
+        WorldStaticModel = Leather_HorseGDA,
+        Tags = base:LeatherFullLarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_GDA_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseGDA,
+        WorldStaticModel = Leather_HorseGDA,
+        Tags = base:LeatherFurLarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_GDA_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseGDA,
+        WorldStaticModel = Leather_HorseGDA,
+        Tags = base:LeatherFurWetLarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_GDA_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseGDA,
+        WorldStaticModel = Leather_HorseGDA,
+        Tags = base:LeatherFurTannedLarge,
+    }
+
+
+    /* Spotted Appaloosa */
+    item FoalLeather_LPA_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseLPA,
+        WorldStaticModel = Leather_HorseLPA,
+        Tags = base:LeatherFullLarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_LPA_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseLPA,
+        WorldStaticModel = Leather_HorseLPA,
+        Tags = base:LeatherFurLarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_LPA_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseLPA,
+        WorldStaticModel = Leather_HorseLPA,
+        Tags = base:LeatherFurWetLarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_LPA_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseLPA,
+        WorldStaticModel = Leather_HorseLPA,
+        Tags = base:LeatherFurTannedLarge,
+    }
+
+
+    /* Thoroughbred */
+    item FoalLeather_T_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseT,
+        WorldStaticModel = Leather_HorseT,
+        Tags = base:LeatherFullLarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_T_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseT,
+        WorldStaticModel = Leather_HorseT,
+        Tags = base:LeatherFurLarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_T_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseT,
+        WorldStaticModel = Leather_HorseT,
+        Tags = base:LeatherFurWetLarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_T_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_HorseT,
+        WorldStaticModel = Leather_HorseT,
+        Tags = base:LeatherFurTannedLarge,
+    }
+}

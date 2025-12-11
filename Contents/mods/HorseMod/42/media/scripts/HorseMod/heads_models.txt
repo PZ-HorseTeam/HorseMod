@@ -1,0 +1,98 @@
+module HorseMod
+{
+    model HorseHeadAQHP {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/HorseAQHP,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0342 0.0122 -0.0071,
+            rotate = -0.0000 -11.7637 -96.0254,
+            scale = 0.5000,
+        }
+    }
+
+    model HorseHeadAP {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/HorseAP,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0342 0.0122 -0.0071,
+            rotate = -0.0000 -11.7637 -96.0254,
+            scale = 0.5000,
+        }
+    }
+
+    model HorseHeadGDA {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/HorseGDA,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0342 0.0122 -0.0071,
+            rotate = -0.0000 -11.7637 -96.0254,
+            scale = 0.5000,
+        }
+    }
+
+    model HorseHeadT {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/HorseT,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0342 0.0122 -0.0071,
+            rotate = -0.0000 -11.7637 -96.0254,
+            scale = 0.5000,
+        }
+    }
+
+    model HorseHeadAQHBR {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/HorseAQHBR,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0342 0.0122 -0.0071,
+            rotate = -0.0000 -11.7637 -96.0254,
+            scale = 0.5000,
+        }
+    }
+
+    model HorseHeadLPA {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/HorseLPA,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0342 0.0122 -0.0071,
+            rotate = -0.0000 -11.7637 -96.0254,
+            scale = 0.5000,
+        }
+    }
+
+    model HorseHeadAPHO {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/HorseAPHO,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0342 0.0122 -0.0071,
+            rotate = -0.0000 -11.7637 -96.0254,
+            scale = 0.5000,
+        }
+    }
+
+    model HorseHeadFBG {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/HorseFBG,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0342 0.0122 -0.0071,
+            rotate = -0.0000 -11.7637 -96.0254,
+            scale = 0.5000,
+        }
+    }
+}

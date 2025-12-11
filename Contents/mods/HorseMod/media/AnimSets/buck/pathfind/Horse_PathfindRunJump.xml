@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <animNode>
     <m_Name>Horse_PathfindRunJump</m_Name>
     <m_AnimName>Horse_Gallop_Jump</m_AnimName>
-    <m_ConditionPriority>10</m_ConditionPriority>
+    <m_ConditionPriority>20</m_ConditionPriority>
     <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_BlendTime>0.8</m_BlendTime>
     <m_SpeedScale>1.1</m_SpeedScale>
     <m_Scalar>geneSpeed</m_Scalar>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
-
     <m_Conditions>
         <m_Name>isHorse</m_Name>
         <m_Type>BOOL</m_Type>
@@ -25,7 +24,6 @@
         <m_Type>BOOL</m_Type>
         <m_Value>true</m_Value>
     </m_Conditions>
-
     <m_Transitions>
         <m_Target>Horse_PathfindRun</m_Target>
         <m_BlendTime>0.3</m_BlendTime>

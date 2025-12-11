@@ -5,8 +5,7 @@ module HorseMod
         animationDirectory = Horse,
         animationPrefix = Horse_,
     }
-	model Horse
-	{
+	model Horse {
 		mesh = HorseMod/Horse,
 		animationsMesh = HorseMod.Horse,
 		shader = animalEffect,
@@ -14,17 +13,17 @@ module HorseMod
 
 		attachment saddle
 		{
-			offset = -0.0000 0.2011 0.0429,
+			offset = 0.0000 0.1528 0.041,
 			rotate = 89.1355 0.4641 178.8851,
-			scale = 2.8228,
+			scale = 1.5102,
 			bone = DEF_Spine2,
 		}
 
 		attachment saddlebags
 		{
-			offset = -0.0000 -0.0826 -0.1536,
-			rotate = 89.1355 0.4641 178.8851,
-			scale = 2.4981,
+			offset = -0.0000 -0.1 -0.16,
+			rotate = 90 0 180,
+			scale = 1.5,
 			bone = DEF_Spine2,
 		}
 
@@ -35,126 +34,141 @@ module HorseMod
 			bone = Dummy01,
 		}
 
+		attachment reins
+		{
+			offset = 0.0000 0.1982 0.0539,
+			rotate = 45.0000 0.0000 180.0000,
+			scale = 1.0509,
+			bone = Bip01_Head,
+		}
+
 		attachment mountLeft
 		{
-			offset = 0.5998 0.0000 -0.0006,
+			offset = 0.5987 0.0000 -0.0000,
 			rotate = 0.0000 0.0000 0.0000,
 			bone = Bip01,
 		}
 
 		attachment mountRight
 		{
-			offset = -0.6000 0.0000 -0.0006,
+			offset = -0.5979 0.0000 -0.0006,
 			rotate = 0.0000 0.0000 0.0000,
 			bone = Bip01,
 		}
 
-		attachment maneTop
+		attachment deathPosition
 		{
-			offset = -0.6000 0.1997 0.0670,
+			offset = 0.5987 0.0000 -0.0000,
 			rotate = 0.0000 0.0000 0.0000,
+			bone = Bip01,
+		}
+
+		attachment maneStart
+		{
+			offset = 0.0213 -0.0102 -0.0000,
+			rotate = 0.0000 -3.4314 0.0000,
 			bone = DEF_ManeStart,
 		}
 
-		attachment maneMid
+		attachment maneMid1
 		{
-			offset = 0.0001 -0.6675 -1.7382,
+			offset = 0.0122 -0.0038 0.0000,
+			rotate = 0.0000 -3.1103 0.0000,
+			bone = DEF_ManeMid1,
+		}
+
+		attachment maneMid2
+		{
+			offset = 0.0000 0.0003 0.0000,
+			rotate = 0.0000 -4.4272 0.0000,
+			bone = DEF_ManeMid2,
+		}
+
+		attachment maneMid3
+		{
+			offset = 0.0000 0.0000 0.0000,
 			rotate = 0.0000 0.0000 0.0000,
 			bone = DEF_ManeMid3,
 		}
 
-		attachment maneBottom
+		attachment maneMid4
 		{
-			offset = -0.6000 0.0964 0.0677,
+			offset = 0.0000 0.0000 0.0000,
 			rotate = 0.0000 0.0000 0.0000,
+			bone = DEF_ManeMid4,
+		}
+
+		attachment maneMid5
+		{
+			offset = 0.0000 0.0000 0.0000,
+			rotate = 0.0000 -0.0605 0.0000,
+			bone = DEF_ManeMid5,
+		}
+
+		attachment maneEnd
+		{
+			offset = 0.0000 -0.0486 -0.0160,
+			rotate = -23.0217 -0.0000 0.0000,
 			bone = DEF_ManeEnd,
 		}
 	}
-	model HorseHeadless
-	{
+	model HorseHeadless {
 		mesh = HorseMod/Horse_NoHead,
 		animationsMesh = HorseMod.Horse,
 		shader = animalEffect,
 		static = false,
 	}
-	model HorseSkeleton
-	{
-		mesh = HorseMod/Horse_Skeleton,
-		animationsMesh = HorseMod.Horse,
-		shader = animalEffect,
-		static = false,
-	}
-	model HorseSkeletonHeadless
-	{
-		mesh = HorseMod/Horse_Skeleton_NoHead,
-		animationsMesh = HorseMod.Horse,
-		shader = animalEffect,
-		static = false,
-	}
-	model HorseHead
-	{
-		mesh = HorseMod/Horse_Head,
-		static = true,
-    	texture = HorseMod/HorseAQHP,
-		scale = 0.3530,
-
-		attachment world
-		{
-			offset = -0.0342 0.0122 -0.0071,
-			rotate = -0.0000 -11.7637 -96.0254,
-			scale = 0.5000,
-		}
-	}
-	model HorseSkull
-	{
-		mesh = HorseMod/Horse_Skull,
-		static = true,
-		texture = WorldItems/HorseSkull,
-		scale = 0.3530,
-		attachment world
-		{
-			offset = -0.0000 -0.0000 -0.0000,
-			rotate = 0.0000 -0.0000 0.0000,
-			scale = 0.5000,
-		}
-	}
-
-	model HorseSteak
-	{
-		mesh = HorseMod/HorseSteak,
-		static = true,
-		texture = WorldItems/HorseSteak,
-	}
-	model HorseLoin
-	{
-		mesh = HorseMod/Horse_Loin,
-		static = true,
-		texture = WorldItems/HorseLoin,
-	}
-
-
-	model CookingPot_HorseGlueGround
-	{
-		mesh = WorldItems/CookingPotFull,
-		texture = WorldItems/CookingPot_HorseGlue,
-		scale = 0.4,
-		attachment Bip01_Prop1
-		{
-			offset = 0.0355 0.1534 -0.1613,
-			rotate = 90.806 0.2262 -0.1529,
-			scale = 0.89,
-		}
-	}
-	model CookingPotForged_HorseGlueGround
-	{
-		mesh = WorldItems/CookingPot_Forged_Food,
-		texture = WorldItems/CookingPot_Forged_HorseGlue,
-		scale = 0.1375,
-		attachment Bip01_Prop1
-		{
-			offset = -0.0003 0.1589 -0.1806,
-			rotate = 90.0 0.0 0.0,
-			scale = 1.0,
-		}
-	}
+	model HorseSkeleton {
+        mesh = HorseMod/Horse_Skeleton,
+        animationsMesh = HorseMod.Horse,
+        shader = animalEffect,
+        static = false,
+    }
+	model HorseSkeletonHeadless {
+        mesh = HorseMod/Horse_Skeleton_NoHead,
+        animationsMesh = HorseMod.Horse,
+        shader = animalEffect,
+        static = false,
+    }
+	model HorseHead {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/HorseAQHP,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0342 0.0122 -0.0071,
+            rotate = -0.0000 -11.7637 -96.0254,
+            scale = 0.5000,
+        }
+    }
+	model HorseSkull {
+        mesh = HorseMod/Horse_Skull,
+        static = true,
+        texture = Body/HorseMod/HorseSkeletonDry,
+        scale = 0.3530,
+        attachment world {
+            offset = -0.0000 -0.0000 -0.0000,
+            rotate = 0.0000 -0.0000 0.0000,
+            scale = 0.5000,
+        }
+    }
+	model DungHorse {
+        mesh = HorseMod/Dung_Horse,
+        texture = WorldItems/DungHorse,
+    }
+	model HorseSteak {
+        mesh = HorseMod/HorseSteak,
+        static = true,
+        texture = WorldItems/HorseSteak,
+    }
+	model HorseLoin {
+        mesh = HorseMod/HorseLoin,
+        static = true,
+        texture = WorldItems/HorseLoin,
+    }
+	model HorseHoof {
+        mesh = HorseMod/HorseHoof,
+        static = true,
+        texture = Body/HorseMod/HorseAQHP,
+    }
 }

@@ -1,59 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <animNode>
     <m_Name>Horse_PathfindTrotTurnLeft</m_Name>
     <m_AnimName>Horse_Trot_Left</m_AnimName>
     <m_ConditionPriority>10</m_ConditionPriority>
-    <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
-    <m_EarlyTransitionOut>true</m_EarlyTransitionOut>
-
-    <m_deferredBoneAxis>Y</m_deferredBoneAxis>
-    <m_SpeedScale>1.3</m_SpeedScale>
+    <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
+    <m_BlendTime>0.60</m_BlendTime>
+    <m_SpeedScale>HorseTrotSpeed</m_SpeedScale>
     <m_Scalar>geneSpeed</m_Scalar>
-    <m_blendInTime>0.40</m_blendInTime>
-    <m_blendOutTime>0.80</m_blendOutTime>
-    <m_BlendTime>0.80</m_BlendTime>
-
+    <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+    <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_Conditions>
         <m_Name>isHorse</m_Name>
         <m_Type>BOOL</m_Type>
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>animalWalking</m_Name>
+        <m_Name>HorseGallop</m_Name>
         <m_Type>BOOL</m_Type>
-        <m_BoolValue>true</m_BoolValue>
+        <m_BoolValue>false</m_BoolValue>
     </m_Conditions>
-    <m_Conditions x_name="8de8c17e-18eb-48d7-9df9-a513cc02dace">
-		<m_Name>targetTwist</m_Name>
-		<m_Type>LESS</m_Type>
-		<m_Value>-30</m_Value>
-	</m_Conditions>
     <m_Conditions>
         <m_Name>HorseTrot</m_Name>
         <m_Type>BOOL</m_Type>
         <m_BoolValue>true</m_BoolValue>
     </m_Conditions>
-    <!-- <m_Transitions>
-        <m_Target>Horse_PathfindWait</m_Target>
-        <m_blendInTime>0.80</m_blendInTime>
-        <m_blendOutTime>0.80</m_blendOutTime>
-        <m_speedScale>0.8</m_speedScale>
-        <m_Conditions>
-            <m_Name>isHorse</m_Name>
-            <m_Type>BOOL</m_Type>
-            <m_Value>true</m_Value>
-        </m_Conditions>
-        <m_Conditions>
-            <m_Name>animalWalking</m_Name>
-            <m_Type>BOOL</m_Type>
-            <m_BoolValue>false</m_BoolValue>
-        </m_Conditions>
-        <m_Conditions>
-            <m_Name>animalRunning</m_Name>
-            <m_Type>BOOL</m_Type>
-            <m_BoolValue>false</m_BoolValue>
-        </m_Conditions>
-    </m_Transitions> -->
+    <m_Conditions>
+        <m_Name>targetTwist</m_Name>
+        <m_Type>LESS</m_Type>
+        <m_Value>-30</m_Value>
+    </m_Conditions>
     <m_Transitions>
         <m_Target>Horse_PathfindRun</m_Target>
         <m_blendInTime>0.80</m_blendInTime>
@@ -70,10 +45,14 @@
             <m_BoolValue>true</m_BoolValue>
         </m_Conditions>
     </m_Transitions>
-
-    <!-- <m_Events>
-        <m_EventName>PlayBreedSound</m_EventName>
-        <m_TimePc>0.01</m_TimePc>
-        <m_ParameterValue>trot</m_ParameterValue>
-    </m_Events> -->
+    <m_Events>
+        <m_EventName>SetVariable</m_EventName>
+        <m_Time>Start</m_Time>
+        <m_ParameterValue>isTurningLeft=true</m_ParameterValue>
+    </m_Events>
+    <m_Events>
+        <m_EventName>SetVariable</m_EventName>
+        <m_Time>End</m_Time>
+        <m_ParameterValue>isTurningLeft=false</m_ParameterValue>
+    </m_Events>
 </animNode>

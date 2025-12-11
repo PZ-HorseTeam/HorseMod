@@ -1,2 +1,8 @@
 name=Horse mod
 id=Horse
+author=Horse team
+description=The Horse mod adds horses to Project Zomboid, allowing the player to care for them, ride them, and much more. A stamina system makes riding feel more realistic. Craft a saddle to make your rides more comfortable, or live the life of a true nomad by adding saddlebags to your horse. If you prefer a rancher’s lifestyle, you can also craft glue from horse hooves, which works similarly to wood glue.
+poster=poster.png
+icon=icon_file.png
+modversion=1.0.0
+versionMin=42.12.3

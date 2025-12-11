@@ -1,0 +1,19 @@
+VERSION = 1,
+
+option HorseMod.WalkSpeed {
+    type = double,
+    min = 0.1,
+    max = 10,
+    default = 1,
+    page = HorseMod,
+    translation = HorseMod_WalkSpeed,
+}
+
+option HorseMod.GallopSpeed {
+    type = double,
+    min = 0.1,
+    max = 10,
+    default = 1,
+    page = HorseMod,
+    translation = HorseMod_GallopSpeed,
+}

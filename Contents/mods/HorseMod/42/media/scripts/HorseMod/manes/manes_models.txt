@@ -1,0 +1,23 @@
+module HorseMod {
+
+    model HorseManeStart {
+        mesh = HorseMod/SimpleManeStart,
+        texture = Items/ManeTextureTest,
+        static = true,
+        scale = 1.00,
+    }
+
+    model HorseManeMid {
+        mesh = HorseMod/SimpleManeMid,
+        texture = Items/ManeTextureTest,
+        static = true,
+        scale = 1.00,
+    }
+
+    model HorseManeEnd {
+        mesh = HorseMod/SimpleManeEnd,
+        texture = Items/ManeTextureTest,
+        static = true,
+        scale = 1.00,
+    }
+}

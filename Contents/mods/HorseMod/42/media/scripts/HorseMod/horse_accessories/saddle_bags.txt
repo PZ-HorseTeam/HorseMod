@@ -1,0 +1,318 @@
+module HorseMod {
+    imports {
+        Base
+    }
+	/* INVISIBLE CONTAINER ITEM FOR ACCESS FROM THE HORSE */
+    item HorseSaddlebagsContainer {
+        DisplayCategory = Bag,
+        Hidden = true,
+        ItemType = base:container,
+        Tags = base:heavyitem,
+        Weight = 0,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_Crude,
+        StaticModel = HorseSaddlebagsInvis,
+        WorldStaticModel = HorseSaddlebagsInvis,
+    }
+    model HorseSaddlebagsInvis {
+        mesh = HorseMod/HorseSaddlebags,
+        static = true,
+        scale = 0,
+    }
+
+	/* CRUDE */
+    item HorseSaddlebags_Crude {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_Crude,
+        StaticModel = HorseSaddlebags_Crude,
+        WorldStaticModel = HorseSaddlebags_Crude,
+    }
+    model HorseSaddlebags_Crude {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_Crude,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+	/* COW: ANGUS */
+    /* PIG: BLACK */
+    item HorseSaddlebags_Black {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_Black,
+        StaticModel = HorseSaddlebags_Black,
+        WorldStaticModel = HorseSaddlebags_Black,
+    }
+    model HorseSaddlebags_Black {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_Black,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+	/* COW: HOLSTEIN */
+    item HorseSaddlebags_CowHolstein {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_CowHolstein,
+        StaticModel = HorseSaddlebags_CowHolstein,
+        WorldStaticModel = HorseSaddlebags_CowHolstein,
+    }
+    model HorseSaddlebags_CowHolstein {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_CowHolstein,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+	/* COW: SIMMENTAL */
+    item HorseSaddlebags_CowSimmental {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_CowSimmental,
+        StaticModel = HorseSaddlebags_CowSimmental,
+        WorldStaticModel = HorseSaddlebags_CowSimmental,
+    }
+    model HorseSaddlebags_CowSimmental {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_CowSimmental,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+	/* SHEEP LEATHER */
+    item HorseSaddlebags_White {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_White,
+        StaticModel = HorseSaddlebags_White,
+        WorldStaticModel = HorseSaddlebags_White,
+    }
+    model HorseSaddlebags_White {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_White,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* PIG: LANDRACE */
+    item HorseSaddlebags_Landrace {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_Landrace,
+        StaticModel = HorseSaddlebags_Landrace,
+        WorldStaticModel = HorseSaddlebags_Landrace,
+    }
+    model HorseSaddlebags_Landrace {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_Landrace,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+
+    /* HORSE: AMERICAN PAINT */
+    item HorseSaddlebags_AP {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_AP,
+        StaticModel = HorseSaddlebags_AP,
+        WorldStaticModel = HorseSaddlebags_AP,
+    }
+    model HorseSaddlebags_AP {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_AP,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* HORSE: AMERICAN PAINT OVERO */
+    item HorseSaddlebags_APHO {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_APHO,
+        StaticModel = HorseSaddlebags_APHO,
+        WorldStaticModel = HorseSaddlebags_APHO,
+    }
+    model HorseSaddlebags_APHO {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_APHO,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* HORSE: BLUE ROAN */
+    item HorseSaddlebags_AQHBR {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_AQHBR,
+        StaticModel = HorseSaddlebags_AQHBR,
+        WorldStaticModel = HorseSaddlebags_AQHBR,
+    }
+    model HorseSaddlebags_AQHBR {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_AQHBR,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* HORSE: AMERICAN QUARTER */
+    item HorseSaddlebags_AQHP {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_AQHP,
+        StaticModel = HorseSaddlebags_AQHP,
+        WorldStaticModel = HorseSaddlebags_AQHP,
+    }
+    model HorseSaddlebags_AQHP {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_AQHP,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* HORSE: FLEA-BITTEN GREY */
+    item HorseSaddlebags_FBG {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_FBG,
+        StaticModel = HorseSaddlebags_FBG,
+        WorldStaticModel = HorseSaddlebags_FBG,
+    }
+    model HorseSaddlebags_FBG {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_FBG,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* HORSE: APPALOOSA */
+    item HorseSaddlebags_GDA {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_GDA,
+        StaticModel = HorseSaddlebags_GDA,
+        WorldStaticModel = HorseSaddlebags_GDA,
+    }
+    model HorseSaddlebags_GDA {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_GDA,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* HORSE: SPOTTED APPALOOSA */
+    item HorseSaddlebags_LPA {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_LPA,
+        StaticModel = HorseSaddlebags_LPA,
+        WorldStaticModel = HorseSaddlebags_LPA,
+    }
+    model HorseSaddlebags_LPA {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_LPA,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* HORSE: THOROUGHBRED */
+    item HorseSaddlebags_T {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_T,
+        StaticModel = HorseSaddlebags_T,
+        WorldStaticModel = HorseSaddlebags_T,
+    }
+    model HorseSaddlebags_T {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_T,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+}
