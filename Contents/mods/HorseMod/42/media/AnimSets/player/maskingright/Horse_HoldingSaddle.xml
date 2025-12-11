@@ -3,13 +3,18 @@
     <m_Name>Horse_HoldingSaddle</m_Name>
     <m_Priority>10</m_Priority>
     <m_AnimName>Bob_CarrySaddle</m_AnimName>
-    <m_ConditionPriority>20</m_ConditionPriority>
-    <m_BlendTime>0.20</m_BlendTime>
+    <m_ConditionPriority>10</m_ConditionPriority>
+    <m_BlendTime>0.00</m_BlendTime>
     <m_SpeedScale>0.48</m_SpeedScale>
     <m_Conditions x_name="9db21722-c82c-4f57-8b3d-269b9f3ef46b">
         <m_Name>RightHandMask</m_Name>
         <m_Type>STRING</m_Type>
         <m_Value>Horse_HoldingSaddle</m_Value>
+    </m_Conditions>
+    <m_Conditions>
+        <m_Name>EquippingSaddle</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>false</m_Value>
     </m_Conditions>
     <m_SubStateBoneWeights>
         <boneName>Bip01</boneName>
@@ -17,11 +22,14 @@
     </m_SubStateBoneWeights>
     <m_SubStateBoneWeights>
         <boneName>Bip01_R_Clavicle</boneName>
+        <weight>1.00</weight>
     </m_SubStateBoneWeights>
     <m_SubStateBoneWeights>
         <boneName>Bip01_L_Clavicle</boneName>
+        <weight>1.00</weight>
     </m_SubStateBoneWeights>
     <m_SubStateBoneWeights>
         <boneName>Bip01_Prop1</boneName>
+        <weight>1.00</weight>
     </m_SubStateBoneWeights>
 </animNode>
