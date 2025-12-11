@@ -5,7 +5,7 @@ module HorseMod {
 
     item HorseManeStart {
         DisplayCategory = Accessory,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 0,
         Hidden = true,
         StaticModel = HorseMod.HorseManeStart,
@@ -14,7 +14,7 @@ module HorseMod {
 
     item HorseManeMid {
         DisplayCategory = Accessory,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 0,
         Hidden = true,
         StaticModel = HorseMod.HorseManeMid,
@@ -23,7 +23,7 @@ module HorseMod {
 
     item HorseManeEnd {
         DisplayCategory = Accessory,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 0,
         Hidden = true,
         StaticModel = HorseMod.HorseManeEnd,

@@ -1,7 +1,7 @@
 module HorseMod {
 	item PotHorseGlue {
         DisplayCategory = Food,
-        Type = Food,
+        ItemType = base:food,
         Weight = 3.0,
         Icon = Pot_Water,
         BadCold = true,
@@ -22,13 +22,13 @@ module HorseMod {
         // Proteins = 18.66,
         StaticModel = CookingPot_HorseGlueGround,
         WorldStaticModel = CookingPot_HorseGlueGround,
-        Tags = HasMetal,
+        Tags = base:HasMetal,
         SoundMap = DumpContents EmptyPot,
     }
 
     item PotForgedHorseGlue {
         DisplayCategory = Food,
-        Type = Food,
+        ItemType = base:food,
         Weight = 3.0,
         Icon = Pot_Forged_Pasta,
         BadCold = true,
@@ -49,7 +49,7 @@ module HorseMod {
         // Proteins = 18.66,
         StaticModel = CookingPotForged_HorseGlueGround,
         WorldStaticModel = CookingPotForged_HorseGlueGround,
-        Tags = HasMetal,
+        Tags = base:HasMetal,
         SoundMap = DumpContents EmptyPot,
     }
 

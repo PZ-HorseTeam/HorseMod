@@ -5,7 +5,7 @@ module HorseMod {
 
     craftRecipe horseSaddle {
         time = 600,
-        tags = AnySurfaceCraft,
+        tags = base:base:AnySurfaceCraft,
         skillRequired = Tailoring:6,
         AutoLearnAll = Tailoring:8,
         xpAward = Tailoring:40,
@@ -89,7 +89,7 @@ module HorseMod {
 
     craftRecipe horseSaddlebags {
         time = 200,
-        tags = AnySurfaceCraft,
+        tags = base:AnySurfaceCraft,
         skillRequired = Tailoring:6,
         AutoLearnAll = Tailoring:8,
         xpAward = Tailoring:40,
@@ -175,7 +175,7 @@ module HorseMod {
 
     craftRecipe horseReins {
         time = 200,
-        tags = AnySurfaceCraft,
+        tags = base:AnySurfaceCraft,
         skillRequired = Tailoring:4,
         AutoLearnAll = Tailoring:6,
         xpAward = Tailoring:40,

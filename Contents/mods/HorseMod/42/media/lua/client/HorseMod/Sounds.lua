@@ -75,7 +75,7 @@ local function isSquareRough(square)
     if floor and floor.getProperties then
         local props = floor:getProperties()
         if props then
-            local mat = props:Val("FootstepMaterial")
+            local mat = props:get("FootstepMaterial")
             if mat and roughMaterials[mat] then
                 return true
             end
@@ -89,7 +89,7 @@ local function isSquareRough(square)
             if obj then
                 local props = obj:getProperties()
                 if props then
-                    local mat = props:Val("FootstepMaterial")
+                    local mat = props:get("FootstepMaterial")
                     if mat and roughMaterials[mat] then
                         return true
                     end

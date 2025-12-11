@@ -1,15 +1,18 @@
 module HorseMod {
+    imports {
+        Base
+    }
     /* TODO: decide on a naming scheme: Horse_{part} or Horse{Part}? */
 
     item Horse_Head_Foal_AQHP {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = American Quarter Foal Head,
         Icon = head/Head_HorseFoal_AQHP,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAQHP,
         WorldStaticModel = HorseHeadAQHP,
     }
@@ -17,12 +20,12 @@ module HorseMod {
     item Horse_Head_Female_AQHP {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = American Quarter Mare Head,
         Icon = head/Head_HorseFemale_AQHP,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAQHP,
         WorldStaticModel = HorseHeadAQHP,
     }
@@ -30,12 +33,12 @@ module HorseMod {
     item Horse_Head_Male_AQHP {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = American Quarter Stallion Head,
         Icon = head/Head_HorseMale_AQHP,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAQHP,
         WorldStaticModel = HorseHeadAQHP,
     }
@@ -43,12 +46,12 @@ module HorseMod {
     item Horse_Head_Foal_AP {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = American Paint Foal Head,
         Icon = head/Head_HorseFoal_AP,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAP,
         WorldStaticModel = HorseHeadAP,
     }
@@ -56,12 +59,12 @@ module HorseMod {
     item Horse_Head_Female_AP {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = American Paint Mare Head,
         Icon = head/Head_HorseFemale_AP,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAP,
         WorldStaticModel = HorseHeadAP,
     }
@@ -69,12 +72,12 @@ module HorseMod {
     item Horse_Head_Male_AP {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = American Paint Stallion Head,
         Icon = head/Head_HorseMale_AP,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAP,
         WorldStaticModel = HorseHeadAP,
     }
@@ -82,12 +85,12 @@ module HorseMod {
     item Horse_Head_Foal_APHO {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = American Paint (Overo) Foal Head,
         Icon = head/Head_HorseFoal_APHO,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAPHO,
         WorldStaticModel = HorseHeadAPHO,
     }
@@ -95,12 +98,12 @@ module HorseMod {
     item Horse_Head_Female_APHO {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = American Paint (Overo) Mare Head,
         Icon = head/Head_HorseFemale_APHO,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAPHO,
         WorldStaticModel = HorseHeadAPHO,
     }
@@ -108,12 +111,12 @@ module HorseMod {
     item Horse_Head_Male_APHO {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = American Paint (Overo) Stallion Head,
         Icon = head/Head_HorseMale_APHO,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAPHO,
         WorldStaticModel = HorseHeadAPHO,
     }
@@ -121,12 +124,12 @@ module HorseMod {
     item Horse_Head_Foal_GDA {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Appaloosa Foal Head,
         Icon = head/Head_HorseFoal_GDA,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadGDA,
         WorldStaticModel = HorseHeadGDA,
     }
@@ -134,12 +137,12 @@ module HorseMod {
     item Horse_Head_Female_GDA {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Appaloosa Mare Head,
         Icon = head/Head_HorseFemale_GDA,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadGDA,
         WorldStaticModel = HorseHeadGDA,
     }
@@ -147,12 +150,12 @@ module HorseMod {
     item Horse_Head_Male_GDA {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Appaloosa Stallion Head,
         Icon = head/Head_HorseMale_GDA,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadGDA,
         WorldStaticModel = HorseHeadGDA,
     }
@@ -160,12 +163,12 @@ module HorseMod {
     item Horse_Head_Foal_T {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Thoroughbred Foal Head,
         Icon = head/Head_HorseFoal_T,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadT,
         WorldStaticModel = HorseHeadT,
     }
@@ -173,12 +176,12 @@ module HorseMod {
     item Horse_Head_Female_T {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Thoroughbred Mare Head,
         Icon = head/Head_HorseFemale_T,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadT,
         WorldStaticModel = HorseHeadT,
     }
@@ -186,12 +189,12 @@ module HorseMod {
     item Horse_Head_Male_T {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Thoroughbred Stallion Head,
         Icon = head/Head_HorseMale_T,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadT,
         WorldStaticModel = HorseHeadT,
     }
@@ -199,12 +202,12 @@ module HorseMod {
     item Horse_Head_Foal_AQHBR {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Blue Roan Foal Head,
         Icon = head/Head_HorseFoal_AQHBR,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAQHBR,
         WorldStaticModel = HorseHeadAQHBR,
     }
@@ -212,12 +215,12 @@ module HorseMod {
     item Horse_Head_Female_AQHBR {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Blue Roan Mare Head,
         Icon = head/Head_HorseFemale_AQHBR,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAQHBR,
         WorldStaticModel = HorseHeadAQHBR,
     }
@@ -225,12 +228,12 @@ module HorseMod {
     item Horse_Head_Male_AQHBR {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Blue Roan Stallion Head,
         Icon = head/Head_HorseMale_AQHBR,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadAQHBR,
         WorldStaticModel = HorseHeadAQHBR,
     }
@@ -238,12 +241,12 @@ module HorseMod {
     item Horse_Head_Foal_LPA {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Spotted Appaloosa Foal Head,
         Icon = head/Head_HorseFoal_LPA,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadLPA,
         WorldStaticModel = HorseHeadLPA,
     }
@@ -251,12 +254,12 @@ module HorseMod {
     item Horse_Head_Female_LPA {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Spotted Appaloosa Mare Head,
         Icon = head/Head_HorseFemale_LPA,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadLPA,
         WorldStaticModel = HorseHeadLPA,
     }
@@ -264,12 +267,12 @@ module HorseMod {
     item Horse_Head_Male_LPA {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Spotted Appaloosa Stallion Head,
         Icon = head/Head_HorseMale_LPA,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadLPA,
         WorldStaticModel = HorseHeadLPA,
     }
@@ -277,12 +280,12 @@ module HorseMod {
     item Horse_Head_Foal_FBG {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Flea-bitten Grey Foal Head,
         Icon = head/Head_HorseFoal_FBG,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadFBG,
         WorldStaticModel = HorseHeadFBG,
     }
@@ -290,12 +293,12 @@ module HorseMod {
     item Horse_Head_Female_FBG {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Flea-bitten Grey Mare Head,
         Icon = head/Head_HorseFemale_FBG,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadFBG,
         WorldStaticModel = HorseHeadFBG,
     }
@@ -303,12 +306,12 @@ module HorseMod {
     item Horse_Head_Male_FBG {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Flea-bitten Grey Stallion Head,
         Icon = head/Head_HorseMale_FBG,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
-        Tags = AnimalHead,
+        Tags = base:animalhead,
         StaticModel = HorseHeadFBG,
         WorldStaticModel = HorseHeadFBG,
     }
@@ -316,16 +319,16 @@ module HorseMod {
     item Horse_Skull {
         DisplayCategory = AnimalPart,
         Weight = 1.2,
-        Type = Normal,
+        ItemType = base:normal,
         DisplayName = Horse Skull,
         Icon = head/Skull_Horse,
-        Tags = AnimalSkull,
+        Tags = base:animalskull,
         StaticModel = HorseSkull,
         WorldStaticModel = HorseSkull,
     }
 
     item Horse_Steak {
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Horse Steak,
         DisplayCategory = Food,
         Weight = 0.5,
@@ -353,7 +356,7 @@ module HorseMod {
     }
 
     item Horse_Loin {
-        Type = Food,
+        ItemType = base:food,
         DisplayName = Horse Loin,
         DisplayCategory = Food,
         Weight = 0.5,
@@ -383,7 +386,7 @@ module HorseMod {
     item Horse_Hoof {
         DisplayCategory = AnimalPart,
         Weight = 0.5,
-        Type = Normal,
+        ItemType = base:normal,
         DisplayName = Horse Hoof,
         Icon = parts/HorseHoof,
 		StaticModel = HorseHoof,
@@ -394,9 +397,9 @@ module HorseMod {
         DisplayCategory = Junk,
         DisplayName = Horse Dung,
         Weight = 0.5,
-        Type = Food,
+        ItemType = base:food,
         CantEat = true,
-        Tags = isCompostable,
+        Tags = base:iscompostable,
         Icon = parts/DungHorse,
         WorldStaticModel = DungHorse,
         IsDung = true,

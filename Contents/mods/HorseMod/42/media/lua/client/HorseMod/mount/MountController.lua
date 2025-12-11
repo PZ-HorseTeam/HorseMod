@@ -74,7 +74,7 @@ local function getVegetationTypeAt(square)
     local props = square:getProperties()
 
     local tree = square:getTree()
-    local movementType = props:Val("Movement")
+    local movementType = props:get("Movement")
 
     if tree and tree:getSize() > 2 then
         return "tree"
@@ -105,7 +105,7 @@ local function squareCenterSolid(sq)
     for i = 1, #objects do
         local object = objects[i]
         local properties = object:getProperties()
-        if properties:Is("Solid") or properties:Is("SolidTrans") then
+        if properties:get("Solid") or properties:get("SolidTrans") then
             return true
         end
     end

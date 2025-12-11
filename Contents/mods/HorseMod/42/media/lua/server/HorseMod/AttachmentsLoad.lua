@@ -58,9 +58,9 @@ for fullType, itemDef in pairs(AttachmentData.items) do
         -- verify container behavior is compatible with this specific item
         local containerBehavior = attachmentDef.containerBehavior
         if containerBehavior then
-            local type = accessoryScript:getType()
             -- not a container
-            if type ~= Item.Type.Container then
+            accessoryScript:isItemType(ItemType.CONTAINER)
+            if not accessoryScript:isItemType(ItemType.CONTAINER) then
                 logError("Horse accessory ("..fullType..") cannot have a container behavior because it isn't of type 'Container'.")
                 attachmentDef.containerBehavior = nil -- remove the container behavior as it cannot work
                 break

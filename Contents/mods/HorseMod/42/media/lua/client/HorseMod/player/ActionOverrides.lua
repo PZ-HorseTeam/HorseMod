@@ -82,7 +82,7 @@ function ISInventoryTransferAction:isValid()
         return _originalIsValidTransfer(self)
     end
     if HorseRiding.getMountedHorse(self.character)
-      and self.srcContainer:getType() == "floor" then
+      and self.srcContainer:getItemType() == "floor" then
         return false
     end
     return _originalIsValidTransfer(self)

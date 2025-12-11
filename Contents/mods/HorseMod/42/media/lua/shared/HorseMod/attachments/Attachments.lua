@@ -2,6 +2,7 @@
 
 ---REQUIREMENTS
 local HorseUtils = require("HorseMod/Utils")
+local HorseRegistries = require("HorseMod/HorseRegistries")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local ContainerManager = require("HorseMod/attachments/ContainerManager")
 local rdm = newrandom()
@@ -106,7 +107,7 @@ end
 ---@nodiscard
 Attachments.getAvailableGear = function(player)
     local playerInventory = player:getInventory()
-    local accessories = playerInventory:getAllTag("HorseAccessory", ArrayList.new())
+    local accessories = playerInventory:getAllTag(HorseRegistries.HorseAccessory, ArrayList.new())
     return accessories
 end
 

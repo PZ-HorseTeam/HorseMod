@@ -1,61 +1,64 @@
 module HorseMod {
+    imports {
+        Base
+    }
     /* American Paint */
     item HorseLeather_AP_Full
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAP,
         WorldStaticModel = Leather_HorseAP,
-        Tags = LeatherFullLarge,
+        Tags = base:LeatherFullLarge,
         Tooltip = Tooltip_Leather_SofteningBeam,
     }
     item HorseLeather_AP_Fur
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAP,
         WorldStaticModel = Leather_HorseAP,
-        Tags = LeatherFurLarge,
+        Tags = base:LeatherFurLarge,
         Tooltip = Tooltip_Leather_TanninBarrel,
     }
     item HorseLeather_AP_Fur_Tan_Wet
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAP,
         WorldStaticModel = Leather_HorseAP,
-        Tags = LeatherFurWetLarge,
+        Tags = base:LeatherFurWetLarge,
         Tooltip = Tooltip_Leather_DryingRack,
     }
     item HorseLeather_AP_Fur_Tan
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAP,
         WorldStaticModel = Leather_HorseAP,
-        Tags = LeatherFurTannedLarge,
+        Tags = base:LeatherFurTannedLarge,
     }
     item HorseLeather_AP_Fur_Tan_Medium
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 3.0,
         Icon = leather/LeatherHide_HorseAP,
         WorldStaticModel = Leather_HorseAP_Medium,
-        Tags = LeatherFurTannedMedium,
+        Tags = base:LeatherFurTannedMedium,
     }
     item HorseLeather_AP_Fur_Tan_Small
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 1.0,
         Icon = leather/LeatherHide_HorseAP,
         WorldStaticModel = Leather_HorseAP_Small,
-        Tags = LeatherFurTannedSmall,
+        Tags = base:LeatherFurTannedSmall,
     }
     model Leather_HorseAP
     {
@@ -81,59 +84,59 @@ module HorseMod {
     item HorseLeather_APHO_Full
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAPHO,
         WorldStaticModel = Leather_HorseAPHO,
-        Tags = LeatherFullLarge,
+        Tags = base:LeatherFullLarge,
         Tooltip = Tooltip_Leather_SofteningBeam,
     }
     item HorseLeather_APHO_Fur
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAPHO,
         WorldStaticModel = Leather_HorseAPHO,
-        Tags = LeatherFurLarge,
+        Tags = base:LeatherFurLarge,
         Tooltip = Tooltip_Leather_TanninBarrel,
     }
     item HorseLeather_APHO_Fur_Tan_Wet
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAPHO,
         WorldStaticModel = Leather_HorseAPHO,
-        Tags = LeatherFurWetLarge,
+        Tags = base:LeatherFurWetLarge,
         Tooltip = Tooltip_Leather_DryingRack,
     }
     item HorseLeather_APHO_Fur_Tan
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAPHO,
         WorldStaticModel = Leather_HorseAPHO,
-        Tags = LeatherFurTannedLarge,
+        Tags = base:LeatherFurTannedLarge,
     }
     item HorseLeather_APHO_Fur_Tan_Medium
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 3.0,
         Icon = leather/LeatherHide_HorseAPHO,
         WorldStaticModel = Leather_HorseAPHO_Medium,
-        Tags = LeatherFurTannedMedium,
+        Tags = base:LeatherFurTannedMedium,
     }
     item HorseLeather_APHO_Fur_Tan_Small
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 1.0,
         Icon = leather/LeatherHide_HorseAPHO,
         WorldStaticModel = Leather_HorseAPHO_Small,
-        Tags = LeatherFurTannedSmall,
+        Tags = base:LeatherFurTannedSmall,
     }
     model Leather_HorseAPHO
     {
@@ -159,59 +162,59 @@ module HorseMod {
     item HorseLeather_AQHBR_Full
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAQHBR,
         WorldStaticModel = Leather_HorseAQHBR,
-        Tags = LeatherFullLarge,
+        Tags = base:LeatherFullLarge,
         Tooltip = Tooltip_Leather_SofteningBeam,
     }
     item HorseLeather_AQHBR_Fur
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAQHBR,
         WorldStaticModel = Leather_HorseAQHBR,
-        Tags = LeatherFurLarge,
+        Tags = base:LeatherFurLarge,
         Tooltip = Tooltip_Leather_TanninBarrel,
     }
     item HorseLeather_AQHBR_Fur_Tan_Wet
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAQHBR,
         WorldStaticModel = Leather_HorseAQHBR,
-        Tags = LeatherFurWetLarge,
+        Tags = base:LeatherFurWetLarge,
         Tooltip = Tooltip_Leather_DryingRack,
     }
     item HorseLeather_AQHBR_Fur_Tan
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAQHBR,
         WorldStaticModel = Leather_HorseAQHBR,
-        Tags = LeatherFurTannedLarge,
+        Tags = base:LeatherFurTannedLarge,
     }
     item HorseLeather_AQHBR_Fur_Tan_Medium
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 3.0,
         Icon = leather/LeatherHide_HorseAQHBR,
         WorldStaticModel = Leather_HorseAQHBR_Medium,
-        Tags = LeatherFurTannedMedium,
+        Tags = base:LeatherFurTannedMedium,
     }
     item HorseLeather_AQHBR_Fur_Tan_Small
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 1.0,
         Icon = leather/LeatherHide_HorseAQHBR,
         WorldStaticModel = Leather_HorseAQHBR_Small,
-        Tags = LeatherFurTannedSmall,
+        Tags = base:LeatherFurTannedSmall,
     }
     model Leather_HorseAQHBR
     {
@@ -237,59 +240,59 @@ module HorseMod {
     item HorseLeather_AQHP_Full
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAQHP,
         WorldStaticModel = Leather_HorseAQHP,
-        Tags = LeatherFullLarge,
+        Tags = base:LeatherFullLarge,
         Tooltip = Tooltip_Leather_SofteningBeam,
     }
     item HorseLeather_AQHP_Fur
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAQHP,
         WorldStaticModel = Leather_HorseAQHP,
-        Tags = LeatherFurLarge,
+        Tags = base:LeatherFurLarge,
         Tooltip = Tooltip_Leather_TanninBarrel,
     }
     item HorseLeather_AQHP_Fur_Tan_Wet
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAQHP,
         WorldStaticModel = Leather_HorseAQHP,
-        Tags = LeatherFurWetLarge,
+        Tags = base:LeatherFurWetLarge,
         Tooltip = Tooltip_Leather_DryingRack,
     }
     item HorseLeather_AQHP_Fur_Tan
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseAQHP,
         WorldStaticModel = Leather_HorseAQHP,
-        Tags = LeatherFurTannedLarge,
+        Tags = base:LeatherFurTannedLarge,
     }
     item HorseLeather_AQHP_Fur_Tan_Medium
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 3.0,
         Icon = leather/LeatherHide_HorseAQHP,
         WorldStaticModel = Leather_HorseAQHP_Medium,
-        Tags = LeatherFurTannedMedium,
+        Tags = base:LeatherFurTannedMedium,
     }
     item HorseLeather_AQHP_Fur_Tan_Small
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 1.0,
         Icon = leather/LeatherHide_HorseAQHP,
         WorldStaticModel = Leather_HorseAQHP_Small,
-        Tags = LeatherFurTannedSmall,
+        Tags = base:LeatherFurTannedSmall,
     }
     model Leather_HorseAQHP
     {
@@ -315,59 +318,59 @@ module HorseMod {
     item HorseLeather_FBG_Full
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseFBG,
         WorldStaticModel = Leather_HorseFBG,
-        Tags = LeatherFullLarge,
+        Tags = base:LeatherFullLarge,
         Tooltip = Tooltip_Leather_SofteningBeam,
     }
     item HorseLeather_FBG_Fur
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseFBG,
         WorldStaticModel = Leather_HorseFBG,
-        Tags = LeatherFurLarge,
+        Tags = base:LeatherFurLarge,
         Tooltip = Tooltip_Leather_TanninBarrel,
     }
     item HorseLeather_FBG_Fur_Tan_Wet
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseFBG,
         WorldStaticModel = Leather_HorseFBG,
-        Tags = LeatherFurWetLarge,
+        Tags = base:LeatherFurWetLarge,
         Tooltip = Tooltip_Leather_DryingRack,
     }
     item HorseLeather_FBG_Fur_Tan
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseFBG,
         WorldStaticModel = Leather_HorseFBG,
-        Tags = LeatherFurTannedLarge,
+        Tags = base:LeatherFurTannedLarge,
     }
     item HorseLeather_FBG_Fur_Tan_Medium
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 3.0,
         Icon = leather/LeatherHide_HorseFBG,
         WorldStaticModel = Leather_HorseFBG_Medium,
-        Tags = LeatherFurTannedMedium,
+        Tags = base:LeatherFurTannedMedium,
     }
     item HorseLeather_FBG_Fur_Tan_Small
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 1.0,
         Icon = leather/LeatherHide_HorseFBG,
         WorldStaticModel = Leather_HorseFBG_Small,
-        Tags = LeatherFurTannedSmall,
+        Tags = base:LeatherFurTannedSmall,
     }
     model Leather_HorseFBG
     {
@@ -393,59 +396,59 @@ module HorseMod {
     item HorseLeather_GDA_Full
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseGDA,
         WorldStaticModel = Leather_HorseGDA,
-        Tags = LeatherFullLarge,
+        Tags = base:LeatherFullLarge,
         Tooltip = Tooltip_Leather_SofteningBeam,
     }
     item HorseLeather_GDA_Fur
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseGDA,
         WorldStaticModel = Leather_HorseGDA,
-        Tags = LeatherFurLarge,
+        Tags = base:LeatherFurLarge,
         Tooltip = Tooltip_Leather_TanninBarrel,
     }
     item HorseLeather_GDA_Fur_Tan_Wet
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseGDA,
         WorldStaticModel = Leather_HorseGDA,
-        Tags = LeatherFurWetLarge,
+        Tags = base:LeatherFurWetLarge,
         Tooltip = Tooltip_Leather_DryingRack,
     }
     item HorseLeather_GDA_Fur_Tan
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseGDA,
         WorldStaticModel = Leather_HorseGDA,
-        Tags = LeatherFurTannedLarge,
+        Tags = base:LeatherFurTannedLarge,
     }
     item HorseLeather_GDA_Fur_Tan_Medium
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 3.0,
         Icon = leather/LeatherHide_HorseGDA,
         WorldStaticModel = Leather_HorseGDA_Medium,
-        Tags = LeatherFurTannedMedium,
+        Tags = base:LeatherFurTannedMedium,
     }
     item HorseLeather_GDA_Fur_Tan_Small
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 1.0,
         Icon = leather/LeatherHide_HorseGDA,
         WorldStaticModel = Leather_HorseGDA_Small,
-        Tags = LeatherFurTannedSmall,
+        Tags = base:LeatherFurTannedSmall,
     }
     model Leather_HorseGDA
     {
@@ -471,59 +474,59 @@ module HorseMod {
     item HorseLeather_LPA_Full
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseLPA,
         WorldStaticModel = Leather_HorseLPA,
-        Tags = LeatherFullLarge,
+        Tags = base:LeatherFullLarge,
         Tooltip = Tooltip_Leather_SofteningBeam,
     }
     item HorseLeather_LPA_Fur
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseLPA,
         WorldStaticModel = Leather_HorseLPA,
-        Tags = LeatherFurLarge,
+        Tags = base:LeatherFurLarge,
         Tooltip = Tooltip_Leather_TanninBarrel,
     }
     item HorseLeather_LPA_Fur_Tan_Wet
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseLPA,
         WorldStaticModel = Leather_HorseLPA,
-        Tags = LeatherFurWetLarge,
+        Tags = base:LeatherFurWetLarge,
         Tooltip = Tooltip_Leather_DryingRack,
     }
     item HorseLeather_LPA_Fur_Tan
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseLPA,
         WorldStaticModel = Leather_HorseLPA,
-        Tags = LeatherFurTannedLarge,
+        Tags = base:LeatherFurTannedLarge,
     }
     item HorseLeather_LPA_Fur_Tan_Medium
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 3.0,
         Icon = leather/LeatherHide_HorseLPA,
         WorldStaticModel = Leather_HorseLPA_Medium,
-        Tags = LeatherFurTannedMedium,
+        Tags = base:LeatherFurTannedMedium,
     }
     item HorseLeather_LPA_Fur_Tan_Small
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 1.0,
         Icon = leather/LeatherHide_HorseLPA,
         WorldStaticModel = Leather_HorseLPA_Small,
-        Tags = LeatherFurTannedSmall,
+        Tags = base:LeatherFurTannedSmall,
     }
     model Leather_HorseLPA
     {
@@ -549,59 +552,59 @@ module HorseMod {
     item HorseLeather_T_Full
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseT,
         WorldStaticModel = Leather_HorseT,
-        Tags = LeatherFullLarge,
+        Tags = base:LeatherFullLarge,
         Tooltip = Tooltip_Leather_SofteningBeam,
     }
     item HorseLeather_T_Fur
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseT,
         WorldStaticModel = Leather_HorseT,
-        Tags = LeatherFurLarge,
+        Tags = base:LeatherFurLarge,
         Tooltip = Tooltip_Leather_TanninBarrel,
     }
     item HorseLeather_T_Fur_Tan_Wet
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseT,
         WorldStaticModel = Leather_HorseT,
-        Tags = LeatherFurWetLarge,
+        Tags = base:LeatherFurWetLarge,
         Tooltip = Tooltip_Leather_DryingRack,
     }
     item HorseLeather_T_Fur_Tan
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 5.0,
         Icon = leather/LeatherHide_HorseT,
         WorldStaticModel = Leather_HorseT,
-        Tags = LeatherFurTannedLarge,
+        Tags = base:LeatherFurTannedLarge,
     }
     item HorseLeather_T_Fur_Tan_Medium
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 3.0,
         Icon = leather/LeatherHide_HorseT,
         WorldStaticModel = Leather_HorseT_Medium,
-        Tags = LeatherFurTannedMedium,
+        Tags = base:LeatherFurTannedMedium,
     }
     item HorseLeather_T_Fur_Tan_Small
     {
         DisplayCategory = Material,
-        Type = Normal,
+        ItemType = base:normal,
         Weight = 1.0,
         Icon = leather/LeatherHide_HorseT,
         WorldStaticModel = Leather_HorseT_Small,
-        Tags = LeatherFurTannedSmall,
+        Tags = base:LeatherFurTannedSmall,
     }
     model Leather_HorseT
     {

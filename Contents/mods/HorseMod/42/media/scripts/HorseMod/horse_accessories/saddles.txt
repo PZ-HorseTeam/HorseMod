@@ -1,9 +1,12 @@
 module HorseMod {
+    imports {
+        Base
+    }
 	/* CRUDE */
 	item HorseSaddle_Crude {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_Crude,
         StaticModel = HorseSaddle_Crude,
@@ -29,8 +32,8 @@ module HorseMod {
     /* PIG: BLACK */
 	item HorseSaddle_Black {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_Black,
         StaticModel = HorseSaddle_Black,
@@ -55,8 +58,8 @@ module HorseMod {
 	/* COW: HOLSTEIN */
 	item HorseSaddle_CowHolstein {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_CowHolstein,
         StaticModel = HorseSaddle_CowHolstein,
@@ -81,8 +84,8 @@ module HorseMod {
 	/* COW: SIMMENTAL */
 	item HorseSaddle_CowSimmental {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_CowSimmental,
         StaticModel = HorseSaddle_CowSimmental,
@@ -107,8 +110,8 @@ module HorseMod {
 	/* SHEEP LEATHER */
 	item HorseSaddle_White {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_White,
         StaticModel = HorseSaddle_White,
@@ -133,8 +136,8 @@ module HorseMod {
 	/* PIG: LANDRACE */
 	item HorseSaddle_Landrace {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_Landrace,
         StaticModel = HorseSaddle_Landrace,
@@ -161,8 +164,8 @@ module HorseMod {
     /* HORSE: AMERICAN PAINT */
 	item HorseSaddle_AP {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_AP,
         StaticModel = HorseSaddle_AP,
@@ -187,8 +190,8 @@ module HorseMod {
     /* HORSE: AMERICAN PAINT OVERO */
 	item HorseSaddle_APHO {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_APHO,
         StaticModel = HorseSaddle_APHO,
@@ -213,8 +216,8 @@ module HorseMod {
     /* HORSE: BLUE ROAN */
 	item HorseSaddle_AQHBR {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_AQHBR,
         StaticModel = HorseSaddle_AQHBR,
@@ -239,8 +242,8 @@ module HorseMod {
     /* HORSE: AMERICAN QUARTER */
 	item HorseSaddle_AQHP {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_AQHP,
         StaticModel = HorseSaddle_AQHP,
@@ -265,8 +268,8 @@ module HorseMod {
     /* HORSE: FLEA-BITTEN GREY */
 	item HorseSaddle_FBG {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_FBG,
         StaticModel = HorseSaddle_FBG,
@@ -291,8 +294,8 @@ module HorseMod {
     /* HORSE: APPALOOSA */
 	item HorseSaddle_GDA {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_GDA,
         StaticModel = HorseSaddle_GDA,
@@ -317,8 +320,8 @@ module HorseMod {
     /* HORSE: SPOTTED APPALOOSA */
 	item HorseSaddle_LPA {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_LPA,
         StaticModel = HorseSaddle_LPA,
@@ -343,8 +346,8 @@ module HorseMod {
     /* HORSE: THOROUGHBRED */
 	item HorseSaddle_T {
         DisplayCategory = Accessory,
-        Tags = HorseAccessory,
-        Type = Normal,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
         Weight = 5,
         Icon = accessories/HorseSaddle_T,
         StaticModel = HorseSaddle_T,
