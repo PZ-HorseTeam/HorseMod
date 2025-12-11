@@ -18,7 +18,7 @@ local HorseSounds = require("HorseMod/Sounds")
 ---@field saddle InventoryItem | nil
 ---
 ---@field lockDir IsoDirections
-local MountHorseAction = ISBaseTimedAction:derive("MountHorseAction")
+local MountHorseAction = ISBaseTimedAction:derive("HorseMod_MountHorseAction")
 
 
 ---@return boolean
@@ -103,6 +103,15 @@ function MountHorseAction:perform()
 end
 
 
+function MountHorseAction:getDuration()
+    if self.character:isTimedActionInstant() then
+        return 1
+    end
+
+    return -1
+end
+
+
 ---@param pair MountPair
 ---@param side "left" | "right"
 ---@param saddle InventoryItem | nil
@@ -118,13 +127,13 @@ function MountHorseAction:new(pair, side, saddle)
     o.stopOnWalk = true
     o.stopOnRun  = true
 
-    o.maxTime = -1
-    if o.character:isTimedActionInstant() then
-        o.maxTime = 1
-    end
+    o.maxTime = self:getDuration()
 
     return o
 end
+
+
+_G[MountHorseAction.Type] = MountHorseAction
 
 
 return MountHorseAction
