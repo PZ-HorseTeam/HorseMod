@@ -206,7 +206,7 @@ local function addAttachmentFlag()
     for i = 1, #sprites do
         local name = sprites[i]
         local spr = getSprite(name)
-        if spr then spr:getProperties():Set("CanAttachAnimal", "true") end
+        if spr then spr:getProperties():set("CanAttachAnimal", "true") end
     end
 end
 
