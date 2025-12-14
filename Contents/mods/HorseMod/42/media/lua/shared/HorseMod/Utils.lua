@@ -219,6 +219,7 @@ HorseUtils.pathfindToHorse = function(player, horse)
 end
 
 
+---@deprecated use Attachments.getAttachedItem instead
 ---@param animal IsoAnimal
 ---@param slot string
 ---@return InventoryItem | nil
@@ -233,7 +234,7 @@ HorseUtils.getAttachedItem = function(animal, slot)
     return nil
 end
 
-
+---@deprecated use Attachments.getSaddle instead
 ---@param animal IsoAnimal
 ---@return InventoryItem | nil
 ---@nodiscard
@@ -246,7 +247,7 @@ HorseUtils.getSaddle = function(animal)
     end
 end
 
-
+---@deprecated use Attachments.getReins instead
 ---@param animal IsoAnimal
 ---@return InventoryItem | nil
 ---@nodiscard

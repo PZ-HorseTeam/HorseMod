@@ -177,4 +177,30 @@ Attachments.unequipAllAttachments = function(animal, player)
     end
 end
 
+
+-----GENERIC ATTACHMENT HELPERS-----
+
+Attachments.getAttachedAndDef = function(animal, slot)
+    local item = Attachments.getAttachedItem(animal, slot)
+    if not item then return nil, nil end
+    return item, Attachments.getAttachmentDefinition(item:getFullType(), slot)
+end
+
+---Retrieve the reins attachment item and its definition from the horse.
+---@param animal IsoAnimal
+---@return InventoryItem?
+---@return AttachmentDefinition?
+Attachments.getReins = function(animal)
+    return Attachments.getAttachedAndDef(animal, "Reins")
+end
+
+---Retrieve the reins attachment item and its definition from the horse.
+---@param animal IsoAnimal
+---@return InventoryItem?
+---@return AttachmentDefinition?
+Attachments.getSaddle = function(animal)
+    return Attachments.getAttachedAndDef(animal, "Saddle")
+end
+
+
 return Attachments

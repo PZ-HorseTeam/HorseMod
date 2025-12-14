@@ -739,6 +739,19 @@ function MountController:setReinsState(mount, reinsItem, state)
     mount:resetEquippedHandsModels()
 end
 
+---@param input MountController.Input
+---@return "idle"|"walking"|"trot"|"gallop"
+function MountController:getMovementState(input)
+    if (input.movement.x == 0 and input.movement.y == 0) or self.currentSpeed <= 0 then
+        return "idle"
+    elseif input.run then
+        return "gallop"
+    elseif input.trot then
+        return "trot"
+    else
+        return "walking"
+    end
+end
 
 ---@param input MountController.Input
 function MountController:updateReins(input)
@@ -747,16 +760,7 @@ function MountController:updateReins(input)
     local reinsItem = Attachments.getAttachedItem(mount, "Reins")
     
     if reinsItem then
-        local movementState
-        if (input.movement.x == 0 and input.movement.y == 0) or self.currentSpeed <= 0 then
-            movementState = "idle"
-        elseif input.run then
-            movementState = "gallop"
-        elseif input.trot then
-            movementState = "trot"
-        else
-            movementState = "walking"
-        end
+        local movementState = self:getMovementState(input)
 
         self:setReinsState(mount, reinsItem, movementState)
 
