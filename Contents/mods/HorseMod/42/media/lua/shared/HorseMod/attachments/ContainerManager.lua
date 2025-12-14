@@ -4,15 +4,16 @@
 local HorseUtils = require("HorseMod/Utils")
 local HorseManager = require("HorseMod/HorseManager")
 
+---This class holds all the informations needed to find and identify a container attached to a horse, so the world item can be associated to the horse, and the horse can associate itself to the world item. The XYZ coordinates are stored to help find the world item again if needed and this data is added to the world item mod data.
 ---@class ContainerInformation
----@field x number
----@field y number
----@field z number
----@field fullType string
----@field itemID number
----@field worldItem IsoWorldInventoryObject?
----@field horseID number
----@field slot AttachmentSlot
+---@field x number X position of the world item used as container.
+---@field y number Y position...
+---@field z number Z position...
+---@field fullType string The full type of the inventory item used as container.
+---@field itemID number The ID of the inventory item used as container.
+---@field worldItem IsoWorldInventoryObject? Reference to the world item container, this gets automatically reassigned when the container is found again.
+---@field horseID number The ID of the horse the container is attached to.
+---@field slot AttachmentSlot The slot the container is attached to.
 
 ---Holds all the utility functions to manage containers on horses.
 local ContainerManager = {

@@ -21,10 +21,10 @@
 ---Time to equip, if `-1` the animation defines the end time.
 ---@field time number
 ---
----Animation to play during equip.
----@field anim table<string,string>?
+---Animation to play during equip, it must be an AnimNode variable condition.
+---@field anim {["Left"]: string?, ["Right"]: string?}?
 ---
----Whenever the item should be held in hand when equipping it.
+---Whenever the item should be held in hand when equipping it. Defaults to `false`.
 ---@field shouldHold boolean?
 
 

@@ -5,3 +5,4 @@ Modules
   :caption: Modules
 
   modules/AttachmentData
+  modules/ContainerManager

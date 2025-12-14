@@ -67,10 +67,11 @@ HorseUtils.isAdult = function(animal)
     return type == "stallion" or type == "mare"
 end
 
+---Persistent data structure for horse attachments and related information.
 ---@class HorseModData
----@field bySlot table<AttachmentSlot, string> Attachments of the horse.
+---@field bySlot table<AttachmentSlot, string> Attachments full types associated to their slots of the horse.
 ---@field maneColors table<AttachmentSlot, ManeColor|nil> Manes of the horse and their associated color.
----@field containers table<AttachmentSlot, ContainerInformation>
+---@field containers table<AttachmentSlot, ContainerInformation> Container data currently attached to the horse holding XYZ coordinates of the container and identification data.
 
 ---@param animal IsoAnimal
 ---@return HorseModData
