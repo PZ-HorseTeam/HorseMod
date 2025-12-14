@@ -41,7 +41,7 @@
 ---Unequip timed action behavior.
 ---@field unequipBehavior EquipBehavior?
 ---
----Model script ID to show when attached. [not fully tested]
+---Model script ID to show when attached. Suffixes are used to define different states (e.g. reins during movement).
 ---@field model string?
 ---
 ---Hide the item in menus. [not fully tested]

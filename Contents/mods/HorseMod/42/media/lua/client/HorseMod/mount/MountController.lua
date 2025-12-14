@@ -1,6 +1,7 @@
 local Stamina = require("HorseMod/Stamina")
 local HorseUtils = require("HorseMod/Utils")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
+local Attachments = require("HorseMod/attachments/Attachments")
 
 
 ---@param state "walk"|"gallop"
@@ -723,7 +724,7 @@ end
 function MountController:setReinsState(mount, reinsItem, state)
     -- retrieve the model of reins model
     local fullType = reinsItem:getFullType()
-    local attachmentDef = AttachmentData.items[fullType]
+    local attachmentDef = Attachments.getAttachmentDefinition(fullType, "Reins")
     local model = attachmentDef.model
     assert(model ~= nil, "No rein model for item " .. tostring(fullType))
 
@@ -741,8 +742,10 @@ end
 
 ---@param input MountController.Input
 function MountController:updateReins(input)
-    local reinsItem = HorseUtils.getReins(self.mount.pair.mount)
-
+    local mountPair = self.mount.pair
+    local mount = mountPair.mount
+    local reinsItem = Attachments.getAttachedItem(mount, "Reins")
+    
     if reinsItem then
         local movementState
         if (input.movement.x == 0 and input.movement.y == 0) or self.currentSpeed <= 0 then
@@ -755,10 +758,12 @@ function MountController:updateReins(input)
             movementState = "walking"
         end
 
-        self:setReinsState(self.mount.pair.mount, reinsItem, movementState)
-        self.mount.pair.rider:setVariable("HasReins", true)
+        self:setReinsState(mount, reinsItem, movementState)
+
+        ---@TODO these states should be defined when the rider mounts the horse
+        mountPair.rider:setVariable("HasReins", true)
     else
-        self.mount.pair.rider:setVariable("HasReins", false)
+        mountPair.rider:setVariable("HasReins", false)
     end
 end
 
