@@ -49,8 +49,6 @@ end
 
 
 
----@TODO set to update rate 8 for performance reasons
--- local UPDATE_RATE = 8
 local UPDATE_RATE = 10
 local TICK_AMOUNT = 0
 

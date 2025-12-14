@@ -39,9 +39,9 @@ function HorseRiding.canMountHorse(player, horse)
     elseif horse:isOnHook() then
         return false
     
-    -- running
-    elseif horse:getVariableBoolean("animalRunning") then
-        return false, "IsRunning"
+    -- -- running
+    -- elseif horse:getVariableBoolean("animalRunning") then
+    --     return false, "IsRunning"
     
     -- not an adult horse
     elseif not HorseUtils.isAdult(horse) then

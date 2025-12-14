@@ -10,7 +10,7 @@ local rdm = newrandom()
 ---Holds utility functions related to the attachment system of horses.
 local Attachments = {}
 
----Checks if the given item full type is an attachment, and optionally if it has a slot `_slot`.
+---Checks if the given item full type is an attachment, and optionally if it has a slot (`_slot`).
 ---@param fullType string
 ---@param _slot AttachmentSlot?
 ---@return boolean

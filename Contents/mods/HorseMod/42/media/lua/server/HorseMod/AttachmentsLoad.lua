@@ -1,22 +1,9 @@
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
+local HorseUtils = require("HorseMod/Utils")
 local AttachmentsCheck = {}
 
 local CONTAINER_ITEMS = AttachmentData.CONTAINER_ITEMS
 local scriptManager = getScriptManager()
-
----Utility function to retrieve fields of specific Java object instances.
----@param object any
----@param field string
-local function getJavaField(object, field)
-    local offset = string.len(field)
-    for i = 0, getNumClassFields(object) - 1 do
-        local m = getClassField(object, i)
-        if string.sub(tostring(m), -offset) == field then
-            return getClassFieldVal(object, m)
-        end
-    end
-    return nil -- no field found
-end
 
 local shouldError = false
 ---Used to log an error message for the HorseMod.
@@ -59,7 +46,6 @@ for fullType, itemDef in pairs(AttachmentData.items) do
         local containerBehavior = attachmentDef.containerBehavior
         if containerBehavior then
             -- not a container
-            accessoryScript:isItemType(ItemType.CONTAINER)
             if not accessoryScript:isItemType(ItemType.CONTAINER) then
                 logError("Horse accessory ("..fullType..") cannot have a container behavior because it isn't of type 'Container'.")
                 attachmentDef.containerBehavior = nil -- remove the container behavior as it cannot work
@@ -72,8 +58,8 @@ for fullType, itemDef in pairs(AttachmentData.items) do
 
             -- verify the capacity of the world item and accessory are the same
             local worldItemScript = scriptManager:getItem(worldItem)
-            local accessoryCapacity = getJavaField(accessoryScript, "Capacity")
-            local worldItemCapacity = getJavaField(worldItemScript, "Capacity")
+            local accessoryCapacity = HorseUtils.getJavaField(accessoryScript, "Capacity")
+            local worldItemCapacity = HorseUtils.getJavaField(worldItemScript, "Capacity")
             if accessoryCapacity ~= worldItemCapacity then
                 logError("Horse accessory ("..fullType..") doesn't have the same capacity as its 'worldItem' ("..worldItem..").")
                 -- not removing the behavior bcs it technically still can work I believe, and would possibly break player attachment containers

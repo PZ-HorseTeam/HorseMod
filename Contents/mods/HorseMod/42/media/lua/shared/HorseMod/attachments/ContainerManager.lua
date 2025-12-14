@@ -11,6 +11,8 @@ local HorseManager = require("HorseMod/HorseManager")
 ---@field fullType string
 ---@field itemID number
 ---@field worldItem IsoWorldInventoryObject?
+---@field horseID number
+---@field slot AttachmentSlot
 
 ---Holds all the utility functions to manage containers on horses.
 local ContainerManager = {
@@ -59,23 +61,51 @@ ContainerManager.registerContainerInformation = function(horse, slot, worldItem)
         -- init container info table
         ---@type ContainerInformation
         local containerInfo = {
+            -- world item position
+            worldItem = worldItem,
             x = worldItem:getX(),
             y = worldItem:getY(),
             z = worldItem:getZ(),
+
+            -- identification informations
             fullType = item:getFullType(),
             itemID = item:getID(),
-            worldItem = worldItem,
             horseID = horse:getAnimalID(),
+            slot = slot,
         }
 
         -- mark the world item as a horse mod container to more easily find later
-        local md = worldItem:getItem():getModData()
-        md.HorseMod = md.HorseMod or {}
-        md.HorseMod.isContainer = true
+        ContainerManager.setContainerData(worldItem, containerInfo)
 
         -- store in mod data
         containers[slot] = containerInfo
     end
+end
+
+---@param worldItem IsoWorldInventoryObject
+---@param containerInfo ContainerInformation
+ContainerManager.setContainerData = function(worldItem, containerInfo)
+    -- update container world item informations
+    containerInfo.worldItem = worldItem
+    containerInfo.x = worldItem:getX()
+    containerInfo.y = worldItem:getY()
+    containerInfo.z = worldItem:getZ()
+
+    -- save in mod data
+    local md = worldItem:getItem():getModData()
+    md.HorseMod = md.HorseMod or {}
+    md.HorseMod.container = containerInfo
+end
+
+---@param worldItem IsoWorldInventoryObject
+---@return ContainerInformation?
+ContainerManager.getHorseContainerData = function(worldItem)
+    local md_horse = worldItem:getItem():getModData().HorseMod
+    local container = md_horse and md_horse.container
+    if container then
+        return container
+    end
+    return nil
 end
 
 ---@param player IsoPlayer
@@ -151,7 +181,7 @@ end
 ContainerManager.isContainer = function(worldItem)
     local md = worldItem:getItem():getModData().HorseMod
     if md then
-        if md.isContainer then
+        if md.container then
             return true
         end
     end
@@ -207,6 +237,7 @@ ContainerManager.findContainer = function(horse, containerInfo, squareHorse)
         -- verify that this is still the same item reference
         local itemID = worldItem:getItem():getID()
         if itemID == itemIDSearched then
+            ContainerManager.setContainerData(worldItem, containerInfo)
             return worldItem
         end
 
@@ -228,6 +259,7 @@ ContainerManager.findContainer = function(horse, containerInfo, squareHorse)
     if sq then
         local worldItem = ContainerManager.findContainerOnSquare(sq, itemIDSearched)
         if worldItem then
+            ContainerManager.setContainerData(worldItem, containerInfo)
             return worldItem 
         end
     end
@@ -239,6 +271,7 @@ ContainerManager.findContainer = function(horse, containerInfo, squareHorse)
     if squareHorse then
         local worldItem = ContainerManager.findContainerOnSquare(squareHorse, itemIDSearched)
         if worldItem then
+            ContainerManager.setContainerData(worldItem, containerInfo)
             return worldItem 
         end
     end
@@ -272,7 +305,8 @@ end
 ---@param squareHorse IsoGridSquare
 ---@param containerInfo ContainerInformation
 ---@param worldItem IsoWorldInventoryObject
-ContainerManager.moveWorldItem = function(squareHorse, containerInfo, worldItem)
+---@param horse IsoAnimal
+ContainerManager.moveWorldItem = function(squareHorse, containerInfo, worldItem, horse)
     -- remove the item from its square
     local item = worldItem:getItem()
     worldItem:removeFromSquare()
@@ -282,17 +316,10 @@ ContainerManager.moveWorldItem = function(squareHorse, containerInfo, worldItem)
     local worldItem = squareHorse:AddWorldInventoryItem(item, 0, 0, 0):getWorldItem()
 
     -- mark the world item as a horse mod container to more easily find later
-    local md = worldItem:getItem():getModData()
-    md.HorseMod = md.HorseMod or {}
-    md.HorseMod.isContainer = true
-
-    -- update container world item informations
-    containerInfo.worldItem = worldItem
-    containerInfo.x = worldItem:getX()
-    containerInfo.y = worldItem:getY()
-    containerInfo.z = worldItem:getZ()
+    ContainerManager.setContainerData(worldItem, containerInfo)
 end
 
+---Track and update the position of the horse attachment containers.
 ---@param horse IsoAnimal
 ContainerManager.track = function(horse)
     local squareHorse = horse:getSquare()
@@ -310,14 +337,14 @@ ContainerManager.track = function(horse)
             -- update its position if the square is different
             local square = worldItem:getRenderSquare()
             if square and square ~= squareHorse then
-                ContainerManager.moveWorldItem(squareHorse, containerInfo, worldItem)
+                ContainerManager.moveWorldItem(squareHorse, containerInfo, worldItem, horse)
             end
 
         -- search for the container world item
         else
             local worldItemNew = ContainerManager.findContainer(horse, containerInfo, squareHorse)
             if worldItemNew then
-                ContainerManager.moveWorldItem(squareHorse, containerInfo, worldItemNew)
+                ContainerManager.moveWorldItem(squareHorse, containerInfo, worldItemNew, horse)
             end
         end
     until true end

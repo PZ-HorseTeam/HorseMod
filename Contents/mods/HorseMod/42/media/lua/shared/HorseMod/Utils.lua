@@ -11,6 +11,20 @@ local HORSE_TYPES = {
 
 local HorseUtils = {}
 
+---Utility function to retrieve fields of specific Java object instances.
+---@param object any
+---@param field string
+HorseUtils.getJavaField = function(object, field)
+    local offset = string.len(field)
+    for i = 0, getNumClassFields(object) - 1 do
+        local m = getClassField(object, i)
+        if string.sub(tostring(m), -offset) == field then
+            return getClassFieldVal(object, m)
+        end
+    end
+    return nil -- no field found
+end
+
 ---@param seconds number
 ---@param callback fun(...)
 ---@param ... any
@@ -170,7 +184,7 @@ local _attachmentSide = {
     ["mountRight"] = "Right",
 }
 ---Adds a timed action to the player to pathfind to the horse location.
----@TODO the pathfinding to go and equip/unequip the horse do not take into account whenever the square to path to has a direct line of sight on the horse
+---@TODO the pathfinding to go and equip/unequip the horse do not take into account whenever the square to path has a direct line of sight on the horse
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@return fun() unlock

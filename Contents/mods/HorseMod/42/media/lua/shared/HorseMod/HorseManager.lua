@@ -61,12 +61,24 @@ local function initialiseHorse(horse)
     horse:setVariable("geneCarryWeight", carry)
 end
 
+---Utility function to find a horse by its animal ID.
+---@param animalID number
+---@return IsoAnimal?
+HorseManager.findHorseByID = function(animalID)
+    local horses = HorseManager.horses
+    for i = 1, #horses do
+        local horse = horses[i]
+        if horse:getAnimalID() == animalID then
+            return horse
+        end
+    end
+    return nil
+end
+
 
 ---Detect newly created horses par parsing the moving objects array list of the player cell 
 
----@TODO set to update rate 8 for performance reasons
--- local UPDATE_RATE = 8
-local UPDATE_RATE = 1
+local UPDATE_RATE = 8
 local TICK_AMOUNT = 0
 
 ---Retrieve newly loaded horses in the world.

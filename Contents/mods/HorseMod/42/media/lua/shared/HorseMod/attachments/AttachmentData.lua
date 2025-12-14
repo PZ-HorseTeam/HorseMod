@@ -3,8 +3,10 @@
 ---Available attachment slots.
 ---@alias AttachmentSlot "Saddle"|"Saddlebags"|"Reins"|"ManeStart"|"ManeMid1"|"ManeMid2"|"ManeMid3"|"ManeMid4"|"ManeMid5"|"ManeEnd"|"Head"|"MountLeft"|"MountRight"
 
+
 ---Hex color code (#rrggbb).
 ---@alias HexColor string
+
 
 ---Table holding a RGB mane color.
 ---@class ManeColor
@@ -12,24 +14,51 @@
 ---@field g number
 ---@field b number
 
----Equip behavior to use during equip or unequip actions.
----@class EquipBehavior
----@field time number time to equip, if `-1` the animation defines the end time
----@field anim table<string,string>? animation to play during equip
----@field shouldHold boolean? whenever the item should be held in hand when equipping it
 
+---Equip behavior to use during equip or unequip timed actions for attachments.
+---@class EquipBehavior
+---
+---Time to equip, if `-1` the animation defines the end time.
+---@field time number
+---
+---Animation to play during equip.
+---@field anim table<string,string>?
+---
+---Whenever the item should be held in hand when equipping it.
+---@field shouldHold boolean?
+
+
+---Used to assign container behavior handling to an attachment.
 ---@class ContainerBehavior
+---
+---Full type of the item being used as the invisible container.
 ---@field worldItem string
+
 
 ---Defines an attachment item with its associated slots and extra data if needed.
 ---@class AttachmentDefinition
----@field equipBehavior EquipBehavior? Equip timed action behavior
----@field unequipBehavior EquipBehavior? Unequip timed action behavior
----@field model string? Model script ID to show when attached [not fully tested]
----@field hidden boolean? Hide the item in menus [not fully tested]
----@field containerBehavior ContainerBehavior? Container behavior.
+---
+---Unequip timed action behavior.
+---@field unequipBehavior EquipBehavior?
+---
+---Model script ID to show when attached. [not fully tested]
+---@field model string?
+---
+---Hide the item in menus. [not fully tested]
+---@field hidden boolean? 
+---
+---Container behavior component.
+---@field containerBehavior ContainerBehavior?
+---
+---Equip timed action behavior component.
+---@field equipBehavior EquipBehavior? 
+---
+---Whenever the player can reach from mount this attachment, always considered reachable by default. Notably used for containers.
+---@field notReachableFromMount boolean?
+
 
 ---@alias ItemDefinition table<AttachmentSlot, AttachmentDefinition>
+
 
 ---Stores the various attachment data which are required to work with attachments for horses.
 local AttachmentData = {
@@ -42,7 +71,7 @@ local AttachmentData = {
     CONTAINER_ITEMS = {},
 
     ---Default attachment definitions.
-    ---@type {[string]: ItemDefinition}
+    ---@type table<string, ItemDefinition>
     DEFAULT_ATTACHMENT_DEFS = {
         ---@type ItemDefinition
         SADDLE = {
