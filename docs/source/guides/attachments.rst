@@ -6,7 +6,7 @@ Creating a new slot
 -------------------
 Slots require the use of :lua:class:`HorseMod.SlotDefinition` to associated a slot name to a model attachment point on the horse model. You can also use multiple times the same attachment point if needed. Alternatively, extra properties can be set to have the attachment be a mane attachment.
 
-To add a new slot, add a new :lua:class:`HorseMod.SlotDefinition` entry to the :lua:obj:`HorseMod.attachments.AttachmentData.SLOTS_DEFINITION` table. Below is an example of adding a new slot called "Hat" attached to the "head" model attachment point on the horse model:
+To add a new slot, add a new :lua:class:`HorseMod.SlotDefinition` entry to the :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions` table. Below is an example of adding a new slot called "Hat" attached to the "head" model attachment point on the horse model:
 
 ::
 
@@ -16,7 +16,7 @@ To add a new slot, add a new :lua:class:`HorseMod.SlotDefinition` entry to the :
       modelAttachment = "head",
   })
 
-The slots are first defined in the table :lua:obj:`HorseMod.attachments.AttachmentData.SLOTS_DEFINITION`, which is then processed when the server Lua folder gets loaded to generate the various tables used by the attachment system. See `AttachmentsLoad <AttachmentsLoad_>`_ for more details on that process.
+The slots are first defined in the table :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions`, which is then processed when the server Lua folder gets loaded to generate the various tables used by the attachment system. See `AttachmentsLoad <AttachmentsLoad_>`_ for more details on that process.
 
 Defining a new attachment
 -------------------------
@@ -44,11 +44,11 @@ Below is an example usage:
 
 AttachmentsLoad
 ---------------
-The file `server/HorseMod/AttachmentsLoad.lua` is used to load slot definitions in :lua:obj:`HorseMod.attachments.AttachmentData.SLOTS_DEFINITION` and generate the various tables used by the attachment system from :lua:class:`HorseMod.SlotDefinition` entries:
+The file `server/HorseMod/AttachmentsLoad.lua` is used to load slot definitions in :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions` and generate the various tables used by the attachment system from :lua:class:`HorseMod.SlotDefinition` entries:
 
-* :lua:obj:`HorseMod.attachments.AttachmentData.SLOTS`
-* :lua:obj:`HorseMod.attachments.AttachmentData.MANE_SLOTS_SET`
-* :lua:obj:`HorseMod.attachments.AttachmentData.CONTAINER_ITEMS`
+* :lua:obj:`HorseMod.attachments.AttachmentData.slots`
+* :lua:obj:`HorseMod.attachments.AttachmentData.maneSlots`
+* :lua:obj:`HorseMod.attachments.AttachmentData.containerItems`
 
 It will also verify that the provided attachments are of the right format and log errors if not:
 

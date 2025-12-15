@@ -64,11 +64,12 @@ end
 ---@nodiscard
 Attachments.getAttachedItems = function(animal)
     local attached = {}
-    local slots = AttachmentData.SLOTS
-    local mane_slots_set = AttachmentData.MANE_SLOTS_SET
+    local slots = AttachmentData.slots
+    local maneSlots = AttachmentData.maneSlots
     for i = 1, #slots do
         local slot = slots[i]
-        if not mane_slots_set[slot] then
+        -- if not a mane, list it
+        if not maneSlots[slot] then
             local attachment = Attachments.getAttachedItem(animal, slot)
             if attachment then
                 table.insert(attached, {item=attachment, slot=slot})
@@ -140,7 +141,7 @@ end
 ---@param player IsoPlayer?
 Attachments.unequipAttachment = function(animal, slot, player)
     -- can't unequip mane items
-    if AttachmentData.MANE_SLOTS_SET[slot] then
+    if AttachmentData.maneSlots[slot] then
         return
     end
     local cur = Attachments.getAttachedItem(animal, slot)
@@ -151,7 +152,7 @@ Attachments.unequipAttachment = function(animal, slot, player)
     -- ignore if attachment should stay hidden from the player
     local attachmentDef = Attachments.getAttachmentDefinition(cur:getFullType(), slot)
     assert(attachmentDef ~= nil, "Called unequip on an item ("..cur:getFullType()..") that isn't an attachment or doesn't have an attachment definition for the slot "..slot..".")
-    if not attachmentDef or attachmentDef.hidden or AttachmentData.MANE_SLOTS_SET[slot] then
+    if not attachmentDef or attachmentDef.hidden or AttachmentData.maneSlots[slot] then
         return
     end
     

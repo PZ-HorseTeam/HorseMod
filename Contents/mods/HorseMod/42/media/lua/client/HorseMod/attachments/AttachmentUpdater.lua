@@ -32,7 +32,7 @@ AttachmentUpdater.reapplyFor = function(horse)
         end
 
         -- setup mane color
-        if AttachmentData.MANE_SLOTS_SET[slot] then
+        if ManeManager.isManeSlot(slot) then
             ManeManager.setupMane(horse, item, slot, modData)
         end
 

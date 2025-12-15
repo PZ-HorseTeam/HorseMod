@@ -70,22 +70,27 @@ end
 ---Persistent data structure for horse attachments and related information.
 ---@class HorseModData
 ---@field bySlot table<AttachmentSlot, string> Attachments full types associated to their slots of the horse.
----@field maneColors table<AttachmentSlot, ManeColor|nil> Manes of the horse and their associated color.
+---@field maneColors table<AttachmentSlot, ManeColor> Manes of the horse and their associated color.
 ---@field containers table<AttachmentSlot, ContainerInformation> Container data currently attached to the horse holding XYZ coordinates of the container and identification data.
 
+---Used to retrieve or create the mod data of a specific horse.
 ---@param animal IsoAnimal
 ---@return HorseModData
 HorseUtils.getModData = function(animal)
     local md = animal:getModData()
     local horseModData = md.horseModData
+
+    -- if no mod data, create default one
     if not horseModData then
+        local maneConfig, maneColors = HorseUtils.generateManeConfig(animal)
         md.horseModData = {
-            bySlot = HorseUtils.tableCopy(AttachmentData.MANE_SLOTS_SET),
-            maneColors = {},
+            bySlot = maneConfig, -- default mane config
+            maneColors = maneColors,
             containers = {},
         } --[[@as HorseModData]]
         horseModData = md.horseModData
     end
+
     return horseModData
 end
 
@@ -93,6 +98,11 @@ end
 ---@return integer
 HorseUtils.getHorseID = function(horse)
     return horse:getAnimalID()
+end
+
+HorseUtils.getBreedName = function(horse)
+    local breed = horse:getBreed()
+    return breed and breed:getName() or "_default"
 end
 
 ---@param horse IsoAnimal
