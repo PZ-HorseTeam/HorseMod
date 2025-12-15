@@ -10,15 +10,20 @@ local ContainerManager = require("HorseMod/attachments/ContainerManager")
 local ISHorseUnequipGear = ISHorseEquipGear:derive("HorseMod_ISHorseUnequipGear")
 
 function ISHorseUnequipGear:complete()
-    -- remove old accessory from slot and give to player or drop
-    Attachments.setAttachedItem(self.horse, self.slot, nil)
+    local horse = self.horse
+    local character = self.character
+    local accessory = self.accessory
+    local slot = self.slot
 
-    Attachments.giveBackToPlayerOrDrop(self.character, self.horse, self.accessory)
+    -- remove old accessory from slot and give to player or drop
+    Attachments.setAttachedItem(horse, slot, nil)
+
+    Actions.addOrDropItem(character, accessory)
     
     -- remove container
     local containerBehavior = self.attachmentDef.containerBehavior
     if containerBehavior then
-        ContainerManager.removeContainer(self.character, self.horse, self.slot, self.accessory)
+        ContainerManager.removeContainer(character, horse, slot, accessory)
     end
 
     return true

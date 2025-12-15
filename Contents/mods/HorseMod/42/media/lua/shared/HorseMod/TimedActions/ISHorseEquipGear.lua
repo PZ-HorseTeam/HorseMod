@@ -72,10 +72,6 @@ function ISHorseEquipGear:complete()
     sendRemoveItemFromContainer(characterInventory, self.accessory)
     sendEquip(self.character)
 
-    local horseInventory = self.horse:getInventory()
-    horseInventory:AddItem(self.accessory)
-    sendAddItemToContainer(horseInventory, self.accessory)
-
     -- init container
     local containerBehavior = self.attachmentDef.containerBehavior
     if containerBehavior then
@@ -87,6 +83,11 @@ function ISHorseEquipGear:complete()
             self.accessory
         )
     end
+
+    -- add the item to the horse inventory
+    local horseInventory = self.horse:getInventory()
+    horseInventory:AddItem(self.accessory)
+    sendAddItemToContainer(horseInventory, self.accessory)
 
     -- set new accessory
     Attachments.setAttachedItem(self.horse, self.slot, self.accessory)

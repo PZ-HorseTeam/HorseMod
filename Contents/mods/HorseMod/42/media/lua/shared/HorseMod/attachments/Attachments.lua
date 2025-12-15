@@ -87,7 +87,7 @@ end
 Attachments.setAttachedItem = function(animal, slot, item)
     ---@diagnostic disable-next-line
     animal:setAttachedItem(slot, item)
-    sendAttachedItem(animal, slot, item)
+    sendAttachedItem(animal, slot, item) ---@diagnostic disable-line
 
     local modData = HorseUtils.getModData(animal)
     modData.bySlot[slot] = item and item:getFullType()
@@ -101,11 +101,16 @@ Attachments.removeAttachedItem = function(animal, item)
     if attachedItems then
         local slot = attachedItems:getLocation(item) --[[@as AttachmentSlot]]
         attachedItems:remove(item)
-        sendAttachedItem(animal, slot, nil)
+        sendAttachedItem(animal, slot, nil) ---@diagnostic disable-line
         local modData = HorseUtils.getModData(animal)
         modData.bySlot[slot] = nil
         animal:transmitModData()
     end
+end
+
+Attachments.predicateHorseAccessory = function(item)
+    local fullType = item:getFullType()
+    return AttachmentData.items[fullType] ~= nil
 end
 
 ---Retrieve every available attachments in the player inventory.
@@ -114,7 +119,8 @@ end
 ---@nodiscard
 Attachments.getAvailableGear = function(player)
     local playerInventory = player:getInventory()
-    local accessories = playerInventory:getAllTag(HorseRegistries.HorseAccessory, ArrayList.new())
+    -- local accessories = playerInventory:getAllTag(HorseRegistries.HorseAccessory, ArrayList.new())
+    local accessories = playerInventory:getAllEvalRecurse(Attachments.predicateHorseAccessory)
     return accessories
 end
 
@@ -123,20 +129,33 @@ end
 ---@param horse IsoAnimal
 ---@param item InventoryItem
 Attachments.giveBackToPlayerOrDrop = function(player, horse, item)
-    -- put in player inventory
+    -- put in player inventory or drop on ground
     if player then
-        -- was this meant to check if the player has space?
-        -- the old code looked like it might have intended to, but it didn't work...
-        local inventory = player:getInventory()
-        inventory:addItem(item)
-        sendAddItemToContainer(inventory, item)
+        Actions.addOrDropItem(player, item)
+        return
     end
 
-    -- place on the square at random offsets
-    horse:getSquare():AddWorldInventoryItem(
+    -- the item should be dropped on the ground at random offsets to not have all the items stacked at the same coordinates
+    local x, y, z = horse:getX(), horse:getY(), horse:getZ()
+    local xr, yr = rdm:random(-1, 1), rdm:random(-1, 1)
+    x, y = x + xr, y + yr
+
+    -- try to retrieve the bottom square in case the attachments fall of a ledge for example
+    -- this should also work if the horse is flying (dying in the air somehow)
+    local square = HorseUtils.getBottom(x, y, z)
+    
+    ---@FIXME the logic behind retrieve the square could be flawed and drop the item in an invalid location
+    ---This check serves as a fallback to avoid attachments disappearing, but a better solution should be found.
+    if not square then
+        getPlayer():getInventory():AddItem(item)
+        return
+    end
+
+    -- place on the square at the random offsets
+    square:AddWorldInventoryItem(
         item,
-        rdm:random(0, 1),
-        rdm:random(0, 1),
+        x - math.floor(x),
+        y - math.floor(y),
         0.0,
         true
     )

@@ -100,6 +100,8 @@ HorseUtils.getHorseID = function(horse)
     return horse:getAnimalID()
 end
 
+---@param horse IsoAnimal
+---@return string
 HorseUtils.getBreedName = function(horse)
     local breed = horse:getBreed()
     return breed and breed:getName() or "_default"
@@ -366,6 +368,24 @@ HorseUtils.getAnimationFromDebugString = function(debugString, matchString)
         searchStart = weightStart + 1
     end
     return nil
+end
+
+---Gets the lowest square with a floor under the given coordinates.
+---@param x number
+---@param y number
+---@param z number
+---@return IsoGridSquare?
+HorseUtils.getBottom = function(x,y,z)
+    local square = getSquare(x,y,z)
+    local lastValidSquare = square ~= nil and square or nil
+    while square and not square:getFloor() do
+        z = z - 1
+        square = getSquare(x,y,z)
+        lastValidSquare = square ~= nil and square or nil
+        if z < 32 then break end -- prevent infinite loop
+    end
+
+    return lastValidSquare
 end
 
 return HorseUtils
