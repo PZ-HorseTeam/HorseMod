@@ -1,6 +1,4 @@
-local HorseManager = require("HorseMod/HorseManager")
 local AnimationVariables = require("HorseMod/AnimationVariables")
-
 
 ---@namespace HorseMod
 
@@ -8,12 +6,19 @@ local AnimationVariables = require("HorseMod/AnimationVariables")
 local Stamina = {}
 
 -- Tunables (percent points per second)
-Stamina.MAX            = 100
-Stamina.DRAIN_RUN      = 4      -- while galloping
-Stamina.REGEN_TROT     = 1.5     -- moving w/ HorseTrot true
-Stamina.REGEN_WALK     = 3.0     -- moving but not running/trotting
-Stamina.REGEN_IDLE     = 6.0     -- standing still
+Stamina.MAX = 100
 Stamina.MIN_RUN_PERCENT = 0.15
+
+Stamina.StaminaChange = {
+    -- while galloping
+    RUN = -4,
+    -- moving w/ HorseTrot true
+    TROT = 1.5,
+    -- moving but not running/trotting
+    WALK = 3.0,
+    -- standing still
+    IDLE = 6.0
+}
 
 
 ---@param x number
@@ -115,27 +120,9 @@ function Stamina.shouldRun(horse, input, moving)
             runAllowed = true
         end
     end
+
     return runAllowed
 end
-
-
----@class StaminaSystem : System
-local StaminaSystem = {}
-
-
-function StaminaSystem:update(horses, delta)
-    for i = 1, #horses do
-        local horse = horses[i]
-        -- TODO: exclude mounted horses
-
-        local regenRate = horse:isAnimalMoving() and Stamina.REGEN_WALK or Stamina.REGEN_IDLE
-        -- TODO: it's unideal that we transmit the stamina of horses constantly
-        Stamina.modify(horse, regenRate * delta, true)
-    end
-end
-
-
-table.insert(HorseManager.systems, StaminaSystem)
 
 
 return Stamina

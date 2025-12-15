@@ -98,6 +98,7 @@ function MountHorseAction:complete()
     -- HACK: we can't require this at file load because it is in the client dir
     --  this one definitely needs to be fixed but it requires tearing up half the mod
     require("HorseMod/Riding").createMountFromPair(self.pair)
+    require("HorseMod/Mounts").addMount(self.character, self.horse)
     return true
 end
 

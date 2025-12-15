@@ -697,28 +697,6 @@ function MountController:updateSpeed(input, deltaTime)
     end
 end
 
-
----@param input MountController.Input
----@param deltaTime number
-function MountController:updateStamina(input, deltaTime)
-    local staminaChange = 0.0
-
-    -- Drain / regen
-    if input.movement.x ~= 0 or input.movement.y ~= 0 then
-        if input.run then
-            staminaChange = -Stamina.DRAIN_RUN
-        elseif self.mount.pair.mount:getVariableBoolean(AnimationVariables.TROT) == true then
-            staminaChange = Stamina.REGEN_TROT
-        else
-            staminaChange = Stamina.REGEN_WALK
-        end
-    else
-        staminaChange = Stamina.REGEN_IDLE
-    end
-
-    Stamina.modify(self.mount.pair.mount, staminaChange * deltaTime, true)
-end
-
 ---@param mount IsoAnimal
 ---@param reinsItem InventoryItem
 ---@param state string
@@ -794,7 +772,6 @@ function MountController:update(input)
         input.run = true
     end
 
-    self:updateStamina(input, deltaTime)
     self:turn(input, deltaTime)
     self:updateSpeed(input, deltaTime)
     self:updateReins(input)
