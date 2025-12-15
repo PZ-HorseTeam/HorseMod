@@ -69,9 +69,10 @@ function ISHorseEquipGear:complete()
     local characterInventory = self.character:getInventory()
     characterInventory:Remove(self.accessory)
     sendRemoveItemFromContainer(characterInventory, self.accessory)
+    sendEquip(self.character)
 
     local horseInventory = self.horse:getInventory()
-    characterInventory:AddItem(self.accessory)
+    horseInventory:AddItem(self.accessory)
     sendAddItemToContainer(horseInventory, self.accessory)
 
     -- init container
