@@ -4,24 +4,27 @@
 local HorseUtils = require("HorseMod/Utils")
 local HorseManager = require("HorseMod/HorseManager")
 
+---This class holds all the informations needed to find and identify a container attached to a horse, so the world item can be associated to the horse, and the horse can associate itself to the world item. The XYZ coordinates are stored to help find the world item again if needed and this data is added to the world item mod data.
 ---@class ContainerInformation
----@field x number
----@field y number
----@field z number
----@field fullType string
----@field itemID number
----@field worldItem IsoWorldInventoryObject?
----@field horseID number
----@field slot AttachmentSlot
+---@field x number X position of the world item used as container.
+---@field y number Y position...
+---@field z number Z position...
+---@field fullType string The full type of the inventory item used as container.
+---@field itemID number The ID of the inventory item used as container.
+---@field worldItem IsoWorldInventoryObject? Reference to the world item container, this gets automatically reassigned when the container is found again.
+---@field horseID number The ID of the horse the container is attached to.
+---@field slot AttachmentSlot The slot the container is attached to.
 
 ---Holds all the utility functions to manage containers on horses.
 local ContainerManager = {
-    ---Containers that were found as horse containers
+    ---Lookup table of containers that were found as horse containers but didn't manage to directly link to a horse (e.g. horse was out of loaded area). The table maps itemID to world item reference.
     ---@type table<number, IsoWorldInventoryObject>
     ORPHAN_CONTAINERS = {},
 }
 local ORPHAN_CONTAINERS = ContainerManager.ORPHAN_CONTAINERS
 
+---Refresh the player inventories to reflect changes in containers.
+---@param player IsoPlayer
 local function refreshInventories(player)
     local pdata = getPlayerData(player:getPlayerNum())
     ---@diagnostic disable-next-line
@@ -44,6 +47,7 @@ ContainerManager.transferAll = function(player, srcContainer, destContainer)
     end
 end
 
+---Registers or unregisters the container information for the horse attachment on the specified slot. If `worldItem` is nil, then the container information is removed, else it is created.
 ---@param horse IsoAnimal
 ---@param slot AttachmentSlot
 ---@param worldItem IsoWorldInventoryObject?
@@ -82,6 +86,7 @@ ContainerManager.registerContainerInformation = function(horse, slot, worldItem)
     end
 end
 
+---Updates the mod data of the world item to store the container information, and update the position and item reference to track the container.
 ---@param worldItem IsoWorldInventoryObject
 ---@param containerInfo ContainerInformation
 ContainerManager.setContainerData = function(worldItem, containerInfo)
@@ -97,6 +102,7 @@ ContainerManager.setContainerData = function(worldItem, containerInfo)
     md.HorseMod.container = containerInfo
 end
 
+---Retrieve possible container information from the world item mod data. If it isn't a horse container, then nil should be returned.
 ---@param worldItem IsoWorldInventoryObject
 ---@return ContainerInformation?
 ContainerManager.getHorseContainerData = function(worldItem)
@@ -108,6 +114,7 @@ ContainerManager.getHorseContainerData = function(worldItem)
     return nil
 end
 
+---Creates and initialize an invisible world container for the horse attachment. Every items from the `accessory` container are transfered to the invisible container, and the container information is registered to the horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@param slot AttachmentSlot
@@ -140,6 +147,7 @@ ContainerManager.initContainer = function(player, horse, slot, containerBehavior
     ContainerManager.registerContainerInformation(horse, slot, worldItem)
 end
 
+---Transfer all items from the invisible world container back to the accessory container, then delete the world container and unregister it from the horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@param slot AttachmentSlot
@@ -176,12 +184,14 @@ ContainerManager.removeContainer = function(player, horse, slot, accessory)
     ContainerManager.registerContainerInformation(horse, slot, nil)
 end
 
+---Verify if the world item is a horse attachment container.
 ---@param worldItem IsoWorldInventoryObject
 ---@return boolean
+---@nodiscard
 ContainerManager.isContainer = function(worldItem)
-    local md = worldItem:getItem():getModData().HorseMod
-    if md then
-        if md.container then
+    local md_Horse = worldItem:getItem():getModData().HorseMod
+    if md_Horse then
+        if md_Horse.container then
             return true
         end
     end

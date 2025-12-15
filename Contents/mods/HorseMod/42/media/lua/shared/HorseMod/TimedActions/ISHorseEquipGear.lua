@@ -2,9 +2,9 @@
 
 ---REQUIREMENTS
 local Attachments = require("HorseMod/attachments/Attachments")
-local HorseUtils = require("HorseMod/Utils")
 local ContainerManager = require("HorseMod/attachments/ContainerManager")
 
+---Timed action for equipping gear on a horse.
 ---@class ISHorseEquipGear : ISBaseTimedAction
 ---@field horse IsoAnimal
 ---@field accessory InventoryItem
@@ -12,8 +12,8 @@ local ContainerManager = require("HorseMod/attachments/ContainerManager")
 ---@field equipBehavior EquipBehavior
 ---@field slot AttachmentSlot
 ---@field side string
----@field unlockPerform fun()?
----@field unlockStop fun()?
+---@field unlockPerform fun()? Should unlock after performing the action ?
+---@field unlockStop fun()? Unlock function when force stopping the action, if :lua:obj:`HorseMod.ISHorseEquipGear.unlockPerform` is not provided.
 local ISHorseEquipGear = ISBaseTimedAction:derive("ISHorseEquipGear")
 
 ---@return boolean
@@ -55,11 +55,6 @@ function ISHorseEquipGear:stop()
     ISBaseTimedAction.stop(self)
 end
 
-function ISHorseEquipGear:updateModData(horse, slot, ft, gr)
-    local modData = HorseUtils.getModData(horse)
-    modData.bySlot[slot] = ft
-end
-
 function ISHorseEquipGear:perform()
     local horse = self.horse
     local accessory = self.accessory
@@ -79,7 +74,6 @@ function ISHorseEquipGear:perform()
 
     -- set new accessory
     Attachments.setAttachedItem(horse, slot, accessory)
-    self:updateModData(horse, slot, accessory:getFullType(), nil)
 
     if self.unlockPerform then
         self.unlockPerform()
@@ -92,8 +86,8 @@ end
 ---@param accessory InventoryItem
 ---@param slot AttachmentSlot
 ---@param side string
----@param unlockPerform fun()? should unlock after performing the action
----@param unlockStop fun()? unlock function when force stop the action, if unlockPerform is not provided
+---@param unlockPerform fun()?
+---@param unlockStop fun()?
 ---@return ISHorseEquipGear
 ---@nodiscard
 function ISHorseEquipGear:new(character, horse, accessory, slot, side, unlockPerform, unlockStop)

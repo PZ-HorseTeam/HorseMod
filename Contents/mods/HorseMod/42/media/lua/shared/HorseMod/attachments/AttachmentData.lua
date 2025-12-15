@@ -4,6 +4,19 @@
 ---@alias AttachmentSlot "Saddle"|"Saddlebags"|"Reins"|"ManeStart"|"ManeMid1"|"ManeMid2"|"ManeMid3"|"ManeMid4"|"ManeMid5"|"ManeEnd"|"Head"|"MountLeft"|"MountRight"
 
 
+---Used to define a new attachment slot.
+---@class SlotDefinition
+---
+---The model `attachment point <https://pzwiki.net/wiki/Attachment_(scripts)>`_.
+---@field modelAttachment string
+---
+---Whenever this slot is a mane slot. Mane slots are mostly hidden from the player in menus.
+---@field isMane boolean?
+---
+---Default mane item full type this slot will spawn with upon horse creation.
+---@field defaultMane string?
+
+
 ---Hex color code (#rrggbb).
 ---@alias HexColor string
 
@@ -21,10 +34,10 @@
 ---Time to equip, if `-1` the animation defines the end time.
 ---@field time number
 ---
----Animation to play during equip.
----@field anim table<string,string>?
+---Animation to play during equip, it must be an AnimNode variable condition.
+---@field anim {["Left"]: string?, ["Right"]: string?}?
 ---
----Whenever the item should be held in hand when equipping it.
+---Whenever the item should be held in hand when equipping it. Defaults to `false`.
 ---@field shouldHold boolean?
 
 
@@ -57,6 +70,7 @@
 ---@field notReachableFromMount boolean?
 
 
+---A slots configuration for an InventoryItem full type holding the various configurations the item can take on different slots.
 ---@alias ItemDefinition table<AttachmentSlot, AttachmentDefinition>
 
 
@@ -67,12 +81,14 @@ local AttachmentData = {
     items = {},
 
     ---Holds the unique full types of world items for container behaviors.
+    ---Automatically generated in `server/HorseMod/AttachmentsLoad.lua` from :lua:obj:`HorseMod.ContainerBehavior.worldItem`.
     ---@type table<string, true>
     CONTAINER_ITEMS = {},
 
     ---Default attachment definitions.
     ---@type table<string, ItemDefinition>
     DEFAULT_ATTACHMENT_DEFS = {
+        ---Default saddle attachment definition.
         ---@type ItemDefinition
         SADDLE = {
             ["Saddle"] = {
@@ -86,6 +102,8 @@ local AttachmentData = {
                 },
             },
         },
+
+        ---Default saddlebags attachment definition.
         ---@type ItemDefinition
         SADDLEBAGS = {
             ["Saddlebags"] = {
@@ -97,7 +115,7 @@ local AttachmentData = {
     },
 
     ---Sets attachment model points and mane properties for attachment slots.
-    ---@type table<AttachmentSlot, {modelAttachment: string, isMane: boolean?, defaultMane: string?}>
+    ---@type table<AttachmentSlot, SlotDefinition>
     SLOTS_DEFINITION = {
         ---ACCESSORIES
         ["Saddle"] = {modelAttachment="saddle"},
@@ -141,12 +159,12 @@ local AttachmentData = {
     },
 
     ---Every available attachment slots. 
-    ---Automatically generated in `server/HorseMod/AttachmentsLoad.lua` from `SLOTS_DEFINITION`.
+    ---Automatically generated in `server/HorseMod/AttachmentsLoad.lua` from :lua:obj:`HorseMod.attachments.AttachmentData.SLOTS_DEFINITION`.
     ---@type AttachmentSlot[]
     SLOTS = {},
 
     ---Mane slots associated to their default mane items.
-    ---Automatically generated in `server/HorseMod/AttachmentsLoad.lua` from `SLOTS_DEFINITION`.
+    ---Automatically generated in `server/HorseMod/AttachmentsLoad.lua` from :lua:obj:`HorseMod.attachments.AttachmentData.SLOTS_DEFINITION`.
     ---@type table<AttachmentSlot, string>
     MANE_SLOTS_SET = {},
 
@@ -178,6 +196,7 @@ local DEFAULT_ATTACHMENT_DEFS = AttachmentData.DEFAULT_ATTACHMENT_DEFS
 
 --- Data holding attachment informations
 
+---@type table<string, ItemDefinition>
 AttachmentData.items = {
     -- saddles
         -- vanilla animals
@@ -223,23 +242,47 @@ AttachmentData.items = {
 
     -- manes
     ["HorseMod.HorseManeStart"] = { ["ManeStart"] = {hidden = true} },
-    ["HorseMod.HorseManeMid"]   = { ["ManeMid1"] = {hidden = true} },
+    ["HorseMod.HorseManeMid"]   = {
+        ["ManeMid1"] = {hidden = true},
+        ["ManeMid2"] = {hidden = true},
+        ["ManeMid3"] = {hidden = true},
+        ["ManeMid4"] = {hidden = true},
+        ["ManeMid5"] = {hidden = true},
+    },
     ["HorseMod.HorseManeEnd"]   = { ["ManeEnd"] = {hidden = true} },
 }
 
----@param itemDefinitions table<string, ItemDefinition>
+---Used to define new attachments.
+---@param itemDefinitions table<string,ItemDefinition>
 AttachmentData.addNewAttachments = function(itemDefinitions)
-    local items = AttachmentData.items
     for fullType, itemDef in pairs(itemDefinitions) do
-        local itemDefEntry = items[fullType] or {}
         for slot, attachmentDef in pairs(itemDef) do
-            local attachmentDefEntry = itemDefEntry[slot]
-            if not attachmentDefEntry then
-                itemDefEntry[slot] = itemDef
-            end
+            AttachmentData.addNewAttachment(fullType, slot, attachmentDef)
         end
-        items[fullType] = itemDefEntry
     end
+end
+
+---@param fullType string
+---@param slot AttachmentSlot
+---@param attachmentDef AttachmentDefinition
+AttachmentData.addNewAttachment = function(fullType, slot, attachmentDef)
+    -- retrieve item definition
+    local items = AttachmentData.items
+    local itemDefEntry = items[fullType] or {}
+
+    -- set or overwrite
+    local attachmentDefEntry = itemDefEntry[slot]
+    assert(not attachmentDefEntry, "AttachmentData.addNewAttachment: Attachment for item '" .. fullType .. "' on slot '" .. slot .. "' already exists!")
+
+    itemDefEntry[slot] = attachmentDef
+    items[fullType] = itemDefEntry
+end
+
+AttachmentData.addNewSlot = function(slot, slotDefinition)
+    local slotsDef = AttachmentData.SLOTS_DEFINITION
+    assert(not slotsDef[slot], "AttachmentData.addNewSlot: Slot '" .. slot .. "' already exists!")
+
+    slotsDef[slot] = slotDefinition
 end
 
 return AttachmentData

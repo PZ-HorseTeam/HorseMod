@@ -5,6 +5,7 @@ local Attachments = require("HorseMod/attachments/Attachments")
 local ISHorseEquipGear = require("HorseMod/TimedActions/ISHorseEquipGear")
 local ContainerManager = require("HorseMod/attachments/ContainerManager")
 
+---Timed action for unequipping gear from a horse.
 ---@class ISHorseUnequipGear : ISHorseEquipGear
 local ISHorseUnequipGear = ISHorseEquipGear:derive("ISHorseUnequipGear")
 

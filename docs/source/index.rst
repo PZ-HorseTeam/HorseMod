@@ -14,5 +14,7 @@ Add your content using ``reStructuredText`` syntax. See the `reStructuredText <h
    :includehidden:
 
    guides
-   modules
+   timedactions
+   alias
    classes
+   modules
