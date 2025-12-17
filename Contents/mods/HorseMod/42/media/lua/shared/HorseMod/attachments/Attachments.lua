@@ -5,12 +5,13 @@ local HorseUtils = require("HorseMod/Utils")
 local HorseRegistries = require("HorseMod/HorseRegistries")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local ContainerManager = require("HorseMod/attachments/ContainerManager")
+
 local rdm = newrandom()
 
 ---Holds utility functions related to the attachment system of horses.
 local Attachments = {}
 
----Checks if the given item full type is an attachment, and optionally if it has a slot `_slot`.
+---Checks if the given item full type is an attachment, and optionally if it has a slot (`_slot`).
 ---@param fullType string
 ---@param _slot AttachmentSlot?
 ---@return boolean
@@ -54,8 +55,8 @@ end
 ---@return InventoryItem?
 ---@nodiscard
 Attachments.getAttachedItem = function(animal, slot)
-    local ai = animal:getAttachedItems()
-    return ai and ai:getItem(slot)
+    local attachedItems = animal:getAttachedItems()
+    return attachedItems and attachedItems:getItem(slot)
 end
 
 ---Retrieve a table with every attached items on the horse.
@@ -64,11 +65,12 @@ end
 ---@nodiscard
 Attachments.getAttachedItems = function(animal)
     local attached = {}
-    local slots = AttachmentData.SLOTS
-    local mane_slots_set = AttachmentData.MANE_SLOTS_SET
+    local slots = AttachmentData.slots
+    local maneSlots = AttachmentData.maneSlots
     for i = 1, #slots do
         local slot = slots[i]
-        if not mane_slots_set[slot] then
+        -- if not a mane, list it
+        if not maneSlots[slot] then
             local attachment = Attachments.getAttachedItem(animal, slot)
             if attachment then
                 table.insert(attached, {item=attachment, slot=slot})
@@ -85,20 +87,30 @@ end
 Attachments.setAttachedItem = function(animal, slot, item)
     ---@diagnostic disable-next-line
     animal:setAttachedItem(slot, item)
+    sendAttachedItem(animal, slot, item) ---@diagnostic disable-line
+
     local modData = HorseUtils.getModData(animal)
     modData.bySlot[slot] = item and item:getFullType()
+    animal:transmitModData()
 end
 
 ---@param animal IsoAnimal
 ---@param item InventoryItem
 Attachments.removeAttachedItem = function(animal, item)
-    local ai = animal:getAttachedItems()
-    if ai then
-        local slot = ai:getLocation(item) --[[@as AttachmentSlot]]
-        ai:remove(item)
+    local attachedItems = animal:getAttachedItems()
+    if attachedItems then
+        local slot = attachedItems:getLocation(item) --[[@as AttachmentSlot]]
+        attachedItems:remove(item)
+        sendAttachedItem(animal, slot, nil) ---@diagnostic disable-line
         local modData = HorseUtils.getModData(animal)
         modData.bySlot[slot] = nil
+        animal:transmitModData()
     end
+end
+
+Attachments.predicateHorseAccessory = function(item)
+    local fullType = item:getFullType()
+    return AttachmentData.items[fullType] ~= nil
 end
 
 ---Retrieve every available attachments in the player inventory.
@@ -107,7 +119,8 @@ end
 ---@nodiscard
 Attachments.getAvailableGear = function(player)
     local playerInventory = player:getInventory()
-    local accessories = playerInventory:getAllTag(HorseRegistries.HorseAccessory, ArrayList.new())
+    -- local accessories = playerInventory:getAllTag(HorseRegistries.HorseAccessory, ArrayList.new())
+    local accessories = playerInventory:getAllEvalRecurse(Attachments.predicateHorseAccessory)
     return accessories
 end
 
@@ -116,22 +129,36 @@ end
 ---@param horse IsoAnimal
 ---@param item InventoryItem
 Attachments.giveBackToPlayerOrDrop = function(player, horse, item)
-    -- no item so ignore
-    if not item then
+    -- put in player inventory or drop on ground
+    if player then
+        Actions.addOrDropItem(player, item)
         return
     end
 
-    -- put in player inventory
-    local pinv = player and player:getInventory()
-    if pinv and pinv:addItem(item) then
+    -- the item should be dropped on the ground at random offsets to not have all the items stacked at the same coordinates
+    local x, y, z = horse:getX(), horse:getY(), horse:getZ()
+    local xr, yr = rdm:random(-1, 1), rdm:random(-1, 1)
+    x, y = x + xr, y + yr
+
+    -- try to retrieve the bottom square in case the attachments fall of a ledge for example
+    -- this should also work if the horse is flying (dying in the air somehow)
+    local square = HorseUtils.getBottom(x, y, z)
+    
+    ---@FIXME the logic behind retrieve the square could be flawed and drop the item in an invalid location
+    ---This check serves as a fallback to avoid attachments disappearing, but a better solution should be found.
+    if not square then
+        getPlayer():getInventory():AddItem(item)
         return
     end
 
-    -- place on the square at random offsets
-    local sq = horse:getSquare() or (player and player:getSquare())
-    if sq then
-        sq:AddWorldInventoryItem(item, rdm:random(0,1), rdm:random(0,1), 0.0)
-    end
+    -- place on the square at the random offsets
+    square:AddWorldInventoryItem(
+        item,
+        x - math.floor(x),
+        y - math.floor(y),
+        0.0,
+        true
+    )
 end
 
 ---Unequip instantly the attachment from the horse if it isn't a mane and store it in the player inventory or drop it on the ground.
@@ -140,29 +167,30 @@ end
 ---@param player IsoPlayer?
 Attachments.unequipAttachment = function(animal, slot, player)
     -- can't unequip mane items
-    if AttachmentData.MANE_SLOTS_SET[slot] then
+    if AttachmentData.maneSlots[slot] then
         return
     end
-    local cur = Attachments.getAttachedItem(animal, slot)
-    if not cur then
+
+    local current = Attachments.getAttachedItem(animal, slot)
+    if not current then
         return
     end
 
     -- ignore if attachment should stay hidden from the player
-    local attachmentDef = Attachments.getAttachmentDefinition(cur:getFullType(), slot)
-    assert(attachmentDef ~= nil, "Called unequip on an item ("..cur:getFullType()..") that isn't an attachment or doesn't have an attachment definition for the slot "..slot..".")
-    if not attachmentDef or attachmentDef.hidden or AttachmentData.MANE_SLOTS_SET[slot] then
+    local attachmentDef = Attachments.getAttachmentDefinition(current:getFullType(), slot)
+    assert(attachmentDef ~= nil, "Called unequip on an item ("..current:getFullType()..") that isn't an attachment or doesn't have an attachment definition for the slot "..slot..".")
+    if not attachmentDef or attachmentDef.hidden or AttachmentData.maneSlots[slot] then
         return
     end
     
     Attachments.setAttachedItem(animal, slot, nil)
-    Attachments.giveBackToPlayerOrDrop(player, animal, cur)
+    Attachments.giveBackToPlayerOrDrop(player, animal, current)
 
     -- remove container
     local containerBehavior = attachmentDef.containerBehavior
     if containerBehavior then
         player = player or getPlayer() ---@TODO probably should change that to not be necessary
-        ContainerManager.removeContainer(player, animal, slot, cur)
+        ContainerManager.removeContainer(player, animal, slot, current)
     end
 end
 
@@ -176,5 +204,31 @@ Attachments.unequipAllAttachments = function(animal, player)
         Attachments.unequipAttachment(animal, slot, player)
     end
 end
+
+
+-----GENERIC ATTACHMENT HELPERS-----
+
+Attachments.getAttachedAndDef = function(animal, slot)
+    local item = Attachments.getAttachedItem(animal, slot)
+    if not item then return nil, nil end
+    return item, Attachments.getAttachmentDefinition(item:getFullType(), slot)
+end
+
+---Retrieve the reins attachment item and its definition from the horse.
+---@param animal IsoAnimal
+---@return InventoryItem?
+---@return AttachmentDefinition?
+Attachments.getReins = function(animal)
+    return Attachments.getAttachedAndDef(animal, "Reins")
+end
+
+---Retrieve the reins attachment item and its definition from the horse.
+---@param animal IsoAnimal
+---@return InventoryItem?
+---@return AttachmentDefinition?
+Attachments.getSaddle = function(animal)
+    return Attachments.getAttachedAndDef(animal, "Saddle")
+end
+
 
 return Attachments

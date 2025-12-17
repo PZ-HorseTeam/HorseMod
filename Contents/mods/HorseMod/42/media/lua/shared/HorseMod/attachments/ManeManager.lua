@@ -4,14 +4,58 @@
 local HorseUtils = require("HorseMod/Utils")
 local Attachments = require("HorseMod/attachments/Attachments")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
+local rdm = newrandom()
+
+
+---Table holding a RGB mane color.
+---@class ManeColor
+---@field r number
+---@field g number
+---@field b number
 
 ---Hold utility functions related to the horse manes.
 local ManeManager = {}
 
+---Check if the given slot is a mane slot.
+---@param slot AttachmentSlot
+---@return boolean
+---@nodiscard
+ManeManager.isManeSlot = function(slot)
+    return AttachmentData.maneSlots[slot] ~= nil
+end
+
+---Retrieve the mane definition for a specific horse breed.
+---@param breedName string
+---@return ManeDefinition
+---@nodiscard
+ManeManager.getManeDefinition = function(breedName)
+    local maneByBreed = AttachmentData.maneByBreed
+    return maneByBreed[breedName] or AttachmentData.MANE_DEFAULT
+end
+
+---Generate a mane configuration and mane colors tables for a specific breed. The mane color needs to be the same for all mane slots.
+---@param horse IsoAnimal
+---@return table<AttachmentSlot, string> maneConfig
+---@return table<AttachmentSlot, ManeColor> maneColors
+ManeManager.generateManeConfig = function(horse)
+    local breedName = HorseUtils.getBreedName(horse)
+    local maneDef = ManeManager.getManeDefinition(breedName)
+    local maneConfig = HorseUtils.tableCopy(maneDef.maneConfig)
+    local maneColor = ManeManager.getManeColor(horse)
+    local maneColors = {}
+    for slot, _ in pairs(maneConfig) do
+        maneColors[slot] = maneColor
+    end
+    return maneConfig, maneColors
+end
+
+---@FIXME only solution I found to avoid circular dependency while still keeping the function in this file since it's about manes
+HorseUtils.generateManeConfig = ManeManager.generateManeConfig
+
 ---Remove manes from the horse.
 ---@param horse IsoAnimal
 ManeManager.removeManes = function(horse)
-    for slot, _ in pairs(AttachmentData.MANE_SLOTS_SET) do
+    for slot, _ in pairs(AttachmentData.maneSlots) do
         local attached = Attachments.getAttachedItem(horse, slot)
         if attached then
             -- Attachments.setAttachedItem(horse, slot, nil)
@@ -20,30 +64,28 @@ ManeManager.removeManes = function(horse)
     end
 end
 
----Retrieve the mane color for a specific horse breed
+---Select a random mane color for a specific horse breed based on possible mane colors.
 ---@param horse IsoAnimal
 ---@return ManeColor
 ---@nodiscard
 ManeManager.getManeColor = function(horse)
-    local breed = horse:getBreed()
-    local breedName = breed:getName() or "_default"
-    local hex = AttachmentData.MANE_HEX_BY_BREED[breedName]
+    local breedName = HorseUtils.getBreedName(horse)
+    local maneDef = ManeManager.getManeDefinition(breedName)
+    local hexTable = maneDef.hex
+    local hex = hexTable[rdm:random(1, #hexTable)]
     local r, g, b = HorseUtils.hexToRGBf(hex)
 
     return {r=r, g=g, b=b}
 end
 
----Retrieve and set the mane color
+---Retrieve and set the mane color.
 ---@param horse IsoAnimal
 ---@param mane InventoryItem
 ---@param slot AttachmentSlot
----@param _modData HorseModData|nil
-ManeManager.setupMane = function(horse, mane, slot, _modData)
-    local modData = _modData or HorseUtils.getModData(horse)
+---@param modData HorseModData
+ManeManager.setupMane = function(horse, mane, slot, modData)
+    -- access the mane color
     local maneColor = modData.maneColors[slot]
-    if not maneColor then
-        maneColor = ManeManager.getManeColor(horse)
-    end
 
     -- verify the current colors are the right one, else set them
     if mane:getColorRed() ~= maneColor.r

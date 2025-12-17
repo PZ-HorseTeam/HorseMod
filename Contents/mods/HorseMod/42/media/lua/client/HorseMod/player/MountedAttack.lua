@@ -1,4 +1,5 @@
 local HorseRiding = require("HorseMod/Riding")
+local AnimationVariables = require("HorseMod/AnimationVariables")
 
 ---@class MountedAttack
 ---@field active boolean
@@ -16,7 +17,7 @@ MountedAttack.KICK_LOCK_SECONDS = 1.4
 local function updateBannedAttacking(player)
     if not player then return end
 
-    if player:getVariableBoolean("RidingHorse") then
+    if player:getVariableBoolean(AnimationVariables.RIDING_HORSE) then
         player:setBannedAttacking(true)
     else
         player:setBannedAttacking(false)
@@ -34,9 +35,9 @@ local function updateKickCooldown(player)
     local ks = MountedAttack[id]
     if not ks or not ks.active then return end
 
-    if not player:getVariableBoolean("RidingHorse") then
-        player:setVariable("kickLeft", false)
-        player:setVariable("kickRight", false)
+    if not player:getVariableBoolean(AnimationVariables.RIDING_HORSE) then
+        player:setVariable(AnimationVariables.KICK_LEFT, false)
+        player:setVariable(AnimationVariables.KICK_RIGHT, false)
         MountedAttack[id] = nil
         return
     end
@@ -44,15 +45,15 @@ local function updateKickCooldown(player)
     ks.timeLeft = ks.timeLeft - GameTime.getInstance():getTimeDelta()
     if ks.timeLeft <= 0 then
         if ks.left then
-            player:setVariable("kickLeft", false)
+            player:setVariable(AnimationVariables.KICK_LEFT, false)
         end
 
         if ks.right then
-            player:setVariable("kickRight", false)
+            player:setVariable(AnimationVariables.KICK_RIGHT, false)
         end
 
-        player:setVariable("idleKicking", false)
-        player:setVariable("moveKicking", false)
+        player:setVariable(AnimationVariables.IDLE_KICKING, false)
+        player:setVariable(AnimationVariables.MOVE_KICKING, false)
         MountedAttack[id] = nil
     end
 end
@@ -65,7 +66,7 @@ function MountedAttack.horseKick(key)
     if key ~= Keyboard.KEY_SPACE then return end
 
     local player = getSpecificPlayer(0)
-    if not player or not player:getVariableBoolean("RidingHorse") then return end
+    if not player or not player:getVariableBoolean(AnimationVariables.RIDING_HORSE) then return end
 
     local id = player:getPlayerNum()
     local ks = MountedAttack[id]
@@ -104,8 +105,8 @@ function MountedAttack.horseKick(key)
     local rightDistSq = rdx * rdx + rdy * rdy
 
     local kickLeft = (leftDistSq < rightDistSq)
-    player:setVariable("kickLeft", kickLeft)
-    player:setVariable("kickRight", not kickLeft)
+    player:setVariable(AnimationVariables.KICK_LEFT, kickLeft)
+    player:setVariable(AnimationVariables.KICK_RIGHT, not kickLeft)
 
     MountedAttack[id] = {
         active = true,

@@ -1,5 +1,6 @@
 local HorseUtils = require("HorseMod/Utils")
 local Event = require("HorseMod/Event")
+local AnimationVariables = require("HorseMod/AnimationVariables")
 
 ---@namespace HorseMod
 
@@ -49,24 +50,36 @@ end
 
 ---@param horse IsoAnimal
 local function initialiseHorse(horse)
-    horse:setVariable("isHorse", true)
+    horse:setVariable(AnimationVariables.IS_HORSE, true)
 
     local speed = horse:getUsedGene("speed"):getCurrentValue()
-    horse:setVariable("geneSpeed", speed)
+    horse:setVariable(AnimationVariables.GENE_SPEED, speed)
     local strength = horse:getUsedGene("strength"):getCurrentValue()
-    horse:setVariable("geneStrength", strength)
+    horse:setVariable(AnimationVariables.GENE_STRENGTH, strength)
     local stamina = horse:getUsedGene("stamina"):getCurrentValue()
-    horse:setVariable("geneStamina", stamina)
+    horse:setVariable(AnimationVariables.GENE_STAMINA, stamina)
     local carry = horse:getUsedGene("carryWeight"):getCurrentValue()
-    horse:setVariable("geneCarryWeight", carry)
+    horse:setVariable(AnimationVariables.GENE_CARRYWEIGHT, carry)
+end
+
+---Utility function to find a horse by its animal ID.
+---@param animalID number
+---@return IsoAnimal?
+HorseManager.findHorseByID = function(animalID)
+    local horses = HorseManager.horses
+    for i = 1, #horses do
+        local horse = horses[i]
+        if horse:getAnimalID() == animalID then
+            return horse
+        end
+    end
+    return nil
 end
 
 
 ---Detect newly created horses par parsing the moving objects array list of the player cell 
 
----@TODO set to update rate 8 for performance reasons
--- local UPDATE_RATE = 8
-local UPDATE_RATE = 1
+local UPDATE_RATE = 8
 local TICK_AMOUNT = 0
 
 ---Retrieve newly loaded horses in the world.

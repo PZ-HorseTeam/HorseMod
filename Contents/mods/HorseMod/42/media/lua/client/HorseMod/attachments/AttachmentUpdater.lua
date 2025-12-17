@@ -32,7 +32,7 @@ AttachmentUpdater.reapplyFor = function(horse)
         end
 
         -- setup mane color
-        if AttachmentData.MANE_SLOTS_SET[slot] then
+        if ManeManager.isManeSlot(slot) then
             ManeManager.setupMane(horse, item, slot, modData)
         end
 
@@ -49,8 +49,6 @@ end
 
 
 
----@TODO set to update rate 8 for performance reasons
--- local UPDATE_RATE = 8
 local UPDATE_RATE = 10
 local TICK_AMOUNT = 0
 

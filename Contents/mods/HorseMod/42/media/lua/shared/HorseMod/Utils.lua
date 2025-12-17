@@ -11,6 +11,20 @@ local HORSE_TYPES = {
 
 local HorseUtils = {}
 
+---Utility function to retrieve fields of specific Java object instances.
+---@param object any
+---@param field string
+HorseUtils.getJavaField = function(object, field)
+    local offset = string.len(field)
+    for i = 0, getNumClassFields(object) - 1 do
+        local m = getClassField(object, i)
+        if string.sub(tostring(m), -offset) == field then
+            return getClassFieldVal(object, m)
+        end
+    end
+    return nil -- no field found
+end
+
 ---@param seconds number
 ---@param callback fun(...)
 ---@param ... any
@@ -53,24 +67,30 @@ HorseUtils.isAdult = function(animal)
     return type == "stallion" or type == "mare"
 end
 
+---Persistent data structure for horse attachments and related information.
 ---@class HorseModData
----@field bySlot table<AttachmentSlot, string> Attachments of the horse.
----@field maneColors table<AttachmentSlot, ManeColor|nil> Manes of the horse and their associated color.
----@field containers table<AttachmentSlot, ContainerInformation>
+---@field bySlot table<AttachmentSlot, string> Attachments full types associated to their slots of the horse.
+---@field maneColors table<AttachmentSlot, ManeColor> Manes of the horse and their associated color.
+---@field containers table<AttachmentSlot, ContainerInformation> Container data currently attached to the horse holding XYZ coordinates of the container and identification data.
 
+---Used to retrieve or create the mod data of a specific horse.
 ---@param animal IsoAnimal
 ---@return HorseModData
 HorseUtils.getModData = function(animal)
     local md = animal:getModData()
     local horseModData = md.horseModData
+
+    -- if no mod data, create default one
     if not horseModData then
+        local maneConfig, maneColors = HorseUtils.generateManeConfig(animal)
         md.horseModData = {
-            bySlot = HorseUtils.tableCopy(AttachmentData.MANE_SLOTS_SET),
-            maneColors = {},
+            bySlot = maneConfig, -- default mane config
+            maneColors = maneColors,
             containers = {},
         } --[[@as HorseModData]]
         horseModData = md.horseModData
     end
+
     return horseModData
 end
 
@@ -78,6 +98,13 @@ end
 ---@return integer
 HorseUtils.getHorseID = function(horse)
     return horse:getAnimalID()
+end
+
+---@param horse IsoAnimal
+---@return string
+HorseUtils.getBreedName = function(horse)
+    local breed = horse:getBreed()
+    return breed and breed:getName() or "_default"
 end
 
 ---@param horse IsoAnimal
@@ -170,7 +197,7 @@ local _attachmentSide = {
     ["mountRight"] = "Right",
 }
 ---Adds a timed action to the player to pathfind to the horse location.
----@TODO the pathfinding to go and equip/unequip the horse do not take into account whenever the square to path to has a direct line of sight on the horse
+---@TODO the pathfinding to go and equip/unequip the horse do not take into account whenever the square to path has a direct line of sight on the horse
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@return fun() unlock
@@ -205,6 +232,7 @@ HorseUtils.pathfindToHorse = function(player, horse)
 end
 
 
+---@deprecated use Attachments.getAttachedItem instead
 ---@param animal IsoAnimal
 ---@param slot string
 ---@return InventoryItem | nil
@@ -219,7 +247,7 @@ HorseUtils.getAttachedItem = function(animal, slot)
     return nil
 end
 
-
+---@deprecated use Attachments.getSaddle instead
 ---@param animal IsoAnimal
 ---@return InventoryItem | nil
 ---@nodiscard
@@ -232,7 +260,7 @@ HorseUtils.getSaddle = function(animal)
     end
 end
 
-
+---@deprecated use Attachments.getReins instead
 ---@param animal IsoAnimal
 ---@return InventoryItem | nil
 ---@nodiscard
@@ -340,6 +368,24 @@ HorseUtils.getAnimationFromDebugString = function(debugString, matchString)
         searchStart = weightStart + 1
     end
     return nil
+end
+
+---Gets the lowest square with a floor under the given coordinates.
+---@param x number
+---@param y number
+---@param z number
+---@return IsoGridSquare?
+HorseUtils.getBottom = function(x,y,z)
+    local square = getSquare(x,y,z)
+    local lastValidSquare = square ~= nil and square or nil
+    while square and not square:getFloor() do
+        z = z - 1
+        square = getSquare(x,y,z)
+        lastValidSquare = square ~= nil and square or nil
+        if z < 32 then break end -- prevent infinite loop
+    end
+
+    return lastValidSquare
 end
 
 return HorseUtils

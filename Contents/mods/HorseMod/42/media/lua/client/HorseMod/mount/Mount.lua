@@ -1,6 +1,7 @@
 local MountController = require("HorseMod/mount/MountController")
 local HorseDamage = require("HorseMod/horse/HorseDamage")
 local HorseUtils = require("HorseMod/Utils")
+local AnimationVariables = require("HorseMod/AnimationVariables")
 
 
 local JOY_DEADZONE        = 0.30   -- ignore tiny stick drift
@@ -113,7 +114,7 @@ function Mount:getCurrentInput()
         },
         run = run,
         -- FIXME: Change this when fixing the mod option keybinds
-        trot = self.pair.mount:getVariableBoolean("HorseTrot"),
+        trot = self.pair.mount:getVariableBoolean(AnimationVariables.TROT),
     }
 end
 
@@ -121,11 +122,11 @@ end
 ---@return boolean
 ---@nodiscard
 function Mount:dying()
-    if self.pair.mount:getVariableBoolean("HorseDying") then
+    if self.pair.mount:getVariableBoolean(AnimationVariables.DYING) then
         self.pair.rider:setIgnoreMovement(true)
         self.pair.rider:setBlockMovement(true)
         self.pair.rider:setIgnoreInputsForDirection(true)
-        self.pair.rider:setVariable("HorseDying", true)
+        self.pair.rider:setVariable(AnimationVariables.DYING, true)
         HorseUtils.runAfter(0.5, function()
             HorseDamage.knockDownNearbyZombies(self.pair.mount)
         end)
@@ -146,8 +147,8 @@ end
 
 
 function Mount:cleanup()
-    self.pair:setAnimationVariable("RidingHorse", false)
-    self.pair:setAnimationVariable("HorseTrot", false)
+    self.pair:setAnimationVariable(AnimationVariables.RIDING_HORSE, false)
+    self.pair:setAnimationVariable(AnimationVariables.TROT, false)
 
     local attached = self.pair.rider:getAttachedAnimals()
     attached:remove(self.pair.mount)
@@ -156,8 +157,8 @@ function Mount:cleanup()
     self.pair.mount:getBehavior():setBlockMovement(false)
     self.pair.mount:getPathFindBehavior2():reset()
 
-    self.pair.rider:setVariable("HorseTrot", false)
-    self.pair.rider:setVariable("DismountStarted", false)
+    self.pair.rider:setVariable(AnimationVariables.TROT, false)
+    self.pair.rider:setVariable(AnimationVariables.DISMOUNT_STARTED, false)
     self.pair.rider:setAllowRun(true)
     self.pair.rider:setAllowSprint(true)
     self.pair.rider:setTurnDelta(1)
@@ -168,7 +169,7 @@ function Mount:cleanup()
     self.pair.mount:setVariable("animalWalking", false)
     self.pair.mount:setVariable("animalRunning", false)
 
-    self.pair.rider:setVariable("MountingHorse", false)
+    self.pair.rider:setVariable(AnimationVariables.MOUNTING_HORSE, false)
     self.pair.rider:setVariable("isTurningLeft", false)
     self.pair.rider:setVariable("isTurningRight", false)
 end
@@ -181,8 +182,8 @@ function Mount.new(pair)
     pair.rider:getAttachedAnimals():add(pair.mount)
     pair.mount:getData():setAttachedPlayer(pair.rider)
 
-    pair:setAnimationVariable("RidingHorse", true)
-    pair:setAnimationVariable("HorseTrot", false)
+    pair:setAnimationVariable(AnimationVariables.RIDING_HORSE, true)
+    pair:setAnimationVariable(AnimationVariables.TROT, false)
     pair.rider:setAllowRun(false)
     pair.rider:setAllowSprint(false)
 
@@ -192,7 +193,7 @@ function Mount.new(pair)
     pair.rider:setVariable("isTurningRight", false)
 
     local geneSpeed = pair.mount:getUsedGene("speed"):getCurrentValue()
-    pair.rider:setVariable("geneSpeed", geneSpeed)
+    pair.rider:setVariable(AnimationVariables.GENE_SPEED, geneSpeed)
 
     pair.mount:getPathFindBehavior2():reset()
     pair.mount:getBehavior():setBlockMovement(true)
@@ -204,7 +205,7 @@ function Mount.new(pair)
 
     -- TODO: are these even needed
     pair.mount:setWild(false)
-    pair.mount:setVariable("isHorse", true)
+    pair.mount:setVariable(AnimationVariables.IS_HORSE, true)
 
     local o = setmetatable(
         {

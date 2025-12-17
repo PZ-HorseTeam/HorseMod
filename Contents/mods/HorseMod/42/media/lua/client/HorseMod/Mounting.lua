@@ -3,8 +3,8 @@ require("TimedActions/ISPathFindAction")
 local HorseRiding = require("HorseMod/Riding")
 local HorseUtils = require("HorseMod/Utils")
 local HorseManager = require("HorseMod/HorseManager")
-local MountHorseAction = require("HorseMod/player/MountHorseAction")
-local DismountHorseAction = require("HorseMod/player/DismountHorseAction")
+local MountHorseAction = require("HorseMod/TimedActions/MountHorseAction")
+local DismountHorseAction = require("HorseMod/TimedActions/DismountHorseAction")
 local MountPair = require("HorseMod/MountPair")
 
 
@@ -236,7 +236,7 @@ function Mounting.dismountHorse(player)
     local action = DismountHorseAction:new(
         mount,
         side,
-        saddleItem,
+        saddleItem ~= nil,
         tx,
         ty,
         tz

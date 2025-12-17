@@ -2,6 +2,7 @@
 local Mount = require("HorseMod/mount/Mount")
 local HorseUtils = require("HorseMod/Utils")
 local ModOptions = require("HorseMod/ModOptions")
+local AnimationVariables = require("HorseMod/AnimationVariables")
 
 ---@namespace HorseMod
 
@@ -39,9 +40,9 @@ function HorseRiding.canMountHorse(player, horse)
     elseif horse:isOnHook() then
         return false
     
-    -- running
-    elseif horse:getVariableBoolean("animalRunning") then
-        return false, "IsRunning"
+    -- -- running
+    -- elseif horse:getVariableBoolean("animalRunning") then
+    --     return false, "IsRunning"
     
     -- not an adult horse
     elseif not HorseUtils.isAdult(horse) then
@@ -126,10 +127,10 @@ HorseRiding.onKeyPressed = function(key)
         local mount = HorseRiding.getMount(player)
         if not mount then return end
 
-        if player:getVariableBoolean("RidingHorse") then
+        if player:getVariableBoolean(AnimationVariables.RIDING_HORSE) then
             local mountPair = mount.pair
-            local current = mountPair.mount:getVariableBoolean("HorseTrot")
-            mountPair:setAnimationVariable("HorseTrot", not current)
+            local current = mountPair.mount:getVariableBoolean(AnimationVariables.TROT)
+            mountPair:setAnimationVariable(AnimationVariables.TROT, not current)
         end
 
     ---JUMP
@@ -140,10 +141,10 @@ HorseRiding.onKeyPressed = function(key)
 
         local mountPair = mount.pair
         local horse = mountPair.mount
-        if player:getVariableBoolean("RidingHorse") 
-            and horse:getVariableBoolean("HorseGallop")
-            and not mountPair:getAnimationVariableBoolean("HorseJump") then
-            mountPair:setAnimationVariable("HorseJump", true)
+        if player:getVariableBoolean(AnimationVariables.RIDING_HORSE) 
+            and horse:getVariableBoolean(AnimationVariables.GALLOP)
+            and not mountPair:getAnimationVariableBoolean(AnimationVariables.JUMP) then
+            mountPair:setAnimationVariable(AnimationVariables.JUMP, true)
         end
     end
 end
@@ -164,7 +165,7 @@ HorseRiding.dismountOnHorseDeath = function(character)
                     rider:setBlockMovement(false)
                     rider:setIgnoreMovement(false)
                     rider:setIgnoreInputsForDirection(false)
-                    rider:setVariable("HorseDying", false)
+                    rider:setVariable(AnimationVariables.DYING, false)
                 end)
             return
         end
@@ -176,10 +177,10 @@ Events.OnCharacterDeath.Add(HorseRiding.dismountOnHorseDeath)
 
 ---@param player IsoPlayer
 local function initHorseMod(_, player)
-    player:setVariable("RidingHorse", false)
-    player:setVariable("MountingHorse", false)
-    player:setVariable("DismountFinished", false)
-    player:setVariable("MountFinished", false)
+    player:setVariable(AnimationVariables.RIDING_HORSE, false)
+    player:setVariable(AnimationVariables.MOUNTING_HORSE, false)
+    player:setVariable(AnimationVariables.DISMOUNT_FINISHED, false)
+    player:setVariable(AnimationVariables.MOUNT_FINISHED, false)
 end
 
 Events.OnCreatePlayer.Add(initHorseMod)

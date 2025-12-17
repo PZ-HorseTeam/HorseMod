@@ -1,6 +1,7 @@
 local HorseRiding = require("HorseMod/Riding")
 local HorseUtils = require("HorseMod/Utils")
 local Stamina = require("HorseMod/Stamina")
+local AnimationVariables = require("HorseMod/AnimationVariables")
 
 
 local HorseSounds = {}
@@ -258,16 +259,16 @@ local function shouldIdleSnort(h)
     if moving then
         return false
     end
-    if h:getVariableBoolean("MountingHorse") then
+    if h:getVariableBoolean(AnimationVariables.MOUNTING_HORSE) then
         return false
     end
-    if h:getVariableBoolean("RidingHorse") then
+    if h:getVariableBoolean(AnimationVariables.RIDING_HORSE) then
         return false
     end
-    if h:getVariableBoolean("HorseEating") then
+    if h:getVariableBoolean(AnimationVariables.EATING) then
         return false
     end
-    if h:getVariableBoolean("HorseHurt") then
+    if h:getVariableBoolean(AnimationVariables.HURT) then
         return false
     end
 
@@ -312,7 +313,7 @@ end
 ---@return boolean
 ---@nodiscard
 local function shouldPlayTiredGallop(horse)
-    if not (horse and horse.getVariableBoolean and horse:getVariableBoolean("HorseGallop")) then
+    if not (horse and horse.getVariableBoolean and horse:getVariableBoolean(AnimationVariables.GALLOP)) then
         return false
     end
     if not (Stamina and Stamina.get) then
@@ -411,19 +412,19 @@ function UpdateNearbyHorsesAudio()
             end
         else
             ensureEmitterBound(key, emitter)
-            checkParamAndTrigger(h, key, emitter, vol, "HorseDeath", "HorseDeath", function()
+            checkParamAndTrigger(h, key, emitter, vol, AnimationVariables.DEATH, "HorseDeath", function()
                 stopAllHorseSurfaces(emitter)
                 currentSound[key] = nil
                 currentSoundId[key] = nil
             end)
 
-            checkParamAndTrigger(h, key, emitter, vol, "HorseHurt", "HorsePain")
+            checkParamAndTrigger(h, key, emitter, vol, AnimationVariables.HURT, "HorsePain")
 
-            checkParamAndTrigger(h, key, emitter, vol, "HorseEating", "HorseEatingGrass")
+            checkParamAndTrigger(h, key, emitter, vol, AnimationVariables.EATING, "HorseEatingGrass")
 
             local moving = h:isAnimalMoving() or h:getVariableBoolean("bMoving")
             local running = h.getVariableBoolean and h:getVariableBoolean("animalRunning")
-            local base = running and "HorseGallop" or "HorseWalk"
+            local base = running and AnimationVariables.GALLOP or AnimationVariables.WALK
             local speed = running and "Gallop" or "Walk"
             local rough = isSquareRough(h:getSquare())
             local suffix = rough and "Dirt" or "Concrete"
@@ -499,12 +500,12 @@ function UpdateHorseAudio(player, square)
 
     local speed
     local base
-    if horse:getVariableBoolean("HorseGallop") then
-        speed, base = "Gallop", "HorseGallop"
-    elseif horse:getVariableBoolean("HorseTrot") then
-        speed, base = "Trot", "HorseTrot"
+    if horse:getVariableBoolean(AnimationVariables.GALLOP) then
+        speed, base = "Gallop", AnimationVariables.GALLOP
+    elseif horse:getVariableBoolean(AnimationVariables.TROT) then
+        speed, base = "Trot", AnimationVariables.TROT
     else
-        speed, base = "Walk", "HorseWalk"
+        speed, base = "Walk", AnimationVariables.WALK
     end
 
     local sq = square or horse:getSquare()
@@ -514,19 +515,19 @@ function UpdateHorseAudio(player, square)
 
     local moving = horse:isAnimalMoving()
         or horse:getVariableBoolean("animalWalking")
-        or horse:getVariableBoolean("HorseGallop")
+        or horse:getVariableBoolean(AnimationVariables.GALLOP)
 
     local key = horseKey(horse)
     local dt = GameTime.getInstance():getTimeDelta()
     local rt = realTime()
 
-    checkParamAndTrigger(horse, key, emitter, vol, "HorseDeath", "HorseDeath", function()
+    checkParamAndTrigger(horse, key, emitter, vol, AnimationVariables.DEATH, "HorseDeath", function()
         stopAllHorseSurfaces(emitter)
         currentSound[key] = nil
         secAccum[key] = 0
     end)
-    checkParamAndTrigger(horse, key, emitter, vol, "HorseHurt", "HorsePain")
-    checkParamAndTrigger(horse, key, emitter, vol, "HorseEating", "HorseEatingGrass")
+    checkParamAndTrigger(horse, key, emitter, vol, AnimationVariables.HURT, "HorsePain")
+    checkParamAndTrigger(horse, key, emitter, vol, AnimationVariables.EATING, "HorseEatingGrass")
 
     maybePlayStressed(horse, key, emitter, rt, vol)
     maybePlayIdleSnort(horse, key, emitter, rt, vol)
