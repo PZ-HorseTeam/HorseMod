@@ -2,14 +2,33 @@
 
 ---REQUIREMENTS
 local HorseUtils = require("HorseMod/Utils")
-local HorseRegistries = require("HorseMod/HorseRegistries")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local ContainerManager = require("HorseMod/attachments/ContainerManager")
+local HorseModData = require("HorseMod/HorseModData")
 
 local rdm = newrandom()
 
 ---Holds utility functions related to the attachment system of horses.
 local Attachments = {}
+
+
+---@class AttachmentsModData
+---@field bySlot table<AttachmentSlot, string> Attachments full types associated to their slots of the horse.
+---@field maneColors table<AttachmentSlot, ManeColor> Manes of the horse and their associated color.
+
+local ATTACHMENTS_MOD_DATA = HorseModData.register--[[@<AttachmentsModData>]](
+    "attachments",
+    function(horse, modData)
+        if not modData.bySlot then
+            local breedName = HorseUtils.getBreedName(horse)
+            local maneDef = Attachments.getManeDefinition(breedName)
+            local maneConfig = HorseUtils.tableCopy(maneDef.maneConfig)
+            modData.bySlot = maneConfig -- default mane config
+        end
+    end
+)
+Attachments.ATTACHMENTS_MOD_DATA = ATTACHMENTS_MOD_DATA
+
 
 ---Checks if the given item full type is an attachment, and optionally if it has a slot (`_slot`).
 ---@param fullType string
@@ -37,6 +56,15 @@ Attachments.getSlots = function(fullType)
         end
     end
     return slots
+end
+
+---Retrieve the mane definition for a specific horse breed.
+---@param breedName string
+---@return ManeDefinition
+---@nodiscard
+Attachments.getManeDefinition = function(breedName)
+    local maneByBreed = AttachmentData.maneByBreed
+    return maneByBreed[breedName] or AttachmentData.MANE_DEFAULT
 end
 
 ---Retrieves the attachments associated to the given item full type.
@@ -89,8 +117,8 @@ Attachments.setAttachedItem = function(animal, slot, item)
     animal:setAttachedItem(slot, item)
     sendAttachedItem(animal, slot, item) ---@diagnostic disable-line
 
-    local modData = HorseUtils.getModData(animal)
-    modData.bySlot[slot] = item and item:getFullType()
+    local bySlot = HorseModData.get(animal, Attachments.ATTACHMENTS_MOD_DATA).bySlot
+    bySlot[slot] = item and item:getFullType()
     animal:transmitModData()
 end
 
@@ -102,8 +130,8 @@ Attachments.removeAttachedItem = function(animal, item)
         local slot = attachedItems:getLocation(item) --[[@as AttachmentSlot]]
         attachedItems:remove(item)
         sendAttachedItem(animal, slot, nil) ---@diagnostic disable-line
-        local modData = HorseUtils.getModData(animal)
-        modData.bySlot[slot] = nil
+        local bySlot = HorseModData.get(animal, Attachments.ATTACHMENTS_MOD_DATA).bySlot
+        bySlot[slot] = nil
         animal:transmitModData()
     end
 end
@@ -198,8 +226,7 @@ end
 ---@param animal IsoAnimal
 ---@param player IsoPlayer?
 Attachments.unequipAllAttachments = function(animal, player)
-    local modData = HorseUtils.getModData(animal)
-    local bySlot = modData.bySlot
+    local bySlot = HorseModData.get(animal, Attachments.ATTACHMENTS_MOD_DATA).bySlot
     for slot, fullType in pairs(bySlot) do
         Attachments.unequipAttachment(animal, slot, player)
     end

@@ -1,7 +1,7 @@
 ---@namespace HorseMod
 
 ---REQUIREMENTS
-local HorseUtils = require("HorseMod/HorseUtils")
+local HorseUtils = require("HorseMod/Utils")
 
 local HorseDefinitions = {
     SHORT_NAMES = {
@@ -54,13 +54,17 @@ AnimalDefinitions.stages["horse"] = {
 -- define the breeds
 local breeds = {}
 for shortName, id in pairs(HorseDefinitions.SHORT_NAMES) do
+    DebugLog.log("")
+    DebugLog.log(shortName.."    "..id)
     local breed = {name = id}
     for key, path in pairs(HorseDefinitions.PATHS) do
-        breed[key] = HorseUtils.formatTemplate(path, {shortName = shortName})
+        local formattedPath = HorseUtils.formatTemplate(path, {shortName = shortName})
+        breed[key] = formattedPath
+        DebugLog.log(key.."    ".. formattedPath)
     end
     breeds[id] = breed
 end
-AnimalDefinitions.breeds["horse"] = breeds
+AnimalDefinitions.breeds["horse"] = {breeds = breeds} -- retarded naming scheme from the game, lovely
 
 -- define the genome
 AnimalDefinitions.genome["horse"] = {

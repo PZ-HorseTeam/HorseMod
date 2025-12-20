@@ -1,4 +1,5 @@
 ---Holds the mod option values of the HorseMod.
+---@type table<string, any>
 local ModOptions = {
     ---Horse sound volume.
     ---@type number

@@ -70,32 +70,6 @@ end
 
 -- TODO: all this stuff should be moved out to the attachments modules
 
----Persistent data structure for horse attachments and related information.
----@class HorseModData
----@field bySlot table<AttachmentSlot, string> Attachments full types associated to their slots of the horse.
----@field maneColors table<AttachmentSlot, ManeColor> Manes of the horse and their associated color.
----@field containers table<AttachmentSlot, ContainerInformation> Container data currently attached to the horse holding XYZ coordinates of the container and identification data.
-
-local GENERIC_MOD_DATA = HorseModData.register--[[@<HorseModData>]](
-    "generic",
-    function(horse, modData)
-        if not modData.bySlot or not modData.maneColors then
-            local maneConfig, maneColors = HorseUtils.generateManeConfig(horse)
-            modData.bySlot = maneConfig -- default mane config
-            modData.maneColors = maneColors
-        end
-        modData.containers = modData.containers or {}
-    end
-)
-
----Used to retrieve or create the mod data of a specific horse.
----@deprecated use the HorseModData module instead.
----@param animal IsoAnimal
----@return HorseModData
-HorseUtils.getModData = function(animal)
-    return HorseModData.get(animal, GENERIC_MOD_DATA)
-end
-
 ---@param horse IsoAnimal
 ---@return integer
 HorseUtils.getHorseID = function(horse)
@@ -154,6 +128,7 @@ end
 ---@type table<IsoAnimal, fun()?>
 local _unlocks = {}
 
+---@TODO this needs to be improved with a proper system because this is quite a heavy approach
 ---@param horse IsoAnimal
 ---@return fun()
 ---@return IsoDirections

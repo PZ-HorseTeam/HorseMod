@@ -2,11 +2,11 @@
 
 ---REQUIREMENTS
 local Attachments = require("HorseMod/attachments/Attachments")
-local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local HorseManager = require("HorseMod/HorseManager")
 local HorseUtils = require("HorseMod/Utils")
 local ManeManager = require("HorseMod/attachments/ManeManager")
 local ContainerManager = require("HorseMod/attachments/ContainerManager")
+local HorseModData = require("HorseMod/HorseModData")
 
 local AttachmentUpdater = {
     DEBUG_AttachmentUpdater = true,
@@ -21,8 +21,7 @@ local IS_REAPPLIED = AttachmentUpdater.IS_REAPPLIED
 ---@param horse IsoAnimal
 AttachmentUpdater.reapplyFor = function(horse)
     local inv = horse:getInventory()
-    local modData = HorseUtils.getModData(horse)
-    local bySlot = modData.bySlot
+    local bySlot = HorseModData.get(horse, Attachments.ATTACHMENTS_MOD_DATA).bySlot
 
     for slot, fullType in pairs(bySlot) do
         -- try to retrieve the item from attached items, else create a fresh one
@@ -33,7 +32,7 @@ AttachmentUpdater.reapplyFor = function(horse)
 
         -- setup mane color
         if ManeManager.isManeSlot(slot) then
-            ManeManager.setupMane(horse, item, slot, modData)
+            ManeManager.setupMane(horse, item, slot)
         end
 
         Attachments.setAttachedItem(horse, slot, item)

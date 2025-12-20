@@ -4,11 +4,12 @@ local HorseModData = require("HorseMod/HorseModData")
 ---@namespace HorseMod
 
 
-local Stamina = {}
-
--- Tunables (percent points per second)
-Stamina.MAX = 100
-Stamina.MIN_RUN_PERCENT = 0.15
+local Stamina = {
+    -- Tunables (percent points per second)
+    MAX = 100,
+    MIN_RUN_PERCENT = 0.15,
+    
+}
 
 Stamina.StaminaChange = {
     -- while galloping
@@ -22,6 +23,7 @@ Stamina.StaminaChange = {
 }
 
 
+---Persistent stamina data for the horse.
 ---@class StaminaModData
 ---@field stamina number
 
@@ -31,6 +33,7 @@ local STAMINA_MOD_DATA = HorseModData.register--[[@<StaminaModData>]](
         modData.stamina = modData.stamina or Stamina.MAX
     end
 )
+Stamina.STAMINA_MOD_DATA = STAMINA_MOD_DATA
 
 
 ---@param x number
@@ -44,14 +47,16 @@ local function clamp(x, a, b)
 end
 
 
+---Retrieves the current stamina of the horse.
 ---@param horse IsoAnimal
----@return number
+---@return number stamina
 function Stamina.get(horse)
     local modData = HorseModData.get(horse, STAMINA_MOD_DATA)
     return modData.stamina
 end
 
 
+---Set the stamina of the horse. The value will be clamped between `0` and :lua:obj:`HorseMod.Stamina.MAX`.
 ---@param horse IsoAnimal
 ---@param value number
 ---@param transmit boolean
@@ -71,6 +76,7 @@ function Stamina.set(horse, value, transmit)
 end
 
 
+---Modifies the stamina of the horse by the given delta. The resulting value will be clamped between `0` and :lua:obj:`HorseMod.Stamina.MAX`.
 ---@param horse IsoAnimal
 ---@param valueDelta number
 ---@param transmit boolean

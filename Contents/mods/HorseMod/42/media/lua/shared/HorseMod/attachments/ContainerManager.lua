@@ -1,8 +1,8 @@
 ---@namespace HorseMod
 
 ---REQUIREMENTS
-local HorseUtils = require("HorseMod/Utils")
 local HorseManager = require("HorseMod/HorseManager")
+local HorseModData = require("HorseMod/HorseModData")
 
 ---This class holds all the informations needed to find and identify a container attached to a horse, so the world item can be associated to the horse, and the horse can associate itself to the world item. The XYZ coordinates are stored to help find the world item again if needed and this data is added to the world item mod data.
 ---@class ContainerInformation
@@ -22,6 +22,15 @@ local ContainerManager = {
     ORPHAN_CONTAINERS = {},
 }
 local ORPHAN_CONTAINERS = ContainerManager.ORPHAN_CONTAINERS
+
+---@class ContainersModData : table<AttachmentSlot, ContainerInformation?>
+
+---Container mod data
+local CONTAINERS_MOD_DATA = HorseModData.register--[[@<ContainersModData>]](
+    "containers"
+)
+ContainerManager.CONTAINERS_MOD_DATA = CONTAINERS_MOD_DATA
+
 
 ---Refresh the player inventories to reflect changes in containers.
 ---@param player IsoPlayer
@@ -52,12 +61,11 @@ end
 ---@param slot AttachmentSlot
 ---@param worldItem IsoWorldInventoryObject?
 ContainerManager.registerContainerInformation = function(horse, slot, worldItem)
-    local modData = HorseUtils.getModData(horse)
-    local containers = modData.containers
+    local containers = HorseModData.get(horse, CONTAINERS_MOD_DATA)
 
     -- remove info
     if not worldItem then
-        -- clear cached and saved info        
+        -- clear cached and saved info
         containers[slot] = nil
     else
         local item = worldItem:getItem()
@@ -301,8 +309,7 @@ end
 ---@return IsoWorldInventoryObject?
 ContainerManager.getContainer = function(horse, slot)
     --  verify horse should have a container there
-    local modData = HorseUtils.getModData(horse)
-    local containers = modData.containers
+    local containers = HorseModData.get(horse, CONTAINERS_MOD_DATA)
     local containerInfo = containers[slot]
     if not containerInfo then return end
 
@@ -343,8 +350,7 @@ ContainerManager.track = function(horse)
     if not squareHorse then return end -- horse is flying ?
 
     -- get containers linked to the horse
-    local modData = HorseUtils.getModData(horse)
-    local containers = modData.containers
+    local containers = HorseModData.get(horse, CONTAINERS_MOD_DATA)
 
     -- for each container, retrieve its worldItem and move it if needed
     for slot, containerInfo in pairs(containers) do repeat
@@ -370,8 +376,7 @@ end
 -- consider horse loses all world item refs
 HorseManager.onHorseRemoved:add(function(horse)
     -- get containers linked to the horse
-    local modData = HorseUtils.getModData(horse)
-    local containers = modData.containers
+    local containers = HorseModData.get(horse, CONTAINERS_MOD_DATA)
 
     -- for each container, retrieve its worldItem and reset its world item ref
     for slot, containerInfo in pairs(containers) do

@@ -4,6 +4,7 @@
 local HorseUtils = require("HorseMod/Utils")
 local Attachments = require("HorseMod/attachments/Attachments")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
+local HorseModData = require("HorseMod/HorseModData")
 local rdm = newrandom()
 
 
@@ -16,6 +17,20 @@ local rdm = newrandom()
 ---Hold utility functions related to the horse manes.
 local ManeManager = {}
 
+---@class ManesModData
+---@field maneColors table<AttachmentSlot, ManeColor> Manes of the horse and their associated color.
+
+local MANES_MOD_DATA = HorseModData.register--[[@<ManesModData>]](
+    "manes",
+    function(horse, modData)
+        if not modData.maneColors then
+            local maneColors = ManeManager.generateManeConfig(horse)
+            modData.maneColors = maneColors
+        end
+    end
+)
+ManeManager.MANES_MOD_DATA = MANES_MOD_DATA
+
 ---Check if the given slot is a mane slot.
 ---@param slot AttachmentSlot
 ---@return boolean
@@ -25,6 +40,7 @@ ManeManager.isManeSlot = function(slot)
 end
 
 ---Retrieve the mane definition for a specific horse breed.
+---@deprecated
 ---@param breedName string
 ---@return ManeDefinition
 ---@nodiscard
@@ -35,22 +51,18 @@ end
 
 ---Generate a mane configuration and mane colors tables for a specific breed. The mane color needs to be the same for all mane slots.
 ---@param horse IsoAnimal
----@return table<AttachmentSlot, string> maneConfig
 ---@return table<AttachmentSlot, ManeColor> maneColors
 ManeManager.generateManeConfig = function(horse)
     local breedName = HorseUtils.getBreedName(horse)
-    local maneDef = ManeManager.getManeDefinition(breedName)
-    local maneConfig = HorseUtils.tableCopy(maneDef.maneConfig)
+    local maneDef = Attachments.getManeDefinition(breedName)
+    local maneConfig = maneDef.maneConfig
     local maneColor = ManeManager.getManeColor(horse)
     local maneColors = {}
     for slot, _ in pairs(maneConfig) do
         maneColors[slot] = maneColor
     end
-    return maneConfig, maneColors
+    return maneColors
 end
-
----@FIXME only solution I found to avoid circular dependency while still keeping the function in this file since it's about manes
-HorseUtils.generateManeConfig = ManeManager.generateManeConfig
 
 ---Remove manes from the horse.
 ---@param horse IsoAnimal
@@ -70,7 +82,7 @@ end
 ---@nodiscard
 ManeManager.getManeColor = function(horse)
     local breedName = HorseUtils.getBreedName(horse)
-    local maneDef = ManeManager.getManeDefinition(breedName)
+    local maneDef = Attachments.getManeDefinition(breedName)
     local hexTable = maneDef.hex
     local hex = hexTable[rdm:random(1, #hexTable)]
     local r, g, b = HorseUtils.hexToRGBf(hex)
@@ -82,18 +94,19 @@ end
 ---@param horse IsoAnimal
 ---@param mane InventoryItem
 ---@param slot AttachmentSlot
----@param modData HorseModData
-ManeManager.setupMane = function(horse, mane, slot, modData)
+ManeManager.setupMane = function(horse, mane, slot)
     -- access the mane color
-    local maneColor = modData.maneColors[slot]
+    local maneColors = HorseModData.get(horse, MANES_MOD_DATA).maneColors
+    local maneColor = maneColors[slot]
+    local r, g, b = maneColor.r, maneColor.g, maneColor.b
 
     -- verify the current colors are the right one, else set them
-    if mane:getColorRed() ~= maneColor.r
-        or mane:getColorGreen() ~= maneColor.g
-        or mane:getColorBlue() ~= maneColor.b then
-        mane:setColorRed(maneColor.r)
-        mane:setColorGreen(maneColor.g)
-        mane:setColorBlue(maneColor.b)
+    if mane:getColorRed() ~= r
+        or mane:getColorGreen() ~= g
+        or mane:getColorBlue() ~= b then
+        mane:setColorRed(r)
+        mane:setColorGreen(g)
+        mane:setColorBlue(b)
     end
     return mane
 end

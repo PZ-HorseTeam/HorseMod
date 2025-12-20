@@ -1,6 +1,7 @@
 local HorseUtils = require("HorseMod/Utils")
 local Event = require("HorseMod/Event")
 local AnimationVariables = require("HorseMod/AnimationVariables")
+local HorseModData = require("HorseMod/HorseModData")
 
 ---@namespace HorseMod
 
@@ -77,7 +78,7 @@ HorseManager.findHorseByID = function(animalID)
 end
 
 
----Detect newly created horses par parsing the moving objects array list of the player cell 
+---Detect newly created horses by parsing the moving objects array list of the player cell 
 
 local UPDATE_RATE = 8
 local TICK_AMOUNT = 0
@@ -97,12 +98,15 @@ HorseManager.retrieveNewHorses = function()
     TICK_AMOUNT = TICK_AMOUNT < update_rate - 1 and TICK_AMOUNT + 1 or 0
 
     -- iterate every update_rate-th entries
-    for i = TICK_AMOUNT, size - 1, update_rate do
+    for i = TICK_AMOUNT, size - 1, update_rate do repeat
         local isoMovingObject = isoMovingObjects:get(i)
 
-        -- verify is an animal and horse and not already checked and not dead
-        if instanceof(isoMovingObject, "IsoAnimal") 
-            and HorseUtils.isHorse(isoMovingObject) 
+        -- verify is an animal 
+        if not instanceof(isoMovingObject, "IsoAnimal") then break end
+        ---@cast isoMovingObject IsoAnimal 
+
+        -- verify is a horse and not already checked and not dead
+        if HorseUtils.isHorse(isoMovingObject) 
             and not HorseManager._detected_horses[isoMovingObject]
             and not isoMovingObject:isDead() then
             
@@ -112,7 +116,7 @@ HorseManager.retrieveNewHorses = function()
 
             HorseManager._detected_horses[isoMovingObject] = true
         end
-    end
+    until true end
 end
 
 Events.OnTick.Add(HorseManager.retrieveNewHorses)
