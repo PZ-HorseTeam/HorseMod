@@ -38,9 +38,11 @@ AttachmentsManager.equipAccessory = function(context, player, horse, accessory, 
 end
 
 ---Unequip a specific accessory on the horse.
+---@param context ISContextMenu?
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@param oldAccessory InventoryItem
+---@param slot AttachmentSlot
 AttachmentsManager.unequipAccessory = function(context, player, horse, oldAccessory, slot)
     if context then
         context:closeAll()
@@ -52,19 +54,20 @@ end
 ---Unequip every accessories on the horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
----@param oldAccessories InventoryItem[]
-AttachmentsManager.unequipAllAccessory = function(context, player, horse, oldAccessories, slot)
+---@param oldAccessories {item: InventoryItem, slot: AttachmentSlot}[]
+AttachmentsManager.unequipAllAccessory = function(context, player, horse, oldAccessories)
     if context then
         context:closeAll()
     end
     local unlock, side = HorseUtils.pathfindToHorse(player, horse)
     
     -- unequip all
-    local accessoryCount = #oldAccessories
-    for i = 1, accessoryCount do
-        local oldAccessory = oldAccessories[i] --[[@as InventoryItem]]
-        local shouldUnlockOnPerform = i == accessoryCount and unlock or nil
-        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, side, shouldUnlockOnPerform, unlock))
+    for i = 1, #oldAccessories do
+        local oldAccessory = oldAccessories[i]
+        local item = oldAccessory.item
+        local slot = oldAccessory.slot
+        local shouldUnlockOnPerform = i == #oldAccessories and unlock or nil
+        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, item, slot, side, shouldUnlockOnPerform, unlock))
     end
 end
 
@@ -258,5 +261,35 @@ AttachmentsManager.onClickedAnimalForContext = function(playerNum, context, anim
 end
 
 Events.OnClickedAnimalForContext.Add(AttachmentsManager.onClickedAnimalForContext)
+
+---@param playerNum integer
+---@param context ISContextMenu
+---@param items InventoryItem[]|umbrella.ContextMenuItemStack[]
+AttachmentsManager.OnFillInventoryObjectContextMenu = function(playerNum, context, items)
+    -- get every single items
+    local itemList = {}
+    for i = 1,#items do
+		local item = items[i]
+		if not instanceof(item, "InventoryItem") then
+            ---@cast item umbrella.ContextMenuItemStack
+            local items = item.items
+            for j = 1, #items do
+                table.insert(itemList, items[j])
+            end
+        else
+            table.insert(itemList, item)
+        end
+    end
+
+    local equipOption = context:getOptionFromName(getText("ContextMenu_Equip_Primary"))
+    local unequipOption = context:getOptionFromName(getText("ContextMenu_Equip_Secondary"))
+
+    for i = 1, #itemList do repeat
+        local item = itemList[i]
+        
+    until true end
+end
+
+Events.OnFillInventoryObjectContextMenu.Add(AttachmentsManager.OnFillInventoryObjectContextMenu)
 
 return AttachmentsManager

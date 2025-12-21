@@ -79,11 +79,11 @@ end
 ---Retrieve the attached item on the specified `slot` of `animal`.
 ---@param animal IsoAnimal
 ---@param slot AttachmentSlot
----@return InventoryItem?
+---@return InventoryItem
 ---@nodiscard
 Attachments.getAttachedItem = function(animal, slot)
     local attachedItems = animal:getAttachedItems()
-    return attachedItems and attachedItems:getItem(slot)
+    return attachedItems:getItem(slot)
 end
 
 ---Retrieve a table with every attached items on the horse.

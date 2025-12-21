@@ -114,7 +114,9 @@ end
 ---@param worldItem IsoWorldInventoryObject
 ---@return ContainerInformation?
 ContainerManager.getHorseContainerData = function(worldItem)
-    local md_horse = worldItem:getItem():getModData().HorseMod
+    local item = worldItem:getItem()
+    if not item then return nil end
+    local md_horse = item:getModData().HorseMod
     local container = md_horse and md_horse.container
     if container then
         return container
