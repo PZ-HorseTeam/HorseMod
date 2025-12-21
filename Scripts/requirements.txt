@@ -1,0 +1,3 @@
+lupa
+pandas
+pyperclip

@@ -1,9 +1,6 @@
 ---@namespace HorseMod
 
----REQUIREMENTS
-local AttachmentData = require("HorseMod/attachments/AttachmentData")
-local HorseModData = require("HorseMod/HorseModData")
-
+---@TODO use the HorseDefinition table to check for horses directly ?
 local HORSE_TYPES = {
     ["stallion"] = true,
     ["mare"] = true,

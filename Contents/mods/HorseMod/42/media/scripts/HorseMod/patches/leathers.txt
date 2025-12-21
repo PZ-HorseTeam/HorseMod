@@ -1,0 +1,159 @@
+module Base
+{
+    craftRecipe DryLargeLeather
+    {
+        itemMapper DryLeatherLarge
+        {
+            HorseMod.HorseLeather_AP_Fur_Tan = HorseMod.HorseLeather_AP_Fur_Tan_Wet,
+            HorseMod.HorseLeather_APHO_Fur_Tan = HorseMod.HorseLeather_APHO_Fur_Tan_Wet,
+            HorseMod.HorseLeather_AQHBR_Fur_Tan = HorseMod.HorseLeather_AQHBR_Fur_Tan_Wet,
+            HorseMod.HorseLeather_AQHP_Fur_Tan = HorseMod.HorseLeather_AQHP_Fur_Tan_Wet,
+            HorseMod.HorseLeather_FBG_Fur_Tan = HorseMod.HorseLeather_FBG_Fur_Tan_Wet,
+            HorseMod.HorseLeather_GDA_Fur_Tan = HorseMod.HorseLeather_GDA_Fur_Tan_Wet,
+            HorseMod.HorseLeather_LPA_Fur_Tan = HorseMod.HorseLeather_LPA_Fur_Tan_Wet,
+            HorseMod.HorseLeather_T_Fur_Tan = HorseMod.HorseLeather_T_Fur_Tan_Wet,
+        }
+        overlayMapper
+        {
+            HorseMod.HorseLeather_AP_Fur_Tan_Wet = LargeLeather,
+            HorseMod.HorseLeather_APHO_Fur_Tan_Wet = LargeLeather,
+            HorseMod.HorseLeather_AQHBR_Fur_Tan_Wet = LargeLeather,
+            HorseMod.HorseLeather_AQHP_Fur_Tan_Wet = LargeLeather,
+            HorseMod.HorseLeather_FBG_Fur_Tan_Wet = LargeLeather,
+            HorseMod.HorseLeather_GDA_Fur_Tan_Wet = LargeLeather,
+            HorseMod.HorseLeather_LPA_Fur_Tan_Wet = LargeLeather,
+            HorseMod.HorseLeather_T_Fur_Tan_Wet = LargeLeather,
+        }
+    }
+
+    craftRecipe DrySmallLeather
+    {
+        itemMapper DryLeatherSmall
+        {
+            HorseMod.FoalLeather_AP_Fur_Tan = HorseMod.FoalLeather_AP_Fur_Tan_Wet,
+            HorseMod.FoalLeather_APHO_Fur_Tan = HorseMod.FoalLeather_APHO_Fur_Tan_Wet,
+            HorseMod.FoalLeather_AQHBR_Fur_Tan = HorseMod.FoalLeather_AQHBR_Fur_Tan_Wet,
+            HorseMod.FoalLeather_AQHP_Fur_Tan = HorseMod.FoalLeather_AQHP_Fur_Tan_Wet,
+            HorseMod.FoalLeather_FBG_Fur_Tan = HorseMod.FoalLeather_FBG_Fur_Tan_Wet,
+            HorseMod.FoalLeather_GDA_Fur_Tan = HorseMod.FoalLeather_GDA_Fur_Tan_Wet,
+            HorseMod.FoalLeather_LPA_Fur_Tan = HorseMod.FoalLeather_LPA_Fur_Tan_Wet,
+            HorseMod.FoalLeather_T_Fur_Tan = HorseMod.FoalLeather_T_Fur_Tan_Wet,
+        }
+        overlayMapper
+        {
+            HorseMod.FoalLeather_AP_Fur_Tan_Wet = SmallLeather,
+            HorseMod.FoalLeather_APHO_Fur_Tan_Wet = SmallLeather,
+            HorseMod.FoalLeather_AQHBR_Fur_Tan_Wet = SmallLeather,
+            HorseMod.FoalLeather_AQHP_Fur_Tan_Wet = SmallLeather,
+            HorseMod.FoalLeather_FBG_Fur_Tan_Wet = SmallLeather,
+            HorseMod.FoalLeather_GDA_Fur_Tan_Wet = SmallLeather,
+            HorseMod.FoalLeather_LPA_Fur_Tan_Wet = SmallLeather,
+            HorseMod.FoalLeather_T_Fur_Tan_Wet = SmallLeather,
+        }
+    }
+
+    craftRecipe TanLeather
+    {
+        itemMapper TanLeatherMapper
+        {
+            HorseMod.HorseLeather_AP_Fur_Tan_Wet = HorseMod.HorseLeather_AP_Fur,
+            HorseMod.HorseLeather_APHO_Fur_Tan_Wet = HorseMod.HorseLeather_APHO_Fur,
+            HorseMod.HorseLeather_AQHBR_Fur_Tan_Wet = HorseMod.HorseLeather_AQHBR_Fur,
+            HorseMod.HorseLeather_AQHP_Fur_Tan_Wet = HorseMod.HorseLeather_AQHP_Fur,
+            HorseMod.HorseLeather_FBG_Fur_Tan_Wet = HorseMod.HorseLeather_FBG_Fur,
+            HorseMod.HorseLeather_GDA_Fur_Tan_Wet = HorseMod.HorseLeather_GDA_Fur,
+            HorseMod.HorseLeather_LPA_Fur_Tan_Wet = HorseMod.HorseLeather_LPA_Fur,
+            HorseMod.HorseLeather_T_Fur_Tan_Wet = HorseMod.HorseLeather_T_Fur,
+
+            HorseMod.FoalLeather_AP_Fur_Tan_Wet = HorseMod.FoalLeather_AP_Fur,
+            HorseMod.FoalLeather_APHO_Fur_Tan_Wet = HorseMod.FoalLeather_APHO_Fur,
+            HorseMod.FoalLeather_AQHBR_Fur_Tan_Wet = HorseMod.FoalLeather_AQHBR_Fur,
+            HorseMod.FoalLeather_AQHP_Fur_Tan_Wet = HorseMod.FoalLeather_AQHP_Fur,
+            HorseMod.FoalLeather_FBG_Fur_Tan_Wet = HorseMod.FoalLeather_FBG_Fur,
+            HorseMod.FoalLeather_GDA_Fur_Tan_Wet = HorseMod.FoalLeather_GDA_Fur,
+            HorseMod.FoalLeather_LPA_Fur_Tan_Wet = HorseMod.FoalLeather_LPA_Fur,
+            HorseMod.FoalLeather_T_Fur_Tan_Wet = HorseMod.FoalLeather_T_Fur,
+        }
+    }
+
+    craftRecipe RemoveFlesh
+    {
+        itemMapper RemoveFleshMapper
+        {
+            HorseMod.HorseLeather_AP_Fur = HorseMod.HorseLeather_AP_Full,
+            HorseMod.HorseLeather_APHO_Fur = HorseMod.HorseLeather_APHO_Full,
+            HorseMod.HorseLeather_AQHBR_Fur = HorseMod.HorseLeather_AQHBR_Full,
+            HorseMod.HorseLeather_AQHP_Fur = HorseMod.HorseLeather_AQHP_Full,
+            HorseMod.HorseLeather_FBG_Fur = HorseMod.HorseLeather_FBG_Full,
+            HorseMod.HorseLeather_GDA_Fur = HorseMod.HorseLeather_GDA_Full,
+            HorseMod.HorseLeather_LPA_Fur = HorseMod.HorseLeather_LPA_Full,
+            HorseMod.HorseLeather_T_Fur = HorseMod.HorseLeather_T_Full,
+
+            HorseMod.FoalLeather_AP_Fur = HorseMod.FoalLeather_AP_Full,
+            HorseMod.FoalLeather_APHO_Fur = HorseMod.FoalLeather_APHO_Full,
+            HorseMod.FoalLeather_AQHBR_Fur = HorseMod.FoalLeather_AQHBR_Full,
+            HorseMod.FoalLeather_AQHP_Fur = HorseMod.FoalLeather_AQHP_Full,
+            HorseMod.FoalLeather_FBG_Fur = HorseMod.FoalLeather_FBG_Full,
+            HorseMod.FoalLeather_GDA_Fur = HorseMod.FoalLeather_GDA_Full,
+            HorseMod.FoalLeather_LPA_Fur = HorseMod.FoalLeather_LPA_Full,
+            HorseMod.FoalLeather_T_Fur = HorseMod.FoalLeather_T_Full,
+        }
+    }
+
+    craftRecipe RemoveFur
+    {
+        itemMapper RemoveFurMapper
+        {
+            Base.Leather_Crude_Large = HorseMod.HorseLeather_AP_Fur,
+            Base.Leather_Crude_Large = HorseMod.HorseLeather_APHO_Fur,
+            Base.Leather_Crude_Large = HorseMod.HorseLeather_AQHBR_Fur,
+            Base.Leather_Crude_Large = HorseMod.HorseLeather_AQHP_Fur,
+            Base.Leather_Crude_Large = HorseMod.HorseLeather_FBG_Fur,
+            Base.Leather_Crude_Large = HorseMod.HorseLeather_GDA_Fur,
+            Base.Leather_Crude_Large = HorseMod.HorseLeather_LPA_Fur,
+            Base.Leather_Crude_Large = HorseMod.HorseLeather_T_Fur,
+
+            Base.Leather_Crude_Small = HorseMod.FoalLeather_AP_Fur,
+            Base.Leather_Crude_Small = HorseMod.FoalLeather_APHO_Fur,
+            Base.Leather_Crude_Small = HorseMod.FoalLeather_AQHBR_Fur,
+            Base.Leather_Crude_Small = HorseMod.FoalLeather_AQHP_Fur,
+            Base.Leather_Crude_Small = HorseMod.FoalLeather_FBG_Fur,
+            Base.Leather_Crude_Small = HorseMod.FoalLeather_GDA_Fur,
+            Base.Leather_Crude_Small = HorseMod.FoalLeather_LPA_Fur,
+            Base.Leather_Crude_Small = HorseMod.FoalLeather_T_Fur,
+        }
+    }
+
+
+
+    craftRecipe CutLeatherInHalf
+    {
+        itemMapper leatherMapper
+        {
+            HorseMod.HorseLeather_AP_Fur_Tan_Medium = HorseMod.HorseLeather_AP_Fur_Tan,
+            HorseMod.HorseLeather_AP_Fur_Tan_Small = HorseMod.HorseLeather_AP_Fur_Tan_Medium,
+            
+            HorseMod.HorseLeather_APHO_Fur_Tan_Medium = HorseMod.HorseLeather_APHO_Fur_Tan,
+            HorseMod.HorseLeather_APHO_Fur_Tan_Small = HorseMod.HorseLeather_APHO_Fur_Tan_Medium,
+            
+            HorseMod.HorseLeather_AQHBR_Fur_Tan_Medium = HorseMod.HorseLeather_AQHBR_Fur_Tan,
+            HorseMod.HorseLeather_AQHBR_Fur_Tan_Small = HorseMod.HorseLeather_AQHBR_Fur_Tan_Medium,
+            
+            HorseMod.HorseLeather_AQHP_Fur_Tan_Medium = HorseMod.HorseLeather_AQHP_Fur_Tan,
+            HorseMod.HorseLeather_AQHP_Fur_Tan_Small = HorseMod.HorseLeather_AQHP_Fur_Tan_Medium,
+            
+            HorseMod.HorseLeather_FBG_Fur_Tan_Medium = HorseMod.HorseLeather_FBG_Fur_Tan,
+            HorseMod.HorseLeather_FBG_Fur_Tan_Small = HorseMod.HorseLeather_FBG_Fur_Tan_Medium,
+            
+            HorseMod.HorseLeather_GDA_Fur_Tan_Medium = HorseMod.HorseLeather_GDA_Fur_Tan,
+            HorseMod.HorseLeather_GDA_Fur_Tan_Small = HorseMod.HorseLeather_GDA_Fur_Tan_Medium,
+            
+            HorseMod.HorseLeather_LPA_Fur_Tan_Medium = HorseMod.HorseLeather_LPA_Fur_Tan,
+            HorseMod.HorseLeather_LPA_Fur_Tan_Small = HorseMod.HorseLeather_LPA_Fur_Tan_Medium,
+            
+            HorseMod.HorseLeather_T_Fur_Tan_Medium = HorseMod.HorseLeather_T_Fur_Tan,
+            HorseMod.HorseLeather_T_Fur_Tan_Small = HorseMod.HorseLeather_T_Fur_Tan_Medium,
+            
+        }
+    }
+}

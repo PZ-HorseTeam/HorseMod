@@ -65,6 +65,14 @@ function HorseRiding.getMountedHorse(player)
     return mount.pair.mount
 end
 
+---Check if the player is currently mounting a horse.
+---@param player IsoPlayer
+---@return boolean
+---@nodiscard
+function HorseRiding.isMountingHorse(player)
+    return HorseRiding.getMountedHorse(player) ~= nil
+end
+
 ---Retrieve the player mount
 ---@param rider IsoPlayer
 ---@return Mount | nil
@@ -194,5 +202,7 @@ end
 
 Events.OnCreatePlayer.Add(initHorseMod)
 
+---@FIXME this is because this file should be in shared but in the current state it is it cannot be easily moved there, so we expose the namespace globally for now
+_G["HorseRiding"] = HorseRiding
 
 return HorseRiding

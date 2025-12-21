@@ -79,13 +79,10 @@ AnimalDefinitions.stages["horse"] = {
 -- define the breeds
 local breeds = {}
 for shortName, id in pairs(HorseDefinitions.SHORT_NAMES) do
-    DebugLog.log("")
-    DebugLog.log(shortName.."    "..id)
     local breed = {name = id}
     for key, path in pairs(HorseDefinitions.PATHS) do
         local formattedPath = HorseUtils.formatTemplate(path, {shortName = shortName})
         breed[key] = formattedPath
-        DebugLog.log(key.."    ".. formattedPath)
     end
     breeds[id] = breed
 end
@@ -267,3 +264,5 @@ for animalType, isAdult in pairs(HorseDefinitions.ANIMALS) do
     -- apply avatar definition
     AnimalAvatarDefinition[animalType] = HorseDefinitions.AVATAR_DEFINITION
 end
+
+return HorseDefinitions
