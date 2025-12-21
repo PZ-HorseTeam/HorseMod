@@ -67,11 +67,6 @@ end
 
 -- TODO: all this stuff should be moved out to the attachments modules
 
----@param horse IsoAnimal
----@return integer
-HorseUtils.getHorseID = function(horse)
-    return horse:getAnimalID()
-end
 
 ---@param horse IsoAnimal
 ---@return string
@@ -206,47 +201,6 @@ HorseUtils.pathfindToHorse = function(player, horse)
 end
 
 
----@deprecated use Attachments.getAttachedItem instead
----@param animal IsoAnimal
----@param slot string
----@return InventoryItem | nil
----@nodiscard
-HorseUtils.getAttachedItem = function(animal, slot)
-    -- TODO: check if this will actually be nil in real circumstances, doesn't seem like it!
-    local attachedItems = animal:getAttachedItems()
-    if attachedItems then
-        return attachedItems:getItem(slot)
-    end
-
-    return nil
-end
-
----@deprecated use Attachments.getSaddle instead
----@param animal IsoAnimal
----@return InventoryItem | nil
----@nodiscard
-HorseUtils.getSaddle = function(animal)
-    local saddle = HorseUtils.getAttachedItem(animal, "Saddle")
-    if not saddle then
-        return nil
-    else
-        return saddle
-    end
-end
-
----@deprecated use Attachments.getReins instead
----@param animal IsoAnimal
----@return InventoryItem | nil
----@nodiscard
-HorseUtils.getReins = function(animal)
-    local reins = HorseUtils.getAttachedItem(animal, "Reins")
-    if not reins then
-        return nil
-    else
-        return reins
-    end
-end
-
 ---Formats translation entries that use such a format:
 ---```lua
 ---local params = {param1 = "Str1", paramNamed = "Str2", helloWorld="Str3",}
@@ -259,16 +213,6 @@ HorseUtils.formatTemplate = function(template, params)
     return template:gsub("{(%w+)}", params)
 end
 
----Make a copy of a table
----@param tbl table
----@return table
-HorseUtils.tableCopy = function(tbl)
-    local copy = {}
-    for k,v in pairs(tbl) do
-        copy[k] = v
-    end
-    return copy
-end
 
 ---@param hex string|nil
 ---@return number, number, number

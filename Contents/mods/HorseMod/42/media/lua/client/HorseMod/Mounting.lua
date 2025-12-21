@@ -1,11 +1,11 @@
 require("TimedActions/ISPathFindAction")
 
 local HorseRiding = require("HorseMod/Riding")
-local HorseUtils = require("HorseMod/Utils")
 local HorseManager = require("HorseMod/HorseManager")
 local MountHorseAction = require("HorseMod/TimedActions/MountHorseAction")
 local DismountHorseAction = require("HorseMod/TimedActions/DismountHorseAction")
 local MountPair = require("HorseMod/MountPair")
+local Attachments = require("HorseMod/attachments/Attachments")
 
 
 local Mounting = {}
@@ -168,7 +168,7 @@ function Mounting.mountHorse(player, horse)
 
     ISTimedActionQueue.add(path)
 
-    local saddle = HorseUtils.getSaddle(horse)
+    local saddle = Attachments.getSaddle(horse)
     local pairing = MountPair.new(player, horse)
 
     ISTimedActionQueue.add(
@@ -229,7 +229,7 @@ function Mounting.dismountHorse(player)
         end
     end
 
-    local saddleItem = HorseUtils.getSaddle(horse)
+    local saddleItem = Attachments.getSaddle(horse)
 
     player:setDir(lockDir)
 
