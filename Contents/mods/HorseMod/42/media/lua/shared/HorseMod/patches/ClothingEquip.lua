@@ -167,6 +167,7 @@ local ClothingEquip = {
     },
 }
 
+---Can the given item be equipped while mounted on a horse?
 ---@param item InventoryItem
 ---@return boolean
 ---@nodiscard

@@ -8,75 +8,86 @@ SlotDefinition
 
 .. _availableslots-label:
 
+Example
+-------
+
+::
+
+    ---@type SlotDefinition
+    local exampleSlotDef = {
+        modelAttachment="maneMid1", 
+        isMane=true, defaultMane="HorseMod.HorseManeMid"
+    }
+
 Slots available
 ---------------
 Below is a list of all the available slots in the Horse mod defined in :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions`.
 
 Head
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``head``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``head``
 
 ManeEnd
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneEnd``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneEnd``
 
-  :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeEnd``
+    :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeEnd``
 
-  :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
+    :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
 
 ManeMid1
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid1``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid1``
 
-  :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
+    :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
 
-  :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
+    :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
 
 ManeMid2
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid2``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid2``
 
-  :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
+    :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
 
-  :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
+    :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
 
 ManeMid3
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid3``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid3``
 
-  :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
+    :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
 
-  :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
+    :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
 
 ManeMid4
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid4``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid4``
 
-  :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
+    :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
 
-  :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
+    :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
 
 ManeMid5
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid5``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneMid5``
 
-  :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
+    :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeMid``
 
-  :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
+    :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
 
 ManeStart
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneStart``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``maneStart``
 
-  :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeStart``
+    :lua:obj:`defaultMane <HorseMod.SlotDefinition.defaultMane>` = ``HorseMod.HorseManeStart``
 
-  :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
+    :lua:obj:`isMane <HorseMod.SlotDefinition.isMane>` = ``True``
 
 MountLeft
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``mountLeft``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``mountLeft``
 
 MountRight
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``mountRight``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``mountRight``
 
 Reins
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``reins``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``reins``
 
 Saddle
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``saddle``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``saddle``
 
 Saddlebags
-  :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``saddlebags``
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``saddlebags``
 
 

@@ -9,3 +9,4 @@ Modules
   modules/ContainerManager
   modules/HorseModData
   modules/ManeManager
+  modules/ModdingAPI

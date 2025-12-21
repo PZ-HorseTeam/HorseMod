@@ -4,5 +4,5 @@ Guides
 .. toctree::
   
   guides/horsezones
-  guides/attachmentsAPI
+  guides/attachmentsDev
   guides/attachmentsModding

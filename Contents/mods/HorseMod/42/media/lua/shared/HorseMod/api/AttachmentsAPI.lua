@@ -1,34 +1,25 @@
 ---@namespace HorseMod
 
 ---REQUIREMENTS
-local ClothingEquip = require("HorseMod/patches/ClothingEquip")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
 
----Provides API functions to interact with various HorseMod systems.
-local HorseAPI = {}
-
-
----Add a body location restriction while mounting a horse. By default, body locations are restricted from being equipped/unequipped while mounted unless explicitly allowed in the ClothingEquip.allowedLocations table.
-HorseAPI.addBodyLocationRestriction = function(bodyLocation, canEquip)
-    ClothingEquip.allowedLocations[bodyLocation] = canEquip
-end
-
-
+local AttachmentsAPI = {}
 
 ---Used to define new attachments.
 ---@param itemDefinitions table<string,ItemDefinition>
-HorseAPI.addNewAttachments = function(itemDefinitions)
+AttachmentsAPI.addNewAttachments = function(itemDefinitions)
     for fullType, itemDef in pairs(itemDefinitions) do
         for slot, attachmentDef in pairs(itemDef) do
-            HorseAPI.addNewAttachment(fullType, slot, attachmentDef)
+            AttachmentsAPI.addNewAttachment(fullType, slot, attachmentDef)
         end
     end
 end
 
+---Add a singular attachment definition for a given item full type and slot.
 ---@param fullType string
 ---@param slot AttachmentSlot
 ---@param attachmentDef AttachmentDefinition
-HorseAPI.addNewAttachment = function(fullType, slot, attachmentDef)
+AttachmentsAPI.addNewAttachment = function(fullType, slot, attachmentDef)
     -- retrieve item definition
     local items = AttachmentData.items
     local itemDefEntry = items[fullType] or {}
@@ -44,7 +35,7 @@ end
 ---Used to define a new attachment slot.
 ---@param slot AttachmentSlot
 ---@param slotDefinition SlotDefinition
-HorseAPI.addNewSlot = function(slot, slotDefinition)
+AttachmentsAPI.addNewSlot = function(slot, slotDefinition)
     local slotsDef = AttachmentData.slotsDefinitions
     assert(not slotsDef[slot], "AttachmentData.addNewSlot: Slot '" .. slot .. "' already exists!")
 
@@ -58,7 +49,7 @@ end
 ---Used to add a new model `attachment point <https://pzwiki.net/wiki/Attachment_(scripts)>`_ to the horse model script via Lua. This attachment point can then be used in :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions` to define new attachment slots on a custom position on the horse.
 ---@param modelAttachment string Attachment point name.
 ---@param attachmentData {bone: string, offset: XYZ, rotate: XYZ}
-HorseAPI.addNewModelAttachment = function(modelAttachment, attachmentData)
+AttachmentsAPI.addNewModelAttachment = function(modelAttachment, attachmentData)
     local horseModelScript = getScriptManager():getModelScript("HorseMod.Horse")
 
     -- verify this attachment point does not already exist
@@ -88,4 +79,4 @@ HorseAPI.addNewModelAttachment = function(modelAttachment, attachmentData)
 end
 
 
-return HorseAPI
+return AttachmentsAPI

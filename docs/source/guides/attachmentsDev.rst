@@ -1,12 +1,10 @@
-Attachments API
-===============
+Attachments system description
+==============================
 Attachments on horses are handled by a bunch of different system spread across multiple modules and classes. The system currently allows you to associate an :lua:alias:`HorseMod.AttachmentSlot` to an `attachment point <https://pzwiki.net/wiki/Attachment_(scripts)>`_ on the horse model and define slots various items can occupy with different caracteristics defined as :lua:class:`HorseMod.AttachmentDefinition`.
 
 AttachmentData
 --------------
-:lua:obj:`HorseMod.attachments.AttachmentData` is the main module used to define and store all the attachment slots and definitions. It provides functions to add new slots and attachments, as well as tables to store the defined slots and attachments.
-
-Attachments of a specific horse are stored in a :lua:class:`HorseMod.AttachmentsModData` instance associated to the horse using the :lua:obj:`HorseMod.HorseModData` system. Containers information are stored in :lua:class:`HorseMod.ContainersModData` instances and manes in :lua:class:`HorseMod.ManesModData` instances.
+:lua:obj:`HorseMod.attachments.AttachmentData` is the main module used to store all the attachment slots and definitions. Attachments of a specific horse are stored in a :lua:class:`HorseMod.AttachmentsModData` instance associated to the horse using the :lua:obj:`HorseMod.HorseModData` system. Containers information are stored in :lua:class:`HorseMod.ContainersModData` instances and manes in :lua:class:`HorseMod.ManesModData` instances.
 
 .. _attachmentsload-label:
 

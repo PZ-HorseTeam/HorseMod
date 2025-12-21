@@ -2,8 +2,10 @@ Attachment modding
 ==================
 This guide explains how to create new attachments for horses using the HorseMod attachment API.
 
+The attachments API functions for modders are defined in a module :lua:obj:`HorseMod.api.AttachmentsAPI` which provides functions to add new slots and attachments, as well as tables to store the defined slots and attachments. You can find their full documentation there.
+
 .. hint::
-  If you want more in-depth information of how the attachment system works internally, please refer to :doc:`attachmentsAPI`.
+  If you want more in-depth information of how the attachment system works internally, please refer to :doc:`attachmentsDev`.
 
 .. important::
   A full example mod showcasing how to create new attachments for the horse is available on the HorseMod GitHub repository `here <https://github.com/demiurgeQuantified/HorseMod/HorseModExampleMod>`_.
@@ -16,9 +18,9 @@ To add a new slot, add a new :lua:class:`HorseMod.SlotDefinition` entry to the :
 
 ::
 
-  local AttachmentData = require("HorseMod/attachments/AttachmentData")
+  local AttachmentsAPI = require("HorseMod/api/AttachmentsAPI")
 
-  AttachmentData.addNewSlot("Hat", {
+  AttachmentsAPI.addNewSlot("Hat", {
       modelAttachment = "head",
   })
 
@@ -37,9 +39,9 @@ When defining a custom slot, you don't necessarily need to use an existing model
 Below is an example of adding a new model attachment point called "leftAttachTestPoint" to the horse model:
 ::
   
-  local AttachmentData = require("HorseMod/attachments/AttachmentData")
+  local AttachmentsAPI = require("HorseMod/api/AttachmentsAPI")
 
-  AttachmentData.addNewModelAttachment("leftAttachTestPoint", {
+  AttachmentsAPI.addNewModelAttachment("leftAttachTestPoint", {
       bone = "DEF_Spine2",
       offset = {x=0.3, y=0.1528, z=0.041},
       rotate = {x=0.0, y=0.0, z=0.0},
@@ -56,7 +58,7 @@ Below is an example usage:
 
 ::
 
-  local AttachmentData = require("HorseMod/attachments/AttachmentData")
+  local AttachmentsAPI = require("HorseMod/api/AttachmentsAPI")
   local attachmentDef = {
       unequipBehavior = {
           time = -1,
@@ -68,7 +70,7 @@ Below is an example usage:
       },
       model = "MyMod.MyItemModel", -- has variants with riding state suffixes
   }
-  AttachmentData.addNewAttachment("MyMod.MyItemFullType", "Reins", attachmentDef)
+  AttachmentsAPI.addNewAttachment("MyMod.MyItemFullType", "Reins", attachmentDef)
 
 .. warning:: 
   Attachments should be added from the shared folder so that both the server and client are aware of them.

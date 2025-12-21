@@ -20,6 +20,17 @@ SlotDefinition
 
 .. _availableslots-label:
 
+Example
+-------
+
+::
+
+    ---@type SlotDefinition
+    local exampleSlotDef = {{
+        modelAttachment="maneMid1", 
+        isMane=true, defaultMane="HorseMod.HorseManeMid"
+    }}
+
 Slots available
 ---------------
 Below is a list of all the available slots in the Horse mod defined in :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions`.
@@ -43,7 +54,7 @@ for slot, definition in slotsDefinitions:
     data += f"{slot}"
     
     for key, value in definition.items():
-        data += f"\n  {MAPPING.format(key=key)} = ``{value}``\n"
+        data += f"\n    {MAPPING.format(key=key)} = ``{value}``\n"
 
     data += "\n"
 
