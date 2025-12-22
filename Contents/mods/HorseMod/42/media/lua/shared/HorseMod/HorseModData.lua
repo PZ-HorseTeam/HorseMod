@@ -1,6 +1,4 @@
----REQUIREMENTS
-local EventHandler = require("HorseMod/EventHandler")
-
+local HorseManager = require("HorseMod/HorseManager")
 ---@namespace HorseMod
 
 ---Used to access a kind of mod data defined for a horse such as containers, attachments and manes.
@@ -13,6 +11,24 @@ local HorseModData = {
     modDataKinds = {},
 }
 
+local ANIMAL_MODDATA_KEY = "horseModData"
+
+---@type table
+local GLOBAL_MOD_DATA
+
+Events.OnInitGlobalModData.Add(function()
+    GLOBAL_MOD_DATA = ModData.getOrCreate("horsemod")
+    GLOBAL_MOD_DATA.orphanedHorses = GLOBAL_MOD_DATA.orphanedHorses or {}
+end)
+
+---Retrieve all horse mod data.
+---@param horse IsoAnimal
+---@return table<string, table>
+local function getAll(horse)
+    local modData = horse:getModData()
+    modData[ANIMAL_MODDATA_KEY] = modData[ANIMAL_MODDATA_KEY] or {}
+    return modData[ANIMAL_MODDATA_KEY]
+end
 
 ---Registers a new kind of mod data.
 ---@generic T
@@ -36,10 +52,32 @@ function HorseModData.register(name, initialiser)
     return kind
 end
 
+---Check if there is orphan mod data for the given horse and copy it back to the horse mod data.
+---@param horse IsoAnimal
+local function copyOrphanData(horse)
+    -- try to find orphaned mod data
+    local horseID = horse:getAnimalID()
+    local orphanModData = GLOBAL_MOD_DATA.orphanedHorses[horseID]
+    if not orphanModData then return end
+
+    -- set the new mod data
+    horse:getModData()[ANIMAL_MODDATA_KEY] = orphanModData
+    GLOBAL_MOD_DATA.orphanedHorses[horseID] = nil
+end
+
+---Split the horse mod data from the horse and store it in the global mod data as a orphan mod data.
+---This is usually needed when the horse gets removed from the world temporarly (e.g. when picked up by a player).
+---@param horse IsoAnimal
+function HorseModData.makeOrphan(horse)
+    local horseID = horse:getAnimalID()
+    GLOBAL_MOD_DATA.orphanedHorses[horseID] = copyTable(getAll(horse))
+end
+
 ---Initialises all mod data kinds for the given horse.
 ---@param horse IsoAnimal
 function HorseModData.initialize(horse)
-    local horseModData = HorseModData.getAll(horse)
+    copyOrphanData(horse)
+    local horseModData = getAll(horse)
     for name, kind in pairs(HorseModData.modDataKinds) do
         horseModData[name] = horseModData[name] or {}
         local kindModData = horseModData[name] --[[@as table goes crazy without it]]
@@ -49,7 +87,7 @@ function HorseModData.initialize(horse)
     end
 end
 
-EventHandler.onHorseAdded:add(HorseModData.initialize)
+HorseManager.onHorseAdded:add(HorseModData.initialize)
 
 
 ---Returns mod data of a specific kind.
@@ -58,36 +96,7 @@ EventHandler.onHorseAdded:add(HorseModData.initialize)
 ---@param kind ModDataKind<T>
 ---@return T modData
 function HorseModData.get(horse, kind)
-    -- get the kind mod data
-    local horseModData = HorseModData.getAll(horse)
-    local kindModData = horseModData[kind.name]
-    
-    return kindModData
-end
-
----Sets the global horse mod data.
----@generic T
----@param horse IsoAnimal
----@param data table<string, T>
-function HorseModData.setAll(horse, data)
-    local modData = horse:getModData()
-    modData.horseModData = data
-end
-
----Retrieve all horse mod data.
----@generic T
----@param horse IsoAnimal
----@return table<string, T>
-function HorseModData.getAll(horse)
-    local modData = horse:getModData()
-    modData.horseModData = modData.horseModData or {}
-    return modData.horseModData
-end
-
-function HorseModData.getGlobal()
-    local md = ModData.getOrCreate("HorseMod")
-    md.orphanedHorses = md.orphanedHorses or {}
-    return md
+    return getAll(horse)[kind.name]
 end
 
 

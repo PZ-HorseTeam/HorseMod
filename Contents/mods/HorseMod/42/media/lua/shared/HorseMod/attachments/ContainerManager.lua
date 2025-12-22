@@ -1,7 +1,7 @@
 ---@namespace HorseMod
 
 ---REQUIREMENTS
-local EventHandler = require("HorseMod/EventHandler")
+local HorseManager = require("HorseMod/HorseManager")
 local HorseModData = require("HorseMod/HorseModData")
 
 ---This class holds all the informations needed to find and identify a container attached to a horse, so the world item can be associated to the horse, and the horse can associate itself to the world item. The XYZ coordinates are stored to help find the world item again if needed and this data is added to the world item mod data.
@@ -376,7 +376,7 @@ ContainerManager.track = function(horse)
 end
 
 -- consider horse loses all world item refs
-EventHandler.onHorseRemoved:add(function(horse)
+HorseManager.onHorseRemoved:add(function(horse)
     -- get containers linked to the horse
     local containers = HorseModData.get(horse, CONTAINERS_MOD_DATA)
 
