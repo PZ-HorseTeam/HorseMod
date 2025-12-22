@@ -177,7 +177,7 @@ local AttachmentData = {
     ---Breeds associated to their mane colors.
     ---@type table<string, HexColor[]>
     MANE_HEX_BY_BREED = {
-        ["american_quarter"] = {"#EADAB6", "#FF0000"},
+        ["american_quarter"] = {"#EADAB6"},
         ["american_paint"] = {"#FBDEA7"},
         ["appaloosa"] = {"#24201D"},
         ["thoroughbred"] = {"#140C08"},

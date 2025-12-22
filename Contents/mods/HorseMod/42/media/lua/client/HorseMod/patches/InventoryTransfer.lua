@@ -24,7 +24,7 @@ Also patches `ISGrabItemAction` to prevent grabbing horse attachment containers 
 
 Patches context menus to remove horse attachment containers from the "Extended Placement" menu and hijacks the "Grab" option to unequip the attachment instead of grabbing the item.
 
-Patches the horse context menu when clicking on a horse to hijack the animal grab option to unequip all attachments from the horse when picking it up.
+Patches the horse context menu when clicking on a horse to hijack the animal grab option to unequip all attachments from the horse when picking it up. This patch goes in pair with `shared/HorseMod/patches/AnimalPickup.lua`. Does the same patch when adding a horse to a vehicle trailer.
 ]]
 local InventoryTransfer = {}
 
@@ -320,23 +320,53 @@ end
 Events.OnFillWorldObjectContextMenu.Add(InventoryTransfer.OnFillWorldObjectContextMenu)
 
 
+---@param horse IsoAnimal
+---@param chr IsoPlayer
+local function removeAttachments(horse, chr)
+    --- remove attachments first
+    local attachments = Attachments.getAttachedItems(horse)
+    if #attachments > 0 then
+        AttachmentsManager.unequipAllAccessory(nil, chr, horse, attachments)
+    end
+end
+
+
 InventoryTransfer._originalOnPickupAnimal = AnimalContextMenu.onPickupAnimal
 AnimalContextMenu.onPickupAnimal = function(animal, chr)
     if HorseUtils.isHorse(animal) then
         animal:stopAllMovementNow()
 
-        --- remove attachments first
-        local attachments = Attachments.getAttachedItems(animal)
-        if #attachments > 0 then
-            AttachmentsManager.unequipAllAccessory(nil, chr, animal, attachments)
-        end
+        removeAttachments(animal, chr)
 
-        luautils.walkAdj(chr, animal:getSquare(), true)
-        ISTimedActionQueue.add(ISPickupAnimal:new(chr, animal))
+        -- reimplement pickup action by stopping the clear of actions from walkAdj
+        if luautils.walkAdj(chr, animal:getSquare(), true) then
+            ISTimedActionQueue.add(ISPickupAnimal:new(chr, animal))
+        end
         return
     end
     
     InventoryTransfer._originalOnPickupAnimal(animal, chr)
+end
+
+
+InventoryTransfer._originalOnAddAnimalTrailer = ISVehicleMenu.onAddAnimalInTrailer
+function ISVehicleMenu.onAddAnimalInTrailer(playerObj, animal, vehicle)
+    if instanceof(animal, "IsoAnimal") then
+        ---@cast animal IsoAnimal
+        if HorseUtils.isHorse(animal) then
+            removeAttachments(animal, playerObj)
+    
+            -- call the original action to add the horse to the trailer without the clear of actions from walkAdj
+            local vec = vehicle:getAreaCenter("AnimalEntry")
+            local sq = getSquare(vec:getX(), vec:getY(), vehicle:getZ())
+            if luautils.walkAdj(playerObj, sq, true) then
+                ISTimedActionQueue.add(ISAddAnimalInTrailer:new(playerObj, vehicle, animal, false))
+            end
+            return
+        end
+    end
+
+    return InventoryTransfer._originalOnAddAnimalTrailer(playerObj, animal, vehicle)
 end
 
 return InventoryTransfer

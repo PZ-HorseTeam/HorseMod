@@ -132,8 +132,8 @@ HorseDefinitions.ANIMALS_DATA = {
         textureSkinned = "HorseMod/HorseSkinned",
         ropeBone = "DEF_Neck1",
         shadoww = 1.5,
-        shadowfm = 4.5,
-        shadowbm = 4.5,
+        shadowfm = 3,
+        shadowbm = 3,
 
         -- CORE
         breeds = copyTable(AnimalDefinitions.breeds["horse"].breeds),
