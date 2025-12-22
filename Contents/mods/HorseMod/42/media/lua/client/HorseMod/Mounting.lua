@@ -108,14 +108,15 @@ function Mounting.mountHorse(player, horse)
         -- Detach from tree
         local tree = data:getAttachedTree()
         if tree then
-            sendAttachAnimalToTree(horse, player, tree, true)
             data:setAttachedTree(nil)
+            sendAttachAnimalToTree(horse, player, tree, true)
         end
         -- Detach from any leading player
         local leader = data:getAttachedPlayer()
         if leader then
             leader:getAttachedAnimals():remove(horse)
             data:setAttachedPlayer(nil)
+            sendAttachAnimalToPlayer(horse, player, nil, true)
         end
     end
 
