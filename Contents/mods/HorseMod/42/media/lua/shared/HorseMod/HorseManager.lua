@@ -1,8 +1,6 @@
 local HorseUtils = require("HorseMod/Utils")
 local Event = require("HorseMod/Event")
 local AnimationVariables = require("HorseMod/AnimationVariables")
-local EventHandler = require("HorseMod/EventHandler")
-local HorseModData = require("HorseMod/HorseModData")
 
 ---@namespace HorseMod
 
@@ -28,28 +26,13 @@ local HorseManager = {
     systems = table.newarray(),
 }
 
----Split the horse mod data from the horse and store it in the global mod data as a orphan mod data. This is usually needed when the horse gets removed from the world temporarly (e.g. when picked up by a player).
----@param horse IsoAnimal
-function HorseManager.makeOrphan(horse)
-    local globalModData = HorseModData.getGlobal()
-    local horseID = horse:getAnimalID()
-    globalModData.orphanedHorses[horseID] = copyTable(HorseModData.getAll(horse))
-end
+---Triggers when a horse gets loaded in.
+HorseManager.onHorseAdded = Event.new--[[@<IsoAnimal>]]()
 
----Check if there is orphan mod data for the given horse and retrieve it back to the horse mod data.
----@param horse IsoAnimal
-function HorseManager.retrieveOrphanData(horse)
-    -- try to find orphaned mod data
-    local horseID = horse:getAnimalID()
-    local globalModData = HorseModData.getGlobal()
-    local orphanModData = globalModData.orphanedHorses[horseID]
-    if not orphanModData then return end
+---Triggers when a horse gets unloaded.
+HorseManager.onHorseRemoved = Event.new--[[@<IsoAnimal>]]()
 
-    -- set the new mod data
-    HorseModData.setAll(horse, orphanModData)
-end
-
-function HorseManager.removeFromHorses(horse, i)
+function HorseManager.removeHorse(horse, i)
     if i then
         table.remove(HorseManager.horses, i)
     else
@@ -60,7 +43,7 @@ function HorseManager.removeFromHorses(horse, i)
             end
         end
     end
-    EventHandler.onHorseRemoved:trigger(horse)
+    HorseManager.onHorseRemoved:trigger(horse)
     HorseManager._detected_horses[horse] = nil
 end
 
@@ -68,7 +51,7 @@ function HorseManager.releaseRemovedHorses()
     for i = #HorseManager.horses, 1, -1 do
         local horse = HorseManager.horses[i]
         if not horse:isExistInTheWorld() or horse:isDead() then
-            HorseManager.removeFromHorses(horse, i)
+            HorseManager.removeHorse(horse, i)
         end
     end
 end
@@ -138,11 +121,8 @@ HorseManager.retrieveNewHorses = function()
             -- initialise horse
             initialiseHorse(isoMovingObject)
             
-            -- retrieve orphan mod data if any
-            HorseManager.retrieveOrphanData(isoMovingObject)
-            
             -- trigger horse init event
-            EventHandler.onHorseAdded:trigger(isoMovingObject)
+            HorseManager.onHorseAdded:trigger(isoMovingObject)
 
             -- add to detected horses
             HorseManager.horses[#HorseManager.horses + 1] = isoMovingObject

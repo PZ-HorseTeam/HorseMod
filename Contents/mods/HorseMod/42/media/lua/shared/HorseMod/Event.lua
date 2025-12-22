@@ -24,7 +24,8 @@ end
 local Event = {}
 
 
----@return Event
+---@generic T...
+---@return Event<T...>
 ---@nodiscard
 function Event.new()
     return setmetatable(
