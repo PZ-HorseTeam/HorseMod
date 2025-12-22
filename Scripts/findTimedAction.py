@@ -23,15 +23,15 @@ TIMEDACTION_TEMPLATE = """    ---Valid timed actions while horse riding.
 
 
 # Format the matches into Lua table format
-DATA_FORMAT = '        ["{timedAction}"] = true,\n'
+DATA_FORMAT = '        ["{timedAction}"] = {bool},\n'
 # DATA_FORMAT = '{timedAction}\n'
 
 formatted_actions = ""
 for _, row in df.iterrows():
     action = row['timedAction']
     canRun = row['canRun']
-    if canRun:
-        formatted_actions += DATA_FORMAT.format(timedAction=action)
+    if type(canRun) is bool and canRun is True:
+        formatted_actions += DATA_FORMAT.format(timedAction=action, bool=str(canRun).lower())
 formatted_actions = formatted_actions.rstrip()  # Remove trailing newline
 
 format_table = TIMEDACTION_TEMPLATE.format(timedActions=formatted_actions)
