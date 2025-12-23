@@ -10,15 +10,11 @@ local AttachmentsManager = {}
 
 
 ---Equip a new accessory on the horse.
----@param context ISContextMenu
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@param accessory InventoryItem
 ---@param slot AttachmentSlot
-AttachmentsManager.equipAccessory = function(context, player, horse, accessory, slot)
-    if context then
-        context:closeAll()
-    end
+AttachmentsManager.equipAccessory = function(player, horse, accessory, slot)
     local unlock, side = HorseUtils.pathfindToHorse(player, horse)
     
     -- verify an attachment isn't already equiped, else unequip it
@@ -38,15 +34,14 @@ AttachmentsManager.equipAccessory = function(context, player, horse, accessory, 
 end
 
 ---Unequip a specific accessory on the horse.
----@param context ISContextMenu?
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
 ---@param oldAccessory InventoryItem
 ---@param slot AttachmentSlot
-AttachmentsManager.unequipAccessory = function(context, player, horse, oldAccessory, slot)
-    if context then
-        context:closeAll()
-    end
+AttachmentsManager.unequipAccessory = function(player, horse, oldAccessory, slot)
+    -- if context then
+    --     context:closeAll()
+    -- end
     local unlock, side = HorseUtils.pathfindToHorse(player, horse)
     ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, side, unlock))
 end
@@ -104,7 +99,7 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
     end
 
     
-    local gearSubMenu = ISContextMenu:getNew(context)
+    local gearSubMenu = ISContextMenu:getNew(horseSubMenu)
     context:addSubMenu(gearOption, gearSubMenu)
 
     --- EQUIP OPTIONS
@@ -158,9 +153,8 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
                 -- create the option to equip the accessory
                 local option = gearSubMenu:addOption(
                     txt,
-                    context,
-                    AttachmentsManager.equipAccessory,
                     player,
+                    AttachmentsManager.equipAccessory,
                     horse,
                     accessory,
                     slot
@@ -212,9 +206,8 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
             -- create the option to unequip the attachment
             local option = gearSubMenu:addOptionOnTop(
                 txt,
-                context,
-                AttachmentsManager.unequipAccessory,
                 player,
+                AttachmentsManager.unequipAccessory,
                 horse,
                 item, 
                 attachment.slot

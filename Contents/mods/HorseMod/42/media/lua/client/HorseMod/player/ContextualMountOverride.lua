@@ -21,7 +21,7 @@ function ContextualActionHandlers.AnimalsInteraction(action, playerObj, animal, 
     ---EQUIP ATTACHMENT IN HANDS ON HORSE
     local equipedItem = playerObj:getPrimaryHandItem()
     if equipedItem and AttachmentData.items[equipedItem:getFullType()] then
-        AttachmentsManager.equipAccessory(nil, playerObj, animal, equipedItem)
+        AttachmentsManager.equipAccessory(playerObj, animal, equipedItem)
         return
     end
 

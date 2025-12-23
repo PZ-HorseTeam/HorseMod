@@ -175,7 +175,7 @@ ISInventoryPaneContextMenu.equipWeapon = function(weapon, primary, twoHands, pla
         local playerObj = getSpecificPlayer(player)
         local slot = containerInfo.slot
         local item = Attachments.getAttachedItem(horse, slot)
-        AttachmentsManager.unequipAccessory(nil, playerObj, horse, item, slot)
+        AttachmentsManager.unequipAccessory(playerObj, horse, item, slot)
 
         -- override default parameters then equip the item
         local twoHands = item:isTwoHandWeapon()
@@ -279,7 +279,7 @@ InventoryTransfer.onSelectGrabWorldItem = function(worldItemOption, ...)
     local playerObj = worldItemOption.player
     local slot = containerInfo.slot
     local item = Attachments.getAttachedItem(horse, slot)
-    AttachmentsManager.unequipAccessory(nil, playerObj, horse, item, slot)
+    AttachmentsManager.unequipAccessory(playerObj, horse, item, slot)
 end
 
 ---Patches the context menu grab option to unequip the attachment instead of grabbing the item.
