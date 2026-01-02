@@ -20,8 +20,8 @@ Mounts.onMountChanged = Event.new--[[@<IsoPlayer, IsoAnimal?>]]()
 ---@param player IsoPlayer
 ---@param animal IsoAnimal
 function Mounts.addMount(player, animal)
-    Mounts.playerMountMap[player] = animal
-    Mounts.mountPlayerMap[animal] = player
+    playerMountMap[player] = animal
+    mountPlayerMap[animal] = player
 
     if IS_SERVER then
         mountcommands.Mount:send(
@@ -83,6 +83,11 @@ function Mounts.getRider(animal)
     return mountPlayerMap[animal]
 end
 
+function Mounts.reset()
+    for player, _ in pairs(playerMountMap) do
+        Mounts.removeMount(player)
+    end
+end
 
 if IS_CLIENT then
     -- need to delay this require :(
@@ -106,6 +111,26 @@ if IS_CLIENT then
                 Mounts.removeMount(player)
             else
                 print("[HorseMod] received Dismount command for unknown player")
+            end
+        end)
+
+        client.registerCommandHandler(mountcommands.SendMounts, function(args)
+            Mounts.reset()
+    
+            for playerId, animalId in pairs(args.mounts) do
+                local player = commands.getPlayer(playerId)
+                local animal = commands.getAnimal(animalId)
+                if not player or not animal then
+                    print(
+                        string.format(
+                            "could not find player or animal sent by server, player=%d animal=%d",
+                            playerId,
+                            animalId
+                        )
+                    )
+                else
+                    Mounts.addMount(player, animal)
+                end
             end
         end)
     end)
