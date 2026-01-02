@@ -89,7 +89,8 @@ function Mounts.reset()
     end
 end
 
-if IS_CLIENT then
+-- we don't actually need these in singleplayer but networking.client complains if there is no handler
+if not IS_SERVER then
     -- need to delay this require :(
     Events.OnInitGlobalModData.Add(function()
         local client = require("HorseMod/networking/client")
