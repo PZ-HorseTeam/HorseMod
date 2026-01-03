@@ -100,7 +100,7 @@ end
 
 
 ---@param horse IsoAnimal
----@param input MountController.Input
+---@param input InputManager.Input
 ---@param moving boolean
 ---@return boolean
 ---@nodiscard

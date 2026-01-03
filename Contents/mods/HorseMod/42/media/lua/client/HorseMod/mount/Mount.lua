@@ -2,31 +2,7 @@ local MountController = require("HorseMod/mount/MountController")
 local HorseDamage = require("HorseMod/horse/HorseDamage")
 local HorseUtils = require("HorseMod/Utils")
 local AnimationVariables = require("HorseMod/AnimationVariables")
-local ModOptions = require("HorseMod/ModOptions")
-
-
-local JOY_DEADZONE        = 0.30   -- ignore tiny stick drift
-local JOY_DIGITAL_THRESHOLD  = 0.55   -- cross this to count as -1 / +1 on that axis
-
-
----@param v number
----@return number
----@nodiscard
-local function processJoypadAxisInput(v)
-    if math.abs(v) < JOY_DEADZONE then
-        return 0
-    end
-
-    if v > JOY_DIGITAL_THRESHOLD then
-        return 1
-    end
-
-    if v < -JOY_DIGITAL_THRESHOLD then
-        return -1
-    end
-
-    return 0
-end
+local InputManager = require("HorseMod/mount/InputManager")
 
 
 ---@namespace HorseMod
@@ -37,98 +13,16 @@ end
 ---
 ---@field pair MountPair
 ---
+---@field inputManager InputManager
+---
 ---@field controller MountController
 local Mount = {}
 Mount.__index = Mount
 
 
----@return MountController.Input
----@nodiscard
-function Mount:getCurrentInput()
-    local x = 0.0
-    local y = 0.0
-    local run = false
-
-    local pad = self.pair.rider:getJoypadBind()
-    if pad >= 0 then
-        -- controller input
-        x = getJoypadMovementAxisX(pad)
-        y = getJoypadMovementAxisY(pad)
-
-        x = processJoypadAxisInput(x)
-        y = processJoypadAxisInput(y)
-
-        -- dpad, only active if the joystick is netural
-        if x == 0 or y == 0 then
-            local povx = getControllerPovX(pad)
-            local povy = getControllerPovY(pad)
-    
-            if x == 0 then
-                x = processJoypadAxisInput(povx)
-            end
-    
-            if y == 0 then
-                y = processJoypadAxisInput(povy)
-            end
-        end
-
-        local rb = getJoypadRBumper(pad)
-        if rb ~= -1 and isJoypadPressed(pad, rb) then
-            run = true
-        end
-
-        local b = getJoypadBButton(pad)
-        if b ~= -1 and isJoypadPressed(pad, b) then
-            run = true
-        end
-
-        if isJoypadRTPressed(pad) then
-            run = true
-        end
-    else
-        -- keyboard input
-        local core = getCore()
-
-        if isKeyDown(core:getKey("Forward")) then 
-            y = y - 1
-        end
-
-        if isKeyDown(core:getKey("Backward")) then
-            y = y + 1
-        end
-
-        if isKeyDown(core:getKey("Left")) then
-            x = x - 1
-        end
-
-        if isKeyDown(core:getKey("Right")) then
-            x = x + 1
-        end
-
-        run = isKeyDown(core:getKey("Run")) or isKeyDown(core:getKey("Sprint"))
-    end
-
-    return {
-        movement = {
-            x = x,
-            y = y
-        },
-        run = run,
-        -- FIXME: Change this when fixing the mod option keybinds
-        trot = self.pair.mount:getVariableBoolean(AnimationVariables.TROT),
-    }
-end
-
 ---@param key integer
 function Mount:keyPressed(key)
-    if key == ModOptions.HorseTrotButton then
-        self.controller:toggleTrot()
-    elseif key == ModOptions.HorseJumpButton then
-        if self.pair.mount:getVariableBoolean(AnimationVariables.GALLOP)
-                and not self.pair:getAnimationVariableBoolean(AnimationVariables.JUMP) then
-            self.controller:jump()
-        end
-    end
+    self.inputManager:keyPressed(key)
 end
 
 
@@ -151,11 +45,12 @@ end
 
 
 function Mount:update()
-    local input = self:getCurrentInput()
     if self.pair.mount and self:dying() then
         return
     end
-    self.controller:update(input)
+    self.controller:update(
+        self.inputManager:getCurrentInput()
+    )
 end
 
 
@@ -228,6 +123,7 @@ function Mount.new(pair)
     )
 
     o.controller = MountController.new(o)
+    o.inputManager = InputManager.new(o)
 
     return o
 end

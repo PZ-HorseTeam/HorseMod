@@ -544,13 +544,7 @@ local MountController = {}
 MountController.__index = MountController
 
 
----@class MountController.Input
----@field movement {x: number, y: number}
----@field run boolean
----@field trot boolean
-
-
----@param input MountController.Input
+---@param input InputManager.Input
 ---@param deltaTime number
 function MountController:turn(input, deltaTime)
     local currentDirection = self.mount.pair.mount:getDir()
@@ -615,7 +609,7 @@ function MountController:turn(input, deltaTime)
 end
 
 
----@param input MountController.Input
+---@param input InputManager.Input
 ---@param deltaTime number
 ---@return number
 ---@nodiscard
@@ -652,7 +646,7 @@ function MountController:getVegetationEffect(input, deltaTime)
 end
 
 
----@param input MountController.Input
+---@param input InputManager.Input
 ---@param deltaTime number
 function MountController:updateSpeed(input, deltaTime)
     local walkMultiplier = getSpeed("walk")
@@ -703,6 +697,7 @@ function MountController:setReinsState(mount, reinsItem, state)
     -- retrieve the model of reins model
     local fullType = reinsItem:getFullType()
     local attachmentDef = Attachments.getAttachmentDefinition(fullType, "Reins")
+    assert(attachmentDef ~= nil, "equipped reins item has no definition")
     local model = attachmentDef.model
     assert(model ~= nil, "No rein model for item " .. tostring(fullType))
 
@@ -717,7 +712,7 @@ function MountController:setReinsState(mount, reinsItem, state)
     mount:resetEquippedHandsModels()
 end
 
----@param input MountController.Input
+---@param input InputManager.Input
 ---@return "idle"|"walking"|"trot"|"gallop"
 function MountController:getMovementState(input)
     if (input.movement.x == 0 and input.movement.y == 0) or self.currentSpeed <= 0 then
@@ -731,7 +726,7 @@ function MountController:getMovementState(input)
     end
 end
 
----@param input MountController.Input
+---@param input InputManager.Input
 function MountController:updateReins(input)
     local mountPair = self.mount.pair
     local mount = mountPair.mount
@@ -762,7 +757,7 @@ function MountController:jump()
 end
 
 
----@param input MountController.Input
+---@param input InputManager.Input
 function MountController:update(input)
     assert(self.mount.pair.rider:getVariableString(AnimationVariables.RIDING_HORSE) == "true")
 
