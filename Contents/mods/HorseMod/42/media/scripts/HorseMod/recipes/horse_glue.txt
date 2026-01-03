@@ -6,7 +6,7 @@ module HorseMod {
 	craftRecipe horseGlue {
         timedAction = MixingBowl,
         time = 50,
-        Tags = base:AnySurfaceCraft;base:Cooking,
+        Tags = AnySurfaceCraft;Cooking,
         category = Cooking,
         inputs {
             item 2 [HorseMod.Horse_Hoof] mode:destroy,
@@ -25,7 +25,7 @@ module HorseMod {
     craftRecipe horseGlueToWoodGlue {
         timedAction = MixingBowl,
         time = 50,
-        Tags = base:AnySurfaceCraft;base:Cooking,
+        Tags = AnySurfaceCraft;Cooking,
         category = Cooking,
         OnCreate = HorseGlueToWoodglue,
         inputs {
