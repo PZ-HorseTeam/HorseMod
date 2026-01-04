@@ -15,4 +15,6 @@ ContextMenu_EN = {
     ContextMenu_Horse_IsDead = "Horse is dead.",
     ContextMenu_Horse_IsAttached = "Horse is attached on a hook.",
     ContextMenu_Horse_IsAlreadyRiding = "Horse is already being ridden.",
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "Can't change gear while mounting.",
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "Can't change mounted horse's gear.",
 }
