@@ -87,42 +87,15 @@ function AttachmentsManager.canChangeAttachments(character, animal)
 end
 
 
----Add the equip and unequip context menu options for horse gear.
----@param player IsoPlayer
----@param horse IsoAnimal
 ---@param context ISContextMenu
+---@param player IsoPlayer
 ---@param accessories ArrayList<InventoryItem>
-AttachmentsManager.populateHorseContextMenu = function(player, horse, context, accessories)
-    local accessoriesCount = accessories:size()
-    local attachedItems = Attachments.getAttachedItems(horse)
-
-    if accessoriesCount < 1 and #attachedItems < 1 then
-        return
-    end
-
-    -- create gear submenu, even if no gear is available
-    local gearOption = context:addOption(getText("ContextMenu_Horse_Gear"))
-
-    local canChangeGear, reason = AttachmentsManager.canChangeAttachments(player, horse)
-
-    if not canChangeGear then
-        if reason then
-            local tooltip = ISWorldObjectContextMenu.addToolTip()
-            tooltip.description = getText(reason)
-            gearOption.toolTip = tooltip
-        else
-            print("[HorseMod] WEIRD: no reason returned for canChangeAttachments fail")
-        end
-
-        gearOption.notAvailable = true
-        return
-    end
-    
-    local gearSubMenu = ISContextMenu:getNew(context)
-    context:addSubMenu(gearOption, gearSubMenu)
-
+---@param horse IsoAnimal
+function AttachmentsManager.addEquipOptions(context, player, accessories, horse)
     --- EQUIP OPTIONS
     local uniques = {}
+
+    local accessoriesCount = accessories:size()
 
     ---@type {displayName: string, accessory: InventoryItem}[]
     local toAddOptionsTo = {}
@@ -169,7 +142,7 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
                 )
 
                 -- create the option to equip the accessory
-                local option = gearSubMenu:addOption(
+                local option = context:addOption(
                     txt,
                     player,
                     AttachmentsManager.equipAccessory,
@@ -199,7 +172,14 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
             until true end
         end
     end
+end
 
+
+---@param context ISContextMenu
+---@param player IsoPlayer
+---@param attachedItems {item: InventoryItem, slot: AttachmentSlot}[]
+---@param horse IsoAnimal
+function AttachmentsManager.addUnequipOptions(context, player, attachedItems, horse)
     --- UNEQUIP OPTIONS
     if #attachedItems > 0 then
         -- sort by display name
@@ -220,7 +200,7 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
             )
 
             -- create the option to unequip the attachment
-            local option = gearSubMenu:addOptionOnTop(
+            local option = context:addOptionOnTop(
                 txt,
                 player,
                 AttachmentsManager.unequipAccessory,
@@ -233,7 +213,7 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
 
         -- unequip all option if more than one item is present
         if #attachedItems > 1 then
-            gearSubMenu:addOptionOnTop(
+            context:addOptionOnTop(
                 getText("ContextMenu_Horse_Unequip_All"),
                 player,
                 AttachmentsManager.unequipAllAccessory,
@@ -242,6 +222,44 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
             )
         end
     end
+end
+
+
+---Add the equip and unequip context menu options for horse gear.
+---@param player IsoPlayer
+---@param horse IsoAnimal
+---@param context ISContextMenu
+---@param accessories ArrayList<InventoryItem>
+AttachmentsManager.populateHorseContextMenu = function(player, horse, context, accessories)
+    local attachedItems = Attachments.getAttachedItems(horse)
+
+    if accessories:size() < 1 and #attachedItems < 1 then
+        return
+    end
+
+    -- create gear submenu, even if no gear is available
+    local gearOption = context:addOption(getText("ContextMenu_Horse_Gear"))
+
+    local canChangeGear, reason = AttachmentsManager.canChangeAttachments(player, horse)
+
+    if not canChangeGear then
+        if reason then
+            local tooltip = ISWorldObjectContextMenu.addToolTip()
+            tooltip.description = getText(reason)
+            gearOption.toolTip = tooltip
+        else
+            print("[HorseMod] WEIRD: no reason returned for canChangeAttachments fail")
+        end
+
+        gearOption.notAvailable = true
+        return
+    end
+    
+    local gearSubMenu = ISContextMenu:getNew(context)
+    context:addSubMenu(gearOption, gearSubMenu)
+
+    AttachmentsManager.addEquipOptions(gearSubMenu, player, accessories, horse)
+    AttachmentsManager.addUnequipOptions(gearSubMenu, player, attachedItems, horse)
 end
 
 ---Main handler for horse context menu.
