@@ -55,8 +55,6 @@ function HorseRiding.removeMount(player)
 
     mount:cleanup()
 
-    UpdateHorseAudio(mount.pair.rider)
-
     HorseRiding.playerMounts[mount.pair.rider:getPlayerNum()] = nil
 
     local modData = mount.pair.rider:getModData()

@@ -58,22 +58,38 @@ local ATTRACTION_EVENT_INTERVAL_SECONDS = 4
 local MAX_STAMINA_FOR_TIRED_SOUND = 30
 
 
+---Plays a sound when a variable first becomes true.
+---@class HorseSounds.VariableWatch
+---
+---Animation variable to check.
+---@field variable AnimationVariable
+---
+---Sound to play when the variable becomes true.
+---@field sound Sound
+---
+---Cached last seen value of the animation variable.
+---@field lastValue boolean
+
+
 ---@class HorseSounds
 ---
+---Associated animal.
 ---@field animal IsoAnimal
 ---
----Currently playing footstep sound
+---Currently playing footstep sound. Nil if not playing a sound.
 ---@field footstepSound Sound?
 ---
----Handle of the currently playing footstep sound.
+---Handle of the currently playing footstep sound. `-1` if none is playing.
 ---@field footstepHandle integer
 ---
 ---Last emitter used to play a sound.
 ---@field lastEmitter BaseCharacterSoundEmitter?
 ---
+---Handle to the galloping tired sound. `-1` if it is not playing.
 ---@field tiredSoundHandle integer
 ---
----@field variableCache table<AnimationVariable, boolean?>
+---Sounds to play when a variable changes.
+---@field variableWatches HorseSounds.VariableWatch[]
 ---
 ---Seconds since last stressed sound to avoid spam.
 ---@field stressDebounce number
@@ -87,21 +103,20 @@ local HorseSounds = {}
 HorseSounds.__index = HorseSounds
 
 
+---@class SoundsSystem : System
+local SoundsSystem = {}
+
+
 ---@param emitter BaseCharacterSoundEmitter
 ---@param sound Sound
----@param volume number
 ---@return integer handle Handle of the played sound.
-local function playOneShot(emitter, sound, volume)
+function SoundsSystem:playOneShot(emitter, sound)
     local handle = emitter:playSound(sound)
-    emitter:setVolume(handle, volume)
+    emitter:setVolume(handle, self.volume)
 
     return handle
 end
 
-
-
----@class SoundsSystem : System
-local SoundsSystem = {}
 
 
 ---@type table<IsoAnimal, HorseSounds?>
@@ -110,6 +125,17 @@ SoundsSystem.horseSounds = {}
 
 ---@type number
 SoundsSystem.volume = 1
+
+
+---@param variable AnimationVariable
+---@param sound Sound
+function HorseSounds:addVariableWatch(variable, sound)
+    self.variableWatches[#self.variableWatches + 1] = {
+        variable = variable,
+        sound = sound,
+        lastValue = false
+    }
+end
 
 
 ---@param delta number
@@ -163,26 +189,8 @@ function HorseSounds:updateIdleSounds(delta)
     self.idleDebounce = self.idleDebounce + delta
     if self.idleDebounce >= IDLE_INTERVAL_SECONDS then
         self.idleDebounce = self.idleDebounce % IDLE_INTERVAL_SECONDS
-        playOneShot(self.animal:getEmitter(), Sound.IDLE, SoundsSystem.volume)
+        SoundsSystem:playOneShot(self.animal:getEmitter(), Sound.IDLE)
     end
-end
-
-
----Plays a sound if an animation variable has become true since the last time the function was called for that variable.
----@param variable AnimationVariable
----@param sound Sound
----@param volume number
----@return integer handle Handle of the played sound. `-1` indicates no sound was played.
-function HorseSounds:playSoundIfVariableBecameTrue(variable, sound, volume)
-    local previousValue = self.variableCache[variable]    
-    local value = self.animal:getVariableBoolean(variable)
-    self.variableCache[variable] = value
-
-    if not value or value == previousValue then
-        return -1
-    end
-
-    return playOneShot(self.animal:getEmitter(), sound, volume)
 end
 
 
@@ -193,10 +201,9 @@ function HorseSounds:updateStressedSounds(delta)
         self.stressDebounce = self.stressDebounce + delta
         if self.stressDebounce >= STRESS_INTERVAL_SECONDS then
             self.stressDebounce = self.stressDebounce % STRESS_INTERVAL_SECONDS
-            playOneShot(
+            SoundsSystem:playOneShot(
                 self.animal:getEmitter(),
-                Sound.STRESSED,
-                SoundsSystem.volume
+                Sound.STRESSED
             )
         end
     else
@@ -305,19 +312,24 @@ function HorseSounds:updateTiredSound()
 end
 
 
+function HorseSounds:updateVariableWatches()
+    local emitter = self.animal:getEmitter()
+    for i = 1, #self.variableWatches do
+        local variableWatch = self.variableWatches[i]
+        local previousValue = variableWatch.lastValue
+        local value = self.animal:getVariableBoolean(variableWatch.variable)
+        variableWatch.lastValue = value
+
+        if value and value ~= previousValue then
+            SoundsSystem:playOneShot(emitter, variableWatch.sound)
+        end
+    end
+end
+
+
 ---@param delta number
 function HorseSounds:update(delta)
-    self:playSoundIfVariableBecameTrue(
-        AnimationVariable.HURT,
-        Sound.PAIN,
-        SoundsSystem.volume
-    )
-    self:playSoundIfVariableBecameTrue(
-        AnimationVariable.EATING,
-        Sound.EATING,
-        SoundsSystem.volume
-    )
-
+    self:updateVariableWatches()
     self:updateFootsteps()
     self:updateTiredSound()
     self:updateStressedSounds(delta)
@@ -333,10 +345,10 @@ function SoundsSystem:update(horses, delta)
     for i = 1, #horses do
         local horse = horses[i]
 
-        local soundData = SoundsSystem.horseSounds[horse]
-        assert(soundData ~= nil, "SoundsSystem.update encountered a horse with no sound data")
+        local horseSounds = SoundsSystem.horseSounds[horse]
+        assert(horseSounds ~= nil, "SoundsSystem.update encountered a horse with no HorseSounds")
 
-        soundData:update(delta)
+        horseSounds:update(delta)
     end
 end
 
@@ -345,8 +357,8 @@ table.insert(HorseManager.systems, SoundsSystem)
 
 
 ---@param animal IsoAnimal
-local function createSoundData(animal)
-    SoundsSystem.horseSounds[animal] = setmetatable(
+local function createHorseSounds(animal)
+    local horseSounds = setmetatable(
         {
             animal = animal,
             footstepSound = nil,
@@ -354,31 +366,37 @@ local function createSoundData(animal)
             lastEmitter = nil,
             tiredSoundHandle = -1,
             variableCache = {},
+            variableWatches = {},
             stressDebounce = 0,
             idleDebounce = 0,
             attractionEventTimer = 0
         },
         HorseSounds
     )
+
+    horseSounds:addVariableWatch(AnimationVariable.HURT, Sound.PAIN)
+    horseSounds:addVariableWatch(AnimationVariable.EATING, Sound.EATING)
+
+    SoundsSystem.horseSounds[animal] = horseSounds
 end
 
-HorseManager.onHorseAdded:add(createSoundData)
+HorseManager.onHorseAdded:add(createHorseSounds)
 
 
 ---@param animal IsoAnimal
-local function removeSoundData(animal)
-    local soundData = SoundsSystem.horseSounds[animal]
-    if not soundData then
+local function removeHorseSounds(animal)
+    local horseSounds = SoundsSystem.horseSounds[animal]
+    if not horseSounds then
         return
     end
 
-    soundData:stopFootsteps()
-    soundData:stopTiredSound()
+    horseSounds:stopFootsteps()
+    horseSounds:stopTiredSound()
 
     SoundsSystem.horseSounds[animal] = nil
 end
 
-HorseManager.onHorseRemoved:add(removeSoundData)
+HorseManager.onHorseRemoved:add(removeHorseSounds)
 
 
 local HorseSounds = {}
@@ -389,7 +407,7 @@ HorseSounds.Sound = Sound
 ---@param animal IsoAnimal
 ---@param sound Sound
 function HorseSounds.playSound(animal, sound)
-    playOneShot(animal:getEmitter(), sound, SoundsSystem.volume)
+    SoundsSystem:playOneShot(animal:getEmitter(), sound)
 end
 
 
