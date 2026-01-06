@@ -1,5 +1,6 @@
 local Stamina = require("HorseMod/Stamina")
 local AnimationVariable = require("HorseMod/AnimationVariable")
+local Mounts = require("HorseMod/Mounts")
 
 
 ---@param state "walk"|"gallop"
@@ -800,6 +801,15 @@ function MountController:update(input)
     rider:setX(mount:getX())
     rider:setY(mount:getY())
     rider:setZ(mount:getZ())
+
+    -- verify the rider/mount are not falling
+    if rider:isbFalling() or mount:isbFalling() then
+        mount:getPathFindBehavior2():reset()
+        mount:stopAllMovementNow()
+        mount:getBehavior():setBlockMovement(false)
+        
+        Mounts.removeMount(rider)
+    end
 end
 
 
