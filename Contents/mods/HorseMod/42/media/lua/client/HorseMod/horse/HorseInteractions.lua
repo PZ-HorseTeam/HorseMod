@@ -8,18 +8,27 @@ local AnimationVariable = require("HorseMod/AnimationVariable")
 ---@param player IsoPlayer
 ---@param animal IsoAnimal
 local function doHorseInteractionMenu(context, player, animal)
-    local canMount, reason = Mounting.canMountHorse(player, animal)
-    local option = context:addOption(
-        getText("IGUI_HorseMod_MountHorse"),
-        player, Mounting.mountHorse, animal
-    )
-    option.iconTexture = animal:getInventoryIconTexture()
-    if not canMount then
-        option.notAvailable = true
-        if reason then
-            local tooltip = ISWorldObjectContextMenu.addToolTip()
-            tooltip.description = getText("ContextMenu_Horse_" .. reason)
+    local playerMount = Mounts.getMount(player)
+
+    if playerMount ~= animal then
+        local canMount, reason = Mounting.canMountHorse(player, animal)
+        local option = context:addOption(
+            getText("IGUI_HorseMod_MountHorse"),
+            player, Mounting.mountHorse, animal
+        )
+        option.iconTexture = animal:getInventoryIconTexture()
+        if not canMount then
+            option.notAvailable = true
+            if reason then
+                local tooltip = ISWorldObjectContextMenu.addToolTip()
+                tooltip.description = getText("ContextMenu_Horse_" .. reason)
+            end
         end
+    else
+        context:addOption(
+            getText("IGUI_HorseMod_DismountHorse"),
+            player, Mounting.dismountHorse, player
+        )
     end
 end
 
