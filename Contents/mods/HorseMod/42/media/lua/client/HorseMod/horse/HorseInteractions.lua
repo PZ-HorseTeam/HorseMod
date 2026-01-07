@@ -47,7 +47,7 @@ local function onClickedAnimalForContext(playerNum, context, animals, test)
     end
     if not horse then return end
 
-    doHorseInteractionMenu(context, getSpecificPlayer(playerNum), animals[1])
+    doHorseInteractionMenu(context, getSpecificPlayer(playerNum), horse)
 end
 
 Events.OnClickedAnimalForContext.Add(onClickedAnimalForContext)
