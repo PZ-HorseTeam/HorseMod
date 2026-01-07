@@ -14,9 +14,12 @@ local function doHorseInteractionMenu(context, player, animal)
         player, Mounting.mountHorse, animal
     )
     option.iconTexture = animal:getInventoryIconTexture()
-    if not canMount and reason then
-        local tooltip = ISWorldObjectContextMenu.addToolTip()
-        tooltip.description = getText("ContextMenu_Horse_"..reason)
+    if not canMount then
+        option.notAvailable = true
+        if reason then
+            local tooltip = ISWorldObjectContextMenu.addToolTip()
+            tooltip.description = getText("ContextMenu_Horse_" .. reason)
+        end
     end
 end
 
