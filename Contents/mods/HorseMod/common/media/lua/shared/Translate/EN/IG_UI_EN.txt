@@ -25,4 +25,6 @@ IGUI_EN = {
     
     IGUI_ModOptions_HorseKeybind_Trot_Name = "Horse Trot",
     IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Change the keybind for horse trotting.",
+
+    IGUI_HorseMod_MultiplayerWarning = "The Horse mod does not support multiplayer.<br>Horses will not work properly, and you may experience other issues with your playthrough.<br>It is highly recommended that you disable the Horse mod.<br>Bug reports for multiplayer will not be accepted."
 }
