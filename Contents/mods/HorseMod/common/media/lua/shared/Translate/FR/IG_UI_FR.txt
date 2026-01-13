@@ -1,0 +1,29 @@
+IGUI_FR = {
+    IGUI_AnimalType_stallion = "Étalon",
+    IGUI_AnimalType_mare = "Jument",
+    IGUI_AnimalType_filly = "Poulinière",
+    IGUI_Breed_american_quarter = "American Quarter",
+    IGUI_Breed_american_paint = "American Paint",
+    IGUI_Breed_appaloosa = "Appaloosa",
+    IGUI_Breed_thoroughbred = "Pur-sang",
+    IGUI_Breed_blue_roan = "Noir Rouanné",
+    IGUI_Breed_spotted_appaloosa = "Appaloosa tacheté",
+    IGUI_Breed_american_paint_overo = "American Paint (Overo)",
+    IGUI_Breed_flea_bitten_grey = "Flea-bitten Grey",
+    IGUI_Animal_Group_horse = "Cheval",
+    IGUI_Horse_Slot = "Emplacement",
+
+    IGUI_ModOptions_HorseModName = "Cheval",
+    IGUI_ModOptions_HorseSoundVolume_Desc = "Change le volume des sons de cheval.",
+    IGUI_ModOptions_HorseSoundVolume_Name = "Volume des sons de cheval (Par défaut 0.40)",
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "Réglez le volume de tous les sons de cheval.",
+
+    IGUI_ModOptions_HorseKeybind = "Raccourcis clavier du cheval",
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "Saut du cheval",
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "Changez le raccourci clavier pour le saut du cheval.",
+    
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "Trot du cheval",
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Changez le raccourci clavier pour le trot du cheval.",
+
+    IGUI_HorseMod_MultiplayerWarning = "The Horse mod does not support multiplayer.<br>Horses will not work properly, and you may experience other issues with your playthrough.<br>It is highly recommended that you disable the Horse mod.<br>Bug reports for multiplayer will not be accepted."
+}

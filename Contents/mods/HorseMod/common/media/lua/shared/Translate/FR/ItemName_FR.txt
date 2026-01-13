@@ -1,0 +1,197 @@
+ItemName_FR = {
+    /* Horse accessories */
+        /* Saddles */
+    ItemName_HorseMod.HorseSaddle_Crude = "Horse Saddle (Crude)",
+    ItemName_HorseMod.HorseSaddle_Black = "Horse Saddle (Black)",
+    ItemName_HorseMod.HorseSaddle_CowHolstein = "Horse Saddle (Holstein)",
+    ItemName_HorseMod.HorseSaddle_CowSimmental = "Horse Saddle (Simmental)",
+    ItemName_HorseMod.HorseSaddle_White = "Horse Saddle (White)",
+    ItemName_HorseMod.HorseSaddle_Landrace = "Horse Saddle (Landrace)",
+    ItemName_HorseMod.HorseSaddle_AP = "Horse Saddle (American Paint)",
+    ItemName_HorseMod.HorseSaddle_APHO = "Horse Saddle (American Paint Overo)",
+    ItemName_HorseMod.HorseSaddle_AQHBR = "Horse Saddle (Blue Roan)",
+    ItemName_HorseMod.HorseSaddle_AQHP = "Horse Saddle (American Quarter)",
+    ItemName_HorseMod.HorseSaddle_FBG = "Horse Saddle (Flea-Bitten Grey)",
+    ItemName_HorseMod.HorseSaddle_GDA = "Horse Saddle (Appaloosa)",
+    ItemName_HorseMod.HorseSaddle_LPA = "Horse Saddle (Spotted Appaloosa)",
+    ItemName_HorseMod.HorseSaddle_T = "Horse Saddle (Thoroughbred)",
+
+        /* Saddlebags */
+    ItemName_HorseMod.HorseSaddlebagsContainer = "Horse Saddle Bags",
+    ItemName_HorseMod.HorseSaddlebags_Crude = "Horse Saddle Bags (Crude)",
+    ItemName_HorseMod.HorseSaddlebags_Black = "Horse Saddle Bags (Black)",
+    ItemName_HorseMod.HorseSaddlebags_CowHolstein = "Horse Saddle Bags (Holstein)",
+    ItemName_HorseMod.HorseSaddlebags_CowSimmental = "Horse Saddle Bags (Simmental)",
+    ItemName_HorseMod.HorseSaddlebags_White = "Horse Saddle Bags (White)",
+    ItemName_HorseMod.HorseSaddlebags_Landrace = "Horse Saddle Bags (Landrace)",
+    ItemName_HorseMod.HorseSaddlebags_AP = "Horse Saddle Bags (American Paint)",
+    ItemName_HorseMod.HorseSaddlebags_APHO = "Horse Saddle Bags (American Paint Overo)",
+    ItemName_HorseMod.HorseSaddlebags_AQHBR = "Horse Saddle Bags (Blue Roan)",
+    ItemName_HorseMod.HorseSaddlebags_AQHP = "Horse Saddle Bags (American Quarter)",
+    ItemName_HorseMod.HorseSaddlebags_FBG = "Horse Saddle Bags (Flea-Bitten Grey)",
+    ItemName_HorseMod.HorseSaddlebags_GDA = "Horse Saddle Bags (Appaloosa)",
+    ItemName_HorseMod.HorseSaddlebags_LPA = "Horse Saddle Bags (Spotted Appaloosa)",
+    ItemName_HorseMod.HorseSaddlebags_T = "Horse Saddle Bags (Thoroughbred)",
+
+        /* Reins */
+    ItemName_HorseMod.HorseReins_Crude = "Horse Reins (Crude)",
+    ItemName_HorseMod.HorseReins_Brown = "Horse Reins (Brown)",
+    ItemName_HorseMod.HorseReins_Black = "Horse Reins (Black)",
+    ItemName_HorseMod.HorseReins_White = "Horse Reins (White)",
+
+
+    /* Horse names */
+    ItemName_HorseMod.Horse_Head_Foal_AQHP = "American Quarter Foal Head",
+    ItemName_HorseMod.Horse_Head_Female_AQHP = "American Quarter Mare Head",
+    ItemName_HorseMod.Horse_Head_Male_AQHP = "American Quarter Stallion Head",
+    ItemName_HorseMod.Horse_Head_Foal_AP = "American Paint Foal Head",
+    ItemName_HorseMod.Horse_Head_Female_AP = "American Paint Mare Head",
+    ItemName_HorseMod.Horse_Head_Male_AP = "American Paint Stallion Head",
+    ItemName_HorseMod.Horse_Head_Foal_APHO = "American Paint (Overo) Foal Head",
+    ItemName_HorseMod.Horse_Head_Female_APHO = "American Paint (Overo) Mare Head",
+    ItemName_HorseMod.Horse_Head_Male_APHO = "American Paint (Overo) Stallion Head",
+    ItemName_HorseMod.Horse_Head_Foal_GDA = "Appaloosa Foal Head",
+    ItemName_HorseMod.Horse_Head_Female_GDA = "Appaloosa Mare Head",
+    ItemName_HorseMod.Horse_Head_Male_GDA = "Appaloosa Stallion Head",
+    ItemName_HorseMod.Horse_Head_Foal_T = "Thoroughbred Foal Head",
+    ItemName_HorseMod.Horse_Head_Female_T = "Thoroughbred Mare Head",
+    ItemName_HorseMod.Horse_Head_Male_T = "Thoroughbred Stallion Head",
+    ItemName_HorseMod.Horse_Head_Foal_AQHBR = "Blue Roan Foal Head",
+    ItemName_HorseMod.Horse_Head_Female_AQHBR = "Blue Roan Mare Head",
+    ItemName_HorseMod.Horse_Head_Male_AQHBR = "Blue Roan Stallion Head",
+    ItemName_HorseMod.Horse_Head_Foal_LPA = "Spotted Appaloosa Foal Head",
+    ItemName_HorseMod.Horse_Head_Female_LPA = "Spotted Appaloosa Mare Head",
+    ItemName_HorseMod.Horse_Head_Male_LPA = "Spotted Appaloosa Stallion Head",
+    ItemName_HorseMod.Horse_Head_Foal_FBG = "Flea-bitten Grey Foal Head",
+    ItemName_HorseMod.Horse_Head_Female_FBG = "Flea-bitten Grey Mare Head",
+    ItemName_HorseMod.Horse_Head_Male_FBG = "Flea-bitten Grey Stallion Head",
+
+
+    /* Horse parts */
+    ItemName_HorseMod.Horse_Skull = "Horse Skull",
+    ItemName_HorseMod.Horse_Steak = "Horse Steak",
+    ItemName_HorseMod.Horse_Loin = "Horse Loin",
+    ItemName_HorseMod.Horse_Hoof = "Horse Hoof",
+
+
+    /* Horse glue */
+    ItemName_HorseMod.PotHorseGlue = "Pot of Horse Glue",
+    ItemName_HorseMod.PotForgedHorseGlue = "Forged Pot of Horse Glue",
+    ItemName_HorseMod.HorseGlue = "Horse Glue",
+
+
+    /* Horse leathers */
+        /* American Paint */
+    ItemName_HorseMod.HorseLeather_AP_Full = "American Paint Leather (Unprocessed)",
+    ItemName_HorseMod.HorseLeather_AP_Fur = "American Paint Leather (Furred)",
+    ItemName_HorseMod.HorseLeather_AP_Fur_Tan = "American Paint Leather (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_AP_Fur_Tan_Medium = "American Paint Leather Half (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_AP_Fur_Tan_Small = "American Paint Leather Quarter (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_AP_Fur_Tan_Wet = "American Paint Leather (Tanned, Furred, Wet)",
+
+        /* American Paint Overo */
+    ItemName_HorseMod.HorseLeather_APHO_Full = "American Paint Overo Leather (Unprocessed)",
+    ItemName_HorseMod.HorseLeather_APHO_Fur = "American Paint Overo Leather (Furred)",
+    ItemName_HorseMod.HorseLeather_APHO_Fur_Tan = "American Paint Overo Leather (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_APHO_Fur_Tan_Medium = "American Paint Overo Leather Half (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_APHO_Fur_Tan_Small = "American Paint Overo Leather Quarter (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_APHO_Fur_Tan_Wet = "American Paint Overo Leather (Tanned, Furred, Wet)",
+
+        /* Blue Roan */
+    ItemName_HorseMod.HorseLeather_AQHBR_Full = "Blue Roan Leather (Unprocessed)",
+    ItemName_HorseMod.HorseLeather_AQHBR_Fur = "Blue Roan Leather (Furred)",
+    ItemName_HorseMod.HorseLeather_AQHBR_Fur_Tan = "Blue Roan Leather (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_AQHBR_Fur_Tan_Medium = "Blue Roan Leather Half (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_AQHBR_Fur_Tan_Small = "Blue Roan Leather Quarter (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_AQHBR_Fur_Tan_Wet = "Blue Roan Leather (Tanned, Furred, Wet)",
+
+        /* American Quarter */
+    ItemName_HorseMod.HorseLeather_AQHP_Full = "American Quarter Leather (Unprocessed)",
+    ItemName_HorseMod.HorseLeather_AQHP_Fur = "American Quarter Leather (Furred)",
+    ItemName_HorseMod.HorseLeather_AQHP_Fur_Tan = "American Quarter Leather (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_AQHP_Fur_Tan_Medium = "American Quarter Leather Half (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_AQHP_Fur_Tan_Small = "American Quarter Leather Quarter (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_AQHP_Fur_Tan_Wet = "American Quarter Leather (Tanned, Furred, Wet)",
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.HorseLeather_FBG_Full = "Flea-Bitten Grey Leather (Unprocessed)",
+    ItemName_HorseMod.HorseLeather_FBG_Fur = "Flea-Bitten Grey Leather (Furred)",
+    ItemName_HorseMod.HorseLeather_FBG_Fur_Tan = "Flea-Bitten Grey Leather (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_FBG_Fur_Tan_Medium = "Flea-Bitten Grey Leather Half (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_FBG_Fur_Tan_Small = "Flea-Bitten Grey Leather Quarter (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_FBG_Fur_Tan_Wet = "Flea-Bitten Grey Leather (Tanned, Furred, Wet)",
+
+        /* Appaloosa */
+    ItemName_HorseMod.HorseLeather_GDA_Full = "Appaloosa Leather (Unprocessed)",
+    ItemName_HorseMod.HorseLeather_GDA_Fur = "Appaloosa Leather (Furred)",
+    ItemName_HorseMod.HorseLeather_GDA_Fur_Tan = "Appaloosa Leather (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_GDA_Fur_Tan_Medium = "Appaloosa Leather Half (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_GDA_Fur_Tan_Small = "Appaloosa Leather Quarter (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_GDA_Fur_Tan_Wet = "Appaloosa Leather (Tanned, Furred, Wet)",
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.HorseLeather_LPA_Full = "Spotted Appaloosa Leather (Unprocessed)",
+    ItemName_HorseMod.HorseLeather_LPA_Fur = "Spotted Appaloosa Leather (Furred)",
+    ItemName_HorseMod.HorseLeather_LPA_Fur_Tan = "Spotted Appaloosa Leather (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_LPA_Fur_Tan_Medium = "Spotted Appaloosa Leather Half (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_LPA_Fur_Tan_Small = "Spotted Appaloosa Leather Quarter (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_LPA_Fur_Tan_Wet = "Spotted Appaloosa Leather (Tanned, Furred, Wet)",
+
+        /* Thoroughbred */
+    ItemName_HorseMod.HorseLeather_T_Full = "Thoroughbred Leather (Unprocessed)",
+    ItemName_HorseMod.HorseLeather_T_Fur = "Thoroughbred Leather (Furred)",
+    ItemName_HorseMod.HorseLeather_T_Fur_Tan = "Thoroughbred Leather (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_T_Fur_Tan_Medium = "Thoroughbred Leather Half (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_T_Fur_Tan_Small = "Thoroughbred Leather Quarter (Tanned, Furred)",
+    ItemName_HorseMod.HorseLeather_T_Fur_Tan_Wet = "Thoroughbred Leather (Tanned, Furred, Wet)",
+
+
+    /* Foal leathers */
+        /* American Paint */
+    ItemName_HorseMod.FoalLeather_AP_Full = "American Paint Foal Leather (Unprocessed)",
+    ItemName_HorseMod.FoalLeather_AP_Fur = "American Paint Foal Leather (Furred)",
+    ItemName_HorseMod.FoalLeather_AP_Fur_Tan = "American Paint Foal Leather (Tanned, Furred)",
+    ItemName_HorseMod.FoalLeather_AP_Fur_Tan_Wet = "American Paint Foal Leather (Tanned, Furred, Wet)",
+
+        /* American Paint Overo */
+    ItemName_HorseMod.FoalLeather_APHO_Full = "American Paint Overo Foal Leather (Unprocessed)",
+    ItemName_HorseMod.FoalLeather_APHO_Fur = "American Paint Overo Foal Leather (Furred)",
+    ItemName_HorseMod.FoalLeather_APHO_Fur_Tan = "American Paint Overo Foal Leather (Tanned, Furred)",
+    ItemName_HorseMod.FoalLeather_APHO_Fur_Tan_Wet = "American Paint Overo Foal Leather (Tanned, Furred, Wet)",
+
+        /* Blue Roan */
+    ItemName_HorseMod.FoalLeather_AQHBR_Full = "Blue Roan Foal Leather (Unprocessed)",
+    ItemName_HorseMod.FoalLeather_AQHBR_Fur = "Blue Roan Foal Leather (Furred)",
+    ItemName_HorseMod.FoalLeather_AQHBR_Fur_Tan = "Blue Roan Foal Leather (Tanned, Furred)",
+    ItemName_HorseMod.FoalLeather_AQHBR_Fur_Tan_Wet = "Blue Roan Foal Leather (Tanned, Furred, Wet)",
+
+        /* American Quarter */
+    ItemName_HorseMod.FoalLeather_AQHP_Full = "American Quarter Foal Leather (Unprocessed)",
+    ItemName_HorseMod.FoalLeather_AQHP_Fur = "American Quarter Foal Leather (Furred)",
+    ItemName_HorseMod.FoalLeather_AQHP_Fur_Tan = "American Quarter Foal Leather (Tanned, Furred)",
+    ItemName_HorseMod.FoalLeather_AQHP_Fur_Tan_Wet = "American Quarter Foal Leather (Tanned, Furred, Wet)",
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.FoalLeather_FBG_Full = "Flea-Bitten Grey Foal Leather (Unprocessed)",
+    ItemName_HorseMod.FoalLeather_FBG_Fur = "Flea-Bitten Grey Foal Leather (Furred)",
+    ItemName_HorseMod.FoalLeather_FBG_Fur_Tan = "Flea-Bitten Grey Foal Leather (Tanned, Furred)",
+    ItemName_HorseMod.FoalLeather_FBG_Fur_Tan_Wet = "Flea-Bitten Grey Foal Leather (Tanned, Furred, Wet)",
+
+        /* Appaloosa */
+    ItemName_HorseMod.FoalLeather_GDA_Full = "Appaloosa Foal Leather (Unprocessed)",
+    ItemName_HorseMod.FoalLeather_GDA_Fur = "Appaloosa Foal Leather (Furred)",
+    ItemName_HorseMod.FoalLeather_GDA_Fur_Tan = "Appaloosa Foal Leather (Tanned, Furred)",
+    ItemName_HorseMod.FoalLeather_GDA_Fur_Tan_Wet = "Appaloosa Foal Leather (Tanned, Furred, Wet)",
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.FoalLeather_LPA_Full = "Spotted Appaloosa Foal Leather (Unprocessed)",
+    ItemName_HorseMod.FoalLeather_LPA_Fur = "Spotted Appaloosa Foal Leather (Furred)",
+    ItemName_HorseMod.FoalLeather_LPA_Fur_Tan = "Spotted Appaloosa Foal Leather (Tanned, Furred)",
+    ItemName_HorseMod.FoalLeather_LPA_Fur_Tan_Wet = "Spotted Appaloosa Foal Leather (Tanned, Furred, Wet)",
+
+        /* Thoroughbred */
+    ItemName_HorseMod.FoalLeather_T_Full = "Thoroughbred Foal Leather (Unprocessed)",
+    ItemName_HorseMod.FoalLeather_T_Fur = "Thoroughbred Foal Leather (Furred)",
+    ItemName_HorseMod.FoalLeather_T_Fur_Tan = "Thoroughbred Foal Leather (Tanned, Furred)",
+    ItemName_HorseMod.FoalLeather_T_Fur_Tan_Wet = "Thoroughbred Foal Leather (Tanned, Furred, Wet)",
+}

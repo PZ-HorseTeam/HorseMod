@@ -1,0 +1,24 @@
+ContextMenu_FR = {
+    ContextMenu_Horse_Mount = "Monter %1",
+    ContextMenu_Horse_Dismount = "Descendre de %1",
+
+    ContextMenu_Horse_Gear = "Équipement",
+    ContextMenu_Horse_Equip = "Équiper {new} comme {slot}",
+    ContextMenu_Horse_Replace = "Remplacer {old} par {new}",
+    ContextMenu_Horse_No_Compatible_Gear = "Aucun équipement compatible à équiper sur le cheval.",
+    ContextMenu_Horse_Unequip = "Retirer {old}",
+    ContextMenu_Horse_Unequip_All = "Retirer tout",
+
+    ContextMenu_Horse_Slot_Saddle = "selle",
+    ContextMenu_Horse_Slot_Saddlebags = "sacoche de selle",
+    ContextMenu_Horse_Slot_Reins = "rênes",
+
+    ContextMenu_Horse_NotAdult = "Pas un cheval adulte.",
+    ContextMenu_Horse_IsRunning = "Le cheval court.",
+    ContextMenu_Horse_IsDead = "Le cheval est mort.",
+    ContextMenu_Horse_IsAttached = "Le cheval est attaché à un crochet.",
+    ContextMenu_Horse_IsAlreadyRiding = "Le cheval est déjà monté.",
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "Impossible de changer l'équipement en montant.",
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "Impossible de changer l'équipement du cheval monté.",
+    ContextMenu_Horse_HasRider = "Le cheval est déjà monté par un autre personnage.",
+}
