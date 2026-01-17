@@ -11,12 +11,12 @@ local Sound = {
     STRESSED = "HorseStressed",
     EATING = "HorseEating",
     PAIN = "HorsePain",
-    GALLOP_ROUGH = "HorseGallopConcrete",
-    GALLOP_SOFT = "HorseGallopDirt",
-    TROT_ROUGH = "HorseTrotConcrete",
-    TROT_SOFT = "HorseTrotDirt",
-    WALK_ROUGH = "HorseWalkConcrete",
-    WALK_SOFT = "HorseWalkDirt",
+    GALLOP_ROUGH = "HorseGallopDirt",
+    GALLOP_SMOOTH = "HorseGallopConcrete",
+    TROT_ROUGH = "HorseTrotDirt",
+    TROT_SMOOTH = "HorseTrotConcrete",
+    WALK_ROUGH = "HorseWalkDirt",
+    WALK_SMOOTH = "HorseWalkConcrete",
     TIRED = "HorseGallopTired",
     MOUNT = "HorseMountSnort",
     DEATH = "HorseDeath"
@@ -24,25 +24,25 @@ local Sound = {
 
 ---@class FootstepSounds
 ---@field rough Sound?
----@field soft Sound?
+---@field smooth Sound?
 
 ---@type table<MovementState, FootstepSounds>
 local footsteps = {
     gallop = {
         rough = Sound.GALLOP_ROUGH,
-        soft = Sound.GALLOP_SOFT
+        smooth = Sound.GALLOP_SMOOTH
     },
     trot = {
         rough = Sound.TROT_ROUGH,
-        soft = Sound.TROT_SOFT
+        smooth = Sound.TROT_SMOOTH
     },
     walking = {
         rough = Sound.WALK_ROUGH,
-        soft = Sound.WALK_SOFT
+        smooth = Sound.WALK_SMOOTH
     },
     idle = {
         rough = nil,
-        soft = nil
+        smooth = nil
     }
 }
 
@@ -271,7 +271,7 @@ function HorseSounds:updateFootsteps()
     if isSquareRough(self.animal:getSquare()) then
         sound = footsteps[movementState].rough
     else
-        sound = footsteps[movementState].soft
+        sound = footsteps[movementState].smooth
     end
 
     local emitter = self.animal:getEmitter()
