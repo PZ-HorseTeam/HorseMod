@@ -28,8 +28,9 @@ function PathfindToMountPoint:waitToStart()
     return ISWalkToTimedActionF.waitToStart(self)
 end
 
-function PathfindToMountPoint:start()
-    ISWalkToTimedActionF.start(self)
+function PathfindToMountPoint:update()
+    self.animal:getPathFindBehavior2():reset()
+    ISWalkToTimedActionF.update(self)
 end
 
 ---@param character IsoPlayer

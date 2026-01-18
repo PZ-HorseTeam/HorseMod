@@ -6,6 +6,7 @@ local Attachments = require("HorseMod/attachments/Attachments")
 local HorseEquipGear = require("HorseMod/TimedActions/HorseEquipGear")
 local HorseUnequipGear = require("HorseMod/TimedActions/HorseUnequipGear")
 local Mounts = require("HorseMod/Mounts")
+local MountingUtility = require("HorseMod/mounting/MountingUtility")
 
 local AttachmentsManager = {}
 
@@ -16,12 +17,13 @@ local AttachmentsManager = {}
 ---@param accessory InventoryItem
 ---@param slot AttachmentSlot
 AttachmentsManager.equipAccessory = function(player, horse, accessory, slot)
-    local unlock, side = HorseUtils.pathfindToHorse(player, horse)
+    local mountPosition = MountingUtility.pathfindToHorse(player, horse)
+    local side = mountPosition.name
     
     -- verify an attachment isn't already equiped, else unequip it
     local oldAccessory = Attachments.getAttachedItem(horse, slot)
     if oldAccessory then
-        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, side, nil, unlock))
+        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, side))
     end
     
     -- equip the attachment in hands
@@ -31,7 +33,7 @@ AttachmentsManager.equipAccessory = function(player, horse, accessory, slot)
     ISTimedActionQueue.add(equipItemAction)
 
     -- equip the attachment on horse
-    ISTimedActionQueue.add(HorseEquipGear:new(player, horse, accessory, slot, side, unlock))
+    ISTimedActionQueue.add(HorseEquipGear:new(player, horse, accessory, slot, side))
 end
 
 ---Unequip a specific accessory on the horse.
@@ -40,8 +42,8 @@ end
 ---@param oldAccessory InventoryItem
 ---@param slot AttachmentSlot
 AttachmentsManager.unequipAccessory = function(player, horse, oldAccessory, slot)
-    local unlock, side = HorseUtils.pathfindToHorse(player, horse)
-    ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, side, unlock))
+    local mountPosition = MountingUtility.pathfindToHorse(player, horse)
+    ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, mountPosition.name))
 end
 
 ---Unequip every accessories on the horse.
@@ -49,15 +51,14 @@ end
 ---@param horse IsoAnimal
 ---@param oldAccessories {item: InventoryItem, slot: AttachmentSlot}[]
 AttachmentsManager.unequipAllAccessory = function(player, horse, oldAccessories)
-    local unlock, side = HorseUtils.pathfindToHorse(player, horse)
+    local mountPosition = MountingUtility.pathfindToHorse(player, horse)
     
     -- unequip all
     for i = 1, #oldAccessories do
         local oldAccessory = oldAccessories[i]
         local item = oldAccessory.item
         local slot = oldAccessory.slot
-        local shouldUnlockOnPerform = i == #oldAccessories and unlock or nil
-        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, item, slot, side, shouldUnlockOnPerform, unlock))
+        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, item, slot, mountPosition.name))
     end
 end
 

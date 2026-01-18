@@ -17,7 +17,7 @@ local MountingUtility = require("HorseMod/mounting/MountingUtility")
 ---
 ---@field side string
 ---
----@field saddle InventoryItem | nil
+---@field hasSaddle boolean
 ---
 ---@field lockDir number
 local MountHorseAction = ISBaseTimedAction:derive("HorseMod_MountHorseAction")
@@ -62,34 +62,22 @@ end
 
 
 function MountHorseAction:start()
-    -- freeze horse and log horse facing direction
-    -- self.horse:getPathFindBehavior2():reset()
-    -- self.horse:getBehavior():setBlockMovement(true)
-    -- self.horse:stopAllMovementNow()
-
     self.mount:setVariable(AnimationVariable.DYING, false)
-
-    -- self.lockDir = self.mount:getDirectionAngle()
-    -- self.character:setDir(self.lockDir)
 
     self.character:setVariable(AnimationVariable.MOUNTING_HORSE, true)
     self.character:setVariable(AnimationVariable.MOUNT_FINISHED, false)
     self.character:setVariable(AnimationVariable.DYING, false)
 
-    if self.side == "right" then
-        if self.saddle then
-            self:setActionAnim("Bob_Mount_Saddle_Right")
-        else
-            self:setActionAnim("Bob_Mount_Bareback_Right")
-        end
-
-    elseif self.side == "left" then
-        if self.saddle then
-            self:setActionAnim("Bob_Mount_Saddle_Left")
-        else
-            self:setActionAnim("Bob_Mount_Bareback_Left")
-        end
+    -- start animation
+    local actionAnim = ""
+    if self.hasSaddle then
+        actionAnim = "Bob_Mount_Saddle_"
+    else
+        actionAnim = "Bob_Mount_Bareback_"
     end
+
+    actionAnim = actionAnim .. self.side
+    self:setActionAnim(actionAnim)
 end
 
 
@@ -135,10 +123,10 @@ end
 
 ---@param pair MountPair
 ---@param side string
----@param saddle InventoryItem | nil
+---@param hasSaddle boolean
 ---@return self
 ---@nodiscard
-function MountHorseAction:new(pair, side, saddle)
+function MountHorseAction:new(pair, side, hasSaddle)
     ---@type MountHorseAction
     local o = ISBaseTimedAction.new(self, pair.rider)
 
@@ -148,7 +136,7 @@ function MountHorseAction:new(pair, side, saddle)
     o.pair = pair
     o.mount = pair.mount
     o.side = side
-    o.saddle = saddle
+    o.hasSaddle = hasSaddle
     o.stopOnWalk = true
     o.stopOnRun  = true
 

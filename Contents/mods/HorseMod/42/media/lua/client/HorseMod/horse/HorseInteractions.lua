@@ -105,7 +105,7 @@ local function handleJoypadMountButton(player)
         return
     end
 
-    local horse = Mounting.getBestMountableHorse(player, 1.25)
+    local horse = MountingUtility.getBestMountableHorse(player, 1.25)
     if horse and horse:isExistInTheWorld() then
         player:setIsAiming(false)
         Mounting.mountHorse(player, horse)

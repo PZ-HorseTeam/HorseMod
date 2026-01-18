@@ -13,8 +13,6 @@ local AnimationVariable = require("HorseMod/AnimationVariable")
 ---@field equipBehavior EquipBehavior
 ---@field slot AttachmentSlot
 ---@field side string
----@field unlockPerform fun()? Should unlock after performing the action ?
----@field unlockStop fun()? Unlock function when force stopping the action, if :lua:obj:`HorseMod.HorseEquipGear.unlockPerform` is not provided.
 local HorseEquipGear = ISBaseTimedAction:derive("HorseMod_HorseEquipGear")
 
 ---@return boolean
@@ -23,6 +21,7 @@ function HorseEquipGear:isValid()
 end
 
 function HorseEquipGear:start()
+    self.character:addLineChatElement("Equipping "..self.accessory:getName().." on horse...")
     local equipBehavior = self.equipBehavior
     
     -- set the action animation
@@ -42,25 +41,24 @@ function HorseEquipGear:start()
 end
 
 function HorseEquipGear:update()
-    self.character:faceThisObject(self.horse)
+    local horse = self.horse
+    local character = self.character
+    character:faceThisObject(horse)
+    horse:getPathFindBehavior2():reset()
 
     -- end when
     local maxTime = self.maxTime
-    if maxTime == -1 and self.character:getVariableBoolean(AnimationVariable.EQUIP_FINISHED) then
+    if maxTime == -1 and character:getVariableBoolean(AnimationVariable.EQUIP_FINISHED) then
         self:forceComplete()
     end
 end
 
 function HorseEquipGear:stop()
-    if self.unlockStop then self.unlockStop() end
     ISBaseTimedAction.stop(self)
 end
 
 
 function HorseEquipGear:perform()
-    if self.unlockPerform then
-        self.unlockPerform()
-    end
     ISBaseTimedAction.perform(self)
 end
 
@@ -115,11 +113,9 @@ end
 ---@param accessory InventoryItem
 ---@param slot AttachmentSlot
 ---@param side string
----@param unlockPerform fun()?
----@param unlockStop fun()?
 ---@return self
 ---@nodiscard
-function HorseEquipGear:new(character, horse, accessory, slot, side, unlockPerform, unlockStop)
+function HorseEquipGear:new(character, horse, accessory, slot, side)
     local o = ISBaseTimedAction.new(self,character) --[[@as HorseEquipGear]]
     o.horse = horse
     o.accessory = accessory
@@ -134,10 +130,6 @@ function HorseEquipGear:new(character, horse, accessory, slot, side, unlockPerfo
     o.maxTime = o:getDuration()
     o.equipBehavior = attachmentDef.equipBehavior or {}
     o.side = side
-
-    -- unlock functions
-    o.unlockPerform = unlockPerform
-    o.unlockStop = unlockStop or unlockPerform
 
     -- default attachment actions
     o.stopOnWalk = true

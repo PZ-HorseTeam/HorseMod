@@ -38,7 +38,7 @@ end
 
 ---@param player IsoPlayer
 function Mounts.removeMount(player)
-    assert(Mounts.hasMount(player), "")
+    assert(Mounts.hasMount(player), "Tried removing mount for player without a mount")
     local mount = playerMountMap[player]
     playerMountMap[player] = nil
     mountPlayerMap[mount] = nil

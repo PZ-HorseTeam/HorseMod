@@ -3,7 +3,6 @@ require("TimedActions/ISPathFindAction")
 local HorseRiding = require("HorseMod/Riding")
 local MountHorseAction = require("HorseMod/TimedActions/MountHorseAction")
 local DismountHorseAction = require("HorseMod/TimedActions/DismountHorseAction")
-local PathfindToMountPoint -- late load
 local MountPair = require("HorseMod/MountPair")
 local Attachments = require("HorseMod/attachments/Attachments")
 local MountingUtility = require("HorseMod/mounting/MountingUtility")
@@ -13,23 +12,6 @@ local MountingUtility = require("HorseMod/mounting/MountingUtility")
 local Mounting = {}
 
 -- TODO: mountHorse and dismountHorse are too long and have a lot of redundant code
-
----@deprecated
-Mounting.getNearestMountPosition = function(...)
-    return MountingUtility.getNearestMountPosition(...)
-end
-
----@deprecated
-Mounting.getBestMountableHorse = function(...)
-    return MountingUtility.getBestMountableHorse(...)
-end
-
----@deprecated
-Mounting.canMountHorse = function(...)
-    return MountingUtility.canMountHorse(...)
-end
-
-
 
 
 
@@ -48,41 +30,31 @@ function Mounting.mountHorse(player, horse)
         -- Detach from tree
         local tree = data:getAttachedTree()
         if tree then
-            data:setAttachedTree(nil)
+            data:setAttachedTree(nil) ---@diagnostic disable-line
             sendAttachAnimalToTree(horse, player, tree, true)
         end
         -- Detach from any leading player
         local leader = data:getAttachedPlayer()
         if leader then
             leader:getAttachedAnimals():remove(horse)
-            data:setAttachedPlayer(nil)
-            sendAttachAnimalToPlayer(horse, player, nil, true)
+            data:setAttachedPlayer(nil) ---@diagnostic disable-line
+            sendAttachAnimalToPlayer(horse, player, nil, true)  ---@diagnostic disable-line
         end
     end
 
 
     --- pathfind to the mount position
-    local mountPosition = MountingUtility.getNearestMountPosition(player, horse)
-    assert(mountPosition ~= nil, "No mount position found when should be found. Report this to the mod authors.")
-
-    PathfindToMountPoint = PathfindToMountPoint or require("HorseMod/TimedAction/PathfindToMountPoint")
-    local pathfindAction = PathfindToMountPoint:new(
-        player,
-        mountPosition,
-        horse
-    )
-
-    -- stop the horse from moving
-    horse:getPathFindBehavior2():reset()
+    local mountPosition, pathfindAction = MountingUtility.pathfindToHorse(player, horse)
 
     -- create mount action
-    local saddle = Attachments.getSaddle(horse)
+    local hasSaddle = Attachments.getSaddle(horse) ~= nil
     local pairing = MountPair.new(player, horse)
-    local mountAction = MountHorseAction:new(pairing, mountPosition.name, saddle)
+    local mountAction = MountHorseAction:new(pairing, mountPosition.name, hasSaddle)
 
     -- patch to update to last known mount position
     function pathfindAction:perform()
         mountAction.side = self.mountPosition.name
+        local PathfindToMountPoint = require("HorseMod/TimedAction/PathfindToMountPoint")
         return PathfindToMountPoint.perform(self)
     end
     
@@ -98,63 +70,17 @@ function Mounting.dismountHorse(player)
     if not mount then
         return
     end
-
     local horse = mount.pair.mount
 
-    horse:getPathFindBehavior2():reset()
+    --- pathfind to the mount position
+    local mountPosition, pathfindAction = MountingUtility.pathfindToHorse(player, horse)
 
-    local behavior = horse:getBehavior()
-    behavior:setBlockMovement(true)
-    behavior:setDoingBehavior(false)
-
-    horse:stopAllMovementNow()
-    local lockDir = horse:getDir()
-
-    local lpos = horse:getAttachmentWorldPos("mountLeft")
-    local rpos = horse:getAttachmentWorldPos("mountRight")
-    local hx, hy = horse:getX(), horse:getY()
-
-    local dl = (hx - lpos:x())^2 + (hy - lpos:y())^2
-    local dr = (hx - rpos:x())^2 + (hy - rpos:y())^2
-    local side, tx, ty, tz = "right", rpos:x(), rpos:y(), rpos:z()
-    if dl < dr then side, tx, ty, tz = "left", lpos:x(), lpos:y(), lpos:z() end
-
-    local function centerBlocked(nx, ny, nz)
-        local sq = getSquare(nx, ny, nz)
-        if not sq then
-            return true
-        end
-        if sq:isSolid() or sq:isSolidTrans() then
-            return true
-        end
-        return false
-    end
-
-    if centerBlocked(tx, ty, tz) then
-        local ox = (side=="right") and lpos:x() or rpos:x()
-        local oy = (side=="right") and lpos:y() or rpos:y()
-        local oz = (side=="right") and lpos:z() or rpos:z()
-        if not centerBlocked(ox, oy, oz) then
-            if side == "right" then
-                side = "left"
-            else
-                side = "right"
-            end
-            tx, ty, tz = ox, oy, oz
-        end
-    end
-
-    local saddleItem = Attachments.getSaddle(horse)
-
-    player:setDir(lockDir)
-
+    -- dismount
+    local hasSaddle = Attachments.getSaddle(horse) ~= nil
     local action = DismountHorseAction:new(
         mount,
-        side,
-        saddleItem ~= nil,
-        tx,
-        ty,
-        tz
+        mountPosition,
+        hasSaddle
     )
 
     ISTimedActionQueue.add(action)

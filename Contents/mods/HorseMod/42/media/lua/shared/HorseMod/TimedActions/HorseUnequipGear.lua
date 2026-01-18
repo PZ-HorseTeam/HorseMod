@@ -44,8 +44,9 @@ function HorseUnequipGear:getDuration()
 end
 
 
-function HorseUnequipGear:new(character, horse, accessory, slot, side, unlockPerform, unlockStop)
-    local o = HorseEquipGear.new(self, character, horse, accessory, slot, side, unlockPerform, unlockStop) --[[@as HorseUnequipGear]]
+function HorseUnequipGear:new(character, horse, accessory, slot, side)
+    ---@type HorseUnequipGear
+    local o = HorseEquipGear.new(self, character, horse, accessory, slot, side)
 
     o.maxTime = o:getDuration()
     o.equipBehavior = o.attachmentDef.unequipBehavior or {}

@@ -16,11 +16,11 @@ local MountingUtility = {}
 ---@type {name: string, attachment: string}[]
 local MOUNT_POINTS = table.newarray(
 {
-        name = "left",
+        name = "Left",
         attachment = "mountLeft"
     },
 {
-        name = "right",
+        name = "Right",
         attachment = "mountRight"
     }
 )
@@ -121,6 +121,33 @@ function MountingUtility.canMountHorse(player, horse)
     end
 
     return true
+end
+
+
+
+---Make the player pathfind to the nearest mount point on the horse. First stops the horse from moving and then move to the horse nearest mounting position.
+---@param player IsoPlayer
+---@param horse IsoAnimal
+---@return MountPosition
+---@return PathfindToMountPoint
+function MountingUtility.pathfindToHorse(player, horse)
+    --- pathfind to the mount position
+    local mountPosition = MountingUtility.getNearestMountPosition(player, horse)
+    assert(mountPosition ~= nil, "No mount position found when should be found. Report this to the mod authors.")
+
+    local PathfindToMountPoint = require("HorseMod/TimedAction/PathfindToMountPoint")
+    local pathfindAction = PathfindToMountPoint:new(
+        player,
+        mountPosition,
+        horse
+    )
+
+    -- stop the horse from moving
+    horse:getPathFindBehavior2():reset()
+
+    ISTimedActionQueue.add(pathfindAction)
+
+    return mountPosition, pathfindAction
 end
 
 
