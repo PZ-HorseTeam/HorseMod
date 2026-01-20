@@ -1,3 +1,8 @@
+---@namespace HorseMod
+
+---REQUIREMENTS
+local random_instance = newrandom()
+
 ---@class HorseDamage
 local HorseDamage = {}
 
@@ -41,7 +46,7 @@ end
 ---@param max number
 ---@return number
 local function randf(min, max)
-    return min + (ZombRand(1000) / 1000.0) * (max - min)
+    return min + random_instance:random() * (max - min)
 end
 
 

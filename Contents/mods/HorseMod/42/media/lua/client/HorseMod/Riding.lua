@@ -1,12 +1,12 @@
 ---REQUIREMENTS
-local Mount = require("HorseMod/mount/Mount")
-local HorseUtils = require("HorseMod/Utils")
 local AnimationVariable = require("HorseMod/AnimationVariable")
+local Mount = require("HorseMod/mount/Mount")
 local Mounts = require("HorseMod/Mounts")
-
 local MountPair = require("HorseMod/MountPair")
-local HorseDamage = require("HorseMod/horse/HorseDamage")
+local HorseUtils = require("HorseMod/Utils")
 local HorseSounds = require("HorseMod/HorseSounds")
+local HorseDamage = require("HorseMod/horse/HorseDamage")
+
 
 ---@namespace HorseMod
 
@@ -125,9 +125,6 @@ HorseRiding.dismountOnHorseDeath = function(character)
 
     for _, mount in pairs(HorseRiding.playerMounts) do
         if mount.pair.mount == character then
-            local rider = mount.pair.rider
-            Mounts.removeMount(rider)
-
             HorseSounds.playSound(character, HorseSounds.Sound.DEATH)
 
             HorseUtils.runAfter(
@@ -136,17 +133,6 @@ HorseRiding.dismountOnHorseDeath = function(character)
                     HorseDamage.knockDownNearbyZombies(mount.pair.mount)
                 end
             )
-
-            HorseUtils.runAfter(
-                4.1,
-                function()
-                    rider:setBlockMovement(false)
-                    rider:setIgnoreMovement(false)
-                    rider:setIgnoreInputsForDirection(false)
-                    rider:setVariable(AnimationVariable.DYING, false)
-                end
-            )
-
             return
         end
     end

@@ -4,6 +4,7 @@ local HorseUtils = require("HorseMod/Utils")
 local AnimationVariable = require("HorseMod/AnimationVariable")
 local InputManager = require("HorseMod/mount/InputManager")
 local ReinsManager = require("HorseMod/mount/ReinsManager")
+local UrgentDismountAction = require("HorseMod/TimedActions/UrgentDismountAction")
 
 
 ---@namespace HorseMod
@@ -34,18 +35,21 @@ end
 function Mount:isDying()
     if self.pair.mount:getVariableBoolean(AnimationVariable.DYING) then
         return true
-    else
-        return false
     end
+    return false
 end
 
+function Mount:deathUnmount()
+    ISTimedActionQueue.add(UrgentDismountAction:new(
+        self.pair.rider,
+        self.pair.mount,
+        AnimationVariable.DYING
+    ))
+end
 
 function Mount:update()
     if self:isDying() then
-        self.pair.rider:setIgnoreMovement(true)
-        self.pair.rider:setBlockMovement(true)
-        self.pair.rider:setIgnoreInputsForDirection(true)
-        self.pair.rider:setVariable(AnimationVariable.DYING, true)
+        self:deathUnmount()
         return
     end
     self.controller:update(

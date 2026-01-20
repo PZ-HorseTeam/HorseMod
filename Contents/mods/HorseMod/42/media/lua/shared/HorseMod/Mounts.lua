@@ -43,6 +43,7 @@ function Mounts.removeMount(player)
     playerMountMap[player] = nil
     mountPlayerMap[mount] = nil
 
+    -- used to reset the wander counter of the horse so it doesn't instantly wander off
     mount:setStateEventDelayTimer(mount:getBehavior():pickRandomWanderInterval())
     
     if IS_SERVER then

@@ -27,7 +27,7 @@
     </m_Transitions>
     <m_Events>
         <m_EventName>SetVariable</m_EventName>
-        <m_TimePc>1.0</m_TimePc>
+        <m_Time>End</m_Time>
         <m_ParameterValue>HorseDying=false</m_ParameterValue>
     </m_Events>
     <m_SubStateBoneWeights>

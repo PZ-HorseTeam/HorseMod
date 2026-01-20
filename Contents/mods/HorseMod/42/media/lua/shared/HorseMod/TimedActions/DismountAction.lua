@@ -107,6 +107,7 @@ function DismountAction:new(character, animal, mountPosition, hasSaddle)
     o.stopOnRun = true
 
     o.maxTime = o:getDuration()
+    o.useProgressBar = false
 
     return o
 end
