@@ -1,6 +1,8 @@
+---REQUIREMENTS
 local Stamina = require("HorseMod/Stamina")
 local AnimationVariable = require("HorseMod/AnimationVariable")
 local Mounts = require("HorseMod/Mounts")
+local DismountAction = require("HorseMod/TimedActions/DismountAction")
 
 
 ---@param state "walk"|"gallop"
@@ -653,17 +655,21 @@ function MountController:updateSpeed(input, deltaTime)
     local gallopRawSpeed = getSpeed("gallop")
     local gallopMultiplier = gallopRawSpeed
 
+    local pair = self.mount.pair
+    local mount = pair.mount
+    local rider = pair.rider
+
     -- vegetation slowdown is applied through gene speed?
-    local geneSpeed = getGeneticSpeed(self.mount.pair.mount) * self:getVegetationEffect(input, deltaTime)
+    local geneSpeed = getGeneticSpeed(mount) * self:getVegetationEffect(input, deltaTime)
 
     -- TODO: is this check really necessary? does changing the value cause more overhead than reading it?
-    local currentGeneSpeed = self.mount.pair.mount:getVariableFloat(AnimationVariable.GENE_SPEED, 0)
+    local currentGeneSpeed = mount:getVariableFloat(AnimationVariable.GENE_SPEED, 0)
     if currentGeneSpeed ~= geneSpeed then
-        self.mount.pair:setAnimationVariable(AnimationVariable.GENE_SPEED, geneSpeed)
+        pair:setAnimationVariable(AnimationVariable.GENE_SPEED, geneSpeed)
     end
 
     if input.run then
-        local f = Stamina.runSpeedFactor(self.mount.pair.mount)
+        local f = Stamina.runSpeedFactor(mount)
         if f < 0.35 then
             gallopMultiplier = 0.35
         else
@@ -671,20 +677,31 @@ function MountController:updateSpeed(input, deltaTime)
         end
     end
 
-    self.mount.pair.mount:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier)
-    self.mount.pair.mount:setVariable(AnimationVariable.TROT_SPEED,  walkMultiplier * TROT_MULT)
-    self.mount.pair.mount:setVariable(AnimationVariable.RUN_SPEED, gallopRawSpeed)
+    mount:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier)
+    mount:setVariable(AnimationVariable.TROT_SPEED,  walkMultiplier * TROT_MULT)
+    mount:setVariable(AnimationVariable.RUN_SPEED, gallopRawSpeed)
 
-    self.mount.pair.rider:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier * PLAYER_SYNC_TUNER)
-    self.mount.pair.rider:setVariable(AnimationVariable.TROT_SPEED,  walkMultiplier * TROT_MULT * PLAYER_SYNC_TUNER)
-    self.mount.pair.rider:setVariable(AnimationVariable.RUN_SPEED, gallopRawSpeed * PLAYER_SYNC_TUNER)
+    rider:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier * PLAYER_SYNC_TUNER)
+    rider:setVariable(AnimationVariable.TROT_SPEED,  walkMultiplier * TROT_MULT * PLAYER_SYNC_TUNER)
+    rider:setVariable(AnimationVariable.RUN_SPEED, gallopRawSpeed * PLAYER_SYNC_TUNER)
 
     -- speed/locomotion
     local moving = (input.movement.x ~= 0 or input.movement.y ~= 0)
     local target = (moving and (input.run and RUN_SPEED * gallopMultiplier or WALK_SPEED * walkMultiplier)) or 0.0
     local rate = (target > self.currentSpeed) and ACCEL_UP or DECEL_DOWN
-
+    
+    -- verify the player isn't dismounting, and if so slow down the horse to a stop
+    if rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
+        --
+        local queue = ISTimedActionQueue.getTimedActionQueue(rider)
+        local currentAction = queue.current
+        if currentAction == DismountAction.Type then
+            target = 0.0
+            rate = DECEL_DOWN
+        end
+    end
     self.currentSpeed = approach(self.currentSpeed, target, rate, deltaTime)
+    
     if self.currentSpeed < 0.0001 then
         self.currentSpeed = 0
     end
@@ -765,7 +782,8 @@ function MountController:update(input)
     end
     self:updateSpeed(input, deltaTime)
 
-    if moving and self.currentSpeed > 0 then
+    if moving and self.currentSpeed > 0
+        and not rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
         local currentDirection = mount:getDir()
         local velocity = currentDirection:ToVector():setLength(self.currentSpeed)
         moveWithCollision(mount, velocity, deltaTime)

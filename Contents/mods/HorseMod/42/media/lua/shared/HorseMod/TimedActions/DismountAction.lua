@@ -31,14 +31,17 @@ end
 
 
 function DismountAction:update()
-    -- keep the horse locked facing the stored direction
+    -- keep the horse and player locked facing the stored direction
+    local character = self.character
     local animal = self.animal
     animal:setDirectionAngle(self.lockDir)
     animal:getPathFindBehavior2():reset()
 
+    character:setDirectionAngle(self.lockDir)
+
     -- complete when dismount is finished
-    if self.character:getVariableBoolean(AnimationVariable.DISMOUNT_FINISHED) == true then
-        self.character:setVariable(AnimationVariable.DISMOUNT_FINISHED, false)
+    if character:getVariableBoolean(AnimationVariable.DISMOUNT_FINISHED) == true then
+        character:setVariable(AnimationVariable.DISMOUNT_FINISHED, false)
         self:forceComplete()
     end
 end
@@ -78,8 +81,9 @@ end
 
 function DismountAction:perform()
     local mountPosition = self.mountPosition
-    self.character:setX(mountPosition.x)
-    self.character:setY(mountPosition.y)
+    local attachmentPosition = self.animal:getAttachmentWorldPos(mountPosition.attachment)
+    self.character:setX(attachmentPosition:x())
+    self.character:setY(attachmentPosition:y())
 
     ISBaseTimedAction.perform(self)
 end
@@ -108,7 +112,7 @@ function DismountAction:new(character, animal, mountPosition, hasSaddle)
     o.animal = animal
     o.mountPosition = mountPosition
     o.hasSaddle = hasSaddle
-    -- o.stopOnWalk = true
+    o.stopOnWalk = false
     o.stopOnRun = true
 
     o.maxTime = o:getDuration()

@@ -25,7 +25,7 @@ local MOUNT_POINTS = table.newarray(
     }
 )
 
----@alias MountPosition {x: number, y: number, name: string, pos3D: Position3D}
+---@alias MountPosition {x: number, y: number, name: string, pos3D: Position3D, attachment: string}
 
 
 ---Retrieve the nearest mount position on the given horse to the player.
@@ -47,16 +47,19 @@ function MountingUtility.getNearestMountPosition(player, horse, maxDistance)
 
     for i = 1, #MOUNT_POINTS do
         local mountPoint = MOUNT_POINTS[i]
-        local attachmentPosition = horse:getAttachmentWorldPos(mountPoint.attachment)
+        local attachment = mountPoint.attachment
+        local attachmentPosition = horse:getAttachmentWorldPos(attachment)
         local x = attachmentPosition:x()
         local y = attachmentPosition:y()
         local distanceSquared = player:DistToSquared(x, y)
         if distanceSquared <= nearestDistanceSquared then
+            ---@type MountPosition
             nearest = {
                 x = x,
                 y = y,
                 name = mountPoint.name,
                 pos3D = attachmentPosition,
+                attachment = attachment,
             }
             nearestDistanceSquared = distanceSquared
         end

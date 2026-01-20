@@ -10,14 +10,13 @@ local original_isPlayerDoingActionThatCanBeCancelled = isPlayerDoingActionThatCa
 ---Patch the function to take into account dynamic cancel flags on mount/dismount actions notably.
 function isPlayerDoingActionThatCanBeCancelled(player)
     local queue = ISTimedActionQueue.getTimedActionQueue(player)
-    local current = queue.current
-    if current then
-        local Type = current.Type
+    local currentAction = queue.current
+    if currentAction then
+        local Type = currentAction.Type
         if Type == UrgentDismountAction.Type then
             return false
         else
-            local dynamicCancel = current.dynamicCancel ---@diagnostic disable-line not a field in ISBaseTimedAction
-            player:addLineChatElement(tostring(player:getVariableBoolean(AnimationVariable.NO_CANCEL)))
+            local dynamicCancel = currentAction.dynamicCancel ---@diagnostic disable-line not a field in ISBaseTimedAction
             if dynamicCancel and dynamicCancel == true 
                 and player:getVariableBoolean(AnimationVariable.NO_CANCEL) then
                 return false
