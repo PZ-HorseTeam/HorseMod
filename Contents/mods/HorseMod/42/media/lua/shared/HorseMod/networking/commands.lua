@@ -1,5 +1,7 @@
 ---@namespace HorseMod
 
+local spobjects = require("HorseMod/networking/spobjects")
+
 local IS_CLIENT = isClient()
 local IS_SERVER = isServer()
 local IS_SINGLEPLAYER = not (IS_CLIENT or IS_SERVER)
@@ -133,7 +135,7 @@ end
 ---@nodiscard
 function commands.getAnimalId(animal)
     if IS_SINGLEPLAYER then
-        return animal:getAnimalID()
+        return spobjects.animal:getOrAddId(animal)
     end
 
     return animal:getOnlineID()
@@ -144,17 +146,7 @@ end
 ---@nodiscard
 function commands.getAnimal(id)
     if IS_SINGLEPLAYER then
-        -- TODO: this is obviously horrible for performance
-        --  i just need this to work and then i can optimise it later :)
-        local objects = getCell():getLuaObjectList()
-        for i = 1, #objects do
-            local object = objects[i]
-            if instanceof(object, "IsoAnimal") and object--[[@as IsoAnimal]]:getAnimalID() == id then
-                return object
-            end
-        end
-
-        return nil
+        return spobjects.animal:getObject(id)
     end
     
     return getAnimal(id)
