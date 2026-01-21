@@ -31,6 +31,13 @@ if not (isClient() or isServer()) then
         return self.objectById[id]
     end
 
+    ---@param object T
+    function IdMap:removeObject(object)
+        local id = self.idByObject[object]
+        self.idByObject[object] = nil
+        self.objectById[id] = nil
+    end
+
     ---@generic T
     ---@return IdMap<T>
     ---@nodiscard
@@ -55,6 +62,21 @@ if not (isClient() or isServer()) then
 
     ---@type IdMap<IsoAnimal>
     spobjects.animal = IdMap.new()
+
+    local function releaseRemovedAnimals()
+        for _, animal in pairs(spobjects.animal.objectById) do
+            if not animal:isExistInTheWorld() then
+                spobjects.animal:removeObject(animal)
+            end
+        end
+    end
+
+    Events.OnTick.Add(function(tick)
+        -- we don't need to do this frequently at all
+        if tick % 600 == 0 then
+            releaseRemovedAnimals()
+        end
+    end)
 
     return spobjects
 end
