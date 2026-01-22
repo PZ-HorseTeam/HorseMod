@@ -2,7 +2,7 @@
 local Stamina = require("HorseMod/Stamina")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local DismountAction = require("HorseMod/TimedActions/DismountAction")
-local UrgentDismountAction = require("HorseMod/TimedActions/UrgentDismountAction")
+local Mounting = require("HorseMod/Mounting")
 local rdm = newrandom()
 
 
@@ -444,11 +444,7 @@ local function moveWithCollision(rider, horse, velocity, delta, isGalloping)
         local rx, ry = collideStepAt(horse, z, x, y, dx, dy)
         if rx == 0 and ry == 0 then
             if isGalloping then
-                ISTimedActionQueue.add(UrgentDismountAction:new(
-                    rider,
-                    horse,
-                    AnimationVariable.FALL_BACK
-                ))
+                Mounting.dismountFallBack(rider, horse)
             end
             break
         end
@@ -564,7 +560,7 @@ local MountController = {}
 MountController.__index = MountController
 
 
-local BASE_CHANCE = 0.05
+local BASE_CHANCE = 0.1
 local NIMBLE_LOW = 1
 local NIMBLE_HIGH = 0
 local TRAITS = {
@@ -598,11 +594,7 @@ function MountController:rollForTreeFall()
     local pass = rdm:random() < chance
     if pass then
         local pair = self.mount.pair
-        ISTimedActionQueue.add(UrgentDismountAction:new(
-            pair.rider,
-            pair.mount,
-            AnimationVariable.FALL_BACK
-        ))
+        Mounting.dismountFallBack(pair.rider, pair.mount)
         return true
     end
     return false
@@ -904,7 +896,6 @@ function MountController:update(input)
         self.timeInTrees = timeInTrees
     end
 
-
     -- local num1 = self.timeInTrees
     -- num1 = (num1 * 100 - num1 * 100%1) / 100
     -- local num2 = self:calculateTreeFallChance()
@@ -914,11 +905,7 @@ function MountController:update(input)
     -- verify the rider/mount are not falling
     ---@TODO improve by having a custom falling animation for the player
     if rider:isbFalling() or mount:isbFalling() then
-        ISTimedActionQueue.add(UrgentDismountAction:new(
-            rider,
-            mount,
-            nil
-        ))
+        Mounting.dismountFall(rider, mount)
     end
 end
 

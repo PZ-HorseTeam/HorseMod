@@ -15,6 +15,10 @@ local Mounts = require("HorseMod/Mounts")
 ---@field dismountVariable AnimationVariable
 ---
 ---@field hasSaddle boolean
+---
+---@field horseSound Sound
+---
+---@field playerVoice string
 local UrgentDismountAction = ISBaseTimedAction:derive("HorseMod_UrgentDismountAction")
 
 function UrgentDismountAction:isValid()
@@ -37,6 +41,7 @@ end
 
 function UrgentDismountAction:start()
     local character = self.character
+    local animal = self.animal
 
     -- start animation
     local dismountVariable = self.dismountVariable
@@ -45,12 +50,28 @@ function UrgentDismountAction:start()
     end
 
     -- lock player movement
-    self.lockDir = self.animal:getDirectionAngle()
+    self.lockDir = animal:getDirectionAngle()
     character:setBlockMovement(true)
     character:setIgnoreInputsForDirection(true)
 
     -- drop heavy items
     character:dropHeavyItems()
+
+    -- play hurting sound based on dismount type
+    if dismountVariable == AnimationVariable.FALL_BACK then
+        character:playerVoiceSound("PainFromFallHigh")
+    elseif dismountVariable == AnimationVariable.DYING then
+        character:playerVoiceSound("PainFromFallLow")
+    end
+
+    -- play horse hurting sound
+    if not isServer() then
+        local HorseSounds = require("HorseMod/HorseSounds")
+        local horseSound = self.horseSound
+        if horseSound then
+            HorseSounds.playSound(animal, horseSound)
+        end
+    end
 
     -- unmount
     Mounts.removeMount(character)
@@ -87,16 +108,18 @@ end
 ---@param character IsoPlayer
 ---@param animal IsoAnimal
 ---@param dismountVariable AnimationVariable?
+---@param horseSound Sound?
 ---@return self
 ---@nodiscard
-function UrgentDismountAction:new(character, animal, dismountVariable)
+function UrgentDismountAction:new(character, animal, dismountVariable, horseSound, playerVoice)
     ---@type UrgentDismountAction
     local o = ISBaseTimedAction.new(self, character)
 
     o.character = character
     o.animal = animal
     o.dismountVariable = dismountVariable
-
+    o.horseSound = horseSound
+    o.playerVoice = playerVoice
     -- we manually lock the player in place
     o.stopOnWalk = false
     o.stopOnRun = false
