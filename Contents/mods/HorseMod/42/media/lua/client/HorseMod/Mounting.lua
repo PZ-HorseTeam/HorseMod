@@ -6,6 +6,8 @@ local DismountAction = require("HorseMod/TimedActions/DismountAction")
 local UrgentDismountAction = require("HorseMod/TimedActions/UrgentDismountAction")
 local Attachments = require("HorseMod/attachments/Attachments")
 local MountingUtility = require("HorseMod/mounting/MountingUtility")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
+local HorseSounds = require("HorseMod/HorseSounds")
 
 
 
@@ -83,14 +85,61 @@ function Mounting.dismountHorse(player, horse, mountPosition)
     ISTimedActionQueue.add(action)
 end
 
+---@param player IsoPlayer
+---@return boolean
+function Mounting.canDismountUrgent(player)
+    -- prevent multiple urgent dismount actions
+    local queue = ISTimedActionQueue.getTimedActionQueue(player)
+    local actionIndex = queue:indexOfType(UrgentDismountAction.Type)
+    if actionIndex >= 0 then
+        return false
+    end
+    return true
+end
 
-function Mounting.dismountDeath(player, horse, dismountVariable)
+---@param player IsoPlayer
+---@param horse IsoAnimal
+function Mounting.dismountDeath(player, horse)
+    if not Mounting.canDismountUrgent(player) then return end
+
     ISTimedActionQueue.add(UrgentDismountAction:new(
         player,
         horse,
-        dismountVariable
+        AnimationVariable.DYING,
+        nil,
+        "PainFromFallLow",
+        true
     ))
 end
 
+---@param player IsoPlayer
+---@param horse IsoAnimal
+function Mounting.dismountFall(player, horse)
+    if not Mounting.canDismountUrgent(player) then return end
+
+    ISTimedActionQueue.add(UrgentDismountAction:new(
+        player,
+        horse,
+        nil,
+        HorseSounds.Sound.STRESSED,
+        nil,
+        true
+    ))
+end
+
+---@param player IsoPlayer
+---@param horse IsoAnimal
+function Mounting.dismountFallBack(player, horse)
+    if not Mounting.canDismountUrgent(player) then return end
+
+    ISTimedActionQueue.add(UrgentDismountAction:new(
+        player,
+        horse,
+        AnimationVariable.FALL_BACK,
+        HorseSounds.Sound.PAIN,
+        "PainFromFallHigh",
+        true
+    ))
+end
 
 return Mounting

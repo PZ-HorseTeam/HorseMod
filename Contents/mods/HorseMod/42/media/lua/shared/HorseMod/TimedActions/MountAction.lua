@@ -1,7 +1,7 @@
 require("TimedActions/ISBaseTimedAction")
 
 local MountPair = require("HorseMod/MountPair")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Mounts = require("HorseMod/Mounts")
 local MountingUtility = require("HorseMod/mounting/MountingUtility")
 

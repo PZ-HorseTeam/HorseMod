@@ -1,4 +1,4 @@
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local HorseModData = require("HorseMod/HorseModData")
 
 ---@namespace HorseMod

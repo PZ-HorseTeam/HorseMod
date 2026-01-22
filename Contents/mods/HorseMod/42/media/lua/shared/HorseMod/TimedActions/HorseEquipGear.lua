@@ -3,7 +3,7 @@
 ---REQUIREMENTS
 local Attachments = require("HorseMod/attachments/Attachments")
 local ContainerManager = require("HorseMod/attachments/ContainerManager")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 
 ---Timed action for equipping gear on a horse.
 ---@class HorseEquipGear : ISBaseTimedAction, umbrella.NetworkedTimedAction

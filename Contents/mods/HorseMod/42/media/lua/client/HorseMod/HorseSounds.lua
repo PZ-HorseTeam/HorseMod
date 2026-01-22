@@ -1,7 +1,7 @@
 ---@namespace HorseMod
 
 local HorseManager = require("HorseMod/HorseManager")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Stamina = require("HorseMod/Stamina")
 
 

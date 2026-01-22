@@ -33,7 +33,7 @@ ItemName_EN = {
     ItemName_HorseMod.HorseSaddlebags_ThoroughbredFleaBittenGrey = "Horse Saddle Bags (Flea-Bitten Grey)"
     ItemName_HorseMod.HorseSaddlebags_AppaloosaGrullaBlanket = "Horse Saddle Bags (Grulla Blanket)"
     ItemName_HorseMod.HorseSaddlebags_AppaloosaLeopard = "Horse Saddle Bags (Leopard)"
-    ItemName_HorseMod.HorseSaddlebags_Thoroughbred = "Horse Saddle Bags (Thoroughbred)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredBay = "Horse Saddle Bags (Thoroughbred)"
 
         /* Reins */
     ItemName_HorseMod.HorseReins_Crude = "Horse Reins (Crude)"

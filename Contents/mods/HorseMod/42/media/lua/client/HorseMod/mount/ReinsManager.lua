@@ -2,7 +2,7 @@
 
 local Attachments = require("HorseMod/attachments/Attachments")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 
 -- it might be better to redesign this as a generic attachment animator, but i'll leave that decision up to sim as he did most of the attachments design
 

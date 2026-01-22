@@ -1,5 +1,5 @@
 local HorseUtils = require("HorseMod/Utils")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 
 
 local _originalPetAnimalStart = ISPetAnimal.start

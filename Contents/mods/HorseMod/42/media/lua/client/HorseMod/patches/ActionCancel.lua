@@ -1,6 +1,6 @@
 ---REQUIREMENTS
 local UrgentDismountAction = require("HorseMod/TimedActions/UrgentDismountAction")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 
 
 local original_isPlayerDoingActionThatCanBeCancelled = isPlayerDoingActionThatCanBeCancelled

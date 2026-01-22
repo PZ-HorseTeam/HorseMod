@@ -1,7 +1,7 @@
 local HorseUtils  = require("HorseMod/Utils")
 local Mounts = require("HorseMod/Mounts")
 local Mounting = require("HorseMod/Mounting")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local MountingUtility = require("HorseMod/mounting/MountingUtility")
 
 
@@ -19,16 +19,20 @@ local function doHorseInteractionMenu(context, player, animal)
             player, Mounting.mountHorse, animal, mountPosition
         )
         option.iconTexture = animal:getInventoryIconTexture()
+        local tooltip
         if not mountPosition then
             option.notAvailable = true
-            local tooltip = ISWorldObjectContextMenu.addToolTip()
+            tooltip = ISWorldObjectContextMenu.addToolTip()
             tooltip.description = getText("ContextMenu_Horse_NoMountPoint")
         elseif not canMount then
             option.notAvailable = true
             if reason then
-                local tooltip = ISWorldObjectContextMenu.addToolTip()
-                tooltip.description = getText("ContextMenu_Horse_" .. reason)
+                tooltip = ISWorldObjectContextMenu.addToolTip()
+                tooltip.description = getText(reason)
             end
+        end
+        if tooltip then
+            option.toolTip = tooltip
         end
     else
         context:addOption(

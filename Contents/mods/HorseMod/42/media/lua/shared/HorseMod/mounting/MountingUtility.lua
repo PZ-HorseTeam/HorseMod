@@ -113,21 +113,22 @@ function MountingUtility.canMountHorse(player, horse)
         -- already mounted
         return false
     elseif Mounts.hasRider(horse) then
-        return false, "AlreadyMounted"
+        return false, "ContextMenu_Horse_IsAlreadyRiding"
     elseif horse:isDead() then
-        return false, "IsDead"
-    elseif horse:isOnHook() then
-        return false, "IsAttached"
-    -- elseif horse:getVariableBoolean("animalRunning") then
-    --     -- running
-    --     return false, "IsRunning"
+        return false, "ContextMenu_Horse_IsDead"
+    elseif horse:isOnHook() then -- butcher hook
+        return false, "ContextMenu_Horse_IsAttached"
+    elseif horse:getVariableBoolean("animalRunning") and horse:getMovementSpeed() ~= 0 then
+        return false, "ContextMenu_Horse_IsRunning"
     elseif not HorseUtils.isAdult(horse) then
-        return false, "NotAdult"
+        return false, "ContextMenu_Horse_NotAdult"
     end
 
+    ---@TODO is this needed anymore ? I wasn't able to properly test it because
+    ---even if I comment this I can't mount the horse, and I didn't find the exact reason why
     local state = horse:getCurrentStateName()
     if state == "AnimalFollowWallState" then
-        return false, ""
+        return false
     end
 
     return true

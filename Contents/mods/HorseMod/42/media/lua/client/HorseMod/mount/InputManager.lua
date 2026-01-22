@@ -1,6 +1,6 @@
 ---@namespace HorseMod
 
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local ModOptions = require("HorseMod/ModOptions")
 
 local JOY_DEADZONE        = 0.30   -- ignore tiny stick drift
@@ -117,7 +117,7 @@ function InputManager:getKeyboardInput()
         x = x + 1
     end
 
-    run = isKeyDown(CORE:getKey("Run")) or isKeyDown(CORE:getKey("Sprint"))
+    run = isKeyDown(ModOptions.HorseGallopButton)
 
     return {
         movement = {

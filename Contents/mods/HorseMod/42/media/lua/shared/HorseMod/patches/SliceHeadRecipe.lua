@@ -1,4 +1,4 @@
-local HorseDefinitions = require("HorseMod/HorseDefinitions")
+local HorseDefinitions = require('HorseMod/definitions/HorseDefinitions')
 local HorseUtils = require("HorseMod/Utils")
 
 local patch = {

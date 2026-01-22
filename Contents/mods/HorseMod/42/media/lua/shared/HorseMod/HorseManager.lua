@@ -1,7 +1,7 @@
 ---REQUIREMENTS
 local HorseUtils = require("HorseMod/Utils")
 local Event = require("HorseMod/Event")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 
 ---@namespace HorseMod
 

@@ -5,7 +5,7 @@ end
 local Stamina = require("HorseMod/Stamina")
 local Mounts = require("HorseMod/Mounts")
 local HorseManager = require("HorseMod/HorseManager")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 
 local StaminaChange = Stamina.StaminaChange
 

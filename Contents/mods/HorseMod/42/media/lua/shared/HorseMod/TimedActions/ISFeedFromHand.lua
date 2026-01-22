@@ -6,7 +6,7 @@ This file hooks to the vanilla action to patch for the horse
 
 ---REQUIREMENTS
 local HorseUtils = require("HorseMod/Utils")
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 
 
 local _originalFeedFromHandStart = ISFeedAnimalFromHand.start

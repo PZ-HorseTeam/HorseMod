@@ -1,5 +1,5 @@
 ---REQUIREMENTS
-local AnimationVariable = require("HorseMod/AnimationVariable")
+local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Mount = require("HorseMod/mount/Mount")
 local Mounts = require("HorseMod/Mounts")
 local MountPair = require("HorseMod/MountPair")
