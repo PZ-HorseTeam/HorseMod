@@ -240,16 +240,6 @@ module HorseMod
         mesh = HorseMod/Dung_Horse,
         texture = WorldItems/DungHorse,
     }
-	model HorseSteak {
-        mesh = HorseMod/HorseSteak,
-        static = true,
-        texture = WorldItems/HorseSteak,
-    }
-	model HorseLoin {
-        mesh = HorseMod/HorseLoin,
-        static = true,
-        texture = WorldItems/HorseLoin,
-    }
 	model HorseHoof {
         mesh = HorseMod/HorseHoof,
         static = true,

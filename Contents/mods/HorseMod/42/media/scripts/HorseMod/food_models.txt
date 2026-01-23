@@ -1,7 +1,45 @@
 module HorseMod {
-    model HorseMeat {
-        mesh = HorseMod/HorseMeat,
-        texture = Items/Horse_Meat,
+    /* HORSE STEAK */
+	model HorseSteak {
+        mesh = HorseMod/HorseSteak,
         static = true,
+        texture = WorldItems/HorseSteak,
+    }
+    model HorseSteakCooked {
+        mesh = HorseMod/HorseSteak,
+        static = true,
+        texture = WorldItems/HorseSteak_Cooked,
+    }
+    model HorseSteakBurnt {
+        mesh = HorseMod/HorseSteak,
+        static = true,
+        texture = WorldItems/HorseSteak_Burnt,
+    }
+    model HorseSteakRotten {
+        mesh = HorseMod/HorseSteak,
+        static = true,
+        texture = WorldItems/HorseSteak_Rotten,
+    }
+
+    /* HORSE LOIN */
+	model HorseLoin {
+        mesh = HorseMod/HorseLoin,
+        static = true,
+        texture = WorldItems/HorseLoin,
+    }
+    model HorseLoinCooked {
+        mesh = HorseMod/HorseLoin,
+        static = true,
+        texture = WorldItems/HorseLoin_Cooked,
+    }
+    model HorseLoinBurnt {
+        mesh = HorseMod/HorseLoin,
+        static = true,
+        texture = WorldItems/HorseLoin_Burnt,
+    }
+    model HorseLoinRotten {
+        mesh = HorseMod/HorseLoin,
+        static = true,
+        texture = WorldItems/HorseLoin_Rotten,
     }
 }
