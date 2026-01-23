@@ -71,6 +71,12 @@ local function initialiseHorse(horse)
     horse:setVariable(AnimationVariable.GENE_STAMINA, stamina)
     local carry = horse:getUsedGene("carryWeight"):getCurrentValue()
     horse:setVariable(AnimationVariable.GENE_CARRYWEIGHT, carry)
+
+    -- this is used to make sure the animal gets its size properly set
+    -- on the new IsoAnimal instance created when attaching to a butcher hook
+    -- which is done in ButcheringUtil.createAnimalForHook
+    -- and in Java side when reloading the area/save
+    horse:getModData()['animalSize'] = horse:getAnimalSize()
 end
 
 ---Utility function to find a horse by its animal ID.
