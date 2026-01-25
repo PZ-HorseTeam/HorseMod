@@ -1,0 +1,8 @@
+Sandbox_JP = {
+    /*
+        Translated by PePePePePeil
+    */
+
+    Sandbox_HorseMod_WalkSpeed = "馬の歩行速度"
+    Sandbox_HorseMod_GallopSpeed = "馬の駆け足速度"
+}

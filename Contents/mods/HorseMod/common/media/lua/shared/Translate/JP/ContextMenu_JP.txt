@@ -1,0 +1,32 @@
+ContextMenu_JP = {
+    /*
+        Translated by PePePePePeil
+    */
+
+    /* Riding */
+    ContextMenu_Horse_Mount = "%1に乗る"
+    ContextMenu_Horse_Dismount = "%1から降りる"
+
+    /* Attachments */
+    ContextMenu_Horse_Gear = "馬具"
+    ContextMenu_Horse_Equip = "{slot}に{new}を取り付ける"
+    ContextMenu_Horse_Replace = "{old}を{new}に交換する"
+    ContextMenu_Horse_No_Compatible_Gear = "取り付け可能な馬具がありません。"
+    ContextMenu_Horse_Unequip = "{old}を外す"
+    ContextMenu_Horse_Unequip_All = "すべて外す"
+    ContextMenu_Horse_NoMountPosition = "馬に近付くことができませんでした。"
+
+    /* Attachment Slots */
+    ContextMenu_Horse_Slot_Saddle = "鞍"
+    ContextMenu_Horse_Slot_Saddlebags = "鞍袋"
+    ContextMenu_Horse_Slot_Reins = "手綱"
+
+    /* Unavailability reasons for options */
+    ContextMenu_Horse_NotAdult = "成馬ではありません。"
+    ContextMenu_Horse_IsRunning = "馬が走っています。"
+    ContextMenu_Horse_IsDead = "馬が死んでいます。"
+    ContextMenu_Horse_IsAlreadyRiding = "既に騎乗中です。"
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "騎乗中は馬具を変更できません。"
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "騎乗中は馬具を変更できません。"
+    ContextMenu_Horse_HasRider = "馬は既に別のキャラクターに騎乗されています。"
+}

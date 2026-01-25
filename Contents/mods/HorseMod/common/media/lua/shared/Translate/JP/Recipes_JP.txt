@@ -1,0 +1,14 @@
+Recipes_JP = {
+    /*
+        Translated by PePePePePeil
+    */
+
+    /* Horse accessories */
+    Recipe_HorseSaddle = "鞍を作る"
+    Recipe_HorseSaddlebags = "鞍袋を作る"
+    Recipe_HorseReins = "手綱を作る"
+
+    /* Horse glue */
+    Recipe_HorseGlue = "馬のにかわを作る"
+    Recipe_HorseGlueToWoodGlue = "馬のにかわを捨てる"
+}
