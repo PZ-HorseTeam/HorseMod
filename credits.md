@@ -1,7 +1,7 @@
 # Contributors
 In alphabetical order:
-- Albion
-- Carlesturo
+- albion
+- carlesturo
 - Chuck
 - JBG_84
 - Paddlefruit
