@@ -39,9 +39,11 @@ function HorseRiding.createMountFromPair(pair)
     local mount = Mount.new(pair)
     HorseRiding.playerMounts[pair.rider:getPlayerNum()] = mount
 
-    local modData = pair.rider:getModData()
-    modData.ShouldRemount = true
-    pair.rider:transmitModData()
+    pair.rider:getModData().remountAnimal = pair.mount:getAnimalID()
+
+    -- this won't work anyway, this is a client module!
+    -- i don't think remounting is viable in multiplayer anyway, so it's fine for this to not work in mp
+    -- pair.rider:transmitModData()
 
     return mount
 end
@@ -59,9 +61,7 @@ function HorseRiding.removeMount(player)
 
     HorseRiding.playerMounts[mount.pair.rider:getPlayerNum()] = nil
 
-    local modData = mount.pair.rider:getModData()
-    modData.ShouldRemount = false
-    mount.pair.rider:transmitModData()
+    mount.pair.rider:getModData().remountAnimal = nil
 end
 
 ---@param player IsoPlayer

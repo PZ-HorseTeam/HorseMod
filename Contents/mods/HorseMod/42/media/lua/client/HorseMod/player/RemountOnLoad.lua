@@ -1,30 +1,24 @@
-local HorseRiding = require("HorseMod/Riding")
-local HorseUtils = require("HorseMod/Utils")
+if isClient() then
+    -- this only works in SP anyway
+    return
+end
+
 local MountPair = require("HorseMod/MountPair")
+local MountingUtility = require("HorseMod/mounting/MountingUtility")
+local Mounts = require("HorseMod/Mounts")
+local HorseUtils = require("HorseMod/Utils")
 
 
----@param player IsoPlayer
----@return IsoAnimal | nil
-local function findHorseOnPlayerSquare(player)
-    local square = player:getSquare()
-    if not square then
-        return nil
-    end
-
-    local cell = getCell()
-    if not cell then
-        return nil
-    end
-
-    if square then
-        local animals = square:getAnimals()
-        if animals then
-            for i = 0, animals:size() - 1 do
-                local animal = animals:get(i)
-                if HorseUtils.isHorse(animal) then
-                    return animal
-                end
-            end
+---@param square IsoGridSquare
+---@param id integer
+---@return IsoAnimal?
+---@nodiscard
+local function findAnimalOnSquare(square, id)
+    local animals = square:getAnimals()
+    for i = 0, animals:size() - 1 do
+        local animal = animals:get(i)
+        if animal:getAnimalID() == id then
+            return animal
         end
     end
 
@@ -32,29 +26,33 @@ local function findHorseOnPlayerSquare(player)
 end
 
 
-local function tryRemountPlayer()
-    local player = getSpecificPlayer(0)
+---@param player IsoPlayer
+local function tryRemountPlayer(player)
     local modData = player:getModData()
-    if not modData.ShouldRemount then
-        Events.OnTick.Remove(tryRemountPlayer)
-    end
-    if HorseRiding.getMount(player) then
-        Events.OnTick.Remove(tryRemountPlayer)
-    end
-
-    if player:getSquare() == nil then
+    if not modData.remountAnimal then
+        print("[HORSE] no remountAnimal")
         return
     end
 
-    local horse = findHorseOnPlayerSquare(player)
-    if horse and horse:isExistInTheWorld() then
-        local pair = MountPair.new(player, horse)
-        pair:setDirection(horse:getDir())
+    local square = player:getSquare()
+    if not square then
+        print("[HORSE] no square")
+        return
+    end
 
-        -- FIXME: this is a server module, won't work in MP
-        require("HorseMod/Mounts").addMount(pair.rider, pair.mount)
-        Events.OnTick.Remove(tryRemountPlayer)
+    local animal = findAnimalOnSquare(square, modData.remountAnimal)
+    if animal and MountingUtility.canMountHorse(player, animal) then
+        local pair = MountPair.new(player, animal)
+        pair:setDirection(animal:getDir())
+        Mounts.addMount(pair.rider, pair.mount)
     end
 end
 
-Events.OnTick.Add(tryRemountPlayer)
+---@param player IsoPlayer
+local function scheduleRemount(_, player)
+    -- hack: 0 second delay means run next tick
+    --  needed because this event triggers before the player is actually placed in the world
+    HorseUtils.runAfter(0, tryRemountPlayer, player)
+end
+
+Events.OnCreatePlayer.Add(scheduleRemount)
