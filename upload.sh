@@ -1,7 +1,7 @@
 # store current folder
 WORKSHOP_DIR=$(pwd)
 
-MOD_TITLE="[B42/No MP yet] Horse mod"
+MOD_TITLE="Horse mod [B42/MP SOON]"
 WORKSHOP_ID=3525515977 # TEST MOD ID, NEEDS TO BE REPLACED FOR RELEASE
 VISIBILITY=3 # UNLISTED, SWAP TO 0 FOR RELEASE
 TAGS="Build 42,Animals,Items,Misc,Vehicles,Models"
