@@ -9,7 +9,7 @@ local AnimationVariable = {
     TROT = "HorseTrot",
     JUMP = "HorseJump",
     DYING = "HorseDying",
-    FALL_BACK = "HorseDying",-- "HorseFallBack", 
+    FALL_BACK = "HorseFallBack",
 
     -- Activates mounted player animations while true
     RIDING_HORSE = "HorseRiding",
