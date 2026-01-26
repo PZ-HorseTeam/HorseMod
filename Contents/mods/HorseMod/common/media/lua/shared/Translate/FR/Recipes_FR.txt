@@ -1,4 +1,8 @@
 Recipes_FR = {
+    /*
+        Translated by SimKDT
+    */
+
     /* Accessoire à cheval */
     Recipe_HorseSaddle = "Fabriquer une selle de cheval"
     Recipe_HorseSaddlebags = "Fabriquer des sacs de selle"

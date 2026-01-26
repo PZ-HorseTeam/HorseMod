@@ -1,4 +1,8 @@
 ContextMenu_FR = {
+    /*
+        Translated by SimKDT
+    */
+
     /* Riding */
     ContextMenu_Horse_Mount = "Monter %1",
     ContextMenu_Horse_Dismount = "Descendre de %1",

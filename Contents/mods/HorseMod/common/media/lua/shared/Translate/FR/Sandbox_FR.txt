@@ -1,4 +1,8 @@
 Sandbox_FR = {
+    /*
+        Translated by SimKDT
+    */
+
     Sandbox_HorseMod_WalkSpeed = "Vitesse de marche à cheval",
     Sandbox_HorseMod_GallopSpeed = "Vitesse de galop à cheval",
 }

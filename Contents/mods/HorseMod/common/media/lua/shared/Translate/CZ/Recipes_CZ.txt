@@ -1,0 +1,14 @@
+Recipes_CZ = {
+    /*
+        Translated by Try Honesty
+    */
+
+    /* Horse accessories */
+    Recipe_HorseSaddle = "Vytvořit sedlo pro koně"
+    Recipe_HorseSaddlebags = "Vytvořit brašny pro koně"
+    Recipe_HorseReins = "Vytvořit otěže pro koně"
+
+    /* Horse glue */
+    Recipe_HorseGlue = "Vytvořit koňské klihové lepidlo v hrnci"
+    Recipe_HorseGlueToWoodGlue = "Přelít koňské lepidlo z hrnce"
+}

@@ -1,4 +1,8 @@
 IGUI_TR = {
+    /*
+        Translated by Sineks
+    */
+
     /* General */
     IGUI_AnimalType_stallion = "Aygır"
     IGUI_AnimalType_mare = "Kısrak"

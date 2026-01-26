@@ -1,0 +1,211 @@
+ItemName_CZ = {
+    /*
+        Translated by Try Honesty
+    */
+
+    /* Horse accessories */
+        /* Saddles */
+    ItemName_HorseMod.HorseSaddle_Crude = "Sedlo pro koně (provizorní)"
+    ItemName_HorseMod.HorseSaddle_Black = "Sedlo pro koně (černé)"
+    ItemName_HorseMod.HorseSaddle_CowHolstein = "Sedlo pro koně (Holstein)"
+    ItemName_HorseMod.HorseSaddle_CowSimmental = "Sedlo pro koně (Simmental)"
+    ItemName_HorseMod.HorseSaddle_White = "Sedlo pro koně (bílé)"
+    ItemName_HorseMod.HorseSaddle_Landrace = "Sedlo pro koně (Landrace)"
+
+    ItemName_HorseMod.HorseSaddle_AmericanPaintOvero = "Sedlo pro koně (Overo)"
+    ItemName_HorseMod.HorseSaddle_AmericanPaintTobiano = "Sedlo pro koně (Tobiano)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterBlueRoan = "Sedlo pro koně (Blue Roan)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterPalomino = "Sedlo pro koně (Palomino)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaGrullaBlanket = "Sedlo pro koně (Grulla Blanket)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaLeopard = "Sedlo pro koně (Leopard)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredBay = "Sedlo pro koně (Bay)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredFleaBittenGrey = "Sedlo pro koně (Flea-Bitten Grey)"
+
+        /* Saddlebags */
+    ItemName_HorseMod.HorseSaddlebagsContainer = "Brašny pro koně"
+    ItemName_HorseMod.HorseSaddlebags_Crude = "Brašny pro koně (provizorní)"
+    ItemName_HorseMod.HorseSaddlebags_Black = "Brašny pro koně (černé)"
+    ItemName_HorseMod.HorseSaddlebags_CowHolstein = "Brašny pro koně (Holstein)"
+    ItemName_HorseMod.HorseSaddlebags_CowSimmental = "Brašny pro koně (Simmental)"
+    ItemName_HorseMod.HorseSaddlebags_White = "Brašny pro koně (bílé)"
+    ItemName_HorseMod.HorseSaddlebags_Landrace = "Brašny pro koně (Landrace)"
+
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintOvero = "Brašny pro koně (Overo)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintTobiano = "Brašny pro koně (Tobiano)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterBlueRoan = "Brašny pro koně (Blue Roan)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterPalomino = "Brašny pro koně (Palomino)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaGrullaBlanket = "Brašny pro koně (Grulla Blanket)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaLeopard = "Brašny pro koně (Leopard)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredBay = "Brašny pro koně (Bay)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredFleaBittenGrey = "Brašny pro koně (Flea-Bitten Grey)"
+
+        /* Reins */
+    ItemName_HorseMod.HorseReins_Crude = "Otěže pro koně (provizorní)"
+    ItemName_HorseMod.HorseReins_Brown = "Otěže pro koně (hnědé)"
+    ItemName_HorseMod.HorseReins_Black = "Otěže pro koně (černé)"
+    ItemName_HorseMod.HorseReins_White = "Otěže pro koně (bílé)"
+
+
+    /* Horse heads */
+    ItemName_HorseMod.Foal_Head_AmericanPaintOvero = "Hlava hříběte American Paint"
+    ItemName_HorseMod.Mare_Head_AmericanPaintOvero = "Hlava klisny American Paint"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintOvero = "Hlava hřebce American Paint"
+    ItemName_HorseMod.Foal_Head_AmericanPaintTobiano = "Hlava hříběte American Paint"
+    ItemName_HorseMod.Mare_Head_AmericanPaintTobiano = "Hlava klisny American Paint"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintTobiano = "Hlava hřebce American Paint"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterBlueRoan = "Hlava hříběte American Quarter"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterBlueRoan = "Hlava klisny American Quarter"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterBlueRoan = "Hlava hřebce American Quarter"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterPalomino = "Hlava hříběte American Quarter"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterPalomino = "Hlava klisny American Quarter"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterPalomino = "Hlava hřebce American Quarter"
+    ItemName_HorseMod.Foal_Head_AppaloosaGrullaBlanket = "Hlava hříběte Appaloosa"
+    ItemName_HorseMod.Mare_Head_AppaloosaGrullaBlanket = "Hlava klisny Appaloosa"
+    ItemName_HorseMod.Stallion_Head_AppaloosaGrullaBlanket = "Hlava hřebce Appaloosa"
+    ItemName_HorseMod.Foal_Head_AppaloosaLeopard = "Hlava hříběte Appaloosa"
+    ItemName_HorseMod.Mare_Head_AppaloosaLeopard = "Hlava klisny Appaloosa"
+    ItemName_HorseMod.Stallion_Head_AppaloosaLeopard = "Hlava hřebce Appaloosa"
+    ItemName_HorseMod.Foal_Head_ThoroughbredBay = "Hlava hříběte plnokrevníka"
+    ItemName_HorseMod.Mare_Head_ThoroughbredBay = "Hlava klisny plnokrevníka"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredBay = "Hlava hřebce plnokrevníka"
+    ItemName_HorseMod.Foal_Head_ThoroughbredFleaBittenGrey = "Hlava hříběte plnokrevníka"
+    ItemName_HorseMod.Mare_Head_ThoroughbredFleaBittenGrey = "Hlava klisny plnokrevníka"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredFleaBittenGrey = "Hlava hřebce plnokrevníka"
+
+
+    /* Horse parts */
+    ItemName_HorseMod.Horse_Skull = "Koňská lebka"
+    ItemName_HorseMod.Horse_Steak = "Koňský steak"
+    ItemName_HorseMod.Horse_Loin = "Koňská pečeně"
+    ItemName_HorseMod.Horse_Hoof = "Koňské kopyto"
+
+
+    /* Horse glue */
+    ItemName_HorseMod.PotHorseGlue = "Hrnec s koňským klihem"
+    ItemName_HorseMod.PotForgedHorseGlue = "Kovaný hrnec s koňským klihem"
+    ItemName_HorseMod.HorseGlue = "Koňský klíh"
+
+
+    /* Horse leathers */
+        /* American Paint Overo */
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Full = "Kůže American Paint Overo (nezpracovaná)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur = "Kůže American Paint Overo (se srstí)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Wet = "Kůže American Paint Overo (se srstí, mokrá)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan = "Kůže American Paint Overo (se srstí)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Medium = "Kůže American Paint Overo (se srstí, polovina)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Small = "Kůže American Paint Overo (se srstí, čtvrtina)"
+
+        /* American Paint */
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Full = "Kůže American Paint Tobiano (nezpracovaná)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur = "Kůže American Paint Tobiano (se srstí)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Kůže American Paint Tobiano (se srstí, mokrá)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan = "Kůže American Paint Tobiano (se srstí)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Medium = "Kůže American Paint Tobiano (se srstí, polovina)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Small = "Kůže American Paint Tobiano (se srstí, čtvrtina)"
+
+        /* Blue Roan */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Full = "American Quarter Blue Roan Hide (nezpracovaná)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur = "American Quarter Blue Roan Hide (se srstí)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "American Quarter Blue Roan Leather (se srstí, mokrá)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan = "American Quarter Blue Roan Leather (se srstí)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Medium = "American Quarter Blue Roan Leather Half (Furred)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "American Quarter Blue Roan Leather Quarter (Furred)"
+
+        /* American Quarter */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Full = "American Quarter Palomino Hide (Unprocessed)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur = "American Quarter Palomino Hide (Furred)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "American Quarter Palomino Leather (Furred, Wet)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan = "American Quarter Palomino Leather (Furred)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Medium = "American Quarter Palomino Leather Half (Furred)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Small = "American Quarter Palomino Leather Quarter (Furred)"
+
+        /* Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Full = "Appaloosa Grulla Blanket Hide (Unprocessed)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur = "Appaloosa Grulla Blanket Hide (Furred)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Appaloosa Grulla Blanket Leather (Furred, Wet)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan = "Appaloosa Grulla Blanket Leather (Furred)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Medium = "Appaloosa Grulla Blanket Leather Half (Furred)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Appaloosa Grulla Blanket Leather Quarter (Furred)"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Full = "Appaloosa Leopard Hide (Unprocessed)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur = "Appaloosa Leopard Hide (Furred)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Wet = "Appaloosa Leopard Leather (Furred, Wet)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan = "Appaloosa Leopard Leather (Furred)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Medium = "Appaloosa Leopard Leather Half (Furred)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Small = "Appaloosa Leopard Leather Quarter (Furred)"
+
+        /* Thoroughbred */
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Full = "Thoroughbred Bay Hide (Unprocessed)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur = "Thoroughbred Bay Hide (Furred)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Wet = "Thoroughbred Bay Leather (Furred, Wet)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan = "Thoroughbred Bay Leather (Furred)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Medium = "Thoroughbred Bay Leather Half (Furred)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Small = "Thoroughbred Bay Leather Quarter (Furred)"
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Full = "Thoroughbred Flea-Bitten Grey Hide (Unprocessed)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur = "Thoroughbred Flea-Bitten Grey Hide (Furred)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Thoroughbred Flea-Bitten Grey Leather (Furred, Wet)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Thoroughbred Flea-Bitten Grey Leather (Furred)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Medium = "Thoroughbred Flea-Bitten Grey Leather Half (Furred)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "Thoroughbred Flea-Bitten Grey Leather Quarter (Furred)"
+
+
+    /* Foal leathers */
+        /* American Paint Overo */
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Full = "Hříběcí kůže American Paint Overo (nezpracovaná)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur = "Hříběcí kůže American Paint Overo (se srstí)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Wet = "Hříběcí kůže American Paint Overo (se srstí, mokrá)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan = "Hříběcí kůže American Paint Overo (se srstí)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Small = "Hříběcí kůže American Paint Overo (se srstí, polovina)"
+
+        /* American Paint */
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Full = "Hříběcí kůže American Paint Tobiano (nezpracovaná)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur = "Hříběcí kůže American Paint Tobiano (se srstí)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Hříběcí kůže American Paint Tobiano (se srstí, mokrá)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan = "Hříběcí kůže American Paint Tobiano (se srstí)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Small = "Hříběcí kůže American Paint Tobiano (se srstí, polovina)"
+
+        /* Blue Roan */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Full = "Hříběcí kůže American Quarter Blue Roan (nezpracovaná)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur = "Hříběcí kůže American Quarter Blue Roan (se srstí)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "Hříběcí kůže American Quarter Blue Roan (se srstí, mokrá)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan = "Hříběcí kůže American Quarter Blue Roan (se srstí)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "Hříběcí kůže American Quarter Blue Roan (se srstí, polovina)"
+
+        /* American Quarter */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Full = "Hříběcí kůže American Quarter Palomino (nezpracovaná)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur = "Hříběcí kůže American Quarter Palomino (se srstí)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "Hříběcí kůže American Quarter Palomino (se srstí, mokrá)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan = "Hříběcí kůže American Quarter Palomino (se srstí)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Small = "Hříběcí kůže American Quarter Palomino (se srstí, polovina)"
+
+        /* Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Full = "Hříběcí kůže Appaloosa Grulla Blanket (nezpracovaná)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur = "Hříběcí kůže Appaloosa Grulla Blanket (se srstí)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Hříběcí kůže Appaloosa Grulla Blanket (se srstí, mokrá)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan = "Hříběcí kůže Appaloosa Grulla Blanket (se srstí)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Hříběcí kůže Appaloosa Grulla Blanket (se srstí, polovina)"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Full = "Hříběcí kůže Appaloosa Leopard (nezpracovaná)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur = "Hříběcí kůže Appaloosa Leopard (se srstí)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Wet = "Hříběcí kůže Appaloosa Leopard (se srstí, mokrá)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan = "Hříběcí kůže Appaloosa Leopard (se srstí)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Small = "Hříběcí kůže Appaloosa Leopard (se srstí, polovina)"
+
+        /* Thoroughbred */
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Full = "Hříběcí kůže Thoroughbred Bay (nezpracovaná)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur = "Hříběcí kůže Thoroughbred Bay (se srstí)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Wet = "Hříběcí kůže Thoroughbred Bay (se srstí, mokrá)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan = "Hříběcí kůže Thoroughbred Bay (se srstí)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Small = "Hříběcí kůže Thoroughbred Bay (se srstí, polovina)"
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Full = "Hříběcí kůže Thoroughbred Flea-Bitten Grey (nezpracovaná)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur = "Hříběcí kůže Thoroughbred Flea-Bitten Grey (se srstí)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Hříběcí kůže Thoroughbred Flea-Bitten Grey (se srstí, mokrá)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Hříběcí kůže Thoroughbred Flea-Bitten Grey (se srstí)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "Hříběcí kůže Thoroughbred Flea-Bitten Grey (se srstí, polovina)"
+}

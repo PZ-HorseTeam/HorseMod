@@ -1,0 +1,8 @@
+Sandbox_CZ = {
+    /*
+        Translated by Try Honesty
+    */
+
+    Sandbox_HorseMod_WalkSpeed = "Rychlost koně"
+    Sandbox_HorseMod_GallopSpeed = "Rychlost cvalu koně"
+}

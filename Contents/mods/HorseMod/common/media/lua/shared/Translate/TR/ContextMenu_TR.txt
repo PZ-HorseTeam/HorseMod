@@ -1,4 +1,8 @@
 ContextMenu_TR = {
+    /*
+        Translated by Sineks
+    */
+
     /* Sürüş */
     ContextMenu_Horse_Mount = "Mount %1"
     ContextMenu_Horse_Dismount = "Dismount %1"

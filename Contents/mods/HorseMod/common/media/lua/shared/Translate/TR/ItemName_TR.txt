@@ -1,4 +1,8 @@
 ItemName_TR = {
+    /*
+        Translated by Sineks
+    */
+
     /* At Aksesuarları */
         /* Eyer */
     ItemName_HorseMod.HorseSaddle_Crude = "At Eyeri (Kaba)"

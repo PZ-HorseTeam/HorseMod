@@ -1,0 +1,32 @@
+ContextMenu_CZ = {
+    /*
+        Translated by Try Honesty
+    */
+
+    /* Riding */
+    ContextMenu_Horse_Mount = "Nasednout %1"
+    ContextMenu_Horse_Dismount = "Sesednout %1"
+
+    /* Attachments */
+    ContextMenu_Horse_Gear = "Výstroj"
+    ContextMenu_Horse_Equip = "Nasadit {new} do {slot}"
+    ContextMenu_Horse_Replace = "Nahradit {old} za {new}"
+    ContextMenu_Horse_No_Compatible_Gear = "Na koně nelze nasadit žádnou kompatibilní výstroj."
+    ContextMenu_Horse_Unequip = "Sundat {old}"
+    ContextMenu_Horse_Unequip_All = "Sundat vše"
+    ContextMenu_Horse_NoMountPosition = "Nelze se dostat do pozice ze které jde dosáhnout na koně."
+
+    /* Attachment Slots */
+    ContextMenu_Horse_Slot_Saddle = "sedlo"
+    ContextMenu_Horse_Slot_Saddlebags = "brašny"
+    ContextMenu_Horse_Slot_Reins = "otěže"
+
+    /* Unavailability reasons for options */
+    ContextMenu_Horse_NotAdult = "Kůň není dospělý."
+    ContextMenu_Horse_IsRunning = "Kůň momentálně běží."
+    ContextMenu_Horse_IsDead = "Kůň je mrtvý."
+    ContextMenu_Horse_IsAlreadyRiding = "Na koni již někdo sedí."
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "Během nasedání nelze měnit výstroj."
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "Nelze měnit výstroj koně na kterém někdo sedí."
+    ContextMenu_Horse_HasRider = "Kůň už je osedlaný jiným jezdcem."
+}

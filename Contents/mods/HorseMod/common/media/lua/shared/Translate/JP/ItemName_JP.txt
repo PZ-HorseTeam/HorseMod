@@ -1,0 +1,211 @@
+ItemName_JP = {
+    /*
+        Translated by PePePePePeil
+    */
+
+    /* Horse accessories */
+        /* Saddles */
+    ItemName_HorseMod.HorseSaddle_Crude = "鞍（粗末な）"
+    ItemName_HorseMod.HorseSaddle_Black = "鞍（黒）"
+    ItemName_HorseMod.HorseSaddle_CowHolstein = "鞍（ホルスタイン）"
+    ItemName_HorseMod.HorseSaddle_CowSimmental = "鞍（シンメンタール）"
+    ItemName_HorseMod.HorseSaddle_White = "鞍（白）"
+    ItemName_HorseMod.HorseSaddle_Landrace = "鞍（ランドレース）"
+
+    ItemName_HorseMod.HorseSaddle_AmericanPaintOvero = "鞍（オベロ）"
+    ItemName_HorseMod.HorseSaddle_AmericanPaintTobiano = "鞍（トビアノ）"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterBlueRoan = "鞍（ブルーローン）"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterPalomino = "鞍（パロミノ）"
+    ItemName_HorseMod.HorseSaddle_AppaloosaGrullaBlanket = "鞍（グルーラブランケット）"
+    ItemName_HorseMod.HorseSaddle_AppaloosaLeopard = "鞍（レオパード）"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredBay = "鞍（ベイ）"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredFleaBittenGrey = "鞍（フリービッテン・グレイ）"
+
+        /* Saddlebags */
+    ItemName_HorseMod.HorseSaddlebagsContainer = "鞍袋"
+    ItemName_HorseMod.HorseSaddlebags_Crude = "鞍袋（粗末な）"
+    ItemName_HorseMod.HorseSaddlebags_Black = "鞍袋（黒）"
+    ItemName_HorseMod.HorseSaddlebags_CowHolstein = "鞍袋（ホルスタイン）"
+    ItemName_HorseMod.HorseSaddlebags_CowSimmental = "鞍袋（シンメンタール）"
+    ItemName_HorseMod.HorseSaddlebags_White = "鞍袋（白）"
+    ItemName_HorseMod.HorseSaddlebags_Landrace = "鞍袋（ランドレース）"
+
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintOvero = "鞍袋（オベロ）"
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintTobiano = "鞍袋（トビアノ）"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterBlueRoan = "鞍袋（ブルーローン）"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterPalomino = "鞍袋（パロミノ）"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaGrullaBlanket = "鞍袋（グルーラブランケット）"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaLeopard = "鞍袋（レオパード）"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredBay = "鞍袋（ベイ）"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredFleaBittenGrey = "鞍袋（フリービッテン・グレイ）"
+
+        /* Reins */
+    ItemName_HorseMod.HorseReins_Crude = "手綱（粗末な）"
+    ItemName_HorseMod.HorseReins_Brown = "手綱（茶）"
+    ItemName_HorseMod.HorseReins_Black = "手綱（黒）"
+    ItemName_HorseMod.HorseReins_White = "手綱（白）"
+
+
+    /* Horse heads */
+    ItemName_HorseMod.Foal_Head_AmericanPaintOvero = "子馬の頭（アメリカンペイント）"
+    ItemName_HorseMod.Mare_Head_AmericanPaintOvero = "雌馬の頭（アメリカンペイント）"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintOvero = "種馬の頭（アメリカンペイント）"
+    ItemName_HorseMod.Foal_Head_AmericanPaintTobiano = "子馬の頭（アメリカンペイント）"
+    ItemName_HorseMod.Mare_Head_AmericanPaintTobiano = "雌馬の頭（アメリカンペイント）"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintTobiano = "種馬の頭（アメリカンペイント）"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterBlueRoan = "子馬の頭（アメリカンクォーター）"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterBlueRoan = "雌馬の頭（アメリカンクォーター）"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterBlueRoan = "種馬の頭（アメリカンクォーター）"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterPalomino = "子馬の頭（アメリカンクォーター）"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterPalomino = "雌馬の頭（アメリカンクォーター）"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterPalomino = "種馬の頭（アメリカンクォーター）"
+    ItemName_HorseMod.Foal_Head_AppaloosaGrullaBlanket = "子馬の頭（アパルーサ）"
+    ItemName_HorseMod.Mare_Head_AppaloosaGrullaBlanket = "雌馬の頭（アパルーサ）"
+    ItemName_HorseMod.Stallion_Head_AppaloosaGrullaBlanket = "種馬の頭（アパルーサ）"
+    ItemName_HorseMod.Foal_Head_AppaloosaLeopard = "子馬の頭（アパルーサ）"
+    ItemName_HorseMod.Mare_Head_AppaloosaLeopard = "雌馬の頭（アパルーサ）"
+    ItemName_HorseMod.Stallion_Head_AppaloosaLeopard = "種馬の頭（アパルーサ）"
+    ItemName_HorseMod.Foal_Head_ThoroughbredBay = "子馬の頭（サラブレッド）"
+    ItemName_HorseMod.Mare_Head_ThoroughbredBay = "雌馬の頭（サラブレッド）"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredBay = "種馬の頭（サラブレッド）"
+    ItemName_HorseMod.Foal_Head_ThoroughbredFleaBittenGrey = "子馬の頭（サラブレッド）"
+    ItemName_HorseMod.Mare_Head_ThoroughbredFleaBittenGrey = "雌馬の頭（サラブレッド）"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredFleaBittenGrey = "種馬の頭（サラブレッド）"
+
+
+    /* Horse parts */
+    ItemName_HorseMod.Horse_Skull = "馬の頭骨"
+    ItemName_HorseMod.Horse_Steak = "馬肉ステーキ"
+    ItemName_HorseMod.Horse_Loin = "馬肉ロース"
+    ItemName_HorseMod.Horse_Hoof = "馬の蹄"
+
+
+    /* Horse glue */
+    ItemName_HorseMod.PotHorseGlue = "調理鍋(馬のにかわ)"
+    ItemName_HorseMod.PotForgedHorseGlue = "調理鍋(精製した馬のにかわ)"
+    ItemName_HorseMod.HorseGlue = "馬のにかわ"
+
+
+    /* Horse leathers */
+        /* American Paint Overo */
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Full = "皮 - アメリカンペイント・オベロ（未処理）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur = "皮 - アメリカンペイント・オベロ（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Wet = "革 - アメリカンペイント・オベロ（毛付き、濡れた）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan = "革 - アメリカンペイント・オベロ（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Medium = "革(1/2) - アメリカンペイント・オベロ（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Small = "革(1/4) - アメリカンペイント・オベロ（毛付き）"
+
+        /* American Paint */
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Full = "皮 - アメリカンペイント・トビアノ（未処理）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur = "皮 - アメリカンペイント・トビアノ（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Wet = "革 - アメリカンペイント・トビアノ（毛付き、濡れた）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan = "革 - アメリカンペイント・トビアノ（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Medium = "革(1/2) - アメリカンペイント・トビアノ（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Small = "革(1/4) - アメリカンペイント・トビアノ（毛付き）"
+
+        /* Blue Roan */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Full = "皮 - アメリカンクォーター・ブルーローン（未処理）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur = "皮 - アメリカンクォーター・ブルーローン（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "革 - アメリカンクォーター・ブルーローン（毛付き、濡れた）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan = "革 - アメリカンクォーター・ブルーローン（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Medium = "革(1/2) - アメリカンクォーター・ブルーローン（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "革(1/4) - アメリカンクォーター・ブルーローン（毛付き）"
+
+        /* American Quarter */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Full = "皮 - アメリカンクォーター・パロミノ（未処理）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur = "皮 - アメリカンクォーター・パロミノ（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "革 - アメリカンクォーター・パロミノ（毛付き、濡れた）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan = "革 - アメリカンクォーター・パロミノ（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Medium = "革(1/2) - アメリカンクォーター・パロミノ（毛付き）"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Small = "革(1/4) - アメリカンクォーター・パロミノ（毛付き）"
+
+        /* Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Full = "皮 - アパルーサ・グルーラブランケット（未処理）"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur = "皮 - アパルーサ・グルーラブランケット（毛付き）"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "革 - アパルーサ・グルーラブランケット（毛付き、濡れた）"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan = "革 - アパルーサ・グルーラブランケット（毛付き）"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Medium = "革(1/2) - アパルーサ・グルーラブランケット（毛付き）"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "革(1/4) - アパルーサ・グルーラブランケット（毛付き）"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Full = "皮 - アパルーサ・レオパード（未処理）"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur = "皮 - アパルーサ・レオパード（毛付き）"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Wet = "革 - アパルーサ・レオパード（毛付き、濡れた）"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan = "革 - アパルーサ・レオパード（毛付き）"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Medium = "革(1/2) - アパルーサ・レオパード（毛付き）"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Small = "革(1/4) - アパルーサ・レオパード（毛付き）"
+
+        /* Thoroughbred */
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Full = "皮 - サラブレッド・ベイ（未処理）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur = "皮 - サラブレッド・ベイ（毛付き）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Wet = "革 - サラブレッド・ベイ（毛付き、濡れた）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan = "革 - サラブレッド・ベイ（毛付き）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Medium = "革(1/2) - サラブレッド・ベイ（毛付き）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Small = "革(1/4) - サラブレッド・ベイ（毛付き）"
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Full = "皮 - サラブレッド・フリービッテン・グレイ（未処理）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur = "皮 - サラブレッド・フリービッテン・グレイ（毛付き）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "革 - サラブレッド・フリービッテン・グレイ（毛付き、濡れた）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "革 - サラブレッド・フリービッテン・グレイ（毛付き）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Medium = "革(1/2) - サラブレッド・フリービッテン・グレイ（毛付き）"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "革(1/4) - サラブレッド・フリービッテン・グレイ（毛付き）"
+
+
+    /* Foal leathers */
+        /* American Paint Overo */
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Full = "子馬の皮 - アメリカンペイント・オベロ（未処理）"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur = "子馬の皮 - アメリカンペイント・オベロ（毛付き）"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Wet = "子馬の革 - アメリカンペイント・オベロ（毛付き、濡れた）"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan = "子馬の革 - アメリカンペイント・オベロ（毛付き）"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Small = "子馬の革(1/2) - アメリカンペイント・オベロ（毛付き）"
+
+        /* American Paint */
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Full = "子馬の皮 - アメリカンペイント・トビアノ（未処理）"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur = "子馬の皮 - アメリカンペイント・トビアノ（毛付き）"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Wet = "子馬の革 - アメリカンペイント・トビアノ（毛付き、濡れた）"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan = "子馬の革 - アメリカンペイント・トビアノ（毛付き）"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Small = "子馬の革(1/2) - アメリカンペイント・トビアノ（毛付き）"
+
+        /* Blue Roan */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Full = "子馬の皮 - アメリカンクォーター・ブルーローン（未処理）"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur = "子馬の皮 - アメリカンクォーター・ブルーローン（毛付き）"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "子馬の革 - アメリカンクォーター・ブルーローン（毛付き、濡れた）"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan = "子馬の革 - アメリカンクォーター・ブルーローン（毛付き）"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "子馬の革(1/2) - アメリカンクォーター・ブルーローン（毛付き）"
+
+        /* American Quarter */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Full = "子馬の皮 - アメリカンクォーター・パロミノ（未処理）"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur = "子馬の皮 - アメリカンクォーター・パロミノ（毛付き）"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "子馬の革 - アメリカンクォーター・パロミノ（毛付き、濡れた）"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan = "子馬の革 - アメリカンクォーター・パロミノ（毛付き）"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Small = "子馬の革(1/2) - アメリカンクォーター・パロミノ（毛付き）"
+
+        /* Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Full = "子馬の皮 - アパルーサ・グルーラブランケット（未処理）"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur = "子馬の皮 - アパルーサ・グルーラブランケット（毛付き）"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "子馬の革 - アパルーサ・グルーラブランケット（毛付き、濡れた）"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan = "子馬の革 - アパルーサ・グルーラブランケット（毛付き）"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "子馬の革(1/2) - アパルーサ・グルーラブランケット（毛付き）"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Full = "子馬の皮 - アパルーサ・レオパード（未処理）"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur = "子馬の皮 - アパルーサ・レオパード（毛付き）"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Wet = "子馬の革 - アパルーサ・レオパード（毛付き、濡れた）"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan = "子馬の革 - アパルーサ・レオパード（毛付き）"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Small = "子馬の革(1/2) - アパルーサ・レオパード（毛付き）"
+
+        /* Thoroughbred */
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Full = "子馬の皮 - サラブレッド・ベイ（未処理）"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur = "子馬の皮 - サラブレッド・ベイ（毛付き）"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Wet = "子馬の革 - サラブレッド・ベイ（毛付き、濡れた）"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan = "子馬の革 - サラブレッド・ベイ（毛付き）"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Small = "子馬の革(1/2) - サラブレッド・ベイ（毛付き）"
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Full = "子馬の皮 - サラブレッド・フリービッテン・グレイ（未処理）"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur = "子馬の皮 - サラブレッド・フリービッテン・グレイ（毛付き）"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "子馬の革 - サラブレッド・フリービッテン・グレイ（毛付き、濡れた）"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "子馬の革 - サラブレッド・フリービッテン・グレイ（毛付き）"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "子馬の革(1/2) - サラブレッド・フリービッテン・グレイ（毛付き）"
+}

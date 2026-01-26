@@ -1,3 +1,0 @@
-ContextMenu_EN = {
-    ContextMenu_Horse_Slot_LeftAttachTestPoint = "left side"
-}

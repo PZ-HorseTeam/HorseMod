@@ -1,0 +1,41 @@
+IGUI_JP = {
+    /*
+        Translated by PePePePePeil
+    */
+
+    /* General */
+    IGUI_AnimalType_stallion = "種馬"
+    IGUI_AnimalType_mare = "雌馬"
+    IGUI_AnimalType_filly = "若い雌馬"
+
+    IGUI_Animal_Group_horse = "馬"
+    IGUI_Horse_Slot = "部位" /* for attachments */
+
+    /* Breeds */
+    IGUI_Breed_AmericanQuarterPalomino = "アメリカンクォーター・パロミノ"
+    IGUI_Breed_AmericanQuarterBlueRoan = "アメリカンクォーター・ブルーローン"
+    IGUI_Breed_AmericanPaintTobiano = "アメリカンペイント・トビアノ"
+    IGUI_Breed_AmericanPaintOvero = "アメリカンペイント・オベロ"
+    IGUI_Breed_AppaloosaGrullaBlanket = "アパルーサ・グルーラブランケット"
+    IGUI_Breed_AppaloosaLeopard = "アパルーサ・レオパード"
+    IGUI_Breed_ThoroughbredBay = "サラブレッド・ベイ"
+    IGUI_Breed_ThoroughbredFleaBittenGrey = "サラブレッド・フリービッテン・グレイ"
+
+    /* Mod Options */
+    IGUI_ModOptions_HorseModName = "馬"
+    IGUI_ModOptions_HorseSoundVolume_Desc = "馬の効果音の音量を変更します"
+    IGUI_ModOptions_HorseSoundVolume_Name = "馬の効果音の音量（通常=0.40）"
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "すべての馬の効果音の音量を設定します。"
+
+    IGUI_ModOptions_HorseKeybind = "馬のキー割り当て"
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "馬：ジャンプ"
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "馬のジャンプ操作のキーを変更します。"
+
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "馬：速歩"
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "馬の速歩操作のキーを変更します。"
+
+    IGUI_ModOptions_HorseKeybind_Gallop_Name = "馬：駆け足"
+    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "馬の駆け足操作のキーを変更します。"
+
+    IGUI_HorseMod_MultiplayerWarning = "本MODはマルチプレイに対応していません。<br>馬は正しく動作せず、他にも問題が発生する可能性があります。<br>そのため、マルチプレイでは本MODを無効化することを強く推奨します。<br>マルチプレイに関するバグ報告は受け付けません。"
+}

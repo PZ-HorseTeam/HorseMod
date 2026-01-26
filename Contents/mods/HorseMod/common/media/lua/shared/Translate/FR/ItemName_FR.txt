@@ -1,4 +1,8 @@
 ItemName_FR = {
+    /*
+        Translated by SimKDT
+    */
+
     /* Horse accessories */
         /* Saddles */
     ItemName_HorseMod.HorseSaddle_Crude = "Selle (Brut)"

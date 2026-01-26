@@ -1,0 +1,41 @@
+IGUI_CZ = {
+    /*
+        Translated by Try Honesty
+    */
+
+    /* General */
+    IGUI_AnimalType_stallion = "Hřebec"
+    IGUI_AnimalType_mare = "Klisna"
+    IGUI_AnimalType_filly = "Klisička"
+
+    IGUI_Animal_Group_horse = "Kůň"
+    IGUI_Horse_Slot = "Slot" /* for attachments */
+
+    /* Breeds */
+    IGUI_Breed_AmericanQuarterPalomino = "Americký Quarter (Palomino)"
+    IGUI_Breed_AmericanQuarterBlueRoan = "Americký Quarter (Blue Roan)"
+    IGUI_Breed_AmericanPaintTobiano = "Americký Paint (Tobiano)"
+    IGUI_Breed_AmericanPaintOvero = "Americký Paint (Overo)"
+    IGUI_Breed_AppaloosaGrullaBlanket = "Appaloosa (Grulla Blanket)"
+    IGUI_Breed_AppaloosaLeopard = "Appaloosa (Leopard)"
+    IGUI_Breed_ThoroughbredBay = "Plnokrevník (Bay)"
+    IGUI_Breed_ThoroughbredFleaBittenGrey = "Plnokrevník (Flea-Bitten Grey)"
+
+    /* Mod Options */
+    IGUI_ModOptions_HorseModName = "Kůň"
+    IGUI_ModOptions_HorseSoundVolume_Desc = "Změnit hlasitost zvuků koně"
+    IGUI_ModOptions_HorseSoundVolume_Name = "Hlasitost zvuků koně (Výchozí 0.40)"
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "Nastavit hlasitost všech zvuků koně."
+
+    IGUI_ModOptions_HorseKeybind = "Klávesy pro koně"
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "Skok koně"
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "Změnit klávesu pro skok koně."
+    
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "Klus koně"
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Změnit klávesu pro klus koně."
+
+    IGUI_ModOptions_HorseKeybind_Gallop_Name = "Cval koně"
+    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "Změnit klávesu pro cválání koně."
+
+    IGUI_HorseMod_MultiplayerWarning = "Kůň mod není podporován v multiplayeru.<br>Koně nebudou fungovat správně a během hraní se mohou objevit další problémy.<br>Důrazně doporučujeme tento mod vypnout.<br>Hlášení bugů pro multiplayer je zbytečné."
+}

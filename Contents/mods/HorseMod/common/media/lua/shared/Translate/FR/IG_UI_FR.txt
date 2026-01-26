@@ -1,4 +1,8 @@
 IGUI_FR = {
+    /*
+        Translated by SimKDT
+    */
+
     /* General */
     IGUI_AnimalType_stallion = "Étalon"
     IGUI_AnimalType_mare = "Jument"

@@ -1,4 +1,8 @@
 Recipes_TR = {
+    /*
+        Translated by Sineks
+    */
+
     /* At Aksesuarları */
     Recipe_HorseSaddle = "At Eyeri Yap"
     Recipe_HorseSaddlebags = "At Heybesi Yap"
