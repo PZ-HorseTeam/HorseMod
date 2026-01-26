@@ -163,8 +163,6 @@ Events.OnCharacterDeath.Add(HorseRiding.dismountOnHorseDeath)
 local function initHorseMod(_, player)
     player:setVariable(AnimationVariable.RIDING_HORSE, false)
     player:setVariable(AnimationVariable.MOUNTING_HORSE, false)
-    player:setVariable(AnimationVariable.DISMOUNT_FINISHED, false)
-    player:setVariable(AnimationVariable.MOUNT_FINISHED, false)
 end
 
 Events.OnCreatePlayer.Add(initHorseMod)

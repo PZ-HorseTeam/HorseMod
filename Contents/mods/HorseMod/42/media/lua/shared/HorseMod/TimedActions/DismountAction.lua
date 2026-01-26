@@ -2,6 +2,9 @@ require("TimedActions/ISBaseTimedAction")
 
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Mounts = require("HorseMod/Mounts")
+local AnimationEvent = require("HorseMod/definitions/AnimationEvent")
+
+local IS_SERVER = isServer()
 
 
 ---@namespace HorseMod
@@ -39,11 +42,17 @@ function DismountAction:update()
     animal:getPathFindBehavior2():reset()
 
     character:setDirectionAngle(self.lockDir)
+end
 
-    -- complete when dismount is finished
-    if character:getVariableBoolean(AnimationVariable.DISMOUNT_FINISHED) == true then
-        character:setVariable(AnimationVariable.DISMOUNT_FINISHED, false)
-        self:forceComplete()
+
+function DismountAction:animEvent(event, parameter)
+    if event == AnimationEvent.DISMOUNTING_COMPLETE then
+        if IS_SERVER then
+            ---@diagnostic disable-next-line: need-check-nil
+            self.netAction:forceComplete()
+        else
+            self:forceComplete()
+        end
     end
 end
 
@@ -64,6 +73,14 @@ function DismountAction:start()
 
     actionAnim = actionAnim .. self.mountPosition.name
     self:setActionAnim(actionAnim)
+end
+
+
+function DismountAction:serverStart()
+    ---@cast self.netAction -nil
+    ---@diagnostic disable-next-line: param-type-mismatch
+    emulateAnimEventOnce(self.netAction, 2500, AnimationEvent.DISMOUNTING_COMPLETE, nil)
+    return true
 end
 
 

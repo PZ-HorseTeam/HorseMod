@@ -24,9 +24,9 @@
         <m_ParameterValue>HorseNoCancel=true</m_ParameterValue>
     </m_Events>
     <m_Events>
-        <m_EventName>SetVariable</m_EventName>
+        <m_EventName>HorseDismountingComplete</m_EventName>
         <m_Time>End</m_Time>
-        <m_ParameterValue>HorseDismountFinished=true</m_ParameterValue>
+        <m_ParameterValue></m_ParameterValue>
     </m_Events>
     <m_Events>
         <m_EventName>SetVariable</m_EventName>
