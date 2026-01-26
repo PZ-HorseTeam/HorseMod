@@ -14,9 +14,7 @@ local AnimationVariable = {
     -- Activates mounted player animations while true
     RIDING_HORSE = "HorseRiding",
     MOUNTING_HORSE = "HorseMountingHorse",
-    MOUNT_FINISHED = "HorseMountFinished",
     DISMOUNT_STARTED = "HorseDismountStarted",
-    DISMOUNT_FINISHED = "HorseDismountFinished",
     NO_CANCEL = "HorseNoCancel",
 
     HAS_REINS = "HorseHasReins",

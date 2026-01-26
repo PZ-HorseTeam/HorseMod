@@ -3,6 +3,7 @@ Sandbox_TR = {
         Translated by Sineks
     */
 
+    Sandbox_HorseMod = "Horse Mod"
     Sandbox_HorseMod_WalkSpeed = "At Tırıt Hızı"
     Sandbox_HorseMod_GallopSpeed = "At Dörtnala Hızı"
 }
