@@ -1,12 +1,13 @@
 module HorseMod
 {
+/* HORSE */
 	animationsMesh Horse {
         meshFile = HorseMod/Horse,
         animationDirectory = Horse,
         animationPrefix = Horse_,
     }
 	model Horse {
-		mesh = HorseMod/Horse,
+		mesh = HorseMod/Horse/Horse_Base,
 		animationsMesh = HorseMod.Horse,
 		shader = animalEffect,
 		static = false,
@@ -112,9 +113,32 @@ module HorseMod
 			bone = DEF_ManeEnd,
 		}
 	}
+
+    model HorseHeadless {
+		mesh = HorseMod/Horse/Horse_NoHead,
+		animationsMesh = HorseMod.Horse,
+		shader = animalEffect,
+		static = false,
+	}
+	model HorseSkeleton {
+        mesh = HorseMod/Horse/Horse_Skeleton,
+        animationsMesh = HorseMod.Horse,
+        shader = animalEffect,
+        static = false,
+    }
+	model HorseSkeletonHeadless {
+        mesh = HorseMod/Horse/Horse_Skeleton_NoHead,
+        animationsMesh = HorseMod.Horse,
+        shader = animalEffect,
+        static = false,
+    }
+
+
+
+/* FOAL */
 	model Foal
     {
-        mesh = HorseMod/Horse_Foal,
+        mesh = HorseMod/Foal/Foal_Base,
         animationsMesh = HorseMod.Horse,
         shader = animalEffect,
         static = false,
@@ -196,26 +220,29 @@ module HorseMod
             bone = DEF_ManeEnd,
         }
     }
-	model HorseHeadless {
-		mesh = HorseMod/Horse_NoHead,
+
+    model FoalHeadless {
+		mesh = HorseMod/Foal/Foal_NoHead,
 		animationsMesh = HorseMod.Horse,
 		shader = animalEffect,
 		static = false,
 	}
-	model HorseSkeleton {
-        mesh = HorseMod/Horse_Skeleton,
+	model FoalSkeleton {
+        mesh = HorseMod/Foal/Foal_Skeleton,
         animationsMesh = HorseMod.Horse,
         shader = animalEffect,
         static = false,
     }
-	model HorseSkeletonHeadless {
-        mesh = HorseMod/Horse_Skeleton_NoHead,
+	model FoalSkeletonHeadless {
+        mesh = HorseMod/Foal/Foal_Skeleton_NoHead,
         animationsMesh = HorseMod.Horse,
         shader = animalEffect,
         static = false,
     }
+
+/* PARTS */
 	model HorseHead {
-        mesh = HorseMod/Horse_Head,
+        mesh = HorseMod/Horse/Horse_Head,
         static = true,
         texture = Body/HorseMod/Horse_AmericanQuarterPalomino,
         scale = 0.3530,
@@ -225,6 +252,7 @@ module HorseMod
             scale = 0.5000,
         }
     }
+
 	model HorseSkull {
         mesh = HorseMod/Horse_Skull,
         static = true,
@@ -236,10 +264,12 @@ module HorseMod
             scale = 0.5000,
         }
     }
+
 	model DungHorse {
         mesh = HorseMod/Dung_Horse,
         texture = WorldItems/DungHorse,
     }
+
 	model HorseHoof {
         mesh = HorseMod/HorseHoof,
         static = true,
