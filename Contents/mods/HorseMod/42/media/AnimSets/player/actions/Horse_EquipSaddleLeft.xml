@@ -23,9 +23,9 @@
         <m_speedScale>0.20</m_speedScale>
     </m_Transitions>
     <m_Events>
-        <m_EventName>SetVariable</m_EventName>
+        <m_EventName>HorseEquipFinished</m_EventName>
         <m_Time>End</m_Time>
-        <m_ParameterValue>HorseEquipFinished=true</m_ParameterValue>
+        <m_ParameterValue></m_ParameterValue>
     </m_Events>
     <m_Events>
         <m_EventName>SetVariable</m_EventName>

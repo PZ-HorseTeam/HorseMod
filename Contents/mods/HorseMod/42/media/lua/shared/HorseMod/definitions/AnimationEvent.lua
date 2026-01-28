@@ -1,9 +1,10 @@
 ---@namespace HorseMod
 
----@enum AnimEvent
-local AnimEvent = {
+---@enum AnimationEvent
+local AnimationEvent = {
     MOUNTING_COMPLETE = "HorseMountingComplete",
-    DISMOUNTING_COMPLETE = "HorseDismountingComplete"
+    DISMOUNTING_COMPLETE = "HorseDismountingComplete",
+    EQUIP_FINISHED = "HorseEquipFinished"
 }
 
-return AnimEvent
+return AnimationEvent

@@ -3,7 +3,7 @@
 ---REQUIREMENTS
 local Attachments = require("HorseMod/attachments/Attachments")
 local ContainerManager = require("HorseMod/attachments/ContainerManager")
-local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
+local AnimationEvent = require("HorseMod/definitions/AnimationEvent")
 
 ---Timed action for equipping gear on a horse.
 ---@class HorseEquipGear : ISBaseTimedAction, umbrella.NetworkedTimedAction
@@ -28,9 +28,6 @@ end
 
 function HorseEquipGear:start()
     local equipBehavior = self.equipBehavior
-    
-    -- set the action animation
-    self.character:setVariable(AnimationVariable.EQUIP_FINISHED, false)
 
     local anim = equipBehavior.anim
     local animationVar = anim and anim[self.side] or "Loot"
@@ -45,26 +42,29 @@ function HorseEquipGear:start()
     self.character:faceThisObject(self.horse)
 end
 
+function HorseEquipGear:serverStart()
+    ---@diagnostic disable-next-line: param-type-mismatch
+    emulateAnimEventOnce(self.netAction, 1000, AnimationEvent.EQUIP_FINISHED, nil)
+    return true
+end
+
 function HorseEquipGear:update()
     local horse = self.horse
     local character = self.character
     character:faceThisObject(horse)
     horse:getPathFindBehavior2():reset()
+end
 
-    -- end when
-    local maxTime = self.maxTime
-    if maxTime == -1 and character:getVariableBoolean(AnimationVariable.EQUIP_FINISHED) then
-        self:forceComplete()
+
+function HorseEquipGear:animEvent(event, parameter)
+    if event == AnimationEvent.EQUIP_FINISHED then
+        if isServer() then
+            ---@diagnostic disable-next-line: need-check-nil
+            self.netAction:forceComplete()
+        else
+            self:forceComplete()
+        end
     end
-end
-
-function HorseEquipGear:stop()
-    ISBaseTimedAction.stop(self)
-end
-
-
-function HorseEquipGear:perform()
-    ISBaseTimedAction.perform(self)
 end
 
 

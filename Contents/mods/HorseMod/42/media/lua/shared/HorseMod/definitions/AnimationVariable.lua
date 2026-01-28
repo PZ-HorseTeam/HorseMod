@@ -24,8 +24,6 @@ local AnimationVariable = {
     EATING_HAND = "HorseEatingHand",
     HURT = "HorseHurt",
     DEATH = "HorseDeath",
-    
-    EQUIP_FINISHED = "HorseEquipFinished",
 
     KICK_LEFT = "HorseRiderKickLeft",
     KICK_RIGHT = "HorseRiderKickRight",
