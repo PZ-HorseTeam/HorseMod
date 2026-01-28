@@ -326,7 +326,7 @@ Events.OnGameBoot.Add(function()
     for animalType, isAdult in pairs(HorseDefinitions.IS_ADULT) do
         -- retrieve the default animal data
         local data = copyTable(ANIMALS_DATA._DEFAULT)
-        data.breeds = (AnimalDefinitions.breeds["horse"].breeds) -- copy horse breed data
+        data.breeds = AnimalDefinitions.breeds["horse"].breeds
 
     -- if adult, apply adult data
         if isAdult then
