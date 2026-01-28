@@ -2,7 +2,6 @@
 
 ---REQUIREMENTS
 local Attachments = require("HorseMod/attachments/Attachments")
-local ContainerManager = require("HorseMod/attachments/ContainerManager")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local AttachmentsClient = require("HorseMod/attachments/AttachmentsClient")
 local HorseManager = require("HorseMod/HorseManager")
@@ -34,7 +33,7 @@ local InventoryTransfer = {}
 ---@return boolean
 InventoryTransfer.isValidHorseContainer = function(worldItem, horse)
     -- check if the world item is a horse mod container
-    local containerInfo = ContainerManager.getHorseContainerData(worldItem)
+    local containerInfo = Attachments.getHorseContainerData(worldItem)
     if not containerInfo then return false end
     
     -- check if the container is from the horse
@@ -165,7 +164,7 @@ ISInventoryPaneContextMenu.equipWeapon = function(weapon, primary, twoHands, pla
         local worldItem = weapon:getWorldItem()
         if not worldItem then break end
 
-        local containerInfo = ContainerManager.getHorseContainerData(worldItem)
+        local containerInfo = Attachments.getHorseContainerData(worldItem)
         if not containerInfo then break end
 
         local horse = HorseManager.findHorseByID(containerInfo.horseID)
@@ -231,7 +230,7 @@ InventoryTransfer.getWorldItemsFromMenu = function(context, playerObj)
             if not worldItem then break end
         end
 
-        local containerInfo = ContainerManager.getHorseContainerData(worldItem)
+        local containerInfo = Attachments.getHorseContainerData(worldItem)
         if not containerInfo then break end
 
         table.insert(worldItems, {item=worldItem, index=i, option=option, containerInfo=containerInfo, player=playerObj})

@@ -2,7 +2,6 @@
 
 ---REQUIREMENTS
 local Attachments = require("HorseMod/attachments/Attachments")
-local ContainerManager = require("HorseMod/attachments/ContainerManager")
 local AnimationEvent = require("HorseMod/definitions/AnimationEvent")
 
 ---Timed action for equipping gear on a horse.
@@ -78,6 +77,7 @@ function HorseEquipGear:complete()
     -- init container
     local containerBehavior = self.attachmentDef.containerBehavior
     if containerBehavior then
+        local ContainerManager = require("HorseMod/attachments/ContainerManager")
         ContainerManager.initContainer(
             self.character,
             self.horse,
@@ -93,7 +93,8 @@ function HorseEquipGear:complete()
     sendAddItemToContainer(horseInventory, self.accessory)
 
     -- set new accessory
-    Attachments.setAttachedItem(self.horse, self.slot, self.accessory)
+    local AttachmentManager = require("HorseMod/attachments/AttachmentManager")
+    AttachmentManager.setAttachedItem(self.horse, self.slot, self.accessory)
 
     return true
 end

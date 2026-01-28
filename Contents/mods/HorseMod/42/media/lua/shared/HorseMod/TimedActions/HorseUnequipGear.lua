@@ -1,9 +1,7 @@
 ---@namespace HorseMod
 
 ---REQUIREMENTS
-local Attachments = require("HorseMod/attachments/Attachments")
 local HorseEquipGear = require("HorseMod/TimedActions/HorseEquipGear")
-local ContainerManager = require("HorseMod/attachments/ContainerManager")
 
 ---Timed action for unequipping gear from a horse.
 ---@class HorseUnequipGear : HorseEquipGear
@@ -16,13 +14,15 @@ function HorseUnequipGear:complete()
     local slot = self.slot
 
     -- remove old accessory from slot and give to player or drop
-    Attachments.setAttachedItem(horse, slot, nil)
+    local AttachmentManager = require("HorseMod/attachments/AttachmentManager")
+    AttachmentManager.setAttachedItem(horse, slot, nil)
 
     Actions.addOrDropItem(character, accessory)
     
     -- remove container
     local containerBehavior = self.attachmentDef.containerBehavior
     if containerBehavior then
+        local ContainerManager = require("HorseMod/attachments/ContainerManager")
         ContainerManager.removeContainer(character, horse, slot, accessory)
     end
 
