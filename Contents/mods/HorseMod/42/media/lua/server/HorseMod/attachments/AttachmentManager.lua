@@ -9,6 +9,8 @@ local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local ContainerManager = require("HorseMod/attachments/ContainerManager")
 local HorseModData = require("HorseMod/HorseModData")
 local HorseUtils = require("HorseMod/Utils")
+local attachmentcommands = require("HorseMod/attachments/attachmentcommands")
+local commands = require("HorseMod/networking/commands")
 
 local rdm = newrandom()
 
@@ -22,6 +24,10 @@ AttachmentManager.setAttachedItem = function(animal, slot, item)
     local bySlot = HorseModData.get(animal, Attachments.ATTACHMENTS_MOD_DATA).bySlot
     bySlot[slot] = item and item:getFullType()
     animal:transmitModData()
+
+    if isServer() then
+        attachmentcommands.AttachmentChanged:send(nil, {animal = commands.getAnimalId(animal), slot = slot, item = bySlot[slot]})
+    end
 end
 
 ---Give the item to the player or drop it on the ground.

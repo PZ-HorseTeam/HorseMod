@@ -1,6 +1,9 @@
 ---@namespace HorseMod
 
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
+local attachmentcommands = require("HorseMod/attachments/attachmentcommands")
+local client = require("HorseMod/networking/client")
+local commands = require("HorseMod/networking/commands")
 
 local AttachmentVisuals = {}
 
@@ -46,6 +49,20 @@ function AttachmentVisuals.set(animal, slot, item)
     ---@diagnostic disable-next-line: param-type-mismatch
     animal:setAttachedItem(slot, item)
 end
+
+
+client.registerCommandHandler(attachmentcommands.AttachmentChanged, function(args)
+    local animal = commands.getAnimal(args.animal)
+    if not animal then
+        return
+    end
+
+    if args.item then
+        AttachmentVisuals.set(animal, args.slot, instanceItem(args.item))
+    else
+        AttachmentVisuals.set(animal, args.slot, nil)
+    end
+end)
 
 
 return AttachmentVisuals
