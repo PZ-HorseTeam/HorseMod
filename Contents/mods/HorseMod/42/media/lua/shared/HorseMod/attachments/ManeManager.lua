@@ -70,12 +70,8 @@ ManeManager.removeManes = function(horse)
     -- TODO: move this to a server module as it requires server modules
     assert(not isClient(), "called server-only removeManes on client")
     for slot, _ in pairs(AttachmentData.maneSlots) do
-        local attached = Attachments.getAttachedItem(horse, slot)
-        if attached then
-            -- Attachments.setAttachedItem(horse, slot, nil)
-            local AttachmentManager = require("HorseMod/attachments/AttachmentManager")
-            AttachmentManager.removeAttachedItem(horse, attached)
-        end
+        local AttachmentManager = require("HorseMod/attachments/AttachmentManager")
+        AttachmentManager.setAttachedItem(horse, slot, nil)
     end
 end
 

@@ -5,8 +5,6 @@ local HorseUtils = require("HorseMod/Utils")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local HorseModData = require("HorseMod/HorseModData")
 
-local rdm = newrandom()
-
 ---Holds utility functions related to the attachment system of horses.
 local Attachments = {}
 
@@ -80,35 +78,31 @@ Attachments.getAttachmentDefinition = function(fullType, slot)
     return itemDef and itemDef[slot] or nil
 end
 
----Retrieve the attached item on the specified `slot` of `animal`.
+---Gets the equipped attachment in a specific slot.
 ---@param animal IsoAnimal
 ---@param slot AttachmentSlot
----@return InventoryItem
+---@return string? attachment Full type of the equipped attachment item. Nil if there is no attachment in that slot.
 ---@nodiscard
-Attachments.getAttachedItem = function(animal, slot)
-    local attachedItems = animal:getAttachedItems()
-    return attachedItems:getItem(slot)
+function Attachments.get(animal, slot)
+    local bySlot = HorseModData.get(animal, Attachments.ATTACHMENTS_MOD_DATA).bySlot
+    return bySlot[slot]
 end
 
----Retrieve a table with every attached items on the horse.
+---Gets all currently equipped attachments.
 ---@param animal IsoAnimal
----@return {item: InventoryItem, slot: AttachmentSlot}[]
+---@return {item: string, slot: AttachmentSlot}[] attachments Full type of equipped attachment items and the slot they are attached to.
 ---@nodiscard
-Attachments.getAttachedItems = function(animal)
-    local attached = {}
-    local slots = AttachmentData.slots
-    local maneSlots = AttachmentData.maneSlots
-    for i = 1, #slots do
-        local slot = slots[i]
-        -- if not a mane, list it
-        if not maneSlots[slot] then
-            local attachment = Attachments.getAttachedItem(animal, slot)
-            if attachment then
-                table.insert(attached, {item=attachment, slot=slot})
-            end
+function Attachments.getAll(animal)
+    local bySlot = HorseModData.get(animal, Attachments.ATTACHMENTS_MOD_DATA).bySlot
+
+    ---@type {item: string, slot: AttachmentSlot}[]
+    local attachments = {}
+    for slot, item in pairs(bySlot) do
+        if not AttachmentData.maneSlots[slot] then
+            attachments[#attachments + 1] = {item = item, slot = slot}
         end
     end
-    return attached
+    return attachments
 end
 
 Attachments.predicateHorseAccessory = function(item)
@@ -129,15 +123,21 @@ end
 
 -----GENERIC ATTACHMENT HELPERS-----
 
+---@param animal IsoAnimal
+---@param slot AttachmentSlot
+---@return string?
+---@return AttachmentDefinition?
 Attachments.getAttachedAndDef = function(animal, slot)
-    local item = Attachments.getAttachedItem(animal, slot)
-    if not item then return nil, nil end
-    return item, Attachments.getAttachmentDefinition(item:getFullType(), slot)
+    local item = Attachments.get(animal, slot)
+    if not item then
+        return nil, nil
+    end
+    return item, Attachments.getAttachmentDefinition(item, slot)
 end
 
 ---Retrieve the reins attachment item and its definition from the horse.
 ---@param animal IsoAnimal
----@return InventoryItem?
+---@return string?
 ---@return AttachmentDefinition?
 Attachments.getReins = function(animal)
     return Attachments.getAttachedAndDef(animal, "Reins")
@@ -145,7 +145,7 @@ end
 
 ---Retrieve the reins attachment item and its definition from the horse.
 ---@param animal IsoAnimal
----@return InventoryItem?
+---@return string?
 ---@return AttachmentDefinition?
 Attachments.getSaddle = function(animal)
     return Attachments.getAttachedAndDef(animal, "Saddle")

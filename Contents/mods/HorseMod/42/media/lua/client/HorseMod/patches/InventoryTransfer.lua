@@ -7,6 +7,7 @@ local AttachmentsClient = require("HorseMod/attachments/AttachmentsClient")
 local HorseManager = require("HorseMod/HorseManager")
 local HorseUtils = require("HorseMod/Utils")
 local Mounts = require("HorseMod/Mounts")
+local AttachmentVisuals = require("HorseMod/attachments/AttachmentVisuals")
 local invTetris = getActivatedMods():contains("\\INVENTORY_TETRIS")
 
 --[[
@@ -173,8 +174,8 @@ ISInventoryPaneContextMenu.equipWeapon = function(weapon, primary, twoHands, pla
         -- since this is a horse container, we hijack the action to instead unequip the attachment
         local playerObj = getSpecificPlayer(player)
         local slot = containerInfo.slot
-        local item = Attachments.getAttachedItem(horse, slot)
-        AttachmentsClient.unequipAccessory(playerObj, horse, item, slot)
+        local item = AttachmentVisuals.getAttachedItem(horse, slot)
+        AttachmentsClient.unequipAccessory(playerObj, horse, slot)
 
         -- override default parameters then equip the item
         local twoHands = item:isTwoHandWeapon()
@@ -277,8 +278,7 @@ InventoryTransfer.onSelectGrabWorldItem = function(worldItemOption, ...)
     -- since this is a horse container, we hijack the action to instead unequip the attachment
     local playerObj = worldItemOption.player
     local slot = containerInfo.slot
-    local item = Attachments.getAttachedItem(horse, slot)
-    AttachmentsClient.unequipAccessory(playerObj, horse, item, slot)
+    AttachmentsClient.unequipAccessory(playerObj, horse, slot)
 end
 
 ---Patches the context menu grab option to unequip the attachment instead of grabbing the item.
@@ -323,9 +323,9 @@ Events.OnFillWorldObjectContextMenu.Add(InventoryTransfer.OnFillWorldObjectConte
 ---@param chr IsoPlayer
 local function removeAttachments(horse, chr)
     --- remove attachments first
-    local attachments = Attachments.getAttachedItems(horse)
+    local attachments = Attachments.getAll(horse)
     if #attachments > 0 then
-        AttachmentsClient.unequipAllAccessory(nil, chr, horse, attachments)
+        AttachmentsClient.unequipAllAccessory(chr, horse, attachments)
     end
 end
 

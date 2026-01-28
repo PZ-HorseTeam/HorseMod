@@ -22,9 +22,9 @@ AttachmentsClient.equipAccessory = function(player, horse, accessory, slot, moun
     local side = mountPosition.name
     
     -- verify an attachment isn't already equiped, else unequip it
-    local oldAccessory = Attachments.getAttachedItem(horse, slot)
+    local oldAccessory = Attachments.get(horse, slot)
     if oldAccessory then
-        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, side))
+        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, slot, side))
     end
     
     -- equip the attachment in hands
@@ -40,12 +40,11 @@ end
 ---Unequip a specific accessory on the horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
----@param oldAccessory InventoryItem
 ---@param slot AttachmentSlot
 ---@param mountPosition MountPosition
-AttachmentsClient.unequipAccessory = function(player, horse, oldAccessory, slot, mountPosition)
+AttachmentsClient.unequipAccessory = function(player, horse, slot, mountPosition)
     MountingUtility.pathfindToHorse(player, horse, mountPosition)
-    ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, mountPosition.name))
+    ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, slot, mountPosition.name))
 end
 
 ---Unequip every accessories on the horse.
@@ -59,9 +58,8 @@ AttachmentsClient.unequipAllAccessory = function(player, horse, oldAccessories, 
     -- unequip all
     for i = 1, #oldAccessories do
         local oldAccessory = oldAccessories[i]
-        local item = oldAccessory.item
         local slot = oldAccessory.slot
-        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, item, slot, mountPosition.name))
+        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, slot, mountPosition.name))
     end
 end
 
@@ -159,7 +157,7 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
                 option.iconTexture = accessory:getTexture()
 
                 -- add a replace tooltip if slot is already occupied
-                local oldAccessory = Attachments.getAttachedItem(horse, slot)
+                local oldAccessory = Attachments.get(horse, slot)
                 if oldAccessory then
                     local tooltip = ISWorldObjectContextMenu.addToolTip()
 
@@ -167,7 +165,7 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
                     local txt = HorseUtils.formatTemplate(
                         getText("ContextMenu_Horse_Replace"),
                         {
-                            old=oldAccessory:getDisplayName(),
+                            old=getItemNameFromFullType(oldAccessory),
                             new=accessory:getDisplayName(),
                             slot=slot
                         }
@@ -191,7 +189,7 @@ end
 
 ---@param context ISContextMenu
 ---@param player IsoPlayer
----@param attachedItems {item: InventoryItem, slot: AttachmentSlot}[]
+---@param attachedItems {item: string, slot: AttachmentSlot}[]
 ---@param horse IsoAnimal
 ---@param mountPosition MountPosition?
 function AttachmentsClient.addUnequipOptions(context, player, attachedItems, horse, mountPosition)
@@ -200,7 +198,7 @@ function AttachmentsClient.addUnequipOptions(context, player, attachedItems, hor
         -- sort by display name
         table.sort(attachedItems, function(a, b)
             -- sort direction is swapped here bcs we use "addOptionOnTop", so it adds in the inverse direction
-            return a.item:getDisplayName() > b.item:getDisplayName()
+            return getItemNameFromFullType(a.item) > getItemNameFromFullType(b.item)
         end)
 
         -- parse attachments and add unequip option
@@ -211,7 +209,7 @@ function AttachmentsClient.addUnequipOptions(context, player, attachedItems, hor
             -- format unequip translation entry with item name
             local txt = HorseUtils.formatTemplate(
                 getText("ContextMenu_Horse_Unequip"),
-                {old=item:getDisplayName()}
+                {old=getItemNameFromFullType(item)}
             )
 
             -- create the option to unequip the attachment
@@ -220,11 +218,10 @@ function AttachmentsClient.addUnequipOptions(context, player, attachedItems, hor
                 player,
                 AttachmentsClient.unequipAccessory,
                 horse,
-                item, 
                 attachment.slot,
                 mountPosition
             )
-            option.iconTexture = item:getTexture()
+            option.iconTexture = getTexture(getItemTextureName(item))
 
             if not mountPosition then
                 option.notAvailable = true
@@ -262,7 +259,7 @@ end
 ---@param context ISContextMenu
 ---@param accessories ArrayList<InventoryItem>
 AttachmentsClient.populateHorseContextMenu = function(player, horse, context, accessories)
-    local attachedItems = Attachments.getAttachedItems(horse)
+    local attachedItems = Attachments.getAll(horse)
 
     if accessories:size() < 1 and #attachedItems < 1 then
         return

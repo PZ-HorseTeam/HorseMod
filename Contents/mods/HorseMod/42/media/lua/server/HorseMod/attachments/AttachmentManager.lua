@@ -19,27 +19,9 @@ local AttachmentManager = {}
 ---@param slot AttachmentSlot
 ---@param item InventoryItem?
 AttachmentManager.setAttachedItem = function(animal, slot, item)
-    ---@diagnostic disable-next-line
-    animal:setAttachedItem(slot, item)
-    sendAttachedItem(animal, slot, item) ---@diagnostic disable-line
-
     local bySlot = HorseModData.get(animal, Attachments.ATTACHMENTS_MOD_DATA).bySlot
     bySlot[slot] = item and item:getFullType()
     animal:transmitModData()
-end
-
----@param animal IsoAnimal
----@param item InventoryItem
-AttachmentManager.removeAttachedItem = function(animal, item)
-    local attachedItems = animal:getAttachedItems()
-    if attachedItems then
-        local slot = attachedItems:getLocation(item) --[[@as AttachmentSlot]]
-        attachedItems:remove(item)
-        sendAttachedItem(animal, slot, nil) ---@diagnostic disable-line
-        local bySlot = HorseModData.get(animal, Attachments.ATTACHMENTS_MOD_DATA).bySlot
-        bySlot[slot] = nil
-        animal:transmitModData()
-    end
 end
 
 ---Give the item to the player or drop it on the ground.
@@ -89,26 +71,28 @@ AttachmentManager.unequipAttachment = function(animal, slot, player)
         return
     end
 
-    local current = Attachments.getAttachedItem(animal, slot)
+    local current = Attachments.get(animal, slot)
     if not current then
         return
     end
 
     -- ignore if attachment should stay hidden from the player
-    local attachmentDef = Attachments.getAttachmentDefinition(current:getFullType(), slot)
-    assert(attachmentDef ~= nil, "Called unequip on an item ("..current:getFullType()..") that isn't an attachment or doesn't have an attachment definition for the slot "..slot..".")
+    local attachmentDef = Attachments.getAttachmentDefinition(current, slot)
+    assert(attachmentDef ~= nil, "Called unequip on an item ("..current..") that isn't an attachment or doesn't have an attachment definition for the slot "..slot..".")
     if not attachmentDef or attachmentDef.hidden or AttachmentData.maneSlots[slot] then
         return
     end
+
+    local item = instanceItem(current)
     
     AttachmentManager.setAttachedItem(animal, slot, nil)
-    AttachmentManager.giveBackToPlayerOrDrop(player, animal, current)
+    AttachmentManager.giveBackToPlayerOrDrop(player, animal, item)
 
     -- remove container
     local containerBehavior = attachmentDef.containerBehavior
     if containerBehavior then
         player = player or getPlayer() ---@TODO probably should change that to not be necessary
-        ContainerManager.removeContainer(player, animal, slot, current)
+        ContainerManager.removeContainer(player, animal, slot, item)
     end
 end
 

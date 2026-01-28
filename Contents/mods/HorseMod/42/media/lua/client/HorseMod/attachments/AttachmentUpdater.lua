@@ -2,6 +2,7 @@
 
 ---REQUIREMENTS
 local Attachments = require("HorseMod/attachments/Attachments")
+local AttachmentVisuals = require("HorseMod/attachments/AttachmentVisuals")
 local HorseManager = require("HorseMod/HorseManager")
 local ManeManager = require("HorseMod/attachments/ManeManager")
 local HorseModData = require("HorseMod/HorseModData")
@@ -24,7 +25,7 @@ AttachmentUpdater.reapplyFor = function(horse)
 
     for slot, fullType in pairs(bySlot) do
         -- try to retrieve the item from attached items, else create a fresh one
-        local item = Attachments.getAttachedItem(horse, slot)
+        local item = AttachmentVisuals.get(horse, slot)
         if not item then
             item = inv:AddItem(fullType)
         end
@@ -34,7 +35,7 @@ AttachmentUpdater.reapplyFor = function(horse)
             ManeManager.setupMane(horse, item, slot)
         end
 
-        horse:setAttachedItem(slot, item)
+        AttachmentVisuals.set(horse, slot, item)
     end
 
     -- set horse as reapplied
