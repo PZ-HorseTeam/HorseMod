@@ -1,0 +1,37 @@
+IGUI_ES = {
+    /* General */
+    IGUI_AnimalType_stallion = "Semental"
+    IGUI_AnimalType_mare = "Yegua"
+    IGUI_AnimalType_filly = "Potro"
+
+    IGUI_Animal_Group_horse = "Caballo"
+    IGUI_Horse_Slot = "Ranura" /* for attachments */
+
+    /* Breeds */
+    IGUI_Breed_AmericanQuarterPalomino = "Cuarto de Milla Palomino"
+    IGUI_Breed_AmericanQuarterBlueRoan = "Cuarto de Milla Ruano Azul"
+    IGUI_Breed_AmericanPaintTobiano = "Paint Horse Tobiano"
+    IGUI_Breed_AmericanPaintOvero = "Paint Horse Overo"
+    IGUI_Breed_AppaloosaGrullaBlanket = "Appaloosa Grulla de Lomo Manchado"
+    IGUI_Breed_AppaloosaLeopard = "Appaloosa Leopardo"
+    IGUI_Breed_ThoroughbredBay = "Purasangre Castaño"
+    IGUI_Breed_ThoroughbredFleaBittenGrey = "Purasangre Tordo Picazo"
+
+    /* Mod Options */
+    IGUI_ModOptions_HorseModName = "Caballo"
+    IGUI_ModOptions_HorseSoundVolume_Desc = "Ajustar el volumen de los sonidos del caballo"
+    IGUI_ModOptions_HorseSoundVolume_Name = "Volumen de los sonidos del caballo (por defecto 0.40)"
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "Configura el volumen de todos los sonidos del caballo."
+
+    IGUI_ModOptions_HorseKeybind = "Teclas del caballo"
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "Saltar"
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "Cambiar la tecla para saltar con el caballo."
+
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "Trote"
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Cambiar la tecla para trotar con el caballo."
+
+    IGUI_ModOptions_HorseKeybind_Gallop_Name = "Galope"
+    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "Cambiar la tecla para galopar con el caballo."
+
+    IGUI_HorseMod_MultiplayerWarning = "El mod Caballo no soporta multijugador.<br>Los caballos no funcionarán correctamente y podrías experimentar otros problemas durante tu partida.<br>Se recomienda encarecidamente desactivar el mod Caballo.<br>No se aceptarán informes de errores relacionados con el multijugador."
+}

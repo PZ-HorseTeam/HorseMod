@@ -1,0 +1,10 @@
+Recipes_ES = {
+    /* Horse accessories */
+    Recipe_HorseSaddle = "Fabricar Silla de Montar"
+    Recipe_HorseSaddlebags = "Fabricar Alforjas para Caballo"
+    Recipe_HorseReins = "Fabricar Riendas"
+
+    /* Horse glue */
+    Recipe_HorseGlue = "Hacer Pegamento de Caballo"
+    Recipe_HorseGlueToWoodGlue = "Sacar el Pegamento de Caballo de la Olla"
+}
