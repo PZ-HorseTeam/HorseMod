@@ -250,11 +250,6 @@ local function addHorseZones()
         local main_x = x1 < x2 and x1 or x2
         local main_y = y1 < y2 and y1 or y2
 
-        if x1 == 747 then
-            DebugLog.log("HorseMod: debug point")
-            print()
-        end
-
         -- calculate width (+X) and height (+Y)
         local width = math.abs(x2 - x1) + 1
         local height = math.abs(y2 - y1) + 1
