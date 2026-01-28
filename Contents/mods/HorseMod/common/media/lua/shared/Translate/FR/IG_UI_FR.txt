@@ -8,6 +8,7 @@ IGUI_FR = {
     IGUI_AnimalType_mare = "Jument"
     IGUI_AnimalType_filly = "Pouliche"
 
+    IGUI_AnimalType_Global_horse = "Cheval"
     IGUI_Animal_Group_horse = "Cheval"
     IGUI_Horse_Slot = "Emplacement" /* for attachments */
 
