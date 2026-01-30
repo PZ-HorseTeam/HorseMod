@@ -50,7 +50,7 @@ end
 ---Unequip every accessories on the horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
----@param oldAccessories {item: InventoryItem, slot: AttachmentSlot}[]
+---@param oldAccessories {item: string, slot: AttachmentSlot}[]
 ---@param mountPosition MountPosition
 AttachmentsClient.unequipAllAccessory = function(player, horse, oldAccessories, mountPosition)
     MountingUtility.pathfindToHorse(player, horse, mountPosition)

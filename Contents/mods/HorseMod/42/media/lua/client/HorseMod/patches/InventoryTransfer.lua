@@ -8,6 +8,7 @@ local HorseManager = require("HorseMod/HorseManager")
 local HorseUtils = require("HorseMod/Utils")
 local Mounts = require("HorseMod/Mounts")
 local AttachmentVisuals = require("HorseMod/attachments/AttachmentVisuals")
+local MountingUtility = require("HorseMod/mounting/MountingUtility")
 local invTetris = getActivatedMods():contains("\\INVENTORY_TETRIS")
 
 --[[
@@ -321,12 +322,21 @@ Events.OnFillWorldObjectContextMenu.Add(InventoryTransfer.OnFillWorldObjectConte
 
 ---@param horse IsoAnimal
 ---@param chr IsoPlayer
+---@return boolean success True if the actions to remove were valid, or if no gear needed to be removed in the first place
 local function removeAttachments(horse, chr)
     --- remove attachments first
     local attachments = Attachments.getAll(horse)
-    if #attachments > 0 then
-        AttachmentsClient.unequipAllAccessory(chr, horse, attachments)
+    if #attachments < 1 then
+        return true
     end
+
+    local mountPosition = MountingUtility.getNearestMountPosition(chr, horse)
+    if mountPosition then
+        AttachmentsClient.unequipAllAccessory(chr, horse, attachments, mountPosition)
+        return true
+    end
+
+    return false
 end
 
 
@@ -335,7 +345,11 @@ AnimalContextMenu.onPickupAnimal = function(animal, chr)
     if HorseUtils.isHorse(animal) then
         animal:stopAllMovementNow()
 
-        removeAttachments(animal, chr)
+        if not removeAttachments(animal, chr) then
+            -- this probably won't ever happen, but just in case it does we need some kind of feedback as it cancels the pickup entirely
+            chr:Say(getText("ContextMenu_Horse_NoMountPosition"))
+            return
+        end
 
         -- reimplement pickup action by stopping the clear of actions from walkAdj
         if luautils.walkAdj(chr, animal:getSquare(), true) then
