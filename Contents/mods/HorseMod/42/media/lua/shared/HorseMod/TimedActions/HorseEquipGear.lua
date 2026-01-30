@@ -42,6 +42,10 @@ function HorseEquipGear:complete()
         return false
     end
 
+    if self.character:DistToSquared(self.horse) > 1.5 then
+        return false
+    end
+
     -- remove item from player's inventory
     local characterInventory = self.character:getInventory()
     characterInventory:Remove(self.accessory)

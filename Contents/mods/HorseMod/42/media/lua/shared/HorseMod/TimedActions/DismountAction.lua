@@ -91,8 +91,12 @@ end
 
 
 function DismountAction:complete()
-    -- TODO: this might take a bit to inform the client, so we should consider faking it in perform()
+    if Mounts.getMount(self.character) ~= self.animal then
+        return false
+    end
+
     Mounts.removeMount(self.character)
+
     return true
 end
 

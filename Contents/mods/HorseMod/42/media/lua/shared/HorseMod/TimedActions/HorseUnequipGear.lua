@@ -35,6 +35,10 @@ function HorseUnequipGear:complete()
         return false
     end
 
+    if self.character:DistToSquared(self.horse) > 1.5 then
+        return false
+    end
+
     local item = instanceItem(attachmentType)
 
     -- remove old accessory from slot and give to player or drop
