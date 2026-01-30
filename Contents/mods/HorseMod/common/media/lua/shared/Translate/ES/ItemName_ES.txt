@@ -1,4 +1,8 @@
 ItemName_ES = {
+    /*
+        Translated by carlesturo
+    */
+
     /* Horse accessories */
         /* Saddles */
     ItemName_HorseMod.HorseSaddle_Crude = "Silla de Montar (Crudo)"

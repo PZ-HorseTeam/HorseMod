@@ -1,4 +1,8 @@
 Recipes_ES = {
+    /*
+        Translated by carlesturo
+    */
+
     /* Horse accessories */
     Recipe_HorseSaddle = "Fabricar Silla de Montar"
     Recipe_HorseSaddlebags = "Fabricar Alforjas para Caballo"

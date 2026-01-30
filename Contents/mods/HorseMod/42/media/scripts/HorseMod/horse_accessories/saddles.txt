@@ -20,7 +20,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_Crude,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_Crude {
@@ -48,7 +48,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_Black,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_Black {
@@ -75,7 +75,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_CowHolstein,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_CowHolstein {
@@ -102,7 +102,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_CowSimmental,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_CowSimmental {
@@ -129,7 +129,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_White,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_White {
@@ -156,7 +156,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_Landrace,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_Landrace {
@@ -185,7 +185,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_AmericanPaintTobiano,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_AmericanPaintTobiano {
@@ -212,7 +212,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_AmericanPaintOvero,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_AmericanPaintOvero {
@@ -239,7 +239,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_AmericanQuarterBlueRoan,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_AmericanQuarterBlueRoan {
@@ -266,7 +266,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_AmericanQuarterPalomino,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_AmericanQuarterPalomino {
@@ -293,7 +293,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_ThoroughbredFleaBittenGrey,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_ThoroughbredFleaBittenGrey {
@@ -320,7 +320,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_AppaloosaGrullaBlanket,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_AppaloosaGrullaBlanket {
@@ -347,7 +347,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_AppaloosaLeopard,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_AppaloosaLeopard {
@@ -374,7 +374,7 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_ThoroughbredBay,
         static = true,
         attachment Bip01_Prop1 {
-            scale = 1.0000,
+            scale = 0.8000,
         }
     }
     model HorseSaddle_World_ThoroughbredBay {

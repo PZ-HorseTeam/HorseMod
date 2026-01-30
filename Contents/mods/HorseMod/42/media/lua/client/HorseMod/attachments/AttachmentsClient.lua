@@ -8,7 +8,7 @@ local HorseUnequipGear = require("HorseMod/TimedActions/HorseUnequipGear")
 local Mounts = require("HorseMod/Mounts")
 local MountingUtility = require("HorseMod/mounting/MountingUtility")
 
-local AttachmentsManager = {}
+local AttachmentsClient = {}
 
 
 ---Equip a new accessory on the horse.
@@ -17,14 +17,14 @@ local AttachmentsManager = {}
 ---@param accessory InventoryItem
 ---@param slot AttachmentSlot
 ---@param mountPosition MountPosition
-AttachmentsManager.equipAccessory = function(player, horse, accessory, slot, mountPosition)
+AttachmentsClient.equipAccessory = function(player, horse, accessory, slot, mountPosition)
     MountingUtility.pathfindToHorse(player, horse, mountPosition)
     local side = mountPosition.name
     
     -- verify an attachment isn't already equiped, else unequip it
-    local oldAccessory = Attachments.getAttachedItem(horse, slot)
+    local oldAccessory = Attachments.get(horse, slot)
     if oldAccessory then
-        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, side))
+        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, slot, side))
     end
     
     -- equip the attachment in hands
@@ -40,12 +40,11 @@ end
 ---Unequip a specific accessory on the horse.
 ---@param player IsoPlayer
 ---@param horse IsoAnimal
----@param oldAccessory InventoryItem
 ---@param slot AttachmentSlot
 ---@param mountPosition MountPosition
-AttachmentsManager.unequipAccessory = function(player, horse, oldAccessory, slot, mountPosition)
+AttachmentsClient.unequipAccessory = function(player, horse, slot, mountPosition)
     MountingUtility.pathfindToHorse(player, horse, mountPosition)
-    ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, oldAccessory, slot, mountPosition.name))
+    ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, slot, mountPosition.name))
 end
 
 ---Unequip every accessories on the horse.
@@ -53,15 +52,14 @@ end
 ---@param horse IsoAnimal
 ---@param oldAccessories {item: InventoryItem, slot: AttachmentSlot}[]
 ---@param mountPosition MountPosition
-AttachmentsManager.unequipAllAccessory = function(player, horse, oldAccessories, mountPosition)
+AttachmentsClient.unequipAllAccessory = function(player, horse, oldAccessories, mountPosition)
     MountingUtility.pathfindToHorse(player, horse, mountPosition)
     
     -- unequip all
     for i = 1, #oldAccessories do
         local oldAccessory = oldAccessories[i]
-        local item = oldAccessory.item
         local slot = oldAccessory.slot
-        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, item, slot, mountPosition.name))
+        ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, slot, mountPosition.name))
     end
 end
 
@@ -70,7 +68,7 @@ end
 ---@param animal IsoAnimal
 ---@return boolean canChange
 ---@return string? reason Translation string to display to user.
-function AttachmentsManager.canChangeAttachments(character, animal)
+function AttachmentsClient.canChangeAttachments(character, animal)
     if animal:getVariableBoolean("animalRunning") then
         return false, "ContextMenu_Horse_IsRunning"
     end
@@ -96,7 +94,7 @@ end
 ---@param accessories ArrayList<InventoryItem>
 ---@param horse IsoAnimal
 ---@param mountPosition MountPosition?
-function AttachmentsManager.addEquipOptions(context, player, accessories, horse, mountPosition)
+function AttachmentsClient.addEquipOptions(context, player, accessories, horse, mountPosition)
     --- EQUIP OPTIONS
     local uniques = {}
 
@@ -150,7 +148,7 @@ function AttachmentsManager.addEquipOptions(context, player, accessories, horse,
                 local option = context:addOption(
                     txt,
                     player,
-                    AttachmentsManager.equipAccessory,
+                    AttachmentsClient.equipAccessory,
                     horse,
                     accessory,
                     slot,
@@ -159,7 +157,7 @@ function AttachmentsManager.addEquipOptions(context, player, accessories, horse,
                 option.iconTexture = accessory:getTexture()
 
                 -- add a replace tooltip if slot is already occupied
-                local oldAccessory = Attachments.getAttachedItem(horse, slot)
+                local oldAccessory = Attachments.get(horse, slot)
                 if oldAccessory then
                     local tooltip = ISWorldObjectContextMenu.addToolTip()
 
@@ -167,7 +165,7 @@ function AttachmentsManager.addEquipOptions(context, player, accessories, horse,
                     local txt = HorseUtils.formatTemplate(
                         getText("ContextMenu_Horse_Replace"),
                         {
-                            old=oldAccessory:getDisplayName(),
+                            old=getItemNameFromFullType(oldAccessory),
                             new=accessory:getDisplayName(),
                             slot=slot
                         }
@@ -191,16 +189,16 @@ end
 
 ---@param context ISContextMenu
 ---@param player IsoPlayer
----@param attachedItems {item: InventoryItem, slot: AttachmentSlot}[]
+---@param attachedItems {item: string, slot: AttachmentSlot}[]
 ---@param horse IsoAnimal
 ---@param mountPosition MountPosition?
-function AttachmentsManager.addUnequipOptions(context, player, attachedItems, horse, mountPosition)
+function AttachmentsClient.addUnequipOptions(context, player, attachedItems, horse, mountPosition)
     --- UNEQUIP OPTIONS
     if #attachedItems > 0 then
         -- sort by display name
         table.sort(attachedItems, function(a, b)
             -- sort direction is swapped here bcs we use "addOptionOnTop", so it adds in the inverse direction
-            return a.item:getDisplayName() > b.item:getDisplayName()
+            return getItemNameFromFullType(a.item) > getItemNameFromFullType(b.item)
         end)
 
         -- parse attachments and add unequip option
@@ -211,20 +209,19 @@ function AttachmentsManager.addUnequipOptions(context, player, attachedItems, ho
             -- format unequip translation entry with item name
             local txt = HorseUtils.formatTemplate(
                 getText("ContextMenu_Horse_Unequip"),
-                {old=item:getDisplayName()}
+                {old=getItemNameFromFullType(item)}
             )
 
             -- create the option to unequip the attachment
             local option = context:addOptionOnTop(
                 txt,
                 player,
-                AttachmentsManager.unequipAccessory,
+                AttachmentsClient.unequipAccessory,
                 horse,
-                item, 
                 attachment.slot,
                 mountPosition
             )
-            option.iconTexture = item:getTexture()
+            option.iconTexture = getTexture(getItemTextureName(item))
 
             if not mountPosition then
                 option.notAvailable = true
@@ -239,7 +236,7 @@ function AttachmentsManager.addUnequipOptions(context, player, attachedItems, ho
             local option = context:addOptionOnTop(
                 getText("ContextMenu_Horse_Unequip_All"),
                 player,
-                AttachmentsManager.unequipAllAccessory,
+                AttachmentsClient.unequipAllAccessory,
                 horse,
                 attachedItems,
                 mountPosition
@@ -261,8 +258,8 @@ end
 ---@param horse IsoAnimal
 ---@param context ISContextMenu
 ---@param accessories ArrayList<InventoryItem>
-AttachmentsManager.populateHorseContextMenu = function(player, horse, context, accessories)
-    local attachedItems = Attachments.getAttachedItems(horse)
+AttachmentsClient.populateHorseContextMenu = function(player, horse, context, accessories)
+    local attachedItems = Attachments.getAll(horse)
 
     if accessories:size() < 1 and #attachedItems < 1 then
         return
@@ -271,7 +268,7 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
     -- create gear submenu, even if no gear is available
     local gearOption = context:addOption(getText("ContextMenu_Horse_Gear"))
 
-    local canChangeGear, reason = AttachmentsManager.canChangeAttachments(player, horse)
+    local canChangeGear, reason = AttachmentsClient.canChangeAttachments(player, horse)
 
     if not canChangeGear then
         if reason then
@@ -291,15 +288,15 @@ AttachmentsManager.populateHorseContextMenu = function(player, horse, context, a
 
     local mountPosition = MountingUtility.getNearestMountPosition(player, horse)
 
-    AttachmentsManager.addEquipOptions(gearSubMenu, player, accessories, horse, mountPosition)
-    AttachmentsManager.addUnequipOptions(gearSubMenu, player, attachedItems, horse, mountPosition)
+    AttachmentsClient.addEquipOptions(gearSubMenu, player, accessories, horse, mountPosition)
+    AttachmentsClient.addUnequipOptions(gearSubMenu, player, attachedItems, horse, mountPosition)
 end
 
 ---Main handler for horse context menu.
 ---@param playerNum integer
 ---@param context ISContextMenu
 ---@param animals IsoAnimal[]
-AttachmentsManager.onClickedAnimalForContext = function(playerNum, context, animals)
+AttachmentsClient.onClickedAnimalForContext = function(playerNum, context, animals)
     local player = getSpecificPlayer(playerNum)
     
     -- retrieve accessories in player inventory now to not call it for every animals
@@ -320,41 +317,11 @@ AttachmentsManager.onClickedAnimalForContext = function(playerNum, context, anim
                 break
             end
 
-            AttachmentsManager.populateHorseContextMenu(player, animal, horseSubMenu, accessories)
+            AttachmentsClient.populateHorseContextMenu(player, animal, horseSubMenu, accessories)
         end
     until true end
 end
 
-Events.OnClickedAnimalForContext.Add(AttachmentsManager.onClickedAnimalForContext)
+Events.OnClickedAnimalForContext.Add(AttachmentsClient.onClickedAnimalForContext)
 
----@param playerNum integer
----@param context ISContextMenu
----@param items InventoryItem[]|umbrella.ContextMenuItemStack[]
-AttachmentsManager.OnFillInventoryObjectContextMenu = function(playerNum, context, items)
-    -- get every single items
-    local itemList = {}
-    for i = 1,#items do
-		local item = items[i]
-		if not instanceof(item, "InventoryItem") then
-            ---@cast item umbrella.ContextMenuItemStack
-            local items = item.items
-            for j = 1, #items do
-                table.insert(itemList, items[j])
-            end
-        else
-            table.insert(itemList, item)
-        end
-    end
-
-    local equipOption = context:getOptionFromName(getText("ContextMenu_Equip_Primary"))
-    local unequipOption = context:getOptionFromName(getText("ContextMenu_Equip_Secondary"))
-
-    for i = 1, #itemList do repeat
-        local item = itemList[i]
-        
-    until true end
-end
-
-Events.OnFillInventoryObjectContextMenu.Add(AttachmentsManager.OnFillInventoryObjectContextMenu)
-
-return AttachmentsManager
+return AttachmentsClient

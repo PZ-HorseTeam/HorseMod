@@ -79,9 +79,6 @@ end
 ---@param player IsoPlayer
 ---@param mountPosition MountPosition
 function Mounting.dismountHorse(player, horse, mountPosition)
-    --- pathfind to the mount position
-    MountingUtility.pathfindToHorse(player, horse, mountPosition)
-
     -- dismount
     local hasSaddle = Attachments.getSaddle(horse) ~= nil
     local action = DismountAction:new(

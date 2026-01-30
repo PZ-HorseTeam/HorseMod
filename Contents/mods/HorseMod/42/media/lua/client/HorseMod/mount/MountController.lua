@@ -549,7 +549,7 @@ local PLAYER_SYNC_TUNER = 0.8
 ---@field vegetationLingerStartMult number
 ---
 ---Current movement speed in squares/s.
----@field currentSpeed number
+---@field targetSpeed number
 ---
 ---Used to calculate if the player should fall while in trees. Chance increases the longer they stay in trees.
 ---@field timeInTrees number
@@ -743,21 +743,12 @@ function MountController:updateSpeed(input, deltaTime)
     -- speed/locomotion
     local moving = (input.movement.x ~= 0 or input.movement.y ~= 0)
     local target = (moving and (input.run and RUN_SPEED * gallopMultiplier or WALK_SPEED * walkMultiplier)) or 0.0
-    local rate = (target > self.currentSpeed) and ACCEL_UP or DECEL_DOWN
+    local rate = (target > self.targetSpeed) and ACCEL_UP or DECEL_DOWN
     
-    -- verify the player isn't dismounting, and if so slow down the horse to a stop
-    if rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
-        local queue = ISTimedActionQueue.getTimedActionQueue(rider)
-        local currentAction = queue.current
-        if currentAction == DismountAction.Type then
-            target = 0.0
-            rate = DECEL_DOWN
-        end
-    end
-    self.currentSpeed = approach(self.currentSpeed, target, rate, deltaTime)
+    self.targetSpeed = approach(self.targetSpeed, target, rate, deltaTime)
     
-    if self.currentSpeed < 0.0001 then
-        self.currentSpeed = 0
+    if self.targetSpeed < 0.0001 then
+        self.targetSpeed = 0
     end
 end
 
@@ -789,7 +780,7 @@ end
 
 ---@return MovementState
 function MountController:getMovementState()
-    if self.currentSpeed <= 0 then
+    if self.targetSpeed <= 0 then
         return "idle"
     elseif self.mount.pair:getAnimationVariableBoolean(AnimationVariable.GALLOP) then
         return "gallop"
@@ -806,11 +797,21 @@ function MountController:toggleTrot()
     self.mount.pair:setAnimationVariable(AnimationVariable.TROT, not current)
 end
 
+---Real speed in distance per second. Needed because `getMovementSpeed` is per tick.
+---@return number
+function MountController:getCurrentSpeed()
+    return self.mount.pair.mount:getMovementSpeed() / GameTime.getInstance():getTimeDelta()
+end
+
+function MountController:canJump()
+    local mount = self.mount.pair.mount
+    return mount:getVariableBoolean(AnimationVariable.GALLOP)
+        and self:getCurrentSpeed() > 6
+        and not self.mount.pair:getAnimationVariableBoolean(AnimationVariable.JUMP)
+end
 
 function MountController:jump()
     self.mount.pair:setAnimationVariable(AnimationVariable.JUMP, true)
-
-    self.mount.pair.rider:setIgnoreMovement(true)
     self.mount.pair.rider:setIgnoreInputsForDirection(true)
 end
 
@@ -861,10 +862,10 @@ function MountController:update(input)
     end
     self:updateSpeed(input, deltaTime)
 
-    if moving and self.currentSpeed > 0
+    if moving and self.targetSpeed > 0
         and not rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
         local currentDirection = mount:getDir()
-        local velocity = currentDirection:ToVector():setLength(self.currentSpeed)
+        local velocity = currentDirection:ToVector():setLength(self.targetSpeed)
         moveWithCollision(rider, mount, velocity, deltaTime, isGalloping)
 
         mount:setVariable("bPathfind", true)
@@ -919,7 +920,7 @@ function MountController.new(mount)
             mount = mount,
             turnAcceleration = 0,
             lastTurnWasRight = false,
-            currentSpeed = 0.0,
+            targetSpeed = 0.0,
             vegetationLingerTime = 0.0,
             vegetationLingerStartMult = 1.0,
             timeInTrees = 0.0,

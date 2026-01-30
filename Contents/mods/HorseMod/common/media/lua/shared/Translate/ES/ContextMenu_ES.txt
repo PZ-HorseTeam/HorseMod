@@ -1,4 +1,8 @@
 ContextMenu_ES = {
+    /*
+        Translated by carlesturo
+    */
+
     /* Riding */
     ContextMenu_Horse_Mount = "Montar %1"
     ContextMenu_Horse_Dismount = "Desmontar %1"

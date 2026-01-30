@@ -1,6 +1,11 @@
+if isClient() then
+    return
+end
+
 ---@namespace HorseMod
 
 ---REQUIREMENTS
+local Attachments = require("HorseMod/attachments/Attachments")
 local HorseManager = require("HorseMod/HorseManager")
 local HorseModData = require("HorseMod/HorseModData")
 
@@ -108,20 +113,15 @@ ContainerManager.setContainerData = function(worldItem, containerInfo)
     local md = worldItem:getItem():getModData()
     md.HorseMod = md.HorseMod or {}
     md.HorseMod.container = containerInfo
+
+    worldItem:transmitModData()
 end
 
 ---Retrieve possible container information from the world item mod data. If it isn't a horse container, then nil should be returned.
 ---@param worldItem IsoWorldInventoryObject
 ---@return ContainerInformation?
 ContainerManager.getHorseContainerData = function(worldItem)
-    local item = worldItem:getItem()
-    if not item then return nil end
-    local md_horse = item:getModData().HorseMod
-    local container = md_horse and md_horse.container
-    if container then
-        return container
-    end
-    return nil
+    return Attachments.getHorseContainerData(worldItem)
 end
 
 ---Creates and initialize an invisible world container for the horse attachment. Every items from the `accessory` container are transfered to the invisible container, and the container information is registered to the horse.
@@ -158,7 +158,9 @@ ContainerManager.initContainer = function(player, horse, slot, containerBehavior
 
     -- transfer everything to the invisible container
     ContainerManager.transferAll(player, srcContainer, destContainer)
-    refreshInventories(player)
+    if not isServer() then
+        refreshInventories(player)
+    end
 
     -- register in the data of the horse the container being attached
     ContainerManager.registerContainerInformation(horse, slot, worldItem)
@@ -190,12 +192,10 @@ ContainerManager.removeContainer = function(player, horse, slot, accessory)
     assert(square ~= nil, "Horse isn't on a square.")
 
     square:transmitRemoveItemFromSquare(worldItem)
-    worldItem:removeFromWorld()
-    worldItem:removeFromSquare()
-    ---@diagnostic disable-next-line
-    worldItem:setSquare(nil)
 
-    refreshInventories(player)
+    if not isServer() then
+        refreshInventories(player)
+    end
 
     -- sync cached and saved informations
     ContainerManager.registerContainerInformation(horse, slot, nil)
@@ -335,11 +335,10 @@ end
 ContainerManager.moveWorldItem = function(squareHorse, containerInfo, worldItem, horse)
     -- remove the item from its square
     local item = worldItem:getItem()
-    worldItem:removeFromSquare()
-    worldItem:removeFromWorld()
+    worldItem:getSquare():transmitRemoveItemFromSquare(worldItem)
 
     -- move it to the new square
-    local worldItem = squareHorse:AddWorldInventoryItem(item, 0, 0, 0):getWorldItem()
+    local worldItem = squareHorse:AddWorldInventoryItem(item, 0, 0, 0, true):getWorldItem()
 
     -- mark the world item as a horse mod container to more easily find later
     ContainerManager.setContainerData(worldItem, containerInfo)

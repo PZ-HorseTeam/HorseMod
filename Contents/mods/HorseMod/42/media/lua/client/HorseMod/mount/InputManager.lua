@@ -147,9 +147,9 @@ function InputManager:keyPressed(key)
     if key == ModOptions.HorseTrotButton then
         self.mount.controller:toggleTrot()
     elseif key == ModOptions.HorseJumpButton then
-        if self.mount.pair.mount:getVariableBoolean(AnimationVariable.GALLOP)
-                and not self.mount.pair:getAnimationVariableBoolean(AnimationVariable.JUMP) then
-            self.mount.controller:jump()
+        local controller = self.mount.controller
+        if controller:canJump() then
+            controller:jump()
         end
     end
 end

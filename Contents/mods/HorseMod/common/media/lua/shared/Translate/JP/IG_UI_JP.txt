@@ -8,6 +8,7 @@ IGUI_JP = {
     IGUI_AnimalType_mare = "雌馬"
     IGUI_AnimalType_filly = "若い雌馬"
 
+    IGUI_AnimalType_Global_horse = "馬"
     IGUI_Animal_Group_horse = "馬"
     IGUI_Horse_Slot = "部位" /* for attachments */
 

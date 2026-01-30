@@ -28,7 +28,7 @@ local function doHorseInteractionMenu(context, player, animal)
         if not mountPosition then
             option.notAvailable = true
             tooltip = ISWorldObjectContextMenu.addToolTip()
-            tooltip.description = getText("ContextMenu_Horse_NoMountPoint")
+            tooltip.description = getText("ContextMenu_Horse_NoMountPosition")
         elseif not canMount then
             option.notAvailable = true
             if reason then
@@ -40,10 +40,16 @@ local function doHorseInteractionMenu(context, player, animal)
             option.toolTip = tooltip
         end
     else
-        context:addOption(
+        local dismountPosition = MountingUtility.getNearestMountPosition(player, animal)
+        local dismountOption = context:addOption(
             getText("ContextMenu_Horse_Dismount", animal:getFullName()),
-            player, Mounting.dismountHorse, playerMount
+            player, Mounting.dismountHorse, playerMount, dismountPosition
         )
+        if not dismountPosition then
+            dismountOption.notAvailable = true
+            local tooltip = ISWorldObjectContextMenu.addToolTip()
+            tooltip.description = getText("ContextMenu_Horse_NoMountPosition")
+        end
     end
 end
 

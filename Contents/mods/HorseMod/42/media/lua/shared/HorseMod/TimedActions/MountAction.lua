@@ -102,11 +102,7 @@ end
 
 
 function MountAction:stop()
-    local character = self.character
-    local pair = MountPair.new(character, self.animal)
-    pair:setAnimationVariable(AnimationVariable.RIDING_HORSE, false)
-    character:setVariable(AnimationVariable.MOUNTING_HORSE, false)
-
+    self.character:setVariable(AnimationVariable.MOUNTING_HORSE, false)
     ISBaseTimedAction.stop(self)
 end
 
