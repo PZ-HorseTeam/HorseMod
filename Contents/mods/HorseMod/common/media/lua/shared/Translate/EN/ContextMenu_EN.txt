@@ -25,4 +25,7 @@ ContextMenu_EN = {
     ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "Can't change gear while mounting."
     ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "Can't change mounted horse's gear."
     ContextMenu_Horse_HasRider = "Horse is already mounted by another character."
+
+    /* Food */
+    ContextMenu_FoodType_Horse = "Horse"
 }
