@@ -865,9 +865,7 @@ function MountController:update(input)
     local doTurn = true
     local isJumping = self:isJumping()
     if rider:getIgnoreMovement() or rider:isIgnoreInputsForDirection() then
-        rider:addLineChatElement("Checking jump")
         if not isJumping or not isGalloping then
-            rider:addLineChatElement("Stopping jump")
             self:stopJump()
         else
             doTurn = false
