@@ -30,13 +30,11 @@ end
 local function tryRemountPlayer(player)
     local modData = player:getModData()
     if not modData.remountAnimal then
-        print("[HORSE] no remountAnimal")
         return
     end
 
     local square = player:getSquare()
     if not square then
-        print("[HORSE] no square")
         return
     end
 

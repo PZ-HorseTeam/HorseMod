@@ -54,6 +54,36 @@ function ISPetAnimal:update()
 end
 
 
+local _originalPetAnimalComplete = ISPetAnimal.complete
+
+function ISPetAnimal:complete()
+    if HorseUtils.isHorse(self.animal) then
+        self.character:setVariable("pettingMounted", false)
+    end
+    return _originalPetAnimalComplete(self)
+end
+
+
+local _originalPetAnimalPerform = ISPetAnimal.perform
+
+function ISPetAnimal:perform()
+    if HorseUtils.isHorse(self.animal) then
+        self.character:setVariable("pettingMounted", false)
+    end
+    return _originalPetAnimalPerform(self)
+end
+
+
+local _originalPetAnimalStop = ISPetAnimal.stop
+
+function ISPetAnimal:stop()
+    if HorseUtils.isHorse(self.animal) then
+        self.character:setVariable("pettingMounted", false)
+    end
+    return _originalPetAnimalStop(self)
+end
+
+
 local _originalPetAnimalNew = ISPetAnimal.new
 
 function ISPetAnimal:new(character, animal)

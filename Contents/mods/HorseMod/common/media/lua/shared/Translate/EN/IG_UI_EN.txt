@@ -4,6 +4,7 @@ IGUI_EN = {
     IGUI_AnimalType_mare = "Mare"
     IGUI_AnimalType_filly = "Filly"
 
+    IGUI_AnimalType_Global_horse = "Horse"
     IGUI_Animal_Group_horse = "Horse"
     IGUI_Horse_Slot = "Slot" /* for attachments */
 

@@ -3,6 +3,7 @@
 local Attachments = require("HorseMod/attachments/Attachments")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
+local AttachmentVisuals = require("HorseMod/attachments/AttachmentVisuals")
 
 -- it might be better to redesign this as a generic attachment animator, but i'll leave that decision up to sim as he did most of the attachments design
 
@@ -39,7 +40,7 @@ end
 function ReinsManager:update()
     local mountPair = self.mount.pair
     local mount = mountPair.mount
-    local reinsItem = Attachments.getAttachedItem(mount, "Reins")
+    local reinsItem = AttachmentVisuals.get(mount, "Reins")
     
     if reinsItem then
         local movementState = self.mount.controller:getMovementState()

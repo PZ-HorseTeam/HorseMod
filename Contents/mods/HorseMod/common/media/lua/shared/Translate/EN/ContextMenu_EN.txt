@@ -10,7 +10,7 @@ ContextMenu_EN = {
     ContextMenu_Horse_No_Compatible_Gear = "No compatible gear to equip on the horse."
     ContextMenu_Horse_Unequip = "Unequip {old}"
     ContextMenu_Horse_Unequip_All = "Unequip All"
-    ContextMenu_Horse_NoMountPosition = "No position to reach around the horse."
+    ContextMenu_Horse_NoMountPosition = "Cannot reach the horse."
 
     /* Attachment Slots */
     ContextMenu_Horse_Slot_Saddle = "saddle"

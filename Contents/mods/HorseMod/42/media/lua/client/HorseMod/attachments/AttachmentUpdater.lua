@@ -2,10 +2,9 @@
 
 ---REQUIREMENTS
 local Attachments = require("HorseMod/attachments/Attachments")
+local AttachmentVisuals = require("HorseMod/attachments/AttachmentVisuals")
 local HorseManager = require("HorseMod/HorseManager")
-local HorseUtils = require("HorseMod/Utils")
 local ManeManager = require("HorseMod/attachments/ManeManager")
-local ContainerManager = require("HorseMod/attachments/ContainerManager")
 local HorseModData = require("HorseMod/HorseModData")
 
 ---@class AttachmentUpdater : System
@@ -26,7 +25,7 @@ AttachmentUpdater.reapplyFor = function(horse)
 
     for slot, fullType in pairs(bySlot) do
         -- try to retrieve the item from attached items, else create a fresh one
-        local item = Attachments.getAttachedItem(horse, slot)
+        local item = AttachmentVisuals.get(horse, slot)
         if not item then
             item = inv:AddItem(fullType)
         end
@@ -36,17 +35,12 @@ AttachmentUpdater.reapplyFor = function(horse)
             ManeManager.setupMane(horse, item, slot)
         end
 
-        Attachments.setAttachedItem(horse, slot, item)
+        AttachmentVisuals.set(horse, slot, item)
     end
 
     -- set horse as reapplied
     IS_REAPPLIED[horse] = true
 end
-
-
-
-
-
 
 
 local UPDATE_RATE = 10
@@ -66,7 +60,6 @@ function AttachmentUpdater:update(horses, delta)
 
     for i = TICK_AMOUNT, size, update_rate do
         local horse = horses[i] --[[@as IsoAnimal]]
-        ContainerManager.track(horse)
 
         -- if horse model is visible, set it as needing an update if not already reapplied
         local status = IS_REAPPLIED[horse]
@@ -85,25 +78,6 @@ function AttachmentUpdater:update(horses, delta)
 end
 
 
----Handle horse death.
----@param character IsoGameCharacter
-AttachmentUpdater.onCharacterDeath = function(character)
-    if not character:isAnimal() or not HorseUtils.isHorse(character) then
-        return
-    end
-    ---@cast character IsoAnimal
-
-    ManeManager.removeManes(character)
-    Attachments.unequipAllAttachments(character)
-    -- HorseAttachmentGear.dropHorseGearOnDeath(character)
-end
-
-Events.OnCharacterDeath.Add(AttachmentUpdater.onCharacterDeath)
-
-
-
-
-
 ---@TODO remove/comment for proper release, this is used to hot reload in-game for testing
 -- for i, system in ipairs(HorseManager.systems) do
 --     ---@diagnostic disable-next-line
@@ -114,10 +88,6 @@ Events.OnCharacterDeath.Add(AttachmentUpdater.onCharacterDeath)
 
 ---Add system for horses
 table.insert(HorseManager.systems, AttachmentUpdater)
-
-
-
-
 
 
 return AttachmentUpdater

@@ -31,6 +31,11 @@
         </m_Conditions>
     </m_Transitions>
     <m_Events>
+        <m_EventName>HorseFlee</m_EventName>
+        <m_TimePc>0.15</m_TimePc>
+        <m_ParameterValue></m_ParameterValue>
+    </m_Events>
+    <m_Events>
         <m_EventName>SetVariable</m_EventName>
         <m_Time>End</m_Time>
         <m_ParameterValue>HorseFallBackGetUp=true</m_ParameterValue>

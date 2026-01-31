@@ -29,6 +29,11 @@
         <m_BoolValue>false</m_BoolValue>
     </m_Conditions>
     <m_Conditions>
+        <m_Name>HorseGallop</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_BoolValue>false</m_BoolValue>
+    </m_Conditions>
+    <m_Conditions>
         <m_Name>animalRunning</m_Name>
         <m_Type>BOOL</m_Type>
         <m_BoolValue>false</m_BoolValue>

@@ -17,3 +17,12 @@ option HorseMod.GallopSpeed {
     page = HorseMod,
     translation = HorseMod_GallopSpeed,
 }
+
+option HorseMod.StaminaMultiplier {
+    type = double,
+    min = 0.1,
+    max = 2,
+    default = 1,
+    page = HorseMod,
+    translation = HorseMod_StaminaMultiplier,
+}

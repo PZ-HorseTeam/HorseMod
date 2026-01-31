@@ -13,13 +13,13 @@ local Stamina = {
 
 Stamina.StaminaChange = {
     -- while galloping
-    RUN = -4,
+    RUN = -2,
     -- moving w/ HorseTrot true
-    TROT = 1.5,
+    TROT = 3.0,
     -- moving but not running/trotting
-    WALK = 3.0,
+    WALK = 5.0,
     -- standing still
-    IDLE = 6.0
+    IDLE = 7.5
 }
 
 

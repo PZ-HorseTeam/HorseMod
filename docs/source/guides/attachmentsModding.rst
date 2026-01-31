@@ -8,7 +8,7 @@ The attachments API functions for modders are defined in a module :lua:obj:`Hors
   If you want more in-depth information of how the attachment system works internally, please refer to :doc:`attachmentsDev`.
 
 .. important::
-  A full example mod showcasing how to create new attachments for the horse is available on the HorseMod GitHub repository `here <https://github.com/demiurgeQuantified/HorseMod/HorseModExampleMod>`_.
+  A full example mod showcasing how to create new attachments for the horse is available in the PZ-HorseTeam GitHub repositories `here <https://github.com/PZ-HorseTeam/Example-mod>`_.
 
 Creating a new slot
 -------------------
@@ -24,7 +24,7 @@ To add a new slot, add a new :lua:class:`HorseMod.SlotDefinition` entry to the :
       modelAttachment = "head",
   })
 
-The slots are first defined in the table :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions`, which is then processed when the server Lua folder gets loaded to generate the various tables used by the attachment system. See :ref:`attachmentsload-label` for more details on that process.
+The slots are first defined in the table :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions`, which is later processed to generate the various tables used by the attachment system. See :ref:`attachmentdata-label` for more details on that process.
 
 .. hint::
   A full list of available slots in the Horse mod by default can be found in :ref:`availableslots-label`.

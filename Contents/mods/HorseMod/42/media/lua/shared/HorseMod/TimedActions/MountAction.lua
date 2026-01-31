@@ -4,12 +4,14 @@ local MountPair = require("HorseMod/MountPair")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Mounts = require("HorseMod/Mounts")
 local MountingUtility = require("HorseMod/mounting/MountingUtility")
+local AnimationEvent = require("HorseMod/definitions/AnimationEvent")
 
+local IS_SERVER = isServer()
 
 ---@namespace HorseMod
 
 
----@class MountAction : ISBaseTimedAction
+---@class MountAction : ISBaseTimedAction, umbrella.NetworkedTimedAction
 ---
 ---@field character IsoPlayer
 ---
@@ -58,10 +60,17 @@ function MountAction:update()
     animal:getPathFindBehavior2():reset()
     
     character:setDirectionAngle(self.lockDir)
+end
 
-    if character:getVariableBoolean(AnimationVariable.MOUNT_FINISHED) == true then
-        character:setVariable(AnimationVariable.MOUNT_FINISHED, false)
-        self:forceComplete()
+
+function MountAction:animEvent(event, parameter)
+    if event == AnimationEvent.MOUNTING_COMPLETE then
+        if IS_SERVER then
+            ---@diagnostic disable-next-line: need-check-nil
+            self.netAction:forceComplete()
+        else
+            self:forceComplete()
+        end
     end
 end
 
@@ -69,7 +78,6 @@ end
 function MountAction:start()
     local character = self.character
     character:setVariable(AnimationVariable.MOUNTING_HORSE, true)
-    character:setVariable(AnimationVariable.MOUNT_FINISHED, false)
     character:setVariable(AnimationVariable.NO_CANCEL, false)
 
     -- start animation
@@ -85,12 +93,16 @@ function MountAction:start()
 end
 
 
-function MountAction:stop()
-    local character = self.character
-    local pair = MountPair.new(character, self.animal)
-    pair:setAnimationVariable(AnimationVariable.RIDING_HORSE, false)
-    character:setVariable(AnimationVariable.MOUNTING_HORSE, false)
+function MountAction:serverStart()
+    ---@cast self.netAction -nil
+    ---@diagnostic disable-next-line: param-type-mismatch
+    emulateAnimEventOnce(self.netAction, 2500, AnimationEvent.MOUNTING_COMPLETE, nil)
+    return true
+end
 
+
+function MountAction:stop()
+    self.character:setVariable(AnimationVariable.MOUNTING_HORSE, false)
     ISBaseTimedAction.stop(self)
 end
 

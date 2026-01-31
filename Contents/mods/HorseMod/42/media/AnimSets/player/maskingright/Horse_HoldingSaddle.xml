@@ -12,7 +12,7 @@
         <m_Value>Horse_HoldingSaddle</m_Value>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>EquippingSaddle</m_Name>
+        <m_Name>hastimedactions</m_Name>
         <m_Type>BOOL</m_Type>
         <m_Value>false</m_Value>
     </m_Conditions>

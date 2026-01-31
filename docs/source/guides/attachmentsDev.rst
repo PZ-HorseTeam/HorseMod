@@ -2,21 +2,19 @@ Attachments system description
 ==============================
 Attachments on horses are handled by a bunch of different system spread across multiple modules and classes. The system currently allows you to associate an :lua:alias:`HorseMod.AttachmentSlot` to an `attachment point <https://pzwiki.net/wiki/Attachment_(scripts)>`_ on the horse model and define slots various items can occupy with different caracteristics defined as :lua:class:`HorseMod.AttachmentDefinition`.
 
+.. _attachmentdata-label:
+
 AttachmentData
 --------------
 :lua:obj:`HorseMod.attachments.AttachmentData` is the main module used to store all the attachment slots and definitions. Attachments of a specific horse are stored in a :lua:class:`HorseMod.AttachmentsModData` instance associated to the horse using the :lua:obj:`HorseMod.HorseModData` system. Containers information are stored in :lua:class:`HorseMod.ContainersModData` instances and manes in :lua:class:`HorseMod.ManesModData` instances.
 
-.. _attachmentsload-label:
-
-AttachmentsLoad
----------------
-The file `server/HorseMod/AttachmentsLoad.lua` is used to load slot definitions in :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions` and generate the various tables used by the attachment system from :lua:class:`HorseMod.SlotDefinition` entries:
+The following tables are generated at runtime from :lua:obj:`HorseMod.attachments.AttachmentData.slotsDefinitions`:
 
 * :lua:obj:`HorseMod.attachments.AttachmentData.slots`
 * :lua:obj:`HorseMod.attachments.AttachmentData.maneSlots`
 * :lua:obj:`HorseMod.attachments.AttachmentData.containerItems`
 
-It will also verify that the provided attachments are of the right format and log errors if not:
+It will verify that the provided attachments are of the right format and log errors if not:
 
 * Checks that every slot definition has a :lua:obj:`HorseMod.SlotDefinition.modelAttachment` point defined.
 * Creates the apparel location in the ``Animal`` attached locations group for every slot defined.
@@ -29,9 +27,16 @@ Manes are a special type of attachment that can be colored and are made of multi
 
 In the future, we plan to expand this system by allowing players to customize their horse's mane color and style through in-game actions or items.
 
+Attachment visuals
+------------------
+The visuals of an attachment are created by the :lua:obj:`HorseMod.attachments.AttachmentVisuals` module. When an attachment is equipped, an ``InventoryItem`` is created from the full type of the attachment and equipped to the matching attachment slot. Note that the item is not persistent, is only used for its model, and does not exist on the server.
+
+In general, adding/removing attachments should handle the visuals for you. You should only need to change them manually in special cases, for example reins animations are implemented by changing the visuals for the reins without changing the actual attached item.
+Do not expect any changes to be persistent: visuals are lost any time the animal goes offscreen, and recreated from their attachments when they go onscreen, as detailed below.
+
 Attachment reapplying
----------------------
-Attachments need to be reapplied whenever a horse model becomes visible again, which can be checked with ``IsoAnimal:getModel()`` (nil means not visible). This is handled by the :lua:obj:`HorseMod.attachments.AttachmentUpdater` module, which is called every in-game tick but updates only a handful of horses per tick to spread the load over multiple ticks.
+#####################
+Attachment visuals need to be reapplied whenever a horse model becomes visible again, which can be checked with ``IsoAnimal:getModel()`` (nil means not visible). This is handled by the :lua:obj:`HorseMod.attachments.AttachmentUpdater` module, which is called every in-game tick but updates only a handful of horses per tick to spread the load over multiple ticks.
 
 It detects whenever there is a change of visibility for horses and only triggers the reapplying process when a horse becomes visible again by using :lua:obj:`HorseMod.attachments.AttachmentUpdater.reapplyFor`. This will simply iterate every attachments stored in the :lua:class:`HorseMod.AttachmentsModData` of the horse and attach back the InventoryItem if it can be found, or creates a fresh one if its reference can't be found, which is usually the case whenever a horse was reloaded and not when it switches between visible and non visible.
 

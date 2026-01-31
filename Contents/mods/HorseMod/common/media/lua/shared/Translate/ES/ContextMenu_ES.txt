@@ -1,0 +1,32 @@
+ContextMenu_ES = {
+    /*
+        Translated by carlesturo
+    */
+
+    /* Riding */
+    ContextMenu_Horse_Mount = "Montar %1"
+    ContextMenu_Horse_Dismount = "Desmontar %1"
+
+    /* Attachments */
+    ContextMenu_Horse_Gear = "Equipo"
+    ContextMenu_Horse_Equip = "Equipar {new} en {slot}"
+    ContextMenu_Horse_Replace = "Cambiar {old} por {new}"
+    ContextMenu_Horse_No_Compatible_Gear = "No hay equipamiento compatible para el caballo."
+    ContextMenu_Horse_Unequip = "Quitar {old}"
+    ContextMenu_Horse_Unequip_All = "Quitar todo"
+    ContextMenu_Horse_NoMountPosition = "No hay posición válida alrededor del caballo."
+
+    /* Attachment Slots */
+    ContextMenu_Horse_Slot_Saddle = "Silla"
+    ContextMenu_Horse_Slot_Saddlebags = "Alforjas"
+    ContextMenu_Horse_Slot_Reins = "Riendas"
+
+    /* Unavailability reasons for options */
+    ContextMenu_Horse_NotAdult = "No es un caballo adulto."
+    ContextMenu_Horse_IsRunning = "El caballo está corriendo."
+    ContextMenu_Horse_IsDead = "El caballo está muerto."
+    ContextMenu_Horse_IsAlreadyRiding = "El caballo ya está siendo montado."
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "No se puede cambiar el equipamiento mientras estás montado."
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "No se puede cambiar el equipamiento del caballo mientras está montado."
+    ContextMenu_Horse_HasRider = "El caballo ya está siendo montado por otro personaje."
+}

@@ -2,35 +2,20 @@
 
 ---REQUIREMENTS
 local Attachments = require("HorseMod/attachments/Attachments")
-local ContainerManager = require("HorseMod/attachments/ContainerManager")
-local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
+local BaseGearAction = require("HorseMod/TimedActions/BaseGearAction")
 
 ---Timed action for equipping gear on a horse.
----@class HorseEquipGear : ISBaseTimedAction, umbrella.NetworkedTimedAction
----@field horse IsoAnimal
+---@class HorseEquipGear : BaseGearAction
 ---@field accessory InventoryItem
 ---@field attachmentDef AttachmentDefinition
 ---@field equipBehavior EquipBehavior
 ---@field slot AttachmentSlot
 ---@field side string
-local HorseEquipGear = ISBaseTimedAction:derive("HorseMod_HorseEquipGear")
+local HorseEquipGear = BaseGearAction:derive("HorseMod_HorseEquipGear")
 
-function HorseEquipGear:waitToStart()
-    local character = self.character
-    character:faceThisObject(self.horse)
-    return character:shouldBeTurning()
-end
-
----@return boolean
-function HorseEquipGear:isValid()
-    return self.horse and self.horse:isExistInTheWorld()
-end
 
 function HorseEquipGear:start()
     local equipBehavior = self.equipBehavior
-    
-    -- set the action animation
-    self.character:setVariable(AnimationVariable.EQUIP_FINISHED, false)
 
     local anim = equipBehavior.anim
     local animationVar = anim and anim[self.side] or "Loot"
@@ -45,31 +30,19 @@ function HorseEquipGear:start()
     self.character:faceThisObject(self.horse)
 end
 
-function HorseEquipGear:update()
-    local horse = self.horse
-    local character = self.character
-    character:faceThisObject(horse)
-    horse:getPathFindBehavior2():reset()
-
-    -- end when
-    local maxTime = self.maxTime
-    if maxTime == -1 and character:getVariableBoolean(AnimationVariable.EQUIP_FINISHED) then
-        self:forceComplete()
-    end
-end
-
-function HorseEquipGear:stop()
-    ISBaseTimedAction.stop(self)
-end
-
-
-function HorseEquipGear:perform()
-    ISBaseTimedAction.perform(self)
-end
-
 
 function HorseEquipGear:complete()
-    -- remove item from player's inventory and add to horse inventory
+    -- player does not have the attachment
+    if not self.character:getInventory():contains(self.accessory) then
+        return false
+    end
+
+    -- already has an attachment in that slot
+    if Attachments.get(self.horse, self.slot) ~= nil then
+        return false
+    end
+
+    -- remove item from player's inventory
     local characterInventory = self.character:getInventory()
     characterInventory:Remove(self.accessory)
     sendRemoveItemFromContainer(characterInventory, self.accessory)
@@ -78,6 +51,7 @@ function HorseEquipGear:complete()
     -- init container
     local containerBehavior = self.attachmentDef.containerBehavior
     if containerBehavior then
+        local ContainerManager = require("HorseMod/attachments/ContainerManager")
         ContainerManager.initContainer(
             self.character,
             self.horse,
@@ -87,15 +61,18 @@ function HorseEquipGear:complete()
         )
     end
 
-    -- add the item to the horse inventory
-    local horseInventory = self.horse:getInventory()
-    horseInventory:AddItem(self.accessory)
-    sendAddItemToContainer(horseInventory, self.accessory)
-
     -- set new accessory
-    Attachments.setAttachedItem(self.horse, self.slot, self.accessory)
+    local AttachmentManager = require("HorseMod/attachments/AttachmentManager")
+    AttachmentManager.setAttachedItem(self.horse, self.slot, self.accessory)
 
     return true
+end
+
+
+function HorseEquipGear:perform()
+    local AttachmentVisuals = require("HorseMod/attachments/AttachmentVisuals")
+    AttachmentVisuals.set(self.horse, self.slot, self.accessory)
+    ISBaseTimedAction.perform(self)
 end
 
 
@@ -121,8 +98,7 @@ end
 ---@return self
 ---@nodiscard
 function HorseEquipGear:new(character, horse, accessory, slot, side)
-    local o = ISBaseTimedAction.new(self,character) --[[@as HorseEquipGear]]
-    o.horse = horse
+    local o = BaseGearAction.new(self, character, horse) --[[@as HorseEquipGear]]
     o.accessory = accessory
 
     -- retrieve attachment informations
@@ -136,10 +112,6 @@ function HorseEquipGear:new(character, horse, accessory, slot, side)
     o.equipBehavior = attachmentDef.equipBehavior or {}
     o.side = side
 
-    -- default attachment actions
-    o.stopOnWalk = true
-    o.stopOnRun  = true
-    o.stopOnAim  = true
     return o
 end
 

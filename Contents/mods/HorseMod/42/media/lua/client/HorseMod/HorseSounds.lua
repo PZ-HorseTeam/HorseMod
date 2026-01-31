@@ -47,9 +47,9 @@ local footsteps = {
 }
 
 ---@readonly
-local MIN_STRESS_FOR_SOUND = 70
+local MIN_STRESS_FOR_SOUND = 85
 ---@readonly
-local STRESS_INTERVAL_SECONDS = 15
+local STRESS_INTERVAL_SECONDS = 180
 ---@readonly
 local IDLE_INTERVAL_SECONDS = 60
 ---@readonly

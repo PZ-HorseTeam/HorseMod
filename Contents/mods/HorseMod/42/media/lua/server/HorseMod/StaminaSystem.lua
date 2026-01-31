@@ -37,6 +37,12 @@ function StaminaSystem:update(horses, delta)
             staminaChange = horse:isAnimalMoving() and StaminaChange.WALK or StaminaChange.IDLE
         end
 
+        if staminaChange > 0 then
+            staminaChange = staminaChange * SandboxVars.HorseMod.StaminaMultiplier
+        else
+            staminaChange = staminaChange / SandboxVars.HorseMod.StaminaMultiplier
+        end
+
         -- TODO: it might be better to transmit this less often
         Stamina.modify(horse, staminaChange * delta, true)
     end

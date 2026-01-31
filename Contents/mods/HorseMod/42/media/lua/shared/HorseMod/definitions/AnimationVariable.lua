@@ -11,12 +11,11 @@ local AnimationVariable = {
     DYING = "HorseDying",
     FALL_BACK = "HorseFallBack",
 
-    -- Activates mounted player animations while true
+    -- Activates mounted player animations while true.
+    -- albion: this should be controlled by Mount only, please check with me first if you think your code needs to set it
     RIDING_HORSE = "HorseRiding",
     MOUNTING_HORSE = "HorseMountingHorse",
-    MOUNT_FINISHED = "HorseMountFinished",
     DISMOUNT_STARTED = "HorseDismountStarted",
-    DISMOUNT_FINISHED = "HorseDismountFinished",
     NO_CANCEL = "HorseNoCancel",
 
     HAS_REINS = "HorseHasReins",
@@ -25,8 +24,6 @@ local AnimationVariable = {
     EATING_HAND = "HorseEatingHand",
     HURT = "HorseHurt",
     DEATH = "HorseDeath",
-    
-    EQUIP_FINISHED = "HorseEquipFinished",
 
     KICK_LEFT = "HorseRiderKickLeft",
     KICK_RIGHT = "HorseRiderKickRight",

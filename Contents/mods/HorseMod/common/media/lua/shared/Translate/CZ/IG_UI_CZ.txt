@@ -8,6 +8,7 @@ IGUI_CZ = {
     IGUI_AnimalType_mare = "Klisna"
     IGUI_AnimalType_filly = "Klisička"
 
+    IGUI_AnimalType_Global_horse = "Kůň"
     IGUI_Animal_Group_horse = "Kůň"
     IGUI_Horse_Slot = "Slot" /* for attachments */
 
