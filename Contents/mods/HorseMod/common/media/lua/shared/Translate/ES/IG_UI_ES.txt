@@ -23,7 +23,7 @@ IGUI_ES = {
     IGUI_Breed_ThoroughbredFleaBittenGrey = "Purasangre Tordo Picazo"
 
     /* Mod Options */
-    IGUI_ModOptions_HorseModName = "Caballo"
+    IGUI_ModOptions_HorseModName = "Horse Mod"
     IGUI_ModOptions_HorseSoundVolume_Desc = "Ajustar el volumen de los sonidos del caballo"
     IGUI_ModOptions_HorseSoundVolume_Name = "Volumen de los sonidos del caballo (por defecto 0.40)"
     IGUI_ModOptions_HorseSoundVolume_Tooltip = "Configura el volumen de todos los sonidos del caballo."

@@ -23,7 +23,7 @@ IGUI_CZ = {
     IGUI_Breed_ThoroughbredFleaBittenGrey = "Plnokrevník (Flea-Bitten Grey)"
 
     /* Mod Options */
-    IGUI_ModOptions_HorseModName = "Kůň"
+    IGUI_ModOptions_HorseModName = "Horse Mod"
     IGUI_ModOptions_HorseSoundVolume_Desc = "Změnit hlasitost zvuků koně"
     IGUI_ModOptions_HorseSoundVolume_Name = "Hlasitost zvuků koně (Výchozí 0.40)"
     IGUI_ModOptions_HorseSoundVolume_Tooltip = "Nastavit hlasitost všech zvuků koně."

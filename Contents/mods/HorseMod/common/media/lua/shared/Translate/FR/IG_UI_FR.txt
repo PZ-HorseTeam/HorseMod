@@ -23,7 +23,7 @@ IGUI_FR = {
     IGUI_Breed_ThoroughbredFleaBittenGrey = "Pur-sang (Gris truité)"
 
     /* Mod Options */
-    IGUI_ModOptions_HorseModName = "Cheval"
+    IGUI_ModOptions_HorseModName = "Horse Mod"
     IGUI_ModOptions_HorseSoundVolume_Desc = "Change le volume des sons de cheval"
     IGUI_ModOptions_HorseSoundVolume_Name = "Volume des sons de cheval (Par défaut 0.40)"
     IGUI_ModOptions_HorseSoundVolume_Tooltip = "Réglez le volume de tous les sons de cheval."

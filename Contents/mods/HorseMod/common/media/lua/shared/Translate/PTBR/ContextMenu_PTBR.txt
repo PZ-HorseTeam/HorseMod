@@ -1,0 +1,35 @@
+ContextMenu_PTBR = {
+    /*
+        Translated by Refúgio Z
+    */
+
+    /* Montaria */
+    ContextMenu_Horse_Mount = "Montar em %1"
+    ContextMenu_Horse_Dismount = "Desmontar de %1"
+
+    /* Equipamentos */
+    ContextMenu_Horse_Gear = "Equipamento"
+    ContextMenu_Horse_Equip = "Equipar {new} como {slot}"
+    ContextMenu_Horse_Replace = "Substituir {old} por {new}"
+    ContextMenu_Horse_No_Compatible_Gear = "Nenhum equipamento compatível para equipar no cavalo."
+    ContextMenu_Horse_Unequip = "Remover {old}"
+    ContextMenu_Horse_Unequip_All = "Remover tudo"
+    ContextMenu_Horse_NoMountPosition = "Não consigo alcançar o cavalo."
+
+    /* Slots de equipamento */
+    ContextMenu_Horse_Slot_Saddle = "sela"
+    ContextMenu_Horse_Slot_Saddlebags = "alforjes"
+    ContextMenu_Horse_Slot_Reins = "rédeas"
+
+    /* Motivos de indisponibilidade das opções */
+    ContextMenu_Horse_NotAdult = "Não é um cavalo adulto."
+    ContextMenu_Horse_IsRunning = "O cavalo está correndo."
+    ContextMenu_Horse_IsDead = "O cavalo está morto."
+    ContextMenu_Horse_IsAlreadyRiding = "O cavalo já está sendo montado."
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "Não dá pra trocar o equipamento enquanto você está montado."
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "Não dá pra trocar o equipamento do cavalo enquanto ele está sendo montado."
+    ContextMenu_Horse_HasRider = "O cavalo já está sendo montado por outro personagem."
+
+    /* Comida */
+    ContextMenu_FoodType_Horse = "Cavalo"
+}

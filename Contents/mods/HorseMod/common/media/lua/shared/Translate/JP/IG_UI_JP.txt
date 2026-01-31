@@ -23,7 +23,7 @@ IGUI_JP = {
     IGUI_Breed_ThoroughbredFleaBittenGrey = "サラブレッド・フリービッテン・グレイ"
 
     /* Mod Options */
-    IGUI_ModOptions_HorseModName = "馬"
+    IGUI_ModOptions_HorseModName = "Horse Mod"
     IGUI_ModOptions_HorseSoundVolume_Desc = "馬の効果音の音量を変更します"
     IGUI_ModOptions_HorseSoundVolume_Name = "馬の効果音の音量（通常=0.40）"
     IGUI_ModOptions_HorseSoundVolume_Tooltip = "すべての馬の効果音の音量を設定します。"

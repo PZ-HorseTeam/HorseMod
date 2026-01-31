@@ -1,0 +1,42 @@
+IGUI_PTBR = {
+    /*
+        Translated by Refúgio Z
+    */
+
+    /* Geral */
+    IGUI_AnimalType_stallion = "Garanhão"
+    IGUI_AnimalType_mare = "Égua"
+    IGUI_AnimalType_filly = "Potra"
+
+    IGUI_AnimalType_Global_horse = "Cavalo"
+    IGUI_Animal_Group_horse = "Cavalo"
+    IGUI_Horse_Slot = "Encaixe" /* para equipamentos */
+
+    /* Raças / pelagens */
+    IGUI_Breed_AmericanQuarterPalomino = "Quarto de Milha Americano (Palomino)"
+    IGUI_Breed_AmericanQuarterBlueRoan = "Quarto de Milha Americano (Rosilho Azul)"
+    IGUI_Breed_AmericanPaintTobiano = "Paint Americano (Tobiano)"
+    IGUI_Breed_AmericanPaintOvero = "Paint Americano (Overo)"
+    IGUI_Breed_AppaloosaGrullaBlanket = "Appaloosa (Grulla Blanket)"
+    IGUI_Breed_AppaloosaLeopard = "Appaloosa (Leopardo)"
+    IGUI_Breed_ThoroughbredBay = "Puro-Sangue Inglês (Baio)"
+    IGUI_Breed_ThoroughbredFleaBittenGrey = "Puro-Sangue Inglês (Tordilho Mosqueado)"
+
+    /* Opções do Mod */
+    IGUI_ModOptions_HorseModName = "Horse Mod"
+    IGUI_ModOptions_HorseSoundVolume_Desc = "Altera o volume dos sons do cavalo"
+    IGUI_ModOptions_HorseSoundVolume_Name = "Volume do som do cavalo (Padrão 0.40)"
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "Define o volume de todos os sons do cavalo."
+
+    IGUI_ModOptions_HorseKeybind = "Teclas do cavalo"
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "Pulo do cavalo"
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "Altera a tecla para o cavalo pular."
+    
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "Trote do cavalo"
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Altera a tecla para o cavalo trotar."
+
+    IGUI_ModOptions_HorseKeybind_Gallop_Name = "Galope do cavalo"
+    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "Altera a tecla para o cavalo galopar."
+
+    IGUI_HorseMod_MultiplayerWarning = "O mod de Cavalos não oferece suporte a multiplayer.<br>Os cavalos não vão funcionar direito, e você pode ter outros problemas na sua partida.<br>É altamente recomendado desativar o mod de Cavalos.<br>Relatos de bugs em multiplayer não serão aceitos."
+}

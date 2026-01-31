@@ -23,7 +23,7 @@ IGUI_TR = {
     IGUI_Breed_ThoroughbredFleaBittenGrey = "Safkan İngiliz(Benekli Kır)"
 
     /* Mod Options */
-    IGUI_ModOptions_HorseModName = "At"
+    IGUI_ModOptions_HorseModName = "Horse Mod"
     IGUI_ModOptions_HorseSoundVolume_Desc = "At seslerinin ses seviyesini ayarla"
     IGUI_ModOptions_HorseSoundVolume_Name = "At Sesi Seviyesi (Varsayılan 0,40)"
     IGUI_ModOptions_HorseSoundVolume_Tooltip = "Tüm at seslerinin seviyesini ayarlayın."
