@@ -29,4 +29,7 @@ ContextMenu_ES = {
     ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "No se puede cambiar el equipamiento mientras estás montado."
     ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "No se puede cambiar el equipamiento del caballo mientras está montado."
     ContextMenu_Horse_HasRider = "El caballo ya está siendo montado por otro personaje."
+
+    /* Food */
+    ContextMenu_FoodType_Horse = "Caballo"
 }

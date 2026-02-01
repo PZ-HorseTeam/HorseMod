@@ -3,6 +3,8 @@ Sandbox_ES = {
         Translated by carlesturo
     */
 
-    Sandbox_HorseMod_WalkSpeed = "Velocidad al andar del caballo"
-    Sandbox_HorseMod_GallopSpeed = "Velocidad al galopar del caballo"
+	Sandbox_HorseMod = "Caballo – Mod"
+	Sandbox_HorseMod_WalkSpeed = "Velocidad al Andar"
+	Sandbox_HorseMod_GallopSpeed = "Velocidad al Galope"
+	Sandbox_HorseMod_StaminaMultiplier = "Multiplicador de Resistencia"
 }

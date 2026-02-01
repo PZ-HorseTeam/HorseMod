@@ -78,6 +78,7 @@ ItemName_ES = {
     ItemName_HorseMod.Horse_Steak = "Filete de Caballo"
     ItemName_HorseMod.Horse_Loin = "Lomo de Caballo"
     ItemName_HorseMod.Horse_Hoof = "Pezuña de Caballo"
+    ItemName_HorseMod.Dung_Horse = "Estiércol de Caballo"
 
 
     /* Horse glue */
