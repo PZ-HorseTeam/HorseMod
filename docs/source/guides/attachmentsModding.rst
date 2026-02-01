@@ -47,6 +47,9 @@ Below is an example of adding a new model attachment point called "leftAttachTes
       rotate = {x=0.0, y=0.0, z=0.0},
   })
 
+.. hint::
+  See our `Attachments Editor Patch <https://github.com/PZ-HorseTeam/HorseMod-AttachmentEditorPatch>`_ to easily add and visualize attachment points on the horse model in-game. By default, the editor won't work for the horse due to the lack of a custom `AnimSet <https://pzwiki.net/wiki/AnimSet>`_.
+
 .. warning::
   You should not modify the horse model script directly via the use of a model script override, as Project Zomboid provides all the tools needed to directly modify, add or remove attachment points on models scripts via Lua.
 
