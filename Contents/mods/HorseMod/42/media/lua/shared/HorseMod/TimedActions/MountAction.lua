@@ -119,7 +119,7 @@ end
 
 
 function MountAction:complete()
-    if Mounts.getMount(self.character) ~= nil then
+    if Mounts.hasMount(self.character) then
         return false
     end
 
