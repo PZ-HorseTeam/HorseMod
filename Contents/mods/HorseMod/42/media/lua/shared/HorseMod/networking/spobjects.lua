@@ -17,7 +17,8 @@ if not (isClient() or isServer()) then
 
         if not id then
             id = self.max
-            self.objectById[object] = id
+            self.objectById[id] = object
+            self.idByObject[object] = id
             self.max = self.max + 1
         end
 
