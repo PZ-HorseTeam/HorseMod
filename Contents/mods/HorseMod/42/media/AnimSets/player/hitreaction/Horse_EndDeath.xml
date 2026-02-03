@@ -26,4 +26,9 @@
         <m_Time>Start</m_Time>
         <m_ParameterValue></m_ParameterValue>
     </m_Events>
+    <m_Events>
+        <m_EventName>HorseDismountingComplete</m_EventName>
+        <m_Time>End</m_Time>
+        <m_ParameterValue></m_ParameterValue>
+    </m_Events>
 </animNode>
