@@ -123,6 +123,10 @@ end
 ---@return IsoAnimal? mount
 ---@nodiscard
 function Mounts.getMount(player)
+    if not playerMountMap[player] then
+        return nil
+    end
+
     return commands.getAnimal(playerMountMap[player])
 end
 
