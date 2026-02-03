@@ -529,8 +529,6 @@ local TURN_STEPS_PER_SEC = 60
 
 local PLAYER_SYNC_TUNER = 0.8
 
-
-
 ---@namespace HorseMod
 
 
@@ -559,6 +557,9 @@ local PLAYER_SYNC_TUNER = 0.8
 ---
 ---Last time a tree fall check was made.
 ---@field lastCheck number
+---
+---Amount of slowdown applied by hitting zombies.
+---@field slowdownCounter number
 local MountController = {}
 MountController.__index = MountController
 
@@ -601,6 +602,84 @@ function MountController:rollForTreeFall()
         return true
     end
     return false
+end
+
+---Maximum seconds of slowdown that can be accrued.
+---@readonly
+---@type number
+local SLOWDOWN_MAX = 5
+
+---Amount to increment the slowdown counter when hitting a zombie.
+---@readonly
+---@type number
+local SLOWDOWN_ZOMBIE_KNOCKDOWN_INCREASE = 1
+
+---Amount to increment the slowdown counter per second when near a zombie but not fast enough to knock it down.
+---@readonly
+---@type number
+local SLOWDOWN_ZOMBIE_NEARBY_INCREASE = 5
+
+---Amount to increment the slowdown counter per second when trampling a zombie on the ground.
+---@readonly
+---@type number
+local SLOWDOWN_ZOMBIE_GROUND_INCREASE = 0.75
+
+---Minimum seconds of slowdown before the horse is actually slowed.
+---@readonly
+---@type number
+local SLOWDOWN_MIN_SECONDS = 1
+
+---Maximum seconds of slowdown where slowdown amount stops increasing.
+---@readonly
+---@type number
+local SLOWDOWN_MAX_SECONDS = 4
+
+---Scalar to movement speed when at maximum slowdown.
+---The final speed scalar is interpolated based on the current slowdown value (between ZOMBIE_SLOWDOWN_MIN_SECONDS and ZOMBIE_SLOWDOWN_MAX_SECONDS)
+---from 1 to this value.
+---@readonly
+---@type number
+local SLOWDOWN_MAX_SCALAR = 0.2
+
+---Minimum speed to reduce the speed to from slowdown.
+---Used because very low scalars needed to make galloping slow enough make slower speeds ridiculously slow.
+---@readonly
+---@type number
+local SLOWDOWN_MIN_SPEED = 1.5
+
+---Minimum speed required to knock down a zombie.
+---@readonly
+---@type number
+local KNOCKDOWN_MIN_SPEED = 5
+
+---@param deltaTime number
+function MountController:updateSlowdown(deltaTime)
+    self.slowdownCounter = math.max(self.slowdownCounter - deltaTime, 0)
+
+    -- TODO: check neighbouring squares too since the horse is big
+    local square = self.mount.pair.mount:getSquare()
+
+    local movingObjects = square:getLuaMovingObjectList() ---@as IsoMovingObject[]
+    for i = 1, #movingObjects do
+        local zombie = movingObjects[i]
+        if instanceof(zombie, "IsoZombie") then
+            ---@cast zombie IsoZombie
+            if zombie:isKnockedDown() or zombie:isCrawling() then
+                self.slowdownCounter = self.slowdownCounter + SLOWDOWN_ZOMBIE_GROUND_INCREASE * deltaTime
+            else
+                if self:getSpeed() >= KNOCKDOWN_MIN_SPEED then
+                    self.slowdownCounter = self.slowdownCounter + SLOWDOWN_ZOMBIE_KNOCKDOWN_INCREASE
+                    local facingSameDir = math.abs(zombie:getDirectionAngle() - self.mount.pair.mount:getDirectionAngle()) <= 180
+                    -- TODO: probably needs to be sent to the server
+                    zombie:knockDown(facingSameDir)
+                else
+                    self.slowdownCounter = self.slowdownCounter + SLOWDOWN_ZOMBIE_NEARBY_INCREASE * deltaTime
+                end
+            end
+        end
+    end
+
+    self.slowdownCounter = math.min(self.slowdownCounter, SLOWDOWN_MAX)
 end
 
 
@@ -706,6 +785,13 @@ function MountController:getVegetationEffect(input, deltaTime)
 end
 
 
+local SPEED_WALK = 1.05
+
+local SPEED_TROT = 3.3
+
+local SPEED_GALLOP = 7
+
+
 ---@param input InputManager.Input
 ---@param deltaTime number
 function MountController:updateSpeed(input, deltaTime)
@@ -720,11 +806,7 @@ function MountController:updateSpeed(input, deltaTime)
     -- vegetation slowdown is applied through gene speed?
     local geneSpeed = getGeneticSpeed(mount) * self:getVegetationEffect(input, deltaTime)
 
-    -- TODO: is this check really necessary? does changing the value cause more overhead than reading it?
-    local currentGeneSpeed = mount:getVariableFloat(AnimationVariable.GENE_SPEED, 0)
-    if currentGeneSpeed ~= geneSpeed then
-        pair:setAnimationVariable(AnimationVariable.GENE_SPEED, geneSpeed)
-    end
+    pair:setAnimationVariable(AnimationVariable.GENE_SPEED, geneSpeed)
 
     if input.run then
         local f = Stamina.runSpeedFactor(mount)
@@ -743,9 +825,19 @@ function MountController:updateSpeed(input, deltaTime)
     rider:setVariable(AnimationVariable.TROT_SPEED,  walkMultiplier * TROT_MULT * PLAYER_SYNC_TUNER)
     rider:setVariable(AnimationVariable.RUN_SPEED, gallopRawSpeed * PLAYER_SYNC_TUNER)
 
-    -- speed/locomotion
+    local target = 0.0
+
     local moving = (input.movement.x ~= 0 or input.movement.y ~= 0)
-    local target = (moving and (input.run and RUN_SPEED * gallopMultiplier or WALK_SPEED * walkMultiplier)) or 0.0
+    if moving then
+        if input.run then
+            target = SPEED_GALLOP * gallopMultiplier
+        elseif mount:getVariableBoolean(AnimationVariable.TROT) then
+            target = SPEED_TROT * walkMultiplier
+        else
+            target = SPEED_WALK * walkMultiplier
+        end
+    end
+
     local rate = (target > self.targetSpeed) and ACCEL_UP or DECEL_DOWN
     
     self.targetSpeed = approach(self.targetSpeed, target, rate, deltaTime)
@@ -801,9 +893,10 @@ function MountController:toggleTrot()
 end
 
 ---Real speed in distance per second. Needed because `getMovementSpeed` is per tick.
+---@deprecated use getSpeed() instead.
 ---@return number
 function MountController:getCurrentSpeed()
-    return self.mount.pair.mount:getMovementSpeed() / GameTime.getInstance():getTimeDelta()
+    return self:getSpeed()
 end
 
 function MountController:canJump()
@@ -831,6 +924,23 @@ function MountController:stopJump()
     rider:setIgnoreMovement(false)
     rider:setIgnoreInputsForDirection(false)
     mountPair:setAnimationVariable(AnimationVariable.JUMP, false)
+end
+
+
+---Returns the final speed after slowdown.
+---@return number speed
+---@nodiscard
+function MountController:getSpeed()
+    local speed = self.targetSpeed
+
+    if self.targetSpeed > SLOWDOWN_MIN_SPEED then
+        local slowdownAmount = math.min(math.max(SLOWDOWN_MIN_SECONDS - self.slowdownCounter), SLOWDOWN_MAX_SECONDS)
+        local slowdownPercent = math.max(math.min(slowdownAmount / (SLOWDOWN_MIN_SECONDS - SLOWDOWN_MAX_SECONDS), 1), 0)
+        local slowdownScalar = PZMath.lerp(1, SLOWDOWN_MAX_SCALAR, slowdownPercent)
+        speed = math.max(speed * slowdownScalar, SLOWDOWN_MIN_SPEED)
+    end
+
+    return speed
 end
 
 
@@ -875,11 +985,13 @@ function MountController:update(input)
         self:turn(input, deltaTime)
     end
     self:updateSpeed(input, deltaTime)
+    self:updateSlowdown(deltaTime)
 
     if moving and self.targetSpeed > 0
         and not rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
         local currentDirection = mount:getDir()
-        local velocity = currentDirection:ToVector():setLength(self.targetSpeed)
+
+        local velocity = currentDirection:ToVector():setLength(self:getSpeed())
         moveWithCollision(rider, mount, velocity, deltaTime, isGalloping, isJumping)
 
         mount:setVariable("animalWalking", not input.run)
@@ -937,6 +1049,7 @@ function MountController.new(mount)
             vegetationLingerStartMult = 1.0,
             timeInTrees = 0.0,
             lastCheck = 0.0,
+            slowdownCounter = 0.0
         },
         MountController
     )

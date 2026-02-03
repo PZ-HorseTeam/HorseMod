@@ -72,6 +72,8 @@ function Mount:cleanup()
     self.pair.rider:setVariable(AnimationVariable.MOUNTING_HORSE, false)
     self.pair.rider:setVariable("isTurningLeft", false)
     self.pair.rider:setVariable("isTurningRight", false)
+
+    self.pair.mount:setDeferredMovementEnabled(true)
 end
 
 
@@ -101,6 +103,8 @@ function Mount.new(pair)
     mount:setVariable("bPathfind", false)
     mount:setVariable("animalWalking", false)
     mount:setVariable("animalRunning", false)
+
+    mount:setDeferredMovementEnabled(false)
 
     -- TODO: is this even needed
     mount:setWild(false)
