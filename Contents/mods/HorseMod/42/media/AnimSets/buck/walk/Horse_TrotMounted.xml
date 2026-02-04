@@ -24,6 +24,11 @@
         <m_Type>BOOL</m_Type>
         <m_Value>true</m_Value>
     </m_Conditions>
+    <m_Conditions>
+        <m_Name>animalWalking</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_BoolValue>true</m_BoolValue>
+    </m_Conditions>
     <m_Transitions>
         <m_Target>Horse_IdleMounted</m_Target>
         <m_blendInTime>0.80</m_blendInTime>
