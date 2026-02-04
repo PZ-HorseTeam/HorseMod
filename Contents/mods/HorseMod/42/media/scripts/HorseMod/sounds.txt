@@ -139,4 +139,14 @@ module HorseMod {
             distanceMax = 30,
         }
     }
+
+    sound SaddleEquip {
+        category = Object,
+        is3D = true,
+        clip { file = media/sound/HorseMod/Saddle/SaddleEquip1.ogg, distanceMax = 10, volume = 0.2, }
+        clip { file = media/sound/HorseMod/Saddle/SaddleEquip2.ogg, distanceMax = 10, volume = 0.2, }
+        clip { file = media/sound/HorseMod/Saddle/SaddleEquip3.ogg, distanceMax = 10, volume = 0.2, }
+        clip { file = media/sound/HorseMod/Saddle/SaddleEquip4.ogg, distanceMax = 10, volume = 0.2, }
+        clip { file = media/sound/HorseMod/Saddle/SaddleEquip5.ogg, distanceMax = 10, volume = 0.2, }
+    }
 }
