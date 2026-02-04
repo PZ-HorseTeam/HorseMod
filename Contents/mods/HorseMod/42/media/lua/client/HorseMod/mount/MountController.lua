@@ -1,8 +1,8 @@
 ---REQUIREMENTS
 local Stamina = require("HorseMod/Stamina")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
-local DismountAction = require("HorseMod/TimedActions/DismountAction")
 local Mounting = require("HorseMod/Mounting")
+local HorseJump = require("HorseMod/TimedActions/HorseJump")
 local rdm = newrandom()
 
 
@@ -152,9 +152,10 @@ end
 ---@param fromSq IsoGridSquare
 ---@param toSq IsoGridSquare
 ---@param horse IsoAnimal
+---@param isJumping boolean
 ---@return boolean
 ---@nodiscard
-local function blockedBetween(fromSq, toSq, horse)
+local function blockedBetween(fromSq, toSq, horse, isJumping)
     if fromSq == toSq then
         return false
     end
@@ -162,7 +163,7 @@ local function blockedBetween(fromSq, toSq, horse)
     -- FENCE
     local hop = edgeHoppableBetween(fromSq, toSq)
     if hop and hop:isHoppable() then
-        if horse and horse:getVariableBoolean(AnimationVariable.JUMP) then
+        if horse and isJumping then
             return false
         else
             return true
@@ -195,9 +196,10 @@ end
 ---@param toY number
 ---@param z number
 ---@param horse IsoAnimal
+---@param isJumping boolean
 ---@return boolean
 ---@nodiscard
-local function canCross(fromX, fromY, toX, toY, z, horse)
+local function canCross(fromX, fromY, toX, toY, z, horse, isJumping)
     local from = getSquare(fromX, fromY, z)
     local to = getSquare(toX, toY, z)
 
@@ -205,7 +207,7 @@ local function canCross(fromX, fromY, toX, toY, z, horse)
         return false
     end
 
-    return not blockedBetween(from, to, horse) and not squareCenterSolid(to)
+    return not blockedBetween(from, to, horse, isJumping) and not squareCenterSolid(to)
 end
 
 local EDGE_PAD = 0.01
@@ -230,10 +232,11 @@ end
 ---@param y0 number
 ---@param dx number
 ---@param dy number
+---@param isJumping boolean
 ---@return number
 ---@return number
 ---@nodiscard
-local function collideStepAt(horse, z, x0, y0, dx, dy)
+local function collideStepAt(horse, z, x0, y0, dx, dy, isJumping)
     if dx == 0 and dy == 0 then return 0, 0 end
 
     local ox, oy = dx, dy
@@ -244,12 +247,12 @@ local function collideStepAt(horse, z, x0, y0, dx, dy)
 
     -- clamp vs vertical edges (X)
     if rx > 0 then
-        if not canCross(fx, fy, fx+1, fy, z, horse) then
+        if not canCross(fx, fy, fx+1, fy, z, horse, isJumping) then
             local boundary = fx + 1 - EDGE_PAD
             if x0 + rx > boundary then rx = math.max(0, boundary - x0) end
         end
     elseif rx < 0 then
-        if not canCross(fx-1, fy, fx, fy, z, horse) then
+        if not canCross(fx-1, fy, fx, fy, z, horse, isJumping) then
             local boundary = fx + EDGE_PAD
             if x0 + rx < boundary then rx = math.min(0, boundary - x0) end
         end
@@ -257,12 +260,12 @@ local function collideStepAt(horse, z, x0, y0, dx, dy)
 
     -- clamp vs horizontal edges (Y)
     if ry > 0 then
-        if not canCross(fx, fy, fx, fy+1, z, horse) then
+        if not canCross(fx, fy, fx, fy+1, z, horse, isJumping) then
             local boundary = fy + 1 - EDGE_PAD
             if y0 + ry > boundary then ry = math.max(0, boundary - y0) end
         end
     elseif ry < 0 then
-        if not canCross(fx, fy-1, fx, fy, z, horse) then
+        if not canCross(fx, fy-1, fx, fy, z, horse, isJumping) then
             local boundary = fy + EDGE_PAD
             if y0 + ry < boundary then ry = math.min(0, boundary - y0) end
         end
@@ -280,12 +283,12 @@ local function collideStepAt(horse, z, x0, y0, dx, dy)
         local function tryProjectX()
             local px = signf(ox) * stepLen
             if px > 0 then
-                if not canCross(fx, fy, fx+1, fy, z, horse) then
+                if not canCross(fx, fy, fx+1, fy, z, horse, isJumping) then
                     local b = fx + 1 - EDGE_PAD
                     if x0 + px > b then px = math.max(0, b - x0) end
                 end
             elseif px < 0 then
-                if not canCross(fx-1, fy, fx, fy, z, horse) then
+                if not canCross(fx-1, fy, fx, fy, z, horse, isJumping) then
                     local b = fx + EDGE_PAD
                     if x0 + px < b then px = math.min(0, b - x0) end
                 end
@@ -296,12 +299,12 @@ local function collideStepAt(horse, z, x0, y0, dx, dy)
         local function tryProjectY()
             local py = signf(oy) * stepLen
             if py > 0 then
-                if not canCross(fx, fy, fx, fy+1, z, horse) then
+                if not canCross(fx, fy, fx, fy+1, z, horse, isJumping) then
                     local b = fy + 1 - EDGE_PAD
                     if y0 + py > b then py = math.max(0, b - y0) end
                 end
             elseif py < 0 then
-                if not canCross(fx, fy-1, fx, fy, z, horse) then
+                if not canCross(fx, fy-1, fx, fy, z, horse, isJumping) then
                     local b = fy + EDGE_PAD
                     if y0 + py < b then py = math.min(0, b - y0) end
                 end
@@ -330,12 +333,12 @@ local function collideStepAt(horse, z, x0, y0, dx, dy)
     if killedX and not killedY and ry ~= 0 then
         local py = signf(oy) * stepLen
         if py > 0 then
-            if not canCross(fx, fy, fx, fy+1, z, horse) then
+            if not canCross(fx, fy, fx, fy+1, z, horse, isJumping) then
                 local b = fy + 1 - EDGE_PAD
                 if y0 + py > b then py = math.max(0, b - y0) end
             end
         elseif py < 0 then
-            if not canCross(fx, fy-1, fx, fy, z, horse) then
+            if not canCross(fx, fy-1, fx, fy, z, horse, isJumping) then
                 local b = fy + EDGE_PAD
                 if y0 + py < b then py = math.min(0, b - y0) end
             end
@@ -344,12 +347,12 @@ local function collideStepAt(horse, z, x0, y0, dx, dy)
     elseif killedY and not killedX and rx ~= 0 then
         local px = signf(ox) * stepLen
         if px > 0 then
-            if not canCross(fx, fy, fx+1, fy, z, horse) then
+            if not canCross(fx, fy, fx+1, fy, z, horse, isJumping) then
                 local b = fx + 1 - EDGE_PAD
                 if x0 + px > b then px = math.max(0, b - x0) end
             end
         elseif px < 0 then
-            if not canCross(fx-1, fy, fx, fy, z, horse) then
+            if not canCross(fx-1, fy, fx, fy, z, horse, isJumping) then
                 local b = fx + EDGE_PAD
                 if x0 + px < b then px = math.min(0, b - x0) end
             end
@@ -361,22 +364,22 @@ local function collideStepAt(horse, z, x0, y0, dx, dy)
     -- diagonal corner rule
     if (tx ~= fx) and (ty ~= fy) and (rx ~= 0) and (ry ~= 0) then
         local xFirstOk = (not midSqX or not squareCenterSolid(midSqX))
-                      and canCross(fx, fy, tx, fy, z, horse)
-                      and canCross(tx, fy, tx, ty, z, horse)
+                      and canCross(fx, fy, tx, fy, z, horse, isJumping)
+                      and canCross(tx, fy, tx, ty, z, horse, isJumping)
         local yFirstOk = (not midSqY or not squareCenterSolid(midSqY))
-                      and canCross(fx, fy, fx, ty, z, horse)
-                      and canCross(fx, ty, tx, ty, z, horse)
+                      and canCross(fx, fy, fx, ty, z, horse, isJumping)
+                      and canCross(fx, ty, tx, ty, z, horse, isJumping)
         if not xFirstOk and not yFirstOk then
             -- project onto best axis
             local px, py = signf(ox) * stepLen, signf(oy) * stepLen
             local rx1, ry1 = px, 0
             if rx1 > 0 then
-                if not canCross(fx, fy, fx+1, fy, z, horse) then
+                if not canCross(fx, fy, fx+1, fy, z, horse, isJumping) then
                     local b = fx + 1 - EDGE_PAD
                     if x0 + rx1 > b then rx1 = math.max(0, b - x0) end
                 end
             elseif rx1 < 0 then
-                if not canCross(fx-1, fy, fx, fy, z, horse) then
+                if not canCross(fx-1, fy, fx, fy, z, horse, isJumping) then
                     local b = fx + EDGE_PAD
                     if x0 + rx1 < b then rx1 = math.min(0, b - x0) end
                 end
@@ -385,12 +388,12 @@ local function collideStepAt(horse, z, x0, y0, dx, dy)
 
             local rx2, ry2 = 0, py
             if ry2 > 0 then
-                if not canCross(fx, fy, fx, fy+1, z, horse) then
+                if not canCross(fx, fy, fx, fy+1, z, horse, isJumping) then
                     local b = fy + 1 - EDGE_PAD
                     if y0 + ry2 > b then ry2 = math.max(0, b - y0) end
                 end
             elseif ry2 < 0 then
-                if not canCross(fx, fy-1, fx, fy, z, horse) then
+                if not canCross(fx, fy-1, fx, fy, z, horse, isJumping) then
                     local b = fy + EDGE_PAD
                     if y0 + ry2 < b then ry2 = math.min(0, b - y0) end
                 end
@@ -415,7 +418,8 @@ end
 ---@param velocity Vector2
 ---@param delta number
 ---@param isGalloping boolean
-local function moveWithCollision(rider, horse, velocity, delta, isGalloping)
+---@param isJumping boolean
+local function moveWithCollision(rider, horse, velocity, delta, isGalloping, isJumping)
     local z = horse:getZ()
     local x = horse:getX()
     local y = horse:getY()
@@ -441,7 +445,7 @@ local function moveWithCollision(rider, horse, velocity, delta, isGalloping)
         local dy = velocityY * s
 
         -- check if hitting a wall
-        local rx, ry = collideStepAt(horse, z, x, y, dx, dy)
+        local rx, ry = collideStepAt(horse, z, x, y, dx, dy, isJumping)
         if rx == 0 and ry == 0 then
             if isGalloping then
                 Mounting.dismountFallBack(rider, horse)
@@ -549,13 +553,16 @@ local PLAYER_SYNC_TUNER = 0.8
 ---@field vegetationLingerStartMult number
 ---
 ---Current movement speed in squares/s.
----@field currentSpeed number
+---@field targetSpeed number
 ---
 ---Used to calculate if the player should fall while in trees. Chance increases the longer they stay in trees.
 ---@field timeInTrees number
 ---
 ---Last time a tree fall check was made.
 ---@field lastCheck number
+---
+---Indicates whether the pair can turn this update.
+---@field doTurn boolean
 local MountController = {}
 MountController.__index = MountController
 
@@ -606,7 +613,7 @@ end
 function MountController:turn(input, deltaTime)
     local currentDirection = self.mount.pair.mount:getDir()
 
-    local targetDirection
+    local targetDirection = nil
     if input.movement.x ~= 0 or input.movement.y ~= 0 then
         targetDirection = IsoDirections.fromAngle(input.movement.x, input.movement.y):RotLeft()
     else
@@ -743,21 +750,12 @@ function MountController:updateSpeed(input, deltaTime)
     -- speed/locomotion
     local moving = (input.movement.x ~= 0 or input.movement.y ~= 0)
     local target = (moving and (input.run and RUN_SPEED * gallopMultiplier or WALK_SPEED * walkMultiplier)) or 0.0
-    local rate = (target > self.currentSpeed) and ACCEL_UP or DECEL_DOWN
+    local rate = (target > self.targetSpeed) and ACCEL_UP or DECEL_DOWN
     
-    -- verify the player isn't dismounting, and if so slow down the horse to a stop
-    if rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
-        local queue = ISTimedActionQueue.getTimedActionQueue(rider)
-        local currentAction = queue.current
-        if currentAction == DismountAction.Type then
-            target = 0.0
-            rate = DECEL_DOWN
-        end
-    end
-    self.currentSpeed = approach(self.currentSpeed, target, rate, deltaTime)
+    self.targetSpeed = approach(self.targetSpeed, target, rate, deltaTime)
     
-    if self.currentSpeed < 0.0001 then
-        self.currentSpeed = 0
+    if self.targetSpeed < 0.0001 then
+        self.targetSpeed = 0
     end
 end
 
@@ -767,7 +765,8 @@ function MountController:updateTreeFall(isGalloping, deltaTime)
     -- make the player fall if they are in trees based on some skills and traits
     local timeInTrees = self.timeInTrees
     if isGalloping then
-        if rider:isInTreesNoBush() then
+        if rider:isInTreesNoBush() 
+            or self.mount.pair.mount:isInTreesNoBush() then
             self.timeInTrees = timeInTrees + deltaTime
 
             -- roll for tree fall every 0.5s
@@ -778,6 +777,9 @@ function MountController:updateTreeFall(isGalloping, deltaTime)
                 self.lastCheck = self.lastCheck + deltaTime
             end
         end
+
+    -- we consider the player to be unbalanced when exiting trees for a short time
+    -- so the counter isn't reset immediately
     elseif self.timeInTrees > 0 then
         timeInTrees = math.max(0, timeInTrees - deltaTime*4)
         timeInTrees = math.min(timeInTrees, 10)
@@ -789,7 +791,7 @@ end
 
 ---@return MovementState
 function MountController:getMovementState()
-    if self.currentSpeed <= 0 then
+    if self.targetSpeed <= 0 then
         return "idle"
     elseif self.mount.pair:getAnimationVariableBoolean(AnimationVariable.GALLOP) then
         return "gallop"
@@ -806,12 +808,39 @@ function MountController:toggleTrot()
     self.mount.pair:setAnimationVariable(AnimationVariable.TROT, not current)
 end
 
+---Real speed in distance per second. Needed because `getMovementSpeed` is per tick.
+---@return number
+function MountController:getCurrentSpeed()
+    return self.mount.pair.mount:getMovementSpeed() / GameTime.getInstance():getTimeDelta()
+end
 
+
+---Checks whenever the mount can jump.
+---@return boolean
+function MountController:canJump()
+    local mount = self.mount.pair.mount
+    return mount:getVariableBoolean(AnimationVariable.GALLOP)
+        and self:getCurrentSpeed() > 6
+        and not self.mount.pair:getAnimationVariableBoolean(AnimationVariable.JUMP)
+end
+
+---Checks if the current action is jumping.
+---@return boolean
+function MountController:isJumping()
+    local pair = self.mount.pair
+    local queue = ISTimedActionQueue.getTimedActionQueue(pair.rider)
+    local current = queue.current
+    if not current then return false end
+    return current.Type == HorseJump.Type
+end
+
+---Initiates a jump action.
 function MountController:jump()
-    self.mount.pair:setAnimationVariable(AnimationVariable.JUMP, true)
-
-    self.mount.pair.rider:setIgnoreMovement(true)
-    self.mount.pair.rider:setIgnoreInputsForDirection(true)
+    local rider = self.mount.pair.rider
+    
+    -- reset the queue of actions, since jump takes priority
+    ISTimedActionQueue.clear(rider)    
+    ISTimedActionQueue.add(HorseJump:new(rider, self.mount.pair.mount, self))
 end
 
 
@@ -826,9 +855,8 @@ function MountController:update(input)
     rider:setSneaking(false)
     rider:setIgnoreAutoVault(true)
 
-    -- TODO i'm doubtful this is needed?
     mount:getPathFindBehavior2():reset()
-    mount:getBehavior():setBlockMovement(true)
+    mount:setVariable("bPathfind", false)
 
     local deltaTime = GameTime.getInstance():getTimeDelta()
     local moving = (input.movement.x ~= 0 or input.movement.y ~= 0)
@@ -842,17 +870,12 @@ function MountController:update(input)
     end
 
     -- verify that the horse isn't in a jumping animation before turning
-    local doTurn = true
-    if rider:getIgnoreMovement() or rider:isIgnoreInputsForDirection() then
-        local isJumping = mountPair:getAnimationVariableBoolean(AnimationVariable.JUMP)
-        if not isJumping or not isGalloping then
-            -- exit jump state and allow turning again
-            rider:setIgnoreMovement(false)
-            rider:setIgnoreInputsForDirection(false)
-            mountPair:setAnimationVariable(AnimationVariable.JUMP, false)
-        else
-            doTurn = false
-        end
+    local doTurn = self.doTurn
+    local isJumping = self:isJumping()
+
+    -- safeguard in case the jump action errored out, not resetting the doTurn flag
+    if not isJumping then
+        self.doTurn = true
     end
 
     -- update current movement
@@ -861,23 +884,21 @@ function MountController:update(input)
     end
     self:updateSpeed(input, deltaTime)
 
-    if moving and self.currentSpeed > 0
+    if moving and self.targetSpeed > 0
         and not rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
         local currentDirection = mount:getDir()
-        local velocity = currentDirection:ToVector():setLength(self.currentSpeed)
-        moveWithCollision(rider, mount, velocity, deltaTime, isGalloping)
+        local velocity = currentDirection:ToVector():setLength(self.targetSpeed)
+        moveWithCollision(rider, mount, velocity, deltaTime, isGalloping, isJumping)
 
-        mount:setVariable("bPathfind", true)
         mount:setVariable("animalWalking", not input.run)
         mountPair:setAnimationVariable(AnimationVariable.GALLOP, input.run)
     else
-        mount:setVariable("bPathfind", false)
         mountPair:setAnimationVariable(AnimationVariable.GALLOP, false)
         mount:setVariable("animalWalking", false)
     end
 
     ---@type string[]
-    local mirrorVarsMount =  { "HorseGalloping","isTurningLeft","isTurningRight" }
+    local mirrorVarsMount =  { "HorseGalloping","isTurningLeft","isTurningRight","walkstateRun" }
     for i = 1, #mirrorVarsMount do
         local k = mirrorVarsMount[i]
         local v = mount:getVariableBoolean(k)
@@ -919,11 +940,12 @@ function MountController.new(mount)
             mount = mount,
             turnAcceleration = 0,
             lastTurnWasRight = false,
-            currentSpeed = 0.0,
+            targetSpeed = 0.0,
             vegetationLingerTime = 0.0,
             vegetationLingerStartMult = 1.0,
             timeInTrees = 0.0,
             lastCheck = 0.0,
+            doTurn = true,
         },
         MountController
     )

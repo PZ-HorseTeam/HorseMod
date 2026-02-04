@@ -24,7 +24,7 @@ local HorseDefinitions = {
     PATHS = {
         texture = "HorseMod/Horse_{id}",
         textureMale = "HorseMod/Horse_{id}",
-        rottenTexture = "HorseMod/Horse_{id}",
+        rottenTexture = "HorseMod/Horse_{id}_Rotting",
         textureBaby = "HorseMod/Horse_{id}",
         invIconMale = "media/textures/Item_body/Horse_{id}_Foal.png",
         invIconFemale = "media/textures/Item_body/Horse_{id}_Foal.png",
@@ -123,6 +123,7 @@ HorseDefinitions.ANIMALS_DATA = {
         shadoww = 1.5,
         shadowfm = 3,
         shadowbm = 3,
+        dung = "HorseMod.Dung_Horse",
 
         -- CORE
         stages = AnimalDefinitions.stages["horse"].stages,
@@ -326,7 +327,7 @@ Events.OnGameBoot.Add(function()
     for animalType, isAdult in pairs(HorseDefinitions.IS_ADULT) do
         -- retrieve the default animal data
         local data = copyTable(ANIMALS_DATA._DEFAULT)
-        data.breeds = copyTable(AnimalDefinitions.breeds["horse"].breeds) -- copy horse breed data
+        data.breeds = AnimalDefinitions.breeds["horse"].breeds
 
     -- if adult, apply adult data
         if isAdult then

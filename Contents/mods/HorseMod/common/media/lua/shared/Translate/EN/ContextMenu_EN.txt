@@ -10,7 +10,7 @@ ContextMenu_EN = {
     ContextMenu_Horse_No_Compatible_Gear = "No compatible gear to equip on the horse."
     ContextMenu_Horse_Unequip = "Unequip {old}"
     ContextMenu_Horse_Unequip_All = "Unequip All"
-    ContextMenu_Horse_NoMountPosition = "No position to reach around the horse."
+    ContextMenu_Horse_NoMountPosition = "Cannot reach the horse."
 
     /* Attachment Slots */
     ContextMenu_Horse_Slot_Saddle = "saddle"
@@ -25,4 +25,7 @@ ContextMenu_EN = {
     ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "Can't change gear while mounting."
     ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "Can't change mounted horse's gear."
     ContextMenu_Horse_HasRider = "Horse is already mounted by another character."
+
+    /* Food */
+    ContextMenu_FoodType_Horse = "Horse"
 }

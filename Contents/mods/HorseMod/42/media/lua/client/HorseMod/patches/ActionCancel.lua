@@ -1,5 +1,6 @@
 ---REQUIREMENTS
 local UrgentDismountAction = require("HorseMod/TimedActions/UrgentDismountAction")
+local HorseJump = require("HorseMod/TimedActions/HorseJump")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 
 
@@ -13,7 +14,7 @@ function isPlayerDoingActionThatCanBeCancelled(player)
     local currentAction = queue.current
     if currentAction then
         local Type = currentAction.Type
-        if Type == UrgentDismountAction.Type then
+        if Type == UrgentDismountAction.Type or Type == HorseJump.Type then
             return false
         else
             local dynamicCancel = currentAction.dynamicCancel ---@diagnostic disable-line not a field in ISBaseTimedAction

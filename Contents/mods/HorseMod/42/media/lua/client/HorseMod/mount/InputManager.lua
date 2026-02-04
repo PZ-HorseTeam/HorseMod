@@ -26,11 +26,27 @@ local function processJoypadAxisInput(v)
     return 0
 end
 
+---@param playerIndex integer
+---@return boolean
+---@nodiscard
+local function joypadHasUIFocus(playerIndex)
+    local data = JoypadState.players[playerIndex + 1]
+
+    if not data then
+        return false
+    end
+
+    return data.focus and data.focus:isVisible() or false
+end
+
 
 ---@class InputManager
 ---
 ---Parent mount.
 ---@field mount Mount
+---
+---Whether the left joypad bumper was pressed last time the input was polled.
+---@field lastJoypadLB boolean
 local InputManager = {}
 InputManager.__index = InputManager
 
@@ -80,6 +96,15 @@ function InputManager:getJoypadInput(pad)
     if isJoypadRTPressed(pad) then
         run = true
     end
+
+    local lbPressed = isJoypadLBPressed(pad)
+    if lbPressed and not self.lastJoypadLB then
+        local rider = self.mount.pair.rider
+        if not joypadHasUIFocus(rider:getPlayerNum()) then
+            self.mount.controller:toggleTrot()
+        end
+    end
+    self.lastJoypadLB = lbPressed
 
     return {
         movement = {
@@ -147,9 +172,9 @@ function InputManager:keyPressed(key)
     if key == ModOptions.HorseTrotButton then
         self.mount.controller:toggleTrot()
     elseif key == ModOptions.HorseJumpButton then
-        if self.mount.pair.mount:getVariableBoolean(AnimationVariable.GALLOP)
-                and not self.mount.pair:getAnimationVariableBoolean(AnimationVariable.JUMP) then
-            self.mount.controller:jump()
+        local controller = self.mount.controller
+        if controller:canJump() then
+            controller:jump()
         end
     end
 end
@@ -160,7 +185,8 @@ end
 function InputManager.new(mount)
     return setmetatable(
         {
-            mount = mount
+            mount = mount,
+            lastJoypadLB = false
         },
         InputManager
     )

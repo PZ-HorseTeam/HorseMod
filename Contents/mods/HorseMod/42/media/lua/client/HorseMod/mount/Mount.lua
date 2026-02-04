@@ -57,9 +57,6 @@ function Mount:cleanup()
     attached:remove(self.pair.mount)
     self.pair.mount:getData():setAttachedPlayer(nil) ---@diagnostic disable-line technically can still pass nil
 
-    self.pair.mount:getBehavior():setBlockMovement(false)
-    self.pair.mount:getPathFindBehavior2():reset()
-
     self.pair.rider:setVariable(AnimationVariable.TROT, false)
     self.pair.rider:setVariable(AnimationVariable.DISMOUNT_STARTED, false)
     self.pair.rider:setAllowRun(true)
@@ -101,17 +98,12 @@ function Mount.new(pair)
     local geneSpeed = mount:getUsedGene("speed"):getCurrentValue()
     rider:setVariable(AnimationVariable.GENE_SPEED, geneSpeed)
 
-    mount:getPathFindBehavior2():reset()
-    mount:getBehavior():setBlockMovement(true)
-    mount:stopAllMovementNow()
-
     mount:setVariable("bPathfind", false)
     mount:setVariable("animalWalking", false)
     mount:setVariable("animalRunning", false)
 
-    -- TODO: are these even needed
+    -- TODO: is this even needed
     mount:setWild(false)
-    mount:setVariable(AnimationVariable.IS_HORSE, true)
 
     local o = setmetatable(
         {

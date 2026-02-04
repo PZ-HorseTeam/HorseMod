@@ -8,6 +8,7 @@ local HorseSounds = require("HorseMod/HorseSounds")
 local HorseDamage = require("HorseMod/horse/HorseDamage")
 local MountAction = require("HorseMod/TimedActions/MountAction")
 local DismountAction = require("HorseMod/TimedActions/DismountAction")
+local HorseManager = require("HorseMod/HorseManager")
 
 
 ---@namespace HorseMod
@@ -71,7 +72,11 @@ Mounts.onMountChanged:add(function(player, animal)
         return
     end
 
-    if HorseRiding.getMount(player) then
+    local mount = HorseRiding.getMount(player)
+    if mount then
+        if mount.pair.mount == animal then
+            return
+        end
         HorseRiding.removeMount(player)
     end
 
@@ -87,7 +92,7 @@ end)
 
 ---Update the horse riding for every mounts.
 local function updateMounts()
-    for i = 0, getNumActivePlayers() do
+    for i = 0, getNumActivePlayers() - 1 do
         local player = getSpecificPlayer(i)
         if player then
             local mount = HorseRiding.getMount(player)
@@ -98,7 +103,7 @@ local function updateMounts()
     end
 end
 
-Events.OnTick.Add(updateMounts)
+HorseManager.preUpdate:add(updateMounts)
 
 ---Handle keybind pressing to switch horse riding states.
 ---@param key integer

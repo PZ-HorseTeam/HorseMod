@@ -20,10 +20,10 @@ Example
     table.insert(
         HorseZones.zones,
         {
-            x = 5546,
-            y = 6505,
+            x1 = 5546,
+            y1 = 6505,
+            x2 = 5617,
+            y2 = 6514,
             z = 0,
-            width = 71,
-            height = 9
         }
     )

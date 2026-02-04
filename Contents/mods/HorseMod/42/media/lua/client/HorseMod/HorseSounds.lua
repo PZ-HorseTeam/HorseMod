@@ -3,6 +3,7 @@
 local HorseManager = require("HorseMod/HorseManager")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Stamina = require("HorseMod/Stamina")
+local ModOptions = require("HorseMod/ModOptions")
 
 
 ---@enum Sound
@@ -47,9 +48,9 @@ local footsteps = {
 }
 
 ---@readonly
-local MIN_STRESS_FOR_SOUND = 70
+local MIN_STRESS_FOR_SOUND = 85
 ---@readonly
-local STRESS_INTERVAL_SECONDS = 15
+local STRESS_INTERVAL_SECONDS = 180
 ---@readonly
 local IDLE_INTERVAL_SECONDS = 60
 ---@readonly
@@ -159,8 +160,7 @@ end
 ---@return boolean
 ---@nodiscard
 local function shouldIdleSnort(animal)
-    local moving = animal:isAnimalMoving()
-    if moving then
+    if animal:getMovementSpeed() >= 0.01 then
         return false
     end
     if animal:getVariableBoolean(AnimationVariable.MOUNTING_HORSE) then
@@ -217,7 +217,7 @@ end
 ---@nodiscard
 local function getMovementState(animal)
     -- FIXME: this is basically a duplicate of MountController:getMovementState because we don't always have a Mount to check
-    if not animal:isAnimalMoving() then
+    if animal:getMovementSpeed() < 0.01 then
         return "idle"
     elseif animal:getVariableBoolean(AnimationVariable.GALLOP) then
         return "gallop"
@@ -340,7 +340,7 @@ end
 
 function SoundsSystem:update(horses, delta)
     -- need to update this each tick incase the player changes their volume
-    self.volume = getCore():getOptionSoundVolume() * 0.1
+    self.volume = getCore():getOptionSoundVolume() * 0.1 * ModOptions.HorseSoundVolume
 
     for i = 1, #horses do
         local horse = horses[i]

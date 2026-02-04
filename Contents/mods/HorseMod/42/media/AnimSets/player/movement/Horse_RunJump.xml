@@ -101,4 +101,9 @@
         <m_Time>End</m_Time>
         <m_ParameterValue>HorseJump=false</m_ParameterValue>
     </m_Events>
+    <m_Events>
+        <m_EventName>HorseJumpEnd</m_EventName>
+        <m_Time>End</m_Time>
+        <m_ParameterValue></m_ParameterValue>
+    </m_Events>
 </animNode>

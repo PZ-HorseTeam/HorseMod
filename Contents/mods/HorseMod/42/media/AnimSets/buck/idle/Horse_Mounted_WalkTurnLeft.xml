@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<animNode>
+    <m_Name>Horse_Mounted_WalkTurnLeft</m_Name>
+    <m_AnimName>Horse_Walk_Left</m_AnimName>
+    <m_ConditionPriority>11</m_ConditionPriority>
+    <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+    <m_EarlyTransitionOut>true</m_EarlyTransitionOut>
+    <m_deferredBoneAxis>Y</m_deferredBoneAxis>
+    <m_SpeedScale>HorseWalkSpeed</m_SpeedScale>
+    <m_Scalar>HorseGeneSpeed</m_Scalar>
+    <m_blendInTime>0.20</m_blendInTime>
+    <m_blendOutTime>0.40</m_blendOutTime>
+    <m_BlendTime>0.80</m_BlendTime>
+    <m_Conditions>
+        <m_Name>isHorse</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+    <m_Conditions>
+        <m_Name>animalWalking</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_BoolValue>true</m_BoolValue>
+    </m_Conditions>
+    <m_Conditions x_name="8de8c17e-18eb-48d7-9df9-a513cc02dace">
+        <m_Name>targetTwist</m_Name>
+        <m_Type>LESS</m_Type>
+        <m_Value>-45</m_Value>
+    </m_Conditions>
+    <m_Conditions>
+        <m_Name>HorseTrot</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_BoolValue>false</m_BoolValue>
+    </m_Conditions>
+    <m_Transitions>
+        <m_Target>Horse_Mounted_Run</m_Target>
+        <m_blendInTime>0.80</m_blendInTime>
+        <m_blendOutTime>0.80</m_blendOutTime>
+        <m_speedScale>1.20</m_speedScale>
+        <m_Conditions>
+            <m_Name>animalWalking</m_Name>
+            <m_Type>BOOL</m_Type>
+            <m_BoolValue>false</m_BoolValue>
+        </m_Conditions>
+        <m_Conditions>
+            <m_Name>animalRunning</m_Name>
+            <m_Type>BOOL</m_Type>
+            <m_BoolValue>true</m_BoolValue>
+        </m_Conditions>
+    </m_Transitions>
+
+    <m_Conditions>
+        <m_Name>HorseRiding</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+</animNode>

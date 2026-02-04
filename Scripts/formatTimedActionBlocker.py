@@ -1,5 +1,4 @@
-import re, pyperclip, os
-from pprint import pprint
+import os
 import pandas as pd
 
 # # Read the console file
@@ -10,7 +9,7 @@ import pandas as pd
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-csv_path = os.path.join(script_dir, 'timedActions.csv')
+csv_path = os.path.join(script_dir, '..', 'Data', 'timedActions.csv')
 
 # Read the CSV file using pandas
 df = pd.read_csv(csv_path, encoding='utf-8')

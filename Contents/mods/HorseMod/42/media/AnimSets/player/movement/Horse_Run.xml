@@ -26,6 +26,11 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions>
+        <m_Name>walkstateRun</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>false</m_Value>
+    </m_Conditions>
+    <m_Conditions>
         <m_Name>targetTwist</m_Name>
         <m_Type>LESS</m_Type>
         <m_Value>30</m_Value>
@@ -170,6 +175,15 @@
         </m_Conditions>
         <m_Conditions>
             <m_Name>HorseHasReins</m_Name>
+            <m_Type>BOOL</m_Type>
+            <m_Value>true</m_Value>
+        </m_Conditions>
+    </m_Transitions>
+    <m_Transitions>
+        <m_Target>Horse_Run_Walkstate</m_Target>
+        <m_BlendTime>1.80</m_BlendTime>
+        <m_Conditions>
+            <m_Name>walkstateRun</m_Name>
             <m_Type>BOOL</m_Type>
             <m_Value>true</m_Value>
         </m_Conditions>

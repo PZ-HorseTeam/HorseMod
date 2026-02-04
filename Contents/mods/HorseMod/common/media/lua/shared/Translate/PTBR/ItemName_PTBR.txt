@@ -1,0 +1,211 @@
+ItemName_PTBR = {
+    /*
+        Translated by Refúgio Z
+    */
+
+    /* Acessórios do cavalo */
+        /* Selas */
+    ItemName_HorseMod.HorseSaddle_Crude = "Sela de Cavalo (Rústica)"
+    ItemName_HorseMod.HorseSaddle_Black = "Sela de Cavalo (Preta)"
+    ItemName_HorseMod.HorseSaddle_CowHolstein = "Sela de Cavalo (Holstein)"
+    ItemName_HorseMod.HorseSaddle_CowSimmental = "Sela de Cavalo (Simmental)"
+    ItemName_HorseMod.HorseSaddle_White = "Sela de Cavalo (Branca)"
+    ItemName_HorseMod.HorseSaddle_Landrace = "Sela de Cavalo (Landrace)"
+
+    ItemName_HorseMod.HorseSaddle_AmericanPaintOvero = "Sela de Cavalo (Overo)"
+    ItemName_HorseMod.HorseSaddle_AmericanPaintTobiano = "Sela de Cavalo (Tobiano)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterBlueRoan = "Sela de Cavalo (Rosilho Azul)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterPalomino = "Sela de Cavalo (Palomino)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaGrullaBlanket = "Sela de Cavalo (Grulla Blanket)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaLeopard = "Sela de Cavalo (Leopardo)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredBay = "Sela de Cavalo (Baio)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredFleaBittenGrey = "Sela de Cavalo (Tordilho Mosqueado)"
+
+        /* Alforjes */
+    ItemName_HorseMod.HorseSaddlebagsContainer = "Alforjes de Cavalo"
+    ItemName_HorseMod.HorseSaddlebags_Crude = "Alforjes de Cavalo (Rústicos)"
+    ItemName_HorseMod.HorseSaddlebags_Black = "Alforjes de Cavalo (Pretos)"
+    ItemName_HorseMod.HorseSaddlebags_CowHolstein = "Alforjes de Cavalo (Holstein)"
+    ItemName_HorseMod.HorseSaddlebags_CowSimmental = "Alforjes de Cavalo (Simmental)"
+    ItemName_HorseMod.HorseSaddlebags_White = "Alforjes de Cavalo (Brancos)"
+    ItemName_HorseMod.HorseSaddlebags_Landrace = "Alforjes de Cavalo (Landrace)"
+
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintOvero = "Alforjes de Cavalo (Overo)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintTobiano = "Alforjes de Cavalo (Tobiano)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterBlueRoan = "Alforjes de Cavalo (Rosilho Azul)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterPalomino = "Alforjes de Cavalo (Palomino)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaGrullaBlanket = "Alforjes de Cavalo (Grulla Blanket)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaLeopard = "Alforjes de Cavalo (Leopardo)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredBay = "Alforjes de Cavalo (Baio)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredFleaBittenGrey = "Alforjes de Cavalo (Tordilho Mosqueado)"
+
+        /* Rédeas */
+    ItemName_HorseMod.HorseReins_Crude = "Rédeas de Cavalo (Rústicas)"
+    ItemName_HorseMod.HorseReins_Brown = "Rédeas de Cavalo (Marrons)"
+    ItemName_HorseMod.HorseReins_Black = "Rédeas de Cavalo (Pretas)"
+    ItemName_HorseMod.HorseReins_White = "Rédeas de Cavalo (Brancas)"
+
+
+    /* Cabeças de cavalo */
+    ItemName_HorseMod.Foal_Head_AmericanPaintOvero = "Cabeça de Potro Paint Americano"
+    ItemName_HorseMod.Mare_Head_AmericanPaintOvero = "Cabeça de Égua Paint Americano"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintOvero = "Cabeça de Garanhão Paint Americano"
+    ItemName_HorseMod.Foal_Head_AmericanPaintTobiano = "Cabeça de Potro Paint Americano"
+    ItemName_HorseMod.Mare_Head_AmericanPaintTobiano = "Cabeça de Égua Paint Americano"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintTobiano = "Cabeça de Garanhão Paint Americano"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterBlueRoan = "Cabeça de Potro Quarto de Milha Americano"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterBlueRoan = "Cabeça de Égua Quarto de Milha Americano"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterBlueRoan = "Cabeça de Garanhão Quarto de Milha Americano"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterPalomino = "Cabeça de Potro Quarto de Milha Americano"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterPalomino = "Cabeça de Égua Quarto de Milha Americano"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterPalomino = "Cabeça de Garanhão Quarto de Milha Americano"
+    ItemName_HorseMod.Foal_Head_AppaloosaGrullaBlanket = "Cabeça de Potro Appaloosa"
+    ItemName_HorseMod.Mare_Head_AppaloosaGrullaBlanket = "Cabeça de Égua Appaloosa"
+    ItemName_HorseMod.Stallion_Head_AppaloosaGrullaBlanket = "Cabeça de Garanhão Appaloosa"
+    ItemName_HorseMod.Foal_Head_AppaloosaLeopard = "Cabeça de Potro Appaloosa"
+    ItemName_HorseMod.Mare_Head_AppaloosaLeopard = "Cabeça de Égua Appaloosa"
+    ItemName_HorseMod.Stallion_Head_AppaloosaLeopard = "Cabeça de Garanhão Appaloosa"
+    ItemName_HorseMod.Foal_Head_ThoroughbredBay = "Cabeça de Potro Puro-Sangue Inglês"
+    ItemName_HorseMod.Mare_Head_ThoroughbredBay = "Cabeça de Égua Puro-Sangue Inglês"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredBay = "Cabeça de Garanhão Puro-Sangue Inglês"
+    ItemName_HorseMod.Foal_Head_ThoroughbredFleaBittenGrey = "Cabeça de Potro Puro-Sangue Inglês"
+    ItemName_HorseMod.Mare_Head_ThoroughbredFleaBittenGrey = "Cabeça de Égua Puro-Sangue Inglês"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredFleaBittenGrey = "Cabeça de Garanhão Puro-Sangue Inglês"
+
+
+    /* Partes do cavalo */
+    ItemName_HorseMod.Horse_Skull = "Crânio de Cavalo"
+    ItemName_HorseMod.Horse_Steak = "Bife de Cavalo"
+    ItemName_HorseMod.Horse_Loin = "Lombo de Cavalo"
+    ItemName_HorseMod.Horse_Hoof = "Casco de Cavalo"
+
+
+    /* Cola de cavalo */
+    ItemName_HorseMod.PotHorseGlue = "Panela de Cola de Cavalo"
+    ItemName_HorseMod.PotForgedHorseGlue = "Panela Forjada de Cola de Cavalo"
+    ItemName_HorseMod.HorseGlue = "Cola de Cavalo"
+
+
+    /* Couros de cavalo */
+        /* Paint Americano Overo */
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Full = "Pele de Paint Americano Overo (Não processada)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur = "Pele de Paint Americano Overo (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Wet = "Couro de Paint Americano Overo (Com pelos, Molhado)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan = "Couro de Paint Americano Overo (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Medium = "Metade do Couro de Paint Americano Overo (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Small = "Quarto do Couro de Paint Americano Overo (Com pelos)"
+
+        /* Paint Americano Tobiano */
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Full = "Pele de Paint Americano Tobiano (Não processada)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur = "Pele de Paint Americano Tobiano (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Couro de Paint Americano Tobiano (Com pelos, Molhado)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan = "Couro de Paint Americano Tobiano (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Medium = "Metade do Couro de Paint Americano Tobiano (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Small = "Quarto do Couro de Paint Americano Tobiano (Com pelos)"
+
+        /* Quarto de Milha Americano (Rosilho Azul) */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Full = "Pele de Quarto de Milha Americano Rosilho Azul (Não processada)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur = "Pele de Quarto de Milha Americano Rosilho Azul (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "Couro de Quarto de Milha Americano Rosilho Azul (Com pelos, Molhado)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan = "Couro de Quarto de Milha Americano Rosilho Azul (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Medium = "Metade do Couro de Quarto de Milha Americano Rosilho Azul (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "Quarto do Couro de Quarto de Milha Americano Rosilho Azul (Com pelos)"
+
+        /* Quarto de Milha Americano (Palomino) */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Full = "Pele de Quarto de Milha Americano Palomino (Não processada)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur = "Pele de Quarto de Milha Americano Palomino (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "Couro de Quarto de Milha Americano Palomino (Com pelos, Molhado)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan = "Couro de Quarto de Milha Americano Palomino (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Medium = "Metade do Couro de Quarto de Milha Americano Palomino (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Small = "Quarto do Couro de Quarto de Milha Americano Palomino (Com pelos)"
+
+        /* Appaloosa (Grulla Blanket) */
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Full = "Pele de Appaloosa Grulla Blanket (Não processada)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur = "Pele de Appaloosa Grulla Blanket (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Couro de Appaloosa Grulla Blanket (Com pelos, Molhado)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan = "Couro de Appaloosa Grulla Blanket (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Medium = "Metade do Couro de Appaloosa Grulla Blanket (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Quarto do Couro de Appaloosa Grulla Blanket (Com pelos)"
+
+        /* Appaloosa (Leopardo) */
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Full = "Pele de Appaloosa Leopardo (Não processada)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur = "Pele de Appaloosa Leopardo (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Wet = "Couro de Appaloosa Leopardo (Com pelos, Molhado)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan = "Couro de Appaloosa Leopardo (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Medium = "Metade do Couro de Appaloosa Leopardo (Com pelos)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Small = "Quarto do Couro de Appaloosa Leopardo (Com pelos)"
+
+        /* Puro-Sangue Inglês (Baio) */
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Full = "Pele de Puro-Sangue Inglês Baio (Não processada)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur = "Pele de Puro-Sangue Inglês Baio (Com pelos)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Wet = "Couro de Puro-Sangue Inglês Baio (Com pelos, Molhado)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan = "Couro de Puro-Sangue Inglês Baio (Com pelos)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Medium = "Metade do Couro de Puro-Sangue Inglês Baio (Com pelos)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Small = "Quarto do Couro de Puro-Sangue Inglês Baio (Com pelos)"
+
+        /* Puro-Sangue Inglês (Tordilho Mosqueado) */
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Full = "Pele de Puro-Sangue Inglês Tordilho Mosqueado (Não processada)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur = "Pele de Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Couro de Puro-Sangue Inglês Tordilho Mosqueado (Com pelos, Molhado)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Couro de Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Medium = "Metade do Couro de Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "Quarto do Couro de Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)"
+
+
+    /* Couros de potro */
+        /* Paint Americano Overo */
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Full = "Pele de Potro Paint Americano Overo (Não processada)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur = "Pele de Potro Paint Americano Overo (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Wet = "Couro de Potro Paint Americano Overo (Com pelos, Molhado)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan = "Couro de Potro Paint Americano Overo (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Small = "Metade do Couro de Potro Paint Americano Overo (Com pelos)"
+
+        /* Paint Americano Tobiano */
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Full = "Pele de Potro Paint Americano Tobiano (Não processada)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur = "Pele de Potro Paint Americano Tobiano (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Couro de Potro Paint Americano Tobiano (Com pelos, Molhado)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan = "Couro de Potro Paint Americano Tobiano (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Small = "Metade do Couro de Potro Paint Americano Tobiano (Com pelos)"
+
+        /* Quarto de Milha Americano (Rosilho Azul) */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Full = "Pele de Potro Quarto de Milha Americano Rosilho Azul (Não processada)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur = "Pele de Potro Quarto de Milha Americano Rosilho Azul (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "Couro de Potro Quarto de Milha Americano Rosilho Azul (Com pelos, Molhado)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan = "Couro de Potro Quarto de Milha Americano Rosilho Azul (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "Metade do Couro de Potro Quarto de Milha Americano Rosilho Azul (Com pelos)"
+
+        /* Quarto de Milha Americano (Palomino) */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Full = "Pele de Potro Quarto de Milha Americano Palomino (Não processada)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur = "Pele de Potro Quarto de Milha Americano Palomino (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "Couro de Potro Quarto de Milha Americano Palomino (Com pelos, Molhado)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan = "Couro de Potro Quarto de Milha Americano Palomino (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Small = "Metade do Couro de Potro Quarto de Milha Americano Palomino (Com pelos)"
+
+        /* Appaloosa (Grulla Blanket) */
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Full = "Pele de Potro Appaloosa Grulla Blanket (Não processada)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur = "Pele de Potro Appaloosa Grulla Blanket (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Couro de Potro Appaloosa Grulla Blanket (Com pelos, Molhado)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan = "Couro de Potro Appaloosa Grulla Blanket (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Metade do Couro de Potro Appaloosa Grulla Blanket (Com pelos)"
+
+        /* Appaloosa (Leopardo) */
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Full = "Pele de Potro Appaloosa Leopardo (Não processada)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur = "Pele de Potro Appaloosa Leopardo (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Wet = "Couro de Potro Appaloosa Leopardo (Com pelos, Molhado)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan = "Couro de Potro Appaloosa Leopardo (Com pelos)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Small = "Metade do Couro de Potro Appaloosa Leopardo (Com pelos)"
+
+        /* Puro-Sangue Inglês (Baio) */
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Full = "Pele de Potro Puro-Sangue Inglês Baio (Não processada)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur = "Pele de Potro Puro-Sangue Inglês Baio (Com pelos)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Wet = "Couro de Potro Puro-Sangue Inglês Baio (Com pelos, Molhado)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan = "Couro de Potro Puro-Sangue Inglês Baio (Com pelos)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Small = "Metade do Couro de Potro Puro-Sangue Inglês Baio (Com pelos)"
+
+        /* Puro-Sangue Inglês (Tordilho Mosqueado) */
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Full = "Pele de Potro Puro-Sangue Inglês Tordilho Mosqueado (Não processada)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur = "Pele de Potro Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Couro de Potro Puro-Sangue Inglês Tordilho Mosqueado (Com pelos, Molhado)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Couro de Potro Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "Metade do Couro de Potro Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)"
+}

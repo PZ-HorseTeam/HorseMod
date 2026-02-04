@@ -28,7 +28,7 @@ local function doHorseInteractionMenu(context, player, animal)
         if not mountPosition then
             option.notAvailable = true
             tooltip = ISWorldObjectContextMenu.addToolTip()
-            tooltip.description = getText("ContextMenu_Horse_NoMountPoint")
+            tooltip.description = getText("ContextMenu_Horse_NoMountPosition")
         elseif not canMount then
             option.notAvailable = true
             if reason then
@@ -40,10 +40,18 @@ local function doHorseInteractionMenu(context, player, animal)
             option.toolTip = tooltip
         end
     else
-        context:addOption(
+        local dismountPosition = MountingUtility.getNearestMountPosition(player, animal)
+        local dismountOption = context:addOption(
             getText("ContextMenu_Horse_Dismount", animal:getFullName()),
-            player, Mounting.dismountHorse, playerMount
+            player, Mounting.dismountHorse, playerMount, dismountPosition
         )
+        dismountOption.iconTexture = animal:getInventoryIconTexture()
+        if not dismountPosition then
+            dismountOption.notAvailable = true
+            local tooltip = ISWorldObjectContextMenu.addToolTip()
+            tooltip.description = getText("ContextMenu_Horse_NoMountPosition")
+            dismountOption.toolTip = tooltip
+        end
     end
 end
 
@@ -107,11 +115,11 @@ local function handleJoypadMountButton(player)
 
     if not pressed or prev then return end
     if joypadHasUIFocus(pid) then return end
-    if player:hasTimedActions() then return end
     if player:getVehicle() then return end
-    if player:getVariableBoolean(AnimationVariable.MOUNTING_HORSE) then return end
 
     local mountedHorse = Mounts.getMount(player)
+    if player:hasTimedActions() and not mountedHorse then return end
+    if mountedHorse and player:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then return end
 
     -- dismount current horse if riding one
     if mountedHorse then
@@ -125,7 +133,7 @@ local function handleJoypadMountButton(player)
 
     -- mount nearest horse
     local horse = MountingUtility.getBestMountableHorse(player, 1.25)
-    if horse and horse:isExistInTheWorld() then
+    if horse and horse:isExistInTheWorld() and MountingUtility.canMountHorse(player, horse) then
         local mountPosition = MountingUtility.getNearestMountPosition(player, horse)
         if not mountPosition then return end
         player:setIsAiming(false)

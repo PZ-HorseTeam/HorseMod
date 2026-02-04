@@ -34,6 +34,9 @@ HorseManager.onHorseAdded = Event.new--[[@<IsoAnimal>]]()
 ---Triggers when a horse gets unloaded.
 HorseManager.onHorseRemoved = Event.new--[[@<IsoAnimal>]]()
 
+---Triggers before a horse manager update.
+HorseManager.preUpdate = Event.new()
+
 function HorseManager.removeHorse(horse, i)
     if i then
         table.remove(HorseManager.horses, i)
@@ -145,6 +148,8 @@ end
 function HorseManager.update()
     HorseManager.retrieveNewHorses()
     HorseManager.releaseRemovedHorses()
+
+    HorseManager.preUpdate:trigger()
 
     local delta = GameTime.getInstance():getTimeDelta()
     for i = 1, #HorseManager.systems do

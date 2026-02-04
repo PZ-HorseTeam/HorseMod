@@ -8,6 +8,7 @@ IGUI_FR = {
     IGUI_AnimalType_mare = "Jument"
     IGUI_AnimalType_filly = "Pouliche"
 
+    IGUI_AnimalType_Global_horse = "Cheval"
     IGUI_Animal_Group_horse = "Cheval"
     IGUI_Horse_Slot = "Emplacement" /* for attachments */
 
@@ -22,7 +23,7 @@ IGUI_FR = {
     IGUI_Breed_ThoroughbredFleaBittenGrey = "Pur-sang (Gris truité)"
 
     /* Mod Options */
-    IGUI_ModOptions_HorseModName = "Cheval"
+    IGUI_ModOptions_HorseModName = "Horse Mod"
     IGUI_ModOptions_HorseSoundVolume_Desc = "Change le volume des sons de cheval"
     IGUI_ModOptions_HorseSoundVolume_Name = "Volume des sons de cheval (Par défaut 0.40)"
     IGUI_ModOptions_HorseSoundVolume_Tooltip = "Réglez le volume de tous les sons de cheval."

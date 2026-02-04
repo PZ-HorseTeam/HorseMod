@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<animNode>
+    <m_Name>Horse_Mounted_IdleTurn180R</m_Name>
+    <m_AnimName>Horse_Idle_Turn90R</m_AnimName>
+    <m_deferredBoneAxis>Y</m_deferredBoneAxis>
+    <m_SpeedScale>0.5</m_SpeedScale>
+    <m_blendInTime>0.20</m_blendInTime>
+    <m_blendOutTime>0.20</m_blendOutTime>
+    <m_BlendTime>0.4</m_BlendTime>
+    <m_ConditionPriority>11</m_ConditionPriority>
+    <m_Conditions>
+        <m_Name>isHorse</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+    <m_Conditions>
+        <m_Name>IdleToRun</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>false</m_Value>
+    </m_Conditions>
+    <m_Conditions>
+        <m_Name>isTurningAround</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+    <m_Conditions>
+        <m_Name>animalWalking</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_BoolValue>false</m_BoolValue>
+    </m_Conditions>
+    <m_Conditions>
+        <m_Name>HorseGallop</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_BoolValue>false</m_BoolValue>
+    </m_Conditions>
+    <m_Conditions>
+        <m_Name>animalRunning</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_BoolValue>false</m_BoolValue>
+    </m_Conditions>
+    <m_Conditions>
+        <m_Name>targetTwist</m_Name>
+        <m_Type>GTR</m_Type>
+        <m_Value>0</m_Value>
+    </m_Conditions>
+
+    <m_Conditions>
+        <m_Name>HorseRiding</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+</animNode>

@@ -6,6 +6,7 @@ local ActionBlocker = {
     ---@type table<string, true>
     validActions = {
         ["HorseMod_DismountAction"] = true,
+        ["HorseMod_HorseJump"] = true,
         ["HorseMod_UrgentDismountAction"] = true,
         ["ISAddFluidFromItemAction"] = true,
         ["ISApplyBandage"] = true,

@@ -1,6 +1,7 @@
 local mountcommands = require("HorseMod/networking/mountcommands")
 local commands = require("HorseMod/networking/commands")
 local Event = require("HorseMod/Event")
+local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
 
 local IS_CLIENT = isClient()
 local IS_SERVER = isServer()
@@ -20,8 +21,20 @@ Mounts.onMountChanged = Event.new--[[@<IsoPlayer, IsoAnimal?>]]()
 ---@param player IsoPlayer
 ---@param animal IsoAnimal
 function Mounts.addMount(player, animal)
+    local oldMount = Mounts.getMount(player)
+    if oldMount then
+        if oldMount == animal then
+            return
+        end
+        Mounts.removeMount(player)
+    end
+
     playerMountMap[player] = animal
     mountPlayerMap[animal] = player
+
+    animal:getBehavior():setBlockMovement(true)
+    animal:stopAllMovementNow()
+    animal:setVariable(AnimationVariable.RIDING_HORSE, true)
 
     if IS_SERVER then
         mountcommands.Mount:send(
@@ -38,10 +51,16 @@ end
 
 ---@param player IsoPlayer
 function Mounts.removeMount(player)
-    assert(Mounts.hasMount(player), "Tried removing mount for player without a mount")
+    if not Mounts.hasMount(player) then
+        return
+    end
+
     local mount = playerMountMap[player]
     playerMountMap[player] = nil
     mountPlayerMap[mount] = nil
+
+    mount:getBehavior():setBlockMovement(false)
+    mount:setVariable(AnimationVariable.RIDING_HORSE, false)
 
     -- used to reset the wander counter of the horse so it doesn't instantly wander off
     mount:setStateEventDelayTimer(mount:getBehavior():pickRandomWanderInterval())
@@ -91,6 +110,18 @@ function Mounts.reset()
         Mounts.removeMount(player)
     end
 end
+
+---Reapply block movement every tick because it has a timeout
+local function updateMounts()
+    for _, mount in pairs(playerMountMap) do
+        mount:getBehavior():setBlockMovement(true)
+    end
+end
+
+if not isClient() then
+    Events.OnTick.Add(updateMounts)
+end
+
 
 -- we don't actually need these in singleplayer but networking.client complains if there is no handler
 if not IS_SERVER then

@@ -48,11 +48,13 @@ function Mounting.mountHorse(player, horse, mountPosition)
     local pathfindAction = MountingUtility.pathfindToHorse(player, horse, mountPosition)
 
     -- unequip items from hands
-    if player:getPrimaryHandItem() then
-        ISTimedActionQueue.add(ISUnequipAction:new(player, player:getPrimaryHandItem(), 50));
+    local primaryItem = player:getPrimaryHandItem()
+    local secondaryItem = player:getSecondaryHandItem()
+    if primaryItem and primaryItem:getFullType() ~= "Base.Rope" then
+        ISTimedActionQueue.add(ISUnequipAction:new(player, primaryItem, 50));
     end
-    if player:getSecondaryHandItem() and player:getSecondaryHandItem() ~= player:getPrimaryHandItem() then
-        ISTimedActionQueue.add(ISUnequipAction:new(player, player:getSecondaryHandItem(), 50));
+    if secondaryItem and secondaryItem ~= primaryItem and secondaryItem:getFullType() ~= "Base.Rope" then
+        ISTimedActionQueue.add(ISUnequipAction:new(player, secondaryItem, 50));
     end
 
     -- create mount action
@@ -79,9 +81,6 @@ end
 ---@param player IsoPlayer
 ---@param mountPosition MountPosition
 function Mounting.dismountHorse(player, horse, mountPosition)
-    --- pathfind to the mount position
-    MountingUtility.pathfindToHorse(player, horse, mountPosition)
-
     -- dismount
     local hasSaddle = Attachments.getSaddle(horse) ~= nil
     local action = DismountAction:new(
@@ -111,6 +110,7 @@ end
 function Mounting.dismountDeath(player, horse)
     if not Mounting.canDismountUrgent(player) then return end
 
+    ISTimedActionQueue.clear(player)
     ISTimedActionQueue.add(UrgentDismountAction:new(
         player,
         horse,
@@ -126,6 +126,7 @@ end
 function Mounting.dismountFall(player, horse)
     if not Mounting.canDismountUrgent(player) then return end
 
+    ISTimedActionQueue.clear(player)
     ISTimedActionQueue.add(UrgentDismountAction:new(
         player,
         horse,
@@ -141,6 +142,7 @@ end
 function Mounting.dismountFallBack(player, horse)
     if not Mounting.canDismountUrgent(player) then return end
 
+    ISTimedActionQueue.clear(player)
     ISTimedActionQueue.add(UrgentDismountAction:new(
         player,
         horse,

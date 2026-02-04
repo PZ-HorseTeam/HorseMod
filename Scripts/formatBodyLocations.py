@@ -7,7 +7,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 ## READ BODY LOCATIONS
 # Path to the CSV file next to the script
-csv_path = os.path.join(script_dir, 'bodyLocations.csv')
+csv_path = os.path.join(script_dir, '..', 'Data', 'bodyLocations.csv')
 
 # Read the CSV file using pandas
 df = pd.read_csv(csv_path, encoding='utf-8')
@@ -36,7 +36,7 @@ bodyLocations = bodyLocations.rstrip()  # Remove trailing newline
 
 ## READ BLOOD LOCATIONS
 # Path to the CSV file next to the script
-csv_path = os.path.join(script_dir, 'bloodLocations.csv')
+csv_path = os.path.join(script_dir, '..', 'Data', 'bloodLocations.csv')
 
 # Read the CSV file using pandas
 df = pd.read_csv(csv_path, encoding='utf-8')

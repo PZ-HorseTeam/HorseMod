@@ -9,7 +9,7 @@ module HorseMod
     model HorseHead_AmericanQuarterPalominoRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AmericanQuarterPalomino,
+        texture = Body/HorseMod/Horse_AmericanQuarterPalomino_Rotting,
     }
     model FoalHead_AmericanQuarterPalomino {
         mesh = HorseMod/Horse_Head,
@@ -20,7 +20,7 @@ module HorseMod
     model FoalHead_AmericanQuarterPalominoRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AmericanQuarterPalomino,
+        texture = Body/HorseMod/Horse_AmericanQuarterPalomino_Rotting,
         scale = 0.7,
     }
 
@@ -34,7 +34,7 @@ module HorseMod
     model HorseHead_AmericanQuarterBlueRoanRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AmericanQuarterBlueRoan,
+        texture = Body/HorseMod/Horse_AmericanQuarterBlueRoan_Rotting,
     }
     model FoalHead_AmericanQuarterBlueRoan {
         mesh = HorseMod/Horse_Head,
@@ -45,7 +45,7 @@ module HorseMod
     model FoalHead_AmericanQuarterBlueRoanRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AmericanQuarterBlueRoan,
+        texture = Body/HorseMod/Horse_AmericanQuarterBlueRoan_Rotting,
         scale = 0.7,
     }
 
@@ -59,7 +59,7 @@ module HorseMod
     model HorseHead_AmericanPaintTobianoRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AmericanPaintTobiano,
+        texture = Body/HorseMod/Horse_AmericanPaintTobiano_Rotting,
     }
     model FoalHead_AmericanPaintTobiano {
         mesh = HorseMod/Horse_Head,
@@ -70,7 +70,7 @@ module HorseMod
     model FoalHead_AmericanPaintTobianoRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AmericanPaintTobiano,
+        texture = Body/HorseMod/Horse_AmericanPaintTobiano_Rotting,
         scale = 0.7,
     }
 
@@ -84,7 +84,7 @@ module HorseMod
     model HorseHead_AmericanPaintOveroRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AmericanPaintOvero,
+        texture = Body/HorseMod/Horse_AmericanPaintOvero_Rotting,
     }
     model FoalHead_AmericanPaintOvero {
         mesh = HorseMod/Horse_Head,
@@ -95,7 +95,7 @@ module HorseMod
     model FoalHead_AmericanPaintOveroRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AmericanPaintOvero,
+        texture = Body/HorseMod/Horse_AmericanPaintOvero_Rotting,
         scale = 0.7,
     }
 
@@ -109,7 +109,7 @@ module HorseMod
     model HorseHead_AppaloosaGrullaBlanketRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AppaloosaGrullaBlanket,
+        texture = Body/HorseMod/Horse_AppaloosaGrullaBlanket_Rotting,
     }
     model FoalHead_AppaloosaGrullaBlanket {
         mesh = HorseMod/Horse_Head,
@@ -120,7 +120,7 @@ module HorseMod
     model FoalHead_AppaloosaGrullaBlanketRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AppaloosaGrullaBlanket,
+        texture = Body/HorseMod/Horse_AppaloosaGrullaBlanket_Rotting,
         scale = 0.7,
     }
 
@@ -134,7 +134,7 @@ module HorseMod
     model HorseHead_AppaloosaLeopardRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AppaloosaLeopard,
+        texture = Body/HorseMod/Horse_AppaloosaLeopard_Rotting,
     }
     model FoalHead_AppaloosaLeopard {
         mesh = HorseMod/Horse_Head,
@@ -145,7 +145,7 @@ module HorseMod
     model FoalHead_AppaloosaLeopardRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_AppaloosaLeopard,
+        texture = Body/HorseMod/Horse_AppaloosaLeopard_Rotting,
         scale = 0.7,
     }
 
@@ -159,7 +159,7 @@ module HorseMod
     model HorseHead_ThoroughbredBayRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_ThoroughbredBay,
+        texture = Body/HorseMod/Horse_ThoroughbredBay_Rotting,
     }
     model FoalHead_ThoroughbredBay {
         mesh = HorseMod/Horse_Head,
@@ -170,7 +170,7 @@ module HorseMod
     model FoalHead_ThoroughbredBayRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_ThoroughbredBay,
+        texture = Body/HorseMod/Horse_ThoroughbredBay_Rotting,
         scale = 0.7,
     }
 
@@ -184,7 +184,7 @@ module HorseMod
     model HorseHead_ThoroughbredFleaBittenGreyRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_ThoroughbredFleaBittenGrey,
+        texture = Body/HorseMod/Horse_ThoroughbredFleaBittenGrey_Rotting,
     }
     model FoalHead_ThoroughbredFleaBittenGrey {
         mesh = HorseMod/Horse_Head,
@@ -195,7 +195,7 @@ module HorseMod
     model FoalHead_ThoroughbredFleaBittenGreyRotten {
         mesh = HorseMod/Horse_Head,
         static = true,
-        texture = Body/HorseMod/Horse_ThoroughbredFleaBittenGrey,
+        texture = Body/HorseMod/Horse_ThoroughbredFleaBittenGrey_Rotting,
         scale = 0.7,
     }
 }

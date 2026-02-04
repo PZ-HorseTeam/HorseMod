@@ -4,6 +4,7 @@ IGUI_EN = {
     IGUI_AnimalType_mare = "Mare"
     IGUI_AnimalType_filly = "Filly"
 
+    IGUI_AnimalType_Global_horse = "Horse"
     IGUI_Animal_Group_horse = "Horse"
     IGUI_Horse_Slot = "Slot" /* for attachments */
 
@@ -18,7 +19,7 @@ IGUI_EN = {
     IGUI_Breed_ThoroughbredFleaBittenGrey = "Thoroughbred (Flea-Bitten Grey)"
 
     /* Mod Options */
-    IGUI_ModOptions_HorseModName = "Horse"
+    IGUI_ModOptions_HorseModName = "Horse Mod"
     IGUI_ModOptions_HorseSoundVolume_Desc = "Change the volume of horse sounds"
     IGUI_ModOptions_HorseSoundVolume_Name = "Horse Sound Volume (Default 0.40)"
     IGUI_ModOptions_HorseSoundVolume_Tooltip = "Set sound volume of all horse sounds."
@@ -34,4 +35,5 @@ IGUI_EN = {
     IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "Change the keybind for horse galloping."
 
     IGUI_HorseMod_MultiplayerWarning = "The Horse mod does not support multiplayer.<br>Horses will not work properly, and you may experience other issues with your playthrough.<br>It is highly recommended that you disable the Horse mod.<br>Bug reports for multiplayer will not be accepted."
+    IGUI_HorseMod_DisabledInMultiplayer = "Temporarily disabled in multiplayer."
 }

@@ -2,7 +2,7 @@ local Mounts = require("HorseMod/Mounts")
 local Mounting = require("HorseMod/Mounting")
 local Attachments = require("HorseMod/attachments/Attachments")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
-local AttachmentsManager = require("HorseMod/attachments/AttachmentsManager")
+local AttachmentsClient = require("HorseMod/attachments/AttachmentsClient")
 local MountingUtility = require("HorseMod/mounting/MountingUtility")
 
 ContextualActionHandlers = ContextualActionHandlers or {}
@@ -27,7 +27,7 @@ function ContextualActionHandlers.AnimalsInteraction(action, playerObj, animal, 
             local fullType = equipedItem:getFullType()
             if AttachmentData.items[fullType] then
                 local slot = Attachments.getMainSlot(fullType)
-                AttachmentsManager.equipAccessory(playerObj, animal, equipedItem, slot, mountPosition)
+                AttachmentsClient.equipAccessory(playerObj, animal, equipedItem, slot, mountPosition)
                 return
             end
         end
