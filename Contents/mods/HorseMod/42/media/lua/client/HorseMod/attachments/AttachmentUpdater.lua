@@ -30,6 +30,11 @@ AttachmentUpdater.reapplyFor = function(horse)
             item = inv:AddItem(fullType)
         end
 
+        -- safeguard for removed/invalid slots
+        if not Attachments.isSlot(slot) then
+            return
+        end
+
         -- setup mane color
         if ManeManager.isManeSlot(slot) then
             ManeManager.setupMane(horse, item, slot)

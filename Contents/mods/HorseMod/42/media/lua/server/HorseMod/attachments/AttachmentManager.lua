@@ -50,7 +50,8 @@ AttachmentManager.giveBackToPlayerOrDrop = function(player, horse, item)
     -- this should also work if the horse is flying (dying in the air somehow)
     local square = HorseUtils.getBottom(x, y, z)
     
-    ---@FIXME the logic behind retrieve the square could be flawed and drop the item in an invalid location
+    ---@FIXME this can't work server side and will throw an error 
+    ---the logic behind retrieve the square could be flawed and drop the item in an invalid location
     ---This check serves as a fallback to avoid attachments disappearing, but a better solution should be found.
     if not square then
         getPlayer():getInventory():AddItem(item)
