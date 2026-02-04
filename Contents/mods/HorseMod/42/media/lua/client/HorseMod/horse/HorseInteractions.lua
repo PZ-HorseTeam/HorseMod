@@ -45,6 +45,7 @@ local function doHorseInteractionMenu(context, player, animal)
             getText("ContextMenu_Horse_Dismount", animal:getFullName()),
             player, Mounting.dismountHorse, playerMount, dismountPosition
         )
+        dismountOption.iconTexture = animal:getInventoryIconTexture()
         if not dismountPosition then
             dismountOption.notAvailable = true
             local tooltip = ISWorldObjectContextMenu.addToolTip()
