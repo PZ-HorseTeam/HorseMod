@@ -25,6 +25,11 @@
         <m_BoolValue>true</m_BoolValue>
     </m_Conditions>
     <m_Conditions>
+        <m_Name>animalWalking</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_BoolValue>true</m_BoolValue>
+    </m_Conditions>
+    <m_Conditions>
         <m_Name>targetTwist</m_Name>
         <m_Type>GTR</m_Type>
         <m_Value>30</m_Value>
