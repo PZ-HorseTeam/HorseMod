@@ -402,15 +402,11 @@ end
 ---@param zombie IsoZombie
 ---@return nil
 function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
-    if not zombie:getVariableBoolean(AnimationVariable.RIDING_HORSE) then
-        return
-    end
-
     local target = zombie:getTarget()
-    if not target or not instanceof(target, "IsoGameCharacter") then
+    if not target or not instanceof(target, "IsoPlayer") or not Mounts.hasMount(target) then
         return
     end
-    ---@cast target IsoGameCharacter
+    ---@cast target IsoPlayer
 
     local outcome = zombie:getVariableString("AttackOutcome")
     if outcome == "" then
@@ -418,12 +414,12 @@ function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
     end
 
     local bodyDamage = target:getBodyDamage()
+    local horse = Mounts.getMount(target)
 
     -- FIXME: this will heal injuries that were incurred when you were not on the horse
     for i = 0, BodyPartType.MAX:index() - 1 do
         local bpType = BodyPartType.FromIndex(i)
         local part = bodyDamage:getBodyPart(bpType)
-        local horse = Mounts.getMount(target)
         if part and (part:bitten() or part:scratched() or part:isCut() or part:bleeding()) then
             if allowedDamagePartIndices[i] then
                 return
@@ -458,6 +454,7 @@ function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
     end
 end
 
-Events.OnZombieUpdate.Add(PlayerDamage.onZombieAttack_checkAndRedirect)
+-- disabled because this shit sucks
+-- Events.OnZombieUpdate.Add(PlayerDamage.onZombieAttack_checkAndRedirect)
 
 return PlayerDamage
