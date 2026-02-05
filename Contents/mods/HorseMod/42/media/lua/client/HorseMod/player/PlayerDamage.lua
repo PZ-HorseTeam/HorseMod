@@ -413,48 +413,48 @@ function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
         return
     end
 
-    local bodyDamage = target:getBodyDamage()
     local horse = Mounts.getMount(target)
 
-    -- FIXME: this will heal injuries that were incurred when you were not on the horse
-    for i = 0, BodyPartType.MAX:index() - 1 do
-        local bpType = BodyPartType.FromIndex(i)
-        local part = bodyDamage:getBodyPart(bpType)
-        if part and (part:bitten() or part:scratched() or part:isCut() or part:bleeding()) then
-            if allowedDamagePartIndices[i] then
-                return
-            end
+    HorseDamage.tryRedirectZombieHitToHorse(zombie, target, horse)
 
-            resetBodyPartDamage(part, bodyDamage)
+    -- -- FIXME: this will heal injuries that were incurred when you were not on the horse
+    -- for i = 0, BodyPartType.MAX:index() - 1 do
+    --     local bpType = BodyPartType.FromIndex(i)
+    --     local part = bodyDamage:getBodyPart(bpType)
+    --     if part and (part:bitten() or part:scratched() or part:isCut() or part:bleeding()) then
+    --         if allowedDamagePartIndices[i] then
+    --             return
+    --         end
 
-            if HorseDamage.tryRedirectZombieHitToHorse(zombie, target, horse) then
-                return
-            end
+    --         resetBodyPartDamage(part, bodyDamage)
 
-            PlayerDamage.addRandomDamageFromZombieOnParts(target, zombie, target:getHitReaction(), allowedDamageParts)
-            return
-        end
-    end
+    --         if HorseDamage.tryRedirectZombieHitToHorse(zombie, target, horse) then
+    --             return
+    --         end
 
-    local removeInfection = true
-    for i = 0, BodyPartType.MAX:index() - 1 do
-        local bpType = BodyPartType.FromIndex(i)
-        local part = bodyDamage:getBodyPart(bpType)
-        if part:IsInfected() or part:IsFakeInfected() then
-            removeInfection = false
-            break
-        end
-    end
+    --         PlayerDamage.addRandomDamageFromZombieOnParts(target, zombie, target:getHitReaction(), allowedDamageParts)
+    --         return
+    --     end
+    -- end
+
+    -- local removeInfection = true
+    -- for i = 0, BodyPartType.MAX:index() - 1 do
+    --     local bpType = BodyPartType.FromIndex(i)
+    --     local part = bodyDamage:getBodyPart(bpType)
+    --     if part:IsInfected() or part:IsFakeInfected() then
+    --         removeInfection = false
+    --         break
+    --     end
+    -- end
 
     -- if no body parts are infected anymore, remove body infection
-    if removeInfection then
-        bodyDamage:setIsFakeInfected(false)
-        bodyDamage:setInfected(false)
-        bodyDamage:setInfectionTime(-1)
-    end
+    -- if removeInfection then
+    --     bodyDamage:setIsFakeInfected(false)
+    --     bodyDamage:setInfected(false)
+    --     bodyDamage:setInfectionTime(-1)
+    -- end
 end
 
--- disabled because this shit sucks
--- Events.OnZombieUpdate.Add(PlayerDamage.onZombieAttack_checkAndRedirect)
+Events.OnZombieUpdate.Add(PlayerDamage.onZombieAttack_checkAndRedirect)
 
 return PlayerDamage
