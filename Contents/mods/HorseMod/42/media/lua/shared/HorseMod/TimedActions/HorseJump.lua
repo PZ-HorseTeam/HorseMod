@@ -35,6 +35,7 @@ function HorseJump:start()
     character:setIgnoreInputsForDirection(true)
 
     controller.doTurn = false
+    controller.forcedInput = controller.mount.inputManager:getCurrentInput()
 end
 
 function HorseJump:stop()
@@ -58,6 +59,7 @@ function HorseJump:resetCharacterState()
     pair:setAnimationVariable(AnimationVariable.JUMP, false)
     
     controller.doTurn = true
+    controller.forcedInput = nil
 end
 
 
