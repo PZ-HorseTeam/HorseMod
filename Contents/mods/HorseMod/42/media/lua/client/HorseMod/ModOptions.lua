@@ -11,11 +11,11 @@ local ModOptions = {
     
     ---Horse trot switch keybind.
     ---@type integer
-    HorseTrotButton = Keyboard.KEY_X,
+    HorseTrotButton = Keyboard.KEY_LSHIFT,
 
     ---Horse gallop switch keybind.
     ---@type integer
-    HorseGallopButton = Keyboard.KEY_LSHIFT,
+    HorseGallopButton = Keyboard.KEY_LMENU,
 }
 
 
