@@ -792,7 +792,7 @@ function MountController:getVegetationEffect(input, deltaTime)
 end
 
 
-local SPEED_WALK = 2
+local SPEED_WALK = 1.6
 
 local SPEED_TROT = 4
 
