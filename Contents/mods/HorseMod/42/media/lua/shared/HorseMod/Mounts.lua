@@ -118,8 +118,19 @@ local function updateMounts()
     end
 end
 
+---@param character IsoGameCharacter
+local function dismountOnDeath(character)
+    if not instanceof(character, "IsoPlayer") then
+        return
+    end
+    ---@cast character IsoPlayer
+
+    Mounts.removeMount(character)
+end
+
 if not isClient() then
     Events.OnTick.Add(updateMounts)
+    Events.OnCharacterDeath.Add(dismountOnDeath)
 end
 
 
