@@ -9,3 +9,23 @@ make html
 ```
 
 An example mod is available at [PZ-HorseTeam/Example-mod](https://github.com/PZ-HorseTeam/Example-mod).
+
+## Credit
+### Contributors
+In alphabetical order:
+- albion
+- carlesturo
+- Chuck
+- JBG_84
+- Paddlefruit
+- RedChili
+- Sewerrabbit
+- SimKDT
+
+### Translators
+- Czech (Try Honesty)
+- French (SimKDT)
+- Japanese (PePePePePeil)
+- Portugues (Refúgio Z)
+- Spanish (carlesturo)
+- Turkish (Sineks)
