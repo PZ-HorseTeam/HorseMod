@@ -397,6 +397,9 @@ do
     end
 end
 
+---@type table<IsoZombie, integer>
+local lastAttack = {}
+
 -- FIXME: zombie updates are handled by the zombie's owner, not usually the server!
 --  we might need to detect attacks on the client and tell the server when they occur
 ---@param zombie IsoZombie
@@ -409,9 +412,18 @@ function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
     ---@cast target IsoPlayer
 
     local outcome = zombie:getVariableString("AttackOutcome")
-    if outcome == "" then
+    if outcome ~= "success" then
         return
     end
+
+    local lastAttackTime = lastAttack[zombie] or -1000
+
+    -- ensures a zombie's single attack is only detected once, since we can't detect the moment it hits at all
+    if getTimestampMs() - 1000 < lastAttackTime then
+        return
+    end
+    
+    lastAttack[zombie] = getTimestampMs()
 
     local horse = Mounts.getMount(target)
 

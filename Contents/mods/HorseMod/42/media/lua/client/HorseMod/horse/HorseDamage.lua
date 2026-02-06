@@ -7,9 +7,9 @@ local random_instance = newrandom()
 local HorseDamage = {}
 
 
-HorseDamage.ZOMBIE_DAMAGE_CHANCE = 35
-HorseDamage.ZOMBIE_DAMAGE_MIN = 0.05
-HorseDamage.ZOMBIE_DAMAGE_MAX = 0.12
+HorseDamage.ZOMBIE_DAMAGE_CHANCE = 100
+HorseDamage.ZOMBIE_DAMAGE_MIN = 0.3
+HorseDamage.ZOMBIE_DAMAGE_MAX = 0.6
 
 
 HorseDamage.HORSE_DEATH_KNOCKDOWN_RADIUS = 2.5
