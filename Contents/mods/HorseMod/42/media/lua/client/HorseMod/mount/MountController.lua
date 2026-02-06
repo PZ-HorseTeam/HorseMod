@@ -743,7 +743,6 @@ end
 ---@param input InputManager.Input
 ---@param deltaTime number
 ---@return number
----@nodiscard
 function MountController:getVegetationEffect(input, deltaTime)
     local vegetationType = getVegetationTypeAt(self.mount.pair.rider:getSquare())
 
@@ -856,16 +855,20 @@ function MountController:updateSpeed(input, deltaTime, isJumping)
         target = self:getTargetSpeed(input) * SPEED_FACTOR_TURN
     end
 
+    target = target * self:getVegetationEffect(input, deltaTime)
+
     local rate = (target > self.speed) and ACCELERATION_RATE or DECELERATION_RATE
     
     self.speed = approach(self.speed, target, rate * deltaTime)
 
     if self.speed > SLOWDOWN_MIN_SPEED then
-        self.speed = self.speed * self:getVegetationEffect(input, deltaTime)
+        if self.slowdownCounter >= SLOWDOWN_MIN_SECONDS then
+            local slowdownAmount = math.min(math.max(self.slowdownCounter - SLOWDOWN_MIN_SECONDS, 0), SLOWDOWN_MAX_SECONDS - SLOWDOWN_MIN_SECONDS)
+            local slowdownScalar = PZMath.lerp(1, SLOWDOWN_MAX_SCALAR, slowdownAmount / (SLOWDOWN_MAX_SECONDS - SLOWDOWN_MIN_SECONDS))
+            self.speed = math.min(self.speed, target * slowdownScalar)
+        end
 
-        local slowdownAmount = math.min(math.max(self.slowdownCounter - SLOWDOWN_MIN_SECONDS, 0), SLOWDOWN_MAX_SECONDS - SLOWDOWN_MIN_SECONDS)
-        local slowdownScalar = PZMath.lerp(1, SLOWDOWN_MAX_SCALAR, slowdownAmount / (SLOWDOWN_MAX_SECONDS - SLOWDOWN_MIN_SECONDS))
-        self.speed = math.max(math.min(self.speed, target * slowdownScalar), SLOWDOWN_MIN_SPEED)
+        self.speed = math.max(self.speed, SLOWDOWN_MIN_SPEED)
     end
 
     if self.speed < 0.01 then
