@@ -416,37 +416,26 @@ end
 --- Do all substeps in locals; write back ONCE.
 ---@param rider IsoPlayer
 ---@param horse IsoAnimal
----@param velocity Vector2
----@param delta number
+---@param distance Vector2
 ---@param isGalloping boolean
 ---@param isJumping boolean
-local function moveWithCollision(rider, horse, velocity, delta, isGalloping, isJumping)
+local function moveWithCollision(rider, horse, distance, isGalloping, isJumping)
     local z = horse:getZ()
     local x = horse:getX()
     local y = horse:getY()
-
-    local velocityX = velocity:getX()
-    local velocityY = velocity:getY()
-
-    local maxVel = math.max(
-        math.abs(velocityX),
-        math.abs(velocityY)
-    )
-    if maxVel == 0 then return end
 
     -- collision uses fixed time steps to maintain precision
     --  i'm kind of sceptical that this does anything though, this is really high
     --  you'd have to be running below 15fps for this to come into play 
     local maxStepDist = 0.065
 
-    local remaining = delta
+    local remaining = distance:getLength()
     while remaining > 0 do
-        local s = math.min(remaining, maxStepDist / maxVel)
-        local dx = velocityX * s
-        local dy = velocityY * s
+        local magnitude = math.min(remaining, maxStepDist)
+        distance:setLength(magnitude)
 
         -- check if hitting a wall
-        local rx, ry = collideStepAt(horse, z, x, y, dx, dy, isJumping)
+        local rx, ry = collideStepAt(horse, z, x, y, distance:getX(), distance:getY(), isJumping)
         if rx == 0 and ry == 0 then
             if isGalloping then
                 Mounting.dismountFallBack(rider, horse)
@@ -462,7 +451,7 @@ local function moveWithCollision(rider, horse, velocity, delta, isGalloping, isJ
 
         x = nx
         y = ny
-        remaining = remaining - s
+        remaining = remaining - magnitude
     end
 
     -- Single commit per frame
@@ -1015,10 +1004,18 @@ function MountController:update(input)
 
     if self.speed > 0
         and not rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
-        local currentDirection = mount:getAnimForwardDirection(TEMP_VECTOR2)
+        local currentDirection = nil
 
-        local velocity = currentDirection:setLength(self.speed)
-        moveWithCollision(rider, mount, velocity, deltaTime, isGalloping, isJumping)
+        -- albion: HACK: i don't know why, but animForwardDirection makes falling off when you hit a wall not work
+        -- but using getDir() all the time prevents the turning circle from working
+        if mount:isTurning() then
+            currentDirection = mount:getAnimForwardDirection(TEMP_VECTOR2)
+        else
+            currentDirection = mount:getDir():ToVector(TEMP_VECTOR2)
+        end
+
+        local velocity = currentDirection:setLength(self.speed * deltaTime)
+        moveWithCollision(rider, mount, velocity, isGalloping, isJumping)
 
         mount:setVariable("animalWalking", not input.run)
         mountPair:setAnimationVariable(AnimationVariable.GALLOP, input.run)
