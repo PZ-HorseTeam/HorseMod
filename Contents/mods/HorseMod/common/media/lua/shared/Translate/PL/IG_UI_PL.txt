@@ -9,12 +9,12 @@ IGUI_PL = {
     IGUI_Horse_Slot = "Slot" /* for attachments Dla dodatków */
 
     /* Breeds Rasy */
-    IGUI_Breed_AmericanQuarterPalomino = "Amerykański Quarter (Palomino)"
-    IGUI_Breed_AmericanQuarterBlueRoan = "Amerykański Quarter (Blue Roan)"
-    IGUI_Breed_AmericanPaintTobiano = "Amerykański Paint (Tobiano)"
-    IGUI_Breed_AmericanPaintOvero = "Amerykański Paint (Overo)"
+    IGUI_Breed_AmericanQuarterPalomino = "American Quarter (Palomino)"
+    IGUI_Breed_AmericanQuarterBlueRoan = "American Quarter (Blue Roan)"
+    IGUI_Breed_AmericanPaintTobiano = "American Paint (Tobiano)"
+    IGUI_Breed_AmericanPaintOvero = "American Paint (Overo)"
     IGUI_Breed_AppaloosaGrullaBlanket = "Appaloosa (Grulla Blanket)"
-    IGUI_Breed_AppaloosaLeopard = "Appaloosa (Lampartowata)"
+    IGUI_Breed_AppaloosaLeopard = "Appaloosa (Lampartowaty)"
     IGUI_Breed_ThoroughbredBay = "Folblut (Gniady)"
     IGUI_Breed_ThoroughbredFleaBittenGrey = "Folblut (Siwy Tarantowaty)"
 
