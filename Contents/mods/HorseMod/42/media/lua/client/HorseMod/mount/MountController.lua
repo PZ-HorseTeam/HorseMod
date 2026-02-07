@@ -775,6 +775,12 @@ function MountController:getVegetationEffect(input, deltaTime)
     end
 end
 
+
+---Mounted animation walk speed.
+---@readonly
+---@type number
+local ANIMATION_SPEED_WALK = 1.5
+
 ---Mounted walk speed.
 ---@readonly
 ---@type number
@@ -798,7 +804,7 @@ local ACCELERATION_RATE = 12
 ---Rate to approach a lower target speed in squares/s.
 ---@readonly
 ---@type number
-local DECELERATION_RATE = 16
+local DECELERATION_RATE = 6
 
 ---Speed needed to turn as a factor of the movement type (walk, trot, gallop)'s base speed.
 ---@readonly
@@ -838,11 +844,11 @@ function MountController:updateSpeed(input, deltaTime, isJumping)
 
     pair:setAnimationVariable(AnimationVariable.GENE_SPEED, geneSpeed)
 
-    mount:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier)
+    mount:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier * ANIMATION_SPEED_WALK)
     mount:setVariable(AnimationVariable.TROT_SPEED,  walkMultiplier * TROT_MULT)
     mount:setVariable(AnimationVariable.RUN_SPEED, gallopRawSpeed)
 
-    rider:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier * PLAYER_SYNC_TUNER)
+    rider:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier * PLAYER_SYNC_TUNER * ANIMATION_SPEED_WALK)
     rider:setVariable(AnimationVariable.TROT_SPEED,  walkMultiplier * TROT_MULT * PLAYER_SYNC_TUNER)
     rider:setVariable(AnimationVariable.RUN_SPEED, gallopRawSpeed * PLAYER_SYNC_TUNER)
 
@@ -858,7 +864,7 @@ function MountController:updateSpeed(input, deltaTime, isJumping)
     target = target * self:getVegetationEffect(input, deltaTime)
 
     local rate = (target > self.speed) and ACCELERATION_RATE or DECELERATION_RATE
-    
+
     self.speed = approach(self.speed, target, rate * deltaTime)
 
     if self.speed > SLOWDOWN_MIN_SPEED then

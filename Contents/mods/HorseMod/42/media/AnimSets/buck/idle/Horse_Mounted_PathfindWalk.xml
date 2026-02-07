@@ -48,7 +48,7 @@
     <m_Transitions>
         <m_Target>Horse_Idle</m_Target>
         <m_blendInTime>0.80</m_blendInTime>
-        <m_blendOutTime>0.80</m_blendOutTime>
+        <m_blendOutTime>0.10</m_blendOutTime>
         <m_speedScale>0.8</m_speedScale>
         <m_Conditions>
             <m_Name>isHorse</m_Name>
