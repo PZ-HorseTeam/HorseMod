@@ -9,5 +9,6 @@ Modules
   modules/ContainerManager
   modules/HorseDefinitions
   modules/HorseModData
+  modules/LeatherRecipes
   modules/ManeManager
   modules/ModdingAPI
