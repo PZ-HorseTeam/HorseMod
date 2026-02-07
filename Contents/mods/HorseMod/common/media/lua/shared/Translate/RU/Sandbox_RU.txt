@@ -1,4 +1,4 @@
-Sandbox_EN = {
+Sandbox_RU = {
     /*
         Translated by Sangria
     */
