@@ -1,7 +1,7 @@
 # store current folder
 WORKSHOP_DIR=$(pwd)
 
-MOD_TITLE="Horse mod [B42/MP SOON]"
+MOD_TITLE="Horse Mod [B42/MP SOON]"
 WORKSHOP_ID=3661336777
 VISIBILITY=0
 TAGS="Build 42,Animals,Items,Misc,Vehicles,Models"
