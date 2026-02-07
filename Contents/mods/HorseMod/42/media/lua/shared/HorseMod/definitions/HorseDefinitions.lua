@@ -62,19 +62,19 @@ local HorseDefinitions = {
 AnimalDefinitions.stages["horse"] = {
     stages = {
         ["filly"] = {
-            ageToGrow = 2 * 30,
+            ageToGrow = 6 * 30,
             nextStage = "mare",
             nextStageMale = "stallion",
             minWeight = 0.1,
             maxWeight = 0.25
         },
         ["mare"] = {
-            ageToGrow = 2 * 30,
+            ageToGrow = 12 * 30,
             minWeight = 0.25,
             maxWeight = 0.5
         },
         ["stallion"] = {
-            ageToGrow = 2 * 30,
+            ageToGrow = 12 * 30,
             minWeight = 0.25,
             maxWeight = 0.5
         }
@@ -209,6 +209,8 @@ HorseDefinitions.ANIMALS_DATA = {
         idleEmoteChance = 600,
         eatFromMother = true,
         periodicRun = true,
+
+        minAge = 0,
 
         -- STATS
         ---- general
