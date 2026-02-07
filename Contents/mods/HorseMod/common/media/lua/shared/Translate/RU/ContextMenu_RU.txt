@@ -27,5 +27,5 @@ ContextMenu_RU = {
     ContextMenu_Horse_HasRider = "Лошадь уже оседлана другим персонажем."
 
     /* Food */
-    ContextMenu_FoodType_Horse = "Корм для лошадей"
+    ContextMenu_FoodType_Horse = "Конина"
 }
