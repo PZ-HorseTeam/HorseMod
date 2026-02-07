@@ -8,6 +8,6 @@ HorseZones
 Available ranch zones
 ---------------------
 
-.. lua:autoobj:: HorseMod.HorseZones.types
+.. lua:autodata:: HorseMod.HorseZones.types
     :members:
     :undoc-members:
