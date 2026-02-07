@@ -1,0 +1,10 @@
+Recipes_PL = {
+    /* Horse accessories Akcesoria dla konia */
+    Recipe_HorseSaddle = "Stwórz Siodło dla Konia"
+    Recipe_HorseSaddlebags = "Stwórz Sakwy do Siodła"
+    Recipe_HorseReins = "Stwórz Wodze"
+
+    /* Horse glue Klej z konia */
+    Recipe_HorseGlue = "Stwórz mieszankę Kleju z Konia w garnku"
+    Recipe_HorseGlueToWoodGlue = "Wylej Klej z Konia z garnka"
+}
