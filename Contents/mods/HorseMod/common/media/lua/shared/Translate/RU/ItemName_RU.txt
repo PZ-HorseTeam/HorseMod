@@ -1,4 +1,8 @@
 ItemName_RU = {
+    /*
+        Translated by Sangria
+    */
+
     /* Horse accessories */
         /* Saddles */
     ItemName_HorseMod.HorseSaddle_Crude = "Седло (Грубое)"

@@ -1,4 +1,8 @@
 IGUI_RU = {
+    /*
+        Translated by Sangria
+    */
+
     /* General */
     IGUI_AnimalType_stallion = "Жеребец"
     IGUI_AnimalType_mare = "Кобыла"

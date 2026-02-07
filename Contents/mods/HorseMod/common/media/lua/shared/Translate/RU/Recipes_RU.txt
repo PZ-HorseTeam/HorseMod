@@ -1,4 +1,8 @@
 Recipes_RU = {
+    /*
+        Translated by Sangria
+    */
+
     /* Horse accessories */
     Recipe_HorseSaddle = "Создать седло"
     Recipe_HorseSaddlebags = "Создать седельную сумку"

@@ -1,4 +1,8 @@
 ContextMenu_RU = {
+    /*
+        Translated by Sangria
+    */
+
     /* Riding */
     ContextMenu_Horse_Mount = "Оседлать %1"
     ContextMenu_Horse_Dismount = "Спешиться %1"

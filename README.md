@@ -27,5 +27,6 @@ In alphabetical order:
 - French (SimKDT)
 - Japanese (PePePePePeil)
 - Portugues (Refúgio Z)
+- Russian (Sangria)
 - Spanish (carlesturo)
 - Turkish (Sineks)
