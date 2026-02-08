@@ -26,6 +26,7 @@ In alphabetical order:
 - Czech (Try Honesty)
 - French (SimKDT)
 - Japanese (PePePePePeil)
+- Polish (3xkd)
 - Portugues (Refúgio Z)
 - Russian (Sangria)
 - Spanish (carlesturo)

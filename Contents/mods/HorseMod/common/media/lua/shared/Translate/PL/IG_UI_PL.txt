@@ -1,4 +1,8 @@
 IGUI_PL = {
+    /*
+        Translated by 3xkd
+    */
+
     /* General Ogólne */
     IGUI_AnimalType_stallion = "Ogier"
     IGUI_AnimalType_mare = "Klacz"

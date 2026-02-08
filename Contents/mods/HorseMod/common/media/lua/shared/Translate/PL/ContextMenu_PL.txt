@@ -1,4 +1,8 @@
 ContextMenu_PL = {
+    /*
+        Translated by 3xkd
+    */
+
     /* Riding Jeździectwo */
     ContextMenu_Horse_Mount = "Dosiądź %1"
     ContextMenu_Horse_Dismount = "Zejdź z %1"
