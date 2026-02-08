@@ -3,7 +3,7 @@ AIAttachLureAction,false
 AIRemoveLureAction,false
 AddChumToWaterAction,false
 CreateChumFromGroundSandAction,false
-HealthPanelAction,false
+HealthPanelAction,true
 HorseMod_DismountAction,true
 HorseMod_UrgentDismountAction,true
 HorseMod_HorseEquipGear,false

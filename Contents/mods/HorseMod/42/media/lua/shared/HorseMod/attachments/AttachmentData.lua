@@ -121,6 +121,14 @@ local AttachmentData = {
                 },
             },
         },
+
+        ---Default tent attachment definition.
+        ---@type ItemDefinition
+        TENT = { ["Tent"] = {} },
+
+        ---Default sleeping bag attachment definition.
+        ---@type ItemDefinition
+        SLEEPING_BAG = { ["SleepingBag"] = {} },
     },
 
     ---Sets attachment model points and mane properties for attachment slots.
@@ -130,6 +138,8 @@ local AttachmentData = {
         ---ACCESSORIES
         ["Saddle"] = {modelAttachment="saddle"},
         ["Saddlebags"] = {modelAttachment="saddlebags"},
+        ["Tent"] = {modelAttachment="tent"},
+        ["SleepingBag"] = {modelAttachment="sleepingBag"},
         ["Head"] = {modelAttachment="head"},
         ["Reins"] = {modelAttachment="reins"},
 
@@ -272,6 +282,27 @@ AttachmentData.items = {
     ["HorseMod.HorseReins_Black"] = { ["Reins"] = {model = "HorseMod.HorseReins_Black"} },
     ["HorseMod.HorseReins_White"] = { ["Reins"] = {model = "HorseMod.HorseReins_White"} },
     ["HorseMod.HorseReins_Brown"] = { ["Reins"] = {model = "HorseMod.HorseReins_Brown"} },
+
+    -- packing
+    ["Base.TentYellow_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,
+    ["Base.TentBrown_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,
+    ["Base.TentBlue_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,
+    ["Base.TentGreen_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,
+    ["Base.CampingTentKit2_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,
+    ["Base.ImprovisedTentKit_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,
+    ["Base.HideTent_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,
+
+    ["Base.SleepingBag_Cheap_Green2_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_Cheap_Green_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_Cheap_Blue_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_Hide_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_HighQuality_Brown_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_RedPlaid_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_Camo_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_Green_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_GreenPlaid_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_BluePlaid_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
+    ["Base.SleepingBag_Spiffo_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
 
     -- manes
     ["HorseMod.HorseManeStart"] = { ["ManeStart"] = {hidden = true} },

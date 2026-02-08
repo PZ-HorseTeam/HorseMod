@@ -4,9 +4,7 @@
 local Mounts = require("HorseMod/Mounts")
 local AnimationEvent = require("HorseMod/definitions/AnimationEvent")
 
-local IS_SERVER = isServer()
-
----@class UrgentDismountAction : ISBaseTimedAction
+---@class UrgentDismountAction : ISBaseTimedAction, umbrella.NetworkedTimedAction
 ---
 ---@field character IsoPlayer
 ---
@@ -30,25 +28,29 @@ function UrgentDismountAction:isValid()
 end
 
 function UrgentDismountAction:update()
-    local character = self.character
-
     -- keeps the player in position
-    character:setDirectionAngle(self.lockDir)
+    self.character:setDirectionAngle(self.lockDir)
+end
 
-    -- complete when mounting dying animation is finished
-    local dismountVariable = self.dismountVariable
-    if dismountVariable and character:getVariableBoolean(dismountVariable) == false then
-        self:forceComplete()
-    end
+function UrgentDismountAction:serverStart()
+    -- TODO time should depend on animation, but idk how long the other ones are
+
+    ---@cast self.netAction -nil
+    ---@diagnostic disable-next-line: param-type-mismatch
+    emulateAnimEventOnce(self.netAction, 1200, AnimationEvent.DISMOUNTING_COMPLETE, nil)
+
+    return true
 end
 
 function UrgentDismountAction:animEvent(event, parameter)
-    if self.shouldFlee and event == AnimationEvent.HORSE_FLEE then
-        if IS_SERVER then
-            ---@TODO to implement
+    if event == AnimationEvent.HORSE_FLEE and self.shouldFlee and not isClient() then
+        self.animal:getBehavior():forceFleeFromChr(self.character)
+    elseif event == AnimationEvent.DISMOUNTING_COMPLETE then
+        if isServer() then
+            ---@cast self.netAction -nil
+            self.netAction:forceComplete()
         else
-            local animal = self.animal
-            animal:getBehavior():forceFleeFromChr(self.character)
+            self:forceComplete()
         end
     end
 end
@@ -66,9 +68,10 @@ function UrgentDismountAction:start()
 
     -- lock player movement
     self.lockDir = animal:getDirectionAngle()
-    -- character:setBlockMovement(true)
+    character:setBlockMovement(true)
     character:setIgnoreInputsForDirection(true)
     character:setAuthorizedHandToHandAction(false)
+    character:setIgnoreAimingInput(true)
 
     -- drop heavy items
     character:dropHeavyItems()
@@ -95,14 +98,10 @@ function UrgentDismountAction:stop()
     ISBaseTimedAction.stop(self)
 end
 
-function UrgentDismountAction:complete()
+function UrgentDismountAction:perform()
     self:resetCharacterState()
-    return true
+    ISBaseTimedAction.perform(self)
 end
-
--- function UrgentDismountAction:perform()
---     ISBaseTimedAction.perform(self)
--- end
 
 function UrgentDismountAction:resetCharacterState()
     local character = self.character
@@ -110,18 +109,20 @@ function UrgentDismountAction:resetCharacterState()
     character:setBlockMovement(false)
     character:setIgnoreInputsForDirection(false)
     character:setAuthorizedHandToHandAction(true)
+    character:setIgnoreAimingInput(false)
 end
 
 function UrgentDismountAction:getDuration()
-    if self.dismountVariable then
-        return -1
+    if not self.dismountVariable then
+        return 100
     end
-    return 100
+
+    return -1
 end
 
 ---@param character IsoPlayer
 ---@param animal IsoAnimal
----@param dismountVariable AnimationVariable?
+---@param dismountType AnimationVariable?
 ---@param horseSound Sound? The sound to play from the horse when dismounting
 ---@param playerVoice string? The voice ID to play when dismounting
 ---@param shouldFlee boolean Whenever the horse should flee after dismounting
@@ -130,7 +131,7 @@ end
 function UrgentDismountAction:new(
     character, 
     animal, 
-    dismountVariable, 
+    dismountType, 
     horseSound, 
     playerVoice, 
     shouldFlee)
@@ -139,7 +140,7 @@ function UrgentDismountAction:new(
 
     o.character = character
     o.animal = animal
-    o.dismountVariable = dismountVariable
+    o.dismountVariable = dismountType
     o.horseSound = horseSound
     o.playerVoice = playerVoice
     o.shouldFlee = shouldFlee

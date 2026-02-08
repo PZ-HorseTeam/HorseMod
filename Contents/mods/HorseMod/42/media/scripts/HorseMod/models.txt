@@ -1,120 +1,135 @@
 module HorseMod
 {
-/* HORSE */
 	animationsMesh Horse {
         meshFile = HorseMod/Horse,
         animationDirectory = Horse,
         animationPrefix = Horse_,
     }
-	model Horse {
-		mesh = HorseMod/Horse/Horse_Base,
-		animationsMesh = HorseMod.Horse,
-		shader = animalEffect,
-		static = false,
+	model Horse
+    {
+        mesh = HorseMod/Horse/Horse_Base,
+        animationsMesh = HorseMod.Horse,
+        shader = animalEffect,
+        static = false,
 
-		attachment saddle
-		{
-			offset = 0.0000 0.1528 0.041,
-			rotate = 89.1355 0.4641 178.8851,
-			scale = 1.5102,
-			bone = DEF_Spine2,
-		}
+        attachment saddle
+        {
+            offset = 0.0000 0.1528 0.0410,
+            rotate = 89.1355 0.4641 178.8851,
+            scale = 1.5102,
+            bone = DEF_Spine2,
+        }
 
-		attachment saddlebags
-		{
-			offset = -0.0000 -0.1 -0.16,
-			rotate = 90 0 180,
-			scale = 1.5,
-			bone = DEF_Spine2,
-		}
+        attachment saddlebags
+        {
+            offset = -0.0000 -0.1000 -0.1600,
+            rotate = 90.0000 0.0000 180.0000,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
 
-		attachment head
-		{
-			offset = -0.0000 0.0003 -1.0616,
-			rotate = 0.0000 0.0000 0.0000,
-			bone = Dummy01,
-		}
+        attachment tent
+        {
+            offset = -0.0000 -0.18 -0.1000,
+            rotate = 90.0000 0.0000 180.0000,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
 
-		attachment reins
-		{
-			offset = 0.0000 0.1982 0.0539,
-			rotate = 45.0000 0.0000 180.0000,
-			scale = 1.0509,
-			bone = Bip01_Head,
-		}
+        attachment sleepingBag
+        {
+            offset = -0.0000 -0.28 -0.1000,
+            rotate = 90.0000 90.0000 180.0000,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
 
-		attachment mountLeft
-		{
-			offset = 0.5987 0.0000 -0.0000,
-			rotate = 0.0000 0.0000 0.0000,
-			bone = Bip01,
-		}
+        attachment head
+        {
+            offset = -0.0000 0.0003 -1.0616,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = Dummy01,
+        }
 
-		attachment mountRight
-		{
-			offset = -0.5979 0.0000 -0.0006,
-			rotate = 0.0000 0.0000 0.0000,
-			bone = Bip01,
-		}
+        attachment reins
+        {
+            offset = 0.0000 0.1982 0.0539,
+            rotate = 45.0000 0.0000 180.0000,
+            scale = 1.0509,
+            bone = Bip01_Head,
+        }
 
-		attachment deathPosition
-		{
-			offset = 0.5987 0.0000 -0.0000,
-			rotate = 0.0000 0.0000 0.0000,
-			bone = Bip01,
-		}
+        attachment mountLeft
+        {
+            offset = 0.5987 0.0000 -0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = Bip01,
+        }
 
-		attachment maneStart
-		{
-			offset = 0.0213 -0.0102 -0.0000,
-			rotate = 0.0000 -3.4314 0.0000,
-			bone = DEF_ManeStart,
-		}
+        attachment mountRight
+        {
+            offset = -0.5979 0.0000 -0.0006,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = Bip01,
+        }
 
-		attachment maneMid1
-		{
-			offset = 0.0122 -0.0038 0.0000,
-			rotate = 0.0000 -3.1103 0.0000,
-			bone = DEF_ManeMid1,
-		}
+        attachment deathPosition
+        {
+            offset = 0.5987 0.0000 -0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = Bip01,
+        }
 
-		attachment maneMid2
-		{
-			offset = 0.0000 0.0003 0.0000,
-			rotate = 0.0000 -4.4272 0.0000,
-			bone = DEF_ManeMid2,
-		}
+        attachment maneStart
+        {
+            offset = 0.0213 -0.0102 -0.0000,
+            rotate = 0.0000 -3.4314 0.0000,
+            bone = DEF_ManeStart,
+        }
 
-		attachment maneMid3
-		{
-			offset = 0.0000 0.0000 0.0000,
-			rotate = 0.0000 0.0000 0.0000,
-			bone = DEF_ManeMid3,
-		}
+        attachment maneMid1
+        {
+            offset = 0.0122 -0.0038 0.0000,
+            rotate = 0.0000 -3.1103 0.0000,
+            bone = DEF_ManeMid1,
+        }
 
-		attachment maneMid4
-		{
-			offset = 0.0000 0.0000 0.0000,
-			rotate = 0.0000 0.0000 0.0000,
-			bone = DEF_ManeMid4,
-		}
+        attachment maneMid2
+        {
+            offset = 0.0000 0.0003 0.0000,
+            rotate = 0.0000 -4.4272 0.0000,
+            bone = DEF_ManeMid2,
+        }
 
-		attachment maneMid5
-		{
-			offset = 0.0000 0.0000 0.0000,
-			rotate = 0.0000 -0.0605 0.0000,
-			bone = DEF_ManeMid5,
-		}
+        attachment maneMid3
+        {
+            offset = 0.0000 0.0000 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = DEF_ManeMid3,
+        }
 
-		attachment maneEnd
-		{
-			offset = 0.0000 -0.0486 -0.0160,
-			rotate = -23.0217 -0.0000 0.0000,
-			bone = DEF_ManeEnd,
-		}
-	}
+        attachment maneMid4
+        {
+            offset = 0.0000 0.0000 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = DEF_ManeMid4,
+        }
 
-    model HorseHeadless {
+        attachment maneMid5
+        {
+            offset = 0.0000 0.0000 0.0000,
+            rotate = 0.0000 -0.0605 0.0000,
+            bone = DEF_ManeMid5,
+        }
+
+        attachment maneEnd
+        {
+            offset = 0.0000 -0.0486 -0.0160,
+            rotate = -23.0217 -0.0000 0.0000,
+            bone = DEF_ManeEnd,
+        }
+    }
+	model HorseHeadless {
 		mesh = HorseMod/Horse/Horse_NoHead,
 		animationsMesh = HorseMod.Horse,
 		shader = animalEffect,
@@ -132,10 +147,6 @@ module HorseMod
         shader = animalEffect,
         static = false,
     }
-
-
-
-/* FOAL */
 	model Foal
     {
         mesh = HorseMod/Foal/Foal_Base,
@@ -220,8 +231,7 @@ module HorseMod
             bone = DEF_ManeEnd,
         }
     }
-
-    model FoalHeadless {
+	model FoalHeadless {
 		mesh = HorseMod/Foal/Foal_NoHead,
 		animationsMesh = HorseMod.Horse,
 		shader = animalEffect,
@@ -239,8 +249,6 @@ module HorseMod
         shader = animalEffect,
         static = false,
     }
-
-/* PARTS */
 	model HorseHead {
         mesh = HorseMod/Horse/Horse_Head,
         static = true,
@@ -252,7 +260,6 @@ module HorseMod
             scale = 0.5000,
         }
     }
-
 	model HorseSkull {
         mesh = HorseMod/Horse_Skull,
         static = true,
@@ -264,12 +271,10 @@ module HorseMod
             scale = 0.5000,
         }
     }
-
 	model DungHorse {
         mesh = HorseMod/Dung_Horse,
         texture = WorldItems/DungHorse,
     }
-
 	model HorseHoof {
         mesh = HorseMod/HorseHoof,
         static = true,

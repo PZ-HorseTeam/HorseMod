@@ -8,3 +8,4 @@ pack=HorseMod
 tiledef=HorseMod 2026
 modversion=1.0.0
 versionMin=42.13.0
+incompatible=\RIDINGAPI,\WolfoMod

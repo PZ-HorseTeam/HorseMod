@@ -1,0 +1,208 @@
+ItemName_PL = {
+    /* Horse accessories Akcesoria konia */
+        /* Saddles Siodła */
+    ItemName_HorseMod.HorseSaddle_Crude = "Siodło (Prymitywne)"
+    ItemName_HorseMod.HorseSaddle_Black = "Siodło (Czarne)"
+    ItemName_HorseMod.HorseSaddle_CowHolstein = "Siodło (Holstein)"
+    ItemName_HorseMod.HorseSaddle_CowSimmental = "Siodło (Simmental)"
+    ItemName_HorseMod.HorseSaddle_White = "Siodło (Białe)"
+    ItemName_HorseMod.HorseSaddle_Landrace = "Siodło (Landrace)"
+
+    ItemName_HorseMod.HorseSaddle_AmericanPaintOvero = "Siodło (Overo)"
+    ItemName_HorseMod.HorseSaddle_AmericanPaintTobiano = "Siodło (Tobiano)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterBlueRoan = "Siodło (Blue Roan)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterPalomino = "Siodło (Palomino)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaGrullaBlanket = "Siodło (Grulla Blanket)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaLeopard = "Siodło (Lampartowate)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredBay = "Siodło (Gniade)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredFleaBittenGrey = "Siodło (Siwe Tarantowate)"
+
+        /* Saddlebags Sakwy */
+    ItemName_HorseMod.HorseSaddlebagsContainer = "Sakwy na Siodło"
+    ItemName_HorseMod.HorseSaddlebags_Crude = "Sakwy na Siodło (Prymitywne)"
+    ItemName_HorseMod.HorseSaddlebags_Black = "Sakwy na Siodło (Czarne)"
+    ItemName_HorseMod.HorseSaddlebags_CowHolstein = "Sakwy na Siodło (Holstein)"
+    ItemName_HorseMod.HorseSaddlebags_CowSimmental = "Sakwy na Siodło (Simmental)"
+    ItemName_HorseMod.HorseSaddlebags_White = "Sakwy na Siodło (Białe)"
+    ItemName_HorseMod.HorseSaddlebags_Landrace = "Sakwy na Siodło (Landrace)"
+
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintOvero = "Sakwy na Siodło (Overo)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintTobiano = "Sakwy na Siodło (Tobiano)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterBlueRoan = "Sakwy na Siodło (Blue Roan)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterPalomino = "Sakwy na Siodło (Palomino)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaGrullaBlanket = "Sakwy na Siodło (Grulla Blanket)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaLeopard = "Sakwy na Siodło (Lampartowate)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredBay = "Sakwy na Siodło (Gniade)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredFleaBittenGrey = "Sakwy na Siodło (Siwe Tarantowate)"
+
+        /* Reins Lejce */
+    ItemName_HorseMod.HorseReins_Crude = "Wodze (Prymitywne)"
+    ItemName_HorseMod.HorseReins_Brown = "Wodze (Brązowe)"
+    ItemName_HorseMod.HorseReins_Black = "Wodze (Czarne)"
+    ItemName_HorseMod.HorseReins_White = "Wodze (Białe)"
+
+
+    /* Horse heads Głowy koni */
+    ItemName_HorseMod.Foal_Head_AmericanPaintOvero = "Głowa Źrebia American Paint"
+    ItemName_HorseMod.Mare_Head_AmericanPaintOvero = "Głowa Klaczy American Paint"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintOvero = "Głowa Ogiera American Paint"
+    ItemName_HorseMod.Foal_Head_AmericanPaintTobiano = "Głowa Źrebia American Paint"
+    ItemName_HorseMod.Mare_Head_AmericanPaintTobiano = "Głowa Klaczy American Paint"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintTobiano = "Głowa Ogiera American Paint"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterBlueRoan = "Głowa Źrebia American Quarter"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterBlueRoan = "Głowa Klaczy American Quarter"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterBlueRoan = "Głowa Ogiera American Quarter"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterPalomino = "Głowa Źrebia American Quarter"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterPalomino = "Głowa Klaczy American Quarter"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterPalomino = "Głowa Ogiera American Quarter"
+    ItemName_HorseMod.Foal_Head_AppaloosaGrullaBlanket = "Głowa Źrebia Appaloosa"
+    ItemName_HorseMod.Mare_Head_AppaloosaGrullaBlanket = "Głowa Klaczy Appaloosa"
+    ItemName_HorseMod.Stallion_Head_AppaloosaGrullaBlanket = "Głowa Ogiera Appaloosa"
+    ItemName_HorseMod.Foal_Head_AppaloosaLeopard = "Głowa Źrebia Appaloosa"
+    ItemName_HorseMod.Mare_Head_AppaloosaLeopard = "Głowa Klaczy Appaloosa"
+    ItemName_HorseMod.Stallion_Head_AppaloosaLeopard = "Głowa Ogiera Appaloosa"
+    ItemName_HorseMod.Foal_Head_ThoroughbredBay = "Głowa Źrebia Folbluta"
+    ItemName_HorseMod.Mare_Head_ThoroughbredBay = "Głowa Klaczy Folbluta"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredBay = "Głowa Ogiera Folbluta"
+    ItemName_HorseMod.Foal_Head_ThoroughbredFleaBittenGrey = "Głowa Źrebia Folbluta"
+    ItemName_HorseMod.Mare_Head_ThoroughbredFleaBittenGrey = "Głowa Klaczy Folbluta"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredFleaBittenGrey = "Głowa Ogiera Folbluta"
+
+
+    /* Horse parts Części koni */
+    ItemName_HorseMod.Horse_Skull = "Czaszka Konia"
+    ItemName_HorseMod.Horse_Steak = "Stek z Konia"
+    ItemName_HorseMod.Horse_Loin = "Schab Koński"
+    ItemName_HorseMod.Horse_Hoof = "Końskie Kopyto"
+    ItemName_HorseMod.Dung_Horse = "Końskie Łajno"
+
+
+    /* Horse glue Klej z konia */
+    ItemName_HorseMod.PotHorseGlue = "Garnek Kleju z Konia"
+    ItemName_HorseMod.PotForgedHorseGlue = "Kuty Garnek Kleju z Konia"
+    ItemName_HorseMod.HorseGlue = "Klej z Konia"
+
+
+    /* Horse leathers Skóry koni */
+        /* American Paint Overo */
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Full = "Skóra American Paint Overo (Nieprzetworzona)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur = "Skóra American Paint Overo (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Wet = "Garbowana Skóra American Paint Overo (Futrzana, Mokra)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan = "Garbowana Skóra American Paint Overo (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Medium = "Połowa Garbowanej Skóry American Paint Overo (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Small = "Ćwierć Garbowanej Skóry American Paint Overo (Futrzana)"
+
+        /* American Paint */
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Full = "Skóra American Paint Tobiano (Nieprzetworzona)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur = "Skóra American Paint Tobiano (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Garbowana Skóra American Paint Tobiano (Futrzana, Mokra)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan = "Garbowana Skóra American Paint Tobiano (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Medium = "Połowa Garbowanej Skóry American Paint Tobiano (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Small = "Ćwierć Garbowanej Skóry American Paint Tobiano (Futrzana)"
+
+        /* Blue Roan */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Full = "Skóra American Quarter Blue Roan (Nieprzetworzona)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur = "Skóra American Quarter Blue Roan (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "Garbowana Skóra American Quarter Blue Roan (Futrzana, Mokra)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan = "Garbowana Skóra American Quarter Blue Roan (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Medium = "Połowa Garbowanej Skóry American Quarter Blue Roan (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "Ćwierć Garbowanej Skóry American Quarter Blue Roan (Futrzana)"
+
+        /* American Quarter */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Full = "Skóra American Quarter Palomino (Nieprzetworzona)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur = "Skóra American Quarter Palomino (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "Garbowana Skóra American Quarter Palomino (Futrzana, Mokra)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan = "Garbowana Skóra American Quarter Palomino (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Medium = "Połowa Garbowanej Skóry American Quarter Palomino (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Small = "Ćwierć Garbowanej Skóry American Quarter Palomino (Futrzana)"
+
+        /* Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Full = "Skóra Appaloosa Grulla Blanket (Nieprzetworzona)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur = "Skóra Appaloosa Grulla Blanket (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Garbowana Skóra Appaloosa Grulla Blanket (Futrzana, Mokra)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan = "Garbowana Skóra Appaloosa Grulla Blanket (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Medium = "Połowa Garbowanej Skóry Appaloosa Grulla Blanket (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Ćwierć Garbowanej Skóry Appaloosa Grulla Blanket (Futrzana)"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Full = "Lampartowata Skóra Appaloosa (Nieprzetworzona)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur = "Lampartowata Skóra Appaloosa (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Wet = "Lampartowata Garbowana Skóra Appaloosa (Futrzana, Mokra)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan = "Lampartowata Garbowana Skóra Appaloosa (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Medium = "Połowa Lampartowatej Garbowanej Skóry Appaloosa (Futrzana)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Small = "Ćwierć Lampartowatej Garbowanej Skóry Appaloosa (Futrzana)"
+
+        /* Thoroughbred Folblut */
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Full = "Gniada Skóra Folbluta (Nieprzetworzona)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur = "Gniada Skóra Folbluta (Futrzana)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Wet = "Gniada Garbowana Skóra Folbluta (Futrzana, Mokra)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan = "Gniada Garbowana Skóra Folbluta (Futrzana)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Medium = "Połowa Gniadej Garbowanej Skóry Folbluta (Futrzana)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Small = "Ćwierć Gniadej Garbowanej Skóry Folbluta (Futrzana)"
+
+        /* Flea-Bitten Grey Siwy Tarantowaty */
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Full = "Siwa Tarantowata Skóra Folbluta (Nieprzetworzona)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur = "Siwa Tarantowata Skóra Folbluta (Futrzasta)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Siwa Tarantowata Garbowana Skóra Folbluta (Futrzana, Mokra)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Siwa Tarantowata Garbowana Skóra Folbluta (Futrzana)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Medium = "Połowa Siwej Tarantowatej Garbowanej Skóry Folbluta (Futrzana)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "Ćwierć Siwej Tarantowatej Garbowanej Skóry Folbluta (Futrzana)"
+
+
+    /* Foal leathers Skóry źrebiąt */
+        /* American Paint Overo */
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Full = "Skóra Źrebia American Paint Overo (Nieprzetworzona)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur = "Skóra Źrebia American Paint Overo (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Wet = "Garbowana Skóra Źrebia American Paint Overo (Futrzana, Mokra)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan = "Garbowana Skóra Źrebia American Paint Overo (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Small = "Połowa Garbowanej Skóry Źrebia American Paint Overo (Futrzana)"
+
+        /* American Paint */
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Full = "Skóra Źrebia American Paint Tobiano (Nieprzetworzona)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur = "Skóra Źrebia American Paint Tobiano (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Garbowana Skóra Źrebia American Paint Tobiano (Futrzana, Mokra)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan = "Garbowana Skóra Źrebia American Paint Tobiano (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Small = "Połowa Garbowanej Skóry Źrebia American Paint Tobiano (Futrzana)"
+
+        /* Blue Roan */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Full = "Skóra Źrebia American Quarter Blue Roan (Nieprzetworzona)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur = "Skóra Źrebia American Quarter Blue Roan (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "Garbowana Skóra Źrebia American Quarter Blue Roan (Futrzana, Mokra)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan = "Garbowana Skóra Źrebia American Quarter Blue Roan (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "Połowa Garbowanej Skóry Źrebia American Quarter Blue Roan (Futrzana)"
+
+        /* American Quarter */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Full = "Skóra Źrebia American Quarter Palomino (Nieprzetworzona)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur = "Skóra Źrebia American Quarter Palomino (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "Garbowana Skóra Źrebia American Quarter Palomino (Futrzana, Mokra)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan = "Garbowana Skóra Źrebia American Quarter Palomino (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Small = "Połowa Garbowanej Skóry Źrebia American Quarter Palomino (Futrzana)"
+
+        /* Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Full = "Skóra Źrebia Appaloosa Grulla Blanket (Nieprzetworzona)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur = "Skóra Źrebia Appaloosa Grulla Blanket (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Garbowana Skóra Źrebia Appaloosa Grulla Blanket (Futrzana, Mokra)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan = "Garbowana Skóra Źrebia Appaloosa Grulla Blanket (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Połowa Garbowanej Skóry Źrebia Appaloosa Grulla Blanket (Futrzana)"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Full = "Lampartowata Skóra Źrebia Appaloosa (Nieprzetworzona)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur = "Lampartowata Skóra Źrebia Appaloosa (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Wet = "Lampartowata Garbowana Skóra Źrebia Appaloosa (Futrzana, Mokra)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan = "Lampartowata Garbowana Skóra Źrebia Appaloosa (Futrzana)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Small = "Połowa Lampartowatej Garbowanej Skóry Źrebia Appaloosa (Futrzana)"
+
+        /* Thoroughbred Folblut */
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Full = "Gniada Skóra Źrebia Folbluta (Nieprzetworzona)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur = "Gniada Skóra Źrebia Folbluta (Futrzana)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Wet = "Gniada Garbowana Skóra Źrebia Folbluta (Futrzana, Mokra)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan = "Gniada Garbowana Skóra Źrebia Folbluta (Futrzana)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Small = "Połowa Gniadej Garbowanej Skóry Źrebia Folbluta (Futrzana)"
+
+        /* Flea-Bitten Grey Siwy Tarantowaty */
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Full = "Siwa Tarantowata Skóra Źrebia Folbluta (Nieprzetworzona)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur = "Siwa Tarantowata Skóra Źrebia Folbluta (Futrzasta)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Siwa Tarantowata Garbowana Skóra Źrebia Folbluta (Futrzana, Mokra)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Siwa Tarantowata Garbowana Skóra Źrebia Folbluta (Futrzana)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "Połowa Siwej Tarantowatej Garbowanej Skóry Źrebia Folbluta (Futrzana)"
+}

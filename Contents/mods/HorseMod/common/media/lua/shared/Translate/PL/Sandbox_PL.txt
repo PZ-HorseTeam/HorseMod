@@ -1,0 +1,6 @@
+Sandbox_PL = {
+    Sandbox_HorseMod = "Horse Mod (Konie)"
+    Sandbox_HorseMod_WalkSpeed = "Prędkość Ruchu Konia"
+    Sandbox_HorseMod_GallopSpeed = "Prędkość Galopu Konia"
+    Sandbox_HorseMod_StaminaMultiplier = "Mnożnik kondycji (staminy)"
+}

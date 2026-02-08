@@ -31,11 +31,6 @@
         <m_Value>false</m_Value>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>pressedRunButton</m_Name>
-        <m_Type>BOOL</m_Type>
-        <m_Value>true</m_Value>
-    </m_Conditions>
-    <m_Conditions>
         <m_Name>sneaking</m_Name>
         <m_Type>BOOL</m_Type>
         <m_Value>false</m_Value>

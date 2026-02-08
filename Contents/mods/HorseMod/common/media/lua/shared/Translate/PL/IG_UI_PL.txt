@@ -1,0 +1,39 @@
+IGUI_PL = {
+    /* General Ogólne */
+    IGUI_AnimalType_stallion = "Ogier"
+    IGUI_AnimalType_mare = "Klacz"
+    IGUI_AnimalType_filly = "Źrebię"
+
+    IGUI_AnimalType_Global_horse = "Koń"
+    IGUI_Animal_Group_horse = "Koń"
+    IGUI_Horse_Slot = "Slot" /* for attachments Dla dodatków */
+
+    /* Breeds Rasy */
+    IGUI_Breed_AmericanQuarterPalomino = "American Quarter (Palomino)"
+    IGUI_Breed_AmericanQuarterBlueRoan = "American Quarter (Blue Roan)"
+    IGUI_Breed_AmericanPaintTobiano = "American Paint (Tobiano)"
+    IGUI_Breed_AmericanPaintOvero = "American Paint (Overo)"
+    IGUI_Breed_AppaloosaGrullaBlanket = "Appaloosa (Grulla Blanket)"
+    IGUI_Breed_AppaloosaLeopard = "Appaloosa (Lampartowaty)"
+    IGUI_Breed_ThoroughbredBay = "Folblut (Gniady)"
+    IGUI_Breed_ThoroughbredFleaBittenGrey = "Folblut (Siwy Tarantowaty)"
+
+    /* Mod Options Opcje modu */
+    IGUI_ModOptions_HorseModName = "Horse Mod (Konie)"
+    IGUI_ModOptions_HorseSoundVolume_Desc = "Zmień głośność dźwięków wydawanych przez konie"
+    IGUI_ModOptions_HorseSoundVolume_Name = "Głośność dźwięków koni (Domyślnie 0.40)"
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "Ustal głośność wszystkich dźwięków wydawanych przez konie."
+
+    IGUI_ModOptions_HorseKeybind = "Ustawienia klawiszowe dla koni"
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "Skok na koniu"
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "Zmień klawisz do skoku na koniu."
+    
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "Kłus na koniu"
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Zmień klawisz do kłusu na koniu."
+
+    IGUI_ModOptions_HorseKeybind_Gallop_Name = "Galop na koniu"
+    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "Zmień klawisz do galopu na koniu."
+
+    IGUI_HorseMod_MultiplayerWarning = "Horse Mod nie wspiera gry wieloosobowej.<br>Konie nie będą działać poprawnie oraz możesz doświadczyć innych problemów podczas rozgrywki.<br>Zalecamy wyłączyć Horse Mod.<br>Zgłoszenia o błędach występujących w grze wieloosobowej nie będą akceptowane."
+    IGUI_HorseMod_DisabledInMultiplayer = "Tymczasowo wyłączone w trybie gry wieloosobowej."
+}

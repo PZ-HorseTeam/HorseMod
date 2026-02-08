@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animNode x_extends="Horse_WipeLegL.xml">
+	<m_Name>WipeLegL_heavy</m_Name>
+    <m_Conditions />
+	<m_Conditions x_name="53d16377-0280-4eb8-af9a-3b2280b2acc9">
+		<m_Name>Weapon</m_Name>
+		<m_Type>STRING</m_Type>
+		<m_Value>heavy</m_Value>
+	</m_Conditions>
+</animNode>

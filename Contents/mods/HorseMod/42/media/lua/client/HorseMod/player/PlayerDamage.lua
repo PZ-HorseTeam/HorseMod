@@ -397,65 +397,74 @@ do
     end
 end
 
+---@type table<IsoZombie, integer>
+local lastAttack = {}
+
 -- FIXME: zombie updates are handled by the zombie's owner, not usually the server!
 --  we might need to detect attacks on the client and tell the server when they occur
 ---@param zombie IsoZombie
 ---@return nil
 function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
-    if not zombie:getVariableBoolean(AnimationVariable.RIDING_HORSE) then
-        return
-    end
-
     local target = zombie:getTarget()
-    if not target or not instanceof(target, "IsoGameCharacter") then
+    if not target or not instanceof(target, "IsoPlayer") or not Mounts.hasMount(target) then
         return
     end
-    ---@cast target IsoGameCharacter
+    ---@cast target IsoPlayer
 
     local outcome = zombie:getVariableString("AttackOutcome")
-    if outcome == "" then
+    if outcome ~= "success" then
         return
     end
 
-    local bodyDamage = target:getBodyDamage()
+    local lastAttackTime = lastAttack[zombie] or -1000
 
-    -- FIXME: this will heal injuries that were incurred when you were not on the horse
-    for i = 0, BodyPartType.MAX:index() - 1 do
-        local bpType = BodyPartType.FromIndex(i)
-        local part = bodyDamage:getBodyPart(bpType)
-        local horse = Mounts.getMount(target)
-        if part and (part:bitten() or part:scratched() or part:isCut() or part:bleeding()) then
-            if allowedDamagePartIndices[i] then
-                return
-            end
-
-            resetBodyPartDamage(part, bodyDamage)
-
-            if HorseDamage.tryRedirectZombieHitToHorse(zombie, target, horse) then
-                return
-            end
-
-            PlayerDamage.addRandomDamageFromZombieOnParts(target, zombie, target:getHitReaction(), allowedDamageParts)
-            return
-        end
+    -- ensures a zombie's single attack is only detected once, since we can't detect the moment it hits at all
+    if getTimestampMs() - 1000 < lastAttackTime then
+        return
     end
+    
+    lastAttack[zombie] = getTimestampMs()
 
-    local removeInfection = true
-    for i = 0, BodyPartType.MAX:index() - 1 do
-        local bpType = BodyPartType.FromIndex(i)
-        local part = bodyDamage:getBodyPart(bpType)
-        if part:IsInfected() or part:IsFakeInfected() then
-            removeInfection = false
-            break
-        end
-    end
+    local horse = Mounts.getMount(target)
+
+    HorseDamage.tryRedirectZombieHitToHorse(zombie, target, horse)
+
+    -- -- FIXME: this will heal injuries that were incurred when you were not on the horse
+    -- for i = 0, BodyPartType.MAX:index() - 1 do
+    --     local bpType = BodyPartType.FromIndex(i)
+    --     local part = bodyDamage:getBodyPart(bpType)
+    --     if part and (part:bitten() or part:scratched() or part:isCut() or part:bleeding()) then
+    --         if allowedDamagePartIndices[i] then
+    --             return
+    --         end
+
+    --         resetBodyPartDamage(part, bodyDamage)
+
+    --         if HorseDamage.tryRedirectZombieHitToHorse(zombie, target, horse) then
+    --             return
+    --         end
+
+    --         PlayerDamage.addRandomDamageFromZombieOnParts(target, zombie, target:getHitReaction(), allowedDamageParts)
+    --         return
+    --     end
+    -- end
+
+    -- local removeInfection = true
+    -- for i = 0, BodyPartType.MAX:index() - 1 do
+    --     local bpType = BodyPartType.FromIndex(i)
+    --     local part = bodyDamage:getBodyPart(bpType)
+    --     if part:IsInfected() or part:IsFakeInfected() then
+    --         removeInfection = false
+    --         break
+    --     end
+    -- end
 
     -- if no body parts are infected anymore, remove body infection
-    if removeInfection then
-        bodyDamage:setIsFakeInfected(false)
-        bodyDamage:setInfected(false)
-        bodyDamage:setInfectionTime(-1)
-    end
+    -- if removeInfection then
+    --     bodyDamage:setIsFakeInfected(false)
+    --     bodyDamage:setInfected(false)
+    --     bodyDamage:setInfectionTime(-1)
+    -- end
 end
 
 Events.OnZombieUpdate.Add(PlayerDamage.onZombieAttack_checkAndRedirect)

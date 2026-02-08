@@ -126,8 +126,7 @@ HorseManager.retrieveNewHorses = function()
 
         -- verify is a horse and not already checked and not dead
         if HorseUtils.isHorse(isoMovingObject) 
-            and not HorseManager._detected_horses[isoMovingObject]
-            and not isoMovingObject:isDead() then
+            and not HorseManager._detected_horses[isoMovingObject] then
             
             -- initialise horse
             initialiseHorse(isoMovingObject)

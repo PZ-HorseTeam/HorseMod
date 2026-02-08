@@ -58,6 +58,9 @@ end
 ---@param horse IsoAnimal
 ---@return boolean
 InventoryTransfer.isValidSource = function(srcContainer, character, horse)
+    if not srcContainer then
+        return true
+    end
     -- if source container is the player inventory allow
     local parent = srcContainer:getParent()
     if parent and parent == character then
@@ -93,6 +96,9 @@ end
 ---@param horse IsoAnimal
 ---@return boolean
 InventoryTransfer.isValidDestination = function(destContainer, character, horse)
+    if not destContainer then
+        return true
+    end
     -- if source container is the player inventory allow
     local parent = destContainer:getParent()
     if parent and parent == character then

@@ -30,6 +30,11 @@ AttachmentUpdater.reapplyFor = function(horse)
             item = inv:AddItem(fullType)
         end
 
+        -- safeguard for removed/invalid slots
+        if not Attachments.isSlot(slot) then
+            return
+        end
+
         -- setup mane color
         if ManeManager.isManeSlot(slot) then
             ManeManager.setupMane(horse, item, slot)
@@ -43,23 +48,13 @@ AttachmentUpdater.reapplyFor = function(horse)
 end
 
 
-local UPDATE_RATE = 10
-local TICK_AMOUNT = 0
-
 ---Verify that the horse doesn't need to get its attachments reapplied, and if yes
 ---then reapply those and set the horse status for updates.
 ---@param horses IsoAnimal[]
 ---@param delta number
 function AttachmentUpdater:update(horses, delta)
-    -- check UPDATE_RATE-th horses per tick
-    local size = #horses
-    local update_rate = math.min(UPDATE_RATE,size)
-    if update_rate == 0 then return end
-
-    TICK_AMOUNT = TICK_AMOUNT < update_rate and TICK_AMOUNT + 1 or 1
-
-    for i = TICK_AMOUNT, size, update_rate do
-        local horse = horses[i] --[[@as IsoAnimal]]
+    for i = 1, #horses do
+        local horse = horses[i]
 
         -- if horse model is visible, set it as needing an update if not already reapplied
         local status = IS_REAPPLIED[horse]
@@ -86,7 +81,6 @@ end
 --     end
 -- end
 
----Add system for horses
 table.insert(HorseManager.systems, AttachmentUpdater)
 
 

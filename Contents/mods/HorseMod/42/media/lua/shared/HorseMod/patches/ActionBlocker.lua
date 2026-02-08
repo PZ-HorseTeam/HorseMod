@@ -5,6 +5,7 @@ local ActionBlocker = {
     ---Valid timed actions while horse riding.
     ---@type table<string, true>
     validActions = {
+        ["HealthPanelAction"] = true,
         ["HorseMod_DismountAction"] = true,
         ["HorseMod_HorseJump"] = true,
         ["HorseMod_UrgentDismountAction"] = true,

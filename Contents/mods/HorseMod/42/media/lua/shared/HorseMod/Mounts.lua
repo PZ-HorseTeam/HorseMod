@@ -6,17 +6,38 @@ local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
 local IS_CLIENT = isClient()
 local IS_SERVER = isServer()
 
+---@param text string
+---@param ... any
+local function log(text, ...)
+    DebugLog.log("[HorseMod] [Mounts] " .. string.format(text, ...))
+end
 
----@type table<IsoPlayer, IsoAnimal>
+
+---@type table<IsoPlayer, integer>
 local playerMountMap = {}
 
----@type table<IsoAnimal, IsoPlayer>
+---@type table<integer, IsoPlayer>
 local mountPlayerMap = {}
 
 local Mounts = {}
 
 ---Triggered when a player's mount changes.
 Mounts.onMountChanged = Event.new--[[@<IsoPlayer, IsoAnimal?>]]()
+
+---@param player IsoPlayer
+---@param id integer
+local function addMountID(player, id)
+    local oldMount = playerMountMap[player]
+    if oldMount then
+        if oldMount == id then
+            return
+        end
+        Mounts.removeMount(player)
+    end
+
+    playerMountMap[player] = id
+    mountPlayerMap[id] = player
+end
 
 ---@param player IsoPlayer
 ---@param animal IsoAnimal
@@ -29,8 +50,7 @@ function Mounts.addMount(player, animal)
         Mounts.removeMount(player)
     end
 
-    playerMountMap[player] = animal
-    mountPlayerMap[animal] = player
+    addMountID(player, commands.getAnimalId(animal))
 
     animal:getBehavior():setBlockMovement(true)
     animal:stopAllMovementNow()
@@ -50,21 +70,33 @@ function Mounts.addMount(player, animal)
 end
 
 ---@param player IsoPlayer
+local function removeMountID(player)
+    local id = playerMountMap[player]
+    playerMountMap[player] = nil
+    mountPlayerMap[id] = nil
+end
+
+---@param player IsoPlayer
 function Mounts.removeMount(player)
     if not Mounts.hasMount(player) then
         return
     end
 
-    local mount = playerMountMap[player]
-    playerMountMap[player] = nil
-    mountPlayerMap[mount] = nil
+    local mountId = playerMountMap[player]
+    removeMountID(player)
 
-    mount:getBehavior():setBlockMovement(false)
-    mount:setVariable(AnimationVariable.RIDING_HORSE, false)
+    local mount = commands.getAnimal(mountId)
+    if mount then
+        mount:getBehavior():setBlockMovement(false)
+        mount:setVariable(AnimationVariable.RIDING_HORSE, false)
 
-    -- used to reset the wander counter of the horse so it doesn't instantly wander off
-    mount:setStateEventDelayTimer(mount:getBehavior():pickRandomWanderInterval())
-    
+        -- used to reset the wander counter of the horse so it doesn't instantly wander off
+        mount:setStateEventDelayTimer(mount:getBehavior():pickRandomWanderInterval())
+    elseif not IS_CLIENT then
+        -- it should only be possible on multiplayer clients for the mount to be unloaded
+        log("WEIRD: player %s dismounted unknown animal id=%d", player:getUsername(), mountId)
+    end
+
     if IS_SERVER then
         mountcommands.Dismount:send(
             nil,
@@ -84,25 +116,35 @@ function Mounts.hasMount(player)
     return playerMountMap[player] ~= nil
 end
 
+---Returns a player's mount.
+---Nil may be returned if the player is not mounted or the mount is not in the currently loaded area.
+---Use :lua:obj:`hasMount` instead to check if the player is mounted.
 ---@param player IsoPlayer
----@return IsoAnimal?
+---@return IsoAnimal? mount
 ---@nodiscard
 function Mounts.getMount(player)
-    return playerMountMap[player]
+    if not playerMountMap[player] then
+        return nil
+    end
+
+    return commands.getAnimal(playerMountMap[player])
 end
 
 ---@param animal IsoAnimal
 ---@return boolean
 ---@nodiscard
 function Mounts.hasRider(animal)
-    return mountPlayerMap[animal] ~= nil
+    return mountPlayerMap[commands.getAnimalId(animal)] ~= nil
 end
 
+---Returns an animal's rider.
+---Nil may be returned if the animal is not mounted or the rider is not currently loaded.
+---Use :lua:obj:`hasMount` instead to check if the player is mounted.
 ---@param animal IsoAnimal
----@return IsoPlayer?
+---@return IsoPlayer? rider
 ---@nodiscard
 function Mounts.getRider(animal)
-    return mountPlayerMap[animal]
+    return mountPlayerMap[commands.getAnimalId(animal)]
 end
 
 function Mounts.reset()
@@ -113,13 +155,29 @@ end
 
 ---Reapply block movement every tick because it has a timeout
 local function updateMounts()
-    for _, mount in pairs(playerMountMap) do
-        mount:getBehavior():setBlockMovement(true)
+    for player, mount in pairs(playerMountMap) do
+        local animal = commands.getAnimal(mount)
+        if not animal then
+            log("WEIRD: tried to update unknown animal id=%d player=%s", mount, player:getUsername())
+        else
+            animal:getBehavior():setBlockMovement(true)
+        end
     end
+end
+
+---@param character IsoGameCharacter
+local function dismountOnDeath(character)
+    if not instanceof(character, "IsoPlayer") then
+        return
+    end
+    ---@cast character IsoPlayer
+
+    Mounts.removeMount(character)
 end
 
 if not isClient() then
     Events.OnTick.Add(updateMounts)
+    Events.OnCharacterDeath.Add(dismountOnDeath)
 end
 
 
@@ -133,10 +191,13 @@ if not IS_SERVER then
             local player = commands.getPlayer(args.character)
             if player then
                 local animal = commands.getAnimal(args.animal)
-                assert(animal ~= nil, "could not find mounted animal sent by server")
-                Mounts.addMount(player, animal)
+                if animal then
+                    Mounts.addMount(player, animal)
+                else
+                    addMountID(player, args.animal)
+                end
             else
-                print("[HorseMod] received Mount command for unknown player")
+                log("received Mount command for unknown player id=%d", args.character)
             end
         end)
 
@@ -145,7 +206,7 @@ if not IS_SERVER then
             if player then
                 Mounts.removeMount(player)
             else
-                print("[HorseMod] received Dismount command for unknown player")
+                log("received Dismount command for unknown player id=%d", args.character)
             end
         end)
 
@@ -155,16 +216,18 @@ if not IS_SERVER then
             for playerId, animalId in pairs(args.mounts) do
                 local player = commands.getPlayer(playerId)
                 local animal = commands.getAnimal(animalId)
-                if not player or not animal then
-                    print(
-                        string.format(
-                            "could not find player or animal sent by server, player=%d animal=%d",
-                            playerId,
-                            animalId
-                        )
+                if not player then
+                    log(
+                        "could not find player or animal sent by server, player=%d animal=%d",
+                        playerId,
+                        animalId
                     )
                 else
-                    Mounts.addMount(player, animal)
+                    if animal then
+                        Mounts.addMount(player, animal)
+                    else
+                        addMountID(player, animalId)
+                    end
                 end
             end
         end)

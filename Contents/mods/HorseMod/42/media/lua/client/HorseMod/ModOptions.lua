@@ -37,19 +37,19 @@ options:addDescription(getText("IGUI_ModOptions_HorseKeybind"))
 options:addKeyBind(
     "HorseJumpButton", 
     -- "IGUI_ModOptions_HorseKeybind_Jump_Name",
-    getText("UI_optionscreen_binding_HorseJumpButton"), 
+    getText("IGUI_ModOptions_HorseKeybind_Jump_Name"), 
     ModOptions.HorseJumpButton, 
     "IGUI_ModOptions_HorseKeybind_Jump_Tooltip"
 )
 options:addKeyBind(
     "HorseTrotButton",
-    getText("UI_optionscreen_binding_HorseTrotButton"),
+    getText("IGUI_ModOptions_HorseKeybind_Trot_Name"),
     ModOptions.HorseTrotButton,
     "IGUI_ModOptions_HorseKeybind_Trot_Tooltip"
 )
 options:addKeyBind(
     "HorseGallopButton",
-    getText("UI_optionscreen_binding_HorseGallopButton"),
+    getText("IGUI_ModOptions_HorseKeybind_Gallop_Name"),
     ModOptions.HorseGallopButton,
     "IGUI_ModOptions_HorseKeybind_Gallop_Tooltip"
 )

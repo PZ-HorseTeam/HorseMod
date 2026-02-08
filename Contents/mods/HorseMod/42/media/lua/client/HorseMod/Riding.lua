@@ -146,18 +146,18 @@ HorseRiding.dismountOnHorseDeath = function(character)
     end
     ---@cast character IsoAnimal
 
-    for _, mount in pairs(HorseRiding.playerMounts) do
-        if mount.pair.mount == character then
-            HorseSounds.playSound(character, HorseSounds.Sound.DEATH)
+    local rider = Mounts.getRider(character)
+    if rider and rider:isLocalPlayer() then
+        local mount = HorseRiding.getMount(rider)
+        assert(mount ~= nil)
+        HorseSounds.playSound(character, HorseSounds.Sound.DEATH)
 
-            HorseUtils.runAfter(
-                0.5,
-                function()
-                    HorseDamage.knockDownNearbyZombies(mount.pair.mount)
-                end
-            )
-            return
-        end
+        HorseUtils.runAfter(
+            0.5,
+            function()
+                HorseDamage.knockDownNearbyZombies(mount.pair.mount)
+            end
+        )
     end
 end
 

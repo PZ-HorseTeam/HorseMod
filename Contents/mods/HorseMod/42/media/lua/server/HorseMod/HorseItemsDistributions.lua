@@ -81,9 +81,9 @@ addItems(HorseItemsDistribution.CampingStoreGear.items, saddleItems, 0.2)
 addItems(HorseItemsDistribution.CampingStoreGear.items, saddlebagItems, 0.2)
 addItems(HorseItemsDistribution.CampingStoreGear.items, reinsItems, 0.2)
 
-addItems(HorseItemsDistribution.HuntingLockers.items, saddleItems, 0.4)
-addItems(HorseItemsDistribution.HuntingLockers.items, saddlebagItems, 0.4)
-addItems(HorseItemsDistribution.HuntingLockers.items, reinsItems, 0.4)
+addItems(HorseItemsDistribution.HuntingLockers.items, saddleItems, 0.5)
+addItems(HorseItemsDistribution.HuntingLockers.items, saddlebagItems, 0.5)
+addItems(HorseItemsDistribution.HuntingLockers.items, reinsItems, 0.5)
 
 addItems(HorseItemsDistribution.SurvivalGear.items, saddleItems, 0.2)
 addItems(HorseItemsDistribution.SurvivalGear.items, saddlebagItems, 0.2)
@@ -109,9 +109,9 @@ addItems(HorseItemsDistribution.SportStoreAccessories.items, saddleItems, 0.5)
 addItems(HorseItemsDistribution.SportStoreAccessories.items, saddlebagItems, 0.5)
 addItems(HorseItemsDistribution.SportStoreAccessories.items, reinsItems, 0.5)
 
-addItems(HorseItemsDistribution.WildWestGeneralStore.items, saddleItems, 0.25)
-addItems(HorseItemsDistribution.WildWestGeneralStore.items, saddlebagItems, 0.25)
-addItems(HorseItemsDistribution.WildWestGeneralStore.items, reinsItems, 0.25)
+addItems(HorseItemsDistribution.WildWestGeneralStore.items, saddleItems, 1.65)
+addItems(HorseItemsDistribution.WildWestGeneralStore.items, saddlebagItems, 1.4)
+addItems(HorseItemsDistribution.WildWestGeneralStore.items, reinsItems, 0.85)
 
 local ProceduralDistributions_list = ProceduralDistributions.list
 

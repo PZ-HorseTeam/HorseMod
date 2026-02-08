@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animNode x_extends="Horse_Ext01.xml">
+	<m_Name>Shiver</m_Name>
+	<m_AnimName>Bob_EmoteShiver</m_AnimName>
+    <m_Conditions />
+	<m_Conditions x_name="9db6e438-3b47-4a74-9e5c-2d41f02867e0">
+		<m_Value>Shiver</m_Value>
+	</m_Conditions>
+	<m_Events x_name="a59fe5d8-b38d-4496-85ee-1e304dab7db9">
+		<m_EventName>PlayerVoiceSound</m_EventName>
+		<m_ParameterValue>FreezeShiver</m_ParameterValue>
+	</m_Events>
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+	<m_SubStateBoneWeights />
+</animNode>

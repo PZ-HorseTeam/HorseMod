@@ -1,9 +1,9 @@
 # store current folder
 WORKSHOP_DIR=$(pwd)
 
-MOD_TITLE="Horse mod [B42/MP SOON]"
-WORKSHOP_ID=3656669529 # TEST MOD ID, NEEDS TO BE REPLACED FOR RELEASE
-VISIBILITY=3 # UNLISTED, SWAP TO 0 FOR RELEASE
+MOD_TITLE="Horse Mod [B42/MP SOON]"
+WORKSHOP_ID=3661336777
+VISIBILITY=0
 TAGS="Build 42,Animals,Items,Misc,Vehicles,Models"
 
 # need to be in the steam uploader folder

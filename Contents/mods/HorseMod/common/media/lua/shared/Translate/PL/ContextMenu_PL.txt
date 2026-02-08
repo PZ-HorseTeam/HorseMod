@@ -1,0 +1,31 @@
+ContextMenu_PL = {
+    /* Riding Jeździectwo */
+    ContextMenu_Horse_Mount = "Dosiądź %1"
+    ContextMenu_Horse_Dismount = "Zejdź z %1"
+
+    /* Attachments Dodatki */
+    ContextMenu_Horse_Gear = "Sprzęt"
+    ContextMenu_Horse_Equip = "Załóż {new} jako {slot}"
+    ContextMenu_Horse_Replace = "Wymień {old} z {new}"
+    ContextMenu_Horse_No_Compatible_Gear = "Nie masz sprzętu do założenia na konia."
+    ContextMenu_Horse_Unequip = "Zdejmij {old}"
+    ContextMenu_Horse_Unequip_All = "Zdejmij wszystko"
+    ContextMenu_Horse_NoMountPosition = "Nie możesz dosięgnąć konia."
+
+    /* Attachment Slots Sloty dodatków */
+    ContextMenu_Horse_Slot_Saddle = "siodło"
+    ContextMenu_Horse_Slot_Saddlebags = "sakwy na siodło"
+    ContextMenu_Horse_Slot_Reins = "wodze"
+
+    /* Unavailability reasons for options Powody niedostępności dla opcji */
+    ContextMenu_Horse_NotAdult = "Ten koń nie jest dorosły."
+    ContextMenu_Horse_IsRunning = "Ten koń biegnie."
+    ContextMenu_Horse_IsDead = "Ten koń nie żyje."
+    ContextMenu_Horse_IsAlreadyRiding = "Koń już jest dosiadany."
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "Nie możesz zmienić sprzętu podczas dosiadania."
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "Nie możesz zmienić sprzętu podczas jazdy."
+    ContextMenu_Horse_HasRider = "Ktoś już siedzi na tym koniu."
+
+    /* Food Jedzenie */
+    ContextMenu_FoodType_Horse = "Koń"
+}

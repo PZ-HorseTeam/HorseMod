@@ -21,6 +21,15 @@ local ATTACHMENTS_MOD_DATA = HorseModData.register--[[@<AttachmentsModData>]](
             local maneConfig = copyTable(maneDef.maneConfig)
             modData.bySlot = maneConfig -- default mane config
         end
+
+        -- cleanup invalid slots (i.e. removed slot)
+        for slot, fullType in pairs(modData.bySlot) do
+            if not Attachments.isSlot(slot) then
+                local AttachmentManager = require("HorseMod/attachments/AttachmentManager")
+                AttachmentManager.setAttachedItem(horse, slot, nil)
+                AttachmentManager.giveBackToPlayerOrDrop(nil, horse, instanceItem(fullType))
+            end
+        end
     end
 )
 Attachments.ATTACHMENTS_MOD_DATA = ATTACHMENTS_MOD_DATA
@@ -37,6 +46,14 @@ Attachments.isAttachment = function(fullType, _slot)
         return itemDef and itemDef[_slot] ~= nil or false
     end
     return itemDef ~= nil
+end
+
+---Checks if the given slot is a valid attachment slot.
+---@param slot AttachmentSlot
+---@return boolean
+---@nodiscard
+Attachments.isSlot = function(slot)
+    return AttachmentData.slotsDefinitions[slot] ~= nil
 end
 
 ---Retrieve the attachment slot of a given item fullType.

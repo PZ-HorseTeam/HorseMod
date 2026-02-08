@@ -5,6 +5,7 @@ local Mounting = require("HorseMod/Mounting")
 local HorseJump = require("HorseMod/TimedActions/HorseJump")
 local rdm = newrandom()
 
+local TEMP_VECTOR2 = Vector2.new()
 
 
 ---@param state "walk"|"gallop"
@@ -415,37 +416,26 @@ end
 --- Do all substeps in locals; write back ONCE.
 ---@param rider IsoPlayer
 ---@param horse IsoAnimal
----@param velocity Vector2
----@param delta number
+---@param distance Vector2
 ---@param isGalloping boolean
 ---@param isJumping boolean
-local function moveWithCollision(rider, horse, velocity, delta, isGalloping, isJumping)
+local function moveWithCollision(rider, horse, distance, isGalloping, isJumping)
     local z = horse:getZ()
     local x = horse:getX()
     local y = horse:getY()
-
-    local velocityX = velocity:getX()
-    local velocityY = velocity:getY()
-
-    local maxVel = math.max(
-        math.abs(velocityX),
-        math.abs(velocityY)
-    )
-    if maxVel == 0 then return end
 
     -- collision uses fixed time steps to maintain precision
     --  i'm kind of sceptical that this does anything though, this is really high
     --  you'd have to be running below 15fps for this to come into play 
     local maxStepDist = 0.065
 
-    local remaining = delta
+    local remaining = distance:getLength()
     while remaining > 0 do
-        local s = math.min(remaining, maxStepDist / maxVel)
-        local dx = velocityX * s
-        local dy = velocityY * s
+        local magnitude = math.min(remaining, maxStepDist)
+        distance:setLength(magnitude)
 
         -- check if hitting a wall
-        local rx, ry = collideStepAt(horse, z, x, y, dx, dy, isJumping)
+        local rx, ry = collideStepAt(horse, z, x, y, distance:getX(), distance:getY(), isJumping)
         if rx == 0 and ry == 0 then
             if isGalloping then
                 Mounting.dismountFallBack(rider, horse)
@@ -461,7 +451,7 @@ local function moveWithCollision(rider, horse, velocity, delta, isGalloping, isJ
 
         x = nx
         y = ny
-        remaining = remaining - s
+        remaining = remaining - magnitude
     end
 
     -- Single commit per frame
@@ -472,17 +462,16 @@ end
 
 ---@param current number
 ---@param target number
----@param rate number
----@param deltaTime number
+---@param amount number
 ---@return number
-local function approach(current, target, rate, deltaTime)
+local function approach(current, target, amount)
     local delta = target - current
     if delta > 0 then
         ---@type number
-        local step = math.min(delta, rate * deltaTime)
+        local step = math.min(delta, amount)
         return current + step
     else
-        local step = math.max(delta, -rate * deltaTime)
+        local step = math.max(delta, -amount)
         return current + step
     end
 end
@@ -512,16 +501,12 @@ local function directionToAngle(direction)
 end
 
 
-local WALK_SPEED = 0.05      -- tiles/sec
 local TROT_MULT  = 1.1
-local RUN_SPEED  = 4.5       -- tiles/sec
 
 local TREES_GENE_MULT_WALK = 0.40   -- 65% of base when walking/trotting in trees
 local TREES_GENE_MULT_RUN  = 0.25   -- 55% of base when galloping in trees
 local TREES_LINGER_SECONDS = 1.0   -- keep slowdown for 1s after leaving trees
 
-local ACCEL_UP   = 12.0
-local DECEL_DOWN = 36.0
 
 -- low value causes player to turn before horse which causes animation desync
 -- no noticeable performance impact from having it high
@@ -553,9 +538,6 @@ local PLAYER_SYNC_TUNER = 0.8
 ---Current movement speed in square/s.
 ---@field speed number
 ---
----Target movement speed in squares/s.
----@field targetSpeed number
----
 ---Used to calculate if the player should fall while in trees. Chance increases the longer they stay in trees.
 ---@field timeInTrees number
 ---
@@ -567,6 +549,9 @@ local PLAYER_SYNC_TUNER = 0.8
 ---
 ---Indicates whether the pair can turn this update.
 ---@field doTurn boolean
+---
+---Force gallop. Used for jmping notably.
+---@field forcedInput InputManager.Input
 local MountController = {}
 MountController.__index = MountController
 
@@ -614,22 +599,22 @@ end
 ---Maximum seconds of slowdown that can be accrued.
 ---@readonly
 ---@type number
-local SLOWDOWN_MAX = 5
+local SLOWDOWN_MAX = 2.5
 
 ---Amount to increment the slowdown counter when hitting a zombie.
 ---@readonly
 ---@type number
-local SLOWDOWN_ZOMBIE_KNOCKDOWN_INCREASE = 1
+local SLOWDOWN_ZOMBIE_KNOCKDOWN_INCREASE = 0.75
 
 ---Amount to increment the slowdown counter per second when near a zombie but not fast enough to knock it down.
 ---@readonly
 ---@type number
-local SLOWDOWN_ZOMBIE_NEARBY_INCREASE = 5
+local SLOWDOWN_ZOMBIE_NEARBY_INCREASE = 4
 
 ---Amount to increment the slowdown counter per second when trampling a zombie on the ground.
 ---@readonly
 ---@type number
-local SLOWDOWN_ZOMBIE_GROUND_INCREASE = 0.75
+local SLOWDOWN_ZOMBIE_GROUND_INCREASE = 2
 
 ---Minimum seconds of slowdown before the horse is actually slowed.
 ---@readonly
@@ -639,7 +624,7 @@ local SLOWDOWN_MIN_SECONDS = 1
 ---Maximum seconds of slowdown where slowdown amount stops increasing.
 ---@readonly
 ---@type number
-local SLOWDOWN_MAX_SECONDS = 4
+local SLOWDOWN_MAX_SECONDS = 2
 
 ---Scalar to movement speed when at maximum slowdown.
 ---The final speed scalar is interpolated based on the current slowdown value (between ZOMBIE_SLOWDOWN_MIN_SECONDS and ZOMBIE_SLOWDOWN_MAX_SECONDS)
@@ -652,12 +637,12 @@ local SLOWDOWN_MAX_SCALAR = 0.2
 ---Used because very low scalars needed to make galloping slow enough make slower speeds ridiculously slow.
 ---@readonly
 ---@type number
-local SLOWDOWN_MIN_SPEED = 1.5
+local SLOWDOWN_MIN_SPEED = 2
 
 ---Minimum speed required to knock down a zombie.
 ---@readonly
 ---@type number
-local KNOCKDOWN_MIN_SPEED = 5
+local KNOCKDOWN_MIN_SPEED = 6.5
 
 ---@param deltaTime number
 function MountController:updateSlowdown(deltaTime)
@@ -758,7 +743,6 @@ end
 ---@param input InputManager.Input
 ---@param deltaTime number
 ---@return number
----@nodiscard
 function MountController:getVegetationEffect(input, deltaTime)
     local vegetationType = getVegetationTypeAt(self.mount.pair.rider:getSquare())
 
@@ -792,21 +776,64 @@ function MountController:getVegetationEffect(input, deltaTime)
 end
 
 
-local SPEED_WALK = 0.8
+---Mounted animation walk speed.
+---@readonly
+---@type number
+local ANIMATION_SPEED_WALK = 1.5
 
-local SPEED_TROT = 2.2
+---Mounted walk speed.
+---@readonly
+---@type number
+local SPEED_WALK = 1.6
 
+---Mounted trot speed.
+---@readonly
+---@type number
+local SPEED_TROT = 4
+
+---Mounted gallop speed.
+---@readonly
+---@type number
 local SPEED_GALLOP = 8.5
+
+---Rate to approach a higher target speed in squares/s.
+---@readonly
+---@type number
+local ACCELERATION_RATE = 12
+
+---Rate to approach a lower target speed in squares/s.
+---@readonly
+---@type number
+local DECELERATION_RATE = 6
+
+---Speed needed to turn as a factor of the movement type (walk, trot, gallop)'s base speed.
+---@readonly
+---@type number
+local SPEED_FACTOR_TURN = 0.8
+
+
+---@param input InputManager.Input
+---@return number
+---@nodiscard
+function MountController:getTargetSpeed(input)
+    if input.run then
+        return SPEED_GALLOP * math.max(getSpeed("gallop") * Stamina.runSpeedFactor(self.mount.pair.mount), 0.35)
+    elseif self.mount.pair.mount:getVariableBoolean(AnimationVariable.TROT) then
+        return SPEED_TROT * getSpeed("walk")
+    else
+        return SPEED_WALK * getSpeed("walk")
+    end
+end
 
 
 ---@param input InputManager.Input
 ---@param deltaTime number
-function MountController:updateSpeed(input, deltaTime)
+---@param isJumping boolean
+function MountController:updateSpeed(input, deltaTime, isJumping)
     self:updateSlowdown(deltaTime)
 
     local walkMultiplier = getSpeed("walk")
     local gallopRawSpeed = getSpeed("gallop")
-    local gallopMultiplier = gallopRawSpeed
 
     local pair = self.mount.pair
     local mount = pair.mount
@@ -817,20 +844,11 @@ function MountController:updateSpeed(input, deltaTime)
 
     pair:setAnimationVariable(AnimationVariable.GENE_SPEED, geneSpeed)
 
-    if input.run then
-        local f = Stamina.runSpeedFactor(mount)
-        if f < 0.35 then
-            gallopMultiplier = 0.35
-        else
-            gallopMultiplier = gallopMultiplier * f
-        end
-    end
-
-    mount:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier)
+    mount:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier * ANIMATION_SPEED_WALK)
     mount:setVariable(AnimationVariable.TROT_SPEED,  walkMultiplier * TROT_MULT)
     mount:setVariable(AnimationVariable.RUN_SPEED, gallopRawSpeed)
 
-    rider:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier * PLAYER_SYNC_TUNER)
+    rider:setVariable(AnimationVariable.WALK_SPEED, walkMultiplier * PLAYER_SYNC_TUNER * ANIMATION_SPEED_WALK)
     rider:setVariable(AnimationVariable.TROT_SPEED,  walkMultiplier * TROT_MULT * PLAYER_SYNC_TUNER)
     rider:setVariable(AnimationVariable.RUN_SPEED, gallopRawSpeed * PLAYER_SYNC_TUNER)
 
@@ -838,33 +856,30 @@ function MountController:updateSpeed(input, deltaTime)
 
     local moving = (input.movement.x ~= 0 or input.movement.y ~= 0)
     if moving then
-        if input.run then
-            target = SPEED_GALLOP * gallopMultiplier
-        elseif mount:getVariableBoolean(AnimationVariable.TROT) then
-            target = SPEED_TROT * walkMultiplier
-        else
-            target = SPEED_WALK * walkMultiplier
+        target = self:getTargetSpeed(input)
+    elseif mount:isTurning() then
+        target = self:getTargetSpeed(input) * SPEED_FACTOR_TURN
+    end
+
+    target = target * self:getVegetationEffect(input, deltaTime)
+
+    local rate = (target > self.speed) and ACCELERATION_RATE or DECELERATION_RATE
+
+    self.speed = approach(self.speed, target, rate * deltaTime)
+
+    if self.speed > SLOWDOWN_MIN_SPEED then
+        if self.slowdownCounter >= SLOWDOWN_MIN_SECONDS then
+            local slowdownAmount = math.min(math.max(self.slowdownCounter - SLOWDOWN_MIN_SECONDS, 0), SLOWDOWN_MAX_SECONDS - SLOWDOWN_MIN_SECONDS)
+            local slowdownScalar = PZMath.lerp(1, SLOWDOWN_MAX_SCALAR, slowdownAmount / (SLOWDOWN_MAX_SECONDS - SLOWDOWN_MIN_SECONDS))
+            self.speed = math.min(self.speed, target * slowdownScalar)
         end
+
+        self.speed = math.max(self.speed, SLOWDOWN_MIN_SPEED)
     end
 
-    local rate = (target > self.targetSpeed) and ACCEL_UP or DECEL_DOWN
-    
-    self.targetSpeed = approach(self.targetSpeed, target, rate, deltaTime)
-    
-    if self.targetSpeed < 0.0001 then
-        self.targetSpeed = 0
+    if self.speed < 0.01 then
+        self.speed = 0
     end
-
-    self.speed = self.targetSpeed
-
-    if self.targetSpeed > SLOWDOWN_MIN_SPEED then
-        local slowdownAmount = math.min(math.max(SLOWDOWN_MIN_SECONDS - self.slowdownCounter), SLOWDOWN_MAX_SECONDS)
-        local slowdownPercent = math.max(math.min(slowdownAmount / (SLOWDOWN_MIN_SECONDS - SLOWDOWN_MAX_SECONDS), 1), 0)
-        local slowdownScalar = PZMath.lerp(1, SLOWDOWN_MAX_SCALAR, slowdownPercent)
-        self.speed = math.max(self.speed * slowdownScalar, SLOWDOWN_MIN_SPEED)
-    end
-
-    self.speed = self.speed * self:getVegetationEffect(input, deltaTime)
 end
 
 function MountController:updateTreeFall(isGalloping, deltaTime)
@@ -899,7 +914,7 @@ end
 
 ---@return MovementState
 function MountController:getMovementState()
-    if self.targetSpeed <= 0 then
+    if self.speed <= 0.01 then
         return "idle"
     elseif self.mount.pair:getAnimationVariableBoolean(AnimationVariable.GALLOP) then
         return "gallop"
@@ -957,6 +972,9 @@ end
 function MountController:update(input)
     assert(self.mount.pair.rider:getVariableString(AnimationVariable.RIDING_HORSE) == "true")
 
+    local forcedInput = self.forcedInput
+    input = forcedInput or input
+
     local mountPair = self.mount.pair
     local rider = mountPair.rider
     local mount = mountPair.mount
@@ -991,14 +1009,22 @@ function MountController:update(input)
     if doTurn then
         self:turn(input, deltaTime)
     end
-    self:updateSpeed(input, deltaTime)
+    self:updateSpeed(input, deltaTime, isJumping)
 
-    if moving and self.targetSpeed > 0
+    if self.speed > 0
         and not rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
-        local currentDirection = mount:getDir()
+        local currentDirection = nil
 
-        local velocity = currentDirection:ToVector():setLength(self.speed)
-        moveWithCollision(rider, mount, velocity, deltaTime, isGalloping, isJumping)
+        -- albion: HACK: i don't know why, but animForwardDirection makes falling off when you hit a wall not work
+        -- but using getDir() all the time prevents the turning circle from working
+        if mount:isTurning() then
+            currentDirection = mount:getAnimForwardDirection(TEMP_VECTOR2)
+        else
+            currentDirection = mount:getDir():ToVector(TEMP_VECTOR2)
+        end
+
+        local velocity = currentDirection:setLength(self.speed * deltaTime)
+        moveWithCollision(rider, mount, velocity, isGalloping, isJumping)
 
         mount:setVariable("animalWalking", not input.run)
         mountPair:setAnimationVariable(AnimationVariable.GALLOP, input.run)
@@ -1050,14 +1076,14 @@ function MountController.new(mount)
             mount = mount,
             turnAcceleration = 0,
             lastTurnWasRight = false,
-            targetSpeed = 0.0,
             vegetationLingerTime = 0.0,
             vegetationLingerStartMult = 1.0,
             timeInTrees = 0.0,
             lastCheck = 0.0,
             slowdownCounter = 0.0,
             speed = 0.0,
-            doTurn = true
+            doTurn = true,
+            forcedInput = nil,
         },
         MountController
     )

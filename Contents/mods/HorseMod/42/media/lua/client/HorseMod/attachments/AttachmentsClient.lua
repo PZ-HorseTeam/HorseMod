@@ -77,11 +77,11 @@ function AttachmentsClient.canChangeAttachments(character, animal)
         return false, "ContextMenu_Horse_NotAdult"
     end
 
-    if Mounts.getMount(character) ~= nil then
+    if Mounts.hasMount(character) then
         return false, "ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted"
     end
 
-    if Mounts.getRider(animal) ~= nil then
+    if Mounts.hasRider(animal) then
         return false, "ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted"
     end
 

@@ -7,9 +7,9 @@ local random_instance = newrandom()
 local HorseDamage = {}
 
 
-HorseDamage.ZOMBIE_DAMAGE_CHANCE = 35
-HorseDamage.ZOMBIE_DAMAGE_MIN = 0.05
-HorseDamage.ZOMBIE_DAMAGE_MAX = 0.12
+HorseDamage.ZOMBIE_DAMAGE_CHANCE = 100
+HorseDamage.ZOMBIE_DAMAGE_MIN = 0.3
+HorseDamage.ZOMBIE_DAMAGE_MAX = 0.6
 
 
 HorseDamage.HORSE_DEATH_KNOCKDOWN_RADIUS = 2.5
@@ -29,7 +29,7 @@ function HorseDamage.knockDownNearbyZombies(horse)
 
     for i = 0, zombies:size() - 1 do
         local zombie = zombies:get(i)
-        if zombie and zombie.knockDown and zombie:getZ() == hz then
+        if zombie:getZ() == hz then
             local dx = zombie:getX() - hx
             local dy = zombie:getY() - hy
 
@@ -51,38 +51,18 @@ end
 
 
 ---@param horse IsoAnimal
----@param value number
----@return number
-function HorseDamage.setHealth(horse, value)
-    local newValue = math.max(0, value)
-    horse:setHealth(newValue)
-
-    return newValue
-end
-
-
----@param horse IsoAnimal
----@return number
 local function applyZombieDamage(horse)
     local damage = randf(HorseDamage.ZOMBIE_DAMAGE_MIN, HorseDamage.ZOMBIE_DAMAGE_MAX)
 
-    return HorseDamage.setHealth(horse, horse:getHealth() - damage)
+    horse:setHealth(math.max(horse:getHealth() - damage, 0))
 end
 
 
----@param zombie IsoGameCharacter|nil
----@param player IsoPlayer|nil
----@param horse IsoAnimal|nil
+---@param zombie IsoGameCharacter
+---@param player IsoPlayer
+---@param horse IsoAnimal
 ---@return boolean
 function HorseDamage.tryRedirectZombieHitToHorse(zombie, player, horse)
-    if not zombie or not player then
-        return false
-    end
-
-    if not horse then
-        return false
-    end
-
     if ZombRand(100) >= HorseDamage.ZOMBIE_DAMAGE_CHANCE then
         return false
     end
