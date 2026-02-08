@@ -1,4 +1,8 @@
 ContextMenu_CN = {
+    /*
+        Translated by Cetty McTrailwinder
+    */
+
     /* Riding */
     ContextMenu_Horse_Mount = "上马 %1"
     ContextMenu_Horse_Dismount = "下马 %1"

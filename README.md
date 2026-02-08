@@ -29,5 +29,6 @@ In alphabetical order:
 - Polish (3xkd)
 - Portugues (Refúgio Z)
 - Russian (Sangria)
+- Simplified Chinese (Cetty McTrailwinder)
 - Spanish (carlesturo)
 - Turkish (Sineks)

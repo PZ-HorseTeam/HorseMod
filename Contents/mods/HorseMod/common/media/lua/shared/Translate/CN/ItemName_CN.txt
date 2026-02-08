@@ -1,4 +1,8 @@
 ItemName_CN = {
+    /*
+        Translated by Cetty McTrailwinder
+    */
+
     /* Horse accessories */
         /* Saddles */
     ItemName_HorseMod.HorseSaddle_Crude = "马鞍（粗制）"

@@ -1,4 +1,8 @@
 IGUI_CN = {
+    /*
+        Translated by Cetty McTrailwinder
+    */
+
     /* General */
     IGUI_AnimalType_stallion = "种马"
     IGUI_AnimalType_mare = "母马"

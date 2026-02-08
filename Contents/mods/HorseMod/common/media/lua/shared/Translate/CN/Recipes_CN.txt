@@ -1,4 +1,8 @@
 Recipes_CN = {
+    /*
+        Translated by Cetty McTrailwinder
+    */
+
     /* Horse accessories */
     Recipe_HorseSaddle = "制作马鞍"
     Recipe_HorseSaddlebags = "制作马鞍袋"
