@@ -22,54 +22,50 @@
 ---Name of the `RanchZoneDefinitions` type to use. Can be `horsesmall`, `horsemedium`, or `horselarge` (or any other animal ranch zone types technically). Defaults to `horsesmall`.
 ---@field name ("horsesmall" | "horsemedium" | "horselarge")?
 
+RanchZoneDefinitions.type["horsesmall"] = {
+    type = "horsesmall",
+    globalName = "horse",
+    chance = 5,
+    femaleType = "mare",
+    maleType = "stallion",
+    minFemaleNb = 0,
+    maxFemaleNb = 2,
+    minMaleNb = 0,
+    maxMaleNb = 2,
+    chanceForBaby = 5,
+    maleChance = 50
+}
+RanchZoneDefinitions.type["horsemedium"] = {
+    type = "horsemedium",
+    globalName = "horse",
+    chance = 5,
+    femaleType = "mare",
+    maleType = "stallion",
+    minFemaleNb = 1,
+    maxFemaleNb = 2,
+    minMaleNb = 1,
+    maxMaleNb = 2,
+    chanceForBaby = 5,
+    maleChance = 50
+}
+RanchZoneDefinitions.type["horselarge"] = {
+    type = "horselarge",
+    globalName = "horse",
+    chance = 5,
+    femaleType = "mare",
+    maleType = "stallion",
+    minFemaleNb = 1,
+    maxFemaleNb = 3,
+    minMaleNb = 1,
+    maxMaleNb = 3,
+    chanceForBaby = 5,
+    maleChance = 50
+}
 
 local DEFAULT_HORSE_ZONE = "horsesmall"
 
 ---Creates and manages horse spawn zones e.g. stables.
-local HorseZones = {
-    ---Available ranch zone types.
-    types = {
-        ["horsesmall"] = {
-            type = "horsesmall",
-            globalName = "horse",
-            chance = 5,
-            femaleType = "mare",
-            maleType = "stallion",
-            minFemaleNb = 0,
-            maxFemaleNb = 2,
-            minMaleNb = 0,
-            maxMaleNb = 2,
-            chanceForBaby = 5,
-            maleChance = 50
-        },
-        ["horsemedium"] = {
-            type = "horsemedium",
-            globalName = "horse",
-            chance = 5,
-            femaleType = "mare",
-            maleType = "stallion",
-            minFemaleNb = 1,
-            maxFemaleNb = 2,
-            minMaleNb = 1,
-            maxMaleNb = 2,
-            chanceForBaby = 5,
-            maleChance = 50
-        },
-        ["horselarge"] = {
-            type = "horselarge",
-            globalName = "horse",
-            chance = 5,
-            femaleType = "mare",
-            maleType = "stallion",
-            minFemaleNb = 1,
-            maxFemaleNb = 3,
-            minMaleNb = 1,
-            maxMaleNb = 3,
-            chanceForBaby = 5,
-            maleChance = 50
-        },
-    }
-}
+local HorseZones = {}
 
 
 ---Horse zones to be created.
@@ -241,11 +237,8 @@ HorseZones.zones = {
 local function addHorseZones()
     DebugLog.log("HorseMod: creating horse zones")
 
-    for id,data in pairs(HorseZones.types) do
-        RanchZoneDefinitions.type[id] = data
-    end
-
     local world = getWorld()
+
     local zonesFailed = 0
     for i = 1, #HorseZones.zones do
         local zoneDef = HorseZones.zones[i]
