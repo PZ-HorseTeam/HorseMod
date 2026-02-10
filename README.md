@@ -32,3 +32,4 @@ In alphabetical order:
 - Simplified Chinese (Cetty McTrailwinder)
 - Spanish (carlesturo)
 - Turkish (Sineks)
+- German (Jackson Frost)

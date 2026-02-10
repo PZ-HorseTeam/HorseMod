@@ -1,0 +1,41 @@
+IGUI_DE = {
+    /*
+        Translated by Jackson Frost
+    */
+
+    /* General */
+    IGUI_AnimalType_stallion = "Hengst"
+    IGUI_AnimalType_mare = "Stute"
+    IGUI_AnimalType_filly = "Fohlen"
+
+    IGUI_Animal_Group_horse = "Pferd"
+    IGUI_Horse_Slot = "Slot" /* for attachments */
+
+    /* Breeds */
+    IGUI_Breed_AmericanQuarterPalomino = "American Quarter Horse (Palomino)"
+    IGUI_Breed_AmericanQuarterBlueRoan = "American Quarter Horse (Dunkel)"
+    IGUI_Breed_AmericanPaintTobiano = "American Paint Horse (Tobiano)"
+    IGUI_Breed_AmericanPaintOvero = "American Paint Horse (Overo)"
+    IGUI_Breed_AppaloosaGrullaBlanket = "Appaloosa"
+    IGUI_Breed_AppaloosaLeopard = "Appaloosa (Leopard)"
+    IGUI_Breed_ThoroughbredBay = "Vollblut"
+    IGUI_Breed_ThoroughbredFleaBittenGrey = "Graufleckig"
+
+    /* Mod Options */
+    IGUI_ModOptions_HorseModName = "Pferd"
+    IGUI_ModOptions_HorseSoundVolume_Desc = "Pferdegerausche Lautstarke andern"
+    IGUI_ModOptions_HorseSoundVolume_Name = "Pferdegerausche Lautstarke (Standard 0.40)"
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "Legt die Lautstarke aller Pferdegerausche fest."
+
+    IGUI_ModOptions_HorseKeybind = "Tastenkurzel fur Pferde"
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "Springen"
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "Andert die Tastenkombination fur den Pferdesprung."
+    
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "Trab"
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Andert die Tastenkombination fur den Trab des Pferdes."
+
+    IGUI_ModOptions_HorseKeybind_Gallop_Name = "Galopp"
+    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "Andert die Tastenkombination fur den Galopp des Pferdes."
+
+    IGUI_HorseMod_MultiplayerWarning = "Das Pferdemod unterstutzt keinen Mehrspieler.<br>Pferde funktionieren moglicherweise nicht korrekt, und es konnen weitere Probleme auftreten. Es wird dringend empfohlen, das Mod zu deaktivieren. Fehlerberichte im Mehrspieler werden nicht berucksichtigt."
+}
