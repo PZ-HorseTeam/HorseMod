@@ -29,3 +29,4 @@ In alphabetical order:
 - Portugues (Refúgio Z)
 - Spanish (carlesturo)
 - Turkish (Sineks)
+- Simplified Chinese (喵老大_MiaoLD and Cetty McTrailwinder)
