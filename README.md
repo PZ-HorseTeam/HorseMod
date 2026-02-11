@@ -33,3 +33,4 @@ In alphabetical order:
 - Spanish (carlesturo)
 - Turkish (Sineks)
 - German (Jackson Frost)
+- Simplified Chinese (喵老大_MiaoLD and Cetty McTrailwinder)

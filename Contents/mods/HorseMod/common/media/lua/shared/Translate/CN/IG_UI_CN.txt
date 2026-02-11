@@ -1,43 +1,44 @@
 IGUI_CN = {
     /*
-        Translated by Cetty McTrailwinder
+        Translated by 喵老大_MiaoLD and Cetty McTrailwinder
     */
 
     /* General */
     IGUI_AnimalType_stallion = "种马"
     IGUI_AnimalType_mare = "母马"
-    IGUI_AnimalType_filly = "雌马驹"
+    IGUI_AnimalType_filly = "小母马"
 
     IGUI_AnimalType_Global_horse = "马"
     IGUI_Animal_Group_horse = "马"
-    IGUI_Horse_Slot = "Slot" /* for attachments */
+    IGUI_Horse_Slot = "装备位" /* 用于挂载配饰 */
 
     /* Breeds */
-    IGUI_Breed_AmericanQuarterPalomino = "American Quarter (Palomino)"
-    IGUI_Breed_AmericanQuarterBlueRoan = "American Quarter (Blue Roan)"
-    IGUI_Breed_AmericanPaintTobiano = "American Paint (Tobiano)"
-    IGUI_Breed_AmericanPaintOvero = "American Paint (Overo)"
-    IGUI_Breed_AppaloosaGrullaBlanket = "Appaloosa (Grulla Blanket)"
-    IGUI_Breed_AppaloosaLeopard = "Appaloosa (Leopard)"
-    IGUI_Breed_ThoroughbredBay = "Thoroughbred (Bay)"
-    IGUI_Breed_ThoroughbredFleaBittenGrey = "Thoroughbred (Flea-Bitten Grey)"
+    IGUI_Breed_AmericanQuarterPalomino = "美国夸特马 (帕洛米诺色)"
+    IGUI_Breed_AmericanQuarterBlueRoan = "美国夸特马 (蓝沙色)"
+    IGUI_Breed_AmericanPaintTobiano = "美国花马 (托比亚诺纹)"
+    IGUI_Breed_AmericanPaintOvero = "美国花马 (奥维罗纹)"
+    IGUI_Breed_AppaloosaGrullaBlanket = "阿帕卢萨马 (灰褐鞍垫纹)"
+    IGUI_Breed_AppaloosaLeopard = "阿帕卢萨马 (豹纹)"
+    IGUI_Breed_ThoroughbredBay = "纯血马 (栗色)"
+    IGUI_Breed_ThoroughbredFleaBittenGrey = "纯血马 (霜斑灰)"
 
     /* Mod Options */
-    IGUI_ModOptions_HorseModName = "马模组"
-    IGUI_ModOptions_HorseSoundVolume_Desc = "调整马嘶声的音量"
-    IGUI_ModOptions_HorseSoundVolume_Name = "马嘶声音量（默认值 0.40）"
-    IGUI_ModOptions_HorseSoundVolume_Tooltip = "设置所有马匹声音的音量。"
+    IGUI_ModOptions_HorseModName = "马匹模组"
+    IGUI_ModOptions_HorseSoundVolume_Desc = "调整马匹音效音量"
+    IGUI_ModOptions_HorseSoundVolume_Name = "马匹音效音量 (默认值 0.40)"
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "设置所有马匹相关音效的音量"
 
     IGUI_ModOptions_HorseKeybind = "马匹快捷键设置"
-    IGUI_ModOptions_HorseKeybind_Jump_Name = "马跳跃"
-    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "更改马匹跳跃的快捷键绑定。"
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "马匹跳跃"
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "更改马匹跳跃的快捷键绑定"
     
-    IGUI_ModOptions_HorseKeybind_Trot_Name = "马小跑"
-    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "更改马匹小跑的快捷键绑定。"
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "马匹小跑"
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "更改马匹小跑的快捷键绑定"
 
-    IGUI_ModOptions_HorseKeybind_Gallop_Name = "马疾驰"
-    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "更改马匹疾驰的快捷键绑定。"
+    IGUI_ModOptions_HorseKeybind_Gallop_Name = "马匹奔跑"
+    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "更改马匹奔跑的快捷键绑定"
 
-    IGUI_HorseMod_MultiplayerWarning = "马匹模组不支持多人游戏模式。<br>马匹功能将无法正常运作，且您在游戏过程中可能遭遇其他问题。<br>强烈建议您禁用马匹模组。<br>多人游戏模式下的错误报告将不予受理。"
-    IGUI_HorseMod_DisabledInMultiplayer = "在多人游戏中暂时禁用。"
+    IGUI_HorseMod_MultiplayerWarning = "马匹模组不支持多人模式，
+马匹相关功能将无法正常运行，游戏过程中还可能出现其它问题，强烈建议禁用马匹模组，多人模式下的相关问题反馈将不予受理！！！"
+    IGUI_HorseMod_DisabledInMultiplayer = "多人模式中已临时禁用"
 }

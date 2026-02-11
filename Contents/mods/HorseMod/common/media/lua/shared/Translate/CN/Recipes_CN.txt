@@ -1,14 +1,14 @@
 Recipes_CN = {
     /*
-        Translated by Cetty McTrailwinder
+        Translated by 喵老大_MiaoLD and Cetty McTrailwinder
     */
 
     /* Horse accessories */
     Recipe_HorseSaddle = "制作马鞍"
-    Recipe_HorseSaddlebags = "制作马鞍袋"
-    Recipe_HorseReins = "制作马缰绳"
+    Recipe_HorseSaddlebags = "制作马鞍包"
+    Recipe_HorseReins = "制作缰绳"
 
     /* Horse glue */
     Recipe_HorseGlue = "在锅中制作马胶混合物"
-    Recipe_HorseGlueToWoodGlue = "将马胶从罐中倒出"
+    Recipe_HorseGlueToWoodGlue = "将马胶从锅中倒出"
 }
