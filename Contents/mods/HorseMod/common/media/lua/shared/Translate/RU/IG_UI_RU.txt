@@ -1,0 +1,43 @@
+IGUI_RU = {
+    /*
+        Translated by Sangria
+    */
+
+    /* General */
+    IGUI_AnimalType_stallion = "Жеребец"
+    IGUI_AnimalType_mare = "Кобыла"
+    IGUI_AnimalType_filly = "Жеребенок"
+
+    IGUI_AnimalType_Global_horse = "Лошадь"
+    IGUI_Animal_Group_horse = "Лошадь"
+    IGUI_Horse_Slot = "Слот" /* for attachments */
+
+    /* Breeds */
+    IGUI_Breed_AmericanQuarterPalomino = "Американская четвертьмильная лошадь (Паломино)"
+    IGUI_Breed_AmericanQuarterBlueRoan = "Американская четвертьмильная лошадь (Голубой чалый)"
+    IGUI_Breed_AmericanPaintTobiano = "Американский пейнтхорс (Тобиано)"
+    IGUI_Breed_AmericanPaintOvero = "Американский пейнтхорс (Оверо)"
+    IGUI_Breed_AppaloosaGrullaBlanket = "Аппалуза (Мышастая с чепраком)"
+    IGUI_Breed_AppaloosaLeopard = "Аппалуза (Леопардовая)"
+    IGUI_Breed_ThoroughbredBay = "Чистокровная верховая лошадь (Гнедая)"
+    IGUI_Breed_ThoroughbredFleaBittenGrey = "Чистокровная верховая лошадь (Серая в гречке)"
+
+    /* Mod Options */
+    IGUI_ModOptions_HorseModName = "Horse Mod"
+    IGUI_ModOptions_HorseSoundVolume_Desc = "Изменить громкость лошадиных звуков"
+    IGUI_ModOptions_HorseSoundVolume_Name = "Громкость звука (по умолчанию - 0.40)"
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "Установите громкость всех лошадиных звуков."
+
+    IGUI_ModOptions_HorseKeybind = "Назначение клавиш для лошади"
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "Прыжок"
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "Измените назначенную клавишу для прыжка."
+    
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "Рысь"
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "Измените назначенную клавишу для бега рысью."
+
+    IGUI_ModOptions_HorseKeybind_Gallop_Name = "Галоп"
+    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "Изменить назначенную клавишу для бега галопом."
+
+    IGUI_HorseMod_MultiplayerWarning = "Этот мод не поддерживает мультиплеер.<br>Лошади будут работать некорректно, а также возможны другие ошибки в процессе игры.<br>Настоятельно рекомендуется отключить этот мод.<br>Багрепорты для мультиплеера приниматься не будут."
+    IGUI_HorseMod_DisabledInMultiplayer = "Временно отключено в мультиплеере."
+}

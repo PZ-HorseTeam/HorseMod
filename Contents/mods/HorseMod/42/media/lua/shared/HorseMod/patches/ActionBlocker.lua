@@ -14,6 +14,7 @@ local ActionBlocker = {
         ["ISApplyMakeUp"] = true,
         ["ISAttachItemHotbar"] = true,
         ["ISCleanBandage"] = true,
+        ["ISClothingExtraAction"] = true,
         ["ISCutHair"] = true,
         ["ISDetachItemHotbar"] = true,
         ["ISDisinfect"] = true,

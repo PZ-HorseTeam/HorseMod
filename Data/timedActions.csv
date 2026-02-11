@@ -59,7 +59,7 @@ ISClimbOverFence,
 ISClimbSheetRopeAction,
 ISClimbThroughWindow,
 ISCloseVehicleDoor,
-ISClothingExtraAction,
+ISClothingExtraAction,true
 ISComfreyCataplasm,
 ISConfigHeadlight,
 ISConnectCarBatteryToChargerAction,

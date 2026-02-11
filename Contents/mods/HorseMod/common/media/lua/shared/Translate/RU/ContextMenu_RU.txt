@@ -1,0 +1,35 @@
+ContextMenu_RU = {
+    /*
+        Translated by Sangria
+    */
+
+    /* Riding */
+    ContextMenu_Horse_Mount = "Оседлать %1"
+    ContextMenu_Horse_Dismount = "Спешиться %1"
+
+    /* Attachments */
+    ContextMenu_Horse_Gear = "Экипировка"
+    ContextMenu_Horse_Equip = "Надеть {new} как {slot}"
+    ContextMenu_Horse_Replace = "Заменить {old} на {new}"
+    ContextMenu_Horse_No_Compatible_Gear = "Нет подходящего снаряжения для лошади."
+    ContextMenu_Horse_Unequip = "Снять {old}"
+    ContextMenu_Horse_Unequip_All = "Снять Всё"
+    ContextMenu_Horse_NoMountPosition = "Не могу дотянуться до лошади."
+
+    /* Attachment Slots */
+    ContextMenu_Horse_Slot_Saddle = "Седло"
+    ContextMenu_Horse_Slot_Saddlebags = "Седельная сумка"
+    ContextMenu_Horse_Slot_Reins = "Уздечка"
+
+    /* Unavailability reasons for options */
+    ContextMenu_Horse_NotAdult = "Не взрослая лошадь."
+    ContextMenu_Horse_IsRunning = "Лошадь бежит."
+    ContextMenu_Horse_IsDead = "Лошадь мертва."
+    ContextMenu_Horse_IsAlreadyRiding = "Лошадь уже оседлана."
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "Не могу сменить снаряжение верхом на лошади."
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "Не могу сменить снаряжение оседланной лошади."
+    ContextMenu_Horse_HasRider = "Лошадь уже оседлана другим персонажем."
+
+    /* Food */
+    ContextMenu_FoodType_Horse = "Конина"
+}

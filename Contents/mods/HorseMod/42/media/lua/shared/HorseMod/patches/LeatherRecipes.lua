@@ -6,8 +6,9 @@ Patches the leather cutting recipe to allow horse leathers as input materials.
 The item mappers of this recipe are handled in the `scripts/HorseMod/patches/leathers.txt` file.
 ]]
 local LeatherRecipes = {
+    ---The list of horse and foal leathers full types to add to the recipe.
     LEATHERS = {
-        -- Horse leathers
+    -- Horse leathers
         -- American Paint
         "HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan",
         "HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Medium",
@@ -33,7 +34,7 @@ local LeatherRecipes = {
         "HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Medium",
 
 
-        -- Foal leathers
+    -- Foal leathers
         -- American Paint
         "HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan",
         "HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Small",
@@ -58,6 +59,8 @@ local LeatherRecipes = {
         "HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan",
         "HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small",
     },
+
+    ---The item full type used to identify the specific recipe input to patch.
     IDENTIFIER_ITEM = "Base.Leather_Crude_Large",
 }
 
@@ -98,6 +101,8 @@ LeatherRecipes.patchRecipe = function(recipeID, testInput, itemsToAdd)
     end
 end
 
-LeatherRecipes.patchRecipe("Base.CutLeatherInHalf", LeatherRecipes.identifyInput, LeatherRecipes.LEATHERS)
+Events.OnGameBoot.Add(function()
+    LeatherRecipes.patchRecipe("Base.CutLeatherInHalf", LeatherRecipes.identifyInput, LeatherRecipes.LEATHERS)
+end)
 
 return LeatherRecipes

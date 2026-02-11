@@ -1,0 +1,14 @@
+Recipes_RU = {
+    /*
+        Translated by Sangria
+    */
+
+    /* Horse accessories */
+    Recipe_HorseSaddle = "Создать седло"
+    Recipe_HorseSaddlebags = "Создать седельную сумку"
+    Recipe_HorseReins = "Создать уздечку"
+
+    /* Horse glue */
+    Recipe_HorseGlue = "Приготовить смесь для мездрового клея в горшке"
+    Recipe_HorseGlueToWoodGlue = "Вылить мездровый клей из горшка"
+}
