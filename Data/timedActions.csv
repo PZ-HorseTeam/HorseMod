@@ -76,7 +76,7 @@ ISDetachTrailerFromVehicle,
 ISDigStairsAction,
 ISDisinfect,true
 ISDismantleAction,
-ISDrinkFluidAction,
+ISDrinkFluidAction,true
 ISDrinkFromBottle,true
 ISDropCorpseAction,true
 ISDropCorpseIntoContainer,
