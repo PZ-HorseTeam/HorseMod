@@ -7,6 +7,17 @@ local rdm = newrandom()
 
 local TEMP_VECTOR2 = Vector2.new()
 
+-- Vehicle slide tuning:
+-- tangential scale = how much forward motion is preserved while colliding not head-on.
+-- outward bias = tiny push away from the surface to prevent sticky head-on contact.
+local VEHICLE_SLIDE_TANGENT_SCALE = 1.08
+local VEHICLE_SLIDE_OUTWARD_BIAS = 0.015
+local VEHICLE_SLIDE_OUTWARD_BIAS_HEADON_DOT = 0.035
+local VEHICLE_SLIDE_MIN_LEN_SQ = 0.00000005
+local VEHICLE_COLLISION_RADIUS = 0.2
+local VEHICLE_SLIDE_COLLISION_RADIUS = 0.14
+local VEHICLE_SLIDE_GALLOP_MULT = 1.15
+
 
 ---@param state "walk"|"gallop"
 ---@return number
@@ -117,6 +128,86 @@ local function squareCenterSolid(sq)
     end
 
     return false
+end
+
+---@param rider IsoPlayer
+---@param vehicles BaseVehicle[]
+---@param worldX number
+---@param worldY number
+---@param worldZ number
+---@param collisionRadius number
+---@return boolean
+---@return number
+---@return number
+---@nodiscard
+local function riderCollidesWithVehicleAt(rider, vehicles, worldX, worldY, worldZ, collisionRadius)
+    local oldNextX = rider:getNextX()
+    local oldNextY = rider:getNextY()
+
+    rider:setNextX(worldX)
+    rider:setNextY(worldY)
+
+    local collided = false
+    for i = 1, #vehicles do
+        local vehicle = vehicles[i]
+        if vehicle and math.floor(vehicle:getZ()) == worldZ then
+            local dx = vehicle:getX() - worldX
+            local dy = vehicle:getY() - worldY
+            -- Cheap distance gate before running character-vs-vehicle collision.
+            if (dx * dx + dy * dy) <= 36 then
+                if vehicle:testCollisionWithCharacter(rider, collisionRadius, TEMP_VECTOR2) then
+                    collided = true
+                    break
+                end
+            end
+        end
+    end
+
+    local hitX, hitY = TEMP_VECTOR2:getX(), TEMP_VECTOR2:getY()
+    rider:setNextX(oldNextX)
+    rider:setNextY(oldNextY)
+    return collided, hitX, hitY
+end
+
+---@param worldX number
+---@param worldY number
+---@param moveX number
+---@param moveY number
+---@param collisionX number
+---@param collisionY number
+---@return number
+---@return number
+---@nodiscard
+local function getVehicleSlideDelta(worldX, worldY, moveX, moveY, collisionX, collisionY)
+    -- Use the collision push-out point to estimate a surface normal.
+    local normalX = collisionX - worldX
+    local normalY = collisionY - worldY
+    local normalLen = math.sqrt(normalX * normalX + normalY * normalY)
+    if normalLen <= 0.0001 then
+        return 0, 0
+    end
+
+    normalX = normalX / normalLen
+    normalY = normalY / normalLen
+
+    local tangentX = -normalY
+    local tangentY = normalX
+    local tangentDot = moveX * tangentX + moveY * tangentY
+
+    -- keep tangential motion, only apply outward bias on near head-on impacts to reduce jitter while scraping
+    local outwardBias = 0
+    if math.abs(tangentDot) <= VEHICLE_SLIDE_OUTWARD_BIAS_HEADON_DOT then
+        outwardBias = VEHICLE_SLIDE_OUTWARD_BIAS
+    end
+
+    local slideX = tangentX * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalX * outwardBias
+    local slideY = tangentY * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalY * outwardBias
+
+    if (slideX * slideX + slideY * slideY) <= VEHICLE_SLIDE_MIN_LEN_SQ then
+        return 0, 0
+    end
+
+    return slideX, slideY
 end
 
 
@@ -423,6 +514,22 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping)
     local z = horse:getZ()
     local x = horse:getX()
     local y = horse:getY()
+    local candidates = {}
+
+    local maxProbeDistance = math.sqrt(36) + distance:getLength() + 1
+    local maxProbeDistanceSq = maxProbeDistance * maxProbeDistance
+    -- Cache nearby vehicles once for this move call; reused by all substeps.
+    local allVehicles = getCell():getVehicles()
+    for i = 1, allVehicles:size() do
+        local vehicle = allVehicles:get(i - 1)
+        if vehicle and math.floor(vehicle:getZ()) == z then
+            local dx = vehicle:getX() - x
+            local dy = vehicle:getY() - y
+            if (dx * dx + dy * dy) <= maxProbeDistanceSq then
+                candidates[#candidates + 1] = vehicle
+            end
+        end
+    end
 
     -- collision uses fixed time steps to maintain precision
     --  i'm kind of sceptical that this does anything though, this is really high
@@ -445,6 +552,41 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping)
 
         local nx = x + rx
         local ny = y + ry
+        local hitVehicle, hitX, hitY = riderCollidesWithVehicleAt(rider, candidates, nx, ny, z, VEHICLE_COLLISION_RADIUS)
+        if hitVehicle then
+            -- Direct move hit vehicle: try moving along its surface (slide) first.
+            local sx, sy = getVehicleSlideDelta(nx, ny, rx, ry, hitX, hitY)
+            if sx == 0 and sy == 0 then
+                break
+            end
+            if isGalloping then
+                sx = sx * VEHICLE_SLIDE_GALLOP_MULT
+                sy = sy * VEHICLE_SLIDE_GALLOP_MULT
+            end
+
+            local snx = x + sx
+            local sny = y + sy
+            local slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, z, VEHICLE_SLIDE_COLLISION_RADIUS)
+            if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, z)) then
+                -- second chance with a shorter slide before giving up
+                snx = x + sx * 0.6
+                sny = y + sy * 0.6
+                slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, z, VEHICLE_SLIDE_COLLISION_RADIUS)
+                if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, z)) then
+                    -- third chance on the opposite side helps with diagonal vehicle corners
+                    snx = x - sx * 0.6
+                    sny = y - sy * 0.6
+                    slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, z, VEHICLE_SLIDE_COLLISION_RADIUS)
+                    if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, z)) then
+                        break
+                    end
+                end
+            end
+
+            nx = snx
+            ny = sny
+        end
+
         if squareCenterSolid(getSquare(nx, ny, z)) then
             break
         end
