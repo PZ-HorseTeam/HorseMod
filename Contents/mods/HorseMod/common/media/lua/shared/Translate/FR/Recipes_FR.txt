@@ -9,6 +9,6 @@ Recipes_FR = {
     Recipe_HorseReins = "Fabriquer des rênes"
 
     /* Colle de cheval */
-    Recipe_HorseGlue = "Fabriquer un mélange de colle de cheval dans un pot"
-    Recipe_HorseGlueToWoodGlue = "Verser la colle de cheval hors du pot"
+    Recipe_HorseGlue = "Faire un mélange pour colle de cheval dans une marmite"
+    Recipe_HorseGlueToWoodGlue = "Verser la colle de cheval hors de la marmite"
 }
