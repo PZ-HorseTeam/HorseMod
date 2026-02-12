@@ -1,6 +1,6 @@
 Recipes_FR = {
     /*
-        Translated by SimKDT
+        Translated by SimKDT and Xianah
     */
 
     /* Accessoire à cheval */

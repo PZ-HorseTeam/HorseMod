@@ -1,6 +1,6 @@
 ItemName_FR = {
     /*
-        Translated by SimKDT
+        Translated by SimKDT and Xianah
     */
 
     /* Horse accessories */

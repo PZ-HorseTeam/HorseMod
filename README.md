@@ -24,7 +24,7 @@ In alphabetical order:
 
 ### Translators
 - Czech (Try Honesty)
-- French (SimKDT)
+- French (SimKDT and Xianah)
 - Japanese (PePePePePeil)
 - Polish (3xkd)
 - Portugues (Refúgio Z)
