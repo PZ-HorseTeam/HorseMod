@@ -30,7 +30,7 @@ module HorseMod
 
         attachment tent
         {
-            offset = -0.0000 -0.18 -0.1000,
+            offset = -0.0000 -0.1800 -0.1000,
             rotate = 90.0000 0.0000 180.0000,
             scale = 1.5000,
             bone = DEF_Spine2,
@@ -38,7 +38,7 @@ module HorseMod
 
         attachment sleepingBag
         {
-            offset = -0.0000 -0.28 -0.1000,
+            offset = -0.0000 -0.2800 -0.1000,
             rotate = 90.0000 90.0000 180.0000,
             scale = 1.5000,
             bone = DEF_Spine2,
@@ -63,41 +63,41 @@ module HorseMod
         {
             offset = 0.5987 0.0000 -0.0000,
             rotate = 0.0000 0.0000 0.0000,
-            bone = Bip01,
+            bone = Dummy01,
         }
 
         attachment mountRight
         {
             offset = -0.5979 0.0000 -0.0006,
             rotate = 0.0000 0.0000 0.0000,
-            bone = Bip01,
+            bone = Dummy01,
         }
 
         attachment deathPosition
         {
             offset = 0.5987 0.0000 -0.0000,
             rotate = 0.0000 0.0000 0.0000,
-            bone = Bip01,
+            bone = Dummy01,
         }
 
         attachment maneStart
         {
-            offset = 0.0213 -0.0102 -0.0000,
-            rotate = 0.0000 -3.4314 0.0000,
+            offset = 0.0000 -0.0000 -0.0000,
+            rotate = 0.0000 0.0000 0.0000,
             bone = DEF_ManeStart,
         }
 
         attachment maneMid1
         {
-            offset = 0.0122 -0.0038 0.0000,
-            rotate = 0.0000 -3.1103 0.0000,
+            offset = 0.0000 -0.0000 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
             bone = DEF_ManeMid1,
         }
 
         attachment maneMid2
         {
-            offset = 0.0000 0.0003 0.0000,
-            rotate = 0.0000 -4.4272 0.0000,
+            offset = 0.0000 0.0000 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
             bone = DEF_ManeMid2,
         }
 
@@ -124,8 +124,8 @@ module HorseMod
 
         attachment maneEnd
         {
-            offset = 0.0000 -0.0486 -0.0160,
-            rotate = -23.0217 -0.0000 0.0000,
+            offset = 0.0000 -0.0141 -0.0007,
+            rotate = -0.0000 -0.0000 0.0000,
             bone = DEF_ManeEnd,
         }
     }
