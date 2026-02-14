@@ -20,6 +20,8 @@ ContextMenu_RU = {
     ContextMenu_Horse_Slot_Saddle = "Седло"
     ContextMenu_Horse_Slot_Saddlebags = "Седельная сумка"
     ContextMenu_Horse_Slot_Reins = "Уздечка"
+    ContextMenu_Horse_Slot_Tent = "Палатка"
+    ContextMenu_Horse_Slot_SleepingBag = "Спальный мешок"
 
     /* Unavailability reasons for options */
     ContextMenu_Horse_NotAdult = "Не взрослая лошадь."
