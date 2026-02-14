@@ -33,9 +33,10 @@ class ExportZomboidGLBs(Operator, ExportHelper):
     
     def export_anim(self, action):        
         context = bpy.context
-
+    
+        dummy01 = bpy.data.objects.get('Dummy01')
         bip01 = bpy.data.objects.get('Bip01')
-        mesh = bpy.data.objects.get('MESH_Horse')
+        mesh = bpy.data.objects.get('GEO-Horse')
         translation_data = bpy.data.objects.get('Translation_Data')
 
         bpy.ops.object.mode_set(mode='OBJECT')
@@ -109,4 +110,4 @@ def unregister():
 if __name__ == "__main__":
     register()
         
-    bpy.ops.zomboid.export_glb('INVOKE_DEFAULT')    
+    bpy.ops.zomboid.export_glb('INVOKE_DEFAULT')  
