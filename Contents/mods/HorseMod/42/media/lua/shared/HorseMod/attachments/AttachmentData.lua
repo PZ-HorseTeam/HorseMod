@@ -56,12 +56,6 @@ local Event = require("HorseMod/Event")
 ---Full type of the item being used as the invisible container.
 ---@field worldItem string
 
----Defines the sounds to be played during specific actions related to attachments.
----@class SoundBehavior
----@field mountSound string?
----@field dismountSound string?
----@field equipSound string?
-
 
 ---Defines an attachment item with its associated slots and extra data if needed.
 ---@class AttachmentDefinition
@@ -80,9 +74,6 @@ local Event = require("HorseMod/Event")
 ---
 ---Equip timed action behavior component.
 ---@field equipBehavior EquipBehavior? 
----
----Sound behavior component.
----@field soundBehavior SoundBehavior?
 ---
 ---Whenever the player can reach from mount this attachment, always considered reachable by default. Notably used for containers.
 ---@field notReachableFromMount boolean?
