@@ -139,9 +139,6 @@ function MountAction:perform()
     -- HACK: we can't require this at file load because it is in the client dir
     local HorseSounds = require("HorseMod/HorseSounds")
     HorseSounds.playSound(self.animal, HorseSounds.Sound.MOUNT)
-    if self.hasSaddle then
-        character:getEmitter():playSound("SaddleEquip")
-    end
 
     if isClient() then
         Mounts.addMount(character, self.animal)

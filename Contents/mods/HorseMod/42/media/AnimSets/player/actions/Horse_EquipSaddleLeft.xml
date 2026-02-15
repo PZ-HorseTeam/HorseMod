@@ -23,6 +23,11 @@
         <m_speedScale>0.20</m_speedScale>
     </m_Transitions>
     <m_Events>
+        <m_EventName>PlaySound</m_EventName>
+        <m_TimePc>0.4</m_TimePc>
+        <m_ParameterValue>SaddleEquip</m_ParameterValue>
+    </m_Events>
+    <m_Events>
         <m_EventName>HorseEquipFinished</m_EventName>
         <m_Time>End</m_Time>
         <m_ParameterValue></m_ParameterValue>
