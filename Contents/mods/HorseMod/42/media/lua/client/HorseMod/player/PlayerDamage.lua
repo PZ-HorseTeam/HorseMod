@@ -55,6 +55,9 @@ local function getPlayers()
     return players
 end
 
+---@type BodyPartType[]
+local bodyPartsList = { BodyPartType.UpperLeg_L, BodyPartType.UpperLeg_R, BodyPartType.Groin }
+local lastGrunt = 0.0
 
 ---@param player IsoPlayer
 function PlayerDamage.applyRidingPain(player)
@@ -73,10 +76,15 @@ function PlayerDamage.applyRidingPain(player)
     local maxPain = hasSaddle and PlayerDamage.MAX_PAIN_SADDLE or PlayerDamage.MAX_PAIN_BAREBACK
     local bodyDamage = player:getBodyDamage()
 
-    rate = rate * getGameTime():getTimeDelta()
+    local timeDelta = getGameTime():getTimeDelta()
+    lastGrunt = lastGrunt + timeDelta
+    if lastGrunt > 4 then
+        player:playerVoiceSound("PainFromRunIntoWall")
+        lastGrunt = 0
+    end
+    
+    rate = rate * timeDelta
 
-    ---@type BodyPartType[]
-    local bodyPartsList = { BodyPartType.UpperLeg_L, BodyPartType.UpperLeg_R, BodyPartType.Groin }
     for i = 1, #bodyPartsList do
         local partType = bodyPartsList[i]
         local part = bodyDamage:getBodyPart(partType)
