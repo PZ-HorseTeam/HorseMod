@@ -134,12 +134,14 @@ end
 
 
 function MountAction:perform()
+    local character = self.character
+
     -- HACK: we can't require this at file load because it is in the client dir
     local HorseSounds = require("HorseMod/HorseSounds")
     HorseSounds.playSound(self.animal, HorseSounds.Sound.MOUNT)
 
     if isClient() then
-        Mounts.addMount(self.character, self.animal)
+        Mounts.addMount(character, self.animal)
     end
 
     ISBaseTimedAction.perform(self)

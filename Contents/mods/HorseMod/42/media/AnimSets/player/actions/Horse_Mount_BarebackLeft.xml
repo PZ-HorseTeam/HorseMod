@@ -28,6 +28,11 @@
         <m_Time>End</m_Time>
         <m_ParameterValue></m_ParameterValue>
     </m_Events>
+	<m_Events>
+		<m_EventName>PlayerVoiceSound</m_EventName>
+		<m_TimePc>0.55</m_TimePc>
+		<m_ParameterValue>JumpLow</m_ParameterValue>
+	</m_Events>
     <m_SubStateBoneWeights>
         <boneName>Dummy01</boneName>
     </m_SubStateBoneWeights>
