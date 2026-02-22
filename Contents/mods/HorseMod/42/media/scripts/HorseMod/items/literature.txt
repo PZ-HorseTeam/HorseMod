@@ -1,0 +1,16 @@
+module HorseMod {
+    item HorseMag1
+    {
+        DisplayCategory = RecipeResource,
+        Weight = 0.5,
+        ItemType = base:literature,
+        Icon = literature/Magazine_Horse1,
+        BoredomChange = -20,
+        StressChange = -15,
+        LearnedRecipes = HorseSaddle;HorseSaddlebags;HorseReins,
+        StaticModel = Magazine,
+        WorldStaticModel = HorseMag1,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+    }
+}
