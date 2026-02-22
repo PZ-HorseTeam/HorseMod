@@ -80,10 +80,10 @@ end
 ---@return integer
 function DismountAction:getAnimationDurationMS()
     if self.hasSaddle then
-        return 3840
+        return 3233
     end
 
-    return 2440
+    return 2066
 end
 
 
