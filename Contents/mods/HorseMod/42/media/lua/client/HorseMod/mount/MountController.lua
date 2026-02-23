@@ -513,7 +513,7 @@ local TREES_LINGER_SECONDS = 1.0   -- keep slowdown for 1s after leaving trees
 local TURN_STEPS_PER_SEC = 60
 
 
-local PLAYER_SYNC_TUNER = 0.8
+local PLAYER_SYNC_TUNER = 1
 
 ---@namespace HorseMod
 

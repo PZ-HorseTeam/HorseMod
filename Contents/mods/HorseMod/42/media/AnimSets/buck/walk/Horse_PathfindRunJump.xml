@@ -3,12 +3,12 @@
     <m_Name>Horse_PathfindRunJump</m_Name>
     <m_AnimName>Horse_Gallop_Jump</m_AnimName>
     <m_ConditionPriority>20</m_ConditionPriority>
-    <m_EarlyTransitionOut>true</m_EarlyTransitionOut>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
-    <m_BlendTime>0.8</m_BlendTime>
+    <m_BlendTime>0.2</m_BlendTime>
     <m_SpeedScale>1.1</m_SpeedScale>
     <m_Scalar>HorseGeneSpeed</m_Scalar>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+    <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
     <m_Conditions>
         <m_Name>isHorse</m_Name>
         <m_Type>BOOL</m_Type>
@@ -27,7 +27,7 @@
     <m_Transitions>
         <m_Target>Horse_PathfindRun</m_Target>
         <m_BlendTime>0.6</m_BlendTime>
-        <m_blendInTime>0.00</m_blendInTime>
+        <m_blendInTime>0.40</m_blendInTime>
         <m_blendOutTime>0.40</m_blendOutTime>
         <m_Conditions>
             <m_Name>HorseJump</m_Name>

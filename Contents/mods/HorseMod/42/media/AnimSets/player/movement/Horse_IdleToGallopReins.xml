@@ -52,7 +52,7 @@
     </m_SubStateBoneWeights>
     <m_Events>
         <m_EventName>SetVariable</m_EventName>
-        <m_TimePc>0.6</m_TimePc>
+        <m_TimePc>0.3</m_TimePc>
         <m_ParameterValue>idleToRun=false</m_ParameterValue>
     </m_Events>
 </animNode>
