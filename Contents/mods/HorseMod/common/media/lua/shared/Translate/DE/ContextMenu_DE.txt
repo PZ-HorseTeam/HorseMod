@@ -1,0 +1,32 @@
+ContextMenu_DE = {
+    /*
+        Translated by Jackson Frost
+    */
+
+    /* Riding */
+    ContextMenu_Horse_Mount = "Auf %1 steigen"
+    ContextMenu_Horse_Dismount = "Von %1 absteigen"
+
+    /* Attachments */
+    ContextMenu_Horse_Gear = "Ausrustung"
+    ContextMenu_Horse_Equip = "{new} auf {slot} ausrusten"
+    ContextMenu_Horse_Replace = "{old} durch {new} ersetzen"
+    ContextMenu_Horse_No_Compatible_Gear = "Keine passende Ausrustung fur das Pferd verfugbar."
+    ContextMenu_Horse_Unequip = "{old} ablegen"
+    ContextMenu_Horse_Unequip_All = "Alles ablegen"
+    ContextMenu_Horse_NoMountPosition = "Interaktion von dieser Position aus nicht moglich."
+
+    /* Attachment Slots */
+    ContextMenu_Horse_Slot_Saddle = "sattel"
+    ContextMenu_Horse_Slot_Saddlebags = "satteltaschen"
+    ContextMenu_Horse_Slot_Reins = "zugel"
+
+    /* Unavailability reasons for options */
+    ContextMenu_Horse_NotAdult = "Nicht erwachsenes Pferd."
+    ContextMenu_Horse_IsRunning = "Pferd lauft."
+    ContextMenu_Horse_IsDead = "Pferd ist tot."
+    ContextMenu_Horse_IsAlreadyRiding = "Bereits jemand auf dem Pferd."
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "Kann Ausrustung wahrend des Reitens nicht andern."
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "Kann Pferdeausrustung nicht wechseln."
+    ContextMenu_Horse_HasRider = "Pferd ist bereits besetzt."
+}

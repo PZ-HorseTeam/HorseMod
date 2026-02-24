@@ -1,0 +1,35 @@
+ContextMenu_CN = {
+    /*
+        Translated by 喵老大_MiaoLD and Cetty McTrailwinder
+    */
+
+    /* Riding */
+    ContextMenu_Horse_Mount = "骑乘 %1"
+    ContextMenu_Horse_Dismount = "下马 %1"
+
+    /* Attachments */
+    ContextMenu_Horse_Gear = "马具"
+    ContextMenu_Horse_Equip = "将 {new} 安装至 {slot}"
+    ContextMenu_Horse_Replace = "将 {old} 替换为 {new}"
+    ContextMenu_Horse_No_Compatible_Gear = "无适配的马具可装备至马匹"
+    ContextMenu_Horse_Unequip = "卸下 {old}"
+    ContextMenu_Horse_Unequip_All = "卸下全部"
+    ContextMenu_Horse_NoMountPosition = "无法靠近该马匹"
+
+    /* Attachment Slots */
+    ContextMenu_Horse_Slot_Saddle = "马鞍"
+    ContextMenu_Horse_Slot_Saddlebags = "马鞍包"
+    ContextMenu_Horse_Slot_Reins = "缰绳"
+
+    /* Unavailability reasons for options */
+    ContextMenu_Horse_NotAdult = "该马匹尚未成年"
+    ContextMenu_Horse_IsRunning = "马匹正在奔跑中"
+    ContextMenu_Horse_IsDead = "该马匹已死亡"
+    ContextMenu_Horse_IsAlreadyRiding = "该马匹已被骑乘"
+    ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted = "骑乘状态下无法更换马具"
+    ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted = "无法更换已被骑乘马匹的马具"
+    ContextMenu_Horse_HasRider = "该马匹已被其他角色骑乘"
+
+    /* Food */
+    ContextMenu_FoodType_Horse = "马肉"
+}

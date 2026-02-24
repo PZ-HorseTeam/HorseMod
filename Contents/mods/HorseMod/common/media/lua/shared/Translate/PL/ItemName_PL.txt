@@ -1,4 +1,8 @@
 ItemName_PL = {
+    /*
+        Translated by 3xkd
+    */
+
     /* Horse accessories Akcesoria konia */
         /* Saddles Siodła */
     ItemName_HorseMod.HorseSaddle_Crude = "Siodło (Prymitywne)"

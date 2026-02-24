@@ -1,0 +1,44 @@
+IGUI_CN = {
+    /*
+        Translated by 喵老大_MiaoLD and Cetty McTrailwinder
+    */
+
+    /* General */
+    IGUI_AnimalType_stallion = "种马"
+    IGUI_AnimalType_mare = "母马"
+    IGUI_AnimalType_filly = "小母马"
+
+    IGUI_AnimalType_Global_horse = "马"
+    IGUI_Animal_Group_horse = "马"
+    IGUI_Horse_Slot = "装备位" /* 用于挂载配饰 */
+
+    /* Breeds */
+    IGUI_Breed_AmericanQuarterPalomino = "美国夸特马 (帕洛米诺色)"
+    IGUI_Breed_AmericanQuarterBlueRoan = "美国夸特马 (蓝沙色)"
+    IGUI_Breed_AmericanPaintTobiano = "美国花马 (托比亚诺纹)"
+    IGUI_Breed_AmericanPaintOvero = "美国花马 (奥维罗纹)"
+    IGUI_Breed_AppaloosaGrullaBlanket = "阿帕卢萨马 (灰褐鞍垫纹)"
+    IGUI_Breed_AppaloosaLeopard = "阿帕卢萨马 (豹纹)"
+    IGUI_Breed_ThoroughbredBay = "纯血马 (栗色)"
+    IGUI_Breed_ThoroughbredFleaBittenGrey = "纯血马 (霜斑灰)"
+
+    /* Mod Options */
+    IGUI_ModOptions_HorseModName = "马匹模组"
+    IGUI_ModOptions_HorseSoundVolume_Desc = "调整马匹音效音量"
+    IGUI_ModOptions_HorseSoundVolume_Name = "马匹音效音量 (默认值 0.40)"
+    IGUI_ModOptions_HorseSoundVolume_Tooltip = "设置所有马匹相关音效的音量"
+
+    IGUI_ModOptions_HorseKeybind = "马匹快捷键设置"
+    IGUI_ModOptions_HorseKeybind_Jump_Name = "马匹跳跃"
+    IGUI_ModOptions_HorseKeybind_Jump_Tooltip = "更改马匹跳跃的快捷键绑定"
+    
+    IGUI_ModOptions_HorseKeybind_Trot_Name = "马匹小跑"
+    IGUI_ModOptions_HorseKeybind_Trot_Tooltip = "更改马匹小跑的快捷键绑定"
+
+    IGUI_ModOptions_HorseKeybind_Gallop_Name = "马匹奔跑"
+    IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "更改马匹奔跑的快捷键绑定"
+
+    IGUI_HorseMod_MultiplayerWarning = "马匹模组不支持多人模式，
+马匹相关功能将无法正常运行，游戏过程中还可能出现其它问题，强烈建议禁用马匹模组，多人模式下的相关问题反馈将不予受理！！！"
+    IGUI_HorseMod_DisabledInMultiplayer = "多人模式中已临时禁用"
+}

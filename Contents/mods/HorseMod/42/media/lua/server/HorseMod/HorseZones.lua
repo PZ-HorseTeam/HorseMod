@@ -20,7 +20,7 @@
 ---@field z integer?
 ---
 ---Name of the `RanchZoneDefinitions` type to use. Can be `horsesmall`, `horsemedium`, or `horselarge` (or any other animal ranch zone types technically). Defaults to `horsesmall`.
----@field name string?
+---@field name ("horsesmall" | "horsemedium" | "horselarge")?
 
 RanchZoneDefinitions.type["horsesmall"] = {
     type = "horsesmall",

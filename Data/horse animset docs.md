@@ -1,7 +1,9 @@
-
 # HorseMod AnimSet and Animation Variables documentation
 
 This document describes all the XML animations in `42/media/AnimSets` for the horse (buck) and rider (player).
+
+> [!WARNING]
+> This file is outdated.
 
 ## Variable reference (Lua usage)
 | Variable | Purpose in Lua | Key locations | File(s) |

@@ -1,0 +1,8 @@
+Sandbox_DE = {
+    /*
+        Translated by Jackson Frost
+    */
+
+    Sandbox_HorseMod_WalkSpeed = "Schrittgeschwindigkeit des Pferdes"
+    Sandbox_HorseMod_GallopSpeed = "Galoppgeschwindigkeit des Pferdes"
+}

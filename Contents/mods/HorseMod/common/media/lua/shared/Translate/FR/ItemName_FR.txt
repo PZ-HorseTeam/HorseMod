@@ -1,6 +1,6 @@
 ItemName_FR = {
     /*
-        Translated by SimKDT
+        Translated by SimKDT and Xianah
     */
 
     /* Horse accessories */
@@ -78,20 +78,20 @@ ItemName_FR = {
     ItemName_HorseMod.Horse_Hoof = "Sabot de cheval"
 
     /* Horse glue */
-    ItemName_HorseMod.PotHorseGlue = "Pot de colle de cheval"
-    ItemName_HorseMod.PotForgedHorseGlue = "Pot forgé de colle de cheval"
+    ItemName_HorseMod.PotHorseGlue = "Marmite de colle de cheval"
+    ItemName_HorseMod.PotForgedHorseGlue = "Marmite forgée de colle de cheval"
     ItemName_HorseMod.HorseGlue = "Colle de cheval"
 
     /* Horse leathers */
         /* Paint Overo */
-    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Full = "Peau de Paint Overo (Non traité)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Full = "Peau de Paint Overo (Non traitée)"
     ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur = "Peau de Paint Overo (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Wet = "Peau de Paint Overo (Avec fourrure, humide)"
     ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan = "Peau de Paint Overo (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Medium = "Peau de Paint Overo moitié (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Small = "Peau de Paint Overo quart (Avec fourrure)"
         /* Paint */
-    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Full = "Peau de Paint Tobiano (Non traité)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Full = "Peau de Paint Tobiano (Non traitée)"
     ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur = "Peau de Paint Tobiano (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Peau de Paint Tobiano (Avec fourrure, humide)"
     ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan = "Peau de Paint Tobiano (Avec fourrure)"
@@ -99,7 +99,7 @@ ItemName_FR = {
     ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Small = "Peau de Paint Tobiano quart (Avec fourrure)"
 
         /* Gris fer */
-    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Full = "Peau de Quarter Gris fer (Non traité)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Full = "Peau de Quarter Gris fer (Non traitée)"
     ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur = "Peau de Quarter Gris fer (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "Peau de Quarter Gris fer (Avec fourrure, humide)"
     ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan = "Peau de Quarter Gris fer (Avec fourrure)"
@@ -107,7 +107,7 @@ ItemName_FR = {
     ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "Peau de Quarter Gris fer quart (Avec fourrure)"
 
         /* Quarter */
-    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Full = "Peau de Quarter Palomino (Non traité)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Full = "Peau de Quarter Palomino (Non traitée)"
     ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur = "Peau de Quarter Palomino (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "Peau de Quarter Palomino (Avec fourrure, humide)"
     ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan = "Peau de Quarter Palomino (Avec fourrure)"
@@ -115,7 +115,7 @@ ItemName_FR = {
     ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Small = "Peau de Quarter Palomino quart (Avec fourrure)"
 
         /* Appaloosa */
-    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Full = "Peau d'Appaloosa Capé gris souris (Non traité)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Full = "Peau d'Appaloosa Capé gris souris (Non traitée)"
     ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur = "Peau d'Appaloosa Capé gris souris (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Peau d'Appaloosa Capé gris souris (Avec fourrure, humide)"
     ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan = "Peau d'Appaloosa Capé gris souris (Avec fourrure)"
@@ -123,7 +123,7 @@ ItemName_FR = {
     ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Peau d'Appaloosa Capé gris souris quart (Avec fourrure)"
 
         /* Spotted Appaloosa */
-    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Full = "Peau d'Appaloosa Léopard (Non traité)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Full = "Peau d'Appaloosa Léopard (Non traitée)"
     ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur = "Peau d'Appaloosa Léopard (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Wet = "Peau d'Appaloosa Léopard (Avec fourrure, humide)"
     ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan = "Peau d'Appaloosa Léopard (Avec fourrure)"
@@ -131,7 +131,7 @@ ItemName_FR = {
     ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Small = "Peau d'Appaloosa Léopard quart (Avec fourrure)"
 
         /* Pur-sang */
-    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Full = "Peau de Pur-sang Bai (Non traité)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Full = "Peau de Pur-sang Bai (Non traitée)"
     ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur = "Peau de Pur-sang Bai (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Wet = "Peau de Pur-sang Bai (Avec fourrure, humide)"
     ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan = "Peau de Pur-sang Bai (Avec fourrure)"
@@ -139,7 +139,7 @@ ItemName_FR = {
     ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Small = "Peau de Pur-sang Bai quart (Avec fourrure)"
 
         /* Gris truité */
-    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Full = "Peau de Pur-sang Gris truité (Non traité)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Full = "Peau de Pur-sang Gris truité (Non traitée)"
     ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur = "Peau de Pur-sang Gris truité (Avec fourrure)"
     ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Peau de Pur-sang Gris truité (Avec fourrure, humide)"
     ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Peau de Pur-sang Gris truité (Avec fourrure)"
@@ -148,56 +148,56 @@ ItemName_FR = {
 
     /* Foal leathers */
         /* Paint Overo */
-    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Full = "Peau de poulain Paint Overo (Non traité)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Full = "Peau de poulain Paint Overo (Non traitée)"
     ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur = "Peau de poulain Paint Overo (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Wet = "Peau de poulain Paint Overo (Avec fourrure, humide)"
     ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan = "Peau de poulain Paint Overo (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Small = "Peau de poulain Paint Overo moitié (Avec fourrure)"
 
         /* Paint */
-    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Full = "Peau de poulain Paint Tobiano (Non traité)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Full = "Peau de poulain Paint Tobiano (Non traitée)"
     ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur = "Peau de poulain Paint Tobiano (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Peau de poulain Paint Tobiano (Avec fourrure, humide)"
     ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan = "Peau de poulain Paint Tobiano (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Small = "Peau de poulain Paint Tobiano moitié (Avec fourrure)"
 
         /* Gris fer */
-    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Full = "Peau de poulain Quarter Gris fer (Non traité)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Full = "Peau de poulain Quarter Gris fer (Non traitée)"
     ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur = "Peau de poulain Quarter Gris fer (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "Peau de poulain Quarter Gris fer (Avec fourrure, humide)"
     ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan = "Peau de poulain Quarter Gris fer (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "Peau de poulain Quarter Gris fer moitié (Avec fourrure)"
 
         /* Quarter */
-    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Full = "Peau de poulain Quarter Palomino (Non traité)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Full = "Peau de poulain Quarter Palomino (Non traitée)"
     ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur = "Peau de poulain Quarter Palomino (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "Peau de poulain Quarter Palomino (Avec fourrure, humide)"
     ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan = "Peau de poulain Quarter Palomino (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Small = "Peau de poulain Quarter Palomino moitié (Avec fourrure)"
 
         /* Appaloosa */
-    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Full = "Peau de poulain Appaloosa Capé gris souris (Non traité)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Full = "Peau de poulain Appaloosa Capé gris souris (Non traitée)"
     ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur = "Peau de poulain Appaloosa Capé gris souris (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Peau de poulain Appaloosa Capé gris souris (Avec fourrure, humide)"
     ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan = "Peau de poulain Appaloosa Capé gris souris (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Peau de poulain Appaloosa Capé gris souris moitié (Avec fourrure)"
 
         /* Spotted Appaloosa */
-    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Full = "Peau de poulain Appaloosa Léopard (Non traité)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Full = "Peau de poulain Appaloosa Léopard (Non traitée)"
     ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur = "Peau de poulain Appaloosa Léopard (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Wet = "Peau de poulain Appaloosa Léopard (Avec fourrure, humide)"
     ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan = "Peau de poulain Appaloosa Léopard (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Small = "Peau de poulain Appaloosa Léopard moitié (Avec fourrure)"
 
         /* Pur-sang */
-    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Full = "Peau de poulain Pur-sang Bai (Non traité)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Full = "Peau de poulain Pur-sang Bai (Non traitée)"
     ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur = "Peau de poulain Pur-sang Bai (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Wet = "Peau de poulain Pur-sang Bai (Avec fourrure, humide)"
     ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan = "Peau de poulain Pur-sang Bai (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Small = "Peau de poulain Pur-sang Bai moitié (Avec fourrure)"
 
         /* Gris truité */
-    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Full = "Peau de poulain Pur-sang Gris truité (Non traité)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Full = "Peau de poulain Pur-sang Gris truité (Non traitée)"
     ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur = "Peau de poulain Pur-sang Gris truité (Avec fourrure)"
     ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Peau de poulain Pur-sang Gris truité (Avec fourrure, humide)"
     ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Peau de poulain Pur-sang Gris truité (Avec fourrure)"

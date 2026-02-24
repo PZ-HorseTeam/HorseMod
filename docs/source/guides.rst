@@ -6,3 +6,4 @@ Guides
   guides/horsezones
   guides/attachmentsDev
   guides/attachmentsModding
+  guides/addingNewBreeds

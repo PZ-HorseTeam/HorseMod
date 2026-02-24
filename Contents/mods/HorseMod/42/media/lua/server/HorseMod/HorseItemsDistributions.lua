@@ -48,6 +48,9 @@ local HorseItemsDistribution = {
     CrateCamping = {
         items = {},
     },
+    CrateFarming = {
+        items = {},
+    },
     CrateSports = {
         items = {},
     },
@@ -65,49 +68,53 @@ local HorseItemsDistribution = {
     },
 }
 
-addItems(HorseItemsDistribution.JockeyLockers.items, saddleItems, 0.8)
-addItems(HorseItemsDistribution.JockeyLockers.items, saddlebagItems, 0.8)
-addItems(HorseItemsDistribution.JockeyLockers.items, reinsItems, 0.8)
+addItems(HorseItemsDistribution.JockeyLockers.items, saddleItems, 1.8)
+addItems(HorseItemsDistribution.JockeyLockers.items, saddlebagItems, 1.8)
+addItems(HorseItemsDistribution.JockeyLockers.items, reinsItems, 1.8)
 
-addItems(HorseItemsDistribution.BarnTools.items, saddleItems, 0.2)
-addItems(HorseItemsDistribution.BarnTools.items, saddlebagItems, 0.2)
-addItems(HorseItemsDistribution.BarnTools.items, reinsItems, 0.2)
+addItems(HorseItemsDistribution.BarnTools.items, saddleItems, 0.25)
+addItems(HorseItemsDistribution.BarnTools.items, saddlebagItems, 0.25)
+addItems(HorseItemsDistribution.BarnTools.items, reinsItems, 0.25)
 
-addItems(HorseItemsDistribution.FarmerTools .items, saddleItems, 0.15)
-addItems(HorseItemsDistribution.FarmerTools .items, saddlebagItems, 0.15)
-addItems(HorseItemsDistribution.FarmerTools .items, reinsItems, 0.15)
+addItems(HorseItemsDistribution.FarmerTools .items, saddleItems, 0.35)
+addItems(HorseItemsDistribution.FarmerTools .items, saddlebagItems, 0.35)
+addItems(HorseItemsDistribution.FarmerTools .items, reinsItems, 0.35)
 
-addItems(HorseItemsDistribution.CampingStoreGear.items, saddleItems, 0.2)
-addItems(HorseItemsDistribution.CampingStoreGear.items, saddlebagItems, 0.2)
-addItems(HorseItemsDistribution.CampingStoreGear.items, reinsItems, 0.2)
+addItems(HorseItemsDistribution.CampingStoreGear.items, saddleItems, 0.9)
+addItems(HorseItemsDistribution.CampingStoreGear.items, saddlebagItems, 0.9)
+addItems(HorseItemsDistribution.CampingStoreGear.items, reinsItems, 0.9)
 
-addItems(HorseItemsDistribution.HuntingLockers.items, saddleItems, 0.5)
-addItems(HorseItemsDistribution.HuntingLockers.items, saddlebagItems, 0.5)
-addItems(HorseItemsDistribution.HuntingLockers.items, reinsItems, 0.5)
+addItems(HorseItemsDistribution.HuntingLockers.items, saddleItems, 0.8)
+addItems(HorseItemsDistribution.HuntingLockers.items, saddlebagItems, 0.8)
+addItems(HorseItemsDistribution.HuntingLockers.items, reinsItems, 0.8)
 
-addItems(HorseItemsDistribution.SurvivalGear.items, saddleItems, 0.2)
-addItems(HorseItemsDistribution.SurvivalGear.items, saddlebagItems, 0.2)
-addItems(HorseItemsDistribution.SurvivalGear.items, reinsItems, 0.2)
+addItems(HorseItemsDistribution.SurvivalGear.items, saddleItems, 0.35)
+addItems(HorseItemsDistribution.SurvivalGear.items, saddlebagItems, 0.35)
+addItems(HorseItemsDistribution.SurvivalGear.items, reinsItems, 0.35)
 
-addItems(HorseItemsDistribution.CrateCamping.items, saddleItems, 0.2)
-addItems(HorseItemsDistribution.CrateCamping.items, saddlebagItems, 0.2)
-addItems(HorseItemsDistribution.CrateCamping.items, reinsItems, 0.2)
+addItems(HorseItemsDistribution.CrateCamping.items, saddleItems, 0.9)
+addItems(HorseItemsDistribution.CrateCamping.items, saddlebagItems, 0.9)
+addItems(HorseItemsDistribution.CrateCamping.items, reinsItems, 0.9)
 
-addItems(HorseItemsDistribution.CrateSports.items, saddleItems, 0.2)
-addItems(HorseItemsDistribution.CrateSports.items, saddlebagItems, 0.2)
-addItems(HorseItemsDistribution.CrateSports.items, reinsItems, 0.2)
+addItems(HorseItemsDistribution.CrateFarming.items, saddleItems, 0.9)
+addItems(HorseItemsDistribution.CrateFarming.items, saddlebagItems, 0.9)
+addItems(HorseItemsDistribution.CrateFarming.items, reinsItems, 0.9)
 
-addItems(HorseItemsDistribution.CrateAnimalFeed .items, saddleItems, 0.25)
-addItems(HorseItemsDistribution.CrateAnimalFeed .items, saddlebagItems, 0.25)
-addItems(HorseItemsDistribution.CrateAnimalFeed .items, reinsItems, 0.25)
+addItems(HorseItemsDistribution.CrateSports.items, saddleItems, 0.7)
+addItems(HorseItemsDistribution.CrateSports.items, saddlebagItems, 0.7)
+addItems(HorseItemsDistribution.CrateSports.items, reinsItems, 0.7)
 
-addItems(HorseItemsDistribution.CratePetSupplies .items, saddleItems, 0.3)
-addItems(HorseItemsDistribution.CratePetSupplies .items, saddlebagItems, 0.3)
-addItems(HorseItemsDistribution.CratePetSupplies .items, reinsItems, 0.3)
+addItems(HorseItemsDistribution.CrateAnimalFeed .items, saddleItems, 0.6)
+addItems(HorseItemsDistribution.CrateAnimalFeed .items, saddlebagItems, 0.6)
+addItems(HorseItemsDistribution.CrateAnimalFeed .items, reinsItems, 0.6)
 
-addItems(HorseItemsDistribution.SportStoreAccessories.items, saddleItems, 0.5)
-addItems(HorseItemsDistribution.SportStoreAccessories.items, saddlebagItems, 0.5)
-addItems(HorseItemsDistribution.SportStoreAccessories.items, reinsItems, 0.5)
+addItems(HorseItemsDistribution.CratePetSupplies .items, saddleItems, 1.0)
+addItems(HorseItemsDistribution.CratePetSupplies .items, saddlebagItems, 1.0)
+addItems(HorseItemsDistribution.CratePetSupplies .items, reinsItems, 1.0)
+
+addItems(HorseItemsDistribution.SportStoreAccessories.items, saddleItems, 0.7)
+addItems(HorseItemsDistribution.SportStoreAccessories.items, saddlebagItems, 0.7)
+addItems(HorseItemsDistribution.SportStoreAccessories.items, reinsItems, 0.7)
 
 addItems(HorseItemsDistribution.WildWestGeneralStore.items, saddleItems, 1.65)
 addItems(HorseItemsDistribution.WildWestGeneralStore.items, saddlebagItems, 1.4)
