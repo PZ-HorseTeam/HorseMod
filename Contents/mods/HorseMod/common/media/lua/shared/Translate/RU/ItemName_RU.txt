@@ -1,0 +1,212 @@
+ItemName_RU = {
+    /*
+        Translated by Sangria
+    */
+
+    /* Horse accessories */
+        /* Saddles */
+    ItemName_HorseMod.HorseSaddle_Crude = "Седло (Грубое)"
+    ItemName_HorseMod.HorseSaddle_Black = "Седло (Черное)"
+    ItemName_HorseMod.HorseSaddle_CowHolstein = "Седло (Гольштейн)"
+    ItemName_HorseMod.HorseSaddle_CowSimmental = "Седло (Симментальское)"
+    ItemName_HorseMod.HorseSaddle_White = "Седло (Белое)"
+    ItemName_HorseMod.HorseSaddle_Landrace = "Седло (Ландрас)"
+
+    ItemName_HorseMod.HorseSaddle_AmericanPaintOvero = "Седло (Оверо)"
+    ItemName_HorseMod.HorseSaddle_AmericanPaintTobiano = "Седло (Тобиано)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterBlueRoan = "Седло (Голубое чалое)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterPalomino = "Седло (Паломино)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaGrullaBlanket = "Седло (Мышастое с чепраком)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaLeopard = "Седло (Леопардовое)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredBay = "Седло (Гнедое)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredFleaBittenGrey = "Седло (Серое в гречке)"
+
+        /* Saddlebags */
+    ItemName_HorseMod.HorseSaddlebagsContainer = "Седельная сумка"
+    ItemName_HorseMod.HorseSaddlebags_Crude = "Седельная сумка (Грубая)"
+    ItemName_HorseMod.HorseSaddlebags_Black = "Седельная сумка (Черная)"
+    ItemName_HorseMod.HorseSaddlebags_CowHolstein = "Седельная сумка (Гольштейн)"
+    ItemName_HorseMod.HorseSaddlebags_CowSimmental = "Седельная сумка (Симментальская)"
+    ItemName_HorseMod.HorseSaddlebags_White = "Седельная сумка (Белая)"
+    ItemName_HorseMod.HorseSaddlebags_Landrace = "Седельная сумка (Ландрас)"
+
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintOvero = "Седельная сумка (Оверо)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintTobiano = "Седельная сумка (Тобиано)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterBlueRoan = "Седельная сумка (Голубая чалая")
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterPalomino = "Седельная сумка (Паломино)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaGrullaBlanket = "Седельная сумка (Мышастая с чепраком)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaLeopard = "Седельная сумка (Леопардовая)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredBay = "Седельная сумка (Гнедая)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredFleaBittenGrey = "Седельная сумка (Серая в гречке)"
+
+        /* Reins */
+    ItemName_HorseMod.HorseReins_Crude = "Уздечка (Грубая)"
+    ItemName_HorseMod.HorseReins_Brown = "Уздечка (Коричневая)"
+    ItemName_HorseMod.HorseReins_Black = "Уздечка (Черная)"
+    ItemName_HorseMod.HorseReins_White = "Уздечка (Белая)"
+
+
+    /* Horse heads */
+    ItemName_HorseMod.Foal_Head_AmericanPaintOvero = "Голова жеребенка американского пейнтхорса"
+    ItemName_HorseMod.Mare_Head_AmericanPaintOvero = "Голова кобылы американского пейнтхорса"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintOvero = "Голова жеребца американского пейнтхорса"
+    ItemName_HorseMod.Foal_Head_AmericanPaintTobiano = "Голова жеребенка американского пейнтхорса"
+    ItemName_HorseMod.Mare_Head_AmericanPaintTobiano = "Голова кобылы американского пейнтхорса"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintTobiano = "Голова жеребца американского пейнтхорса"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterBlueRoan = "Голова американского четвертьмильного жеребенка"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterBlueRoan = "Голова американской четвертьмильной кобылы"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterBlueRoan = "Голова американского четвертьмильного жеребца"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterPalomino = "Голова американского четвертьмильного жеребенка"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterPalomino = "Голова американской четвертьмильной кобылы"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterPalomino = "Голова американского четвертьмильного жеребца"
+    ItemName_HorseMod.Foal_Head_AppaloosaGrullaBlanket = "Голова жеребенка аппалузы"
+    ItemName_HorseMod.Mare_Head_AppaloosaGrullaBlanket = "Голова кобылы аппалузы"
+    ItemName_HorseMod.Stallion_Head_AppaloosaGrullaBlanket = "Голова жеребца аппалузы"
+    ItemName_HorseMod.Foal_Head_AppaloosaLeopard = "Голова жеребенка аппалузы"
+    ItemName_HorseMod.Mare_Head_AppaloosaLeopard = "Голова кобылы аппалузы"
+    ItemName_HorseMod.Stallion_Head_AppaloosaLeopard = "Голова жеребца аппалузы"
+    ItemName_HorseMod.Foal_Head_ThoroughbredBay = "Голова жеребенка чистокровной верховой лошади"
+    ItemName_HorseMod.Mare_Head_ThoroughbredBay = "Голова кобылы чистокровной верховой лошади"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredBay = "Голова жеребца чистокровной верховой лошади"
+    ItemName_HorseMod.Foal_Head_ThoroughbredFleaBittenGrey = "Голова жеребенка чистокровной верховой лошади"
+    ItemName_HorseMod.Mare_Head_ThoroughbredFleaBittenGrey = "Голова кобылы чистокровной верховой лошади"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredFleaBittenGrey = "Голова жеребца чистокровной верховой лошади"
+
+
+    /* Horse parts */
+    ItemName_HorseMod.Horse_Skull = "Череп лошади"
+    ItemName_HorseMod.Horse_Steak = "Стейк из конины"
+    ItemName_HorseMod.Horse_Loin = "Конская поясница"
+    ItemName_HorseMod.Horse_Hoof = "Лошадиная подкова"
+    ItemName_HorseMod.Dung_Horse = "Конский навоз"
+
+
+    /* Horse glue */
+    ItemName_HorseMod.PotHorseGlue = "Горшок с мездровым клеем"
+    ItemName_HorseMod.PotForgedHorseGlue = "Кованый горшок с мездровым клеем"
+    ItemName_HorseMod.HorseGlue = "Мездровый клей"
+
+
+    /* Horse leathers */
+        /* American Paint Overo */
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Full = "Кожа американского пейнтхорса окраса оверо (Необработанная)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur = "Кожа американского пейнтхорса окраса оверо (С мехом)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Wet = "Кожа американского пейнтхорса окраса оверо (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan = "Кожа американского пейнтхорса окраса оверо (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Medium = "Половина кожи американского пейнтхорса окраса оверо (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Small = "Четверть кожи американского пейнтхорса окраса оверо (С мехом, дубленая)"
+
+        /* American Paint */
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Full = "Кожа американского пейнтхорса окраса тобиано (Необработанная)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur = "Кожа американского пейнтхорса окраса тобиано (С мехом)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Кожа американского пейнтхорса окраса тобиано (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan = "Кожа американского пейнтхорса окраса тобиано (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Medium = "Половина кожи американского пейнтхорса окраса тобиано (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Small = "Четверть кожи американского пейнтхорса окраса тобиано (С мехом, дубленая)"
+
+        /* Blue Roan */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Full = "Кожа американской четвертьмильной голубой чалой масти (Необработанная)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur = "Кожа американской четвертьмильной голубой чалой масти (С мехом)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "Кожа американской четвертьмильной голубой чалой масти (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan = Кожа американской четвертьмильной голубой чалой масти (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Medium = "Половина кожи американской четвертьмильной голубой чалой масти (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "Четверть кожи американской четвертьмильной голубой чалой масти (С мехом, дубленая)"
+
+        /* American Quarter */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Full = "Кожа американской четвертьмильной масти паломино (Необработанная)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur = "Кожа американской четвертьмильной масти паломино (С мехом)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "Кожа американской четвертьмильной масти паломино  (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan = "Кожа американской четвертьмильной масти паломино (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Medium = "Половина кожи американской четвертьмильной масти паломино (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Small = "Четверть кожи американской четвертьмильной масти паломино (С мехом, дубленая)""
+
+        /* Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Full = "Кожа аппалузы мышастой с чепраком (Необработанная)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur = "Кожа аппалузы мышастой с чепраком (С мехом)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Кожа аппалузы мышастой с чепраком  (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan = "Кожа аппалузы мышастой с чепраком  (С мехом, дубленая)""
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Medium = "Половина кожи аппалузы мышастой с чепраком (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Четверть кожи аппалузы мышастой с чепраком (С мехом, дубленая)"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Full = "Кожа аппалузы леопардовой масти (Необработанная)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur = "Кожа аппалузы леопардовой масти (С мехом)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Wet = "Кожа аппалузы леопардовой масти (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan = "Кожа аппалузы леопардовой масти (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Medium = "Половина кожи аппалузы леопардовой масти (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Small = "Четверть кожи аппалузы леопардовой масти (С мехом, дубленая)"
+
+        /* Thoroughbred */
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Full = "Кожа чистокровной верховой гнедой масти (Необработанная)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur = "Кожа чистокровной верховой гнедой масти (С мехом)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Wet = "Кожа чистокровной верховой гнедой масти (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan = "Кожа чистокровной верховой гнедой масти (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Medium = "Половина кожи чистокровной верховой гнедой масти (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Small = "Половина кожи чистокровной верховой гнедой масти (С мехом, дубленая)"
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Full = "Кожа чистокровной верховой масти серой в гречке (Необработанная)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur = "Кожа чистокровной верховой масти серой в гречке (С мехом)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Кожа чистокровной верховой масти серой в гречке (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Кожа чистокровной верховой масти серой в гречке (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Medium = "Половина кожи чистокровной верховой масти серой в гречке (С мехом, дубленая)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "Четверть кожи чистокровной верховой масти серой в гречке (С мехом, дубленая)"
+
+
+    /* Foal leathers */
+        /* American Paint Overo */
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Full = "Кожа жеребенка американского пейнтхорса окраса оверо (Необработанная)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur = "Кожа жеребенка американского пейнтхорса окраса оверо (С мехом)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Wet = "Кожа жеребенка американского пейнтхорса окраса оверо (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan = "Кожа жеребенка американского пейнтхорса окраса оверо (С мехом, дубленая)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Small = "Половина кожи жеребенка американского пейнтхорса окраса оверо (С мехом, дубленая)"
+
+        /* American Paint */
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Full = "Кожа жеребенка американского пейнтхорса окраса тобиано (Необработанная)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur = "Кожа жеребенка американского пейнтхорса окраса тобиано (С мехом)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Wet = "Кожа жеребенка американского пейнтхорса окраса тобиано (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan = "Кожа жеребенка американского пейнтхорса окраса тобиано (С мехом, дубленая)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Small = "Половина кожи жеребенка американского пейнтхорса окраса тобиано (С мехом, дубленая)"
+
+        /* Blue Roan */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Full = "Кожа жеребенка американской четвертьмильной голубой чалой масти (Необработанная)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur = "Кожа жеребенка американской четвертьмильной голубой чалой масти (С мехом)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "Кожа жеребенка американской четвертьмильной голубой чалой масти (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan = "Кожа жеребенка американской четвертьмильной голубой чалой масти (С мехом, дубленая)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "Половина кожи жеребенка американской четвертьмильной голубой чалой масти (С мехом, дубленая)"
+
+        /* American Quarter */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Full = "Кожа жеребенка американской четвертьмильной масти паломино (Необработанная)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur = "Кожа жеребенка американской четвертьмильной масти паломино (С мехом)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "Кожа жеребенка американской четвертьмильной масти паломино (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan = "Кожа жеребенка американской четвертьмильной масти паломино (С мехом, дубленая)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Small = "Половина кожи жеребенка американской четвертьмильной масти паломино (С мехом, дубленая)"
+
+        /* Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Full = "Кожа жеребенка аппалузы мышастой с чепраком (Необработанная)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur = "Кожа жеребенка аппалузы мышастой с чепраком (С мехом)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "Кожа жеребенка аппалузы мышастой с чепраком (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan = "Кожа жеребенка аппалузы мышастой с чепраком (С мехом, дубленая)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "Половина кожи жеребенка аппалузы мышастой с чепраком (С мехом, дубленая)"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Full = "Кожа жеребенка аппалузы леопардовой масти (Необработанная)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur = "Кожа жеребенка аппалузы леопардовой масти (С мехом)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Wet = "Кожа жеребенка аппалузы леопардовой масти (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan = "Кожа жеребенка аппалузы леопардовой масти (С мехом, дубленая)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Small = "Половина кожи жеребенка аппалузы леопардовой масти (С мехом, дубленая)"
+
+        /* Thoroughbred */
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Full = "Кожа жеребенка чистокровной верховой гнедой масти (Необработанная)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur = "Кожа жеребенка чистокровной верховой гнедой масти (С мехом)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Wet = "Кожа жеребенка чистокровной верховой гнедой масти (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan = "Кожа жеребенка чистокровной верховой гнедой масти (С мехом, дубленая)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Small = "Половина кожи жеребенка чистокровной верховой гнедой масти (С мехом, дубленая)"
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Full = "Кожа жеребенка чистокровной верховой масти серой в гречке (Необработанная)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur = "Кожа жеребенка чистокровной верховой масти серой в гречке (С мехом)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Кожа жеребенка чистокровной верховой масти серой в гречке (С мехом, дубленая, влажная)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Кожа жеребенка чистокровной верховой масти серой в гречке (С мехом, дубленая)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = Кожа жеребенка чистокровной верховой масти серой в гречке (С мехом, дубленая)"
+}

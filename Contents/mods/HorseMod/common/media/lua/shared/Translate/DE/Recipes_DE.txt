@@ -1,0 +1,14 @@
+Recipes_DE = {
+    /*
+        Translated by Jackson Frost
+    */
+
+    /* Horse accessories */
+    Recipe_HorseSaddle = "Sattel herstellen"
+    Recipe_HorseSaddlebags = "Satteltaschen herstellen"
+    Recipe_HorseReins = "Zugel herstellen"
+
+    /* Horse glue */
+    Recipe_HorseGlue = "Tierleim-Mischung im Kessel herstellen"
+    Recipe_HorseGlueToWoodGlue = "Tierleim-Mischung aus dem Kessel giessen"
+}

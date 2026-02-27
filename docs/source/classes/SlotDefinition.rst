@@ -90,4 +90,8 @@ Saddle
 Saddlebags
     :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``saddlebags``
 
+Tent
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``tent``
 
+SleepingBag
+    :lua:obj:`modelAttachment <HorseMod.SlotDefinition.modelAttachment>` = ``sleepingBag``

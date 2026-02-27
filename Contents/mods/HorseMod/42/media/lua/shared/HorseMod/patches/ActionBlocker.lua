@@ -1,4 +1,4 @@
----AUTOMATICALLY GENERATED FROM script/formatTimedActionBlocker.py
+---AUTOMATICALLY GENERATED FROM Script/formatTimedActionBlocker.py
 ---
 ---Holds the data of the timed actions to allow while mounted on a horse.
 local ActionBlocker = {
@@ -14,9 +14,11 @@ local ActionBlocker = {
         ["ISApplyMakeUp"] = true,
         ["ISAttachItemHotbar"] = true,
         ["ISCleanBandage"] = true,
+        ["ISClothingExtraAction"] = true,
         ["ISCutHair"] = true,
         ["ISDetachItemHotbar"] = true,
         ["ISDisinfect"] = true,
+        ["ISDrinkFluidAction"] = true,
         ["ISDrinkFromBottle"] = true,
         ["ISDropCorpseAction"] = true,
         ["ISDropWorldItemAction"] = true,

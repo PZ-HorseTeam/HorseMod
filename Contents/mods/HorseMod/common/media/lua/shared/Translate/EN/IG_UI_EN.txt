@@ -35,5 +35,9 @@ IGUI_EN = {
     IGUI_ModOptions_HorseKeybind_Gallop_Tooltip = "Change the keybind for horse galloping."
 
     IGUI_HorseMod_MultiplayerWarning = "The Horse mod does not support multiplayer.<br>Horses will not work properly, and you may experience other issues with your playthrough.<br>It is highly recommended that you disable the Horse mod.<br>Bug reports for multiplayer will not be accepted."
+
     IGUI_HorseMod_DisabledInMultiplayer = "Temporarily disabled in multiplayer."
+
+    IGUI_HorseMod_MeatballWarning = "The Horse mod was not properly loaded. <br>You must restart the game with the Horse mod enabled on the main menu or animations will not work due to an issue that we call 'meatballing'. <br>Bug reports for this issue will not be accepted. See the warning at the top of the mod page."
+    IGUI_HorseMod_OldSaveWarning = "You have added the Horse mod to an existing save. This means horses will not appear in your save*. Make sure to create a save with the mod enabled. <br>If you continue playing, you understand that this is not our fault, and you will not report this as a bug. <br>See the mod page for potential solutions to this issue.<br><br>*If you get this warning for a save created prior to v1.0.1 (February 12 to 13 2026), you can safely ignore this message."
 }

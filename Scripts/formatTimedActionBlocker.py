@@ -1,9 +1,12 @@
+"""
+Used to automatically format the timed action blocker data directly in the Lua file.
+
+This script reads the timedActions.csv file, formats the valid timed actions into a Lua table format, and writes the output to ActionBlocker.lua. 
+"""
+
+
 import os
 import pandas as pd
-
-# # Read the console file
-# with open(console_file, 'r') as f:
-#     content = f.read()
 
 
 
@@ -14,7 +17,7 @@ csv_path = os.path.join(script_dir, '..', 'Data', 'timedActions.csv')
 # Read the CSV file using pandas
 df = pd.read_csv(csv_path, encoding='utf-8')
 
-TIMEDACTION_TEMPLATE = """---AUTOMATICALLY GENERATED FROM script/formatTimedActionBlocker.py
+TIMEDACTION_TEMPLATE = """---AUTOMATICALLY GENERATED FROM Script/formatTimedActionBlocker.py
 ---
 ---Holds the data of the timed actions to allow while mounted on a horse.
 local ActionBlocker = {{

@@ -1,0 +1,212 @@
+ItemName_CN = {
+    /*
+        Translated by 喵老大_MiaoLD and Cetty McTrailwinder
+    */
+
+    /* Horse accessories */
+        /* Saddles */
+    ItemName_HorseMod.HorseSaddle_Crude = "马鞍 (粗制)"
+    ItemName_HorseMod.HorseSaddle_Black = "马鞍 (黑色)"
+    ItemName_HorseMod.HorseSaddle_CowHolstein = "马鞍 (荷斯坦纹)"
+    ItemName_HorseMod.HorseSaddle_CowSimmental = "马鞍 (西门塔尔纹)"
+    ItemName_HorseMod.HorseSaddle_White = "马鞍 (白色)"
+    ItemName_HorseMod.HorseSaddle_Landrace = "马鞍 (长白纹)"
+
+    ItemName_HorseMod.HorseSaddle_AmericanPaintOvero = "马鞍 (奥维罗花色)"
+    ItemName_HorseMod.HorseSaddle_AmericanPaintTobiano = "马鞍 (托比亚诺花色)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterBlueRoan = "马鞍 (蓝沙色)"
+    ItemName_HorseMod.HorseSaddle_AmericanQuarterPalomino = "马鞍 (帕洛米诺色)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaGrullaBlanket = "马鞍 (灰斑鞍纹)"
+    ItemName_HorseMod.HorseSaddle_AppaloosaLeopard = "马鞍 (豹纹斑)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredBay = "马鞍 (栗色)"
+    ItemName_HorseMod.HorseSaddle_ThoroughbredFleaBittenGrey = "马鞍 (霜斑灰)"
+
+        /* Saddlebags */
+    ItemName_HorseMod.HorseSaddlebagsContainer = "马鞍包"
+    ItemName_HorseMod.HorseSaddlebags_Crude = "马鞍包 (粗制)"
+    ItemName_HorseMod.HorseSaddlebags_Black = "马鞍包 (黑色)"
+    ItemName_HorseMod.HorseSaddlebags_CowHolstein = "马鞍包 (荷斯坦纹)"
+    ItemName_HorseMod.HorseSaddlebags_CowSimmental = "马鞍包 (西门塔尔纹)"
+    ItemName_HorseMod.HorseSaddlebags_White = "马鞍包 (白色)"
+    ItemName_HorseMod.HorseSaddlebags_Landrace = "马鞍包 (长白纹)"
+
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintOvero = "马鞍包 (奥维罗花色)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanPaintTobiano = "马鞍包 (托比亚诺花色)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterBlueRoan = "马鞍包 (蓝沙色)"
+    ItemName_HorseMod.HorseSaddlebags_AmericanQuarterPalomino = "马鞍包 (帕洛米诺色)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaGrullaBlanket = "马鞍包 (灰斑鞍纹)"
+    ItemName_HorseMod.HorseSaddlebags_AppaloosaLeopard = "马鞍包 (豹纹斑)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredBay = "马鞍包 (栗色)"
+    ItemName_HorseMod.HorseSaddlebags_ThoroughbredFleaBittenGrey = "马鞍包 (霜斑灰)"
+
+        /* Reins */
+    ItemName_HorseMod.HorseReins_Crude = "缰绳 (粗制)"
+    ItemName_HorseMod.HorseReins_Brown = "缰绳 (棕色)"
+    ItemName_HorseMod.HorseReins_Black = "缰绳 (黑色)"
+    ItemName_HorseMod.HorseReins_White = "缰绳 (白色)"
+
+
+    /* Horse heads */
+    ItemName_HorseMod.Foal_Head_AmericanPaintOvero = "花马马驹头 (奥维罗花色)"
+    ItemName_HorseMod.Mare_Head_AmericanPaintOvero = "花马母马头 (奥维罗花色)"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintOvero = "花马公马头 (奥维罗花色)"
+    ItemName_HorseMod.Foal_Head_AmericanPaintTobiano = "花马马驹头 (托比亚诺花色)"
+    ItemName_HorseMod.Mare_Head_AmericanPaintTobiano = "花马母马头 (托比亚诺花色)"
+    ItemName_HorseMod.Stallion_Head_AmericanPaintTobiano = "花马公马头 (托比亚诺花色)"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterBlueRoan = "夸特马马驹头 (蓝沙色)"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterBlueRoan = "夸特马母马头 (蓝沙色)"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterBlueRoan = "夸特马公马头 (蓝沙色)"
+    ItemName_HorseMod.Foal_Head_AmericanQuarterPalomino = "夸特马马驹头 (帕洛米诺色)"
+    ItemName_HorseMod.Mare_Head_AmericanQuarterPalomino = "夸特马母马头 (帕洛米诺色)"
+    ItemName_HorseMod.Stallion_Head_AmericanQuarterPalomino = "夸特马公马头 (帕洛米诺色)"
+    ItemName_HorseMod.Foal_Head_AppaloosaGrullaBlanket = "阿帕卢萨马驹头 (灰斑鞍纹)"
+    ItemName_HorseMod.Mare_Head_AppaloosaGrullaBlanket = "阿帕卢萨母马头 (灰斑鞍纹)"
+    ItemName_HorseMod.Stallion_Head_AppaloosaGrullaBlanket = "阿帕卢萨公马头 (灰斑鞍纹)"
+    ItemName_HorseMod.Foal_Head_AppaloosaLeopard = "阿帕卢萨马驹头 (豹纹斑)"
+    ItemName_HorseMod.Mare_Head_AppaloosaLeopard = "阿帕卢萨母马头 (豹纹斑)"
+    ItemName_HorseMod.Stallion_Head_AppaloosaLeopard = "阿帕卢萨公马头 (豹纹斑)"
+    ItemName_HorseMod.Foal_Head_ThoroughbredBay = "纯血马马驹头 (栗色)"
+    ItemName_HorseMod.Mare_Head_ThoroughbredBay = "纯血马母马头 (栗色)"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredBay = "纯血马公马头 (栗色)"
+    ItemName_HorseMod.Foal_Head_ThoroughbredFleaBittenGrey = "纯血马马驹头 (霜斑灰)"
+    ItemName_HorseMod.Mare_Head_ThoroughbredFleaBittenGrey = "纯血马母马头 (霜斑灰)"
+    ItemName_HorseMod.Stallion_Head_ThoroughbredFleaBittenGrey = "纯血马公马头 (霜斑灰)"
+
+
+    /* Horse parts */
+    ItemName_HorseMod.Horse_Skull = "马颅骨"
+    ItemName_HorseMod.Horse_Steak = "马肉排"
+    ItemName_HorseMod.Horse_Loin = "马里脊肉"
+    ItemName_HorseMod.Horse_Hoof = "马蹄"
+    ItemName_HorseMod.Dung_Horse = "马粪"
+
+
+    /* Horse glue */
+    ItemName_HorseMod.PotHorseGlue = "马胶锅"
+    ItemName_HorseMod.PotForgedHorseGlue = "精制马胶锅"
+    ItemName_HorseMod.HorseGlue = "马胶"
+
+
+    /* Horse leathers */
+        /* American Paint Overo */
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Full = "美国花斑奥维罗马皮 (未处理)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur = "美国花斑奥维罗马皮 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Wet = "美国花斑奥维罗马革 (带毛，潮湿)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan = "美国花斑奥维罗马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Medium = "美国花斑奥维罗半张马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintOvero_Fur_Tan_Small = "美国花斑奥维罗四分之一张马革 (带毛)"
+
+        /* American Paint */
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Full = "美国花斑托比亚诺马皮 (未处理)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur = "美国花斑托比亚诺马皮 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Wet = "美国花斑托比亚诺马革 (带毛，潮湿)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan = "美国花斑托比亚诺马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Medium = "美国花斑托比亚诺半张马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Small = "美国花斑托比亚诺四分之一张马革 (带毛)"
+
+        /* Blue Roan */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Full = "美国夸特蓝沙色马皮 (未处理)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur = "美国夸特蓝沙色马皮 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "美国夸特蓝沙色马革 (带毛，潮湿)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan = "美国夸特蓝沙色马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Medium = "美国夸特蓝沙色半张马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "美国夸特蓝沙色四分之一张马革 (带毛)"
+
+        /* American Quarter */
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Full = "美国夸特帕洛米诺马皮 (未处理)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur = "美国夸特帕洛米诺马皮 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "美国夸特帕洛米诺马革 (带毛，潮湿)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan = "美国夸特帕洛米诺马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Medium = "美国夸特帕洛米诺半张马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Small = "美国夸特帕洛米诺四分之一张马革 (带毛)"
+
+        /* Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Full = "美国阿帕卢萨灰斑鞍纹马皮 (未处理)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur = "美国阿帕卢萨灰斑鞍纹马皮 (带毛)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "美国阿帕卢萨灰斑鞍纹马革 (带毛，潮湿)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan = "美国阿帕卢萨灰斑鞍纹马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Medium = "美国阿帕卢萨灰斑鞍纹半张马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "美国阿帕卢萨灰斑鞍纹四分之一张马革 (带毛)"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Full = "美国阿帕卢萨豹纹斑马皮 (未处理)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur = "美国阿帕卢萨豹纹斑马皮 (带毛)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Wet = "美国阿帕卢萨豹纹斑马革 (带毛，潮湿)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan = "美国阿帕卢萨豹纹斑马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Medium = "美国阿帕卢萨豹纹斑半张马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_AppaloosaLeopard_Fur_Tan_Small = "美国阿帕卢萨豹纹斑四分之一张马革 (带毛)"
+
+        /* Thoroughbred */
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Full = "美国纯血栗色马皮 (未处理)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur = "美国纯血栗色马皮 (带毛)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Wet = "美国纯血栗色马革 (带毛，潮湿)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan = "美国纯血栗色马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Medium = "美国纯血栗色半张马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Small = "美国纯血栗色四分之一张马革 (带毛)"
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Full = "美国纯血霜斑灰马皮 (未处理)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur = "美国纯血霜斑灰马皮 (带毛)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "美国纯血霜斑灰马革 (带毛，潮湿)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "美国纯血霜斑灰马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Medium = "美国纯血霜斑灰半张马革 (带毛)"
+    ItemName_HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "美国纯血霜斑灰四分之一张马革 (带毛)"
+
+
+    /* Foal leathers */
+        /* American Paint Overo */
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Full = "美国花斑奥维罗马驹皮 (未处理)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur = "美国花斑奥维罗马驹皮 (带毛)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Wet = "美国花斑奥维罗马驹革 (带毛，潮湿)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan = "美国花斑奥维罗马驹革 (带毛)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintOvero_Fur_Tan_Small = "美国花斑奥维罗半张马驹革 (带毛)"
+
+        /* American Paint */
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Full = "美国花斑托比亚诺马驹皮 (未处理)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur = "美国花斑托比亚诺马驹皮 (带毛)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Wet = "美国花斑托比亚诺马驹革 (带毛，潮湿)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan = "美国花斑托比亚诺马驹革 (带毛)"
+    ItemName_HorseMod.FoalLeather_AmericanPaintTobiano_Fur_Tan_Small = "美国花斑托比亚诺半张马驹革 (带毛)"
+
+        /* Blue Roan */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Full = "美国夸特蓝沙色马驹皮 (未处理)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur = "美国夸特蓝沙色马驹皮 (带毛)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet = "美国夸特蓝沙色马驹革 (带毛，潮湿)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan = "美国夸特蓝沙色马驹革 (带毛)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Small = "美国夸特蓝沙色半张马驹革 (带毛)"
+
+        /* American Quarter */
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Full = "美国夸特帕洛米诺马驹皮 (未处理)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur = "美国夸特帕洛米诺马驹皮 (带毛)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Wet = "美国夸特帕洛米诺马驹革 (带毛，潮湿)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan = "美国夸特帕洛米诺马驹革 (带毛)"
+    ItemName_HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Small = "美国夸特帕洛米诺半张马驹革 (带毛)"
+
+        /* Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Full = "美国阿帕卢萨灰斑鞍纹马驹皮 (未处理)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur = "美国阿帕卢萨灰斑鞍纹马驹皮 (带毛)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Wet = "美国阿帕卢萨灰斑鞍纹马驹革 (带毛，潮湿)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan = "美国阿帕卢萨灰斑鞍纹马驹革 (带毛)"
+    ItemName_HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan_Small = "美国阿帕卢萨灰斑鞍纹半张马驹革 (带毛)"
+
+        /* Spotted Appaloosa */
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Full = "美国阿帕卢萨豹纹斑马驹皮 (未处理)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur = "美国阿帕卢萨豹纹斑马驹皮 (带毛)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Wet = "美国阿帕卢萨豹纹斑马驹革 (带毛，潮湿)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan = "美国阿帕卢萨豹纹斑马驹革 (带毛)"
+    ItemName_HorseMod.FoalLeather_AppaloosaLeopard_Fur_Tan_Small = "美国阿帕卢萨豹纹斑半张马驹革 (带毛)"
+
+        /* Thoroughbred */
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Full = "美国纯血栗色马驹皮 (未处理)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur = "美国纯血栗色马驹皮 (带毛)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Wet = "美国纯血栗色马驹革 (带毛，潮湿)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan = "美国纯血栗色马驹革 (带毛)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Small = "美国纯血栗色半张马驹革 (带毛)"
+
+        /* Flea-Bitten Grey */
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Full = "美国纯血霜斑灰马驹皮 (未处理)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur = "美国纯血霜斑灰马驹皮 (带毛)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "美国纯血霜斑灰马驹革 (带毛，潮湿)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "美国纯血霜斑灰马驹革 (带毛)"
+    ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "美国纯血霜斑灰半张马驹革(带毛)"
+}

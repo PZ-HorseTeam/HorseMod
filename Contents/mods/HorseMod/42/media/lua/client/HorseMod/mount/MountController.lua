@@ -804,7 +804,7 @@ local ACCELERATION_RATE = 12
 ---Rate to approach a lower target speed in squares/s.
 ---@readonly
 ---@type number
-local DECELERATION_RATE = 6
+local DECELERATION_RATE = 9
 
 ---Speed needed to turn as a factor of the movement type (walk, trot, gallop)'s base speed.
 ---@readonly

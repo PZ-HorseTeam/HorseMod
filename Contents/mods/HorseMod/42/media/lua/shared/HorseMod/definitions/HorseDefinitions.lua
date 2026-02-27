@@ -4,6 +4,7 @@
 local HorseUtils = require("HorseMod/Utils")
 
 local HorseDefinitions = {
+    ---Contains the list of IDs of the different horse breeds available for the horse animal.
     SHORT_NAMES = {
         -- American Quarter
         "AmericanQuarterPalomino", -- Palomino
@@ -21,6 +22,8 @@ local HorseDefinitions = {
         "ThoroughbredBay", -- Bay
         "ThoroughbredFleaBittenGrey", -- Flea Bitten Grey
     },
+
+    ---Templates for the different paths used for the horse textures, the `{id}` part will be replaced by the breed ID defined in :lua:obj:`HorseMod.ContainerBehavior.HorseDefinitions.SHORT_NAMES`.
     PATHS = {
         texture = "HorseMod/Horse_{id}",
         textureMale = "HorseMod/Horse_{id}",
@@ -33,6 +36,8 @@ local HorseDefinitions = {
         invIconFemaleDead = "media/textures/Item_body/Horse_{id}_Dead.png",
         invIconBabyDead = "media/textures/Item_body/Horse_{id}_Foal_Dead.png",
     },
+
+    ---Definitions for the horse avatar, used in UI elements which involves a display of the horse.
     AVATAR_DEFINITION = {
         zoom = -20,
         xoffset = 0,
@@ -102,15 +107,16 @@ AnimalDefinitions.genome["horse"] = {
     }
 }
 
-
+---Lookup table whenever a horse growth stage is an adult or not.
 HorseDefinitions.IS_ADULT = {
     ["stallion"] = true,
     ["mare"] = true,
     ["filly"] = false,
 }
 
+---Data definitions for the horse, with stats depending on the growth stage.
 HorseDefinitions.ANIMALS_DATA = {
-    --- data applied to every horses, adult or not
+    ---Data applied to every horses, adult or not.
     _DEFAULT = {
         bodyModelSkel = "HorseMod.HorseSkeleton",
         textureSkeleton = "HorseMod/HorseSkeletonDry",
@@ -175,7 +181,7 @@ HorseDefinitions.ANIMALS_DATA = {
         maxBlood = 4000,
     },
 
-    -- adult horse specific data
+    ---Adult horse specific data.
     _DEFAULT_ADULT = {
         bodyModel = "HorseMod.Horse",
         modelscript = "HorseMod.Horse",
@@ -200,7 +206,7 @@ HorseDefinitions.ANIMALS_DATA = {
         corpseSize = 5,
     },
 
-    -- adult, male, female data
+    ---Filly specific data.
     ["filly"] = {
         bodyModel = "HorseMod.Foal",
         modelscript = "HorseMod.Foal",
@@ -224,12 +230,14 @@ HorseDefinitions.ANIMALS_DATA = {
         corpseSize = 3,
     },
 
+    ---Stallion specific data.
     ["stallion"] = {
         -- MATING
         male = true,
         mate = "mare",
     },
 
+    ---Mare specific data.
     ["mare"] = {
         -- MATING
         female = true,

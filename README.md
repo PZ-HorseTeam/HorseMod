@@ -2,7 +2,7 @@
 The Horse mod is a Project Zomboid mod that adds horses to the game, gear to equip on them and the ability to ride them.
 
 ## Documentation
-This mod provides documentation for modders to create horse-related content, you can find it [here](https://pz-horseteam.github.io/horsemod/). Alternatively, you can build the documentation locally by following these steps:
+This mod provides documentation for modders to create horse-related content, you can find it [here](https://pz-horseteam.github.io/HorseMod/). Alternatively, you can build the documentation locally by following these steps:
 ```bash
 cd docs
 make html
@@ -24,8 +24,13 @@ In alphabetical order:
 
 ### Translators
 - Czech (Try Honesty)
-- French (SimKDT)
+- French (SimKDT and Xianah)
 - Japanese (PePePePePeil)
+- Polish (3xkd)
 - Portugues (Refúgio Z)
+- Russian (Sangria)
+- Simplified Chinese (Cetty McTrailwinder)
 - Spanish (carlesturo)
 - Turkish (Sineks)
+- German (Jackson Frost)
+- Simplified Chinese (喵老大_MiaoLD and Cetty McTrailwinder)
