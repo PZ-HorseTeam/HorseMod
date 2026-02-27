@@ -209,4 +209,8 @@ ItemName_ES = {
     ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Cuero de Potro Purasangre Tordo Picazo (Con Pelaje, Húmedo)"
     ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Cuero de Potro Purasangre Tordo Picazo (Con Pelaje)"
     ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "Cuero de Potro Purasangre Tordo Picazo 1/2 (Con Pelaje)"
+
+
+    /* Literature */
+    ItemName_HorseMod.HorseMag1 = "Revista: ¡A Ensillar!"
 }

@@ -205,4 +205,8 @@ ItemName_EN = {
     ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet = "Thoroughbred Flea-Bitten Grey Foal Leather (Furred, Wet)"
     ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan = "Thoroughbred Flea-Bitten Grey Foal Leather (Furred)"
     ItemName_HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small = "Thoroughbred Flea-Bitten Grey Foal Leather Half (Furred)"
+
+
+    /* Literature */
+    ItemName_HorseMod.HorseMag1 = "Magazine: Saddle Up!"
 }

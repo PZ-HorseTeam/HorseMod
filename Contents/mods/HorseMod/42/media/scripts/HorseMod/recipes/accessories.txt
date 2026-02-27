@@ -1,8 +1,4 @@
-module HorseMod {
-    imports {
-        Base
-	}
-
+module Base {
     craftRecipe HorseSaddle {
         time = 600,
         tags = AnySurfaceCraft,
