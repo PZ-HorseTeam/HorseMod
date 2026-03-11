@@ -6,6 +6,6 @@ poster=poster.png
 icon=icon_file.png
 pack=HorseMod
 tiledef=HorseMod 2026
-modversion=1.0.0
+modversion=1.0.2
 versionMin=42.13.0
 incompatible=\RIDINGAPI,\WolfoMod
