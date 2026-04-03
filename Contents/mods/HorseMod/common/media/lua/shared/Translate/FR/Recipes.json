@@ -1,7 +1,7 @@
 {
-    "Recipe_HorseSaddle": "Fabriquer une selle de cheval",
-    "Recipe_HorseSaddlebags": "Fabriquer des sacs de selle",
-    "Recipe_HorseReins": "Fabriquer des rênes",
-    "Recipe_HorseGlue": "Faire un mélange pour colle de cheval dans une marmite",
-    "Recipe_HorseGlueToWoodGlue": "Verser la colle de cheval hors de la marmite"
+    "HorseSaddle": "Fabriquer une selle de cheval",
+    "HorseSaddlebags": "Fabriquer des sacs de selle",
+    "HorseReins": "Fabriquer des rênes",
+    "HorseGlue": "Faire un mélange pour colle de cheval dans une marmite",
+    "HorseGlueToWoodGlue": "Verser la colle de cheval hors de la marmite"
 }
