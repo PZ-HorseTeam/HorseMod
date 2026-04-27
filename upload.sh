@@ -5,7 +5,7 @@ VERSION="${1:?Usage: ./upload.sh <version> [gh-options]}"
 shift || true
 
 # need to be in the steam uploader folder
-SteamUploader upload --patchnote "$WORKSHOP_DIR/Steam/patch_notes/$VERSION.bbcode"
+SteamUploader upload --patchnote "./Steam/patch_notes/$VERSION.bbcode"
 
 # github release
 cd Contents
