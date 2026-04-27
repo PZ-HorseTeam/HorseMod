@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/SirDoggyJvla/SteamUploader-rs/refs/heads/main/manifest_schema/mod-manifest-schema.json
+
+appid: 108600
+workshopid: 3661336777
+content: ./Contents
+preview: Steam/preview.gif
+title: Horse Mod [B42.14+/MP SOON]
+description: Steam/description.bbcode
+visibility: 0
+tags:
+  - Build 42
+  - Animals
+  - Items
+  - Misc
+  - Vehicles
+  - Models
