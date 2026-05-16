@@ -18,7 +18,16 @@ local AnimationVariable = {
     DISMOUNT_STARTED = "HorseDismountStarted",
     NO_CANCEL = "HorseNoCancel",
 
+    -- True for the first ticks of a fresh gallop so the IdleToGallop
+    -- transition anim plays before settling into the gallop loop
+    IDLE_TO_RUN = "IdleToRun",
+
     HAS_REINS = "HorseHasReins",
+
+    -- Signed angular distance (degrees) from current visual facing to target facing.
+    -- Positive = right turn, negative = left, 0 = no turn
+    -- Replaces vanilla `targetTwist`
+    MOUNTED_TWIST = "mountedTwist",
 
     EATING = "HorseEating",
     EATING_HAND = "HorseEatingHand",

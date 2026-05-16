@@ -5,9 +5,10 @@
     <m_Looped>false</m_Looped>
     <m_BlendTime>0.00</m_BlendTime>
     <m_SpeedScale>1.0</m_SpeedScale>
+    <m_Priority>21</m_Priority>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
-    <m_ConditionPriority>20</m_ConditionPriority>
-    <m_EarlyTransitionOut>true</m_EarlyTransitionOut>
+    <m_ConditionPriority>21</m_ConditionPriority>
+    <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
     <m_Conditions>
         <m_Name>sneaking</m_Name>
         <m_Type>BOOL</m_Type>
@@ -30,8 +31,18 @@
     </m_Conditions>
     <m_Events>
         <m_EventName>SetVariable</m_EventName>
-        <m_Time>Start</m_Time>
+        <m_TimePc>0.0</m_TimePc>
         <m_ParameterValue>HorseRiderMoveKicking=true</m_ParameterValue>
+    </m_Events>
+    <m_Events>
+        <m_EventName>SetVariable</m_EventName>
+        <m_TimePc>1.0</m_TimePc>
+        <m_ParameterValue>HorseRiderKickRight=false</m_ParameterValue>
+    </m_Events>
+    <m_Events>
+        <m_EventName>SetVariable</m_EventName>
+        <m_TimePc>1.0</m_TimePc>
+        <m_ParameterValue>HorseRiderMoveKicking=false</m_ParameterValue>
     </m_Events>
     <m_SubStateBoneWeights>
         <boneName>Bip01</boneName>

@@ -14,13 +14,12 @@
         <m_Value>false</m_Value>
     </m_Conditions>
 	<m_Conditions x_name="57e846d2-03e9-4c1f-9827-7490d7e737fa">
-		<m_Name>targetTwist</m_Name>
+		<m_Name>mountedTwist</m_Name>
 		<m_Type>GTR</m_Type>
 		<m_Value>0</m_Value>
 	</m_Conditions>
     <m_SubStateBoneWeights>
         <boneName>Bip01</boneName>
-        <weight>0.0</weight>
-        <includeDescendants>true</includeDescendants>
+        <weight>0.00</weight>
     </m_SubStateBoneWeights>
 </animNode>

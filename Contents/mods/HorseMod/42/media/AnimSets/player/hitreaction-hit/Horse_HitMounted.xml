@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<animNode>
+    <m_Name>Horse_HitMounted</m_Name>
+    <m_AnimName>Bob_Mounted_HitReaction</m_AnimName>
+    <m_Looped>false</m_Looped>
+    <m_ConditionPriority>10</m_ConditionPriority>
+    <m_BlendTime>0.00</m_BlendTime>
+    <m_BlendOutTime>0.00</m_BlendOutTime>
+    <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+    <m_Conditions x_name="d4fafa07-5dbf-4a4f-bd34-fad4f3e2f401">
+        <m_Name>HorseRiding</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+    <m_Conditions x_name="d4fafa07-5dbf-4a4f-bd34-fad4f3e2f402">
+        <m_Name>HorseDying</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>false</m_Value>
+    </m_Conditions>
+</animNode>

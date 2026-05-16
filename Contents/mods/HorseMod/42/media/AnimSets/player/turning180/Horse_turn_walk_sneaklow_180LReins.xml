@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <animNode x_extends="Horse_turn_walk_sneaklow_180.xml">
     <m_Name>Horse_turn_walk_sneaklow_180LReins</m_Name>
     <m_AnimName>Bob_Mounted_Gallop_Left_Reins</m_AnimName>
@@ -14,13 +14,12 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions x_name="b0ef69dd-3725-4987-9980-e95acf68eb3b">
-        <m_Name>targetTwist</m_Name>
+        <m_Name>mountedTwist</m_Name>
         <m_Type>LESS</m_Type>
         <m_Value>0</m_Value>
     </m_Conditions>
     <m_SubStateBoneWeights>
         <boneName>Bip01</boneName>
-        <weight>0.0</weight>
-        <includeDescendants>true</includeDescendants>
+        <weight>0.00</weight>
     </m_SubStateBoneWeights>
 </animNode>

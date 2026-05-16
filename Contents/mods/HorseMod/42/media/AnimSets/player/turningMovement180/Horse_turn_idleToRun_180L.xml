@@ -21,7 +21,7 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions x_name="59aa95b6-58d1-4b97-9082-6650aa06d72b">
-        <m_Name>targetTwist</m_Name>
+        <m_Name>mountedTwist</m_Name>
         <m_Type>LESS</m_Type>
         <m_Value>0</m_Value>
     </m_Conditions>

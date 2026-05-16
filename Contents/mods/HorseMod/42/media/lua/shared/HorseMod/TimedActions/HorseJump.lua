@@ -9,6 +9,13 @@ local AnimationEvent = require("HorseMod/definitions/AnimationEvent")
 ---@field controller MountController
 local HorseJump = ISBaseTimedAction:derive("HorseMod_HorseJump")
 
+---@param controller MountController
+---@return RidingMovement
+---@nodiscard
+local function getMovement(controller)
+    return controller.movement
+end
+
 function HorseJump:isValid()
     return true
 end
@@ -27,6 +34,7 @@ end
 function HorseJump:start()
     local character = self.character
     local controller = self.controller
+    local movement = getMovement(controller)
     local pair = controller.mount.pair
 
     -- limit movements of player and animal during the jump
@@ -36,8 +44,8 @@ function HorseJump:start()
     character:setIgnoreAimingInput(true)
     character:setIsAiming(false)
 
-    controller.doTurn = false
-    controller.forcedInput = controller.mount.inputManager:getCurrentInput()
+    movement.doTurn = false
+    movement.forcedInput = controller.mount.inputManager:getCurrentInput()
 end
 
 function HorseJump:stop()
@@ -53,16 +61,23 @@ end
 function HorseJump:resetCharacterState()
     local character = self.character
     local controller = self.controller
+    local movement = getMovement(controller)
     local pair = controller.mount.pair
     
-    character:setIgnoreMovement(false)
-    character:setIgnoreInputsForDirection(false)
-    character:setIgnoreAimingInput(false)
+    if character:getVariableBoolean(AnimationVariable.RIDING_HORSE) then
+        character:setIgnoreMovement(true)
+        character:setIgnoreInputsForDirection(true)
+        character:setIgnoreAimingInput(true)
+    else
+        character:setIgnoreMovement(false)
+        character:setIgnoreInputsForDirection(false)
+        character:setIgnoreAimingInput(false)
+    end
 
     pair:setAnimationVariable(AnimationVariable.JUMP, false)
     
-    controller.doTurn = true
-    controller.forcedInput = nil
+    movement.doTurn = true
+    movement.forcedInput = nil
 end
 
 

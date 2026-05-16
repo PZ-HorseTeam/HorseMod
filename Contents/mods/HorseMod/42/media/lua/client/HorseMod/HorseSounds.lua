@@ -4,6 +4,7 @@ local HorseManager = require("HorseMod/HorseManager")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Stamina = require("HorseMod/Stamina")
 local ModOptions = require("HorseMod/ModOptions")
+local Mounts = require("HorseMod/Mounts")
 
 
 ---@enum Sound
@@ -57,6 +58,10 @@ local IDLE_INTERVAL_SECONDS = 60
 local ATTRACTION_EVENT_INTERVAL_SECONDS = 4
 ---@readonly
 local MAX_STAMINA_FOR_TIRED_SOUND = 30
+---@readonly
+local FOOTSTEP_SWITCH_DEBOUNCE_TICKS = 3
+---@readonly
+local FOOTSTEP_RESTART_COOLDOWN_SECONDS = 0.20
 
 
 ---Plays a sound when a variable first becomes true.
@@ -82,6 +87,15 @@ local MAX_STAMINA_FOR_TIRED_SOUND = 30
 ---
 ---Handle of the currently playing footstep sound. `-1` if none is playing.
 ---@field footstepHandle integer
+---
+---Sound the gait wants this tick, before the switch-debounce passes.
+---@field footstepCandidate Sound?
+---
+---Consecutive ticks the current candidate has been requested.
+---@field footstepCandidateTicks integer
+---
+---Seconds remaining before a new footstep `playSound` may be issued.
+---@field footstepStartCooldown number
 ---
 ---Last emitter used to play a sound.
 ---@field lastEmitter BaseCharacterSoundEmitter?
@@ -143,6 +157,8 @@ end
 function HorseSounds:updateAttraction(delta)
     self.attractionEventTimer = self.attractionEventTimer + delta
     if self.attractionEventTimer >= ATTRACTION_EVENT_INTERVAL_SECONDS then
+        -- Without resetting, this branch fires every tick after the first 4s and floods WorldSoundPacket
+        self.attractionEventTimer = self.attractionEventTimer % ATTRACTION_EVENT_INTERVAL_SECONDS
         -- TODO: radius and volume should depend on current movement
         addSound(
             self.animal,
@@ -212,20 +228,19 @@ function HorseSounds:updateStressedSounds(delta)
 end
 
 
+---Derive footstep gait purely from synced animation variables. Both clients
+---(local rider and remote observer) get identical writes
 ---@param animal IsoAnimal
 ---@return MovementState
 ---@nodiscard
 local function getMovementState(animal)
-    -- FIXME: this is basically a duplicate of MountController:getMovementState because we don't always have a Mount to check
-    if animal:getMovementSpeed() < 0.01 then
+    if not animal:getVariableBoolean(AnimationVariable.RIDING_HORSE)
+            or not animal:getVariableBoolean("HorseMountedMoving") then
         return "idle"
-    elseif animal:getVariableBoolean(AnimationVariable.GALLOP) then
-        return "gallop"
-    elseif animal:getVariableBoolean(AnimationVariable.TROT) then
-        return "trot"
-    else
-        return "walking"
     end
+    if animal:getVariableBoolean(AnimationVariable.GALLOP) then return "gallop" end
+    if animal:getVariableBoolean(AnimationVariable.TROT) then return "trot" end
+    return "walking"
 end
 
 
@@ -260,35 +275,57 @@ end
 
 
 function HorseSounds:stopFootsteps()
-    self.animal:getEmitter():stopSound(self.footstepHandle)
+    local emitter = self.lastEmitter or self.animal:getEmitter()
+    if self.footstepSound then
+        emitter:stopSoundByName(self.footstepSound)
+    end
+    emitter:stopSound(self.footstepHandle)
     self.footstepHandle = -1
 end
 
 
-function HorseSounds:updateFootsteps()
+---@param delta number
+function HorseSounds:updateFootsteps(delta)
     local movementState = getMovementState(self.animal)
+    ---@type Sound?
     local sound
-    if isSquareRough(self.animal:getSquare()) then
+    if movementState == "idle" then
+        sound = nil
+    elseif isSquareRough(self.animal:getSquare()) then
         sound = footsteps[movementState].rough
     else
         sound = footsteps[movementState].smooth
     end
 
+    if sound ~= self.footstepCandidate then
+        self.footstepCandidate = sound
+        self.footstepCandidateTicks = 1
+    else
+        self.footstepCandidateTicks = self.footstepCandidateTicks + 1
+    end
+
+    self.footstepStartCooldown = math.max(0, self.footstepStartCooldown - delta)
+
     local emitter = self.animal:getEmitter()
 
-    if sound ~= self.footstepSound then
+    local minDebounce = sound and FOOTSTEP_SWITCH_DEBOUNCE_TICKS or 1
+    if sound ~= self.footstepSound
+            and self.footstepCandidateTicks >= minDebounce
+            and self.footstepStartCooldown <= 0 then
         if self.footstepHandle ~= -1 then
             self:stopFootsteps()
         end
 
         if sound then
             self.footstepHandle = emitter:playSound(sound)
+            self.lastEmitter = emitter
+            self.footstepStartCooldown = FOOTSTEP_RESTART_COOLDOWN_SECONDS
         end
 
         self.footstepSound = sound
     end
 
-    if self.footstepHandle ~= 1 then
+    if self.footstepHandle ~= -1 then
         emitter:setVolume(self.footstepHandle, SoundsSystem.volume)
     end
 end
@@ -330,10 +367,10 @@ end
 ---@param delta number
 function HorseSounds:update(delta)
     self:updateVariableWatches()
-    self:updateFootsteps()
+    self:updateFootsteps(delta)
     self:updateTiredSound()
     self:updateStressedSounds(delta)
-    self:updateIdleSounds(delta)            
+    self:updateIdleSounds(delta)
     self:updateAttraction(delta)
 end
 
@@ -363,6 +400,9 @@ local function createHorseSounds(animal)
             animal = animal,
             footstepSound = nil,
             footstepHandle = -1,
+            footstepCandidate = nil,
+            footstepCandidateTicks = 0,
+            footstepStartCooldown = 0,
             lastEmitter = nil,
             tiredSoundHandle = -1,
             variableCache = {},
@@ -397,6 +437,20 @@ local function removeHorseSounds(animal)
 end
 
 HorseManager.onHorseRemoved:add(removeHorseSounds)
+
+
+---Stop the footstep loop the instant the rider dismounts
+---@param player IsoPlayer
+---@param animal IsoAnimal?
+---@param dismountedAnimal IsoAnimal?
+Mounts.onMountChanged:add(function(player, animal, dismountedAnimal)
+    if animal then return end
+    if not dismountedAnimal then return end
+    local horseSounds = SoundsSystem.horseSounds[dismountedAnimal]
+    if horseSounds then
+        horseSounds:stopFootsteps()
+    end
+end)
 
 
 local HorseSounds = {}

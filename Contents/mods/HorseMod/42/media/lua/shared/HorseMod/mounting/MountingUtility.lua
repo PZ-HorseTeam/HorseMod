@@ -6,7 +6,7 @@ local Mounts = require("HorseMod/Mounts")
 local HorseUtils = require("HorseMod/Utils")
 
 
-local MOUNTING_DISABLED = isClient() and not isDebugEnabled()
+local MOUNTING_DISABLED = false
 
 
 local MountingUtility = {}

@@ -31,12 +31,12 @@
         <m_Value>false</m_Value>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>targetTwist</m_Name>
+        <m_Name>mountedTwist</m_Name>
         <m_Type>LESS</m_Type>
         <m_Value>30</m_Value>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>targetTwist</m_Name>
+        <m_Name>mountedTwist</m_Name>
         <m_Type>GTR</m_Type>
         <m_Value>-30</m_Value>
     </m_Conditions>
@@ -61,7 +61,7 @@
         <m_BlendTime>0.80</m_BlendTime>
         <m_blendOutTime>0.60</m_blendOutTime>
         <m_Conditions>
-            <m_Name>targetTwist</m_Name>
+            <m_Name>mountedTwist</m_Name>
             <m_Type>LESS</m_Type>
             <m_Value>-30</m_Value>
         </m_Conditions>
@@ -77,7 +77,7 @@
         <m_BlendTime>0.80</m_BlendTime>
         <m_blendOutTime>0.60</m_blendOutTime>
         <m_Conditions>
-            <m_Name>targetTwist</m_Name>
+            <m_Name>mountedTwist</m_Name>
             <m_Type>LESS</m_Type>
             <m_Value>-30</m_Value>
         </m_Conditions>
@@ -93,7 +93,7 @@
         <m_BlendTime>0.80</m_BlendTime>
         <m_blendOutTime>0.60</m_blendOutTime>
         <m_Conditions>
-            <m_Name>targetTwist</m_Name>
+            <m_Name>mountedTwist</m_Name>
             <m_Type>GTR</m_Type>
             <m_Value>30</m_Value>
         </m_Conditions>
@@ -109,7 +109,7 @@
         <m_BlendTime>0.80</m_BlendTime>
         <m_blendOutTime>0.60</m_blendOutTime>
         <m_Conditions>
-            <m_Name>targetTwist</m_Name>
+            <m_Name>mountedTwist</m_Name>
             <m_Type>GTR</m_Type>
             <m_Value>30</m_Value>
         </m_Conditions>
@@ -202,4 +202,46 @@
         <boneName>Bip01</boneName>
         <weight>0.00</weight>
     </m_SubStateBoneWeights>
+    <m_Transitions>
+        <m_Target>Horse_KickLeft</m_Target>
+        <m_BlendTime>0.00</m_BlendTime>
+        <m_blendInTime>0.10</m_blendInTime>
+        <m_blendOutTime>0.20</m_blendOutTime>
+        <m_Conditions>
+            <m_Name>HorseRiderKickLeft</m_Name>
+            <m_Type>BOOL</m_Type>
+            <m_Value>true</m_Value>
+        </m_Conditions>
+            <m_Conditions>
+            <m_Name>HorseRiderIdleKicking</m_Name>
+            <m_Type>BOOL</m_Type>
+            <m_Value>false</m_Value>
+        </m_Conditions>
+        <m_Conditions>
+            <m_Name>HorseRiderMoveKicking</m_Name>
+            <m_Type>BOOL</m_Type>
+            <m_Value>false</m_Value>
+        </m_Conditions>
+    </m_Transitions>
+    <m_Transitions>
+        <m_Target>Horse_KickRight</m_Target>
+        <m_BlendTime>0.00</m_BlendTime>
+        <m_blendInTime>0.10</m_blendInTime>
+        <m_blendOutTime>0.20</m_blendOutTime>
+        <m_Conditions>
+            <m_Name>HorseRiderKickRight</m_Name>
+            <m_Type>BOOL</m_Type>
+            <m_Value>true</m_Value>
+        </m_Conditions>
+            <m_Conditions>
+            <m_Name>HorseRiderIdleKicking</m_Name>
+            <m_Type>BOOL</m_Type>
+            <m_Value>false</m_Value>
+        </m_Conditions>
+        <m_Conditions>
+            <m_Name>HorseRiderMoveKicking</m_Name>
+            <m_Type>BOOL</m_Type>
+            <m_Value>false</m_Value>
+        </m_Conditions>
+    </m_Transitions>
 </animNode>

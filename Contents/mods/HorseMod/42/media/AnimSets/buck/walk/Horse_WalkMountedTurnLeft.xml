@@ -22,7 +22,7 @@
         <m_BoolValue>true</m_BoolValue>
     </m_Conditions>
     <m_Conditions x_name="8de8c17e-18eb-48d7-9df9-a513cc02dace">
-        <m_Name>targetTwist</m_Name>
+        <m_Name>mountedTwist</m_Name>
         <m_Type>LESS</m_Type>
         <m_Value>-45</m_Value>
     </m_Conditions>
@@ -50,7 +50,7 @@
     <m_Conditions>
         <m_Name>animalRunning</m_Name>
         <m_Type>BOOL</m_Type>
-        <m_BoolValue>true</m_BoolValue>
+        <m_BoolValue>false</m_BoolValue>
     </m_Conditions>
     <m_Conditions>
         <m_Name>HorseRiding</m_Name>

@@ -22,7 +22,7 @@
         <m_BoolValue>true</m_BoolValue>
     </m_Conditions>
     <m_Conditions x_name="dd280d49-1c7a-440e-a19c-b606a83f907f">
-        <m_Name>targetTwist</m_Name>
+        <m_Name>mountedTwist</m_Name>
         <m_Type>GTR</m_Type>
         <m_Value>45</m_Value>
     </m_Conditions>

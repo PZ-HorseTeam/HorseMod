@@ -21,7 +21,7 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions x_name="1d0fb280-4535-4f1d-9d93-7af1086f85c8">
-        <m_Name>targetTwist</m_Name>
+        <m_Name>mountedTwist</m_Name>
         <m_Type>GTR</m_Type>
         <m_Value>0</m_Value>
     </m_Conditions>
