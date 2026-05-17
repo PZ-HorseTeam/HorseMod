@@ -2,7 +2,6 @@
 
 local Stamina = require("HorseMod/Stamina")
 local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
-local MountAnimDebug = require("HorseMod/debug/MountAnimDebug")
 local MountedAnimationState = require("HorseMod/riding/MountedAnimationState")
 local MountedDirection = require("HorseMod/riding/MountedDirection")
 
@@ -799,7 +798,6 @@ function RidingMovement.applyState(pair, args)
     pair:setAnimationVariable(AnimationVariable.IDLE_TO_RUN, args.idleToRun == true)
 
     setMountedMovementVariables(pair, args.speed > 0, args.gallop == true)
-    MountAnimDebug.log("RidingMovement.applyState", rider, mount)
 end
 
 ---@param args RidingStateArguments
@@ -843,7 +841,6 @@ function RidingMovement:applyAuthoritativeState(args, snapDistanceSq)
     MountedAnimationState.setReinsVariable(pair.rider, args.hasReins == true)
     MountedAnimationState.setTurnVariables(pair.rider, mount, getStateTurn(args))
     setMountedMovementVariables(pair, args.speed > 0, args.gallop == true)
-    MountAnimDebug.log("RidingMovement.authoritative", pair.rider, mount)
 end
 
 ---@param args RidingStateArguments
