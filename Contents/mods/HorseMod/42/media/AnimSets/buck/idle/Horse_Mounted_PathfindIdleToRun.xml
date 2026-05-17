@@ -5,7 +5,7 @@
     <m_ConditionPriority>11</m_ConditionPriority>
     <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
-    <m_BlendTime>0.6</m_BlendTime>
+    <m_BlendTime>0.2</m_BlendTime>
     <m_SpeedScale>1.0</m_SpeedScale>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
     <m_Conditions>

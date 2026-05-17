@@ -168,7 +168,7 @@ HorseDefinitions.ANIMALS_DATA = {
         --- size
         collisionSize = 0.35,
         baseEncumbrance = 180,
-        ---- food
+        --- food
         eatTypeTrough = "AnimalFeed,Grass,Hay,Vegetables,Fruits",
         hungerMultiplier = 0.0035,
         thirstMultiplier = 0.006,
@@ -176,7 +176,7 @@ HorseDefinitions.ANIMALS_DATA = {
         thirstHungerTrigger = 0.3,
         distToEat = 1,
         hungerBoost = 3,
-        ---- death
+        --- death
         minBlood = 1200,
         maxBlood = 4000,
     },
@@ -195,7 +195,7 @@ HorseDefinitions.ANIMALS_DATA = {
         idleEmoteChance = 900,
 
         -- STATS
-        ---- general
+        --- general
         trailerBaseSize = 300,
         --- size
         minSize = 0.6,
@@ -219,7 +219,7 @@ HorseDefinitions.ANIMALS_DATA = {
         minAge = 0,
 
         -- STATS
-        ---- general
+        --- general
         trailerBaseSize = 180,
         --- size
         minSize = 0.4,
@@ -242,6 +242,7 @@ HorseDefinitions.ANIMALS_DATA = {
         -- MATING
         female = true,
         mate = "stallion",
+        pregnantPeriod = (9 * 30) + 10, -- 9 months and 10 days, same as cows
     },
 }
 

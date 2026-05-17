@@ -101,15 +101,16 @@ end
 
 local UPDATE_RATE = 8
 local TICK_AMOUNT = 0
+local CAN_GET_ANIMALS = getCore():getGameVersion():isGreaterThanOrEqualTo(GameVersion.new(42, 16, ".0"))
 
 ---Retrieve newly loaded horses in the world.
 ---@TODO find a better method of doing this, less costly
 HorseManager.retrieveNewHorses = function()
     -- retrieve IsoMovingObjects
-    local isoMovingObjects = getCell():getObjectList()
+    local animals = CAN_GET_ANIMALS and getCell():getAnimals() or getCell():getObjectList()
 
     -- check UPDATE_RATE-th IsoMovingObjects per tick
-    local size = isoMovingObjects:size()
+    local size = animals:size()
     local update_rate = UPDATE_RATE < size and UPDATE_RATE or size
     if update_rate == 0 then return end
 
@@ -118,25 +119,24 @@ HorseManager.retrieveNewHorses = function()
 
     -- iterate every update_rate-th entries
     for i = TICK_AMOUNT, size - 1, update_rate do repeat
-        local isoMovingObject = isoMovingObjects:get(i)
+        local animal = animals:get(i)
 
-        -- verify is an animal 
-        if not instanceof(isoMovingObject, "IsoAnimal") then break end
-        ---@cast isoMovingObject IsoAnimal 
+        -- pre 42.16 used getObjectList which contains all IsoObjects, so we need to check if it's an IsoAnimal before proceeding
+        if not CAN_GET_ANIMALS and not instanceof(animal, "IsoAnimal") then break end
 
         -- verify is a horse and not already checked and not dead
-        if HorseUtils.isHorse(isoMovingObject) 
-            and not HorseManager._detected_horses[isoMovingObject] then
+        if HorseUtils.isHorse(animal) 
+            and not HorseManager._detected_horses[animal] then
             
             -- initialise horse
-            initialiseHorse(isoMovingObject)
+            initialiseHorse(animal)
             
             -- trigger horse init event
-            HorseManager.onHorseAdded:trigger(isoMovingObject)
+            HorseManager.onHorseAdded:trigger(animal)
 
             -- add to detected horses
-            HorseManager.horses[#HorseManager.horses + 1] = isoMovingObject
-            HorseManager._detected_horses[isoMovingObject] = true
+            HorseManager.horses[#HorseManager.horses + 1] = animal
+            HorseManager._detected_horses[animal] = true
         end
     until true end
 end

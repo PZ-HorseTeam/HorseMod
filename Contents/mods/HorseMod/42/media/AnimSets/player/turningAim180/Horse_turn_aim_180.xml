@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<!-- <m_Name>turn_aim_180</m_Name>
+	<m_DeferredBoneName>Bip01</m_DeferredBoneName>
+	<m_deferredBoneAxis>Z</m_deferredBoneAxis>
+	<m_useDeferedRotation>true</m_useDeferedRotation>
+	<m_Looped>false</m_Looped>
+	<m_BlendTime>0.10</m_BlendTime>
+	<m_BlendOutTime>0.20</m_BlendOutTime>
+	<m_SpeedScale>0.80</m_SpeedScale>
+	<m_maxTorsoTwist>70.00</m_maxTorsoTwist>
+	<m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+	<m_Transitions>
+		<m_Target>aim_default</m_Target>
+		<m_blendInTime>0.1</m_blendInTime>
+	</m_Transitions>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_Pelvis</boneName>
+		<includeDescendants>false</includeDescendants>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_Spine</boneName>
+		<weight>0.25</weight>
+		<includeDescendants>false</includeDescendants>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_BackPack</boneName>
+		<weight>0.20</weight>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_DressFront</boneName>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_DressBack</boneName>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_L_Thigh</boneName>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_R_Thigh</boneName>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01</boneName>
+		<includeDescendants>false</includeDescendants>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Translation_Data</boneName>
+		<includeDescendants>false</includeDescendants>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_Prop1</boneName>
+		<weight>0.00</weight>
+	</m_SubStateBoneWeights>
+	<m_SubStateBoneWeights>
+		<boneName>Bip01_Prop2</boneName>
+		<weight>0.00</weight>
+	</m_SubStateBoneWeights> -->
+</animNode>

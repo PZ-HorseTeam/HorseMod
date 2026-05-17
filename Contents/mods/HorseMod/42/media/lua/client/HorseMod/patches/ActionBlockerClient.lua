@@ -9,23 +9,24 @@ This patch prevents players from performing certain timed actions while mounted 
 local ActionBlockerClient = {}
 
 ActionBlockerClient.addAfter = ISTimedActionQueue.addAfter
-function ISTimedActionQueue.addAfter(action, after)
-    if not ActionBlocker.validActions[action.Type] then
-        if Mounts.hasMount(action.character) then
+function ISTimedActionQueue.addAfter(previousAction, action)
+    if action and Mounts.hasMount(action.character) then
+        if not ActionBlocker.validActions[action.Type] then
             return
         end
     end
-    ActionBlockerClient.addAfter(action, after)
+    return ActionBlockerClient.addAfter(previousAction, action)
 end
 
 ActionBlockerClient.add = ISTimedActionQueue.add
 function ISTimedActionQueue.add(action)
-    if action and not ActionBlocker.validActions[action.Type] then
-        if Mounts.hasMount(action.character) then
+    if not action then return end
+    if action and Mounts.hasMount(action.character) then
+        if not ActionBlocker.validActions[action.Type] then
             return
         end
     end
-    ActionBlockerClient.add(action)
+    return ActionBlockerClient.add(action)
 end
 
 return ActionBlockerClient

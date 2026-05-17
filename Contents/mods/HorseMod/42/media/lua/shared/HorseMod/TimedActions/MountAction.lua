@@ -96,10 +96,10 @@ end
 ---@return integer
 function MountAction:getAnimationDurationMS()
     if self.hasSaddle then
-        return 1370
+        return 1366
     end
 
-    return 2400
+    return 2433
 end
 
 

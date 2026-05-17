@@ -1,47 +1,21 @@
-name: Deploy docs
+name: Deploy Docs
 
 on:
   push:
     branches:
-      - 'main'
+      - "main"
     paths:
-      - 'docs/**'
-      - '*.lua'
-  pull_request:
+      - "docs/source/**"
+      - "Contents/mods/**/*.lua"
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout self
-        uses: actions/checkout@v6.0.0
-
-      - name: Setup Python
-        uses: actions/setup-python@v6.1.0
-        with:
-          python-version: '3.14'
-          cache: 'pip'
-
-      - name: Install dependencies
-        run: | 
-          cd docs
-          pip install -r requirements.txt
-      
-      - name: Build Sphinx
-        run: |
-          cd docs
-          make html
-
-      - name: Upload artifact
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v4.0.0
-        with:
-          path: docs/build/html
+    name: Build Docs
+    uses: ./.github/workflows/buildDocs.yml
 
   deploy:
     needs: build
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
 
     permissions:
       pages: write
@@ -50,4 +24,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to pages
-        uses: actions/deploy-pages@v4.0.5
+        uses: actions/deploy-pages@v5
