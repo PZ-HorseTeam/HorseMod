@@ -2,7 +2,6 @@
 
 local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
 local HorseManager = require("HorseMod/HorseManager")
-local MountAnimDebug = require("HorseMod/debug/MountAnimDebug")
 local MountedAnimationState = require("HorseMod/riding/MountedAnimationState")
 local MountedDirection = require("HorseMod/riding/MountedDirection")
 local Mounts = require("HorseMod/Mounts")
@@ -229,7 +228,6 @@ local function update()
         local direction = IsoDirections.fromIndex(target.dir)
         MountedDirection.set(rider, animal, direction, delta, true)
         RemoteRiderPin.pinRiderToPosition(rider, x, y, z, direction)
-        MountAnimDebug.log("RemoteMountInterp", rider, animal)
     until true end
 end
 
