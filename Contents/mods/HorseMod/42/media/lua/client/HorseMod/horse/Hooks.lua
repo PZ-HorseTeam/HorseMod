@@ -38,4 +38,16 @@ function ISVehicleAnimalUI:create(reset)
     end
 end
 
+local old_setAnimalAvatar = ISButcherHookUI.setAnimalAvatar
+
+---@diagnostic disable-next-line: duplicate-set-field
+function ISButcherHookUI:setAnimalAvatar(newModData, newCorpse)
+    old_setAnimalAvatar(self, newModData, newCorpse)
+
+    if not self.avatarPanel or not self.animal3D then return end
+    if not HorseUtils.isHorse(self.animal3D) then return end
+
+    self.avatarPanel:setVariable(AnimationVariable.IS_HORSE, true)
+end
+
 -- FIXME: hook ISAnimalUI to fix too long names (American Quarter Stallion) partially covering the Rename button
