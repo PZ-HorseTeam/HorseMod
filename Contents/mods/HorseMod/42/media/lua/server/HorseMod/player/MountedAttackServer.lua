@@ -1,4 +1,4 @@
-if not isServer() then return end
+if isClient() then return end
 
 local commands = require("HorseMod/networking/commands")
 local mountcommands = require("HorseMod/networking/mountcommands")

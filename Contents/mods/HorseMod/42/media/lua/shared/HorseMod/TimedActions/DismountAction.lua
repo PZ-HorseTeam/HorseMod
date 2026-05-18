@@ -111,6 +111,14 @@ end
 
 function DismountAction:perform()
     if isClient() then
+        -- Snap to the chosen mountLeft/mountRight attachment
+        local attachmentPosition = self.animal:getAttachmentWorldPos(self.mountPosition.attachment)
+        if attachmentPosition then
+            self.character:setX(attachmentPosition:x())
+            self.character:setY(attachmentPosition:y())
+            self.character:setZ(self.animal:getZ())
+        end
+
         mountcommands.DismountRequest:send(
             self.character,
             {
@@ -118,6 +126,8 @@ function DismountAction:perform()
                 attachment = self.mountPosition.attachment,
             }
         )
+
+        Mounts.removeMount(self.character)
     elseif isServer() then
         -- server waits for the client's DismountRequest; Mounts.removeMount runs in the handler
     else
