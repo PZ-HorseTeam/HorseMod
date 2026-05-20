@@ -24,7 +24,7 @@ local reinsItems = {
 }
 
 local magazineItems = {
-    "HorseMod.HorseMag1",
+    "HorseMod.HorseMag_SaddleUp",
 }
 
 local function addItems(dest, items, weight)

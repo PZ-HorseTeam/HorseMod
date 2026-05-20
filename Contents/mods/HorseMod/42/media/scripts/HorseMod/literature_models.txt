@@ -1,5 +1,5 @@
 module HorseMod {
-    model HorseMag1
+    model HorseMag_SaddleUp
     {
         mesh = WorldItems/Magazine,
         texture = WorldItems/Magazine_SaddleUp,

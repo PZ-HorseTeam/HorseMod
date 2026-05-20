@@ -1,5 +1,5 @@
 module HorseMod {
-    item HorseMag1
+    item HorseMag_SaddleUp
     {
         DisplayCategory = RecipeResource,
         Weight = 0.5,
@@ -9,7 +9,7 @@ module HorseMod {
         StressChange = -15,
         LearnedRecipes = HorseSaddle;HorseSaddlebags;HorseReins,
         StaticModel = Magazine,
-        WorldStaticModel = HorseMag1,
+        WorldStaticModel = HorseMod.HorseMag_SaddleUp,
         Tags = base:magazine,
         OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
     }
