@@ -1,6 +1,11 @@
 module HorseMod {
-    item HorseMag_SaddleUp
-    {
+    model Magazine_SaddleUp {
+        mesh = WorldItems/Magazine,
+        texture = WorldItems/Magazine_SaddleUp,
+        scale = 0.4,
+    }
+    
+    item Magazine_SaddleUp {
         DisplayCategory = RecipeResource,
         Weight = 0.5,
         ItemType = base:literature,
@@ -9,7 +14,7 @@ module HorseMod {
         StressChange = -15,
         LearnedRecipes = HorseSaddle;HorseSaddlebags;HorseReins,
         StaticModel = Magazine,
-        WorldStaticModel = HorseMod.HorseMag_SaddleUp,
+        WorldStaticModel = HorseMod.Magazine_SaddleUp,
         Tags = base:magazine,
         OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
     }

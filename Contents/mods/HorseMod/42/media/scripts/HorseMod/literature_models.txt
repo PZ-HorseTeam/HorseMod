@@ -1,8 +1,0 @@
-module HorseMod {
-    model HorseMag_SaddleUp
-    {
-        mesh = WorldItems/Magazine,
-        texture = WorldItems/Magazine_SaddleUp,
-        scale = 0.4,
-    }
-}
