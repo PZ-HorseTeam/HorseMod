@@ -258,6 +258,7 @@ AttachmentData.items = {
     ["HorseMod.HorseSaddle_AppaloosaLeopard"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_ThoroughbredBay"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_ThoroughbredFleaBittenGrey"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_Western"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
 
     -- saddlebags
         -- vanilla animals
@@ -407,8 +408,8 @@ local function loadAttachments()
                     break
                 end
 
-                local accessoryCapacity = HorseUtils.getJavaField(accessoryScript, "Capacity")
-                local worldItemCapacity = HorseUtils.getJavaField(worldItemScript, "Capacity")
+                local accessoryCapacity = instanceItem(accessoryScript):getMaxCapacity()
+                local worldItemCapacity = instanceItem(worldItemScript):getMaxCapacity()
                 if accessoryCapacity ~= worldItemCapacity then
                     logError("Horse accessory ("..fullType..") doesn't have the same capacity as its 'worldItem' ("..worldItem..").")
                     -- not removing the behavior bcs it technically still can work I believe, and would possibly break player attachment containers

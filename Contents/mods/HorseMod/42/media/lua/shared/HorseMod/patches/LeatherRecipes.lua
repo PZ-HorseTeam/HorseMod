@@ -102,7 +102,7 @@ LeatherRecipes.patchRecipe = function(recipeID, testInput, itemsToAdd)
 end
 
 Events.OnGameBoot.Add(function()
-    LeatherRecipes.patchRecipe("Base.CutLeatherInHalf", LeatherRecipes.identifyInput, LeatherRecipes.LEATHERS)
+    -- LeatherRecipes.patchRecipe("Base.CutLeatherInHalf", LeatherRecipes.identifyInput, LeatherRecipes.LEATHERS)
 end)
 
 return LeatherRecipes

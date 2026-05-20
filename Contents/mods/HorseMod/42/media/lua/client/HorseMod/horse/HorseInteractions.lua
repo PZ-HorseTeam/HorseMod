@@ -103,13 +103,7 @@ local function handleJoypadMountButton(player)
         return
     end
 
-    local aButton = getJoypadAButton(pad)
-    if not aButton or aButton == -1 then
-        lastJoypadA[pid] = false
-        return
-    end
-
-    local pressed = isJoypadPressed(pad, aButton)
+    local pressed = JoypadButton.A:isDown(pad)
     local prev = lastJoypadA[pid] or false
     lastJoypadA[pid] = pressed
 

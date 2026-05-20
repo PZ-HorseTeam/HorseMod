@@ -30,459 +30,483 @@ module Base
     {
         component SpriteOverlayConfig
         {
-            style AmericanPaintOveroLeather_0.0
+            style AmericanPaintOveroLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = false false,
-                        row = crafted_horse&foal_0 crafted_horse&foal_1,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_horse&foal_0 crafted_horse&foal_1,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_horse&foal_3,
+                            row = false crafted_horse&foal_2,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = false crafted_horse&foal_3,
-                        row = false crafted_horse&foal_2,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_0 crafted_skins_drying_horse&foal_1,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_3,
+                            row = false crafted_skins_drying_horse&foal_2,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_64 crafted_skins_drying_horse&foal_65,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_67,
+                            row = false crafted_skins_drying_horse&foal_66,
+                        }
                     }
                 }
             }
-            style AmericanPaintOveroLeather_0.5
+            style AmericanPaintTobianoLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_0 crafted_skins_drying_horse&foal_1,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_horse&foal_8 crafted_horse&foal_9,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_horse&foal_11,
+                            row = false crafted_horse&foal_10,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = false crafted_skins_drying_horse&foal_3,
-                        row = false crafted_skins_drying_horse&foal_2,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_8 crafted_skins_drying_horse&foal_9,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_11,
+                            row = false crafted_skins_drying_horse&foal_10,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_72 crafted_skins_drying_horse&foal_73,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_75,
+                            row = false crafted_skins_drying_horse&foal_74,
+                        }
                     }
                 }
             }
-            style AmericanPaintOveroLeather_1.0
+            style AmericanQuarterBlueRoanLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_64 crafted_skins_drying_horse&foal_65,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_horse&foal_16 crafted_horse&foal_17,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_horse&foal_19,
+                            row = false crafted_horse&foal_18,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = false crafted_skins_drying_horse&foal_67,
-                        row = false crafted_skins_drying_horse&foal_66,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_16 crafted_skins_drying_horse&foal_17,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_19,
+                            row = false crafted_skins_drying_horse&foal_18,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_80 crafted_skins_drying_horse&foal_81,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_83,
+                            row = false crafted_skins_drying_horse&foal_82,
+                        }
                     }
                 }
             }
-            style AmericanPaintTobianoLeather_0.0
+            style AmericanQuarterPalominoLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = false false,
-                        row = crafted_horse&foal_8 crafted_horse&foal_9,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_horse&foal_24 crafted_horse&foal_25,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_horse&foal_27,
+                            row = false crafted_horse&foal_26,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = false crafted_horse&foal_11,
-                        row = false crafted_horse&foal_10,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_24 crafted_skins_drying_horse&foal_25,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_27,
+                            row = false crafted_skins_drying_horse&foal_26,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_88 crafted_skins_drying_horse&foal_89,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_91,
+                            row = false crafted_skins_drying_horse&foal_90,
+                        }
                     }
                 }
             }
-            style AmericanPaintTobianoLeather_0.5
+            style AppaloosaGrullaBlanketLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_8 crafted_skins_drying_horse&foal_9,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_horse&foal_32 crafted_horse&foal_33,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_horse&foal_35,
+                            row = false crafted_horse&foal_34,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = false crafted_skins_drying_horse&foal_11,
-                        row = false crafted_skins_drying_horse&foal_10,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_32 crafted_skins_drying_horse&foal_33,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_35,
+                            row = false crafted_skins_drying_horse&foal_34,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_96 crafted_skins_drying_horse&foal_97,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_99,
+                            row = false crafted_skins_drying_horse&foal_98,
+                        }
                     }
                 }
             }
-            style AmericanPaintTobianoLeather_1.0
+            style AppaloosaLeopardLargeLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_72 crafted_skins_drying_horse&foal_73,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_horse&foal_40 crafted_horse&foal_41,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_horse&foal_43,
+                            row = false crafted_horse&foal_42,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = false crafted_skins_drying_horse&foal_75,
-                        row = false crafted_skins_drying_horse&foal_74,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_40 crafted_skins_drying_horse&foal_41,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_43,
+                            row = false crafted_skins_drying_horse&foal_42,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_104 crafted_skins_drying_horse&foal_105,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_107,
+                            row = false crafted_skins_drying_horse&foal_106,
+                        }
                     }
                 }
             }
-            style AmericanQuarterBlueRoanLeather_0.0
+            style ThoroughbredBayLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = false false,
-                        row = crafted_horse&foal_16 crafted_horse&foal_17,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_horse&foal_48 crafted_horse&foal_49,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_horse&foal_51,
+                            row = false crafted_horse&foal_50,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = false crafted_horse&foal_19,
-                        row = false crafted_horse&foal_18,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_48 crafted_skins_drying_horse&foal_49,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_51,
+                            row = false crafted_skins_drying_horse&foal_50,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_112 crafted_skins_drying_horse&foal_113,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_115,
+                            row = false crafted_skins_drying_horse&foal_114,
+                        }
                     }
                 }
             }
-            style AmericanQuarterBlueRoanLeather_0.5
+            style ThoroughbredFleaBittenGreyLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_16 crafted_skins_drying_horse&foal_17,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_horse&foal_56 crafted_horse&foal_57,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_horse&foal_59,
+                            row = false crafted_horse&foal_58,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = false crafted_skins_drying_horse&foal_19,
-                        row = false crafted_skins_drying_horse&foal_18,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_56 crafted_skins_drying_horse&foal_57,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_59,
+                            row = false crafted_skins_drying_horse&foal_58,
+                        }
                     }
                 }
-            }
-            style AmericanQuarterBlueRoanLeather_1.0
-            {
-                face S
+                progress 100
                 {
-                    layer
+                    face S
                     {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_80 crafted_skins_drying_horse&foal_81,
+                        layer
+                        {
+                            row = false false,
+                            row = crafted_skins_drying_horse&foal_120 crafted_skins_drying_horse&foal_121,
+                        }
                     }
-                }
-                face E
-                {
-                    layer
+                    face E
                     {
-                        row = false crafted_skins_drying_horse&foal_83,
-                        row = false crafted_skins_drying_horse&foal_82,
-                    }
-                }
-            }
-            style AmericanQuarterPalominoLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_horse&foal_24 crafted_horse&foal_25,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_horse&foal_27,
-                        row = false crafted_horse&foal_26,
-                    }
-                }
-            }
-            style AmericanQuarterPalominoLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_24 crafted_skins_drying_horse&foal_25,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_27,
-                        row = false crafted_skins_drying_horse&foal_26,
-                    }
-                }
-            }
-            style AmericanQuarterPalominoLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_88 crafted_skins_drying_horse&foal_89,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_91,
-                        row = false crafted_skins_drying_horse&foal_90,
-                    }
-                }
-            }
-            style AppaloosaGrullaBlanketLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_horse&foal_32 crafted_horse&foal_33,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_horse&foal_35,
-                        row = false crafted_horse&foal_34,
-                    }
-                }
-            }
-            style AppaloosaGrullaBlanketLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_32 crafted_skins_drying_horse&foal_33,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_35,
-                        row = false crafted_skins_drying_horse&foal_34,
-                    }
-                }
-            }
-            style AppaloosaGrullaBlanketLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_96 crafted_skins_drying_horse&foal_97,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_99,
-                        row = false crafted_skins_drying_horse&foal_98,
-                    }
-                }
-            }
-            style AppaloosaLeopardLargeLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_horse&foal_40 crafted_horse&foal_41,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_horse&foal_43,
-                        row = false crafted_horse&foal_42,
-                    }
-                }
-            }
-            style AppaloosaLeopardLargeLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_40 crafted_skins_drying_horse&foal_41,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_43,
-                        row = false crafted_skins_drying_horse&foal_42,
-                    }
-                }
-            }
-            style AppaloosaLeopardLargeLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_104 crafted_skins_drying_horse&foal_105,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_107,
-                        row = false crafted_skins_drying_horse&foal_106,
-                    }
-                }
-            }
-            style ThoroughbredBayLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_horse&foal_48 crafted_horse&foal_49,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_horse&foal_51,
-                        row = false crafted_horse&foal_50,
-                    }
-                }
-            }
-            style ThoroughbredBayLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_48 crafted_skins_drying_horse&foal_49,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_51,
-                        row = false crafted_skins_drying_horse&foal_50,
-                    }
-                }
-            }
-            style ThoroughbredBayLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_112 crafted_skins_drying_horse&foal_113,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_115,
-                        row = false crafted_skins_drying_horse&foal_114,
-                    }
-                }
-            }
-            style ThoroughbredFleaBittenGreyLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_horse&foal_56 crafted_horse&foal_57,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_horse&foal_59,
-                        row = false crafted_horse&foal_58,
-                    }
-                }
-            }
-            style ThoroughbredFleaBittenGreyLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_56 crafted_skins_drying_horse&foal_57,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_59,
-                        row = false crafted_skins_drying_horse&foal_58,
-                    }
-                }
-            }
-            style ThoroughbredFleaBittenGreyLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = false false,
-                        row = crafted_skins_drying_horse&foal_120 crafted_skins_drying_horse&foal_121,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = false crafted_skins_drying_horse&foal_123,
-                        row = false crafted_skins_drying_horse&foal_122,
+                        layer
+                        {
+                            row = false crafted_skins_drying_horse&foal_123,
+                            row = false crafted_skins_drying_horse&foal_122,
+                        }
                     }
                 }
             }
@@ -519,435 +543,459 @@ module Base
     {
         component SpriteOverlayConfig
         {
-            style AmericanPaintOveroFoalLeather_0.0
+            style AmericanPaintOveroFoalLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_horse&foal_4 crafted_horse&foal_5,
+                        layer
+                        {
+                            row = crafted_horse&foal_4 crafted_horse&foal_5,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_horse&foal_7,
+                            row = crafted_horse&foal_6,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_horse&foal_7,
-                        row = crafted_horse&foal_6,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_4 crafted_skins_drying_horse&foal_5,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_7,
+                            row = crafted_skins_drying_horse&foal_6,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_68 crafted_skins_drying_horse&foal_69,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_71,
+                            row = crafted_skins_drying_horse&foal_70,
+                        }
                     }
                 }
             }
-            style AmericanPaintOveroFoalLeather_0.5
+            style AmericanPaintTobianoFoalLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_4 crafted_skins_drying_horse&foal_5,
+                        layer
+                        {
+                            row = crafted_horse&foal_12 crafted_horse&foal_13,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_horse&foal_15,
+                            row = crafted_horse&foal_14,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_7,
-                        row = crafted_skins_drying_horse&foal_6,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_12 crafted_skins_drying_horse&foal_13,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_15,
+                            row = crafted_skins_drying_horse&foal_14,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_76 crafted_skins_drying_horse&foal_77,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_79,
+                            row = crafted_skins_drying_horse&foal_78,
+                        }
                     }
                 }
             }
-            style AmericanPaintOveroFoalLeather_1.0
+            style AmericanQuarterBlueRoanFoalLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_68 crafted_skins_drying_horse&foal_69,
+                        layer
+                        {
+                            row = crafted_horse&foal_20 crafted_horse&foal_21,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_horse&foal_23,
+                            row = crafted_horse&foal_22,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_71,
-                        row = crafted_skins_drying_horse&foal_70,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_20 crafted_skins_drying_horse&foal_21,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_23,
+                            row = crafted_skins_drying_horse&foal_22,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_84 crafted_skins_drying_horse&foal_85,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_87,
+                            row = crafted_skins_drying_horse&foal_86,
+                        }
                     }
                 }
             }
-            style AmericanPaintTobianoFoalLeather_0.0
+            style AmericanQuarterPalominoFoalLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_horse&foal_12 crafted_horse&foal_13,
+                        layer
+                        {
+                            row = crafted_horse&foal_28 crafted_horse&foal_29,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_horse&foal_31,
+                            row = crafted_horse&foal_30,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_horse&foal_15,
-                        row = crafted_horse&foal_14,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_28 crafted_skins_drying_horse&foal_29,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_31,
+                            row = crafted_skins_drying_horse&foal_30,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_92 crafted_skins_drying_horse&foal_93,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_95,
+                            row = crafted_skins_drying_horse&foal_94,
+                        }
                     }
                 }
             }
-            style AmericanPaintTobianoFoalLeather_0.5
+            style AppaloosaGrullaBlanketFoalLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_12 crafted_skins_drying_horse&foal_13,
+                        layer
+                        {
+                            row = crafted_horse&foal_36 crafted_horse&foal_37,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_horse&foal_39,
+                            row = crafted_horse&foal_38,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_15,
-                        row = crafted_skins_drying_horse&foal_14,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_36 crafted_skins_drying_horse&foal_37,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_39,
+                            row = crafted_skins_drying_horse&foal_38,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_100 crafted_skins_drying_horse&foal_101,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_103,
+                            row = crafted_skins_drying_horse&foal_102,
+                        }
                     }
                 }
             }
-            style AmericanPaintTobianoFoalLeather_1.0
+            style AppaloosaLeopardFoalLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_76 crafted_skins_drying_horse&foal_77,
+                        layer
+                        {
+                            row = crafted_horse&foal_44 crafted_horse&foal_45,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_horse&foal_47,
+                            row = crafted_horse&foal_46,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_79,
-                        row = crafted_skins_drying_horse&foal_78,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_44 crafted_skins_drying_horse&foal_45,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_47,
+                            row = crafted_skins_drying_horse&foal_46,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_108 crafted_skins_drying_horse&foal_109,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_111,
+                            row = crafted_skins_drying_horse&foal_110,
+                        }
                     }
                 }
             }
-            style AmericanQuarterBlueRoanFoalLeather_0.0
+            style ThoroughbredBayFoalLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_horse&foal_20 crafted_horse&foal_21,
+                        layer
+                        {
+                            row = crafted_horse&foal_52 crafted_horse&foal_53,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_horse&foal_55,
+                            row = crafted_horse&foal_54,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_horse&foal_23,
-                        row = crafted_horse&foal_22,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_52 crafted_skins_drying_horse&foal_53,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_55,
+                            row = crafted_skins_drying_horse&foal_54,
+                        }
+                    }
+                }
+                progress 100
+                {
+                    face S
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_116 crafted_skins_drying_horse&foal_117,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_119,
+                            row = crafted_skins_drying_horse&foal_118,
+                        }
                     }
                 }
             }
-            style AmericanQuarterBlueRoanFoalLeather_0.5
+            style ThoroughbredFleaBittenGreyFoalLeather
             {
-                face S
+                progress 0
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_20 crafted_skins_drying_horse&foal_21,
+                        layer
+                        {
+                            row = crafted_horse&foal_60 crafted_horse&foal_61,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_horse&foal_63,
+                            row = crafted_horse&foal_62,
+                        }
                     }
                 }
-                face E
+                progress 50
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_23,
-                        row = crafted_skins_drying_horse&foal_22,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_60 crafted_skins_drying_horse&foal_61,
+                        }
+                    }
+                    face E
+                    {
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_63,
+                            row = crafted_skins_drying_horse&foal_62,
+                        }
                     }
                 }
-            }
-            style AmericanQuarterBlueRoanFoalLeather_1.0
-            {
-                face S
+                progress 100
                 {
-                    layer
+                    face S
                     {
-                        row = crafted_skins_drying_horse&foal_84 crafted_skins_drying_horse&foal_85,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_124 crafted_skins_drying_horse&foal_125,
+                        }
                     }
-                }
-                face E
-                {
-                    layer
+                    face E
                     {
-                        row = crafted_skins_drying_horse&foal_87,
-                        row = crafted_skins_drying_horse&foal_86,
-                    }
-                }
-            }
-            style AmericanQuarterPalominoFoalLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_28 crafted_horse&foal_29,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_31,
-                        row = crafted_horse&foal_30,
-                    }
-                }
-            }
-            style AmericanQuarterPalominoFoalLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_28 crafted_skins_drying_horse&foal_29,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_31,
-                        row = crafted_skins_drying_horse&foal_30,
-                    }
-                }
-            }
-            style AmericanQuarterPalominoFoalLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_92 crafted_skins_drying_horse&foal_93,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_95,
-                        row = crafted_skins_drying_horse&foal_94,
-                    }
-                }
-            }
-            style AppaloosaGrullaBlanketFoalLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_36 crafted_horse&foal_37,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_39,
-                        row = crafted_horse&foal_38,
-                    }
-                }
-            }
-            style AppaloosaGrullaBlanketFoalLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_36 crafted_skins_drying_horse&foal_37,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_39,
-                        row = crafted_skins_drying_horse&foal_38,
-                    }
-                }
-            }
-            style AppaloosaGrullaBlanketFoalLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_100 crafted_skins_drying_horse&foal_101,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_103,
-                        row = crafted_skins_drying_horse&foal_102,
-                    }
-                }
-            }
-            style AppaloosaLeopardFoalLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_44 crafted_horse&foal_45,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_47,
-                        row = crafted_horse&foal_46,
-                    }
-                }
-            }
-            style AppaloosaLeopardFoalLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_44 crafted_skins_drying_horse&foal_45,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_47,
-                        row = crafted_skins_drying_horse&foal_46,
-                    }
-                }
-            }
-            style AppaloosaLeopardFoalLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_108 crafted_skins_drying_horse&foal_109,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_111,
-                        row = crafted_skins_drying_horse&foal_110,
-                    }
-                }
-            }
-            style ThoroughbredBayFoalLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_52 crafted_horse&foal_53,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_55,
-                        row = crafted_horse&foal_54,
-                    }
-                }
-            }
-            style ThoroughbredBayFoalLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_52 crafted_skins_drying_horse&foal_53,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_55,
-                        row = crafted_skins_drying_horse&foal_54,
-                    }
-                }
-            }
-            style ThoroughbredBayFoalLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_116 crafted_skins_drying_horse&foal_117,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_119,
-                        row = crafted_skins_drying_horse&foal_118,
-                    }
-                }
-            }
-            style ThoroughbredFleaBittenGreyFoalLeather_0.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_60 crafted_horse&foal_61,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_horse&foal_63,
-                        row = crafted_horse&foal_62,
-                    }
-                }
-            }
-            style ThoroughbredFleaBittenGreyFoalLeather_0.5
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_60 crafted_skins_drying_horse&foal_61,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_63,
-                        row = crafted_skins_drying_horse&foal_62,
-                    }
-                }
-            }
-            style ThoroughbredFleaBittenGreyFoalLeather_1.0
-            {
-                face S
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_124 crafted_skins_drying_horse&foal_125,
-                    }
-                }
-                face E
-                {
-                    layer
-                    {
-                        row = crafted_skins_drying_horse&foal_127,
-                        row = crafted_skins_drying_horse&foal_126,
+                        layer
+                        {
+                            row = crafted_skins_drying_horse&foal_127,
+                            row = crafted_skins_drying_horse&foal_126,
+                        }
                     }
                 }
             }

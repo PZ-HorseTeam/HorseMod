@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animNode x_extends="Horse_turn_idle_180.xml">
+	<m_Name>Horse_turn_idle_180L</m_Name>
+	<m_AnimName>Bob_Mounted_Reins</m_AnimName>
+	<m_Conditions x_name="d412f33d-1181-421a-88a7-18ebfa24f45e">
+		<m_Name>targetTwist</m_Name>
+		<m_Type>LESS</m_Type>
+		<m_Value>0</m_Value>
+	</m_Conditions>
+</animNode>

@@ -46,8 +46,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_PathfindRunJump</m_Target>
-        <m_blendInTime>0.20</m_blendInTime>
-        <m_blendOutTime>0.20</m_blendOutTime>
+        <m_blendInTime>0.30</m_blendInTime>
+        <m_blendOutTime>0.30</m_blendOutTime>
         <m_Conditions>
             <m_Name>HorseJump</m_Name>
             <m_Type>BOOL</m_Type>
