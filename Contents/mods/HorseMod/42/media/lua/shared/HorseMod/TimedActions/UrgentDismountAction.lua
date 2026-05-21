@@ -31,6 +31,7 @@ local DYING_DURATION_MS = 5266
 ---@field shouldFlee boolean
 local UrgentDismountAction = ISBaseTimedAction:derive("HorseMod_UrgentDismountAction")
 
+---@return boolean
 function UrgentDismountAction:isValid()
     return true
 end

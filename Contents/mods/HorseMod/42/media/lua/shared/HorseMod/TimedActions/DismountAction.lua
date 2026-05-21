@@ -6,6 +6,7 @@ local AnimationEvent = require("HorseMod/definitions/AnimationEvent")
 local MountedDirection = require("HorseMod/riding/MountedDirection")
 local mountcommands = require("HorseMod/networking/mountcommands")
 local commands = require("HorseMod/networking/commands")
+local MountingUtility = require("HorseMod/mounting/MountingUtility")
 
 local IS_SERVER = isServer()
 
@@ -33,6 +34,9 @@ local DismountAction = ISBaseTimedAction:derive("HorseMod_DismountAction")
 
 ---@return boolean
 function DismountAction:isValid()
+    local mountPosition = MountingUtility.getNearestMountPosition(self.character, self.animal)
+    if not mountPosition then return false end
+
     return self.animal:isExistInTheWorld()
 end
 
@@ -114,10 +118,10 @@ function DismountAction:perform()
         -- server waits for the client's DismountRequest; Mounts.removeMount runs in the handler
     else
         -- Snap to the chosen mountLeft/mountRight attachment
-        local attachmentPosition = self.animal:getAttachmentWorldPos(self.mountPosition.attachment, nil)
-        if attachmentPosition then
-            self.character:setX(attachmentPosition:x())
-            self.character:setY(attachmentPosition:y())
+        local mountPosition = MountingUtility.getNearestMountPosition(self.character, self.animal)
+        if mountPosition then
+            self.character:setX(mountPosition.x)
+            self.character:setY(mountPosition.y)
             self.character:setZ(self.animal:getZ())
         end
 
