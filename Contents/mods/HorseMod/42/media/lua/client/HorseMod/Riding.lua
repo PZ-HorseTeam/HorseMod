@@ -72,8 +72,8 @@ function HorseRiding.removeMount(player)
 end
 
 ---@param player IsoPlayer
----@param animal IsoAnimal?
-Mounts.onMountChanged:add(function(player, animal)
+---@param animal IsoAnimal
+Mounts.onMount:add(function(player, animal)
     if not player:isLocalPlayer() then
         if not animal then
             RemoteMountInterp.clear(player)

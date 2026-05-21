@@ -441,11 +441,8 @@ HorseManager.onHorseRemoved:add(removeHorseSounds)
 
 ---Stop the footstep loop the instant the rider dismounts
 ---@param player IsoPlayer
----@param animal IsoAnimal?
----@param dismountedAnimal IsoAnimal?
-Mounts.onMountChanged:add(function(player, animal, dismountedAnimal)
-    if animal then return end
-    if not dismountedAnimal then return end
+---@param dismountedAnimal IsoAnimal
+Mounts.onDismount:add(function(player, dismountedAnimal)
     local horseSounds = SoundsSystem.horseSounds[dismountedAnimal]
     if horseSounds then
         horseSounds:stopFootsteps()

@@ -32,12 +32,15 @@ local lastDismountTimestamps = {}
 
 local Mounts = {}
 
----Triggered when a player's mount changes. The third arg is the just dismounted
----animal on dismount events (second arg is nil) so listeners can act on the
----specific animal without re-resolving it after the mount registry is cleared
----on mount events the third arg is nil. Two-arg listeners continue to work.
-Mounts.onMountChanged = Event.new--[[@<IsoPlayer, IsoAnimal?, IsoAnimal?>]]()
 
+---Triggered when a player mounts a horse.
+Mounts.onMount = Event.new--[[@<IsoPlayer, IsoAnimal>]]()
+
+---Triggered when a player dismounts a horse.
+Mounts.onDismount = Event.new--[[@<IsoPlayer, IsoAnimal>]]()
+
+
+---@readonly
 local LOCK_REFRESH_TICKS = 6000
 
 ---@param animal IsoAnimal
@@ -190,7 +193,7 @@ function Mounts.addMount(player, animal)
         )
     end
 
-    Mounts.onMountChanged:trigger(player, animal)
+    Mounts.onMount:trigger(player, animal)
 end
 
 ---@param player IsoPlayer
@@ -256,7 +259,7 @@ function Mounts.removeMount(player)
         )
     end
 
-    Mounts.onMountChanged:trigger(player, nil, mount)
+    Mounts.onDismount:trigger(player, mount)
 end
 
 ---@param player IsoPlayer

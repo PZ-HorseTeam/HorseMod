@@ -372,16 +372,6 @@ local function handleRequestMounts(player, args)
     end)
 end
 
----@param player IsoPlayer
----@param animal IsoAnimal?
-local function handleMountChanged(player, animal)
-    if animal then
-        getOrCreateState(player, animal)
-    else
-        states[player] = nil
-    end
-end
-
 local function updateMountedMovement()
     local delta = GameTime.getInstance():getTimeDelta()
 
@@ -494,12 +484,27 @@ local function handleDismountRequest(player, args)
     Mounts.removeMount(player)
 end
 
+
+---@param player IsoPlayer
+---@param animal IsoAnimal
+local function handleMount(player, animal)
+    getOrCreateState(player, animal)
+end
+
+---@param player IsoPlayer
+---@param animal IsoAnimal
+local function handleDismount(player, animal)
+    states[player] = nil
+end
+
+
 server.registerCommandHandler(mountcommands.RidingInput, handleRidingInput)
 server.registerCommandHandler(mountcommands.RequestMounts, handleRequestMounts)
 server.registerCommandHandler(mountcommands.MountRequest, handleMountRequest)
 server.registerCommandHandler(mountcommands.DismountRequest, handleDismountRequest)
 
-Mounts.onMountChanged:add(handleMountChanged)
+Mounts.onMount:add(handleMount)
+Mounts.onDismount:add(handleDismount)
 Events.OnTickEvenPaused.Add(updateMountedMovement)
 
 return states
