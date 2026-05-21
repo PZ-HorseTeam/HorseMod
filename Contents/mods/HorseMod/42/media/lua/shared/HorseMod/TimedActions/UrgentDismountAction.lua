@@ -127,13 +127,7 @@ function UrgentDismountAction:start()
         character:playerVoiceSound(playerVoice)
     end
 
-    if isClient() then
-        local HorseSounds = require("HorseMod/HorseSounds")
-        local horseSound = self.horseSound
-        if horseSound then
-            HorseSounds.playSound(animal, horseSound)
-        end
-    elseif isServer() then
+    if isServer() then
         -- Listen host: start() runs here (there is no netAction/serverStart),
         -- so broadcast the animation to remote clients from here.
         self:broadcastUrgentDismount()
