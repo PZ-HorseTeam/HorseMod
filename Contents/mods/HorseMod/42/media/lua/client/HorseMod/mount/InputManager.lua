@@ -197,15 +197,8 @@ function InputManager:keyPressed(key)
     elseif key == ModOptions.HorseJumpButton then
         local controller = self.mount.controller
         if controller:canJump() then
-            if isClient() then
-                self.queuedJump = true
-                controller:jump()
-            elseif isServer() then
-                self.queuedJump = true
-                controller:jump()
-            else
-                controller:jump()
-            end
+            self.queuedJump = true
+            controller:jump()
         end
     end
 end

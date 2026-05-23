@@ -75,9 +75,6 @@ end
 ---@param animal IsoAnimal
 Mounts.onMount:add(function(player, animal)
     if not player:isLocalPlayer() then
-        if not animal then
-            RemoteMountInterp.clear(player)
-        end
         return
     end
 
@@ -89,13 +86,24 @@ Mounts.onMount:add(function(player, animal)
         HorseRiding.removeMount(player)
     end
 
-    if animal then
-        HorseRiding.createMountFromPair(
-            MountPair.new(
-                player,
-                animal
-            )
+    HorseRiding.createMountFromPair(
+        MountPair.new(
+            player,
+            animal
         )
+    )
+end)
+
+---@param player IsoPlayer
+---@param dismountedAnimal IsoAnimal
+Mounts.onDismount:add(function(player, dismountedAnimal)
+    if not player:isLocalPlayer() then
+        RemoteMountInterp.clear(player)
+        return
+    end
+
+    if HorseRiding.getMount(player) then
+        HorseRiding.removeMount(player)
     end
 end)
 

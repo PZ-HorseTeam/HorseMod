@@ -44,6 +44,10 @@ function HorseJump:start()
     character:setIgnoreAimingInput(true)
     character:setIsAiming(false)
 
+    -- Without the cooldown spammed jump key queues another HorseJump before the horse animation
+    -- has finished exit transition, leaving the horse frozen mid animation
+    movement:beginJumpCooldown()
+
     movement.doTurn = false
     movement.forcedInput = controller.mount.inputManager:getCurrentInput()
 end

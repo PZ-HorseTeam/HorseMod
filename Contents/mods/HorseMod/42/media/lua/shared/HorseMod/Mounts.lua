@@ -1,4 +1,5 @@
 local mountcommands = require("HorseMod/networking/mountcommands")
+local soundcommands = require("HorseMod/networking/soundcommands")
 local commands = require("HorseMod/networking/commands")
 local Event = require("HorseMod/Event")
 local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
@@ -191,6 +192,12 @@ function Mounts.addMount(player, animal)
                 character = commands.getPlayerId(player),
             }
         )
+        -- broadcast the snort so remote clients hear the same
+        -- audio cue the local rider hears when mounting
+        soundcommands.HorseSoundOneShot:send(nil--[[@as IsoPlayer?]], {
+            animal = commands.getAnimalId(animal),
+            sound = "HorseMountSnort",
+        })
     end
 
     Mounts.onMount:trigger(player, animal)

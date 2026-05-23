@@ -10,11 +10,13 @@ local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
 local MountedAnimationState = require("HorseMod/riding/MountedAnimationState")
 local MountedDirection = require("HorseMod/riding/MountedDirection")
 local mountcommands = require("HorseMod/networking/mountcommands")
+local soundcommands = require("HorseMod/networking/soundcommands")
 local commands = require("HorseMod/networking/commands")
 local server = require("HorseMod/networking/server")
 
 local INPUT_TIMEOUT_SECONDS = 0.35
 local HEARTBEAT_INTERVAL_SECONDS = 0.25
+local JUMP_COOLDOWN_MS = 1200
 local RESYNC_SEQ_GAP = 30
 local MAX_MOUNT_DISTANCE_SQ = 144
 local MAX_CLIENT_POSE_DISTANCE_SQ = 64
@@ -32,11 +34,13 @@ local IDLE_TO_RUN_SECONDS = 0.6
 ---@field lastGallop boolean
 ---@field lastTrot boolean
 ---@field lastJump boolean
+---@field lastJumpAcceptedMs integer
 ---@field lastMoving boolean
 ---@field lastDir integer
 ---@field lastTurn integer
 ---@field lastTurnTime number
 ---@field lastHasReins boolean
+---@field lastGait MovementState
 ---@field timeSinceInput number
 ---@field timeSinceHeartbeat number
 ---@field idleToRunTime number
@@ -208,6 +212,43 @@ local function validateInput(player, args)
     return animal, input, math.floor(args.seq), pose
 end
 
+---Derive the rider's current gait from server-authoritative state. Used to
+---broadcast HorseSoundState so remote clients can drive the footstep loop.
+---@param moving boolean
+---@param galloping boolean
+---@param trotting boolean
+---@return MovementState
+---@nodiscard
+local function deriveGait(moving, galloping, trotting)
+    if galloping then
+        return "gallop"
+    end
+    if not moving then
+        return "idle"
+    end
+    if trotting then
+        return "trot"
+    end
+    return "walking"
+end
+
+---@param state ServerRidingState
+---@param gait MovementState
+---@param jumping boolean
+local function broadcastGaitIfChanged(state, gait, jumping)
+    if state.lastGait == gait then
+        return
+    end
+    state.lastGait = gait
+
+    soundcommands.HorseSoundState:send(nil--[[@as IsoPlayer?]], {
+        rider = commands.getPlayerId(state.rider),
+        animal = commands.getAnimalId(state.animal),
+        gait = gait,
+        jumping = jumping,
+    })
+end
+
 ---@param state ServerRidingState
 ---@param input ValidatedRidingInput
 ---@param pose ClientRidingPose
@@ -231,6 +272,15 @@ local function applyClientPose(state, input, pose)
     if turn ~= 0 then
         state.lastTurn = turn
         state.lastTurnTime = TURN_ANIM_HOLD_SECONDS
+    end
+
+    if input.jump and not state.lastJump then
+        local now = getTimestampMs()
+        if now - state.lastJumpAcceptedMs < JUMP_COOLDOWN_MS then
+            input.jump = false
+        else
+            state.lastJumpAcceptedMs = now
+        end
     end
 
     animal:setVariable(AnimationVariable.GALLOP, galloping)
@@ -258,6 +308,8 @@ local function applyClientPose(state, input, pose)
     state.lastJump = input.jump == true
     state.lastDir = pose.dir
     state.lastHasReins = input.hasReins
+
+    broadcastGaitIfChanged(state, deriveGait(moving, galloping, input.trot == true), input.jump == true)
 end
 
 ---@param state ServerRidingState
@@ -322,11 +374,13 @@ local function getOrCreateState(player, animal)
         lastGallop = false,
         lastTrot = animal:getVariableBoolean(AnimationVariable.TROT),
         lastJump = false,
+        lastJumpAcceptedMs = 0,
         lastMoving = false,
         lastDir = player:getDir():ordinal(),
         lastTurn = 0,
         lastTurnTime = 0.0,
         lastHasReins = player:getVariableBoolean(AnimationVariable.HAS_REINS),
+        lastGait = "idle",
         timeSinceInput = INPUT_TIMEOUT_SECONDS,
         timeSinceHeartbeat = 0,
         idleToRunTime = 0.0,
@@ -372,6 +426,7 @@ local function handleRequestMounts(player, args)
     end)
 end
 
+
 local function updateMountedMovement()
     local delta = GameTime.getInstance():getTimeDelta()
 
@@ -410,6 +465,7 @@ local function updateMountedMovement()
             state.lastTurn = 0
             state.lastTurnTime = 0
             state.idleToRunTime = 0
+            broadcastGaitIfChanged(state, "idle", false)
             relayRidingState(state, true)
         elseif state.timeSinceHeartbeat >= HEARTBEAT_INTERVAL_SECONDS then
             relayRidingState(state, true)
@@ -494,6 +550,17 @@ end
 ---@param player IsoPlayer
 ---@param animal IsoAnimal
 local function handleDismount(player, animal)
+    local state = states[player]
+    if state then
+        -- Push a final idle so remote clients silence the footstep loop even
+        -- if they haven't yet received the Dismount packet.
+        soundcommands.HorseSoundState:send(nil--[[@as IsoPlayer?]], {
+            rider = commands.getPlayerId(player),
+            animal = commands.getAnimalId(dismountedAnimal),
+            gait = "idle",
+            jumping = false,
+        })
+    end
     states[player] = nil
 end
 

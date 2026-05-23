@@ -76,16 +76,9 @@ function MountController:canJump()
 end
 
 function MountController:jump()
-    if isClient() then
-        self.queuedJump = true
-    elseif isServer() then
-        self.queuedJump = true
-    else
-        local HorseJump = require("HorseMod/TimedActions/HorseJump")
-        local rider = self.mount.pair.rider
-        ISTimedActionQueue.clear(rider)
-        ISTimedActionQueue.add(HorseJump:new(rider, self.mount.pair.mount, self))
-    end
+    -- When the jump key was spammed, repeated HorseJump:start calls were
+    -- leaving the horse frozen mid animation
+    self.queuedJump = true
 end
 
 ---@param input RidingMovementInput

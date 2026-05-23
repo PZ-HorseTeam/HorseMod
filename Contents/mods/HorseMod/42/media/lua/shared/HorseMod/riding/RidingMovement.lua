@@ -560,6 +560,7 @@ local TREES_GENE_MULT_RUN = 0.25
 local TREES_LINGER_SECONDS = 1.0
 local TURN_STEPS_PER_SEC = 60
 local JUMP_SECONDS = 0.85
+local JUMP_COOLDOWN_SECONDS = 1.4
 local IDLE_TO_RUN_SECONDS = 0.6
 
 local BASE_CHANCE = 0.1
@@ -617,6 +618,7 @@ local TURN_ANIM_HOLD_SECONDS = 0.20
 ---@field doTurn boolean
 ---@field forcedInput RidingMovementInput?
 ---@field jumpTime number
+---@field jumpCooldown number
 ---@field lastAuthoritativeSeq integer
 ---@field direction IsoDirections
 ---@field turnAnimSign integer
@@ -1173,6 +1175,7 @@ function RidingMovement:canJump()
     return self.pair.mount:getVariableBoolean(AnimationVariable.GALLOP)
         and self:getCurrentSpeed() > 6
         and not self.pair:getAnimationVariableBoolean(AnimationVariable.JUMP)
+        and self.jumpCooldown <= 0
 end
 
 function RidingMovement:startJump()
@@ -1185,6 +1188,13 @@ function RidingMovement:startJump()
 
     self.doTurn = false
     self.jumpTime = JUMP_SECONDS
+    self.jumpCooldown = JUMP_COOLDOWN_SECONDS
+end
+
+---SP path drives jumps through the HorseJump timed action instead of startJump,
+---so expose just the cooldown so the action can share the same canJump lockout
+function RidingMovement:beginJumpCooldown()
+    self.jumpCooldown = JUMP_COOLDOWN_SECONDS
 end
 
 function RidingMovement:resetJump()
@@ -1208,6 +1218,8 @@ end
 ---@param input RidingMovementInput
 ---@param deltaTime number
 function RidingMovement:updateJump(input, deltaTime)
+    self.jumpCooldown = math.max(0, self.jumpCooldown - deltaTime)
+
     if input.jump and self:canJump() then
         self.forcedInput = {
             movement = {
@@ -1372,6 +1384,7 @@ function RidingMovement.new(pair, effects)
             doTurn = true,
             forcedInput = nil,
             jumpTime = 0,
+            jumpCooldown = 0,
             lastAuthoritativeSeq = -1,
             direction = pair.rider:getDir(),
             turnAnimSign = 0,
