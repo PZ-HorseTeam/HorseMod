@@ -1,4 +1,4 @@
-module Base {
+module HorseMod {
     craftRecipe HorseSaddle {
         time = 600,
         tags = AnySurfaceCraft,
