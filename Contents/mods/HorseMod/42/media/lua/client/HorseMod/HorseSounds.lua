@@ -529,6 +529,9 @@ HorseManager.onHorseRemoved:add(removeHorseSounds)
 ---@param player IsoPlayer
 ---@param dismountedAnimal IsoAnimal
 Mounts.onDismount:add(function(player, dismountedAnimal)
+    if not dismountedAnimal then
+        return
+    end
     local horseSounds = SoundsSystem.horseSounds[dismountedAnimal]
     if horseSounds then
         horseSounds:stopFootsteps()

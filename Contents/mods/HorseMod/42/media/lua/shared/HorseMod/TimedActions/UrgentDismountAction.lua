@@ -157,7 +157,7 @@ function UrgentDismountAction:complete()
         Mounts.removeMount(self.character)
     end
 
-    if self.shouldFlee then
+    if self.shouldFlee and self.animal then
         self.animal:getBehavior():forceFleeFromChr(self.character)
     end
 

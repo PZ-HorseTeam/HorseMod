@@ -551,12 +551,12 @@ end
 ---@param animal IsoAnimal
 local function handleDismount(player, animal)
     local state = states[player]
-    if state then
+    if state and animal then
         -- Push a final idle so remote clients silence the footstep loop even
         -- if they haven't yet received the Dismount packet.
         soundcommands.HorseSoundState:send(nil--[[@as IsoPlayer?]], {
             rider = commands.getPlayerId(player),
-            animal = commands.getAnimalId(dismountedAnimal),
+            animal = commands.getAnimalId(animal),
             gait = "idle",
             jumping = false,
         })

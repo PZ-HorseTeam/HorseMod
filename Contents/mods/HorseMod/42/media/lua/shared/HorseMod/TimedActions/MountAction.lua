@@ -31,6 +31,9 @@ local MountAction = ISBaseTimedAction:derive("HorseMod_MountAction")
 
 
 function MountAction:isValid()
+    if not self.animal then
+        return false
+    end
     if self.animal:isExistInTheWorld()
         and self.character:getSquare() then
 
@@ -45,6 +48,9 @@ function MountAction:isValid()
 end
 
 function MountAction:waitToStart()
+    if not self.animal then
+        return false
+    end
     -- self.character:faceThisObject(self.mount)
     self.lockDir = self.animal:getDirectionAngle()
     self.character:setDirectionAngle(self.lockDir)
@@ -56,10 +62,14 @@ function MountAction:update()
     -- fix the mount and rider to look in the same direction for animation alignment
     local character = self.character
     local animal = self.animal
-    
+
+    if not animal then
+        return
+    end
+
     animal:setDirectionAngle(self.lockDir)
     animal:getPathFindBehavior2():reset()
-    
+
     character:setDirectionAngle(self.lockDir)
 end
 
@@ -126,6 +136,13 @@ end
 
 
 function MountAction:perform()
+    -- if the horse died between start and perform, skip because urgent dismount
+    -- has already handled it
+    if not self.animal then
+        ISBaseTimedAction.perform(self)
+        return
+    end
+
     if not IS_SERVER then
         -- HACK: we can't require this at file load because it is in the client dir
         local HorseSounds = require("HorseMod/HorseSounds")
