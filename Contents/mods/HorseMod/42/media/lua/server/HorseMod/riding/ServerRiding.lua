@@ -548,7 +548,7 @@ local function handleMount(player, animal)
 end
 
 ---@param player IsoPlayer
----@param animal IsoAnimal
+---@param animal IsoAnimal?
 local function handleDismount(player, animal)
     local state = states[player]
     if state and animal then

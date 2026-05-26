@@ -95,7 +95,7 @@ Mounts.onMount:add(function(player, animal)
 end)
 
 ---@param player IsoPlayer
----@param dismountedAnimal IsoAnimal
+---@param dismountedAnimal IsoAnimal?
 Mounts.onDismount:add(function(player, dismountedAnimal)
     if not player:isLocalPlayer() then
         RemoteMountInterp.clear(player)

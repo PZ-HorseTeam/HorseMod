@@ -38,7 +38,9 @@ local Mounts = {}
 Mounts.onMount = Event.new--[[@<IsoPlayer, IsoAnimal>]]()
 
 ---Triggered when a player dismounts a horse.
-Mounts.onDismount = Event.new--[[@<IsoPlayer, IsoAnimal>]]()
+---The animal parameter may be nil if the horse was killed or unloaded
+---before the dismount completed
+Mounts.onDismount = Event.new--[[@<IsoPlayer, IsoAnimal?>]]()
 
 
 ---@readonly

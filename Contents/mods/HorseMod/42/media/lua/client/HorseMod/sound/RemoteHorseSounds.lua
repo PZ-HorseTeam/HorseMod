@@ -280,12 +280,11 @@ end)
 
 
 Mounts.onDismount:add(function(_, dismountedAnimal)
-    -- on dismount the server will also broadcast gait as "idle" state, but the poll
-    -- handles whichever comes first. dismountedAnimal can be nil if the horse was
-    -- killed/unloaded so skip in that case
     if not dismountedAnimal then
         return
     end
+    -- on dismount the server will also broadcast gait as "idle" state, but the poll
+    -- handles whichever comes first
     stopAllSoundsOnAnimal(dismountedAnimal)
     remoteHorseSoundState[dismountedAnimal] = nil
 end)
