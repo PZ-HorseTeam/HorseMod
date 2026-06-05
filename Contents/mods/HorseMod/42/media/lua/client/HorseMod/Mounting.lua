@@ -130,7 +130,7 @@ function Mounting.dismountFall(player, horse)
     ISTimedActionQueue.add(UrgentDismountAction:new(
         player,
         horse,
-        AnimationVariable.FALL_BACK,
+        nil,
         HorseSounds.Sound.STRESSED,
         nil,
         true
