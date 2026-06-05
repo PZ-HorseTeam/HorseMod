@@ -11,11 +11,15 @@
     "ContextMenu_Horse_Slot_Saddle": "selle",
     "ContextMenu_Horse_Slot_Saddlebags": "sacoche de selle",
     "ContextMenu_Horse_Slot_Reins": "rênes",
+    "ContextMenu_Horse_Slot_Tent": "tentes",
+    "ContextMenu_Horse_Slot_SleepingBag": "sac de couchage",
     "ContextMenu_Horse_NotAdult": "Pas un cheval adulte.",
     "ContextMenu_Horse_IsRunning": "Le cheval court.",
     "ContextMenu_Horse_IsDead": "Le cheval est mort.",
     "ContextMenu_Horse_IsAlreadyRiding": "Le cheval est déjà monté.",
     "ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted": "Impossible de changer l'équipement en montant.",
     "ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted": "Impossible de changer l'équipement du cheval monté.",
-    "ContextMenu_Horse_HasRider": "Le cheval est déjà monté par un autre personnage."
+    "ContextMenu_Horse_CannotEquipWithRider": "Impossible d'équiper cet objet lorsque le cheval a un cavalier.",
+    "ContextMenu_Horse_HasRider": "Le cheval est déjà monté par un autre personnage.",
+    "ContextMenu_FoodType_Horse": "Cheval"
 }
