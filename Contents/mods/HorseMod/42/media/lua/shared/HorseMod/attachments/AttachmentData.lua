@@ -193,6 +193,7 @@ local AttachmentData = {
     MANE_HEX_BY_BREED = {
         ["AmericanQuarterPalomino"] = {"#EADAB6"},
         ["AmericanQuarterBlueRoan"] = {"#19191C"},
+        ["AmericanQuarterStrawberryRoan"] = {"#78382B"},
         
         ["AmericanPaintTobiano"] = {"#FBDEA7"},
         ["AmericanPaintOvero"] = {"#292524"},
@@ -202,6 +203,7 @@ local AttachmentData = {
         
         ["ThoroughbredBay"] = {"#140C08"},
         ["ThoroughbredFleaBittenGrey"] = {"#FCECC5"},
+        ["ThoroughbredCricket"] = {"#3C1C16"},
     },
 
     ---Default mane items configuration.
