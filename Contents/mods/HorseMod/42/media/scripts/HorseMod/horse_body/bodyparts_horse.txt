@@ -3,6 +3,7 @@ module HorseMod {
         Base
     }
 
+/* AMERICAN QUARTER PALOMINO */
     item Foal_Head_AmericanQuarterPalomino {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -14,7 +15,6 @@ module HorseMod {
         StaticModel = FoalHead_AmericanQuarterPalomino,
         WorldStaticModel = FoalHead_AmericanQuarterPalomino,
     }
-
     item Mare_Head_AmericanQuarterPalomino {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -26,7 +26,6 @@ module HorseMod {
         StaticModel = HorseHead_AmericanQuarterPalomino,
         WorldStaticModel = HorseHead_AmericanQuarterPalomino,
     }
-
     item Stallion_Head_AmericanQuarterPalomino {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -39,6 +38,7 @@ module HorseMod {
         WorldStaticModel = HorseHead_AmericanQuarterPalomino,
     }
 
+/* AMERICAN PAINT TOBIANO */
     item Foal_Head_AmericanPaintTobiano {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -50,7 +50,6 @@ module HorseMod {
         StaticModel = FoalHead_AmericanPaintTobiano,
         WorldStaticModel = FoalHead_AmericanPaintTobiano,
     }
-
     item Mare_Head_AmericanPaintTobiano {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -62,7 +61,6 @@ module HorseMod {
         StaticModel = HorseHead_AmericanPaintTobiano,
         WorldStaticModel = HorseHead_AmericanPaintTobiano,
     }
-
     item Stallion_Head_AmericanPaintTobiano {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -75,6 +73,7 @@ module HorseMod {
         WorldStaticModel = HorseHead_AmericanPaintTobiano,
     }
 
+/* AMERICAN PAINT OVERO */
     item Foal_Head_AmericanPaintOvero {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -86,7 +85,6 @@ module HorseMod {
         StaticModel = FoalHead_AmericanPaintOvero,
         WorldStaticModel = FoalHead_AmericanPaintOvero,
     }
-
     item Mare_Head_AmericanPaintOvero {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -98,7 +96,6 @@ module HorseMod {
         StaticModel = HorseHead_AmericanPaintOvero,
         WorldStaticModel = HorseHead_AmericanPaintOvero,
     }
-
     item Stallion_Head_AmericanPaintOvero {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -111,6 +108,7 @@ module HorseMod {
         WorldStaticModel = HorseHead_AmericanPaintOvero,
     }
 
+/* APPALOOSA GRULLA BLANKET */
     item Foal_Head_AppaloosaGrullaBlanket {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -122,7 +120,6 @@ module HorseMod {
         StaticModel = FoalHead_AppaloosaGrullaBlanket,
         WorldStaticModel = FoalHead_AppaloosaGrullaBlanket,
     }
-
     item Mare_Head_AppaloosaGrullaBlanket {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -134,7 +131,6 @@ module HorseMod {
         StaticModel = HorseHead_AppaloosaGrullaBlanket,
         WorldStaticModel = HorseHead_AppaloosaGrullaBlanket,
     }
-
     item Stallion_Head_AppaloosaGrullaBlanket {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -147,6 +143,7 @@ module HorseMod {
         WorldStaticModel = HorseHead_AppaloosaGrullaBlanket,
     }
 
+/* THOROUGHBRED BAY */
     item Foal_Head_ThoroughbredBay {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -158,7 +155,6 @@ module HorseMod {
         StaticModel = FoalHead_ThoroughbredBay,
         WorldStaticModel = FoalHead_ThoroughbredBay,
     }
-
     item Mare_Head_ThoroughbredBay {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -170,7 +166,6 @@ module HorseMod {
         StaticModel = HorseHead_ThoroughbredBay,
         WorldStaticModel = HorseHead_ThoroughbredBay,
     }
-
     item Stallion_Head_ThoroughbredBay {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -183,6 +178,42 @@ module HorseMod {
         WorldStaticModel = HorseHead_ThoroughbredBay,
     }
 
+/* THOROUGHBRED CRICKET */
+    item Foal_Head_ThoroughbredCricket {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFoal_ThoroughbredCricket,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_ThoroughbredCricket,
+        WorldStaticModel = FoalHead_ThoroughbredCricket,
+    }
+    item Mare_Head_ThoroughbredCricket {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFemale_ThoroughbredCricket,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_ThoroughbredCricket,
+        WorldStaticModel = HorseHead_ThoroughbredCricket,
+    }
+    item Stallion_Head_ThoroughbredCricket {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseMale_ThoroughbredCricket,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_ThoroughbredCricket,
+        WorldStaticModel = HorseHead_ThoroughbredCricket,
+    }
+
+/* AMERICAN QUARTER BLUE ROAN */
     item Foal_Head_AmericanQuarterBlueRoan {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -194,7 +225,6 @@ module HorseMod {
         StaticModel = FoalHead_AmericanQuarterBlueRoan,
         WorldStaticModel = FoalHead_AmericanQuarterBlueRoan,
     }
-
     item Mare_Head_AmericanQuarterBlueRoan {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -206,7 +236,6 @@ module HorseMod {
         StaticModel = HorseHead_AmericanQuarterBlueRoan,
         WorldStaticModel = HorseHead_AmericanQuarterBlueRoan,
     }
-
     item Stallion_Head_AmericanQuarterBlueRoan {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -219,6 +248,42 @@ module HorseMod {
         WorldStaticModel = HorseHead_AmericanQuarterBlueRoan,
     }
 
+/* AMERICAN QUARTER STRAWBERRY ROAN */
+    item Foal_Head_AmericanQuarterStrawberryRoan {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFoal_AmericanQuarterStrawberryRoan,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = FoalHead_AmericanQuarterStrawberryRoan,
+    }
+    item Mare_Head_AmericanQuarterStrawberryRoan {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFemale_AmericanQuarterStrawberryRoan,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = HorseHead_AmericanQuarterStrawberryRoan,
+    }
+    item Stallion_Head_AmericanQuarterStrawberryRoan {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseMale_AmericanQuarterStrawberryRoan,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = HorseHead_AmericanQuarterStrawberryRoan,
+    }
+
+/* APPALOOSA LEOPARD */
     item Foal_Head_AppaloosaLeopard {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -230,7 +295,6 @@ module HorseMod {
         StaticModel = FoalHead_AppaloosaLeopard,
         WorldStaticModel = FoalHead_AppaloosaLeopard,
     }
-
     item Mare_Head_AppaloosaLeopard {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -242,7 +306,6 @@ module HorseMod {
         StaticModel = HorseHead_AppaloosaLeopard,
         WorldStaticModel = HorseHead_AppaloosaLeopard,
     }
-
     item Stallion_Head_AppaloosaLeopard {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -255,6 +318,7 @@ module HorseMod {
         WorldStaticModel = HorseHead_AppaloosaLeopard,
     }
 
+/* THOROUGHBRED FLEA-BITTEN GREY */
     item Foal_Head_ThoroughbredFleaBittenGrey {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -266,7 +330,6 @@ module HorseMod {
         StaticModel = FoalHead_ThoroughbredFleaBittenGrey,
         WorldStaticModel = FoalHead_ThoroughbredFleaBittenGrey,
     }
-
     item Mare_Head_ThoroughbredFleaBittenGrey {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -278,7 +341,6 @@ module HorseMod {
         StaticModel = HorseHead_ThoroughbredFleaBittenGrey,
         WorldStaticModel = HorseHead_ThoroughbredFleaBittenGrey,
     }
-
     item Stallion_Head_ThoroughbredFleaBittenGrey {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
@@ -291,6 +353,9 @@ module HorseMod {
         WorldStaticModel = HorseHead_ThoroughbredFleaBittenGrey,
     }
 
+
+
+/* GENERIC */
     item Horse_Skull {
         DisplayCategory = AnimalPart,
         Weight = 1.2,

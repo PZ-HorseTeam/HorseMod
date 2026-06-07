@@ -50,6 +50,31 @@ module HorseMod
     }
 
 
+/* AMERICAN QUARTER STRAWBERRY ROAN */
+    model HorseHead_AmericanQuarterStrawberryRoan {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterStrawberryRoan,
+    }
+    model HorseHead_AmericanQuarterStrawberryRoanRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterStrawberryRoan_Rotting,
+    }
+    model FoalHead_AmericanQuarterStrawberryRoan {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterStrawberryRoan,
+        scale = 0.7,
+    }
+    model FoalHead_AmericanQuarterStrawberryRoanRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterStrawberryRoan_Rotting,
+        scale = 0.7,
+    }
+
+
 /* AMERICAN PAINT TOBIANO */
     model HorseHead_AmericanPaintTobiano {
         mesh = HorseMod/Horse_Head,
@@ -171,6 +196,31 @@ module HorseMod
         mesh = HorseMod/Horse_Head,
         static = true,
         texture = Body/HorseMod/Horse_ThoroughbredBay_Rotting,
+        scale = 0.7,
+    }
+
+
+/* THOROUGHBRED CRICKET */
+    model HorseHead_ThoroughbredCricket {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredCricket,
+    }
+    model HorseHead_ThoroughbredCricketRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredCricket_Rotting,
+    }
+    model FoalHead_ThoroughbredCricket {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredCricket,
+        scale = 0.7,
+    }
+    model FoalHead_ThoroughbredCricketRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredCricket_Rotting,
         scale = 0.7,
     }
 

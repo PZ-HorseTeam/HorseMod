@@ -1,8 +1,5 @@
 module HorseMod {
-    imports {
-        Base
-    }
-    /* American Paint Overo */
+/* American Paint Overo */
     item HorseLeather_AmericanPaintOvero_Full
     {
         DisplayCategory = Material,
@@ -81,7 +78,7 @@ module HorseMod {
     }
 
 
-    /* American Paint */
+/* American Paint Tobiano */
     item HorseLeather_AmericanPaintTobiano_Full
     {
         DisplayCategory = Material,
@@ -160,7 +157,7 @@ module HorseMod {
     }
 
 
-    /* Blue Roan */
+/* American Quarter Blue Roan */
     item HorseLeather_AmericanQuarterBlueRoan_Full
     {
         DisplayCategory = Material,
@@ -239,7 +236,86 @@ module HorseMod {
     }
 
 
-    /* American Quarter */
+/* American Quarter Strawberry Roan */
+    item HorseLeather_AmericanQuarterStrawberryRoan_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan,
+        Tags = base:leatherfulllarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item HorseLeather_AmericanQuarterStrawberryRoan_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan,
+        Tags = base:leatherfurlarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan,
+        Tags = base:leatherfurwetlarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldObjectSprite = rugs_animals_horse_96,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan,
+        Tags = base:leatherfurtannedlarge,
+    }
+    item HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan_Medium
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+    model Leather_Horse_AmericanQuarterStrawberryRoan
+    {
+        mesh = WorldItems/Leather_Rolled,
+        texture = WorldItems/Leathers/LeatherRolled_Horse_AmericanQuarterStrawberryRoan,
+        scale = 0.1,
+    }
+    model Leather_Horse_AmericanQuarterStrawberryRoan_Medium
+    {
+        mesh = WorldItems/Leather_Rolled,
+        texture = WorldItems/Leathers/LeatherRolled_Horse_AmericanQuarterStrawberryRoan,
+        scale = 0.08,
+    }
+    model Leather_Horse_AmericanQuarterStrawberryRoan_Small
+    {
+        mesh = WorldItems/Leather_Rolled,
+        texture = WorldItems/Leathers/LeatherRolled_Horse_AmericanQuarterStrawberryRoan,
+        scale = 0.055,
+    }
+
+
+/* American Quarter Palomino */
     item HorseLeather_AmericanQuarterPalomino_Full
     {
         DisplayCategory = Material,
@@ -318,7 +394,7 @@ module HorseMod {
     }
 
 
-    /* Appaloosa */
+/* Appaloosa Grulla Blanket */
     item HorseLeather_AppaloosaGrullaBlanket_Full
     {
         DisplayCategory = Material,
@@ -397,7 +473,7 @@ module HorseMod {
     }
 
 
-    /* Spotted Appaloosa */
+/* Appaloosa Leopard */
     item HorseLeather_AppaloosaLeopard_Full
     {
         DisplayCategory = Material,
@@ -476,7 +552,7 @@ module HorseMod {
     }
 
 
-    /* Thoroughbred */
+/* Thoroughbred Bay */
     item HorseLeather_ThoroughbredBay_Full
     {
         DisplayCategory = Material,
@@ -555,7 +631,7 @@ module HorseMod {
     }
 
 
-    /* Flea-Bitten Grey */
+/* Thoroughbred Flea-Bitten Grey */
     item HorseLeather_ThoroughbredFleaBittenGrey_Full
     {
         DisplayCategory = Material,
@@ -630,6 +706,84 @@ module HorseMod {
     {
         mesh = WorldItems/Leather_Rolled,
         texture = WorldItems/Leathers/LeatherRolled_Horse_ThoroughbredFleaBittenGrey,
+        scale = 0.055,
+    }
+
+/* Thoroughbred Cricket */
+    item HorseLeather_ThoroughbredCricket_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket,
+        Tags = base:leatherfulllarge,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item HorseLeather_ThoroughbredCricket_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket,
+        Tags = base:leatherfurlarge,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item HorseLeather_ThoroughbredCricket_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket,
+        Tags = base:leatherfurwetlarge,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item HorseLeather_ThoroughbredCricket_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 5.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldObjectSprite = rugs_animals_horse_256,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket,
+        Tags = base:leatherfurtannedlarge,
+    }
+    item HorseLeather_ThoroughbredCricket_Fur_Tan_Medium
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item HorseLeather_ThoroughbredCricket_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+    model Leather_Horse_ThoroughbredCricket
+    {
+        mesh = WorldItems/Leather_Rolled,
+        texture = WorldItems/Leathers/LeatherRolled_Horse_ThoroughbredCricket,
+        scale = 0.1,
+    }
+    model Leather_Horse_ThoroughbredCricket_Medium
+    {
+        mesh = WorldItems/Leather_Rolled,
+        texture = WorldItems/Leathers/LeatherRolled_Horse_ThoroughbredCricket,
+        scale = 0.08,
+    }
+    model Leather_Horse_ThoroughbredCricket_Small
+    {
+        mesh = WorldItems/Leather_Rolled,
+        texture = WorldItems/Leathers/LeatherRolled_Horse_ThoroughbredCricket,
         scale = 0.055,
     }
 }

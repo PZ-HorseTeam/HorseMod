@@ -275,7 +275,34 @@ module HorseMod {
         static = true,
     }
 
-    /* HORSE: FLEA-BITTEN GREY */
+    /* HORSE: STRAWBERRY ROAN */
+	item HorseSaddle_AmericanQuarterStrawberryRoan {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_AmericanQuarterStrawberryRoan,
+        StaticModel = HorseSaddle_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = HorseSaddle_World_AmericanQuarterStrawberryRoan,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_AmericanQuarterStrawberryRoan {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_AmericanQuarterStrawberryRoan,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_AmericanQuarterStrawberryRoan {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_AmericanQuarterStrawberryRoan,
+        static = true,
+    }
+
+    /* HORSE: THOROUGHBRED FLEA-BITTEN GREY */
 	item HorseSaddle_ThoroughbredFleaBittenGrey {
         DisplayCategory = Accessory,
         Tags = horsemod:horseaccessory,
@@ -356,7 +383,7 @@ module HorseMod {
         static = true,
     }
 
-    /* HORSE: THOROUGHBRED */
+    /* HORSE: THOROUGHBRED BAY */
 	item HorseSaddle_ThoroughbredBay {
         DisplayCategory = Accessory,
         Tags = horsemod:horseaccessory,
@@ -380,6 +407,33 @@ module HorseMod {
     model HorseSaddle_World_ThoroughbredBay {
         mesh = HorseMod/HorseSaddle_Ground,
         texture = Items/Accessories/HorseSaddle_ThoroughbredBay,
+        static = true,
+    }
+
+    /* HORSE: THOROUGHBRED CRICKET */
+	item HorseSaddle_ThoroughbredCricket {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_ThoroughbredCricket,
+        StaticModel = HorseSaddle_ThoroughbredCricket,
+        WorldStaticModel = HorseSaddle_World_ThoroughbredCricket,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_ThoroughbredCricket {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_ThoroughbredCricket,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_ThoroughbredCricket {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_ThoroughbredCricket,
         static = true,
     }
 

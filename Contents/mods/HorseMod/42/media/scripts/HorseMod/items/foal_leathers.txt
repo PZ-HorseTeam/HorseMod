@@ -1,8 +1,5 @@
 module HorseMod {
-    imports {
-        Base
-    }
-    /* American Paint Overo */
+/* American Paint Overo */
     item FoalLeather_AmericanPaintOvero_Full
     {
         DisplayCategory = Material,
@@ -54,7 +51,7 @@ module HorseMod {
     }
 
 
-    /* American Paint */
+/* American Paint Tobiano */
     item FoalLeather_AmericanPaintTobiano_Full
     {
         DisplayCategory = Material,
@@ -106,7 +103,7 @@ module HorseMod {
     }
 
 
-    /* Blue Roan */
+/* American Quarter Blue Roan */
     item FoalLeather_AmericanQuarterBlueRoan_Full
     {
         DisplayCategory = Material,
@@ -158,7 +155,59 @@ module HorseMod {
     }
 
 
-    /* American Quarter */
+/* American Quarter Strawberry Roan */
+    item FoalLeather_AmericanQuarterStrawberryRoan_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan_Medium,
+        Tags = base:leatherfullmedium,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_AmericanQuarterStrawberryRoan_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan_Medium,
+        Tags = base:leatherfurmedium,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan_Medium,
+        Tags = base:leatherfurwetmedium,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldObjectSprite = rugs_animals_foal_33,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+
+
+/* American Quarter Palomino */
     item FoalLeather_AmericanQuarterPalomino_Full
     {
         DisplayCategory = Material,
@@ -210,7 +259,7 @@ module HorseMod {
     }
 
 
-    /* Appaloosa */
+/* Appaloosa Grulla Blanket */
     item FoalLeather_AppaloosaGrullaBlanket_Full
     {
         DisplayCategory = Material,
@@ -262,7 +311,7 @@ module HorseMod {
     }
 
 
-    /* Spotted Appaloosa */
+/* Appaloosa Leopard */
     item FoalLeather_AppaloosaLeopard_Full
     {
         DisplayCategory = Material,
@@ -314,7 +363,7 @@ module HorseMod {
     }
 
 
-    /* Thoroughbred */
+/* Thoroughbred Bay */
     item FoalLeather_ThoroughbredBay_Full
     {
         DisplayCategory = Material,
@@ -366,7 +415,59 @@ module HorseMod {
     }
 
 
-    /* Flea-Bitten Grey */
+/* Thoroughbred Cricket */
+    item FoalLeather_ThoroughbredCricket_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket_Medium,
+        Tags = base:leatherfullmedium,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_ThoroughbredCricket_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket_Medium,
+        Tags = base:leatherfurmedium,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_ThoroughbredCricket_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket_Medium,
+        Tags = base:leatherfurwetmedium,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_ThoroughbredCricket_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldObjectSprite = rugs_animals_foal_97,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item FoalLeather_ThoroughbredCricket_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
+        WorldStaticModel = Leather_Horse_ThoroughbredCricket_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+
+
+/* Thoroughbred Flea-Bitten Grey */
     item FoalLeather_ThoroughbredFleaBittenGrey_Full
     {
         DisplayCategory = Material,
