@@ -59,7 +59,7 @@ function MountingUtility.getNearestMountPosition(player, horse, maxDistance)
         local distanceSquared = player:DistToSquared(x, y)
         if distanceSquared <= nearestDistanceSquared then
             local square = getSquare(x, y, horse_square:getZ())
-            if square and not horse_square:isBlockedTo(square) then
+            if square and not horse_square:isBlockedTo(square) and not square:isWaterSquare() then
                 ---@type MountPosition
                 nearest = {
                     x = x,
