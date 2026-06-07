@@ -242,6 +242,28 @@ module HorseMod {
         }
     }
 
+    /* HORSE: AMERICAN QUARTER STRAWBERRY ROAN */
+    item HorseSaddlebags_AmericanQuarterStrawberryRoan {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_AmericanQuarterStrawberryRoan,
+        StaticModel = HorseSaddlebags_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = HorseSaddlebags_AmericanQuarterStrawberryRoan,
+        Researchablerecipes = HorseMod.HorseSaddlebags,
+    }
+    model HorseSaddlebags_AmericanQuarterStrawberryRoan {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_AmericanQuarterStrawberryRoan,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
     /* HORSE: APPALOOSA GRULLA BLANKET */
     item HorseSaddlebags_AppaloosaGrullaBlanket {
         DisplayCategory = Bag,
@@ -323,6 +345,28 @@ module HorseMod {
     model HorseSaddlebags_ThoroughbredFleaBittenGrey {
         mesh = HorseMod/HorseSaddlebags,
         texture = Items/Accessories/HorseSaddlebags_ThoroughbredFleaBittenGrey,
+        static = true,
+        attachment world {
+            offset = 0.0 0.0 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+    /* HORSE: THOROUGHBRED CRICKET */
+    item HorseSaddlebags_ThoroughbredCricket {
+        DisplayCategory = Bag,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:container,
+        Weight = 2,
+        Capacity = 40,
+        Icon = accessories/HorseSaddlebags_ThoroughbredCricket,
+        StaticModel = HorseSaddlebags_ThoroughbredCricket,
+        WorldStaticModel = HorseSaddlebags_ThoroughbredCricket,
+        Researchablerecipes = HorseMod.HorseSaddlebags,
+    }
+    model HorseSaddlebags_ThoroughbredCricket {
+        mesh = HorseMod/HorseSaddlebags,
+        texture = Items/Accessories/HorseSaddlebags_ThoroughbredCricket,
         static = true,
         attachment world {
             offset = 0.0 0.0 -0.0547,
