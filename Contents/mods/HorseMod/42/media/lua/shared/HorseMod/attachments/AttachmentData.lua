@@ -79,7 +79,7 @@ local Event = require("HorseMod/Event")
 ---@field notReachableFromMount boolean?
 ---
 ---List of attachment slots with equipment that this item needs to be equipped.
----@field needs AttachmentSlot[]?
+---@field needs {oneOf: AttachmentSlot[], allOf: AttachmentSlot[]?}?
 
 
 ---A slots configuration for an InventoryItem full type holding the various configurations the item can take on different slots.
