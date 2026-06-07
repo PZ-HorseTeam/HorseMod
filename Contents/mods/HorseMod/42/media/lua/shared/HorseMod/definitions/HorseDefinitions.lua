@@ -9,6 +9,7 @@ local HorseDefinitions = {
         -- American Quarter
         "AmericanQuarterPalomino", -- Palomino
         "AmericanQuarterBlueRoan", -- Blue Roan
+        "AmericanQuarterStrawberryRoan", -- Strawberry Roan
         
         -- American Paint
         "AmericanPaintTobiano", -- Tobiano
@@ -21,6 +22,10 @@ local HorseDefinitions = {
         -- Thoroughbred
         "ThoroughbredBay", -- Bay
         "ThoroughbredFleaBittenGrey", -- Flea Bitten Grey
+        "ThoroughbredCricket", -- Cricket
+
+        -- Mustang
+        "MustangDunskin", -- Dunskin
     },
 
     ---Templates for the different paths used for the horse textures, the `{id}` part will be replaced by the breed ID defined in :lua:obj:`HorseMod.ContainerBehavior.HorseDefinitions.SHORT_NAMES`.
