@@ -16,15 +16,9 @@ local LOCAL_RECOVERY_DISTANCE_SQ = 100
 ---@return RidingMovementEffects
 ---@nodiscard
 local function createEffects()
-    local onGallopBlocked = function(rider, horse)
-        Mounting.dismountFallBack(rider, horse)
-    end
-    local onTreeFall = function(rider, horse)
-        Mounting.dismountFallBack(rider, horse)
-    end
-    local onFallDetected = function(rider, horse)
-        Mounting.dismountFall(rider, horse)
-    end
+    local onGallopBlocked = Mounting.dismountFallBack
+    local onTreeFall = Mounting.dismountFallBack
+    local onFallDetected = Mounting.dismountFall
 
     if isClient() then
         return {
