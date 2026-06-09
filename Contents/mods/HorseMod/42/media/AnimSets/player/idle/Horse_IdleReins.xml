@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_IdleReins</m_Name>
     <m_AnimName>Bob_Mounted_Reins</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_Priority>10</m_Priority>
     <m_Looped>true</m_Looped>
     <m_deferredBoneAxis>X</m_deferredBoneAxis>

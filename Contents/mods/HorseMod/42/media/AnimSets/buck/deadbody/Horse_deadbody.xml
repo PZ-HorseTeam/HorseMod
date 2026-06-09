@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_deadbody</m_Name>
     <m_AnimName>Horse_Dead</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_BlendTime>0.20</m_BlendTime>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
 </animNode>

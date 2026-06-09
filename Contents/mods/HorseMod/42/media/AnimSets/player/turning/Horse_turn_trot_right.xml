@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_turn_trot_right</m_Name>
     <m_AnimName>Bob_Mounted_Trot_Right_NoReins</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_EarlyTransitionOut>true</m_EarlyTransitionOut>
     <m_Priority>50</m_Priority>
     <m_BlendTime>0.60</m_BlendTime>

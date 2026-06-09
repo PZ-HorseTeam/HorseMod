@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_EquipSaddleLeft</m_Name>
     <m_AnimName>Bob_EquipSaddle_Left</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_BlendTime>0.00</m_BlendTime>
     <m_blendTime>0.00</m_blendTime>
     <m_SpeedScale>1.00</m_SpeedScale>

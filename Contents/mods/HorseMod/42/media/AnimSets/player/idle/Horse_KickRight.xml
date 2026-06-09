@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_KickRight</m_Name>
     <m_AnimName>Bob_Mounted_Saddle_KickRight</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_Looped>false</m_Looped>
     <m_BlendTime>0.00</m_BlendTime>
     <m_SpeedScale>1.0</m_SpeedScale>

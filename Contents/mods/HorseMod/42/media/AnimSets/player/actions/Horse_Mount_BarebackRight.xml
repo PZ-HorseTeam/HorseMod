@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_Mount_Bareback_Right</m_Name>
     <m_AnimName>Bob_Mount_Bareback_Right</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_BlendTime>0.00</m_BlendTime>
     <m_SpeedScale>1.00</m_SpeedScale>
     <m_Looped>false</m_Looped>

@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_IdleToGallop</m_Name>
     <m_AnimName>Bob_Mounted_IdleToGallop_NoReins</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_Priority>20</m_Priority>
     <m_ConditionPriority>20</m_ConditionPriority>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>

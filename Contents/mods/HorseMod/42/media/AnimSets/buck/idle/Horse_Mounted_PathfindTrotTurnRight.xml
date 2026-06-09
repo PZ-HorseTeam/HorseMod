@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_Mounted_TrotTurnRight</m_Name>
     <m_AnimName>Horse_Trot_Right</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_ConditionPriority>11</m_ConditionPriority>
     <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
     <m_BlendTime>0.60</m_BlendTime>

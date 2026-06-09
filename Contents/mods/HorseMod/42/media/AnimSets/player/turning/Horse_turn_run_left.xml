@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_turn_run_left</m_Name>
     <m_AnimName>Bob_Mounted_Gallop_Left_NoReins</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_EarlyTransitionOut>true</m_EarlyTransitionOut>
     <m_BlendTime>0.60</m_BlendTime>
     <m_SpeedScale>HorseRunSpeed</m_SpeedScale>

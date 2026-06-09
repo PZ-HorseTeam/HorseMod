@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_alerted</m_Name>
     <m_AnimName>Horse_Gallop</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
     <m_SpeedScaleRandomMultiplierMin>0.7</m_SpeedScaleRandomMultiplierMin>

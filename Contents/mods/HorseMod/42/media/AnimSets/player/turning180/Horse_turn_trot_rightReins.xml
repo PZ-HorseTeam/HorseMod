@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_turn_trot_rightReins</m_Name>
     <m_AnimName>Bob_Mounted_Trot_Right_Reins</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_blendInTime>0.40</m_blendInTime>
     <m_blendOutTime>0.80</m_blendOutTime>

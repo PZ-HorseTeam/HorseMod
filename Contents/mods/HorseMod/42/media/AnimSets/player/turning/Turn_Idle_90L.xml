@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Turn_Idle_90L</m_Name>
     <m_AnimName>Bob_Mounted_Saddle</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_BlendTime>0.10</m_BlendTime>
     <m_BlendOutTime>0.20</m_BlendOutTime>
     <m_SpeedScale>0.80</m_SpeedScale>

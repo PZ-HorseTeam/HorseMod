@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_inTrees_run</m_Name>
     <m_AnimName>Bob_Mounted_Saddle</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_SpeedScale>0.7</m_SpeedScale>
     <m_BlendTime>0.7</m_BlendTime>

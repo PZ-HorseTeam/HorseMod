@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_BiteMounted</m_Name>
     <m_AnimName>Bob_Mounted_HitReaction</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_Looped>false</m_Looped>
     <m_ConditionPriority>10</m_ConditionPriority>
     <m_BlendTime>0.00</m_BlendTime>

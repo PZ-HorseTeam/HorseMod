@@ -2,6 +2,7 @@
 <animNode x_extends="Horse_turn_run_180.xml">
     <m_Name>Horse_turn_run_180RReins</m_Name>
     <m_AnimName>Bob_Mounted_Gallop_Right_Reins</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_BlendTime>0.40</m_BlendTime>
     <m_SpeedScale>0.9</m_SpeedScale>
     <m_ConditionPriority>20</m_ConditionPriority>
