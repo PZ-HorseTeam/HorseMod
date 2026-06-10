@@ -67,6 +67,41 @@ local function getSq(x, y, z)
     return getCell():getGridSquare(math.floor(x), math.floor(y), z)
 end
 
+---So the horse doesn't trigger falling when going down stairs fast
+local VERTICAL_FOLLOW_MAX_STEP = 0.95
+
+---Sometimes the horse counts as airborne when reaching top of stairs for a few frames
+---This gives it a bit of time to cover those frames
+local RAMP_FALL_GRACE_SECONDS = 0.4
+
+---Used to follow stair height, and to pick the collision Z level
+---@param x number
+---@param y number
+---@param z number
+---@return IsoGridSquare?
+---@nodiscard
+local function findFloorSquare(x, y, z)
+    local cell = getCell()
+    local xi = math.floor(x)
+    local yi = math.floor(y)
+    local top = math.floor(z)
+    for level = top, 0, -1 do
+        local sq = cell:getGridSquare(xi, yi, level)
+        if sq and (sq:HasStairs() or sq:hasSlopedSurface() or sq:has(IsoFlagType.solidfloor)) then
+            return sq
+        end
+    end
+
+    return cell:getGridSquare(xi, yi, top)
+end
+
+---@param square IsoGridSquare
+---@return boolean
+---@nodiscard
+local function squareIsRamp(square)
+    return square:HasStairs() or square:hasSlopedSurface()
+end
+
 ---@param treeMult number
 ---@return number
 ---@nodiscard
@@ -625,6 +660,8 @@ local TURN_ANIM_HOLD_SECONDS = 0.20
 ---@field turnAnimTime number
 ---@field wasGalloping boolean
 ---@field idleToRunTimer number
+---@field lastFloorSquare IsoGridSquare?
+---@field rampGrace number
 local RidingMovement = {}
 RidingMovement.__index = RidingMovement
 
@@ -637,7 +674,15 @@ RidingMovement.getSpeed = getSpeed
 ---@param isJumping boolean
 ---@param effects RidingMovementEffects
 local function moveWithCollision(rider, horse, distance, isGalloping, isJumping, effects)
-    local z = horse:getZ()
+    local floorSquare = findFloorSquare(horse:getX(), horse:getY(), horse:getZ())
+
+    -- Collide at the resolved floor level so the rider can't pass through walls
+    -- when going up/down stairs
+    local z = floorSquare and floorSquare:getZ() or math.floor(horse:getZ())
+
+    if floorSquare and floorSquare:HasStairs() and (horse:getZ() - floorSquare:getZ()) >= 0.7 then
+        z = z + 1
+    end
     local x = horse:getX()
     local y = horse:getY()
     local candidates = {}
@@ -1249,6 +1294,58 @@ function RidingMovement:isJumping()
     return self.jumpTime > 0 or self.pair:getAnimationVariableBoolean(AnimationVariable.JUMP)
 end
 
+---Make the horse track the floor height of stairs
+---@param mount IsoAnimal
+---@param deltaTime number
+function RidingMovement:followVertical(mount, deltaTime)
+    local x = mount:getX()
+    local y = mount:getY()
+
+    local current = findFloorSquare(x, y, mount:getZ())
+    if not current then
+        self.lastFloorSquare = nil
+        self.rampGrace = math.max(0, self.rampGrace - deltaTime)
+        return
+    end
+
+    local targetZ = current:getZ()
+    local onRamp = squareIsRamp(current)
+    if onRamp then
+        targetZ = current:getApparentZ(x - current:getX(), y - current:getY())
+    end
+
+    if math.abs(targetZ - mount:getZ()) < VERTICAL_FOLLOW_MAX_STEP then
+        mount:setZ(targetZ)
+        mount:setLastZ(targetZ)
+    end
+
+    if onRamp then
+        self.rampGrace = RAMP_FALL_GRACE_SECONDS
+    else
+        self.rampGrace = math.max(0, self.rampGrace - deltaTime)
+    end
+
+    self.lastFloorSquare = current
+end
+
+
+---@param mount IsoAnimal
+---@return boolean
+---@nodiscard
+function RidingMovement:onStairsOrSlope(mount)
+    if self.rampGrace > 0 then
+        return true
+    end
+
+    local square = self.lastFloorSquare or findFloorSquare(mount:getX(), mount:getY(), mount:getZ())
+    if square ~= nil and squareIsRamp(square) then
+        return true
+    end
+
+    local below = getCell():getGridSquare(math.floor(mount:getX()), math.floor(mount:getY()), math.floor(mount:getZ()) - 1)
+    return below ~= nil and squareIsRamp(below)
+end
+
 ---@param input RidingMovementInput
 ---@param deltaTime number
 function RidingMovement:update(input, deltaTime)
@@ -1346,11 +1443,15 @@ function RidingMovement:update(input, deltaTime)
         self.wasGalloping = true
     end
 
+    -- Follow stair height before pinning the rider so they both
+    -- go up/down stairs together
+    self:followVertical(mount, deltaTime)
+
     setRiderMountedPosition(rider, mount:getX(), mount:getY(), mount:getZ())
 
     self:updateTreeFall(isGalloping, deltaTime)
 
-    if rider:isbFalling() or mount:isbFalling() then
+    if (rider:isbFalling() or mount:isbFalling()) and not self:onStairsOrSlope(mount) then
         if self.effects.onFallDetected then
             self.effects.onFallDetected(rider, mount)
         end
@@ -1395,6 +1496,8 @@ function RidingMovement.new(pair, effects)
             lastAppliedDir = nil--[[@as integer?]],
             wasGalloping = false,
             idleToRunTimer = 0.0,
+            lastFloorSquare = nil--[[@as IsoGridSquare?]],
+            rampGrace = 0.0,
         },
         RidingMovement
     )
