@@ -205,7 +205,7 @@ local AttachmentData = {
         ["ThoroughbredFleaBittenGrey"] = {"#FCECC5"},
         ["ThoroughbredCricket"] = {"#3C1C16"},
 
-        ["MustangDunskin"] = {"#33271A"},
+        ["MustangBuckskinDun"] = {"#33271A"},
     },
 
     ---Default mane items configuration.
