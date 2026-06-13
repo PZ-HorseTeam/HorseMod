@@ -138,6 +138,9 @@ Attachments.getAvailableGear = function(player)
     return accessories
 end
 
+
+
+
 -----GENERIC ATTACHMENT HELPERS-----
 
 ---@param animal IsoAnimal
@@ -180,6 +183,61 @@ function Attachments.getHorseContainerData(worldItem)
         return container
     end
     return nil
+end
+
+---@return boolean
+---@return {allOf: AttachmentSlot[], oneOf: AttachmentSlot[]}? missing
+function Attachments.verifyNeeds(horse, fullType, slot)
+    local itemDef = Attachments.getAttachmentDefinition(fullType, slot)
+    assert(
+        itemDef, 
+        "Attachment definition not found for fullType: " .. tostring(fullType) .. ", slot: " .. tostring(slot) .. ". Make sure the item is registered in AttachmentData.items before calling verifyNeeds."
+    )
+
+    local needs = itemDef.needs
+    if not needs then
+        return true, nil -- no needs, so it's valid
+    end
+
+    -- cache all currently equipped attachments
+    local attachedItems = Attachments.getAll(horse)
+    local occupiedSlots = {}
+    for i = 1, #attachedItems do
+        local attachment = attachedItems[i]
+        occupiedSlots[attachment.slot] = attachment.item
+    end
+
+    local missing = {
+        allOf = {},
+        oneOf = {},
+    }
+
+    -- check allOf requirements
+    local allOf = needs.allOf
+    for i = 1, #allOf do
+        local requiredSlot = allOf[i]
+        if not occupiedSlots[requiredSlot] then
+            table.insert(missing.allOf, requiredSlot)
+        end
+    end
+
+    -- check oneOf requirements
+    local oneOf = needs.oneOf
+    local hasOneOf = false
+    for i = 1, #oneOf do
+        local requiredSlot = oneOf[i]
+        if occupiedSlots[requiredSlot] then
+            hasOneOf = true
+            break
+        end
+    end
+
+    if not hasOneOf and #oneOf > 0 then
+        missing.oneOf = oneOf
+    end
+
+    -- if all lists are empty, then the requirements are satisfied
+    return #missing.allOf == 0 and #missing.oneOf == 0, missing
 end
 
 

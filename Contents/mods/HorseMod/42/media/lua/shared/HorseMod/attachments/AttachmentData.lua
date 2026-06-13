@@ -79,7 +79,7 @@ local Event = require("HorseMod/Event")
 ---@field notReachableFromMount boolean?
 ---
 ---List of attachment slots with equipment that this item needs to be equipped.
----@field needs {oneOf: AttachmentSlot[], allOf: AttachmentSlot[]?}?
+---@field needs {oneOf: AttachmentSlot[], allOf: AttachmentSlot[]}?
 
 
 ---A slots configuration for an InventoryItem full type holding the various configurations the item can take on different slots.
@@ -127,11 +127,25 @@ local AttachmentData = {
 
         ---Default tent attachment definition.
         ---@type ItemDefinition
-        TENT = { ["Tent"] = {} },
+        TENT = { 
+            ["Tent"] = {
+                needs = {
+                    oneOf = {"Saddle", "Saddlebags"}, 
+                    allOf = {},
+                },
+            }, 
+        },
 
         ---Default sleeping bag attachment definition.
         ---@type ItemDefinition
-        SLEEPING_BAG = { ["SleepingBag"] = {} },
+        SLEEPING_BAG = { 
+            ["SleepingBag"] = {
+                needs = {
+                    oneOf = {"Saddle", "Saddlebags"}, 
+                    allOf = {},
+                },
+            }, 
+        },
     },
 
     ---Sets attachment model points and mane properties for attachment slots.
