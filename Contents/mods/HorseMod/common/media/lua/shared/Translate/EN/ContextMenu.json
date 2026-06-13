@@ -11,6 +11,7 @@
     "ContextMenu_Horse_Unequip": "Unequip {old}",
     "ContextMenu_Horse_Unequip_All": "Unequip All",
     "ContextMenu_Horse_NoMountPosition": "Cannot reach the horse.",
+    "ContextMenu_Horse_Unequip_HasDependencies": "Cannot unequip because attachments depend on this item to be attached. Unequip the following items first: {dependentAttachments}.",
     "ContextMenu_Horse_Slot_Saddle": "saddle",
     "ContextMenu_Horse_Slot_Saddlebags": "saddlebags",
     "ContextMenu_Horse_Slot_Reins": "reins",

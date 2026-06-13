@@ -185,6 +185,11 @@ function Attachments.getHorseContainerData(worldItem)
     return nil
 end
 
+---Verifies that the needs of the provided `fullType` item on `slot` are satisfied.
+---If not satisfied, returns false and a table containing which needs are missing.
+---@param horse IsoAnimal
+---@param fullType string
+---@param slot AttachmentSlot
 ---@return boolean
 ---@return {allOf: AttachmentSlot[], oneOf: AttachmentSlot[]}? missing
 function Attachments.verifyNeeds(horse, fullType, slot)
@@ -238,6 +243,86 @@ function Attachments.verifyNeeds(horse, fullType, slot)
 
     -- if all lists are empty, then the requirements are satisfied
     return #missing.allOf == 0 and #missing.oneOf == 0, missing
+end
+
+---Finds the accessories needed for the provided `fullType` item on `slot`.
+---These items need to be removed in order for the attachment to be removed.
+---@param horse IsoAnimal
+---@param fullType string
+---@param slot AttachmentSlot
+---@return boolean hasDependencies
+---@return {allOf: {item: string, slot: AttachmentSlot}[], oneOf: {item: string, slot: AttachmentSlot}[]} dependentAttachments
+function Attachments.findDependentAttachments(horse, fullType, slot)
+    -- get that attachment needs
+    local itemDef = Attachments.getAttachmentDefinition(fullType, slot)
+    assert(
+        itemDef, 
+        "Attachment definition not found for fullType: " .. tostring(fullType) .. ", slot: " .. tostring(slot) .. ". Make sure the item is registered in AttachmentData.items before calling findDependentAttachments."
+    )
+
+    -- gonna be honest I'm too fucking tired to think why I need to verify that the
+    -- attachment item isn't one of the needs of that item
+    -- all I know is it had circle dependencies where it would mark its own dependent items 
+    -- as dependencies of it needs to respect
+    local needs = itemDef.needs or {allOf = {}, oneOf = {}}
+    local oneOf = needs.oneOf
+    local lookup_oneOf = {}
+    for i = 1, #oneOf do
+        lookup_oneOf[oneOf[i]] = true
+    end
+
+    local attachments = Attachments.getAll(horse)
+
+    -- retrieve all currently equipped attachments
+    local attachedItems = Attachments.getAll(horse)
+    local dependentAttachments = {allOf = {}, oneOf = {}}
+    for i = 1, #attachedItems do repeat
+        local attachment = attachedItems[i]
+        local attachmentFullType = attachment.item
+        local attachmentSlot = attachment.slot
+
+        -- if this ever happens, it most likely means the item
+        -- had its attachment definition removed while being equipped
+        -- not using assert here to avoid breaking the mod for that horse
+        local itemDef = Attachments.getAttachmentDefinition(attachmentFullType, attachmentSlot)
+        if not itemDef then break end
+
+        -- no needs = no dependencies, so we can skip
+        local needs = itemDef.needs
+        if not needs then break end
+
+        -- check if the slot is needed by that attachment
+        local allOf = needs.allOf
+        for j = 1, #allOf do
+            if allOf[j] == slot then
+                table.insert(dependentAttachments.allOf, attachment)
+            end
+        end
+
+        local oneOf = needs.oneOf
+        for j = 1, #oneOf do
+            if oneOf[j] == slot then
+                table.insert(dependentAttachments.oneOf, attachment)
+            end
+        end
+
+        -- find other potential oneOf dependencies that could satisfy the requirement if the attachment is removed
+        for j = 1, #attachments do
+            local otherAttachment = attachments[j]
+            local otherSlot = otherAttachment.slot
+            if otherSlot ~= slot and otherAttachment.item ~= fullType and not lookup_oneOf[otherSlot] then
+                for k = 1, #oneOf do
+                    if oneOf[k] == otherSlot then
+                        table.insert(dependentAttachments.oneOf, otherAttachment)
+                    end
+                end
+            end
+        end
+    until true end
+
+    return #dependentAttachments.allOf > 0 
+        or #dependentAttachments.oneOf == 1, -- if there's only one choice, then we can't remove it
+        dependentAttachments
 end
 
 

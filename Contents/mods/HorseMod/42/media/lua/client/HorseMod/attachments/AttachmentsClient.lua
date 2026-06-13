@@ -242,6 +242,7 @@ function AttachmentsClient.addUnequipOptions(context, player, attachedItems, hor
         end)
 
         -- parse attachments and add unequip option
+        local toUnequipAll = {}
         for i = 1, #attachedItems do
             local attachment = attachedItems[i]
             local item = attachment.item
@@ -263,22 +264,53 @@ function AttachmentsClient.addUnequipOptions(context, player, attachedItems, hor
             )
             option.iconTexture = getTexture(getItemTextureName(item))
 
+            -- can't reach a position to unequip the attachment
             if not mountPosition then
                 option.notAvailable = true
                 local tooltip = ISWorldObjectContextMenu.addToolTip()
                 tooltip.description = getText("ContextMenu_Horse_NoMountPosition")
                 option.toolTip = tooltip
             end
+
+            -- verify this attachment is not the dependency of another attachment
+            local hasDependencies, dependentAttachments = Attachments.findDependentAttachments(horse, attachment.item, attachment.slot)
+            if hasDependencies then
+                -- retrieve all dependencies
+                local dependentAttachmentsNames = {}
+                local allOf = dependentAttachments.allOf
+                for j = 1, #allOf do
+                    local dependentAttachment = allOf[j]
+                    table.insert(dependentAttachmentsNames, getItemNameFromFullType(dependentAttachment.item))
+                end
+
+                local oneOf = dependentAttachments.oneOf
+                for j = 1, #oneOf do
+                    local dependentAttachment = oneOf[j]
+                    table.insert(dependentAttachmentsNames, getItemNameFromFullType(dependentAttachment.item))
+                end
+
+                -- format tooltip
+                local txt = HorseUtils.formatTemplate(
+                    getText("ContextMenu_Horse_Unequip_HasDependencies"),
+                    {dependentAttachments = table.concat(dependentAttachmentsNames, ", ")}
+                )
+                local tooltip = ISWorldObjectContextMenu.addToolTip()
+                tooltip.description = txt
+                option.notAvailable = true
+                option.toolTip = tooltip
+            else
+                table.insert(toUnequipAll, attachment)
+            end
         end
 
         -- unequip all option if more than one item is present
-        if #attachedItems > 1 then
+        if #toUnequipAll > 1 then
             local option = context:addOptionOnTop(
                 getText("ContextMenu_Horse_Unequip_All"),
                 player,
                 AttachmentsClient.unequipAllAccessory,
                 horse,
-                attachedItems,
+                toUnequipAll,
                 mountPosition
             )
 
