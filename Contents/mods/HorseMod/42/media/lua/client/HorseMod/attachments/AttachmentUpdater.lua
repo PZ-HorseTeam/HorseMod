@@ -47,6 +47,8 @@ AttachmentUpdater.reapplyFor = function(horse)
     IS_REAPPLIED[horse] = true
 end
 
+---@type table<IsoAnimal, IsoLightSource>
+local lights = {}
 
 ---Verify that the horse doesn't need to get its attachments reapplied, and if yes
 ---then reapply those and set the horse status for updates.
@@ -55,6 +57,18 @@ end
 function AttachmentUpdater:update(horses, delta)
     for i = 1, #horses do
         local horse = horses[i]
+
+        local previous_light = lights[horse]
+        if previous_light then
+            getCell():removeLamppost(previous_light)
+            lights[horse] = nil
+        end
+
+        local light = IsoLightSource.new(horse:getX(), horse:getY(), horse:getZ(), 1, 1, 1, 10)
+        getCell():addLamppost(light)
+        lights[horse] = light
+
+        getPlayer():addLineChatElement(tostring(light:isInBounds()))
 
         -- if horse model is visible, set it as needing an update if not already reapplied
         local status = IS_REAPPLIED[horse]

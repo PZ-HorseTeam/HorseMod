@@ -57,6 +57,13 @@ local Event = require("HorseMod/Event")
 ---@field worldItem string
 
 
+---Defines a light source that will follow the horse at the attachment point.
+---@class LanternBehavior
+---
+---Hex color code for the light.
+---@field hex HexColor
+
+
 ---Defines an attachment item with its associated slots and extra data if needed.
 ---@class AttachmentDefinition
 ---
@@ -74,6 +81,9 @@ local Event = require("HorseMod/Event")
 ---
 ---Equip timed action behavior component.
 ---@field equipBehavior EquipBehavior? 
+---
+---Lantern behavior component.
+---@field lanternBehavior LanternBehavior?
 ---
 ---Whenever the player can reach from mount this attachment, always considered reachable by default. Notably used for containers.
 ---@field notReachableFromMount boolean?
@@ -146,6 +156,14 @@ local AttachmentData = {
                 },
             }, 
         },
+
+        LANTERN = {
+            ["Lantern"] = {
+                lanternBehavior = {
+                    hex = "#FFFFFF",
+                },
+            }
+        }
     },
 
     ---Sets attachment model points and mane properties for attachment slots.
