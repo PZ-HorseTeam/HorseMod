@@ -167,16 +167,15 @@ local AttachmentData = {
             ["Lantern_left"] = {
                 lightBehavior = {
                     rgb = {r=1, g=1, b=1},
-                    radius = 10,
+                    radius = 15,
                 },
             },
             ["Lantern_right"] = {
                 lightBehavior = {
                     rgb = {r=1, g=1, b=1},
-                    radius = 10,
+                    radius = 15,
                 },
-            }
-
+            },
         }
     },
 
@@ -369,7 +368,12 @@ AttachmentData.items = {
 
     -- lanterns
     ["Base.Lantern_Hurricane"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
-    ["Base.Lantern_HurricaneLit"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Hurricane_Copper"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Hurricane_Forged"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Hurricane_Gold"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Hurricane_Silver"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Propane"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_CraftedElectric"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
 }
 
 ---Triggered before attachment data is loaded.

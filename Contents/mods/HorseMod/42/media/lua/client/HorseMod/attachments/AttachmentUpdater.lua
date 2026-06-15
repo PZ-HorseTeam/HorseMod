@@ -72,9 +72,6 @@ AttachmentUpdater.updateLights = function(horse)
     end
 end
 
----@type table<IsoAnimal, IsoLightSource>
-local lights = {}
-
 ---Verify that the horse doesn't need to get its attachments reapplied, and if yes
 ---then reapply those and set the horse status for updates.
 ---@param horses IsoAnimal[]
