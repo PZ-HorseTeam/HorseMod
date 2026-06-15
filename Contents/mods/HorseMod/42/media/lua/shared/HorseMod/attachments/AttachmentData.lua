@@ -57,10 +57,13 @@ local Event = require("HorseMod/Event")
 
 
 ---Defines a light source that will follow the horse at the attachment point.
----@class LanternBehavior
+---@class LightBehavior
 ---
 ---Hex color code for the light.
----@field hex HexColor
+---@field rgb {r: number, g: number, b: number}
+---
+---Light radius for the light source.
+---@field radius integer
 
 
 ---Defines an attachment item with its associated slots and extra data if needed.
@@ -81,8 +84,8 @@ local Event = require("HorseMod/Event")
 ---Equip timed action behavior component.
 ---@field equipBehavior EquipBehavior? 
 ---
----Lantern behavior component.
----@field lanternBehavior LanternBehavior?
+---Light behavior component.
+---@field lightBehavior LightBehavior?
 ---
 ---Whenever the player can reach from mount this attachment, always considered reachable by default. Notably used for containers.
 ---@field notReachableFromMount boolean?
@@ -161,11 +164,19 @@ local AttachmentData = {
         },
 
         LANTERN = {
-            ["Lantern"] = {
-                lanternBehavior = {
-                    hex = "#FFFFFF",
+            ["Lantern_left"] = {
+                lightBehavior = {
+                    rgb = {r=1, g=1, b=1},
+                    radius = 10,
+                },
+            },
+            ["Lantern_right"] = {
+                lightBehavior = {
+                    rgb = {r=1, g=1, b=1},
+                    radius = 10,
                 },
             }
+
         }
     },
 
@@ -178,6 +189,8 @@ local AttachmentData = {
         ["Saddlebags"] = {modelAttachment="saddlebags"},
         ["Tent"] = {modelAttachment="tent"},
         ["SleepingBag"] = {modelAttachment="sleepingBag"},
+        ["Lantern_right"] = {modelAttachment="lantern_right"},
+        ["Lantern_left"] = {modelAttachment="lantern_left"},
         ["Head"] = {modelAttachment="head"},
         ["Reins"] = {modelAttachment="reins"},
 
@@ -279,6 +292,17 @@ local DEFAULT_ATTACHMENT_DEFS = AttachmentData.DEFAULT_ATTACHMENT_DEFS
 
 ---@type table<string, ItemDefinition>
 AttachmentData.items = {
+    -- manes
+    ["HorseMod.HorseManeStart"] = { ["ManeStart"] = {hidden = true} },
+    ["HorseMod.HorseManeMid"]   = {
+        ["ManeMid1"] = {hidden = true},
+        ["ManeMid2"] = {hidden = true},
+        ["ManeMid3"] = {hidden = true},
+        ["ManeMid4"] = {hidden = true},
+        ["ManeMid5"] = {hidden = true},
+    },
+    ["HorseMod.HorseManeEnd"]   = { ["ManeEnd"] = {hidden = true} },
+
     -- saddles
         -- vanilla animals
     ["HorseMod.HorseSaddle_Crude"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
@@ -343,16 +367,9 @@ AttachmentData.items = {
     ["Base.SleepingBag_BluePlaid_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
     ["Base.SleepingBag_Spiffo_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
 
-    -- manes
-    ["HorseMod.HorseManeStart"] = { ["ManeStart"] = {hidden = true} },
-    ["HorseMod.HorseManeMid"]   = {
-        ["ManeMid1"] = {hidden = true},
-        ["ManeMid2"] = {hidden = true},
-        ["ManeMid3"] = {hidden = true},
-        ["ManeMid4"] = {hidden = true},
-        ["ManeMid5"] = {hidden = true},
-    },
-    ["HorseMod.HorseManeEnd"]   = { ["ManeEnd"] = {hidden = true} },
+    -- lanterns
+    ["Base.Lantern_Hurricane"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_HurricaneLit"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
 }
 
 ---Triggered before attachment data is loaded.

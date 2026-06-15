@@ -119,6 +119,22 @@ function Attachments.get(animal, slot)
     return bySlot[slot]
 end
 
+---@param slot AttachmentSlot
+---@param fullType string
+---@return boolean
+function Attachments.isLightSource(slot, fullType)
+    local itemDef = Attachments.getAttachmentDefinition(fullType, slot)
+    return itemDef and itemDef.lightBehavior ~= nil or false
+end
+
+---@param slot AttachmentSlot
+---@param fullType string
+---@return LightBehavior?
+function Attachments.getLightBehavior(slot, fullType)
+    local itemDef = Attachments.getAttachmentDefinition(fullType, slot)
+    return itemDef and itemDef.lightBehavior or nil
+end
+
 ---Gets all currently equipped attachments.
 ---@param animal IsoAnimal
 ---@return {item: string, slot: AttachmentSlot}[] attachments Full type of equipped attachment items and the slot they are attached to.

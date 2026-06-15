@@ -47,6 +47,31 @@ AttachmentUpdater.reapplyFor = function(horse)
     IS_REAPPLIED[horse] = true
 end
 
+
+AttachmentUpdater.updateLights = function(horse)
+    local lights = AttachmentVisuals.lights[horse]
+    if lights then
+        local x, y, z = horse:getX(), horse:getY(), horse:getZ()
+        for _, lightData in pairs(lights) do
+            ---@cast lightData {behavior: LightBehavior, source: IsoLightSource?} -- fucked up EmmyLua
+
+            -- remove previous source
+            local source = lightData.source
+            if source then
+                getCell():removeLamppost(source)
+            end
+
+            -- create the light source and place it in the world
+            local behavior = lightData.behavior
+            local rgb = behavior.rgb
+            local radius = behavior.radius
+            local light = IsoLightSource.new(x, y, z, rgb.r, rgb.g, rgb.b, radius)
+            getCell():addLamppost(light)
+            lightData.source = light
+        end
+    end
+end
+
 ---@type table<IsoAnimal, IsoLightSource>
 local lights = {}
 
@@ -58,17 +83,7 @@ function AttachmentUpdater:update(horses, delta)
     for i = 1, #horses do
         local horse = horses[i]
 
-        local previous_light = lights[horse]
-        if previous_light then
-            getCell():removeLamppost(previous_light)
-            lights[horse] = nil
-        end
-
-        local light = IsoLightSource.new(horse:getX(), horse:getY(), horse:getZ(), 1, 1, 1, 10)
-        getCell():addLamppost(light)
-        lights[horse] = light
-
-        getPlayer():addLineChatElement(tostring(light:isInBounds()))
+        AttachmentUpdater.updateLights(horse)
 
         -- if horse model is visible, set it as needing an update if not already reapplied
         local status = IS_REAPPLIED[horse]
