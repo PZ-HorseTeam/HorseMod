@@ -5,18 +5,82 @@ local commands = require("HorseMod/networking/commands")
 local mountcommands = {}
 
 ---@class MountArguments
----@field character integer
+---@field character integer|string
 ---@field animal integer
 
 ---@class DismountArguments
----@field character integer
+---@field character integer|string
+---@field animal integer
+
+---@class MountRequestArguments
+---@field animal integer
+
+---@class DismountRequestArguments
+---@field animal integer
+---@field attachment string
+
+---@class UrgentDismountArguments
+---@field character integer|string
+---The animation variable to raise on the rider so the fall/death animation
+---plays locally (setVariable is local-only, so remote clients need telling).
+---@field dismountType string
 
 ---@class SendMountsArguments
 ---Player ids to animal ids
----@field mounts table<integer, integer>
+---@field mounts table<integer|string, integer>
+
+---@class RidingInputArguments
+---@field animal integer
+---@field seq integer
+---@field moveX number
+---@field moveY number
+---@field run boolean
+---@field trot boolean
+---@field jump boolean
+---@field x number
+---@field y number
+---@field z number
+---@field dir integer
+---@field speed number
+---@field hasReins boolean
+
+---@class RequestMountsArguments
+
+---@class RidingStateArguments
+---@field character integer|string
+---@field animal integer
+---@field seq integer
+---@field x number
+---@field y number
+---@field z number
+---@field dir integer
+---@field speed number
+---@field gallop boolean
+---@field trot boolean
+---@field jump boolean
+---@field turn integer
+---@field hasReins boolean
+
+---@class KickRequestArguments
+---@field zombieId integer
+---@field kickLeft boolean
+
+---@class KickPerformedArguments
+---@field character integer|string
+---@field kickLeft boolean
+---@field zombieId integer
 
 mountcommands.Mount = commands.registerServerCommand--[[@<MountArguments>]]("Mount")
 mountcommands.Dismount = commands.registerServerCommand--[[@<DismountArguments>]]("Dismount")
 mountcommands.SendMounts = commands.registerServerCommand--[[@<SendMountsArguments>]]("SendMounts")
+mountcommands.RidingState = commands.registerServerCommand--[[@<RidingStateArguments>]]("RidingState")
+mountcommands.UrgentDismount = commands.registerServerCommand--[[@<UrgentDismountArguments>]]("UrgentDismount")
+mountcommands.KickPerformed = commands.registerServerCommand--[[@<KickPerformedArguments>]]("KickPerformed")
+
+mountcommands.RidingInput = commands.registerClientCommand--[[@<RidingInputArguments>]]("RidingInput")
+mountcommands.RequestMounts = commands.registerClientCommand--[[@<RequestMountsArguments>]]("RequestMounts")
+mountcommands.MountRequest = commands.registerClientCommand--[[@<MountRequestArguments>]]("MountRequest")
+mountcommands.DismountRequest = commands.registerClientCommand--[[@<DismountRequestArguments>]]("DismountRequest")
+mountcommands.KickRequest = commands.registerClientCommand--[[@<KickRequestArguments>]]("KickRequest")
 
 return mountcommands

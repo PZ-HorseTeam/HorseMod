@@ -8,7 +8,13 @@ local HorseSounds = require("HorseMod/HorseSounds")
 local HorseDamage = require("HorseMod/horse/HorseDamage")
 local MountAction = require("HorseMod/TimedActions/MountAction")
 local DismountAction = require("HorseMod/TimedActions/DismountAction")
+local Mounting = require("HorseMod/Mounting")
+local MountingUtility = require("HorseMod/mounting/MountingUtility")
 local HorseManager = require("HorseMod/HorseManager")
+local RemoteMountInterp = require("HorseMod/mount/RemoteMountInterp")
+require("HorseMod/mount/RemoteRiderPin")
+local mountcommands = require("HorseMod/networking/mountcommands")
+local commands = require("HorseMod/networking/commands")
 
 
 ---@namespace HorseMod
@@ -66,8 +72,8 @@ function HorseRiding.removeMount(player)
 end
 
 ---@param player IsoPlayer
----@param animal IsoAnimal?
-Mounts.onMountChanged:add(function(player, animal)
+---@param animal IsoAnimal
+Mounts.onMount:add(function(player, animal)
     if not player:isLocalPlayer() then
         return
     end
@@ -80,13 +86,24 @@ Mounts.onMountChanged:add(function(player, animal)
         HorseRiding.removeMount(player)
     end
 
-    if animal then
-        HorseRiding.createMountFromPair(
-            MountPair.new(
-                player,
-                animal
-            )
+    HorseRiding.createMountFromPair(
+        MountPair.new(
+            player,
+            animal
         )
+    )
+end)
+
+---@param player IsoPlayer
+---@param dismountedAnimal IsoAnimal?
+Mounts.onDismount:add(function(player, dismountedAnimal)
+    if not player:isLocalPlayer() then
+        RemoteMountInterp.clear(player)
+        return
+    end
+
+    if HorseRiding.getMount(player) then
+        HorseRiding.removeMount(player)
     end
 end)
 
@@ -105,6 +122,30 @@ end
 
 HorseManager.preUpdate:add(updateMounts)
 
+---@param args RidingStateArguments
+local function applyRidingState(args)
+    local player = commands.getPlayer(args.character)
+    local animal = commands.getAnimal(args.animal)
+    if not player or not animal then
+        return
+    end
+
+    if player:isLocalPlayer() then
+        local mount = HorseRiding.getMount(player)
+        if mount then
+            mount:applyAuthoritativeState(args)
+        end
+        return
+    end
+
+    RemoteMountInterp.push(player, animal, args)
+end
+
+Events.OnInitGlobalModData.Add(function()
+    local client = require("HorseMod/networking/client")
+    client.registerCommandHandler(mountcommands.RidingState, applyRidingState)
+end)
+
 ---Handle keybind pressing to switch horse riding states.
 ---@param key integer
 HorseRiding.onKeyPressed = function(key)
@@ -118,13 +159,29 @@ HorseRiding.onKeyPressed = function(key)
         local queue = ISTimedActionQueue.getTimedActionQueue(player)
         local currentAction = queue.current
         if currentAction then
-            if currentAction.Type == DismountAction.Type 
+            if currentAction.Type == DismountAction.Type
                 or currentAction.Type == MountAction.Type then
                 if not player:getVariableBoolean(AnimationVariable.NO_CANCEL) then
                     currentAction:forceStop()
                     return
                 end
             end
+        end
+    end
+
+    -- start dismount when Interact is pressed while mounted
+    if key == getCore():getKey("Interact") then
+        local mountedMount = HorseRiding.getMount(player)
+        if mountedMount then
+            if player:hasTimedActions() then return end
+            if player:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then return end
+
+            local horse = mountedMount.pair.mount
+            local mountPosition = MountingUtility.getNearestMountPosition(player, horse)
+            if not mountPosition then return end
+
+            Mounting.dismountHorse(player, horse, mountPosition)
+            return
         end
     end
 
@@ -168,6 +225,14 @@ Events.OnCharacterDeath.Add(HorseRiding.dismountOnHorseDeath)
 local function initHorseMod(_, player)
     player:setVariable(AnimationVariable.RIDING_HORSE, false)
     player:setVariable(AnimationVariable.MOUNTING_HORSE, false)
+
+    if isClient() then
+        mountcommands.RequestMounts:send(player, {})
+    elseif isServer() then
+        return
+    else
+        return
+    end
 end
 
 Events.OnCreatePlayer.Add(initHorseMod)

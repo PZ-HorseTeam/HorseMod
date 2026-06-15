@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <animNode>
     <m_Name>Horse_turn_run_180</m_Name>
     <m_DeferredBoneName>Bip01</m_DeferredBoneName>
@@ -46,44 +46,7 @@
         <m_BoolValue>true</m_BoolValue>
     </m_Conditions>
     <m_SubStateBoneWeights>
-        <boneName>Bip01_Pelvis</boneName>
-        <includeDescendants>false</includeDescendants>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
-        <boneName>Bip01_Spine</boneName>
-        <weight>0.00</weight>
-        <includeDescendants>false</includeDescendants>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
-        <boneName>Bip01_BackPack</boneName>
-        <weight>0.20</weight>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
-        <boneName>Bip01_DressFront</boneName>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
-        <boneName>Bip01_DressBack</boneName>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
-        <boneName>Bip01_L_Thigh</boneName>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
-        <boneName>Bip01_R_Thigh</boneName>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
         <boneName>Bip01</boneName>
-        <includeDescendants>false</includeDescendants>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
-        <boneName>Translation_Data</boneName>
-        <includeDescendants>false</includeDescendants>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
-        <boneName>Bip01_Prop1</boneName>
-        <weight>0.00</weight>
-    </m_SubStateBoneWeights>
-    <m_SubStateBoneWeights>
-        <boneName>Bip01_Prop2</boneName>
         <weight>0.00</weight>
     </m_SubStateBoneWeights>
 </animNode>

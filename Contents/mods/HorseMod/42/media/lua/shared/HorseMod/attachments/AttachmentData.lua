@@ -1,6 +1,5 @@
 ---@namespace HorseMod
 
-local HorseUtils = require("HorseMod/Utils")
 local Event = require("HorseMod/Event")
 
 
@@ -88,6 +87,9 @@ local Event = require("HorseMod/Event")
 ---Whenever the player can reach from mount this attachment, always considered reachable by default. Notably used for containers.
 ---@field notReachableFromMount boolean?
 ---
+---Whenever this attachment can be equipped when the horse has a rider. Defaults to `true`.
+---@field notEquipableWithRider boolean?
+---
 ---List of attachment slots with equipment that this item needs to be equipped.
 ---@field needs {oneOf: AttachmentSlot[], allOf: AttachmentSlot[]}?
 
@@ -122,6 +124,7 @@ local AttachmentData = {
                     },
                     shouldHold = true,
                 },
+                notEquipableWithRider = true,
             },
         },
 
