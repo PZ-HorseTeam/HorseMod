@@ -45,15 +45,11 @@ function AttachmentVisuals.getAll(animal)
     return attached
 end
 
-
----Sets the visual for a slot to an item.
+---Updates the light source for a horse and slot client side.
 ---@param animal IsoAnimal
 ---@param slot AttachmentSlot
 ---@param item InventoryItem?
-function AttachmentVisuals.set(animal, slot, item)
-    ---@diagnostic disable-next-line: param-type-mismatch
-    animal:setAttachedItem(slot, item)
-
+function AttachmentVisuals.setLights(animal, slot, item)
     -- update light source status for that horse and slot
     local lightBehavior = item and Attachments.getLightBehavior(slot, item:getFullType()) or nil
     AttachmentVisuals.lights[animal] = AttachmentVisuals.lights[animal] or {} -- init
@@ -71,6 +67,18 @@ function AttachmentVisuals.set(animal, slot, item)
         lights[slot] = nil
     end
 end
+
+---Sets the visual for a slot to an item.
+---@param animal IsoAnimal
+---@param slot AttachmentSlot
+---@param item InventoryItem?
+function AttachmentVisuals.set(animal, slot, item)
+    ---@diagnostic disable-next-line: param-type-mismatch
+    animal:setAttachedItem(slot, item)
+
+    AttachmentVisuals.setLights(animal, slot, item)
+end
+
 
 
 client.registerCommandHandler(attachmentcommands.AttachmentChanged, function(args)
