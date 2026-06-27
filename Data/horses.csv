@@ -1,12 +1,16 @@
 Horse Breed,Short code,ID,Mane colors,Body texture,Rotten body texture,Adult icon,Adult icon dead,Foal icon,Foal icon dead,Butchered adult head,Butchered foal head,Leather icon,Leather texture,Leather tiles,Saddle icon,Saddle texture,Saddlebags icon,Saddlebags texture
 American Quarter Palomino,AQP,AmericanQuarterPalomino,x,x,x,same as foal,x,x,x,x,x,x,x,x,x,x,x,x
-American Quarter Blue Roan,AQBR,AmericanQuarterBlueRoan,x,x,x,,x,x,x,x,x,x,x,x,x,x,x,x
-American Quarter Strawberry Roan,AQSR,AmericanQuarterStrawberryRoan,x,x,x,,x,x,x,x,x,x,x,,x,x,x,x
-American Paint Tobiano,APT,AmericanPaintTobiano,x,x,x,,x,x,x,x,x,x,x,x,x,x,x,x
-American Paint Overo,APO,AmericanPaintOvero,x,x,x,,x,x,x,x,x,x,x,x,x,x,x,x
-Appaloosa Grulla Blanket,AGB,AppaloosaGrullaBlanket,x,x,x,,x,x,x,x,x,x,x,x,x,x,x,x
-Appaloosa Leopard,AL,AppaloosaLeopard,x,x,x,,x,x,x,x,x,x,x,x,x,x,x,x
-Thoroughbred Bay,TB,ThoroughbredBay,x,x,x,,x,x,x,x,x,x,x,x,x,x,x,x
-Thoroughbred Flea-Bitten Grey,TFBG,ThoroughbredFleaBittenGrey,x,x,x,,x,x,x,x,x,x,x,x,x,x,x,x
-Thoroughbred Cricket,TC,ThoroughbredCricket,x,x,x,,x,x,x,x,x,x,x,,x,x,x,x
+American Quarter Blue Roan,AQBR,AmericanQuarterBlueRoan,x,x,x,same as foal,x,x,x,x,x,x,x,x,x,x,x,x
+American Quarter Strawberry Roan,AQSR,AmericanQuarterStrawberryRoan,x,x,x,same as foal,x,x,x,x,x,x,x,,x,x,x,x
+American Quarter Seal Bay,AQSB,AmericanQuarterSealBay,x,x,,,,,,,,,,,,,,
+American Paint Tobiano,APT,AmericanPaintTobiano,x,x,x,same as foal,x,x,x,x,x,x,x,x,x,x,x,x
+American Paint Overo,APO,AmericanPaintOvero,x,x,x,same as foal,x,x,x,x,x,x,x,x,x,x,x,x
+Appaloosa Grulla Blanket,AGB,AppaloosaGrullaBlanket,x,x,x,same as foal,x,x,x,x,x,x,x,x,x,x,x,x
+Appaloosa Leopard,AL,AppaloosaLeopard,x,x,x,same as foal,x,x,x,x,x,x,x,x,x,x,x,x
+Thoroughbred Bay,TB,ThoroughbredBay,x,x,x,same as foal,x,x,x,x,x,x,x,x,x,x,x,x
+Thoroughbred Flea-Bitten Grey,TFBG,ThoroughbredFleaBittenGrey,x,x,x,same as foal,x,x,x,x,x,x,x,x,x,x,x,x
+Thoroughbred Cricket,TC,ThoroughbredCricket,x,x,x,same as foal,x,x,x,x,x,x,x,,x,x,x,x
+Thoroughbred Reverse Brindle,TRB,ThoroughbredReverseBrindle,x,x,,,,,,,,,,,,,,
 Mustang BuckskinDun,MD,MustangBuckskinDun,x,x,,,,,,,,,,,,,,
+Mustang Grulla Dun,MGD,MustangGrullaDun,x,x,,,,,,,,,,,,,,
+Camarillo White,CW,CamarilloWhite,x,x,,,,,,,,,,,,,,

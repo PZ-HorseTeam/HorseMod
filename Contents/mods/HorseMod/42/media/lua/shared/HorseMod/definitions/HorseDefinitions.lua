@@ -7,25 +7,31 @@ local HorseDefinitions = {
     ---Contains the list of IDs of the different horse breeds available for the horse animal.
     SHORT_NAMES = {
         -- American Quarter
-        "AmericanQuarterPalomino", -- Palomino
-        "AmericanQuarterBlueRoan", -- Blue Roan
+        "AmericanQuarterPalomino",       -- Palomino
+        "AmericanQuarterBlueRoan",       -- Blue Roan
         "AmericanQuarterStrawberryRoan", -- Strawberry Roan
-        
+        "AmericanQuarterSealBay",        -- Seal Bay
+
         -- American Paint
-        "AmericanPaintTobiano", -- Tobiano
-        "AmericanPaintOvero", -- Overo
-        
+        "AmericanPaintTobiano",          -- Tobiano
+        "AmericanPaintOvero",            -- Overo
+
         -- Appaloosa
-        "AppaloosaGrullaBlanket", -- Grulla Blanket
-        "AppaloosaLeopard", -- Leopard
-        
+        "AppaloosaGrullaBlanket",        -- Grulla Blanket
+        "AppaloosaLeopard",              -- Leopard
+
         -- Thoroughbred
-        "ThoroughbredBay", -- Bay
-        "ThoroughbredFleaBittenGrey", -- Flea Bitten Grey
-        "ThoroughbredCricket", -- Cricket
+        "ThoroughbredBay",               -- Bay
+        "ThoroughbredFleaBittenGrey",    -- Flea Bitten Grey
+        "ThoroughbredCricket",           -- Cricket
+        "ThoroughbredReverseBrindle",    -- Reverse Brindle
 
         -- Mustang
-        "MustangDunskin", -- Dunskin
+        "MustangDunskin",                -- Dunskin
+        "MustangGrullaDun",              -- Grulla Dun
+
+        -- Camarillo
+        "CamarilloWhite"                 -- White
     },
 
     ---Templates for the different paths used for the horse textures, the `{id}` part will be replaced by the breed ID defined in :lua:obj:`HorseMod.ContainerBehavior.HorseDefinitions.SHORT_NAMES`.
@@ -108,7 +114,7 @@ AnimalDefinitions.genome["horse"] = {
         stress = "stress",
         speed = "speed",
         stamina = "stamina",
-        carryWeight = "carryWeight"
+        carryWeight = "carryWeight",
     }
 }
 
@@ -261,14 +267,14 @@ HorseDefinitions.PARTS = {
 
     _DEFAULT_ADULT = {
         parts = {
-            {item = "HorseMod.Horse_Steak", minNb = 10, maxNb = 18},
-            {item = "HorseMod.Horse_Loin", minNb = 10, maxNb = 18},
-            {item = "Base.AnimalSinew", minNb = 3, maxNb = 7},
-            {item = "HorseMod.Horse_Hoof", nb = 4},
+            { item = "HorseMod.Horse_Steak", minNb = 10, maxNb = 18 },
+            { item = "HorseMod.Horse_Loin", minNb = 10, maxNb = 18 },
+            { item = "Base.AnimalSinew", minNb = 3, maxNb = 7 },
+            { item = "HorseMod.Horse_Hoof", nb = 4 },
         },
         bones = {
-            {item = "Base.AnimalBone", minNb = 7, maxNb = 10},
-            {item = "Base.LargeAnimalBone", minNb = 3, maxNb = 5},
+            { item = "Base.AnimalBone", minNb = 7, maxNb = 10 },
+            { item = "Base.LargeAnimalBone", minNb = 3, maxNb = 5 },
         },
         leather = "HorseMod.HorseLeather_{id}_Full",
         xpPerItem = EXP_HORSE,
@@ -277,13 +283,13 @@ HorseDefinitions.PARTS = {
     -- adult, male, female data
     ["filly"] = {
         parts = {
-            {item = "HorseMod.Horse_Steak", minNb = 5, maxNb = 9},
-            {item = "HorseMod.Horse_Loin", minNb = 5, maxNb = 9},
-            {item = "Base.AnimalSinew", minNb = 1, maxNb = 3},
-            {item = "HorseMod.Horse_Hoof", nb = 4},
+            { item = "HorseMod.Horse_Steak", minNb = 5, maxNb = 9 },
+            { item = "HorseMod.Horse_Loin", minNb = 5, maxNb = 9 },
+            { item = "Base.AnimalSinew", minNb = 1, maxNb = 3 },
+            { item = "HorseMod.Horse_Hoof", nb = 4 },
         },
         bones = {
-            {item = "Base.AnimalBone", minNb = 4, maxNb = 7},
+            { item = "Base.AnimalBone", minNb = 4, maxNb = 7 },
         },
         head = "HorseMod.Foal_Head_{id}",
         leather = "HorseMod.",
@@ -299,21 +305,14 @@ HorseDefinitions.PARTS = {
     },
 }
 
-
-
-
-
-
-
 --- ==================================================== ---
 --- APPLY THE ANIMAL DATA TO THE GAME ANIMAL DEFINITIONS ---
 --- ==================================================== ---
 
-
 -- simple utility function to copy data from `newData` to `data` by overriding common keys.
 local function copyOver(data, newData)
     newData = copyTable(newData)
-    for k,v in pairs(newData) do
+    for k, v in pairs(newData) do
         data[k] = v
     end
     return data
@@ -326,15 +325,14 @@ Events.OnGameBoot.Add(function()
     local breeds = {}
     for i = 1, #HorseDefinitions.SHORT_NAMES do
         local id = HorseDefinitions.SHORT_NAMES[i] --[[@as string EmmyLua going fucking schizo]]
-        local breed = {name = id}
+        local breed = { name = id }
         for key, path in pairs(HorseDefinitions.PATHS) do
-            local formattedPath = HorseUtils.formatTemplate(path, {id = id})
+            local formattedPath = HorseUtils.formatTemplate(path, { id = id })
             breed[key] = formattedPath
         end
         breeds[id] = breed
     end
-    AnimalDefinitions.breeds["horse"] = {breeds = breeds} -- retarded naming scheme from the game, lovely
-
+    AnimalDefinitions.breeds["horse"] = { breeds = breeds } -- retarded naming scheme from the game, lovely
 
     -- apply animal data
     local ANIMALS_DATA = HorseDefinitions.ANIMALS_DATA
@@ -345,7 +343,7 @@ Events.OnGameBoot.Add(function()
         local data = copyTable(ANIMALS_DATA._DEFAULT)
         data.breeds = AnimalDefinitions.breeds["horse"].breeds
 
-    -- if adult, apply adult data
+        -- if adult, apply adult data
         if isAdult then
             data = copyOver(data, ANIMALS_DATA._DEFAULT_ADULT)
         end
@@ -359,7 +357,6 @@ Events.OnGameBoot.Add(function()
         -- apply avatar definition
         AnimalAvatarDefinition[animalType] = HorseDefinitions.AVATAR_DEFINITION
     end
-
 
     -- parts data
     local PARTS = HorseDefinitions.PARTS
@@ -376,15 +373,12 @@ Events.OnGameBoot.Add(function()
             data = copyOver(data, PARTS[animalType])
 
             -- format elements with id
-            data.leather = HorseUtils.formatTemplate(data.leather, {id = id})
-            data.head = HorseUtils.formatTemplate(data.head, {id = id})
+            data.leather = HorseUtils.formatTemplate(data.leather, { id = id })
+            data.head = HorseUtils.formatTemplate(data.head, { id = id })
 
-            AnimalPartsDefinitions.animals[animalType .. id]  = data
+            AnimalPartsDefinitions.animals[animalType .. id] = data
         end
     end
 end)
-
-
-
 
 return HorseDefinitions
