@@ -189,28 +189,28 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
                 end
 
                 -- verify all the needed slots are occupied
-                local respectsNeeds, missing = Attachments.verifyNeeds(horse, fullType, slot)
-                if not respectsNeeds then
+                local respectsRequirements, missing = Attachments.verifyRequirements(horse, fullType, slot)
+                if not respectsRequirements then
                     ---@cast missing -nil remove nil from possibilities
-                    local needsAllOf = #missing.allOf > 0
-                    local needsOneOf = #missing.oneOf > 0
+                    local requirementsAllOf = #missing.allOf > 0
+                    local requirementsOneOf = #missing.oneOf > 0
 
                     -- main tooltip
-                    local txt = getText("ContextMenu_Horse_Needs_Missing")
+                    local txt = getText("ContextMenu_Horse_Requirements_Missing")
                     
                     -- allOf tooltip
-                    if needsAllOf then
+                    if requirementsAllOf then
                         local allOfTxt = HorseUtils.formatTemplate(
-                            getText("ContextMenu_Horse_Needs_AllOf"),
+                            getText("ContextMenu_Horse_Requirements_AllOf"),
                             {allOf = table.concat(missing.allOf, ", ")}
                         )
                         txt = txt .. "\n" .. allOfTxt
                     end
 
                     -- oneOf tooltip
-                    if needsOneOf then
+                    if requirementsOneOf then
                         local oneOfTxt = HorseUtils.formatTemplate(
-                            getText("ContextMenu_Horse_Needs_OneOf"),
+                            getText("ContextMenu_Horse_Requirements_OneOf"),
                             {oneOf = table.concat(missing.oneOf, ", ")}
                         )
                         txt = txt .. "\n" .. oneOfTxt

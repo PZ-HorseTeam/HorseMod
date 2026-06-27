@@ -78,8 +78,8 @@ local Event = require("HorseMod/Event")
 ---Whenever the player can reach from mount this attachment, always considered reachable by default. Notably used for containers.
 ---@field notReachableFromMount boolean?
 ---
----List of attachment slots with equipment that this item needs to be equipped.
----@field needs {oneOf: AttachmentSlot[], allOf: AttachmentSlot[]}?
+---List of attachment slots with equipment that this item requires to be equipped.
+---@field requirements {oneOf: AttachmentSlot[], allOf: AttachmentSlot[]}?
 
 
 ---A slots configuration for an InventoryItem full type holding the various configurations the item can take on different slots.
@@ -129,7 +129,7 @@ local AttachmentData = {
         ---@type ItemDefinition
         TENT = { 
             ["Tent"] = {
-                needs = {
+                requirements = {
                     oneOf = {"Saddle", "Saddlebags"}, 
                     allOf = {},
                 },
@@ -140,7 +140,7 @@ local AttachmentData = {
         ---@type ItemDefinition
         SLEEPING_BAG = { 
             ["SleepingBag"] = {
-                needs = {
+                requirements = {
                     oneOf = {"Saddle", "Saddlebags"}, 
                     allOf = {},
                 },
