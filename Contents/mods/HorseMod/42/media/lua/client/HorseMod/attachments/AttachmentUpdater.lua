@@ -50,25 +50,25 @@ end
 
 AttachmentUpdater.updateLights = function(horse)
     local lights = AttachmentVisuals.lights[horse]
-    if lights then
-        local x, y, z = horse:getX(), horse:getY(), horse:getZ()
-        for _, lightData in pairs(lights) do
-            ---@cast lightData {behavior: LightBehavior, source: IsoLightSource?} -- fucked up EmmyLua
+    if not lights then return end
 
-            -- remove previous source
-            local source = lightData.source
-            if source then
-                getCell():removeLamppost(source)
-            end
+    local x, y, z = horse:getX(), horse:getY(), horse:getZ()
+    for _, lightData in pairs(lights) do
+        ---@cast lightData {behavior: LightBehavior, source: IsoLightSource?} -- fucked up EmmyLua
 
-            -- create the light source and place it in the world
-            local behavior = lightData.behavior
-            local rgb = behavior.rgb
-            local radius = behavior.radius
-            local light = IsoLightSource.new(x, y, z, rgb.r, rgb.g, rgb.b, radius)
-            getCell():addLamppost(light)
-            lightData.source = light
+        -- remove previous source
+        local source = lightData.source
+        if source then
+            getCell():removeLamppost(source)
         end
+
+        -- create the light source and place it in the world
+        local behavior = lightData.behavior
+        local rgb = behavior.rgb
+        local radius = behavior.radius
+        local light = IsoLightSource.new(x, y, z, rgb.r, rgb.g, rgb.b, radius)
+        getCell():addLamppost(light)
+        lightData.source = light
     end
 end
 
