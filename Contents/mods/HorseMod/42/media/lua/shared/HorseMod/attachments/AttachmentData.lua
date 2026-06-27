@@ -93,8 +93,8 @@ local Event = require("HorseMod/Event")
 ---Whenever this attachment can be equipped when the horse has a rider. Defaults to `true`.
 ---@field notEquipableWithRider boolean?
 ---
----List of attachment slots with equipment that this item needs to be equipped.
----@field needs {oneOf: AttachmentSlot[], allOf: AttachmentSlot[]}?
+---List of attachment slots with equipment that this item requires to be equipped.
+---@field requirements {oneOf: AttachmentSlot[], allOf: AttachmentSlot[]}?
 
 
 ---A slots configuration for an InventoryItem full type holding the various configurations the item can take on different slots.
@@ -145,7 +145,7 @@ local AttachmentData = {
         ---@type ItemDefinition
         TENT = { 
             ["Tent"] = {
-                needs = {
+                requirements = {
                     oneOf = {"Saddle", "Saddlebags"}, 
                     allOf = {},
                 },
@@ -156,7 +156,7 @@ local AttachmentData = {
         ---@type ItemDefinition
         SLEEPING_BAG = { 
             ["SleepingBag"] = {
-                needs = {
+                requirements = {
                     oneOf = {"Saddle", "Saddlebags"}, 
                     allOf = {},
                 },

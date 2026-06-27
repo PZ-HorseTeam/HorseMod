@@ -215,23 +215,23 @@ function Attachments.getHorseContainerData(worldItem)
     return nil
 end
 
----Verifies that the needs of the provided `fullType` item on `slot` are satisfied.
----If not satisfied, returns false and a table containing which needs are missing.
+---Verifies that the requirements of the provided `fullType` item on `slot` are satisfied.
+---If not satisfied, returns false and a table containing which requirements are missing.
 ---@param horse IsoAnimal
 ---@param fullType string
 ---@param slot AttachmentSlot
 ---@return boolean
 ---@return {allOf: AttachmentSlot[], oneOf: AttachmentSlot[]}? missing
-function Attachments.verifyNeeds(horse, fullType, slot)
+function Attachments.verifyRequirements(horse, fullType, slot)
     local itemDef = Attachments.getAttachmentDefinition(fullType, slot)
     assert(
         itemDef, 
-        "Attachment definition not found for fullType: " .. tostring(fullType) .. ", slot: " .. tostring(slot) .. ". Make sure the item is registered in AttachmentData.items before calling verifyNeeds."
+        "Attachment definition not found for fullType: " .. tostring(fullType) .. ", slot: " .. tostring(slot) .. ". Make sure the item is registered in AttachmentData.items before calling verifyRequirements."
     )
 
-    local needs = itemDef.needs
-    if not needs then
-        return true, nil -- no needs, so it's valid
+    local requirements = itemDef.requirements
+    if not requirements then
+        return true, nil -- no requirements, so it's valid
     end
 
     -- cache all currently equipped attachments
@@ -248,7 +248,7 @@ function Attachments.verifyNeeds(horse, fullType, slot)
     }
 
     -- check allOf requirements
-    local allOf = needs.allOf
+    local allOf = requirements.allOf
     for i = 1, #allOf do
         local requiredSlot = allOf[i]
         if not occupiedSlots[requiredSlot] then
@@ -257,7 +257,7 @@ function Attachments.verifyNeeds(horse, fullType, slot)
     end
 
     -- check oneOf requirements
-    local oneOf = needs.oneOf
+    local oneOf = requirements.oneOf
     local hasOneOf = false
     for i = 1, #oneOf do
         local requiredSlot = oneOf[i]
@@ -283,7 +283,7 @@ end
 ---@return boolean hasDependencies
 ---@return {allOf: {item: string, slot: AttachmentSlot}[], oneOf: {item: string, slot: AttachmentSlot}[]} dependentAttachments
 function Attachments.findDependentAttachments(horse, fullType, slot)
-    -- get that attachment needs
+    -- get that attachment requirements
     local itemDef = Attachments.getAttachmentDefinition(fullType, slot)
     assert(
         itemDef, 
@@ -294,8 +294,8 @@ function Attachments.findDependentAttachments(horse, fullType, slot)
     -- attachment item isn't one of the needs of that item
     -- all I know is it had circle dependencies where it would mark its own dependent items 
     -- as dependencies of it needs to respect
-    local needs = itemDef.needs or {allOf = {}, oneOf = {}}
-    local oneOf = needs.oneOf
+    local requirements = itemDef.requirements or {allOf = {}, oneOf = {}}
+    local oneOf = requirements.oneOf
     local lookup_oneOf = {}
     for i = 1, #oneOf do
         lookup_oneOf[oneOf[i]] = true
@@ -314,24 +314,24 @@ function Attachments.findDependentAttachments(horse, fullType, slot)
         -- if this ever happens, it most likely means the item
         -- had its attachment definition removed while being equipped
         -- not using assert here to avoid breaking the mod for that horse
-        local itemDef = Attachments.getAttachmentDefinition(attachmentFullType, attachmentSlot)
-        if not itemDef then break end
+        local attachedItemDef = Attachments.getAttachmentDefinition(attachmentFullType, attachmentSlot)
+        if not attachedItemDef then break end
 
-        -- no needs = no dependencies, so we can skip
-        local needs = itemDef.needs
-        if not needs then break end
+        -- no requirements = no dependencies, so we can skip
+        local attachedRequirements = attachedItemDef.requirements
+        if not attachedRequirements then break end
 
         -- check if the slot is needed by that attachment
-        local allOf = needs.allOf
-        for j = 1, #allOf do
-            if allOf[j] == slot then
+        local attachedAllOf = attachedRequirements.allOf
+        for j = 1, #attachedAllOf do
+            if attachedAllOf[j] == slot then
                 table.insert(dependentAttachments.allOf, attachment)
             end
         end
 
-        local oneOf = needs.oneOf
-        for j = 1, #oneOf do
-            if oneOf[j] == slot then
+        local attachedOneOf = attachedRequirements.oneOf
+        for j = 1, #attachedOneOf do
+            if attachedOneOf[j] == slot then
                 table.insert(dependentAttachments.oneOf, attachment)
             end
         end
@@ -341,8 +341,8 @@ function Attachments.findDependentAttachments(horse, fullType, slot)
             local otherAttachment = attachments[j]
             local otherSlot = otherAttachment.slot
             if otherSlot ~= slot and otherAttachment.item ~= fullType and not lookup_oneOf[otherSlot] then
-                for k = 1, #oneOf do
-                    if oneOf[k] == otherSlot then
+                for k = 1, #attachedOneOf do
+                    if attachedOneOf[k] == otherSlot then
                         table.insert(dependentAttachments.oneOf, otherAttachment)
                     end
                 end
