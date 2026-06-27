@@ -183,16 +183,10 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
                 end
 
                 -- first check that a mount position exists
-                -- can't reach a position to equip the attachment
                 if not mountPosition then
                     option.notAvailable = true
                     local tooltip = ISWorldObjectContextMenu.addToolTip()
                     tooltip.description = getText("ContextMenu_Horse_NoMountPosition")
-                    option.toolTip = tooltip
-                elseif hasMount and not Attachments.canEquipWithRider(accessory:getFullType(), slot) then
-                    option.notAvailable = true
-                    local tooltip = ISWorldObjectContextMenu.addToolTip()
-                    tooltip.description = getText("ContextMenu_Horse_CannotEquipWithRider")
                     option.toolTip = tooltip
                 end
 

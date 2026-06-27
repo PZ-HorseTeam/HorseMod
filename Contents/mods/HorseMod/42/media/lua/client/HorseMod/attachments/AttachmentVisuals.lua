@@ -1,11 +1,16 @@
 ---@namespace HorseMod
 
+local Attachments = require("HorseMod/attachments/Attachments")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
 local attachmentcommands = require("HorseMod/attachments/attachmentcommands")
 local client = require("HorseMod/networking/client")
 local commands = require("HorseMod/networking/commands")
 
-local AttachmentVisuals = {}
+local AttachmentVisuals = {
+    ---Holds all the current light sources for each horse and slot.
+    ---@type table<IsoAnimal, table<AttachmentSlot, {behavior: LightBehavior, source: IsoLightSource?}>>>
+    lights = {},
+}
 
 
 ---Retrieve the attached item on the specified `slot` of `animal`.
@@ -48,6 +53,23 @@ end
 function AttachmentVisuals.set(animal, slot, item)
     ---@diagnostic disable-next-line: param-type-mismatch
     animal:setAttachedItem(slot, item)
+
+    -- update light source status for that horse and slot
+    local lightBehavior = item and Attachments.getLightBehavior(slot, item:getFullType()) or nil
+    AttachmentVisuals.lights[animal] = AttachmentVisuals.lights[animal] or {} -- init
+    local lights = AttachmentVisuals.lights[animal]
+    if lightBehavior then
+        lights[slot] = {behavior = lightBehavior, source = nil,}
+    else
+        -- make sure to remove any previously existing light, just in case
+        local previousLight = lights[slot]
+        if previousLight and previousLight.source then
+            getCell():removeLamppost(previousLight.source)
+        end
+
+        -- remove any light behavior
+        lights[slot] = nil
+    end
 end
 
 
