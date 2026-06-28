@@ -16,6 +16,11 @@ local VEHICLE_COLLISION_RADIUS = 0.2
 local VEHICLE_SLIDE_COLLISION_RADIUS = 0.14
 local VEHICLE_SLIDE_GALLOP_MULT = 1.15
 
+---Sets the angle that is considered wall collision
+---So that you can slide against the wall at wider angles
+---0.25 = sin^2(30deg)
+local WALL_HIT_MIN_PROGRESS_FRACTION = 0.25
+
 ---@param state "walk"|"gallop"
 ---@return number
 ---@nodiscard
@@ -710,12 +715,21 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         local magnitude = math.min(remaining, maxStepDist)
         distance:setLength(magnitude)
 
-        local rx, ry = collideStepAt(horse, z, x, y, distance:getX(), distance:getY(), isJumping)
+        local reqX, reqY = distance:getX(), distance:getY()
+        local rx, ry = collideStepAt(horse, z, x, y, reqX, reqY, isJumping)
         if rx == 0 and ry == 0 then
             if isGalloping and effects.onGallopBlocked then
                 effects.onGallopBlocked(rider, horse)
             end
             break
+        end
+
+        if isGalloping and effects.onGallopBlocked and magnitude > 0 then
+            local progressAlongDir = (rx * reqX + ry * reqY) / magnitude
+            if progressAlongDir < magnitude * WALL_HIT_MIN_PROGRESS_FRACTION then
+                effects.onGallopBlocked(rider, horse)
+                break
+            end
         end
 
         local nx = x + rx
