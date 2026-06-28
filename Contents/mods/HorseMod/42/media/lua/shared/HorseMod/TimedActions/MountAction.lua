@@ -12,6 +12,40 @@ local IS_SERVER = isServer()
 ---@namespace HorseMod
 
 
+---Freeze the rider during the mounting animation
+---Causes animation state issues in MP otherwise
+---@param character IsoPlayer
+local function freezeRiderForMount(character)
+    character:setIgnoreMovement(true)
+    character:setIgnoreInputsForDirection(true)
+    character:setIgnoreAimingInput(true)
+    character:setIgnoreAutoVault(true)
+    character:setAllowRun(false)
+    character:setAllowSprint(false)
+    character:setSneaking(false)
+
+    -- clear any movement on the rider from a held movement key
+    character:setForceRun(false)
+    character:setForceSprint(false)
+    character:setRunning(false)
+    character:setSprinting(false)
+    character:setMoving(false)
+    character:setJustMoved(false)
+end
+
+
+---Give movement back to the rider if mount action is cancelled
+---@param character IsoPlayer
+local function releaseRiderAfterCancel(character)
+    character:setIgnoreMovement(false)
+    character:setIgnoreInputsForDirection(false)
+    character:setIgnoreAimingInput(false)
+    character:setIgnoreAutoVault(false)
+    character:setAllowRun(true)
+    character:setAllowSprint(true)
+end
+
+
 ---@class MountAction : ISBaseTimedAction, umbrella.NetworkedTimedAction
 ---
 ---@field character IsoPlayer
@@ -91,6 +125,8 @@ function MountAction:start()
     character:setVariable(AnimationVariable.MOUNTING_HORSE, true)
     character:setVariable(AnimationVariable.NO_CANCEL, false)
 
+    freezeRiderForMount(character)
+
     -- start animation
     local actionAnim = ""
     if self.hasSaddle then
@@ -126,6 +162,7 @@ end
 
 function MountAction:stop()
     self.character:setVariable(AnimationVariable.MOUNTING_HORSE, false)
+    releaseRiderAfterCancel(self.character)
     ISBaseTimedAction.stop(self)
 end
 
