@@ -11,9 +11,6 @@ local StaminaChange = Stamina.StaminaChange
 
 ---@namespace HorseMod
 
--- getMovementSpeed() is 0 on server, so we use this flag instead
-local MOUNTED_MOVING = "HorseMountedMoving"
-
 
 ---@class StaminaSystem : System
 local StaminaSystem = {}
@@ -25,7 +22,7 @@ function StaminaSystem:update(horses, delta)
 
         local staminaChange = 0.0
         if Mounts.hasRider(horse) then
-            if horse:getVariableBoolean(MOUNTED_MOVING) then
+            if horse:getVariableBoolean(AnimationVariable.MOUNTED_MOVING) then
                 if horse:getVariableBoolean(AnimationVariable.GALLOP) then
                     staminaChange = StaminaChange.RUN
                 elseif horse:getVariableBoolean(AnimationVariable.TROT) then

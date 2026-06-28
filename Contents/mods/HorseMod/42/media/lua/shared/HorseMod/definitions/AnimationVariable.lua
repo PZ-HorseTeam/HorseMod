@@ -18,6 +18,9 @@ local AnimationVariable = {
     DISMOUNT_STARTED = "HorseDismountStarted",
     NO_CANCEL = "HorseNoCancel",
 
+    -- getMovementSpeed() is 0 on server, so we use this flag instead
+    MOUNTED_MOVING = "HorseMountedMoving",
+
     -- True for the first ticks of a fresh gallop so the IdleToGallop
     -- transition anim plays before settling into the gallop loop
     IDLE_TO_RUN = "IdleToRun",
