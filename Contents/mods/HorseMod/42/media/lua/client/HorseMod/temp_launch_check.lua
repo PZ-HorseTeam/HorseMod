@@ -61,9 +61,7 @@ local function tryShowOldSaveWarning()
 
     popupShown = true
     local text = getText("IGUI_HorseMod_OldSaveWarning")
-    make_popup(text, function()
-        ackPopup()
-    end)
+    make_popup(text, ackPopup)
 end
 
 local function check_meatball()
