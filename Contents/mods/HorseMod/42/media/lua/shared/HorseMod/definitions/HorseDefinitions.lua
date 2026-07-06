@@ -31,7 +31,10 @@ local HorseDefinitions = {
         "MustangGrullaDun",              -- Grulla Dun
 
         -- Camarillo
-        "CamarilloWhite"                 -- White
+        "CamarilloWhite",                -- White
+
+        -- Rocky Mountain
+        "RockyMountainLiverChestnut",    -- Liver Chestnut
     },
 
     ---Templates for the different paths used for the horse textures, the `{id}` part will be replaced by the breed ID defined in :lua:obj:`HorseMod.ContainerBehavior.HorseDefinitions.SHORT_NAMES`.
