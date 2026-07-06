@@ -194,7 +194,7 @@ local AttachmentData = {
         ["AmericanQuarterPalomino"] = {"#EADAB6"},
         ["AmericanQuarterBlueRoan"] = {"#19191C"},
         ["AmericanQuarterStrawberryRoan"] = {"#78382B"},
-        ["AmericanQuarterSealBay"] = {"#100B07"},
+        ["AmericanQuarterSealBay"] = {"#1F1819"},
         
         ["AmericanPaintTobiano"] = {"#FBDEA7"},
         ["AmericanPaintOvero"] = {"#292524"},
@@ -205,7 +205,7 @@ local AttachmentData = {
         ["ThoroughbredBay"] = {"#140C08"},
         ["ThoroughbredFleaBittenGrey"] = {"#FCECC5"},
         ["ThoroughbredCricket"] = {"#3C1C16"},
-        ["ThoroughbredReverseBrindle"] = {"#130C08"},
+        ["ThoroughbredReverseBrindle"] = {"#1F1819"},
 
         ["MustangBuckskinDun"] = {"#33271A"},
         ["MustangGrullaDun"] = {"#1A1916"},
