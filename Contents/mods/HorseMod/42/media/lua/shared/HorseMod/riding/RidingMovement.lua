@@ -683,11 +683,15 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
 
     -- Collide at the resolved floor level so the rider can't pass through walls
     -- when going up/down stairs
-    local z = floorSquare and floorSquare:getZ() or math.floor(horse:getZ())
+    local baseZ = floorSquare and floorSquare:getZ() or math.floor(horse:getZ())
+    local onStairs = floorSquare ~= nil and floorSquare:HasStairs()
 
-    if floorSquare and floorSquare:HasStairs() and (horse:getZ() - floorSquare:getZ()) >= 0.7 then
-        z = z + 1
+    local onRamp = floorSquare ~= nil and squareIsRamp(floorSquare)
+    if not onRamp then
+        local below = getSq(horse:getX(), horse:getY(), math.floor(horse:getZ()) - 1)
+        onRamp = below ~= nil and squareIsRamp(below)
     end
+
     local x = horse:getX()
     local y = horse:getY()
     local candidates = {}
@@ -699,7 +703,7 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         local it = allVehicles:iterator()
         while it:hasNext() do
             local vehicle = it:next()
-            if vehicle and math.floor(vehicle:getZ()) == z then
+            if vehicle and math.floor(vehicle:getZ()) == baseZ then
                 local dx = vehicle:getX() - x
                 local dy = vehicle:getY() - y
                 if (dx * dx + dy * dy) <= maxProbeDistanceSq then
@@ -709,6 +713,21 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         end
     end
 
+    local function stepAt(sx, sy, reqX, reqY)
+        local rx, ry = collideStepAt(horse, baseZ, sx, sy, reqX, reqY, isJumping)
+        local sz = baseZ
+        if onStairs then
+            local ux, uy = collideStepAt(horse, baseZ + 1, sx, sy, reqX, reqY, isJumping)
+            if (ux * ux + uy * uy) > (rx * rx + ry * ry) then
+                local dest = getSquare(sx + ux, sy + uy, baseZ + 1)
+                if dest and (dest:has(IsoFlagType.solidfloor) or dest:HasStairs()) then
+                    rx, ry, sz = ux, uy, baseZ + 1
+                end
+            end
+        end
+        return rx, ry, sz
+    end
+
     local maxStepDist = 0.065
     local remaining = distance:getLength()
     while remaining > 0 do
@@ -716,15 +735,15 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         distance:setLength(magnitude)
 
         local reqX, reqY = distance:getX(), distance:getY()
-        local rx, ry = collideStepAt(horse, z, x, y, reqX, reqY, isJumping)
+        local rx, ry, stepZ = stepAt(x, y, reqX, reqY)
         if rx == 0 and ry == 0 then
-            if isGalloping and effects.onGallopBlocked then
+            if isGalloping and effects.onGallopBlocked and not onRamp then
                 effects.onGallopBlocked(rider, horse)
             end
             break
         end
 
-        if isGalloping and effects.onGallopBlocked and magnitude > 0 then
+        if isGalloping and effects.onGallopBlocked and not onRamp and magnitude > 0 then
             local progressAlongDir = (rx * reqX + ry * reqY) / magnitude
             if progressAlongDir < magnitude * WALL_HIT_MIN_PROGRESS_FRACTION then
                 effects.onGallopBlocked(rider, horse)
@@ -734,7 +753,7 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
 
         local nx = x + rx
         local ny = y + ry
-        local hitVehicle, hitX, hitY = riderCollidesWithVehicleAt(rider, candidates, nx, ny, z, VEHICLE_COLLISION_RADIUS)
+        local hitVehicle, hitX, hitY = riderCollidesWithVehicleAt(rider, candidates, nx, ny, baseZ, VEHICLE_COLLISION_RADIUS)
         if hitVehicle then
             local sx, sy = getVehicleSlideDelta(nx, ny, rx, ry, hitX, hitY)
             if sx == 0 and sy == 0 then
@@ -747,16 +766,16 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
 
             local snx = x + sx
             local sny = y + sy
-            local slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, z, VEHICLE_SLIDE_COLLISION_RADIUS)
-            if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, z)) then
+            local slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, baseZ, VEHICLE_SLIDE_COLLISION_RADIUS)
+            if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, baseZ)) then
                 snx = x + sx * 0.6
                 sny = y + sy * 0.6
-                slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, z, VEHICLE_SLIDE_COLLISION_RADIUS)
-                if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, z)) then
+                slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, baseZ, VEHICLE_SLIDE_COLLISION_RADIUS)
+                if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, baseZ)) then
                     snx = x - sx * 0.6
                     sny = y - sy * 0.6
-                    slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, z, VEHICLE_SLIDE_COLLISION_RADIUS)
-                    if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, z)) then
+                    slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, baseZ, VEHICLE_SLIDE_COLLISION_RADIUS)
+                    if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, baseZ)) then
                         break
                     end
                 end
@@ -766,7 +785,7 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
             ny = sny
         end
 
-        if squareCenterSolid(getSquare(nx, ny, z)) then
+        if squareCenterSolid(getSquare(nx, ny, stepZ)) then
             break
         end
 
@@ -1308,38 +1327,64 @@ function RidingMovement:isJumping()
     return self.jumpTime > 0 or self.pair:getAnimationVariableBoolean(AnimationVariable.JUMP)
 end
 
----Make the horse track the floor height of stairs
+---@param sq IsoGridSquare
+---@param x number
+---@param y number
+---@return number
+---@nodiscard
+local function floorHeight(sq, x, y)
+    if squareIsRamp(sq) then
+        return sq:getApparentZ(x - sq:getX(), y - sq:getY())
+    end
+
+    return sq:getZ()
+end
+
+---Make the horse track the floor height of stairs and landings.
 ---@param mount IsoAnimal
 ---@param deltaTime number
 function RidingMovement:followVertical(mount, deltaTime)
     local x = mount:getX()
     local y = mount:getY()
+    local mz = mount:getZ()
 
-    local current = findFloorSquare(x, y, mount:getZ())
-    if not current then
+    local best = findFloorSquare(x, y, mz)
+    local bestZ = best and floorHeight(best, x, y) or nil
+
+    -- Only look a level up when the mount is in the upper part of its Z level, so a
+    -- mount on Z-0 is never teleported up to a floor above
+    if (mz - math.floor(mz)) >= 0.5 then
+        local above = getSq(x, y, math.floor(mz) + 1)
+        if above and (above:has(IsoFlagType.solidfloor) or above:HasStairs() or above:hasSlopedSurface()) then
+            local zAbove = floorHeight(above, x, y)
+            if (not bestZ) or math.abs(zAbove - mz) < math.abs(bestZ - mz) then
+                best, bestZ = above, zAbove
+            end
+        end
+    end
+
+    if not best then
         self.lastFloorSquare = nil
         self.rampGrace = math.max(0, self.rampGrace - deltaTime)
         return
     end
 
-    local targetZ = current:getZ()
-    local onRamp = squareIsRamp(current)
-    if onRamp then
-        targetZ = current:getApparentZ(x - current:getX(), y - current:getY())
+    if math.abs(bestZ - mz) < VERTICAL_FOLLOW_MAX_STEP then
+        mount:setZ(bestZ)
+        mount:setLastZ(bestZ)
     end
 
-    if math.abs(targetZ - mount:getZ()) < VERTICAL_FOLLOW_MAX_STEP then
-        mount:setZ(targetZ)
-        mount:setLastZ(targetZ)
-    end
+    -- Refresh the square that the mount is on
+    mount:setCurrent(best)
+    mount:setMovingSquareNow()
 
-    if onRamp then
+    if squareIsRamp(best) then
         self.rampGrace = RAMP_FALL_GRACE_SECONDS
     else
         self.rampGrace = math.max(0, self.rampGrace - deltaTime)
     end
 
-    self.lastFloorSquare = current
+    self.lastFloorSquare = best
 end
 
 
@@ -1358,6 +1403,35 @@ function RidingMovement:onStairsOrSlope(mount)
 
     local below = getCell():getGridSquare(math.floor(mount:getX()), math.floor(mount:getY()), math.floor(mount:getZ()) - 1)
     return below ~= nil and squareIsRamp(below)
+end
+
+---`isbFalling` triggers on the mount whenever there's a floor below it seems
+---so can't always be trusted to do what it says
+---@param mount IsoAnimal
+---@return boolean
+---@nodiscard
+function RidingMovement:isOnFloor(mount)
+    local x, y = mount:getX(), mount:getY()
+    local mz = mount:getZ()
+
+    local below = findFloorSquare(x, y, mz)
+    if below then
+        local bz = squareIsRamp(below)
+            and below:getApparentZ(x - below:getX(), y - below:getY())
+            or below:getZ()
+        if math.abs(bz - mz) <= 0.35 then
+            return true
+        end
+    end
+
+    local above = getSq(x, y, math.floor(mz) + 1)
+    if above and (above:has(IsoFlagType.solidfloor) or above:HasStairs() or above:hasSlopedSurface()) then
+        if math.abs(above:getZ() - mz) <= 0.35 then
+            return true
+        end
+    end
+
+    return false
 end
 
 ---@param input RidingMovementInput
@@ -1465,7 +1539,9 @@ function RidingMovement:update(input, deltaTime)
 
     self:updateTreeFall(isGalloping, deltaTime)
 
-    if (rider:isbFalling() or mount:isbFalling()) and not self:onStairsOrSlope(mount) then
+    if (rider:isbFalling() or mount:isbFalling())
+            and not self:onStairsOrSlope(mount)
+            and not self:isOnFloor(mount) then
         if self.effects.onFallDetected then
             self.effects.onFallDetected(rider, mount)
         end
