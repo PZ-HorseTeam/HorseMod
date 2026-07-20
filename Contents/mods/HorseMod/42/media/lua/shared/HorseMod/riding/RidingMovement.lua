@@ -1,26 +1,31 @@
 ---@namespace HorseMod
+-- RidingMovement.lua
+-- Handles all movement physics and behavior for mounted horse riding
+-- Includes collision detection, animation state management, and player input processing
 
 local Stamina = require("HorseMod/Stamina")
 local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
 local MountedAnimationState = require("HorseMod/riding/MountedAnimationState")
 local MountedDirection = require("HorseMod/riding/MountedDirection")
 
-local rdm = newrandom()
-local TEMP_VECTOR2 = Vector2.new()
+local rdm = newrandom()  -- Random number generator for probabilistic events
+local TEMP_VECTOR2 = Vector2.new()  -- Reusable vector for calculations
 
-local VEHICLE_SLIDE_TANGENT_SCALE = 1.08
-local VEHICLE_SLIDE_OUTWARD_BIAS = 0.015
-local VEHICLE_SLIDE_OUTWARD_BIAS_HEADON_DOT = 0.035
-local VEHICLE_SLIDE_MIN_LEN_SQ = 0.00000005
-local VEHICLE_COLLISION_RADIUS = 0.2
-local VEHICLE_SLIDE_COLLISION_RADIUS = 0.14
-local VEHICLE_SLIDE_GALLOP_MULT = 1.15
+-- Vehicle collision sliding parameters
+local VEHICLE_SLIDE_TANGENT_SCALE = 1.08  -- How much movement is maintained along the collision tangent
+local VEHICLE_SLIDE_OUTWARD_BIAS = 0.015  -- Pushes the rider away from vehicle during collision
+local VEHICLE_SLIDE_OUTWARD_BIAS_HEADON_DOT = 0.035  -- Threshold for head-on collisions
+local VEHICLE_SLIDE_MIN_LEN_SQ = 0.00000005  -- Minimum slide distance squared
+local VEHICLE_COLLISION_RADIUS = 0.2  -- Collision radius for initial vehicle detection
+local VEHICLE_SLIDE_COLLISION_RADIUS = 0.14  -- Smaller collision radius for slide path
+local VEHICLE_SLIDE_GALLOP_MULT = 1.15  -- Extra slide velocity when galloping
 
----Sets the angle that is considered wall collision
----So that you can slide against the wall at wider angles
----0.25 = sin^2(30deg)
+-- Wall collision detection
+-- Sets the angle that is considered wall collision, allowing sliding against walls at wider angles
+-- 0.25 = sin^2(30deg), meaning walls are hit at 30 degree angles or shallower
 local WALL_HIT_MIN_PROGRESS_FRACTION = 0.25
 
+-- Get the configured base speed for a movement state
 ---@param state "walk"|"gallop"
 ---@return number
 ---@nodiscard
@@ -38,6 +43,7 @@ function GetSpeeds()
     return getSpeed("walk"), getSpeed("gallop")
 end
 
+-- Get the horse's genetic speed modifier
 ---@param horse IsoAnimal
 ---@return number
 ---@nodiscard
@@ -45,6 +51,8 @@ local function getGeneticSpeed(horse)
     return horse:getUsedGene("speed"):getCurrentValue()
 end
 
+-- Smooth interpolation function (Hermite interpolation) for easing values 0-1
+-- Creates smoother transitions than linear interpolation
 ---@param t number
 ---@return number
 ---@nodiscard
@@ -54,15 +62,17 @@ local function smoothstep(t)
     return t * t * (3 - 2 * t)
 end
 
+-- Linear interpolation between two values
 ---@param a number
 ---@param b number
----@param t number
+---@param t number between 0 and 1
 ---@return number
 ---@nodiscard
 local function lerp(a, b, t)
     return a + (b - a) * t
 end
 
+-- Get grid square at world coordinates (floors to integer grid position)
 ---@param x number
 ---@param y number
 ---@param z number
@@ -72,14 +82,16 @@ local function getSq(x, y, z)
     return getCell():getGridSquare(math.floor(x), math.floor(y), z)
 end
 
----So the horse doesn't trigger falling when going down stairs fast
+-- Maximum vertical step per frame - prevents horse from falling rapidly when descending stairs
 local VERTICAL_FOLLOW_MAX_STEP = 0.95
 
----Sometimes the horse counts as airborne when reaching top of stairs for a few frames
----This gives it a bit of time to cover those frames
+-- Grace period for ramp/slope detection - gives the horse time to avoid false fall detection
+-- when transitioning between stair sections (sometimes counts as airborne for a few frames)
 local RAMP_FALL_GRACE_SECONDS = 0.4
 
----Used to follow stair height, and to pick the collision Z level
+-- Find the ground square beneath the horse (handles stairs, ramps, and floors)
+-- Searches downward for a valid floor surface and returns the closest one
+-- Used to follow stair height and determine collision Z level
 ---@param x number
 ---@param y number
 ---@param z number
@@ -100,6 +112,7 @@ local function findFloorSquare(x, y, z)
     return cell:getGridSquare(xi, yi, top)
 end
 
+-- Check if a square is a ramp or staircase (sloped surface)
 ---@param square IsoGridSquare
 ---@return boolean
 ---@nodiscard
@@ -107,6 +120,8 @@ local function squareIsRamp(square)
     return square:HasStairs() or square:hasSlopedSurface()
 end
 
+-- Convert tree movement multiplier to hedge multiplier
+-- Hedges have less movement penalty than trees (50% of the tree penalty)
 ---@param treeMult number
 ---@return number
 ---@nodiscard
@@ -114,6 +129,7 @@ local function hedgeMultFromTree(treeMult)
     return 1.0 - (1.0 - treeMult) * 0.5
 end
 
+-- Identify vegetation type at a square (trees, hedges, bushes) for movement penalties
 ---@param square IsoGridSquare?
 ---@return "tree"|"hedge"|"bush"|"none"
 ---@nodiscard
@@ -138,18 +154,21 @@ local function getVegetationTypeAt(square)
     return "none"
 end
 
+-- Check if square center is blocked by solid objects or terrain
+-- Returns true if the rider/horse cannot pass through this square's center
 ---@param sq IsoGridSquare?
 ---@return boolean
 ---@nodiscard
 local function squareCenterSolid(sq)
     if not sq then
-        return true
+        return true  -- Treat missing squares as solid (out of bounds)
     end
 
     if sq:isSolid() or sq:isSolidTrans() then
         return true
     end
 
+    -- Check for solid objects placed on the square
     ---@type IsoObject[]
     local objects = sq:getLuaTileObjectList()
     for i = 1, #objects do
@@ -164,27 +183,31 @@ local function squareCenterSolid(sq)
     return false
 end
 
+-- Check if rider collides with any vehicles at a given position
+-- Returns collision status and the collision point coordinates
 ---@param rider IsoPlayer
 ---@param vehicles BaseVehicle[]
 ---@param worldX number
 ---@param worldY number
 ---@param worldZ number
 ---@param collisionRadius number
----@return boolean
----@return number
----@return number
+---@return boolean collided
+---@return number hitX collision point X
+---@return number hitY collision point Y
 ---@nodiscard
 local function riderCollidesWithVehicleAt(rider, vehicles, worldX, worldY, worldZ, collisionRadius)
+    -- Temporarily set rider position to test collision
     local oldNextX = rider:getNextX()
     local oldNextY = rider:getNextY()
-
     rider:setNextX(worldX)
     rider:setNextY(worldY)
 
     local collided = false
     for i = 1, #vehicles do
         local vehicle = vehicles[i]
+        -- Only check vehicles on the same Z level
         if vehicle and math.floor(vehicle:getZ()) == worldZ then
+            -- Early distance check (6 unit radius) to skip distant vehicles
             local dx = vehicle:getX() - worldX
             local dy = vehicle:getY() - worldY
             if (dx * dx + dy * dy) <= 36 then
@@ -196,22 +219,26 @@ local function riderCollidesWithVehicleAt(rider, vehicles, worldX, worldY, world
         end
     end
 
+    -- Restore rider position and return collision results
     local hitX, hitY = TEMP_VECTOR2:getX(), TEMP_VECTOR2:getY()
     rider:setNextX(oldNextX)
     rider:setNextY(oldNextY)
     return collided, hitX, hitY
 end
 
----@param worldX number
----@param worldY number
----@param moveX number
----@param moveY number
----@param collisionX number
----@param collisionY number
----@return number
----@return number
+-- Calculate slide movement when colliding with a vehicle
+-- Returns the new movement vector that slides along the vehicle surface
+---@param worldX number current position X
+---@param worldY number current position Y
+---@param moveX number desired movement X
+---@param moveY number desired movement Y
+---@param collisionX number collision point X
+---@param collisionY number collision point Y
+---@return number slide X
+---@return number slide Y
 ---@nodiscard
 local function getVehicleSlideDelta(worldX, worldY, moveX, moveY, collisionX, collisionY)
+    -- Calculate normal vector from rider to collision point
     local normalX = collisionX - worldX
     local normalY = collisionY - worldY
     local normalLen = math.sqrt(normalX * normalX + normalY * normalY)
@@ -219,21 +246,27 @@ local function getVehicleSlideDelta(worldX, worldY, moveX, moveY, collisionX, co
         return 0, 0
     end
 
+    -- Normalize the normal vector
     normalX = normalX / normalLen
     normalY = normalY / normalLen
 
+    -- Calculate tangent vector (perpendicular to normal)
     local tangentX = -normalY
     local tangentY = normalX
+    -- Project desired movement onto tangent (slide along the surface)
     local tangentDot = moveX * tangentX + moveY * tangentY
 
+    -- Add outward bias for head-on collisions to push the rider away
     local outwardBias = 0
     if math.abs(tangentDot) <= VEHICLE_SLIDE_OUTWARD_BIAS_HEADON_DOT then
         outwardBias = VEHICLE_SLIDE_OUTWARD_BIAS
     end
 
+    -- Combine tangent slide with outward bias
     local slideX = tangentX * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalX * outwardBias
     local slideY = tangentY * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalY * outwardBias
 
+    -- Ignore very small slides
     if (slideX * slideX + slideY * slideY) <= VEHICLE_SLIDE_MIN_LEN_SQ then
         return 0, 0
     end
@@ -241,6 +274,8 @@ local function getVehicleSlideDelta(worldX, worldY, moveX, moveY, collisionX, co
     return slideX, slideY
 end
 
+-- Check for hoppable objects (fences, gates) between two adjacent squares
+-- Returns the hoppable object if one exists that the horse can jump over
 ---@param a IsoGridSquare
 ---@param b IsoGridSquare
 ---@return IsoObject?
@@ -249,12 +284,14 @@ local function edgeHoppableBetween(a, b)
     local ax, ay = a:getX(), a:getY()
     local bx, by = b:getX(), b:getY()
 
+    -- Check horizontal movement (false = not vertical)
     if by == ay then
         if bx == ax + 1 then
             return b:getHoppable(false)
         elseif bx == ax - 1 then
             return a:getHoppable(false)
         end
+    -- Check vertical movement (true = vertical)
     elseif bx == ax then
         if by == ay + 1 then
             return b:getHoppable(true)
@@ -266,11 +303,13 @@ local function edgeHoppableBetween(a, b)
     return nil
 end
 
+-- Check if movement between two squares is blocked by obstacles
+-- Accounts for walls, windows, doors, and hoppable fences
 ---@param fromSq IsoGridSquare
 ---@param toSq IsoGridSquare
 ---@param horse IsoAnimal
----@param isJumping boolean
----@return boolean
+---@param isJumping boolean whether horse is currently jumping
+---@return boolean true if passage is blocked
 ---@nodiscard
 local function blockedBetween(fromSq, toSq, horse, isJumping)
     if fromSq == toSq then
@@ -595,58 +634,66 @@ local function directionToDegrees(direction)
     return directionToAngle(direction) * (180 / math.pi)
 end
 
-local TREES_GENE_MULT_WALK = 0.40
-local TREES_GENE_MULT_RUN = 0.25
-local TREES_LINGER_SECONDS = 1.0
-local TURN_STEPS_PER_SEC = 60
-local JUMP_SECONDS = 0.85
-local JUMP_COOLDOWN_SECONDS = 1.4
-local IDLE_TO_RUN_SECONDS = 0.6
+-- Tree and vegetation movement constants
+local TREES_GENE_MULT_WALK = 0.40  -- Movement penalty when walking through trees (40% speed)
+local TREES_GENE_MULT_RUN = 0.25   -- Movement penalty when galloping through trees (25% speed)
+local TREES_LINGER_SECONDS = 1.0   -- How long to apply tree penalty after leaving trees
+local TURN_STEPS_PER_SEC = 60  -- How fast the horse can turn
+local JUMP_SECONDS = 0.85  -- Duration of jump animation
+local JUMP_COOLDOWN_SECONDS = 1.4  -- Cooldown between consecutive jumps
+local IDLE_TO_RUN_SECONDS = 0.6  -- Duration of idle-to-gallop transition animation
 
-local BASE_CHANCE = 0.1
-local NIMBLE_LOW = 1
-local NIMBLE_HIGH = 0
+-- Tree fall chance constants (when galloping through trees, rider might fall off)
+local BASE_CHANCE = 0.1  -- Base probability per check
+local NIMBLE_LOW = 1  -- Nimble skill minimum multiplier
+local NIMBLE_HIGH = 0  -- Nimble skill maximum multiplier (lower = less likely to fall)
+-- Trait modifiers for fall chance (higher = more likely to fall)
 local TRAITS = {
-    [CharacterTrait.EAGLE_EYED] = 0.5,
-    [CharacterTrait.GYMNAST] = 0.5,
-    [CharacterTrait.MOTION_SENSITIVE] = 2,
-    [CharacterTrait.CLUMSY] = 2,
+    [CharacterTrait.EAGLE_EYED] = 0.5,     -- Better awareness reduces falls
+    [CharacterTrait.GYMNAST] = 0.5,        -- Better coordination reduces falls
+    [CharacterTrait.MOTION_SENSITIVE] = 2, -- Sensitive to motion increases falls
+    [CharacterTrait.CLUMSY] = 2,           -- Clumsiness increases falls
 }
 
-local SLOWDOWN_MAX = 2.5
-local SLOWDOWN_ZOMBIE_KNOCKDOWN_INCREASE = 0.75
-local SLOWDOWN_ZOMBIE_NEARBY_INCREASE = 4
-local SLOWDOWN_ZOMBIE_GROUND_INCREASE = 2
-local SLOWDOWN_MIN_SECONDS = 1
-local SLOWDOWN_MAX_SECONDS = 2
-local SLOWDOWN_MAX_SCALAR = 0.2
-local SLOWDOWN_MIN_SPEED = 2
-local KNOCKDOWN_MIN_SPEED = 6.5
+-- Slowdown from nearby zombies (slows horse movement)
+local SLOWDOWN_MAX = 2.5  -- Maximum slowdown counter
+local SLOWDOWN_ZOMBIE_KNOCKDOWN_INCREASE = 0.75  -- When knocking down a zombie
+local SLOWDOWN_ZOMBIE_NEARBY_INCREASE = 4  -- When zombie is simply nearby
+local SLOWDOWN_ZOMBIE_GROUND_INCREASE = 2  -- When zombie is on ground crawling
+local SLOWDOWN_MIN_SECONDS = 1  -- Minimum slowdown duration
+local SLOWDOWN_MAX_SECONDS = 2  -- Maximum slowdown duration
+local SLOWDOWN_MAX_SCALAR = 0.2  -- Maximum speed reduction (80% slowdown)
+local SLOWDOWN_MIN_SPEED = 2  -- Minimum speed before slowdown applies
+local KNOCKDOWN_MIN_SPEED = 6.5  -- Speed required to knockdown zombies
 
-local SPEED_WALK = 1.6
-local SPEED_TROT = 4
-local SPEED_GALLOP = 8.5
-local ACCELERATION_RATE = 12
-local DECELERATION_RATE = 9
-local SPEED_FACTOR_TURN = 0.8
-local TURN_ANIM_HOLD_SECONDS = 0.20
+-- Movement speeds
+local SPEED_WALK = 1.6  -- Walking speed
+local SPEED_TROT = 4  -- Trotting speed (medium gait)
+local SPEED_GALLOP = 8.5  -- Galloping speed
+local ACCELERATION_RATE = 12  -- How quickly horse accelerates
+local DECELERATION_RATE = 9  -- How quickly horse decelerates
+local SPEED_FACTOR_TURN = 0.8  -- Reduce speed while turning
+local TURN_ANIM_HOLD_SECONDS = 0.20  -- How long to hold turn animation
 
+-- Input state for mounted movement
 ---@class RidingMovementInput
----@field movement {x: number, y: number}
----@field run boolean
----@field trot boolean
----@field jump boolean
----@field hasReins boolean?
+---@field movement {x: number, y: number}  -- Directional input (-1 to 1)
+---@field run boolean  -- Whether player is requesting gallop
+---@field trot boolean  -- Whether in trot mode
+---@field jump boolean  -- Whether jump input is pressed
+---@field hasReins boolean?  -- Whether rider is holding reins
 
+-- Effect callbacks for movement events
 ---@class RidingMovementEffects
----@field authoritative boolean
----@field onGallopBlocked fun(rider: IsoPlayer, horse: IsoAnimal)?
----@field onTreeFall fun(rider: IsoPlayer, horse: IsoAnimal)?
----@field onFallDetected fun(rider: IsoPlayer, horse: IsoAnimal)?
+---@field authoritative boolean  -- Whether this instance has authority to make decisions
+---@field onGallopBlocked fun(rider: IsoPlayer, horse: IsoAnimal)?  -- Called when gallop is blocked by obstacle
+---@field onTreeFall fun(rider: IsoPlayer, horse: IsoAnimal)?  -- Called when rider falls from tree
+---@field onFallDetected fun(rider: IsoPlayer, horse: IsoAnimal)?  -- Called when detecting a fall
 
+-- Main movement controller for mounted riding
 ---@class RidingMovement
----@field pair MountPair
----@field effects RidingMovementEffects
+---@field pair MountPair  -- The rider and horse pair
+---@field effects RidingMovementEffects  -- Event callbacks
 ---@field turnAcceleration number
 ---@field lastTurnWasRight boolean
 ---@field vegetationLingerTime number
@@ -672,6 +719,8 @@ RidingMovement.__index = RidingMovement
 
 RidingMovement.getSpeed = getSpeed
 
+-- Move the horse/rider with collision detection against terrain, walls, doors, and vehicles
+-- Handles smooth collision sliding and multi-step movement
 ---@param rider IsoPlayer
 ---@param horse IsoAnimal
 ---@param distance Vector2
@@ -681,11 +730,12 @@ RidingMovement.getSpeed = getSpeed
 local function moveWithCollision(rider, horse, distance, isGalloping, isJumping, effects)
     local floorSquare = findFloorSquare(horse:getX(), horse:getY(), horse:getZ())
 
-    -- Collide at the resolved floor level so the rider can't pass through walls
-    -- when going up/down stairs
+    -- Use the floor square's Z for collision detection (handles stairs and ramps properly)
+    -- This prevents riders from clipping through walls when on stairs
     local baseZ = floorSquare and floorSquare:getZ() or math.floor(horse:getZ())
     local onStairs = floorSquare ~= nil and floorSquare:HasStairs()
 
+    -- Check if on a ramp or sloped surface
     local onRamp = floorSquare ~= nil and squareIsRamp(floorSquare)
     if not onRamp then
         local below = getSq(horse:getX(), horse:getY(), math.floor(horse:getZ()) - 1)
@@ -696,6 +746,8 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
     local y = horse:getY()
     local candidates = {}
 
+    -- Pre-filter nearby vehicles for collision checking
+    -- Only test vehicles within probe distance to avoid expensive collision checks
     local maxProbeDistance = math.sqrt(36) + distance:getLength() + 1
     local maxProbeDistanceSq = maxProbeDistance * maxProbeDistance
     local allVehicles = getCell():getVehicles()
@@ -703,6 +755,7 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         local it = allVehicles:iterator()
         while it:hasNext() do
             local vehicle = it:next()
+            -- Only include vehicles on same Z level and within probe distance
             if vehicle and math.floor(vehicle:getZ()) == baseZ then
                 local dx = vehicle:getX() - x
                 local dy = vehicle:getY() - y
@@ -713,13 +766,16 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         end
     end
 
+    -- Perform collision check at a position, potentially moving up to next floor level
     local function stepAt(sx, sy, reqX, reqY)
         local rx, ry = collideStepAt(horse, baseZ, sx, sy, reqX, reqY, isJumping)
         local sz = baseZ
+        -- On stairs, also try moving up to the next level if it gives more progress
         if onStairs then
             local ux, uy = collideStepAt(horse, baseZ + 1, sx, sy, reqX, reqY, isJumping)
             if (ux * ux + uy * uy) > (rx * rx + ry * ry) then
                 local dest = getSquare(sx + ux, sy + uy, baseZ + 1)
+                -- Confirm destination level has a floor
                 if dest and (dest:has(IsoFlagType.solidfloor) or dest:HasStairs()) then
                     rx, ry, sz = ux, uy, baseZ + 1
                 end
@@ -728,9 +784,11 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         return rx, ry, sz
     end
 
+    -- Move in small steps to handle complex collision geometry
     local maxStepDist = 0.065
     local remaining = distance:getLength()
     while remaining > 0 do
+        -- Process movement in chunks to avoid overshooting collision geometry
         local magnitude = math.min(remaining, maxStepDist)
         distance:setLength(magnitude)
 
@@ -827,25 +885,21 @@ local function getStateTurn(args)
     return 0
 end
 
----@param pair MountPair
----@param isMoving boolean
----@param isGalloping boolean
+-- Set animation variables for mounted movement states
 local function setMountedMovementVariables(pair, isMoving, isGalloping)
     MountedAnimationState.setMovementVariables(pair.rider, pair.mount, isMoving, isGalloping)
 end
 
----@param rider IsoPlayer
----@param x number
----@param y number
----@param z number
+-- Position the rider at the same location as the horse (they move together)
 local function setRiderMountedPosition(rider, x, y, z)
-    rider:setForceX(x)
+    rider:setForceX(x)  -- Force position to keep rider exactly on horse
     rider:setForceY(y)
     rider:setZ(z)
 end
 
 ---@param pair MountPair
 ---@param args RidingStateArguments
+-- Apply a complete movement state snapshot (used for synchronization and snapping)
 function RidingMovement.applyState(pair, args)
     if not hasValidStateTransform(args) then
         return
@@ -855,6 +909,7 @@ function RidingMovement.applyState(pair, args)
     local mount = pair.mount
     local dir = IsoDirections.fromIndex(math.floor(args.dir))
 
+    -- Set position and clear pathfinding behavior
     mount:setX(args.x)
     mount:setY(args.y)
     mount:setZ(args.z)
@@ -864,9 +919,8 @@ function RidingMovement.applyState(pair, args)
     mount:setVariable("bPathfind", false)
     setRiderMountedPosition(rider, args.x, args.y, args.z)
 
-    -- Snap reconciliation: discard any cached body-angle so the body resyncs
-    -- to the new pose rather than slowly turning toward it from where it
-    -- was before the snap.
+    -- Clear cached body angle to force immediate resync rather than smooth rotation
+    -- (important during position snaps to prevent animation lag)
     MountedDirection.clear(mount)
     MountedDirection.setPair(pair, dir)
     MountedAnimationState.setSpeedVariables(rider, mount)
@@ -984,7 +1038,10 @@ function RidingMovement:rollForTreeFall()
 end
 
 ---@param deltaTime number
+-- Update slowdown effect from nearby zombies
+-- Applies penalties for zombie proximity and knockdowns
 function RidingMovement:updateSlowdown(deltaTime)
+    -- Decay slowdown counter over time
     self.slowdownCounter = math.max(self.slowdownCounter - deltaTime, 0)
 
     local square = self.pair.mount:getSquare()
@@ -992,21 +1049,26 @@ function RidingMovement:updateSlowdown(deltaTime)
         return
     end
 
+    -- Check all moving objects in the current square (mainly zombies)
     local movingObjects = square:getLuaMovingObjectList() ---@as IsoMovingObject[]
     for i = 1, #movingObjects do
         local zombie = movingObjects[i]
         if instanceof(zombie, "IsoZombie") then
             ---@cast zombie IsoZombie
+            -- Downed zombies slow the horse less than standing ones
             if zombie:isKnockedDown() or zombie:isCrawling() then
                 self.slowdownCounter = self.slowdownCounter + SLOWDOWN_ZOMBIE_GROUND_INCREASE * deltaTime
             else
+                -- At high speed, the horse can knock down zombies
                 if self.speed >= KNOCKDOWN_MIN_SPEED then
                     self.slowdownCounter = self.slowdownCounter + SLOWDOWN_ZOMBIE_KNOCKDOWN_INCREASE
                     if self.effects.authoritative then
+                        -- Knockdown is more effective if zombie faces same direction
                         local facingSameDir = math.abs(zombie:getDirectionAngle() - directionToDegrees(self.direction)) <= 180
                         zombie:knockDown(facingSameDir)
                     end
                 else
+                    -- At lower speeds, just get slowed down by proximity
                     self.slowdownCounter = self.slowdownCounter + SLOWDOWN_ZOMBIE_NEARBY_INCREASE * deltaTime
                 end
             end
@@ -1018,21 +1080,26 @@ end
 
 ---@param input RidingMovementInput
 ---@param deltaTime number
+-- Update horse rotation based on input and target direction
 function RidingMovement:turn(input, deltaTime)
     local currentDirection = self.direction
 
+    -- Calculate target direction from input (rotate left for isometric view)
     local targetDirection = currentDirection
     if input.movement.x ~= 0 or input.movement.y ~= 0 then
         targetDirection = IsoDirections.fromAngle(input.movement.x, input.movement.y):RotLeft()
     end
 
+    -- Accumulate turn steps based on elapsed time
     self.turnAcceleration = self.turnAcceleration + deltaTime * TURN_STEPS_PER_SEC
     local turnDistance = currentDirection:compareTo(targetDirection)
     local absoluteTurnDistance = math.abs(turnDistance)
+    -- Take shorter rotation path (if > 4 steps away, go the other direction)
     if absoluteTurnDistance > 4 then
         turnDistance = (-turnDistance + 4) % 8
     end
 
+    -- Apply accumulated turns (up to the distance needed)
     local turns = math.min(math.floor(self.turnAcceleration), absoluteTurnDistance)
     local shouldTurnRight = self.lastTurnWasRight
     if turnDistance == 0 then
@@ -1189,14 +1256,17 @@ end
 
 ---@param isGalloping boolean
 ---@param deltaTime number
+-- Update tree fall mechanics (falling off horse when galloping through trees)
 function RidingMovement:updateTreeFall(isGalloping, deltaTime)
     local rider = self.pair.rider
     local mount = self.pair.mount
     local timeInTrees = self.timeInTrees
 
     if isGalloping then
+        -- Accumulate time spent in trees while galloping
         if rider:isInTreesNoBush() or mount:isInTreesNoBush() then
             self.timeInTrees = timeInTrees + deltaTime
+            -- Check for fall periodically
             if self.lastCheck > 0.5 then
                 self:rollForTreeFall()
                 self.lastCheck = 0.0
@@ -1205,8 +1275,9 @@ function RidingMovement:updateTreeFall(isGalloping, deltaTime)
             end
         end
     elseif self.timeInTrees > 0 then
+        -- Decay time in trees when not galloping (4x faster decay)
         timeInTrees = math.max(0, timeInTrees - deltaTime * 4)
-        timeInTrees = math.min(timeInTrees, 10)
+        timeInTrees = math.min(timeInTrees, 10)  -- Cap at 10 seconds
         self.timeInTrees = timeInTrees
     end
 end
@@ -1256,21 +1327,24 @@ function RidingMovement:canJump()
         and self.jumpCooldown <= 0
 end
 
+-- Start a jump
+-- Locks rider controls during jump animation
 function RidingMovement:startJump()
     local character = self.pair.rider
     self.pair:setAnimationVariable(AnimationVariable.JUMP, true)
+    -- Prevent rider input during jump
     character:setIgnoreMovement(true)
     character:setIgnoreInputsForDirection(true)
     character:setIgnoreAimingInput(true)
     character:setIsAiming(false)
 
-    self.doTurn = false
+    self.doTurn = false  -- Don't turn during jump
     self.jumpTime = JUMP_SECONDS
     self.jumpCooldown = JUMP_COOLDOWN_SECONDS
 end
 
----SP path drives jumps through the HorseJump timed action instead of startJump,
----so expose just the cooldown so the action can share the same canJump lockout
+-- Begin jump cooldown (without playing jump animation)
+-- Used by HorseJump timed action to share cooldown with regular jumps
 function RidingMovement:beginJumpCooldown()
     self.jumpCooldown = JUMP_COOLDOWN_SECONDS
 end
@@ -1343,20 +1417,24 @@ end
 ---Make the horse track the floor height of stairs and landings.
 ---@param mount IsoAnimal
 ---@param deltaTime number
+-- Make the horse follow the floor height (stairs, ramps, etc.)
+-- Keeps the horse properly aligned with terrain elevation
 function RidingMovement:followVertical(mount, deltaTime)
     local x = mount:getX()
     local y = mount:getY()
     local mz = mount:getZ()
 
+    -- Find the floor beneath the horse
     local best = findFloorSquare(x, y, mz)
     local bestZ = best and floorHeight(best, x, y) or nil
 
-    -- Only look a level up when the mount is in the upper part of its Z level, so a
-    -- mount on Z-0 is never teleported up to a floor above
+    -- Only consider moving to a higher floor if horse is in upper half of current level
+    -- (prevents teleporting up from ground level)
     if (mz - math.floor(mz)) >= 0.5 then
         local above = getSq(x, y, math.floor(mz) + 1)
         if above and (above:has(IsoFlagType.solidfloor) or above:HasStairs() or above:hasSlopedSurface()) then
             local zAbove = floorHeight(above, x, y)
+            -- Use higher floor if it's closer to the horse
             if (not bestZ) or math.abs(zAbove - mz) < math.abs(bestZ - mz) then
                 best, bestZ = above, zAbove
             end
@@ -1369,15 +1447,17 @@ function RidingMovement:followVertical(mount, deltaTime)
         return
     end
 
+    -- Snap to floor if close enough (within max step distance)
     if math.abs(bestZ - mz) < VERTICAL_FOLLOW_MAX_STEP then
         mount:setZ(bestZ)
         mount:setLastZ(bestZ)
     end
 
-    -- Refresh the square that the mount is on
+    -- Update mount's current square
     mount:setCurrent(best)
     mount:setMovingSquareNow()
 
+    -- Refresh ramp grace period if on slope
     if squareIsRamp(best) then
         self.rampGrace = RAMP_FALL_GRACE_SECONDS
     else
@@ -1388,25 +1468,30 @@ function RidingMovement:followVertical(mount, deltaTime)
 end
 
 
+-- Check if mount is on stairs or sloped surface
+-- Used to avoid false fall detection while on ramps
 ---@param mount IsoAnimal
 ---@return boolean
 ---@nodiscard
 function RidingMovement:onStairsOrSlope(mount)
+    -- Grace period still active from recent ramp detection
     if self.rampGrace > 0 then
         return true
     end
 
+    -- Check current floor square
     local square = self.lastFloorSquare or findFloorSquare(mount:getX(), mount:getY(), mount:getZ())
     if square ~= nil and squareIsRamp(square) then
         return true
     end
 
+    -- Check square below
     local below = getCell():getGridSquare(math.floor(mount:getX()), math.floor(mount:getY()), math.floor(mount:getZ()) - 1)
     return below ~= nil and squareIsRamp(below)
 end
 
----`isbFalling` triggers on the mount whenever there's a floor below it seems
----so can't always be trusted to do what it says
+-- Check if mount is actually touching the ground (within tolerance)
+-- More reliable than isbFalling which can trigger false positives
 ---@param mount IsoAnimal
 ---@return boolean
 ---@nodiscard
@@ -1559,35 +1644,51 @@ end
 ---@param effects RidingMovementEffects
 ---@return RidingMovement
 ---@nodiscard
+-- Constructor: Create a new RidingMovement controller
+---@param pair MountPair
+---@param effects RidingMovementEffects
+---@return RidingMovement
+---@nodiscard
 function RidingMovement.new(pair, effects)
     return setmetatable(
         {
             pair = pair,
             effects = effects,
-            turnAcceleration = 0,
-            lastTurnWasRight = false,
-            vegetationLingerTime = 0.0,
-            vegetationLingerStartMult = 1.0,
-            timeInTrees = 0.0,
-            lastCheck = 0.0,
-            slowdownCounter = 0.0,
-            speed = 0.0,
-            doTurn = true,
-            forcedInput = nil,
-            jumpTime = 0,
-            jumpCooldown = 0,
-            lastAuthoritativeSeq = -1,
-            direction = pair.rider:getDir(),
-            turnAnimSign = 0,
-            turnAnimTime = 0.0,
+            -- Turning
+            turnAcceleration = 0,  -- Accumulated turn progress
+            lastTurnWasRight = false,  -- Direction of last turn
+            -- Vegetation slowdown
+            vegetationLingerTime = 0.0,  -- Time remaining to apply vegetation penalty
+            vegetationLingerStartMult = 1.0,  -- Starting multiplier for vegetation linger easing
+            -- Tree fall
+            timeInTrees = 0.0,  -- Accumulates while galloping in trees
+            lastCheck = 0.0,  -- Time since last tree fall check
+            -- Zombie slowdown
+            slowdownCounter = 0.0,  -- Slowdown accumulation from zombies
+            -- Movement
+            speed = 0.0,  -- Current movement speed
+            doTurn = true,  -- Whether turning is allowed
+            forcedInput = nil,  -- Forced input during jump
+            -- Jumping
+            jumpTime = 0,  -- Time remaining in jump animation
+            jumpCooldown = 0,  -- Time remaining before next jump allowed
+            -- State sync
+            lastAuthoritativeSeq = -1,  -- Last authoritative state sequence number
+            -- Direction
+            direction = pair.rider:getDir(),  -- Current horse direction
+            turnAnimSign = 0,  -- Turn animation direction (-1, 0, 1)
+            turnAnimTime = 0.0,  -- Time to continue showing turn animation
+            -- Server state tracking
             lastAppliedX = nil--[[@as number?]],
             lastAppliedY = nil--[[@as number?]],
             lastAppliedZ = nil--[[@as number?]],
             lastAppliedDir = nil--[[@as integer?]],
-            wasGalloping = false,
-            idleToRunTimer = 0.0,
-            lastFloorSquare = nil--[[@as IsoGridSquare?]],
-            rampGrace = 0.0,
+            -- Gallop transition
+            wasGalloping = false,  -- Was galloping in previous frame
+            idleToRunTimer = 0.0,  -- Time to play idle-to-run transition animation
+            -- Floor tracking
+            lastFloorSquare = nil--[[@as IsoGridSquare?]],  -- Last detected floor square
+            rampGrace = 0.0,  -- Grace period for ramp fall detection
         },
         RidingMovement
     )
