@@ -154,48 +154,18 @@ local function getVegetationTypeAt(square)
     return "none"
 end
 
--- Check if square center is blocked by solid objects or terrain
--- Returns true if the rider/horse cannot pass through this square's center
----@param sq IsoGridSquare?
----@return boolean
----@nodiscard
-local function squareCenterSolid(sq)
-    if not sq then
-        return true  -- Treat missing squares as solid (out of bounds)
-    end
-
-    if sq:isSolid() or sq:isSolidTrans() then
-        return true
-    end
-
-    -- Check for solid objects placed on the square
-    ---@type IsoObject[]
-    local objects = sq:getLuaTileObjectList()
-    for i = 1, #objects do
-        local object = objects[i]
-        local properties = object:getProperties()
-        if properties
-                and (properties:get("Solid") or properties:get("SolidTrans")) then
-            return true
-        end
-    end
-
-    return false
-end
-
 -- Check if rider collides with any vehicles at a given position
 -- Returns collision status and the collision point coordinates
 ---@param rider IsoPlayer
----@param vehicles BaseVehicle[]
+---@param vehicle BaseVehicle
 ---@param worldX number
 ---@param worldY number
----@param worldZ number
 ---@param collisionRadius number
 ---@return boolean collided
----@return number hitX collision point X
----@return number hitY collision point Y
+---@return number? hitX collision point X
+---@return number? hitY collision point Y
 ---@nodiscard
-local function riderCollidesWithVehicleAt(rider, vehicles, worldX, worldY, worldZ, collisionRadius)
+local function riderCollidesWithVehicleAt(rider, vehicle, worldX, worldY, collisionRadius)
     -- Temporarily set rider position to test collision
     local oldNextX = rider:getNextX()
     local oldNextY = rider:getNextY()
@@ -203,20 +173,12 @@ local function riderCollidesWithVehicleAt(rider, vehicles, worldX, worldY, world
     rider:setNextY(worldY)
 
     local collided = false
-    for i = 1, #vehicles do
-        local vehicle = vehicles[i]
-        -- Only check vehicles on the same Z level
-        if vehicle and math.floor(vehicle:getZ()) == worldZ then
-            -- Early distance check (6 unit radius) to skip distant vehicles
-            local dx = vehicle:getX() - worldX
-            local dy = vehicle:getY() - worldY
-            if (dx * dx + dy * dy) <= 36 then
-                if vehicle:testCollisionWithCharacter(rider, collisionRadius, TEMP_VECTOR2) then
-                    collided = true
-                    break
-                end
-            end
-        end
+    if vehicle:testCollisionWithCharacter(rider, collisionRadius, TEMP_VECTOR2) then
+        collided = true
+    end
+    
+    if not collided then
+        return false, nil, nil
     end
 
     -- Restore rider position and return collision results
@@ -224,6 +186,46 @@ local function riderCollidesWithVehicleAt(rider, vehicles, worldX, worldY, world
     rider:setNextX(oldNextX)
     rider:setNextY(oldNextY)
     return collided, hitX, hitY
+end
+
+
+---@param worldX number
+---@param worldY number
+---@param moveX number
+---@param moveY number
+---@param collisionX number
+---@param collisionY number
+---@return number
+---@return number
+---@nodiscard
+local function getVehicleSlideDelta(worldX, worldY, moveX, moveY, collisionX, collisionY)
+    local normalX = collisionX - worldX
+    local normalY = collisionY - worldY
+    local normalLen = math.sqrt(normalX * normalX + normalY * normalY)
+    if normalLen <= 0.0001 then
+        return 0, 0
+    end
+
+    normalX = normalX / normalLen
+    normalY = normalY / normalLen
+
+    local tangentX = -normalY
+    local tangentY = normalX
+    local tangentDot = moveX * tangentX + moveY * tangentY
+
+    local outwardBias = 0.0
+    if math.abs(tangentDot) <= VEHICLE_SLIDE_OUTWARD_BIAS_HEADON_DOT then
+        outwardBias = VEHICLE_SLIDE_OUTWARD_BIAS
+    end
+
+    local slideX = tangentX * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalX * outwardBias
+    local slideY = tangentY * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalY * outwardBias
+
+    if (slideX * slideX + slideY * slideY) <= VEHICLE_SLIDE_MIN_LEN_SQ then
+        return 0, 0
+    end
+
+    return slideX, slideY
 end
 
 -- Check for hoppable objects (fences, gates) between two adjacent squares
@@ -492,43 +494,51 @@ end
 ---@param isJumping boolean
 ---@param effects RidingMovementEffects
 local function moveWithCollision(rider, horse, distance, isGalloping, isJumping, effects)
-    local horseZ = horse:getZ()    
-    local floorSquare = findFloorSquare(horse:getX(), horse:getY(), horseZ)
+    local horseZ = horse:getZ()
+
 
     -- Use the floor square's Z for collision detection (handles stairs and ramps properly)
     -- This prevents riders from clipping through walls when on stairs
-    local baseZ = floorSquare and floorSquare:getZ() or math.floor(horseZ)
-    local onStairs = floorSquare ~= nil and floorSquare:HasStairs()
-
-    -- Check if on a ramp or sloped surface
-    local onRamp = floorSquare ~= nil and squareIsRamp(floorSquare)
-    if not onRamp then
-        local below = getSq(horse:getX(), horse:getY(), math.floor(horseZ) - 1)
-        onRamp = below ~= nil and squareIsRamp(below)
-    end
+    local baseZ = math.floor(horseZ)
 
     local x = horse:getX()
     local y = horse:getY()
-    local candidates = {}
 
-    -- Pre-filter nearby vehicles for collision checking
-    -- Only test vehicles within probe distance to avoid expensive collision checks
-    local maxProbeDistance = math.sqrt(36) + distance:getLength() + 1
-    local maxProbeDistanceSq = maxProbeDistance * maxProbeDistance
+    -- theorical next position if no collision occurs
+    local nx, ny = x + distance:getX(), y + distance:getY()
+
+
+    -- find a vehicle collision along the path, if any
     local allVehicles = getCell():getVehicles()
+    local collided, hitX, hitY
     if allVehicles then
         local it = allVehicles:iterator()
         while it:hasNext() do
             local vehicle = it:next()
-            -- Only include vehicles on same Z level and within probe distance
-            if vehicle and math.floor(vehicle:getZ()) == baseZ then
-                local dx = vehicle:getX() - x
-                local dy = vehicle:getY() - y
-                if (dx * dx + dy * dy) <= maxProbeDistanceSq then
-                    candidates[#candidates + 1] = vehicle
+            if vehicle:isCharacterAdjacentTo(horse) then
+                -- Only include vehicles on same Z level and within probe distance
+                if vehicle and math.floor(vehicle:getZ()) == baseZ then
+            --     local dx = vehicle:getX() - x
+            --     local dy = vehicle:getY() - y
+            --     if (dx * dx + dy * dy) <= maxProbeDistanceSq then
+                    -- candidates[#candidates + 1] = vehicle
+                    collided, hitX, hitY = riderCollidesWithVehicleAt(rider, vehicle, nx, ny, VEHICLE_COLLISION_RADIUS)
+                    if collided then
+                        break
+                    end
                 end
             end
         end
+    end
+
+    -- stop moving
+    if collided then
+        ---@cast hitX number
+        ---@cast hitY number
+        local sx, sy = getVehicleSlideDelta(x, y, distance:getX(), distance:getY(), hitX, hitY)
+        nx, ny = x + sx, y + sy
+        -- updatePosition(horse, nx, ny)
+        return
     end
 
 
@@ -543,10 +553,6 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
     -- retrieve squares the horse will pass through during its movement
     local squares = getSquaresAmanatides(x, y, horseZ, distanceLonger)
 
-    -- horse:addLineChatElement("Moving through " .. tostring(#squares) .. " squares for collision check.")
-
-    local nx, ny = x + distance:getX(), y + distance:getY()
-
     -- if only one square, it means the horse won't change square
     -- so it can't collide with any tiles
     if #squares <= 1 then
@@ -559,7 +565,6 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
     -- this could work but the problem is that it returns true when moving alongside
     -- the surface, so we shouldn't fall in this case, we need more precision
     -- local isClear = LosUtil.lineClearCollide(x, y, horseZ, nx, ny, horseZ, false)
-
 
     -- identify which directions are blocked manually (reuses some of the logics from lineClearCollide)
     local isBlocked = false
@@ -596,7 +601,7 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         end
     end
 
-    rider:addLineChatElement("Line blocked: " .. tostring(isBlocked))
+    rider:addLineChatElement("Blocked: " .. tostring(isBlocked))
 
     -- not blocked, don't bother with anything else, simply move the horse
     if not isBlocked then
@@ -632,108 +637,20 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         local block = blockingSquares[i]
         if block.deltaX ~= 0 then
             isBlockedX = true
-            -- nx = nx - signf(block.deltaX) * EDGE_PAD -- normalize to 1 or -1
         end
         if block.deltaY ~= 0 then
             isBlockedY = true
-            -- ny = ny - signf(block.deltaY) * EDGE_PAD -- normalize to 1 or -1
         end
     end
 
+    -- adjust the positions back slightly to avoid clipping into the wall
     nx = isBlockedX and (nx - signf(distance:getX()) * EDGE_PAD) or nx
     ny = isBlockedY and (ny - signf(distance:getY()) * EDGE_PAD) or ny
 
+
+
+    -- final position update with collision adjustments (hugging walls)
     updatePosition(horse, nx, ny)
-
-
-    -- Perform collision check at a position, potentially moving up to next floor level
-    local function stepAt(sx, sy, reqX, reqY)
-        local rx, ry = collideStepAt(horse, baseZ, sx, sy, reqX, reqY, isJumping)
-        local sz = baseZ
-        -- On stairs, also try moving up to the next level if it gives more progress
-        if onStairs then
-            local ux, uy = collideStepAt(horse, baseZ + 1, sx, sy, reqX, reqY, isJumping)
-            if (ux * ux + uy * uy) > (rx * rx + ry * ry) then
-                local dest = getSquare(sx + ux, sy + uy, baseZ + 1)
-                -- Confirm destination level has a floor
-                if dest and (dest:has(IsoFlagType.solidfloor) or dest:HasStairs()) then
-                    rx, ry, sz = ux, uy, baseZ + 1
-                end
-            end
-        end
-        return rx, ry, sz
-    end
-
-    -- -- Move in small steps to handle complex collision geometry
-    -- local maxStepDist = 0.065
-    -- local remaining = distance:getLength()
-    -- while remaining > 0 do
-    --     -- Process movement in chunks to avoid overshooting collision geometry
-    --     local magnitude = math.min(remaining, maxStepDist)
-    --     distance:setLength(magnitude)
-
-    --     local reqX, reqY = distance:getX(), distance:getY()
-    --     local rx, ry, stepZ = stepAt(x, y, reqX, reqY)
-    --     if rx == 0 and ry == 0 then
-    --         if isGalloping and effects.onGallopBlocked and not onRamp then
-    --             effects.onGallopBlocked(rider, horse)
-    --         end
-    --         break
-    --     end
-
-    --     if isGalloping and effects.onGallopBlocked and not onRamp and magnitude > 0 then
-    --         local progressAlongDir = (rx * reqX + ry * reqY) / magnitude
-    --         if progressAlongDir < magnitude * WALL_HIT_MIN_PROGRESS_FRACTION then
-    --             effects.onGallopBlocked(rider, horse)
-    --             break
-    --         end
-    --     end
-
-    --     local nx = x + rx
-    --     local ny = y + ry
-    --     local hitVehicle, hitX, hitY = riderCollidesWithVehicleAt(rider, candidates, nx, ny, baseZ, VEHICLE_COLLISION_RADIUS)
-    --     if hitVehicle then
-    --         local sx, sy = getVehicleSlideDelta(nx, ny, rx, ry, hitX, hitY)
-    --         if sx == 0 and sy == 0 then
-    --             break
-    --         end
-    --         if isGalloping then
-    --             sx = sx * VEHICLE_SLIDE_GALLOP_MULT
-    --             sy = sy * VEHICLE_SLIDE_GALLOP_MULT
-    --         end
-
-    --         local snx = x + sx
-    --         local sny = y + sy
-    --         local slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, baseZ, VEHICLE_SLIDE_COLLISION_RADIUS)
-    --         if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, baseZ)) then
-    --             snx = x + sx * 0.6
-    --             sny = y + sy * 0.6
-    --             slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, baseZ, VEHICLE_SLIDE_COLLISION_RADIUS)
-    --             if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, baseZ)) then
-    --                 snx = x - sx * 0.6
-    --                 sny = y - sy * 0.6
-    --                 slideBlockedVehicle = riderCollidesWithVehicleAt(rider, candidates, snx, sny, baseZ, VEHICLE_SLIDE_COLLISION_RADIUS)
-    --                 if slideBlockedVehicle or squareCenterSolid(getSquare(snx, sny, baseZ)) then
-    --                     break
-    --                 end
-    --             end
-    --         end
-
-    --         nx = snx
-    --         ny = sny
-    --     end
-
-    --     if squareCenterSolid(getSquare(nx, ny, stepZ)) then
-    --         break
-    --     end
-
-    --     x = nx
-    --     y = ny
-    --     remaining = remaining - magnitude
-    -- end
-
-    -- horse:setX(x)
-    -- horse:setY(y)
 end
 
 ---@param args RidingStateArguments
