@@ -604,8 +604,6 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
         end
     end
 
-    rider:addLineChatElement("Blocked: " .. tostring(isBlocked))
-
     -- not blocked, don't bother with anything else, simply move the horse
     if not isBlocked then
         updatePosition(horse, nx, ny)
@@ -627,6 +625,7 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
     end
 
     -- should dismount because galloping while blocked is not allowed
+    ---@FIXME need to ignore when riding at a specific angle from the wall, see WALL_HIT_MIN_PROGRESS_FRACTION
     if isGalloping and effects.onGallopBlocked then
         effects.onGallopBlocked(rider, horse)
     end
