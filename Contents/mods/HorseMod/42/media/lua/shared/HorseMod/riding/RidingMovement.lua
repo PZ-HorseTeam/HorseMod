@@ -529,6 +529,8 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
     end
 
     -- stop moving
+    ---@FIXME doesn't properly work for gallop
+    ---@FIXME will likely not work when sliding alongside a fence, will probably go through the fence
     if collided then
         ---@cast hitX number
         ---@cast hitY number
