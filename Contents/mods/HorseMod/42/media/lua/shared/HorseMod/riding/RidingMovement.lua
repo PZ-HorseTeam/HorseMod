@@ -10,6 +10,7 @@ local MountedDirection = require("HorseMod/riding/MountedDirection")
 
 local rdm = newrandom()  -- Random number generator for probabilistic events
 local TEMP_VECTOR2 = Vector2.new()  -- Reusable vector for calculations
+local SPEED_VECTOR2 = Vector2.new()  -- Reusable vector for speed calculations
 
 -- Vehicle collision sliding parameters
 local VEHICLE_SLIDE_TANGENT_SCALE = 1.08  -- How much movement is maintained along the collision tangent
@@ -505,8 +506,8 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
     local y = horse:getY()
 
     -- theorical next position if no collision occurs
-    local nx, ny = x + distance:getX(), y + distance:getY()
-
+    local vx, vy = distance:getX(), distance:getY()
+    local nx, ny = x + vx, y + vy
 
     -- find a vehicle collision along the path, if any
     local allVehicles = getCell():getVehicles()
@@ -518,10 +519,6 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
             if vehicle:isCharacterAdjacentTo(horse) then
                 -- Only include vehicles on same Z level and within probe distance
                 if vehicle and math.floor(vehicle:getZ()) == baseZ then
-            --     local dx = vehicle:getX() - x
-            --     local dy = vehicle:getY() - y
-            --     if (dx * dx + dy * dy) <= maxProbeDistanceSq then
-                    -- candidates[#candidates + 1] = vehicle
                     collided, hitX, hitY = riderCollidesWithVehicleAt(rider, vehicle, nx, ny, VEHICLE_COLLISION_RADIUS)
                     if collided then
                         break
@@ -535,9 +532,13 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
     if collided then
         ---@cast hitX number
         ---@cast hitY number
-        local sx, sy = getVehicleSlideDelta(x, y, distance:getX(), distance:getY(), hitX, hitY)
+        local sx, sy = getVehicleSlideDelta(x, y, vx, vy, hitX, hitY)
+        if isGalloping then
+            sx = sx * VEHICLE_SLIDE_GALLOP_MULT
+            sy = sy * VEHICLE_SLIDE_GALLOP_MULT
+        end
         nx, ny = x + sx, y + sy
-        -- updatePosition(horse, nx, ny)
+        updatePosition(horse, nx, ny)
         return
     end
 
@@ -1378,8 +1379,8 @@ function RidingMovement:update(input, deltaTime)
     local gallopActive
     if self.speed > 0 and not rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
         local moveAngle = MountedDirection.getMovementAngle(mount, self.direction)
-        TEMP_VECTOR2:setLengthAndDirection(moveAngle, self.speed * deltaTime)
-        moveWithCollision(rider, mount, TEMP_VECTOR2, isGalloping, isJumping, self.effects)
+        SPEED_VECTOR2:setLengthAndDirection(moveAngle, self.speed * deltaTime)
+        moveWithCollision(rider, mount, SPEED_VECTOR2, isGalloping, isJumping, self.effects)
 
         gallopActive = input.run == true
         self.pair:setAnimationVariable(AnimationVariable.GALLOP, gallopActive)
