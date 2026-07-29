@@ -353,6 +353,216 @@ module HorseMod {
         WorldStaticModel = HorseHead_ThoroughbredFleaBittenGrey,
     }
 
+/* AMERICAN QUARTER SEAL BAY */
+    item Foal_Head_AmericanQuarterSealBay {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFoal_AmericanQuarterSealBay,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_AmericanQuarterSealBay,
+        WorldStaticModel = FoalHead_AmericanQuarterSealBay,
+    }
+    item Mare_Head_AmericanQuarterSealBay {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFemale_AmericanQuarterSealBay,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_AmericanQuarterSealBay,
+        WorldStaticModel = HorseHead_AmericanQuarterSealBay,
+    }
+    item Stallion_Head_AmericanQuarterSealBay {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseMale_AmericanQuarterSealBay,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_AmericanQuarterSealBay,
+        WorldStaticModel = HorseHead_AmericanQuarterSealBay,
+    }
+
+/* THOROUGHBRED REVERSE BRINDLE */
+    item Foal_Head_ThoroughbredReverseBrindle {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFoal_ThoroughbredReverseBrindle,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_ThoroughbredReverseBrindle,
+        WorldStaticModel = FoalHead_ThoroughbredReverseBrindle,
+    }
+    item Mare_Head_ThoroughbredReverseBrindle {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFemale_ThoroughbredReverseBrindle,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_ThoroughbredReverseBrindle,
+        WorldStaticModel = HorseHead_ThoroughbredReverseBrindle,
+    }
+    item Stallion_Head_ThoroughbredReverseBrindle {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseMale_ThoroughbredReverseBrindle,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_ThoroughbredReverseBrindle,
+        WorldStaticModel = HorseHead_ThoroughbredReverseBrindle,
+    }
+
+/* MUSTANG BUCKSKIN DUN */
+    item Foal_Head_MustangBuckskinDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFoal_MustangBuckskinDun,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_MustangBuckskinDun,
+        WorldStaticModel = FoalHead_MustangBuckskinDun,
+    }
+    item Mare_Head_MustangBuckskinDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFemale_MustangBuckskinDun,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_MustangBuckskinDun,
+        WorldStaticModel = HorseHead_MustangBuckskinDun,
+    }
+    item Stallion_Head_MustangBuckskinDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseMale_MustangBuckskinDun,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_MustangBuckskinDun,
+        WorldStaticModel = HorseHead_MustangBuckskinDun,
+    }
+
+/* MUSTANG GRULLA DUN */
+    item Foal_Head_MustangGrullaDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFoal_MustangGrullaDun,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_MustangGrullaDun,
+        WorldStaticModel = FoalHead_MustangGrullaDun,
+    }
+    item Mare_Head_MustangGrullaDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFemale_MustangGrullaDun,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_MustangGrullaDun,
+        WorldStaticModel = HorseHead_MustangGrullaDun,
+    }
+    item Stallion_Head_MustangGrullaDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseMale_MustangGrullaDun,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_MustangGrullaDun,
+        WorldStaticModel = HorseHead_MustangGrullaDun,
+    }
+
+/* CAMARILLO WHITE */
+    item Foal_Head_CamarilloWhite {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFoal_CamarilloWhite,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_CamarilloWhite,
+        WorldStaticModel = FoalHead_CamarilloWhite,
+    }
+    item Mare_Head_CamarilloWhite {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFemale_CamarilloWhite,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_CamarilloWhite,
+        WorldStaticModel = HorseHead_CamarilloWhite,
+    }
+    item Stallion_Head_CamarilloWhite {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseMale_CamarilloWhite,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_CamarilloWhite,
+        WorldStaticModel = HorseHead_CamarilloWhite,
+    }
+
+/* ROCKY MOUNTAIN LIVER CHESTNUT */
+    item Foal_Head_RockyMountainLiverChestnut {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFoal_RockyMountainLiverChestnut,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_RockyMountainLiverChestnut,
+        WorldStaticModel = FoalHead_RockyMountainLiverChestnut,
+    }
+    item Mare_Head_RockyMountainLiverChestnut {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseFemale_RockyMountainLiverChestnut,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_RockyMountainLiverChestnut,
+        WorldStaticModel = HorseHead_RockyMountainLiverChestnut,
+    }
+    item Stallion_Head_RockyMountainLiverChestnut {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/Head_HorseMale_RockyMountainLiverChestnut,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_RockyMountainLiverChestnut,
+        WorldStaticModel = HorseHead_RockyMountainLiverChestnut,
+    }
+
 
 
 /* GENERIC */

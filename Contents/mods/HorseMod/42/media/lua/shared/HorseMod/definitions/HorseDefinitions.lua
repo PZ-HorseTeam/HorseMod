@@ -27,7 +27,7 @@ local HorseDefinitions = {
         "ThoroughbredReverseBrindle",    -- Reverse Brindle
 
         -- Mustang
-        "MustangDunskin",                -- Dunskin
+        "MustangBuckskinDun",            -- Buckskin Dun
         "MustangGrullaDun",              -- Grulla Dun
 
         -- Camarillo

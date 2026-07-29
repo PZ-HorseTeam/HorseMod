@@ -20,6 +20,7 @@
     "IGUI_Breed_MustangBuckskinDun": "Mustang (Buckskin Dun)",
     "IGUI_Breed_MustangGrullaDun": "Mustang (Grulla Dun)",
     "IGUI_Breed_CamarilloWhite": "Camarillo (White)",
+	"IGUI_Breed_RockyMountainLiverChestnut": "Rocky Mountain (Liver Chestnut)",
     "IGUI_ModOptions_HorseModName": "Horse Mod",
     "IGUI_ModOptions_HorseSoundVolume_Desc": "Change the volume of horse sounds",
     "IGUI_ModOptions_HorseSoundVolume_Name": "Horse Sound Volume (Default 0.40)",

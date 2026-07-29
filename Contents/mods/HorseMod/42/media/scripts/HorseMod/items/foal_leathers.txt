@@ -192,7 +192,7 @@ module HorseMod {
         ItemType = base:moveable,
         Weight = 3.0,
         Icon = leather/LeatherHide_Horse_AmericanQuarterStrawberryRoan,
-        WorldObjectSprite = rugs_animals_foal_33,
+        WorldObjectSprite = rugs_animals_foal_02_17,
         WorldStaticModel = Leather_Horse_AmericanQuarterStrawberryRoan_Medium,
         Tags = base:leatherfurtannedmedium,
     }
@@ -255,6 +255,58 @@ module HorseMod {
         Weight = 1.0,
         Icon = leather/LeatherHide_Horse_AmericanQuarterPalomino,
         WorldStaticModel = Leather_Horse_AmericanQuarterPalomino_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+
+
+/* American Quarter Seal Bay */
+    item FoalLeather_AmericanQuarterSealBay_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterSealBay,
+        WorldStaticModel = Leather_Horse_AmericanQuarterSealBay_Medium,
+        Tags = base:leatherfullmedium,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_AmericanQuarterSealBay_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterSealBay,
+        WorldStaticModel = Leather_Horse_AmericanQuarterSealBay_Medium,
+        Tags = base:leatherfurmedium,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_AmericanQuarterSealBay_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterSealBay,
+        WorldStaticModel = Leather_Horse_AmericanQuarterSealBay_Medium,
+        Tags = base:leatherfurwetmedium,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_AmericanQuarterSealBay_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterSealBay,
+        WorldObjectSprite = rugs_animals_foal_02_33,
+        WorldStaticModel = Leather_Horse_AmericanQuarterSealBay_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item FoalLeather_AmericanQuarterSealBay_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_AmericanQuarterSealBay,
+        WorldStaticModel = Leather_Horse_AmericanQuarterSealBay_Small,
         Tags = base:leatherfurtannedsmall,
     }
 
@@ -452,7 +504,7 @@ module HorseMod {
         ItemType = base:moveable,
         Weight = 3.0,
         Icon = leather/LeatherHide_Horse_ThoroughbredCricket,
-        WorldObjectSprite = rugs_animals_foal_97,
+        WorldObjectSprite = rugs_animals_foal_02_1,
         WorldStaticModel = Leather_Horse_ThoroughbredCricket_Medium,
         Tags = base:leatherfurtannedmedium,
     }
@@ -515,6 +567,266 @@ module HorseMod {
         Weight = 1.0,
         Icon = leather/LeatherHide_Horse_ThoroughbredFleaBittenGrey,
         WorldStaticModel = Leather_Horse_ThoroughbredFleaBittenGrey_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+
+
+/* Thoroughbred Reverse Brindle */
+    item FoalLeather_ThoroughbredReverseBrindle_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredReverseBrindle,
+        WorldStaticModel = Leather_Horse_ThoroughbredReverseBrindle_Medium,
+        Tags = base:leatherfullmedium,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_ThoroughbredReverseBrindle_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredReverseBrindle,
+        WorldStaticModel = Leather_Horse_ThoroughbredReverseBrindle_Medium,
+        Tags = base:leatherfurmedium,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_ThoroughbredReverseBrindle_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredReverseBrindle,
+        WorldStaticModel = Leather_Horse_ThoroughbredReverseBrindle_Medium,
+        Tags = base:leatherfurwetmedium,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredReverseBrindle,
+        WorldObjectSprite = rugs_animals_foal_02_49,
+        WorldStaticModel = Leather_Horse_ThoroughbredReverseBrindle_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item FoalLeather_ThoroughbredReverseBrindle_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_ThoroughbredReverseBrindle,
+        WorldStaticModel = Leather_Horse_ThoroughbredReverseBrindle_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+
+
+/* Mustang Buckskin Dun */
+    item FoalLeather_MustangBuckskinDun_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_MustangBuckskinDun,
+        WorldStaticModel = Leather_Horse_MustangBuckskinDun_Medium,
+        Tags = base:leatherfullmedium,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_MustangBuckskinDun_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_MustangBuckskinDun,
+        WorldStaticModel = Leather_Horse_MustangBuckskinDun_Medium,
+        Tags = base:leatherfurmedium,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_MustangBuckskinDun_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_MustangBuckskinDun,
+        WorldStaticModel = Leather_Horse_MustangBuckskinDun_Medium,
+        Tags = base:leatherfurwetmedium,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_MustangBuckskinDun_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_MustangBuckskinDun,
+        WorldObjectSprite = rugs_animals_foal_02_65,
+        WorldStaticModel = Leather_Horse_MustangBuckskinDun_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item FoalLeather_MustangBuckskinDun_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_MustangBuckskinDun,
+        WorldStaticModel = Leather_Horse_MustangBuckskinDun_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+
+
+/* Mustang Grulla Dun */
+    item FoalLeather_MustangGrullaDun_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_MustangGrullaDun,
+        WorldStaticModel = Leather_Horse_MustangGrullaDun_Medium,
+        Tags = base:leatherfullmedium,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_MustangGrullaDun_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_MustangGrullaDun,
+        WorldStaticModel = Leather_Horse_MustangGrullaDun_Medium,
+        Tags = base:leatherfurmedium,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_MustangGrullaDun_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_MustangGrullaDun,
+        WorldStaticModel = Leather_Horse_MustangGrullaDun_Medium,
+        Tags = base:leatherfurwetmedium,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_MustangGrullaDun_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_MustangGrullaDun,
+        WorldObjectSprite = rugs_animals_foal_02_81,
+        WorldStaticModel = Leather_Horse_MustangGrullaDun_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item FoalLeather_MustangGrullaDun_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_MustangGrullaDun,
+        WorldStaticModel = Leather_Horse_MustangGrullaDun_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+
+
+/* Camarillo White */
+    item FoalLeather_CamarilloWhite_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_CamarilloWhite,
+        WorldStaticModel = Leather_Horse_CamarilloWhite_Medium,
+        Tags = base:leatherfullmedium,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_CamarilloWhite_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_CamarilloWhite,
+        WorldStaticModel = Leather_Horse_CamarilloWhite_Medium,
+        Tags = base:leatherfurmedium,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_CamarilloWhite_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_CamarilloWhite,
+        WorldStaticModel = Leather_Horse_CamarilloWhite_Medium,
+        Tags = base:leatherfurwetmedium,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_CamarilloWhite_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_CamarilloWhite,
+        WorldObjectSprite = rugs_animals_foal_02_97,
+        WorldStaticModel = Leather_Horse_CamarilloWhite_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item FoalLeather_CamarilloWhite_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_CamarilloWhite,
+        WorldStaticModel = Leather_Horse_CamarilloWhite_Small,
+        Tags = base:leatherfurtannedsmall,
+    }
+
+
+/* Rocky Mountain Liver Chestnut */
+    item FoalLeather_RockyMountainLiverChestnut_Full
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_RockyMountainLiverChestnut,
+        WorldStaticModel = Leather_Horse_RockyMountainLiverChestnut_Medium,
+        Tags = base:leatherfullmedium,
+        Tooltip = Tooltip_Leather_SofteningBeam,
+    }
+    item FoalLeather_RockyMountainLiverChestnut_Fur
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_RockyMountainLiverChestnut,
+        WorldStaticModel = Leather_Horse_RockyMountainLiverChestnut_Medium,
+        Tags = base:leatherfurmedium,
+        Tooltip = Tooltip_Leather_TanninBarrel,
+    }
+    item FoalLeather_RockyMountainLiverChestnut_Fur_Tan_Wet
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_RockyMountainLiverChestnut,
+        WorldStaticModel = Leather_Horse_RockyMountainLiverChestnut_Medium,
+        Tags = base:leatherfurwetmedium,
+        Tooltip = Tooltip_Leather_DryingRack,
+    }
+    item FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+    {
+        DisplayCategory = Material,
+        ItemType = base:moveable,
+        Weight = 3.0,
+        Icon = leather/LeatherHide_Horse_RockyMountainLiverChestnut,
+        WorldObjectSprite = rugs_animals_foal_02_113,
+        WorldStaticModel = Leather_Horse_RockyMountainLiverChestnut_Medium,
+        Tags = base:leatherfurtannedmedium,
+    }
+    item FoalLeather_RockyMountainLiverChestnut_Fur_Tan_Small
+    {
+        DisplayCategory = Material,
+        ItemType = base:normal,
+        Weight = 1.0,
+        Icon = leather/LeatherHide_Horse_RockyMountainLiverChestnut,
+        WorldStaticModel = Leather_Horse_RockyMountainLiverChestnut_Small,
         Tags = base:leatherfurtannedsmall,
     }
 }
