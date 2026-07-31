@@ -1,5 +1,6 @@
 local POPUP_HEIGHT = 120
 local CORE = getCore()
+local IS_CLIENT = isClient()
 
 local function make_popup(text, onclick)
     local width = getTextManager():MeasureStringX(UIFont.Small, text) + 20
@@ -50,6 +51,8 @@ Events.OnGameStart.Add(check_meatball)
 
 
 local function check_new_game(newGame)
+    -- no popup in MP since individual users can't do anything about it
+    if IS_CLIENT then return end
     local modData = ModData.getOrCreate("horsemod")
     if newGame then
         modData.newGame = true
