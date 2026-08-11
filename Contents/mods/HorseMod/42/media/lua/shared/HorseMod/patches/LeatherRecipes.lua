@@ -66,7 +66,7 @@ local LeatherRecipes = {
 
 ---An example of input identification function. Checks if the input contains an item with a specific full type, which is usually enough to identify it.
 ---@param input InputScript
----@param loadedItems ArrayList<string>
+---@param loadedItems List<string>
 ---@return boolean
 LeatherRecipes.identifyInput = function(input, loadedItems)
     if loadedItems:contains(LeatherRecipes.IDENTIFIER_ITEM) then return true end
@@ -75,7 +75,7 @@ end
 
 ---Function used to patch a recipe by adding new items to one of its inputs. Uses a `testInput` function to identify the correct input to add items to.
 ---@param recipeID string
----@param testInput fun(input: InputScript, loadedItems: ArrayList<string>): boolean
+---@param testInput fun(input: InputScript, loadedItems: List<string>): boolean
 ---@param itemsToAdd string[]
 LeatherRecipes.patchRecipe = function(recipeID, testInput, itemsToAdd)
     -- retrieve the recipe informations
@@ -85,7 +85,7 @@ LeatherRecipes.patchRecipe = function(recipeID, testInput, itemsToAdd)
     for i = 0, inputs:size() - 1 do
         -- retrieve the input and its script loaded items
         local input = inputs:get(i)
-        local loadedItems = HorseUtils.getJavaField(input, "loadedItems") --[[@as ArrayList<string>]]
+        local loadedItems = input:getItems()
 
         -- check if the input passes the test function
         if testInput(input, loadedItems) then
@@ -102,7 +102,7 @@ LeatherRecipes.patchRecipe = function(recipeID, testInput, itemsToAdd)
 end
 
 Events.OnGameBoot.Add(function()
-    -- LeatherRecipes.patchRecipe("Base.CutLeatherInHalf", LeatherRecipes.identifyInput, LeatherRecipes.LEATHERS)
+    LeatherRecipes.patchRecipe("Base.CutLeatherInHalf", LeatherRecipes.identifyInput, LeatherRecipes.LEATHERS)
 end)
 
 return LeatherRecipes
