@@ -34,6 +34,11 @@
         <m_TimePc>End</m_TimePc>
         <m_ParameterValue>HorseRiding=false</m_ParameterValue>
     </m_Events>
+	<m_Events>
+		<m_EventName>PlayerVoiceSound</m_EventName>
+		<m_TimePc>0.2</m_TimePc>
+		<m_ParameterValue>Exercise</m_ParameterValue>
+	</m_Events>
     <m_SubStateBoneWeights>
         <boneName>Dummy01</boneName>
     </m_SubStateBoneWeights>
