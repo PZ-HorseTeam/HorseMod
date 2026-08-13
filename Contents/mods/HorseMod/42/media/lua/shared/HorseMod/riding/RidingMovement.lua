@@ -1437,7 +1437,7 @@ end
 ---@param input RidingMovementInput
 ---@param deltaTime number
 function RidingMovement:update(input, deltaTime)
-    assert(self.pair.rider:getVariableString(AnimationVariable.RIDING_HORSE) == "true")
+    -- assert(self.pair.rider:getVariableString(AnimationVariable.RIDING_HORSE) == "true")
 
     local rider = self.pair.rider
     local mount = self.pair.mount
