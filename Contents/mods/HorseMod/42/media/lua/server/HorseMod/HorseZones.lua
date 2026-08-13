@@ -235,8 +235,6 @@ HorseZones.zones = {
 
 
 local function addHorseZones()
-    DebugLog.log("HorseMod: creating horse zones")
-
     local world = getWorld()
 
     local zonesFailed = 0

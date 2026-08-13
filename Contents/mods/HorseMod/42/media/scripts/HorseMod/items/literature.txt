@@ -1,0 +1,21 @@
+module HorseMod {
+    model Magazine_SaddleUp {
+        mesh = WorldItems/Magazine,
+        texture = WorldItems/Magazine_SaddleUp,
+        scale = 0.4,
+    }
+    
+    item Magazine_SaddleUp {
+        DisplayCategory = RecipeResource,
+        Weight = 0.5,
+        ItemType = base:literature,
+        Icon = literature/Magazine_Horse1,
+        BoredomChange = -20,
+        StressChange = -15,
+        LearnedRecipes = HorseSaddle;HorseSaddlebags;HorseReins,
+        StaticModel = Magazine,
+        WorldStaticModel = HorseMod.Magazine_SaddleUp,
+        Tags = base:magazine,
+        OnCreate = ItemCodeOnCreate.onCreateRecipeMagazine,
+    }
+}

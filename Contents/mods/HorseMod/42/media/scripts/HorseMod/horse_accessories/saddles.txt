@@ -382,4 +382,30 @@ module HorseMod {
         texture = Items/Accessories/HorseSaddle_ThoroughbredBay,
         static = true,
     }
+
+    /* WESTERN */
+    item HorseSaddle_Western {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_Western,
+        StaticModel = HorseSaddle_Western,
+        WorldStaticModel = HorseSaddle_World_Western,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+    }
+    model HorseSaddle_Western {
+        mesh = HorseMod/HorseSaddle_Western,
+        texture = Items/Accessories/HorseSaddle_Western,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_Western {
+        mesh = HorseMod/HorseSaddle_Western,
+        texture = Items/Accessories/HorseSaddle_Western,
+        static = true,
+    }
 }
