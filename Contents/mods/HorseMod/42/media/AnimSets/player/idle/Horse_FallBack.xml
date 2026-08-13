@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_FallBack</m_Name>
     <m_AnimName>Bob_FallOff_Back</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_Priority>30</m_Priority>
     <m_Looped>false</m_Looped>
     <m_deferredBoneAxis>X</m_deferredBoneAxis>

@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_PathfindTrotTurnLeft</m_Name>
     <m_AnimName>Horse_Trot_Left</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_ConditionPriority>10</m_ConditionPriority>
     <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
     <m_BlendTime>0.60</m_BlendTime>
@@ -30,7 +31,7 @@
         <m_BoolValue>true</m_BoolValue>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>targetTwist</m_Name>
+        <m_Name>mountedTwist</m_Name>
         <m_Type>LESS</m_Type>
         <m_Value>-30</m_Value>
     </m_Conditions>

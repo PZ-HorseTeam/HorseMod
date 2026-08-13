@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_idle2</m_Name>
     <m_AnimName>Horse_IdleEarTwist</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_Looped>false</m_Looped>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>

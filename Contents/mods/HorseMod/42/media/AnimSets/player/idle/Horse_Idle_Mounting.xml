@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_Idle_Mounting</m_Name>
     <m_AnimName>Bob_Mounted_Saddle</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_BlendTime>0.00</m_BlendTime>
     <m_SpeedScale>0.48</m_SpeedScale>
     <m_Priority>4</m_Priority>

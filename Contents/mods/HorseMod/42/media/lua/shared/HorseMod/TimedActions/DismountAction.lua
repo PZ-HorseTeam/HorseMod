@@ -3,6 +3,10 @@ require("TimedActions/ISBaseTimedAction")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Mounts = require("HorseMod/Mounts")
 local AnimationEvent = require("HorseMod/definitions/AnimationEvent")
+local MountedDirection = require("HorseMod/riding/MountedDirection")
+local mountcommands = require("HorseMod/networking/mountcommands")
+local commands = require("HorseMod/networking/commands")
+local MountingUtility = require("HorseMod/mounting/MountingUtility")
 
 local IS_SERVER = isServer()
 
@@ -21,6 +25,7 @@ local IS_SERVER = isServer()
 ---@field mountPosition MountPosition
 ---
 ---@field hasSaddle boolean
+---@field lockDirection IsoDirections
 ---
 ---Used to indicate whenever the action can be cancelled at some point.
 ---@field dynamicCancel boolean
@@ -29,6 +34,12 @@ local DismountAction = ISBaseTimedAction:derive("HorseMod_DismountAction")
 
 ---@return boolean
 function DismountAction:isValid()
+    -- self.animal can be nil if the horse died/unloaded after the action queued
+    if not self.animal then return false end
+
+    local mountPosition = MountingUtility.getNearestMountPosition(self.character, self.animal)
+    if not mountPosition then return false end
+
     return self.animal:isExistInTheWorld()
 end
 
@@ -37,11 +48,12 @@ function DismountAction:update()
     -- keep the horse and player locked facing the stored direction
     local character = self.character
     local animal = self.animal
+    if not animal then
+        return
+    end
 
-    animal:setDirectionAngle(self.lockDir)
+    MountedDirection.set(character, animal, self.lockDirection)
     animal:getPathFindBehavior2():reset()
-
-    character:setDirectionAngle(self.lockDir)
 end
 
 
@@ -59,7 +71,7 @@ end
 
 function DismountAction:start()
     local character = self.character
-    self.lockDir = self.animal:getDirectionAngle()
+    self.lockDirection = character:getDir()
     character:setVariable(AnimationVariable.DISMOUNT_STARTED, true)
     character:setVariable(AnimationVariable.NO_CANCEL, false)
 
@@ -103,23 +115,35 @@ end
 
 
 function DismountAction:complete()
-    if Mounts.getMount(self.character) ~= self.animal then
-        return false
-    end
-
-    Mounts.removeMount(self.character)
-
     return true
 end
 
 
 function DismountAction:perform()
-    local mountPosition = self.mountPosition
-    local attachmentPosition = self.animal:getAttachmentWorldPos(mountPosition.attachment)
-    self.character:setX(attachmentPosition:x())
-    self.character:setY(attachmentPosition:y())
+    if isServer() then
+        -- server waits for the client's DismountRequest; Mounts.removeMount runs in the handler
+    elseif not self.animal then
+        -- if horse died/unloaded mid-action then UrgentDismount has already cleaned up
+        Mounts.removeMount(self.character)
+    else
+        -- Snap to the chosen mountLeft/mountRight attachment
+        local mountPosition = MountingUtility.getNearestMountPosition(self.character, self.animal)
+        if mountPosition then
+            self.character:setX(mountPosition.x)
+            self.character:setY(mountPosition.y)
+            self.character:setZ(self.animal:getZ())
+        end
 
-    if isClient() then
+        if isClient() then
+            mountcommands.DismountRequest:send(
+                self.character,
+                {
+                    animal = commands.getAnimalId(self.animal),
+                    attachment = self.mountPosition.attachment,
+                }
+            )
+        end
+
         Mounts.removeMount(self.character)
     end
 
