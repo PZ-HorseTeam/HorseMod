@@ -1,28 +1,35 @@
 VERSION = 1,
 
 option HorseMod.WalkSpeed {
-    type = double,
-    min = 0.1,
-    max = 10,
-    default = 1,
-    page = HorseMod,
+    type        = double,
+    min         = 0.1,
+    max         = 10,
+    default     = 1,
+    page        = HorseMod,
     translation = HorseMod_WalkSpeed,
 }
 
 option HorseMod.GallopSpeed {
-    type = double,
-    min = 0.1,
-    max = 10,
-    default = 1,
-    page = HorseMod,
+    type        = double,
+    min         = 0.1,
+    max         = 10,
+    default     = 1,
+    page        = HorseMod,
     translation = HorseMod_GallopSpeed,
 }
 
 option HorseMod.StaminaMultiplier {
-    type = double,
-    min = 0.1,
-    max = 2,
-    default = 1,
-    page = HorseMod,
+    type        = double,
+    min         = 0.1,
+    max         = 2,
+    default     = 1,
+    page        = HorseMod,
     translation = HorseMod_StaminaMultiplier,
+}
+
+option HorseMod.RidingPainGrunt {
+    type        = boolean,
+    default     = true,
+    page        = HorseMod,
+    translation = HorseMod_RidingPainGrunt,
 }
