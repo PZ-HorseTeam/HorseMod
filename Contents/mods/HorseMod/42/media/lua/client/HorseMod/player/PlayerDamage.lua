@@ -30,7 +30,7 @@ PlayerDamage.DMG_LAC_MAX = 1.3
 PlayerDamage.DMG_BIT_MIN = 1.8
 PlayerDamage.DMG_BIT_MAX = 3.2
 
-PlayerDamage.SOUND_GRUNT = "PainFromFallLow"
+PlayerDamage.SOUND_GRUNT = "Exercise"
 PlayerDamage.MIN_TIME_GRUNT = 30.0
 PlayerDamage.MAX_TIME_GRUNT = 120.0
 
