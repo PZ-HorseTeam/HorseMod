@@ -22,3 +22,51 @@ New translations:
 - German by Jackson Frost
 - Updated French by Xianah
 [ ------ ]
+
+[ 25/03/13 ]
+v1.0.2
+
+Fixed:
+- Fixed compatibility issues with 42.15 due to TIS removal of reflection API.
+- Fixed a bug where the Czech translation did not work.
+- Fixed a minor incompatibility with the Lifestyles: Hobbies mod.
+- Updated translation files to the new 42.15+ format. The older files remain for those who are still playing on 42.14.
+- Updated Russian translations.
+
+Changed:
+- The ability to cut horse leather in half has been temporarily disabled as we required reflection to inject our items into the vanilla recipe. We will investigate if it is still possible to do this, and in a future patch will either restore it or create a separate recipe for it.
+
+[ ------ ]
+
+[ 25/04/01 ]
+v1.0.3
+42.16 update. Pre-42.16 is still supported.
+
+THIS UPDATE REQUIRES A FRESH INSTALLATION OF THE MOD!
+Please unsubscribe, wait for the game update and resubscribe to the mod to get a fresh installation.
+
+Added:
+- Packaged mod on the repository for local installation.
+- A new very rare Western saddle
+
+Changed:
+- FBX files changed to GLB format to reduce mod file size greatly.
+- Some technical changes.
+
+Fixed:
+- Build 42.16: fixed 180 turn animations.
+- Pregnancy duration being way too small. (now same as cows)
+- Fixed various animation issues.
+- Missing vehicle collision when riding a horse.
+- Horse using not lore friendly walking animations.
+
+Translation:
+- French translation missing item name.
+[ ------ ]
+
+[ 25/04/02 ]
+v1.0.4
+
+Changed:
+- Removed April Fool's silly joke animations (It will come back as an addon!)
+[ ------ ]

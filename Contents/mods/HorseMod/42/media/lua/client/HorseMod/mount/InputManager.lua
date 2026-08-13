@@ -47,6 +47,9 @@ end
 ---
 ---Whether the left joypad bumper was pressed last time the input was polled.
 ---@field lastJoypadLB boolean
+---
+---Whether the left joypad trigger was pressed last time the input was polled.
+---@field lastJoypadLT boolean
 local InputManager = {}
 InputManager.__index = InputManager
 
@@ -83,13 +86,11 @@ function InputManager:getJoypadInput(pad)
 
     local run = false
 
-    local rb = getJoypadRBumper(pad)
-    if rb ~= -1 and isJoypadPressed(pad, rb) then
+    if JoypadButton.RightBump:isDown(pad) then
         run = true
     end
 
-    local b = getJoypadBButton(pad)
-    if b ~= -1 and isJoypadPressed(pad, b) then
+    if JoypadButton.B:isDown(pad) then
         run = true
     end
 
@@ -97,7 +98,7 @@ function InputManager:getJoypadInput(pad)
         run = true
     end
 
-    local lbPressed = isJoypadLBPressed(pad)
+    local lbPressed = JoypadButton.LeftBump:isDown(pad)
     if lbPressed and not self.lastJoypadLB then
         local rider = self.mount.pair.rider
         if not joypadHasUIFocus(rider:getPlayerNum()) then
@@ -105,6 +106,18 @@ function InputManager:getJoypadInput(pad)
         end
     end
     self.lastJoypadLB = lbPressed
+
+    local ltPressed = isJoypadLTPressed(pad)
+    if ltPressed and not self.lastJoypadLT then
+        local rider = self.mount.pair.rider
+        if not joypadHasUIFocus(rider:getPlayerNum()) then
+            local controller = self.mount.controller
+            if controller:canJump() then
+                controller:jump()
+            end
+        end
+    end
+    self.lastJoypadLT = ltPressed
 
     return {
         movement = {
@@ -186,7 +199,8 @@ function InputManager.new(mount)
     return setmetatable(
         {
             mount = mount,
-            lastJoypadLB = false
+            lastJoypadLB = false,
+            lastJoypadLT = false
         },
         InputManager
     )

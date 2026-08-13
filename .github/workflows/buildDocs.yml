@@ -1,0 +1,75 @@
+name: Build Docs
+
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - ".github/workflows/**.yml"
+      - "docs/source/**"
+      - "Contents/mods/**/*.lua"
+  pull_request:
+    paths:
+      - ".github/workflows/**.yml"
+      - "docs/source/**"
+      - "Contents/mods/**/*.lua"
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            .github
+            Contents
+            docs
+            .emmyrc.json
+            .gitignore
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+          cache: "pip"
+          cache-dependency-path: docs/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r docs/requirements.txt
+
+      - name: Get Umbrella remote SHA
+        id: get-umbrella-remote-sha
+        run: |
+          SHA=$(git ls-remote https://github.com/PZ-Umbrella/Umbrella.git HEAD | cut -f1)
+          echo "UMBRELLA_HEAD_SHA=$SHA" >> $GITHUB_OUTPUT
+
+      - name: Setup Umbrella (using cache)
+        id: cache-umbrella-repo
+        uses: actions/cache@v5
+        with:
+          path: ./vendor/Umbrella
+          key: vendor-umbrella-${{ steps.get-umbrella-remote-sha.outputs.UMBRELLA_HEAD_SHA }}
+
+      - name: Checkout Umbrella
+        if: steps.cache-umbrella-repo.outputs.cache-hit != 'true'
+        uses: actions/checkout@v6
+        with:
+          repository: PZ-Umbrella/Umbrella
+          path: vendor/Umbrella
+
+      - name: Set Umbrella env var
+        run: echo "PZ_UMBRELLA=$(realpath vendor/Umbrella/library)" >> $GITHUB_ENV
+
+      - name: Build website with Sphinx
+        run: |
+          cd docs
+          make html
+
+      - name: Upload artifact
+        if: github.workflow == 'Deploy Docs'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs/build/html

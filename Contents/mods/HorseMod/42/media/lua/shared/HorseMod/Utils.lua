@@ -7,12 +7,21 @@ local HORSE_TYPES = {
     ["filly"] = true
 }
 
+
+local REFLECTION_SUPPORTED = getCore():getGameVersion():isLessThan(GameVersion.new(42, 15, "0"))
+
+
 local HorseUtils = {}
 
 ---Utility function to retrieve fields of specific Java object instances.
 ---@param object any
 ---@param field string
+---@[deprecated("Java field access is no longer possible in 42.15")]
 HorseUtils.getJavaField = function(object, field)
+    if not REFLECTION_SUPPORTED then
+        error("tried to access java field, but game version that does not support field access")
+    end
+
     local offset = string.len(field)
     for i = 0, getNumClassFields(object) - 1 do
         local m = getClassField(object, i)
