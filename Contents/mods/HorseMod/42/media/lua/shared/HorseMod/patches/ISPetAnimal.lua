@@ -24,6 +24,9 @@ function ISPetAnimal:isValid()
         if self.character:getVariableBoolean(AnimationVariable.RIDING_HORSE) then
             return true
         end
+        if self.animal:isMoving() or self.animal:shouldBeTurning() then
+            return false
+        end
     end
     return _originalPetAnimalisValid(self)
 end

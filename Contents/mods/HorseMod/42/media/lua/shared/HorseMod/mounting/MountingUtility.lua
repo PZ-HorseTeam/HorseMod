@@ -6,8 +6,6 @@ local Mounts = require("HorseMod/Mounts")
 local HorseUtils = require("HorseMod/Utils")
 
 
-local MOUNTING_DISABLED = isClient() and not isDebugEnabled()
-
 
 local MountingUtility = {}
 
@@ -110,9 +108,7 @@ end
 ---@return string?
 ---@nodiscard
 function MountingUtility.canMountHorse(player, horse)
-    if MOUNTING_DISABLED then
-        return false, "IGUI_HorseMod_DisabledInMultiplayer"
-    elseif Mounts.hasMount(player) then
+    if Mounts.hasMount(player) then
         -- already mounted
         return false
     elseif Mounts.hasRider(horse) then

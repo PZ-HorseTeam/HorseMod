@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_falldown</m_Name>
     <m_AnimName>Horse_Death</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_DeferredBoneName>Bip01</m_DeferredBoneName>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_useDeferedRotation>false</m_useDeferedRotation>

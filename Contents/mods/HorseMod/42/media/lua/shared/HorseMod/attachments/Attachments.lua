@@ -34,6 +34,20 @@ local ATTACHMENTS_MOD_DATA = HorseModData.register--[[@<AttachmentsModData>]](
 )
 Attachments.ATTACHMENTS_MOD_DATA = ATTACHMENTS_MOD_DATA
 
+---Checks if the given accessory full type can be equipped with a rider on the horse.
+---@param fullType string
+---@param slot AttachmentSlot
+---@return boolean
+---@nodiscard
+Attachments.canEquipWithRider = function(fullType, slot)
+    local itemDef = AttachmentData.items[fullType]
+    assert(itemDef ~= nil, "canEquipWithRider should only be called with valid attachments: " .. fullType)
+
+    local itemSlotDef = itemDef[slot]
+    assert(itemSlotDef ~= nil, "canEquipWithRider should only be called with valid attachments for the given slot: " .. fullType .. " for slot " .. slot)
+
+    return not itemSlotDef.notEquipableWithRider
+end
 
 ---Checks if the given item full type is an attachment, and optionally if it has a slot (`_slot`).
 ---@param fullType string
@@ -103,6 +117,22 @@ end
 function Attachments.get(animal, slot)
     local bySlot = HorseModData.get(animal, Attachments.ATTACHMENTS_MOD_DATA).bySlot
     return bySlot[slot]
+end
+
+---@param slot AttachmentSlot
+---@param fullType string
+---@return boolean
+function Attachments.isLightSource(slot, fullType)
+    local itemDef = Attachments.getAttachmentDefinition(fullType, slot)
+    return itemDef and itemDef.lightBehavior ~= nil or false
+end
+
+---@param slot AttachmentSlot
+---@param fullType string
+---@return LightBehavior?
+function Attachments.getLightBehavior(slot, fullType)
+    local itemDef = Attachments.getAttachmentDefinition(fullType, slot)
+    return itemDef and itemDef.lightBehavior or nil
 end
 
 ---Gets all currently equipped attachments.

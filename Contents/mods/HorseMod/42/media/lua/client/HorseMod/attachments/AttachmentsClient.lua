@@ -82,9 +82,9 @@ function AttachmentsClient.canChangeAttachments(character, animal)
         return false, "ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted"
     end
 
-    if Mounts.hasRider(animal) then
-        return false, "ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted"
-    end
+    -- if Mounts.hasRider(animal) then
+    --     return false, "ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted"
+    -- end
 
     return true
 end
@@ -125,6 +125,8 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
         table.sort(toAddOptionsTo, function(a, b)
             return a.displayName < b.displayName
         end)
+
+        local hasMount = Mounts.hasRider(horse)
         
         -- parse and add options to individual items
         local uniqueCount = {} -- used to not list too many items of the same type
@@ -180,11 +182,18 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
                     option.toolTip = tooltip
                 end
 
-                -- can't reach a position to equip the attachment
+                -- first check that a mount position exists
                 if not mountPosition then
                     option.notAvailable = true
                     local tooltip = ISWorldObjectContextMenu.addToolTip()
                     tooltip.description = getText("ContextMenu_Horse_NoMountPosition")
+                    option.toolTip = tooltip
+
+                -- check if the accessory can be equipped with a rider on the horse
+                elseif hasMount and not Attachments.canEquipWithRider(accessory:getFullType(), slot) then
+                    option.notAvailable = true
+                    local tooltip = ISWorldObjectContextMenu.addToolTip()
+                    tooltip.description = getText("ContextMenu_Horse_CannotEquipWithRider")
                     option.toolTip = tooltip
                 end
 

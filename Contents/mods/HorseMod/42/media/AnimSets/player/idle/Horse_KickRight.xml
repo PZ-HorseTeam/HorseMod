@@ -2,12 +2,14 @@
 <animNode>
     <m_Name>Horse_KickRight</m_Name>
     <m_AnimName>Bob_Mounted_Saddle_KickRight</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_Looped>false</m_Looped>
     <m_BlendTime>0.00</m_BlendTime>
     <m_SpeedScale>1.0</m_SpeedScale>
+    <m_Priority>11</m_Priority>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
-    <m_ConditionPriority>10</m_ConditionPriority>
-    <m_EarlyTransitionOut>true</m_EarlyTransitionOut>
+    <m_ConditionPriority>11</m_ConditionPriority>
+    <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
     <m_Conditions>
         <m_Name>HorseRiderKickRight</m_Name>
         <m_Type>BOOL</m_Type>
@@ -25,8 +27,18 @@
     </m_Conditions>
     <m_Events>
         <m_EventName>SetVariable</m_EventName>
-        <m_Time>Start</m_Time>
+        <m_TimePc>0.0</m_TimePc>
         <m_ParameterValue>HorseRiderIdleKicking=true</m_ParameterValue>
+    </m_Events>
+    <m_Events>
+        <m_EventName>SetVariable</m_EventName>
+        <m_TimePc>1.0</m_TimePc>
+        <m_ParameterValue>HorseRiderKickRight=false</m_ParameterValue>
+    </m_Events>
+    <m_Events>
+        <m_EventName>SetVariable</m_EventName>
+        <m_TimePc>1.0</m_TimePc>
+        <m_ParameterValue>HorseRiderIdleKicking=false</m_ParameterValue>
     </m_Events>
     <m_SubStateBoneWeights>
         <boneName>Bip01</boneName>
