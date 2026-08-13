@@ -14,12 +14,13 @@ local SPEED_VECTOR2 = Vector2.new()  -- Reusable vector for speed calculations
 
 -- Vehicle collision sliding parameters
 local VEHICLE_SLIDE_TANGENT_SCALE = 1.08  -- How much movement is maintained along the collision tangent
-local VEHICLE_SLIDE_OUTWARD_BIAS = 0.015  -- Pushes the rider away from vehicle during collision
+local VEHICLE_SLIDE_OUTWARD_BIAS = 0.015  -- Pushes the rider away from vehicle during collision tangent
+local VEHICLE_SLIDE_OUTWARD_BIAS_GALLOP = 0.03
 local VEHICLE_SLIDE_OUTWARD_BIAS_HEADON_DOT = 0.035  -- Threshold for head-on collisions
 local VEHICLE_SLIDE_MIN_LEN_SQ = 0.00000005  -- Minimum slide distance squared
 local VEHICLE_COLLISION_RADIUS = 0.2  -- Collision radius for initial vehicle detection
 local VEHICLE_SLIDE_COLLISION_RADIUS = 0.14  -- Smaller collision radius for slide path
-local VEHICLE_SLIDE_GALLOP_MULT = 1.15  -- Extra slide velocity when galloping
+local VEHICLE_SLIDE_GALLOP_MULT = 1.3  -- Extra slide velocity when galloping
 
 -- Wall collision detection
 -- Sets the angle that is considered wall collision, allowing sliding against walls at wider angles
@@ -186,10 +187,19 @@ local function riderCollidesWithVehicleAt(rider, vehicle, worldX, worldY, collis
     local hitX, hitY = TEMP_VECTOR2:getX(), TEMP_VECTOR2:getY()
     rider:setNextX(oldNextX)
     rider:setNextY(oldNextY)
+
+    -- this is something they do in the Java
+    -- they set hitX and hitY to 1.0 in some specific condition
+    -- and that is considered as no collision
+    if (hitX == 1.0 and hitY == 1.0) then
+        return false, nil, nil
+    end
+
     return collided, hitX, hitY
 end
 
 
+---Retrieves the slide delta vector when colliding with a vehicle surface.
 ---@param worldX number
 ---@param worldY number
 ---@param moveX number
@@ -199,7 +209,9 @@ end
 ---@return number
 ---@return number
 ---@nodiscard
-local function getVehicleSlideDelta(worldX, worldY, moveX, moveY, collisionX, collisionY)
+local function getVehicleSlideDelta(isGalloping, worldX, worldY, moveX, moveY, collisionX, collisionY)
+    -- the collision point drawn to the horse position
+    -- is the normal vector of the vehicle surface
     local normalX = collisionX - worldX
     local normalY = collisionY - worldY
     local normalLen = math.sqrt(normalX * normalX + normalY * normalY)
@@ -207,23 +219,31 @@ local function getVehicleSlideDelta(worldX, worldY, moveX, moveY, collisionX, co
         return 0, 0
     end
 
-    normalX = normalX / normalLen
-    normalY = normalY / normalLen
-
     local tangentX = -normalY
     local tangentY = normalX
     local tangentDot = moveX * tangentX + moveY * tangentY
 
+    -- this is to prevent clipping through the vehicle
     local outwardBias = 0.0
-    if math.abs(tangentDot) <= VEHICLE_SLIDE_OUTWARD_BIAS_HEADON_DOT then
+    if isGalloping then
+        outwardBias = VEHICLE_SLIDE_OUTWARD_BIAS_GALLOP
+    else
         outwardBias = VEHICLE_SLIDE_OUTWARD_BIAS
     end
 
-    local slideX = tangentX * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalX * outwardBias
-    local slideY = tangentY * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalY * outwardBias
+    -- calculate the slide vector along the tangent and outward bias
+    local slideX = tangentX * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalX * outwardBias / normalLen
+    local slideY = tangentY * tangentDot * VEHICLE_SLIDE_TANGENT_SCALE + normalY * outwardBias / normalLen
 
+    -- no need to move for very small slide distances
     if (slideX * slideX + slideY * slideY) <= VEHICLE_SLIDE_MIN_LEN_SQ then
         return 0, 0
+    end
+
+    -- apply gallop slowdown factor to the slide
+    if isGalloping then
+        slideX = slideX * VEHICLE_SLIDE_GALLOP_MULT
+        slideY = slideY * VEHICLE_SLIDE_GALLOP_MULT
     end
 
     return slideX, slideY
@@ -330,7 +350,7 @@ local IDLE_TO_RUN_SECONDS = 0.6  -- Duration of idle-to-gallop transition animat
 local BASE_CHANCE = 0.1  -- Base probability per check
 local NIMBLE_LOW = 1  -- Nimble skill minimum multiplier
 local NIMBLE_HIGH = 0  -- Nimble skill maximum multiplier (lower = less likely to fall)
--- Trait modifiers for fall chance (higher = more likely to fall)
+-- Trait modifiers for fall chance (1=no effect, <1=less likely, >1=more likely)
 local TRAITS = {
     [CharacterTrait.EAGLE_EYED] = 0.5,     -- Better awareness reduces falls
     [CharacterTrait.GYMNAST] = 0.5,        -- Better coordination reduces falls
@@ -495,56 +515,15 @@ end
 ---@param isJumping boolean
 ---@param effects RidingMovementEffects
 local function moveWithCollision(rider, horse, distance, isGalloping, isJumping, effects)
-    local horseZ = horse:getZ()
-
-
-    -- Use the floor square's Z for collision detection (handles stairs and ramps properly)
-    -- This prevents riders from clipping through walls when on stairs
-    local baseZ = math.floor(horseZ)
-
+    -- current position of the horse
     local x = horse:getX()
     local y = horse:getY()
+    local horseZ = horse:getZ()
+    local baseZ = math.floor(horseZ)
 
     -- theorical next position if no collision occurs
     local vx, vy = distance:getX(), distance:getY()
     local nx, ny = x + vx, y + vy
-
-    -- find a vehicle collision along the path, if any
-    local allVehicles = getCell():getVehicles()
-    local collided, hitX, hitY
-    if allVehicles then
-        local it = allVehicles:iterator()
-        while it:hasNext() do
-            local vehicle = it:next()
-            if vehicle:isCharacterAdjacentTo(horse) then
-                -- Only include vehicles on same Z level and within probe distance
-                if vehicle and math.floor(vehicle:getZ()) == baseZ then
-                    collided, hitX, hitY = riderCollidesWithVehicleAt(rider, vehicle, nx, ny, VEHICLE_COLLISION_RADIUS)
-                    if collided then
-                        break
-                    end
-                end
-            end
-        end
-    end
-
-    -- stop moving
-    ---@FIXME doesn't properly work for gallop
-    ---@FIXME will likely not work when sliding alongside a fence, will probably go through the fence
-    if collided then
-        ---@cast hitX number
-        ---@cast hitY number
-        local sx, sy = getVehicleSlideDelta(x, y, vx, vy, hitX, hitY)
-        if isGalloping then
-            sx = sx * VEHICLE_SLIDE_GALLOP_MULT
-            sy = sy * VEHICLE_SLIDE_GALLOP_MULT
-        end
-        nx, ny = x + sx, y + sy
-        updatePosition(horse, nx, ny)
-        return
-    end
-
-
 
     -- we extend a bit the distance to make sure we check all squares the horse will pass through
     -- this is needed because the player can do micro movements that should be blocked, but not
@@ -570,7 +549,7 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
     -- local isClear = LosUtil.lineClearCollide(x, y, horseZ, nx, ny, horseZ, false)
 
     -- identify which directions are blocked manually (reuses some of the logics from lineClearCollide)
-    local isBlocked = false
+    local isTileBlocked = false
     ---@type {from: IsoGridSquare, to: IsoGridSquare, deltaX: number, deltaY: number}[]
     local blockingSquares = {}
     for i = 1, #squares - 1 do
@@ -588,7 +567,7 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
             end
 
             if blocked then
-                isBlocked = true
+                isTileBlocked = true
                 -- the idea is that we keep previous blocked squares directions
                 -- but also check if blocked in other directions to handle corners
                 local deltaX = b.x - a.x
@@ -599,19 +578,38 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
                     }
             end
         else
-            isBlocked = true
+            isTileBlocked = true
             break
         end
     end
 
+    -- find a vehicle collision along the path, if any
+    local allVehicles = getCell():getVehicles()
+    local isVehicleBlocked, hitX, hitY
+    if allVehicles then
+        local it = allVehicles:iterator()
+        while it:hasNext() do
+            local vehicle = it:next()
+            if vehicle:isCharacterAdjacentTo(horse) then
+                -- Only include vehicles on same Z level and within probe distance
+                if vehicle and math.floor(vehicle:getZ()) == baseZ then
+                    isVehicleBlocked, hitX, hitY = riderCollidesWithVehicleAt(rider, vehicle, nx, ny, VEHICLE_COLLISION_RADIUS)
+                    if isVehicleBlocked then
+                        break
+                    end
+                end
+            end
+        end
+    end
+
     -- not blocked, don't bother with anything else, simply move the horse
-    if not isBlocked then
+    if not isTileBlocked and not isVehicleBlocked then
         updatePosition(horse, nx, ny)
         return
     end
 
     -- now that we know we are blocked, we need to check if we can jump over the obstacle
-    if isJumping then
+    if isJumping and not isVehicleBlocked then
         -- check the blocking squares for hoppable objects between them
         for i = 1, #blockingSquares do
             local block = blockingSquares[i]
@@ -626,30 +624,49 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
 
     -- should dismount because galloping while blocked is not allowed
     ---@FIXME need to ignore when riding at a specific angle from the wall, see WALL_HIT_MIN_PROGRESS_FRACTION
-    if isGalloping and effects.onGallopBlocked then
+    if isGalloping and isTileBlocked and effects.onGallopBlocked then
         effects.onGallopBlocked(rider, horse)
     end
 
     -- we need to hug the wall, the coordinates should not be exactly the
     -- wall position or the horse can just clip through from top side
-    -- that means we adjust the nx, ny coordinates slightly based on deltaX and deltaY
+    -- that means we adjust the nx, ny coordinates slightly based on EDGE_PAD
+
+    -- first we find out if we are blocked in the X or Y direction
     local nx, ny = x, y -- reset since we shouldn't move
     local isBlockedX, isBlockedY = false, false
-    for i = 1, #blockingSquares do
-        local block = blockingSquares[i]
-        if block.deltaX ~= 0 then
-            isBlockedX = true
-        end
-        if block.deltaY ~= 0 then
-            isBlockedY = true
+    if isTileBlocked then
+        for i = 1, #blockingSquares do
+            local block = blockingSquares[i]
+            if block.deltaX ~= 0 then
+                isBlockedX = true
+            end
+            if block.deltaY ~= 0 then
+                isBlockedY = true
+            end
         end
     end
 
+    -- handle vehicle collision sliding if we hit a vehicle
+    if isVehicleBlocked then
+        ---@cast hitX number
+        ---@cast hitY number
+        rider:addLineChatElement("Blocked by vehicle, sliding along surface")
+        local slideX, slideY = getVehicleSlideDelta(isGalloping, x, y, vx, vy, hitX, hitY)
+
+        nx, ny = x + slideX, y + slideY
+    end
+
+    ---@TODO
+    -- the handling with the tile blocked is not perfect at all
+    -- players can technically abuse horses to clip through walls
+    -- so this part will need to be improved in the future
+
     -- adjust the positions back slightly to avoid clipping into the wall
-    nx = isBlockedX and (nx - signf(distance:getX()) * EDGE_PAD) or nx
-    ny = isBlockedY and (ny - signf(distance:getY()) * EDGE_PAD) or ny
-
-
+    local dirX = signf(distance:getX())
+    local dirY = signf(distance:getY())
+    nx = isBlockedX and (nx - dirX * EDGE_PAD) or nx
+    ny = isBlockedY and (ny - dirY * EDGE_PAD) or ny
 
     -- final position update with collision adjustments (hugging walls)
     updatePosition(horse, nx, ny)
