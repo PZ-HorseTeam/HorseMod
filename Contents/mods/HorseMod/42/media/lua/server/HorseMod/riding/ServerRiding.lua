@@ -540,6 +540,19 @@ local function handleDismountRequest(player, args)
     Mounts.removeMount(player)
 end
 
+local function handleHorseFleeRequest(player, args)
+    if type(args.animal) ~= "number" or type(args.attachment) ~= "string" then
+        return
+    end
+
+    local animal = commands.getAnimal(math.floor(args.animal))
+    if not animal then
+        return
+    end
+
+    animal:getBehavior():forceFleeFromChr(player)
+end
+
 
 ---@param player IsoPlayer
 ---@param animal IsoAnimal
@@ -569,6 +582,7 @@ server.registerCommandHandler(mountcommands.RidingInput, handleRidingInput)
 server.registerCommandHandler(mountcommands.RequestMounts, handleRequestMounts)
 server.registerCommandHandler(mountcommands.MountRequest, handleMountRequest)
 server.registerCommandHandler(mountcommands.DismountRequest, handleDismountRequest)
+server.registerCommandHandler(mountcommands.HorseFleeRequest, handleHorseFleeRequest)
 
 Mounts.onMount:add(handleMount)
 Mounts.onDismount:add(handleDismount)

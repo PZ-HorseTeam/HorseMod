@@ -92,6 +92,17 @@ function UrgentDismountAction:animEvent(event, parameter)
         else
             self:forceComplete()
         end
+    elseif event == AnimationEvent.HORSE_FLEE then
+        if self.shouldFlee and self.animal then
+            if isClient() then
+                mountcommands.HorseFleeRequest:send(self.character, {
+                    animal = commands.getAnimalId(self.animal),
+                    character = commands.getPlayerId(self.character)
+                })
+            else
+                self.animal:getBehavior():forceFleeFromChr(self.character)
+            end
+        end
     end
 end
 
@@ -155,10 +166,6 @@ end
 function UrgentDismountAction:complete()
     if Mounts.getMount(self.character) == self.animal then
         Mounts.removeMount(self.character)
-    end
-
-    if self.shouldFlee and self.animal then
-        self.animal:getBehavior():forceFleeFromChr(self.character)
     end
 
     self:resetCharacterState()

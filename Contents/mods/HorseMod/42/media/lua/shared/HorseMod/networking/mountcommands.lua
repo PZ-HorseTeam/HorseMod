@@ -25,6 +25,10 @@ local mountcommands = {}
 ---plays locally (setVariable is local-only, so remote clients need telling).
 ---@field dismountType string
 
+---@class HorseFleeArguments
+---@field animal integer
+---@field character integer|string
+
 ---@class SendMountsArguments
 ---Player ids to animal ids
 ---@field mounts table<integer|string, integer>
@@ -82,5 +86,6 @@ mountcommands.RequestMounts = commands.registerClientCommand--[[@<RequestMountsA
 mountcommands.MountRequest = commands.registerClientCommand--[[@<MountRequestArguments>]]("MountRequest")
 mountcommands.DismountRequest = commands.registerClientCommand--[[@<DismountRequestArguments>]]("DismountRequest")
 mountcommands.KickRequest = commands.registerClientCommand--[[@<KickRequestArguments>]]("KickRequest")
+mountcommands.HorseFleeRequest = commands.registerClientCommand--[[@<HorseFleeArguments>]]("HorseFleeRequest")
 
 return mountcommands
