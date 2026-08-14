@@ -2,7 +2,7 @@ import shutil, re
 from pathlib import Path
 
 ICON_DIR = Path("Contents/mods/HorseMod/common/media/textures/Item_head")
-ORIGINAL_ICON_PATH = Path("Contents/mods/HorseMod/common/media/textures/Item_head/Head_Horse_Rotten.png")
+ORIGINAL_ICON_PATH = Path("Contents/mods/HorseMod/common/media/textures/Item_head/Item_Head_HorseFoal_Rotten.png")
 
 
 SCRIPT_FILE = Path("Contents/mods/HorseMod/42/media/scripts/HorseMod/horse_body/bodyparts_horse.txt")
@@ -15,6 +15,9 @@ SCRIPT_FILE = Path("Contents/mods/HorseMod/42/media/scripts/HorseMod/horse_body/
 for icon_file in ICON_DIR.rglob("*.png"):
     if icon_file.name == ORIGINAL_ICON_PATH.name:
         continue  # Skip the original icon file itself
+
+    if "Foal" not in icon_file.name:
+        continue
 
     # Create the new filename with "Rotten" suffix
     new_icon_name = icon_file.stem + "Rotten" + icon_file.suffix
