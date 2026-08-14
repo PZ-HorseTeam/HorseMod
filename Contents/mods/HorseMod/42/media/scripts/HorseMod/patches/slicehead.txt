@@ -1,30 +1,31 @@
 module Base {
+    /*@softOverride*/
     craftRecipe SliceHead
     {
         itemMapper HeadSkullMapper
         {
-            HorseMod.Horse_Skull = HorseMod.Foal_Head_AmericanQuarterPalomino,
+            HorseMod.Foal_Skull = HorseMod.Foal_Head_AmericanQuarterPalomino,
             HorseMod.Horse_Skull = HorseMod.Stallion_Head_AmericanQuarterPalomino,
             HorseMod.Horse_Skull = HorseMod.Mare_Head_AmericanQuarterPalomino,
-            HorseMod.Horse_Skull = HorseMod.Foal_Head_AmericanQuarterBlueRoan,
+            HorseMod.Foal_Skull = HorseMod.Foal_Head_AmericanQuarterBlueRoan,
             HorseMod.Horse_Skull = HorseMod.Stallion_Head_AmericanQuarterBlueRoan,
             HorseMod.Horse_Skull = HorseMod.Mare_Head_AmericanQuarterBlueRoan,
-            HorseMod.Horse_Skull = HorseMod.Foal_Head_AmericanPaintTobiano,
+            HorseMod.Foal_Skull = HorseMod.Foal_Head_AmericanPaintTobiano,
             HorseMod.Horse_Skull = HorseMod.Stallion_Head_AmericanPaintTobiano,
             HorseMod.Horse_Skull = HorseMod.Mare_Head_AmericanPaintTobiano,
-            HorseMod.Horse_Skull = HorseMod.Foal_Head_AmericanPaintOvero,
+            HorseMod.Foal_Skull = HorseMod.Foal_Head_AmericanPaintOvero,
             HorseMod.Horse_Skull = HorseMod.Stallion_Head_AmericanPaintOvero,
             HorseMod.Horse_Skull = HorseMod.Mare_Head_AmericanPaintOvero,
-            HorseMod.Horse_Skull = HorseMod.Foal_Head_AppaloosaGrullaBlanket,
+            HorseMod.Foal_Skull = HorseMod.Foal_Head_AppaloosaGrullaBlanket,
             HorseMod.Horse_Skull = HorseMod.Stallion_Head_AppaloosaGrullaBlanket,
             HorseMod.Horse_Skull = HorseMod.Mare_Head_AppaloosaGrullaBlanket,
-            HorseMod.Horse_Skull = HorseMod.Foal_Head_AppaloosaLeopard,
+            HorseMod.Foal_Skull = HorseMod.Foal_Head_AppaloosaLeopard,
             HorseMod.Horse_Skull = HorseMod.Stallion_Head_AppaloosaLeopard,
             HorseMod.Horse_Skull = HorseMod.Mare_Head_AppaloosaLeopard,
-            HorseMod.Horse_Skull = HorseMod.Foal_Head_ThoroughbredBay,
+            HorseMod.Foal_Skull = HorseMod.Foal_Head_ThoroughbredBay,
             HorseMod.Horse_Skull = HorseMod.Stallion_Head_ThoroughbredBay,
             HorseMod.Horse_Skull = HorseMod.Mare_Head_ThoroughbredBay,
-            HorseMod.Horse_Skull = HorseMod.Foal_Head_ThoroughbredFleaBittenGrey,
+            HorseMod.Foal_Skull = HorseMod.Foal_Head_ThoroughbredFleaBittenGrey,
             HorseMod.Horse_Skull = HorseMod.Stallion_Head_ThoroughbredFleaBittenGrey,
             HorseMod.Horse_Skull = HorseMod.Mare_Head_ThoroughbredFleaBittenGrey,
         }
