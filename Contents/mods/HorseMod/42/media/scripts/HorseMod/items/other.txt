@@ -1,0 +1,20 @@
+module HorseMod {
+    item CricketHorse {
+        DisplayCategory = Horse,
+        ItemType = base:normal,
+        Weight = 0.8,
+        Icon = Plush_Horse,
+        WorldStaticModel = HorseMod.CricketHorse,
+        Tags = base:ignorezombiedensity;base:isfirefuel;base:isfiretinder;base:ismemento,
+        FireFuelRatio = 0.25,
+    }
+    model CricketHorse {
+        mesh = HorseMod/CricketPlushie,
+        texture = HorseMod/CricketPlushie,
+        scale = 0.4,
+        attachment world
+        {
+            rotate = 0.0 180.0 0.0,
+        }
+    }
+}
