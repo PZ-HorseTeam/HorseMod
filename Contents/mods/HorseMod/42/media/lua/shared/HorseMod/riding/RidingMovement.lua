@@ -72,8 +72,8 @@ local function getSq(x, y, z)
     return getCell():getGridSquare(math.floor(x), math.floor(y), z)
 end
 
----So the horse doesn't trigger falling when going down stairs fast
-local VERTICAL_FOLLOW_MAX_STEP = 0.95
+-- Maximum vertical step per frame - prevents horse from falling rapidly when descending stairs
+local VERTICAL_FOLLOW_MAX_STEP = 0.75
 
 ---Sometimes the horse counts as airborne when reaching top of stairs for a few frames
 ---This gives it a bit of time to cover those frames
@@ -1340,7 +1340,8 @@ local function floorHeight(sq, x, y)
     return sq:getZ()
 end
 
----Make the horse track the floor height of stairs and landings.
+-- Make the horse follow the floor height (stairs, ramps, etc.)
+-- Keeps the horse properly aligned with terrain elevation
 ---@param mount IsoAnimal
 ---@param deltaTime number
 function RidingMovement:followVertical(mount, deltaTime)
@@ -1363,13 +1364,15 @@ function RidingMovement:followVertical(mount, deltaTime)
         end
     end
 
-    if not best then
+    if not best or not bestZ then
         self.lastFloorSquare = nil
         self.rampGrace = math.max(0, self.rampGrace - deltaTime)
         return
     end
 
-    if math.abs(bestZ - mz) < VERTICAL_FOLLOW_MAX_STEP then
+    -- Snap to floor if close enough (within max step distance)
+    local diff = bestZ - mz
+    if diff < VERTICAL_FOLLOW_MAX_STEP and diff > 0 then
         mount:setZ(bestZ)
         mount:setLastZ(bestZ)
     end
