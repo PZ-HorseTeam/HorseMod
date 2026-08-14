@@ -83,8 +83,9 @@ function MountedAttack.horseKick(key)
     local closest, closestDistSq
     local px, py = player:getX(), player:getY()
     local rangeSq = (1.5 * 1.5)
-    for i = 0, zombies:size() - 1 do
+    for i = 0, zombies:size() - 1 do repeat
         local z = zombies:get(i)
+        if z:isProne() then break end
         local dx = z:getX() - px
         local dy = z:getY() - py
         local d2 = dx * dx + dy * dy
@@ -92,7 +93,7 @@ function MountedAttack.horseKick(key)
             closest = z
             closestDistSq = d2
         end
-    end
+    until true end
     if not closest then return end
 
     local mountLeft = horse:getAttachmentWorldPos("mountLeft")
