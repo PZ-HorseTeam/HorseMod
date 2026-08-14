@@ -651,7 +651,6 @@ local function moveWithCollision(rider, horse, distance, isGalloping, isJumping,
     if isVehicleBlocked then
         ---@cast hitX number
         ---@cast hitY number
-        rider:addLineChatElement("Blocked by vehicle, sliding along surface")
         local slideX, slideY = getVehicleSlideDelta(isGalloping, x, y, vx, vy, hitX, hitY)
 
         nx, ny = x + slideX, y + slideY
