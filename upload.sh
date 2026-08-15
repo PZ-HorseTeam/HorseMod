@@ -11,10 +11,10 @@ git pull
 # store current folder
 WORKSHOP_DIR=$(pwd)
 
-MOD_TITLE="Horse Mod [B42.14+/MP SOON]"
+MOD_TITLE="Horse Mod [B42.20+/MP]"
 WORKSHOP_ID=3661336777
 VISIBILITY=0
-TAGS="Build 42,Animals,Items,Misc,Vehicles,Models"
+TAGS="Build 42,Animals,Items,Misc,Vehicles,Models,Multiplayer"
 
 # need to be in the steam uploader folder
 cd "$STEAMUPLOADER"
