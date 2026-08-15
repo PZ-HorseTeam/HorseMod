@@ -1,3 +1,5 @@
+# to be used with https://github.com/SimKDT/Steam-Uploader
+
 set -e
 
 # script usage
