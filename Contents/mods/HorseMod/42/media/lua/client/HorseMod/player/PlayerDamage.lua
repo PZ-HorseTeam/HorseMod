@@ -1,5 +1,7 @@
 ---@namespace HorseMod
 
+local IS_CLIENT = isClient()
+
 local HorseDamage = require("HorseMod/horse/HorseDamage")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Attachments = require("HorseMod/attachments/Attachments")
@@ -95,7 +97,9 @@ local function addRidingPainToAllPlayers()
     end
 end
 
-Events.OnTick.Add(addRidingPainToAllPlayers)
+if not IS_CLIENT then
+    Events.OnTick.Add(addRidingPainToAllPlayers)
+end
 
 
 ---@param part BodyPart|nil
@@ -406,7 +410,8 @@ local lastAttack = {}
 ---@return nil
 function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
     local target = zombie:getTarget()
-    if not target or not instanceof(target, "IsoPlayer") or not Mounts.hasMount(target) then
+    local horse = Mounts.getMount(target)
+    if not target or not instanceof(target, "IsoPlayer") or not horse then
         return
     end
     ---@cast target IsoPlayer
@@ -424,8 +429,6 @@ function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
     end
     
     lastAttack[zombie] = getTimestampMs()
-
-    local horse = Mounts.getMount(target)
 
     HorseDamage.tryRedirectZombieHitToHorse(zombie, target, horse)
 
