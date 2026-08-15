@@ -184,7 +184,7 @@ end
 
 ---@param character IsoPlayer
 ---@param animal IsoAnimal
----@param dismountType AnimationVariable?
+---@param dismountVariable AnimationVariable?
 ---@param horseSound Sound? The sound to play from the horse when dismounting
 ---@param playerVoice string? The voice ID to play when dismounting
 ---@param shouldFlee boolean Whenever the horse should flee after dismounting
@@ -193,7 +193,7 @@ end
 function UrgentDismountAction:new(
     character,
     animal,
-    dismountType,
+    dismountVariable,
     horseSound,
     playerVoice,
     shouldFlee)
@@ -202,7 +202,7 @@ function UrgentDismountAction:new(
 
     o.character = character
     o.animal = animal
-    o.dismountVariable = dismountType
+    o.dismountVariable = dismountVariable
     o.horseSound = horseSound
     o.playerVoice = playerVoice
     o.shouldFlee = shouldFlee
