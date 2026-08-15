@@ -92,6 +92,17 @@ function UrgentDismountAction:animEvent(event, parameter)
         else
             self:forceComplete()
         end
+    elseif event == AnimationEvent.HORSE_FLEE then
+        if self.shouldFlee and self.animal then
+            if isClient() then
+                mountcommands.HorseFleeRequest:send(self.character, {
+                    animal = commands.getAnimalId(self.animal),
+                    character = commands.getPlayerId(self.character)
+                })
+            else
+                self.animal:getBehavior():forceFleeFromChr(self.character)
+            end
+        end
     end
 end
 
@@ -157,10 +168,6 @@ function UrgentDismountAction:complete()
         Mounts.removeMount(self.character)
     end
 
-    if self.shouldFlee and self.animal then
-        self.animal:getBehavior():forceFleeFromChr(self.character)
-    end
-
     self:resetCharacterState()
     return true
 end
@@ -184,7 +191,7 @@ end
 
 ---@param character IsoPlayer
 ---@param animal IsoAnimal
----@param dismountType AnimationVariable?
+---@param dismountVariable AnimationVariable?
 ---@param horseSound Sound? The sound to play from the horse when dismounting
 ---@param playerVoice string? The voice ID to play when dismounting
 ---@param shouldFlee boolean Whenever the horse should flee after dismounting
@@ -193,7 +200,7 @@ end
 function UrgentDismountAction:new(
     character,
     animal,
-    dismountType,
+    dismountVariable,
     horseSound,
     playerVoice,
     shouldFlee)
@@ -202,7 +209,7 @@ function UrgentDismountAction:new(
 
     o.character = character
     o.animal = animal
-    o.dismountVariable = dismountType
+    o.dismountVariable = dismountVariable
     o.horseSound = horseSound
     o.playerVoice = playerVoice
     o.shouldFlee = shouldFlee

@@ -85,7 +85,7 @@ local function getSq(x, y, z)
 end
 
 -- Maximum vertical step per frame - prevents horse from falling rapidly when descending stairs
-local VERTICAL_FOLLOW_MAX_STEP = 0.95
+local VERTICAL_FOLLOW_MAX_STEP = 0.75
 
 -- Grace period for ramp/slope detection - gives the horse time to avoid false fall detection
 -- when transitioning between stair sections (sometimes counts as airborne for a few frames)
@@ -1229,7 +1229,8 @@ local function floorHeight(sq, x, y)
     return sq:getZ()
 end
 
----Make the horse track the floor height of stairs and landings.
+-- Make the horse follow the floor height (stairs, ramps, etc.)
+-- Keeps the horse properly aligned with terrain elevation
 ---@param mount IsoAnimal
 ---@param deltaTime number
 -- Make the horse follow the floor height (stairs, ramps, etc.)
@@ -1256,14 +1257,15 @@ function RidingMovement:followVertical(mount, deltaTime)
         end
     end
 
-    if not best then
+    if not best or not bestZ then
         self.lastFloorSquare = nil
         self.rampGrace = math.max(0, self.rampGrace - deltaTime)
         return
     end
 
     -- Snap to floor if close enough (within max step distance)
-    if math.abs(bestZ - mz) < VERTICAL_FOLLOW_MAX_STEP then
+    local diff = bestZ - mz
+    if diff < VERTICAL_FOLLOW_MAX_STEP and diff > 0 then
         mount:setZ(bestZ)
         mount:setLastZ(bestZ)
     end
@@ -1337,7 +1339,7 @@ end
 ---@param input RidingMovementInput
 ---@param deltaTime number
 function RidingMovement:update(input, deltaTime)
-    assert(self.pair.rider:getVariableString(AnimationVariable.RIDING_HORSE) == "true")
+    -- assert(self.pair.rider:getVariableString(AnimationVariable.RIDING_HORSE) == "true")
 
     local rider = self.pair.rider
     local mount = self.pair.mount
