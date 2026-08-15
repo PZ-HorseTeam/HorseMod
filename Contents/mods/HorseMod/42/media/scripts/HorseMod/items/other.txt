@@ -3,7 +3,7 @@ module HorseMod {
         DisplayCategory = Horse,
         ItemType = base:normal,
         Weight = 0.8,
-        Icon = Plush_Horse,
+        Icon = parts/PlushCricket,
         WorldStaticModel = HorseMod.CricketHorse,
         Tags = base:ignorezombiedensity;base:isfirefuel;base:isfiretinder;base:ismemento,
         FireFuelRatio = 0.25,
