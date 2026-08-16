@@ -7,6 +7,7 @@ module HorseMod {
         WorldStaticModel = HorseMod.CricketHorse,
         Tags = base:ignorezombiedensity;base:isfirefuel;base:isfiretinder;base:ismemento,
         FireFuelRatio = 0.25,
+        Tooltip = Tooltip_item_CricketHorse,
     }
     model CricketHorse {
         mesh = HorseMod/CricketPlushie,
