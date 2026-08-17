@@ -20,6 +20,9 @@ local AnimationVariable = {
     RIDING_HORSE = "HorseRiding",
     MOUNTING_HORSE = "HorseMountingHorse",
     DISMOUNT_STARTED = "HorseDismountStarted",
+
+    -- Prevents the player from cancelling the mount/dismount animation
+    -- see ActionCancel.lua
     NO_CANCEL = "HorseNoCancel",
 
     -- getMovementSpeed() is 0 on server, so we use this flag instead
