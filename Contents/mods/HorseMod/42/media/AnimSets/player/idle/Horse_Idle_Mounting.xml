@@ -47,26 +47,26 @@
     </m_2DBlendTri>
     <m_Transitions>
         <m_Target>climbFenceStart</m_Target>
-        <m_blendInTime>0.1</m_blendInTime>
+        <m_BlendInTime>0.1</m_BlendInTime>
     </m_Transitions>
     <m_Transitions>
         <m_Target>turn_idle</m_Target>
-        <m_blendInTime>0.2</m_blendInTime>
+        <m_BlendInTime>0.2</m_BlendInTime>
     </m_Transitions>
     <m_Transitions>
         <m_Target>sneakidle</m_Target>
-        <m_blendInTime>0.35</m_blendInTime>
-        <m_blendOutTime>0.35</m_blendOutTime>
+        <m_BlendInTime>0.35</m_BlendInTime>
+        <m_BlendOutTime>0.35</m_BlendOutTime>
     </m_Transitions>
     <m_Transitions>
         <m_Target>sneakIdleLow</m_Target>
-        <m_blendInTime>0.35</m_blendInTime>
-        <m_blendOutTime>0.35</m_blendOutTime>
+        <m_BlendInTime>0.35</m_BlendInTime>
+        <m_BlendOutTime>0.35</m_BlendOutTime>
     </m_Transitions>
     <m_Transitions>
         <m_Target>defaultRun</m_Target>
-        <m_blendInTime>0.1</m_blendInTime>
-        <m_blendOutTime>0.1</m_blendOutTime>
+        <m_BlendInTime>0.1</m_BlendInTime>
+        <m_BlendOutTime>0.1</m_BlendOutTime>
         <m_Conditions x_name="4bbce58b-b7df-4ed6-aad7-500358b4bb9e">
             <m_Name>isTurningAround</m_Name>
             <m_Type>BOOL</m_Type>
@@ -88,8 +88,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>defaultSprint</m_Target>
-        <m_blendInTime>0.1</m_blendInTime>
-        <m_blendOutTime>0.1</m_blendOutTime>
+        <m_BlendInTime>0.1</m_BlendInTime>
+        <m_BlendOutTime>0.1</m_BlendOutTime>
         <m_Conditions x_name="ea9efd3c-37c5-464a-9434-64f6b853eabe">
             <m_Name>isTurningAround</m_Name>
             <m_Type>BOOL</m_Type>

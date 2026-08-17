@@ -4,6 +4,7 @@
 local HorseManager = require("HorseMod/HorseManager")
 local Mounts = require("HorseMod/Mounts")
 local HorseUtils = require("HorseMod/Utils")
+local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
 
 
 
@@ -117,7 +118,8 @@ function MountingUtility.canMountHorse(player, horse)
         return false, "ContextMenu_Horse_IsDead"
     elseif horse:isOnHook() then -- butcher hook
         return false
-    elseif horse:getVariableBoolean("animalRunning") and horse:getMovementSpeed() ~= 0 then
+    elseif horse:getVariableBoolean(AnimationVariable.GALLOP) 
+        and horse:getMovementSpeed() ~= 0 then
         return false, "ContextMenu_Horse_IsRunning"
     elseif not HorseUtils.isAdult(horse) then
         return false, "ContextMenu_Horse_NotAdult"
@@ -150,7 +152,7 @@ function MountingUtility.pathfindToHorse(player, horse, mountPosition)
     )
 
     -- stop the horse from moving
-    horse:getPathFindBehavior2():reset()
+    horse:stopAllMovementNow()
 
     ISTimedActionQueue.add(pathfindAction)
 

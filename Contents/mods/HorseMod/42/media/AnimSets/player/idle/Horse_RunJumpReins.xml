@@ -39,8 +39,8 @@
     <m_Transitions>
         <m_Target>Horse_Run</m_Target>
         <m_BlendTime>0.6</m_BlendTime>
-        <m_blendInTime>0.3</m_blendInTime>
-        <m_blendOutTime>0.15</m_blendOutTime>
+        <m_BlendInTime>0.3</m_BlendInTime>
+        <m_BlendOutTime>0.15</m_BlendOutTime>
         <m_Conditions>
             <m_Name>HorseJump</m_Name>
             <m_Type>BOOL</m_Type>

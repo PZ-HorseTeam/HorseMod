@@ -26,7 +26,7 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>animalWalking</m_Name>
+        <m_Name>HorseWalk</m_Name>
         <m_Type>BOOL</m_Type>
         <m_BoolValue>true</m_BoolValue>
     </m_Conditions>
@@ -42,8 +42,8 @@
     </m_Conditions>
     <m_Transitions>
         <m_Target>Horse_Mounted_Wait</m_Target>
-        <m_blendInTime>0.80</m_blendInTime>
-        <m_blendOutTime>0.80</m_blendOutTime>
+        <m_BlendInTime>0.80</m_BlendInTime>
+        <m_BlendOutTime>0.80</m_BlendOutTime>
         <m_speedScale>0.8</m_speedScale>
         <m_Conditions>
             <m_Name>isHorse</m_Name>
@@ -51,20 +51,20 @@
             <m_Value>true</m_Value>
         </m_Conditions>
         <m_Conditions>
-            <m_Name>animalWalking</m_Name>
+            <m_Name>HorseWalk</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
         <m_Conditions>
-            <m_Name>animalRunning</m_Name>
+            <m_Name>HorseGallop</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_Idle</m_Target>
-        <m_blendInTime>0.50</m_blendInTime>
-        <m_blendOutTime>0.10</m_blendOutTime>
+        <m_BlendInTime>0.50</m_BlendInTime>
+        <m_BlendOutTime>0.10</m_BlendOutTime>
         <m_speedScale>1.0</m_speedScale>
         <m_Conditions>
             <m_Name>isHorse</m_Name>
@@ -72,28 +72,28 @@
             <m_Value>true</m_Value>
         </m_Conditions>
         <m_Conditions>
-            <m_Name>animalWalking</m_Name>
+            <m_Name>HorseWalk</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
         <m_Conditions>
-            <m_Name>animalRunning</m_Name>
+            <m_Name>HorseGallop</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_Mounted_Run</m_Target>
-        <m_blendInTime>0.80</m_blendInTime>
-        <m_blendOutTime>0.80</m_blendOutTime>
+        <m_BlendInTime>0.80</m_BlendInTime>
+        <m_BlendOutTime>0.80</m_BlendOutTime>
         <m_speedScale>1.20</m_speedScale>
         <m_Conditions>
-            <m_Name>animalWalking</m_Name>
+            <m_Name>HorseWalk</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
         <m_Conditions>
-            <m_Name>animalRunning</m_Name>
+            <m_Name>HorseGallop</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>true</m_BoolValue>
         </m_Conditions>
@@ -105,8 +105,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_Mounted_TrotTurnRight</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>mountedTwist</m_Name>
             <m_Type>GTR</m_Type>
@@ -115,8 +115,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_Mounted_TrotTurnLeft</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>mountedTwist</m_Name>
             <m_Type>LESS</m_Type>
@@ -131,7 +131,7 @@
     <m_Events>
         <m_EventName>SetVariable</m_EventName>
         <m_Time>Start</m_Time>
-        <m_ParameterValue>HorseGalloping=false</m_ParameterValue>
+        <m_ParameterValue>HorseGallop=false</m_ParameterValue>
     </m_Events>
     <m_Events>
         <m_EventName>SetVariable</m_EventName>

@@ -8,6 +8,7 @@ local HorseUnequipGear = require("HorseMod/TimedActions/HorseUnequipGear")
 local Mounts = require("HorseMod/Mounts")
 local MountingUtility = require("HorseMod/mounting/MountingUtility")
 local AttachmentData = require("HorseMod/attachments/AttachmentData")
+local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
 
 local AttachmentsClient = {}
 
@@ -70,7 +71,7 @@ end
 ---@return boolean canChange
 ---@return string? reason Translation string to display to user.
 function AttachmentsClient.canChangeAttachments(character, animal)
-    if animal:getVariableBoolean("animalRunning") then
+    if animal:getVariableBoolean(AnimationVariable.GALLOP) then
         return false, "ContextMenu_Horse_IsRunning"
     end
 

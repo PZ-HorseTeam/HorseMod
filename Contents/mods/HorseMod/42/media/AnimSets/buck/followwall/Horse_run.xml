@@ -10,7 +10,7 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions x_name="7374d871-4dd5-4462-bfb0-e6fc1cccda38">
-        <m_Name>animalRunning</m_Name>
+        <m_Name>HorseGallop</m_Name>
         <m_Type>BOOL</m_Type>
         <m_Value>true</m_Value>
     </m_Conditions>

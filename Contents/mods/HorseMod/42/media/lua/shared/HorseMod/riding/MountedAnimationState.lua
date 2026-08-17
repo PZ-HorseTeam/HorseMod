@@ -46,17 +46,13 @@ function MountedAnimationState.setMovementVariables(rider, horse, isMoving, isGa
     local walking = isMoving and not isGalloping
     local running = isMoving and isGalloping
 
-    horse:setVariable("animalWalking", walking)
-    horse:setVariable("animalRunning", running)
-    horse:setVariable("HorseGalloping", running)
+    horse:setVariable(AnimationVariable.WALK, walking)
+    horse:setVariable(AnimationVariable.GALLOP, running)
     horse:setVariable("HorseMountedMoving", isMoving)
-    horse:setVariable("walkstateRun", false)
 
-    rider:setVariable("animalWalking", walking)
-    rider:setVariable("animalRunning", running)
-    rider:setVariable("HorseGalloping", running)
+    rider:setVariable(AnimationVariable.WALK, walking)
+    rider:setVariable(AnimationVariable.GALLOP, running)
     rider:setVariable("HorseMountedMoving", isMoving)
-    rider:setVariable("walkstateRun", false)
 end
 
 ---@param rider IsoPlayer
@@ -67,13 +63,13 @@ function MountedAnimationState.setTurnVariables(rider, horse, turn)
     local turningRight = turn > 0
     local turning = turningLeft or turningRight
 
-    horse:setVariable("isTurningLeft", turningLeft)
-    horse:setVariable("isTurningRight", turningRight)
-    horse:setVariable("isTurning", turning)
+    horse:setVariable(AnimationVariable.IS_TURNING_LEFT, turningLeft)
+    horse:setVariable(AnimationVariable.IS_TURNING_RIGHT, turningRight)
+    horse:setVariable(AnimationVariable.IS_TURNING, turning)
 
-    rider:setVariable("isTurningLeft", turningLeft)
-    rider:setVariable("isTurningRight", turningRight)
-    rider:setVariable("isTurning", turning)
+    rider:setVariable(AnimationVariable.IS_TURNING_LEFT, turningLeft)
+    rider:setVariable(AnimationVariable.IS_TURNING_RIGHT, turningRight)
+    rider:setVariable(AnimationVariable.IS_TURNING, turning)
 end
 
 ---@param rider IsoPlayer

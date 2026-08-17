@@ -163,16 +163,18 @@ end
 
 
 function Mount:cleanup()
-    self.pair:setAnimationVariable(AnimationVariable.RIDING_HORSE, false)
-    self.pair:setAnimationVariable(AnimationVariable.TROT, false)
-
+    -- detatch animal
     local attached = self.pair.rider:getAttachedAnimals()
     attached:remove(self.pair.mount)
     self.pair.mount:getData():setAttachedPlayer(nil) ---@diagnostic disable-line technically can still pass nil
 
-    self.pair.rider:setVariable(AnimationVariable.TROT, false)
-    self.pair.rider:setVariable(AnimationVariable.GALLOP, false)
-    self.pair.rider:setVariable(AnimationVariable.JUMP, false)
+    -- applied to both rider and mount
+    self.pair:setAnimationVariable(AnimationVariable.RIDING_HORSE, false)
+    self.pair:setAnimationVariable(AnimationVariable.WALK, false)
+    self.pair:setAnimationVariable(AnimationVariable.TROT, false)
+    self.pair:setAnimationVariable(AnimationVariable.GALLOP, false)
+    self.pair:setAnimationVariable(AnimationVariable.JUMP, false)
+
     self.pair.rider:setVariable(AnimationVariable.HAS_REINS, false)
     self.pair.rider:setVariable(AnimationVariable.DISMOUNT_STARTED, false)
     self.pair.rider:setAllowRun(true)
@@ -189,9 +191,9 @@ function Mount:cleanup()
     MountedAnimationState.setTurnVariables(self.pair.rider, self.pair.mount, 0)
 
     self.pair.rider:setVariable(AnimationVariable.MOUNTING_HORSE, false)
-    self.pair.rider:setVariable("isTurningLeft", false)
-    self.pair.rider:setVariable("isTurningRight", false)
-
+    self.pair.rider:setVariable(AnimationVariable.IS_TURNING_LEFT, false)
+    self.pair.rider:setVariable(AnimationVariable.IS_TURNING_RIGHT, false)
+    self.pair.rider:setVariable(AnimationVariable.IS_TURNING, false)
 end
 
 
@@ -215,9 +217,9 @@ function Mount.new(pair)
 
     rider:setTurnDelta(0.65)
 
-    rider:setVariable("isTurningLeft", false)
-    rider:setVariable("isTurningRight", false)
-    rider:setVariable("isTurning", false)
+    rider:setVariable(AnimationVariable.IS_TURNING_LEFT, false)
+    rider:setVariable(AnimationVariable.IS_TURNING_RIGHT, false)
+    rider:setVariable(AnimationVariable.IS_TURNING, false)
 
     local geneSpeed = mount:getUsedGene("speed"):getCurrentValue()
     MountedAnimationState.setSpeedVariables(rider, mount, geneSpeed)

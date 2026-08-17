@@ -2,7 +2,7 @@
 
 ---@enum AnimationVariable
 local AnimationVariable = {
-    --- Must always be true on all horses for their animations to play properly.
+    -- Movement states
     IS_HORSE = "isHorse",
     WALK = "HorseWalk",
     GALLOP = "HorseGallop",
@@ -10,6 +10,10 @@ local AnimationVariable = {
     JUMP = "HorseJump",
     DYING = "HorseDying",
     FALL_BACK = "HorseFallBack",
+
+    IS_TURNING_LEFT = "isTurningLeft",
+    IS_TURNING_RIGHT = "isTurningRight",
+    IS_TURNING = "isTurning",
 
     -- Activates mounted player animations while true.
     -- albion: this should be controlled by Mounts only, please check with me first if you think your code needs to set it
@@ -53,7 +57,7 @@ local AnimationVariable = {
     -- unused
     GENE_STAMINA = "HorseGeneStamina",
     -- unused
-    GENE_CARRYWEIGHT = "HorseGeneCarryWeight"
+    GENE_CARRYWEIGHT = "HorseGeneCarryWeight",
 }
 
 return AnimationVariable

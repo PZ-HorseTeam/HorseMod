@@ -16,6 +16,11 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions>
+        <m_Name>HorseRiding</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+    <m_Conditions>
         <m_Name>HorseGallop</m_Name>
         <m_Type>BOOL</m_Type>
         <m_Value>false</m_Value>
@@ -26,52 +31,52 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>animalWalking</m_Name>
+        <m_Name>HorseWalk</m_Name>
         <m_Type>BOOL</m_Type>
         <m_BoolValue>true</m_BoolValue>
     </m_Conditions>
     <m_Transitions>
         <m_Target>Horse_IdleMounted</m_Target>
-        <m_blendInTime>0.80</m_blendInTime>
-        <m_blendOutTime>0.10</m_blendOutTime>
+        <m_BlendInTime>0.80</m_BlendInTime>
+        <m_BlendOutTime>0.10</m_BlendOutTime>
         <m_Conditions>
-            <m_Name>animalWalking</m_Name>
+            <m_Name>HorseWalk</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
         <m_Conditions>
-            <m_Name>animalRunning</m_Name>
+            <m_Name>HorseGallop</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_Idle</m_Target>
-        <m_blendInTime>0.80</m_blendInTime>
-        <m_blendOutTime>0.10</m_blendOutTime>
+        <m_BlendInTime>0.80</m_BlendInTime>
+        <m_BlendOutTime>0.10</m_BlendOutTime>
         <m_Conditions>
-            <m_Name>animalWalking</m_Name>
+            <m_Name>HorseWalk</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
         <m_Conditions>
-            <m_Name>animalRunning</m_Name>
+            <m_Name>HorseGallop</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_RunMounted</m_Target>
-        <m_blendInTime>0.80</m_blendInTime>
-        <m_blendOutTime>0.80</m_blendOutTime>
+        <m_BlendInTime>0.80</m_BlendInTime>
+        <m_BlendOutTime>0.80</m_BlendOutTime>
         <m_speedScale>1.20</m_speedScale>
         <m_Conditions>
-            <m_Name>animalWalking</m_Name>
+            <m_Name>HorseWalk</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>false</m_BoolValue>
         </m_Conditions>
         <m_Conditions>
-            <m_Name>animalRunning</m_Name>
+            <m_Name>HorseGallop</m_Name>
             <m_Type>BOOL</m_Type>
             <m_BoolValue>true</m_BoolValue>
         </m_Conditions>
@@ -83,8 +88,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_PathfindTrotTurnRight</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>mountedTwist</m_Name>
             <m_Type>GTR</m_Type>
@@ -93,8 +98,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_PathfindTrotTurnLeft</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>mountedTwist</m_Name>
             <m_Type>LESS</m_Type>
@@ -109,7 +114,7 @@
     <m_Events>
         <m_EventName>SetVariable</m_EventName>
         <m_Time>Start</m_Time>
-        <m_ParameterValue>HorseGalloping=false</m_ParameterValue>
+        <m_ParameterValue>HorseGallop=false</m_ParameterValue>
     </m_Events>
     <m_Events>
         <m_EventName>SetVariable</m_EventName>
@@ -121,14 +126,4 @@
         <m_Time>Start</m_Time>
         <m_ParameterValue>isTurningRight=false</m_ParameterValue>
     </m_Events>
-    <m_Conditions>
-        <m_Name>animalRunning</m_Name>
-        <m_Type>BOOL</m_Type>
-        <m_BoolValue>true</m_BoolValue>
-    </m_Conditions>
-    <m_Conditions>
-        <m_Name>HorseRiding</m_Name>
-        <m_Type>BOOL</m_Type>
-        <m_Value>true</m_Value>
-    </m_Conditions>
 </animNode>

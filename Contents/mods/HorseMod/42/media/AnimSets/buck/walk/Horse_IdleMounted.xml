@@ -15,12 +15,12 @@
         <m_Value>true</m_Value>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>animalRunning</m_Name>
+        <m_Name>HorseGallop</m_Name>
         <m_Type>BOOL</m_Type>
         <m_BoolValue>true</m_BoolValue>
     </m_Conditions>
     <m_Conditions>
-        <m_Name>animalWalking</m_Name>
+        <m_Name>HorseWalk</m_Name>
         <m_Type>BOOL</m_Type>
         <m_BoolValue>false</m_BoolValue>
     </m_Conditions>

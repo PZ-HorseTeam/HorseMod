@@ -23,8 +23,8 @@
     </m_Conditions>
     <m_Transitions>
         <m_Target>Horse_FallBack_GetUp</m_Target>
-        <m_blendInTime>0.2</m_blendInTime>
-		<m_blendOutTime>0.2</m_blendOutTime>
+        <m_BlendInTime>0.2</m_BlendInTime>
+		<m_BlendOutTime>0.2</m_BlendOutTime>
         <m_Conditions>
             <m_Name>HorseFallBackGetUp</m_Name>
             <m_Type>BOOL</m_Type>

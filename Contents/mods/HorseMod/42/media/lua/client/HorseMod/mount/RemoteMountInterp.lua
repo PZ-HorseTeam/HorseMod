@@ -80,10 +80,7 @@ end
 ---@param animal IsoAnimal
 ---@param isMoving boolean
 local function prepareRemoteMount(animal, isMoving)
-    animal:getPathFindBehavior2():reset()
-    animal:setPath2(nil)
-    animal:setMoving(isMoving == true)
-    animal:setVariable("bPathfind", false)
+    animal:stopAllMovementNow()
     animal:setTurnDelta(MOUNTED_TURN_DELTA)
 end
 

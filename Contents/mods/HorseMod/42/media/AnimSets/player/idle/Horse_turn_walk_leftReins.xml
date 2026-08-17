@@ -5,8 +5,8 @@
     <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_Priority>50</m_Priority>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
-    <m_blendInTime>0.40</m_blendInTime>
-    <m_blendOutTime>0.80</m_blendOutTime>
+    <m_BlendInTime>0.40</m_BlendInTime>
+    <m_BlendOutTime>0.80</m_BlendOutTime>
     <m_BlendTime>0.80</m_BlendTime>
     <m_SpeedScale>HorseWalkSpeed</m_SpeedScale>
     <m_Scalar>HorseGeneSpeed</m_Scalar>

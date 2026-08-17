@@ -48,7 +48,7 @@
     <m_Events>
         <m_EventName>SetVariable</m_EventName>
         <m_TimePc>0</m_TimePc>
-        <m_ParameterValue>idleToRun=false</m_ParameterValue>
+        <m_ParameterValue>IdleToRun=false</m_ParameterValue>
     </m_Events>
     <m_Events>
         <m_EventName>SetVariable</m_EventName>

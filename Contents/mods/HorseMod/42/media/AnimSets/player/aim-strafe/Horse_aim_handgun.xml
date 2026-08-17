@@ -62,16 +62,16 @@
     </m_2DBlendTri>
     <m_Transitions>
         <m_Target>IdleHandgun</m_Target>
-        <m_blendInTime>0.6</m_blendInTime>
-        <m_blendOutTime>0.6</m_blendOutTime>
+        <m_BlendInTime>0.6</m_BlendInTime>
+        <m_BlendOutTime>0.6</m_BlendOutTime>
         <m_speedScale>1</m_speedScale>
     </m_Transitions>
     <m_Transitions>
         <m_AnimName>Bob_AimToIdle_Handgun</m_AnimName>
-        <m_blendOutTime>0.6</m_blendOutTime>
+        <m_BlendOutTime>0.6</m_BlendOutTime>
     </m_Transitions>
     <m_Transitions>
         <m_AnimName>Bob_AimToIdle_Handgun</m_AnimName>
-        <m_blendOutTime>0.6</m_blendOutTime>
+        <m_BlendOutTime>0.6</m_BlendOutTime>
     </m_Transitions>
 </animNode>

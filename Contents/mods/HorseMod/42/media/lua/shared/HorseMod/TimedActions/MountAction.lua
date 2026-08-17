@@ -102,7 +102,7 @@ function MountAction:update()
     end
 
     animal:setDirectionAngle(self.lockDir)
-    animal:getPathFindBehavior2():reset()
+    animal:stopAllMovementNow()
 
     character:setDirectionAngle(self.lockDir)
 end

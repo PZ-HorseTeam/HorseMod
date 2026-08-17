@@ -14,9 +14,9 @@
     </m_Conditions>
     <m_Transitions>
         <m_Target>Idle_HorseMount</m_Target>
-        <m_blendInTime>0.00</m_blendInTime>
+        <m_BlendInTime>0.00</m_BlendInTime>
         <m_AnimName>Bob_Mounted_Saddle</m_AnimName>
-        <m_blendOutTime>0.00</m_blendOutTime>
+        <m_BlendOutTime>0.00</m_BlendOutTime>
         <m_speedScale>0.20</m_speedScale>
     </m_Transitions>
     <m_Events>

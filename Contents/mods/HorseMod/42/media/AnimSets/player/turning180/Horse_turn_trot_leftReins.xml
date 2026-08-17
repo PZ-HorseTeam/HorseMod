@@ -4,8 +4,8 @@
     <m_AnimName>Bob_Mounted_Trot_Left_Reins</m_AnimName>
     <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
-    <m_blendInTime>0.40</m_blendInTime>
-    <m_blendOutTime>0.80</m_blendOutTime>
+    <m_BlendInTime>0.40</m_BlendInTime>
+    <m_BlendOutTime>0.80</m_BlendOutTime>
     <m_BlendTime>0.80</m_BlendTime>
     <m_SpeedScale>HorseWalkSpeed</m_SpeedScale>
     <m_Scalar>HorseGeneSpeed</m_Scalar>

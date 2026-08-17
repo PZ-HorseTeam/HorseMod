@@ -44,9 +44,9 @@
     </m_Conditions>
     <m_Transitions>
         <m_Target>Horse_TrotTurningLeft</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
         <m_BlendTime>0.80</m_BlendTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>mountedTwist</m_Name>
             <m_Type>LESS</m_Type>
@@ -60,9 +60,9 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_TrotTurningLeftReins</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
         <m_BlendTime>0.80</m_BlendTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>mountedTwist</m_Name>
             <m_Type>LESS</m_Type>
@@ -76,9 +76,9 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_TrotTurningRight</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
         <m_BlendTime>0.80</m_BlendTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>mountedTwist</m_Name>
             <m_Type>GTR</m_Type>
@@ -92,9 +92,9 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_TrotTurningRightReins</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
         <m_BlendTime>0.80</m_BlendTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>mountedTwist</m_Name>
             <m_Type>GTR</m_Type>
@@ -108,8 +108,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_turn_trot_left</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>isTurningLeft</m_Name>
             <m_Type>BOOL</m_Type>
@@ -123,8 +123,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_turn_trot_leftReins</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>isTurningLeft</m_Name>
             <m_Type>BOOL</m_Type>
@@ -138,8 +138,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_turn_trot_right</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>isTurningRight</m_Name>
             <m_Type>BOOL</m_Type>
@@ -153,8 +153,8 @@
     </m_Transitions>
     <m_Transitions>
         <m_Target>Horse_turn_trot_rightReins</m_Target>
-        <m_blendInTime>0.60</m_blendInTime>
-        <m_blendOutTime>0.60</m_blendOutTime>
+        <m_BlendInTime>0.60</m_BlendInTime>
+        <m_BlendOutTime>0.60</m_BlendOutTime>
         <m_Conditions>
             <m_Name>isTurningRight</m_Name>
             <m_Type>BOOL</m_Type>
@@ -169,8 +169,8 @@
     <m_Transitions>
         <m_Target>Horse_KickLeft</m_Target>
         <m_BlendTime>0.00</m_BlendTime>
-        <m_blendInTime>0.10</m_blendInTime>
-        <m_blendOutTime>0.20</m_blendOutTime>
+        <m_BlendInTime>0.10</m_BlendInTime>
+        <m_BlendOutTime>0.20</m_BlendOutTime>
         <m_Conditions>
             <m_Name>HorseRiderKickLeft</m_Name>
             <m_Type>BOOL</m_Type>
@@ -190,8 +190,8 @@
     <m_Transitions>
         <m_Target>Horse_KickRight</m_Target>
         <m_BlendTime>0.00</m_BlendTime>
-        <m_blendInTime>0.10</m_blendInTime>
-        <m_blendOutTime>0.20</m_blendOutTime>
+        <m_BlendInTime>0.10</m_BlendInTime>
+        <m_BlendOutTime>0.20</m_BlendOutTime>
         <m_Conditions>
             <m_Name>HorseRiderKickRight</m_Name>
             <m_Type>BOOL</m_Type>

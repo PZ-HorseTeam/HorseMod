@@ -12,7 +12,7 @@
 	<m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
 	<m_Transitions>
 		<m_Target>aim_default</m_Target>
-		<m_blendInTime>0.1</m_blendInTime>
+		<m_BlendInTime>0.1</m_BlendInTime>
 	</m_Transitions>
 	<m_SubStateBoneWeights>
 		<boneName>Bip01_Pelvis</boneName>

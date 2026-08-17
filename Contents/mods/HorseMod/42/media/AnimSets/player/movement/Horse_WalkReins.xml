@@ -35,8 +35,8 @@
     <m_Transitions>
         <m_Target>Horse_KickLeft</m_Target>
         <m_BlendTime>0.00</m_BlendTime>
-        <m_blendInTime>0.10</m_blendInTime>
-        <m_blendOutTime>0.20</m_blendOutTime>
+        <m_BlendInTime>0.10</m_BlendInTime>
+        <m_BlendOutTime>0.20</m_BlendOutTime>
         <m_Conditions>
             <m_Name>HorseRiderKickLeft</m_Name>
             <m_Type>BOOL</m_Type>
@@ -56,8 +56,8 @@
     <m_Transitions>
         <m_Target>Horse_KickRight</m_Target>
         <m_BlendTime>0.00</m_BlendTime>
-        <m_blendInTime>0.10</m_blendInTime>
-        <m_blendOutTime>0.20</m_blendOutTime>
+        <m_BlendInTime>0.10</m_BlendInTime>
+        <m_BlendOutTime>0.20</m_BlendOutTime>
         <m_Conditions>
             <m_Name>HorseRiderKickRight</m_Name>
             <m_Type>BOOL</m_Type>
