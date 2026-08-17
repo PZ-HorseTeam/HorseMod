@@ -94,17 +94,15 @@ end
 
 function MountAction:update()
     -- fix the mount and rider to look in the same direction for animation alignment
-    local character = self.character
-    local animal = self.animal
+    self.character:setDirectionAngle(self.lockDir)
 
+    local animal = self.animal
     if not animal then
         return
     end
 
+    animal:stopAllMovementNow()
     animal:setDirectionAngle(self.lockDir)
-    animal:getPathFindBehavior2():reset()
-
-    character:setDirectionAngle(self.lockDir)
 end
 
 

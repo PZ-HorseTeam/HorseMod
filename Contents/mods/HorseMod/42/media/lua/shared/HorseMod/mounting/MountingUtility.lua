@@ -150,7 +150,7 @@ function MountingUtility.pathfindToHorse(player, horse, mountPosition)
     )
 
     -- stop the horse from moving
-    horse:getPathFindBehavior2():reset()
+    horse:stopAllMovementNow()
 
     ISTimedActionQueue.add(pathfindAction)
 

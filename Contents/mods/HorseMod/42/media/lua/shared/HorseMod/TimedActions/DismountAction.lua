@@ -53,7 +53,7 @@ function DismountAction:update()
     end
 
     MountedDirection.set(character, animal, self.lockDirection)
-    animal:getPathFindBehavior2():reset()
+    animal:stopAllMovementNow()
 end
 
 
