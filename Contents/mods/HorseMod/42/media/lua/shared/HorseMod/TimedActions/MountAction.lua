@@ -64,6 +64,7 @@ local MountAction = ISBaseTimedAction:derive("HorseMod_MountAction")
 
 
 
+---@return boolean
 function MountAction:isValid()
     if not self.animal then
         return false

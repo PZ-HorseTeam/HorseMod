@@ -18,6 +18,11 @@
         <m_Value>false</m_Value>
     </m_Conditions>
     <m_Conditions>
+        <m_Name>HorseWalk</m_Name>
+        <m_Type>BOOL</m_Type>
+        <m_Value>true</m_Value>
+    </m_Conditions>
+    <m_Conditions>
         <m_Name>HorseTrot</m_Name>
         <m_Type>BOOL</m_Type>
         <m_BoolValue>false</m_BoolValue>
