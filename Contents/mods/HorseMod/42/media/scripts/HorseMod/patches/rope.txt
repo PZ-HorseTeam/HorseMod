@@ -1,0 +1,6 @@
+module Base {
+    /*@soft-override*/
+    item Rope {
+        Tags = horsemod:horseaccessory,
+    }
+}
