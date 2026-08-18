@@ -121,10 +121,7 @@ end
 ---@param animal IsoAnimal
 local function lockMountedAnimal(animal)
     refreshMountedAnimalBlock(animal)
-    animal:getPathFindBehavior2():reset()
-    animal:setPath2(nil)
-    animal:setMoving(false)
-    animal:setVariable("bPathfind", false)
+    animal:stopAllMovementNow()
     animal:setDeferredMovementEnabled(false)
     animal:setVariable("animalWalking", false)
     animal:setVariable("animalRunning", false)
@@ -137,10 +134,7 @@ end
 
 ---@param animal IsoAnimal
 local function unlockMountedAnimal(animal)
-    animal:getPathFindBehavior2():reset()
-    animal:setPath2(nil)
-    animal:setMoving(false)
-    animal:setVariable("bPathfind", false)
+    animal:stopAllMovementNow()
     animal:setVariable("animalWalking", false)
     animal:setVariable("animalRunning", false)
     animal:setDeferredMovementEnabled(true)

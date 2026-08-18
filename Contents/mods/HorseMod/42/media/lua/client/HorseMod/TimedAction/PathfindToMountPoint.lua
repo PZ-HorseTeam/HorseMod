@@ -32,7 +32,7 @@ function PathfindToMountPoint:waitToStart()
 end
 
 function PathfindToMountPoint:update()
-    self.animal:getPathFindBehavior2():reset()
+    self.animal:stopAllMovementNow()
     ISWalkToTimedActionF.update(self)
 end
 

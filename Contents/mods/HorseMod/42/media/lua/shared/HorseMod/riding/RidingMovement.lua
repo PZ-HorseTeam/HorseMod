@@ -728,10 +728,7 @@ function RidingMovement.applyState(pair, args)
     mount:setX(args.x)
     mount:setY(args.y)
     mount:setZ(args.z)
-    mount:getPathFindBehavior2():reset()
-    mount:setPath2(nil)
-    mount:setMoving(args.speed > 0)
-    mount:setVariable("bPathfind", false)
+    mount:stopAllMovementNow()
     setRiderMountedPosition(rider, args.x, args.y, args.z)
 
     -- Clear cached body angle to force immediate resync rather than smooth rotation
@@ -1140,6 +1137,7 @@ function RidingMovement:canJump()
         and self:getCurrentSpeed() > 6
         and not self.pair:getAnimationVariableBoolean(AnimationVariable.JUMP)
         and self.jumpCooldown <= 0
+        and not self.pair:getAnimationVariableBoolean(AnimationVariable.IS_TURNING)
 end
 
 -- Start a jump
@@ -1368,8 +1366,7 @@ function RidingMovement:update(input, deltaTime)
     rider:setSneaking(false)
     rider:setIgnoreAutoVault(true)
 
-    mount:getPathFindBehavior2():reset()
-    mount:setVariable("bPathfind", false)
+    mount:stopAllMovementNow()
 
     local moving = (input.movement.x ~= 0 or input.movement.y ~= 0)
     local isGalloping = self:getMovementState() == "gallop"
