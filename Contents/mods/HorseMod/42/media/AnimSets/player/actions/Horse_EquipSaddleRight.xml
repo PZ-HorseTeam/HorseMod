@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_EquipSaddleRight</m_Name>
     <m_AnimName>Bob_EquipSaddle_Right</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_BlendTime>0.00</m_BlendTime>
     <m_SpeedScale>1.00</m_SpeedScale>
     <m_useDeferedRotation>false</m_useDeferedRotation>
@@ -21,6 +22,11 @@
         <m_blendOutTime>0.00</m_blendOutTime>
         <m_speedScale>0.20</m_speedScale>
     </m_Transitions>
+    <m_Events>
+        <m_EventName>PlaySound</m_EventName>
+        <m_TimePc>0.4</m_TimePc>
+        <m_ParameterValue>SaddleEquip</m_ParameterValue>
+    </m_Events>
     <m_Events>
         <m_EventName>HorseEquipFinished</m_EventName>
         <m_Time>End</m_Time>

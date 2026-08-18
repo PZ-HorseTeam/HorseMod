@@ -44,6 +44,22 @@ module HorseMod
             bone = DEF_Spine2,
         }
 
+        attachment lantern_right
+        {
+            offset = 0.31 0.61 0.1000,
+            rotate = 210 45 45,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
+
+        attachment lantern_left
+        {
+            offset = -0.31 0.61 0.1000,
+            rotate = 210 -45 -45,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
+
         attachment head
         {
             offset = -0.0000 0.0003 -1.0616,

@@ -50,6 +50,7 @@ end
 ---
 ---Whether the left joypad trigger was pressed last time the input was polled.
 ---@field lastJoypadLT boolean
+---@field queuedJump boolean
 local InputManager = {}
 InputManager.__index = InputManager
 
@@ -58,6 +59,7 @@ InputManager.__index = InputManager
 ---@field movement {x: number, y: number}
 ---@field run boolean
 ---@field trot boolean
+---@field jump boolean
 
 
 ---@param pad integer
@@ -125,7 +127,8 @@ function InputManager:getJoypadInput(pad)
             y = y
         },
         run = run,
-        trot = self.mount.pair.mount:getVariableBoolean(AnimationVariable.TROT)
+        trot = self.mount.pair.mount:getVariableBoolean(AnimationVariable.TROT),
+        jump = false
     }
 end
 
@@ -163,7 +166,8 @@ function InputManager:getKeyboardInput()
             y = y
         },
         run = run,
-        trot = self.mount.pair.mount:getVariableBoolean(AnimationVariable.TROT)
+        trot = self.mount.pair.mount:getVariableBoolean(AnimationVariable.TROT),
+        jump = false
     }
 end
 
@@ -171,12 +175,18 @@ end
 ---@return InputManager.Input
 ---@nodiscard
 function InputManager:getCurrentInput()
+    local input
     local pad = self.mount.pair.rider:getJoypadBind()
     if pad >= 0 then
-        return self:getJoypadInput(pad)
+        input = self:getJoypadInput(pad)
+    else
+        input = self:getKeyboardInput()
     end
 
-    return self:getKeyboardInput()
+    input.jump = self.queuedJump
+    self.queuedJump = false
+
+    return input
 end
 
 
@@ -187,6 +197,7 @@ function InputManager:keyPressed(key)
     elseif key == ModOptions.HorseJumpButton then
         local controller = self.mount.controller
         if controller:canJump() then
+            self.queuedJump = true
             controller:jump()
         end
     end
@@ -200,7 +211,8 @@ function InputManager.new(mount)
         {
             mount = mount,
             lastJoypadLB = false,
-            lastJoypadLT = false
+            lastJoypadLT = false,
+            queuedJump = false
         },
         InputManager
     )

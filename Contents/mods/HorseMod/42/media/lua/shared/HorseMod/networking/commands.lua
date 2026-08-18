@@ -109,25 +109,48 @@ function commands.registerClientCommand(name)
 end
 
 ---@param player IsoPlayer
----@return integer
+---@return integer|string
 ---@nodiscard
 function commands.getPlayerId(player)
     if IS_SINGLEPLAYER then
         return player:getIndex()
     end
 
-    return player:getOnlineID()
+    -- On listen servers the host's onlineID is 0 which returns null for remote clients IDToPlayerMap.get(0)
+    -- so we use the player's username instead
+    return player:getUsername()
 end
 
----@param id integer
+---@param username string
+---@return IsoPlayer?
+---@nodiscard
+local function findPlayerByUsername(username)
+    local players = getOnlinePlayers()
+    if not players then
+        return nil
+    end
+
+    for i = 0, players:size() - 1 do
+        local player = players:get(i)
+        if player and player:getUsername() == username then
+            return player
+        end
+    end
+
+    return nil
+end
+
+---@param id integer|string
 ---@return IsoPlayer?
 ---@nodiscard
 function commands.getPlayer(id)
     if IS_SINGLEPLAYER then
+        ---@cast id integer
         return getSpecificPlayer(id)
     end
 
-    return getPlayerByOnlineID(id)
+    ---@cast id string
+    return findPlayerByUsername(id)
 end
 
 ---@param animal IsoAnimal
@@ -148,7 +171,7 @@ function commands.getAnimal(id)
     if IS_SINGLEPLAYER then
         return spobjects.animal:getObject(id)
     end
-    
+
     return getAnimal(id)
 end
 
