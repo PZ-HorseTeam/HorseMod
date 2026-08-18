@@ -19,6 +19,14 @@ local AttachmentsClient = {}
 ---@param slot AttachmentSlot
 ---@param mountPosition MountPosition
 AttachmentsClient.equipAccessory = function(player, horse, accessory, slot, mountPosition)
+    -- equip the attachment in hands
+    ISInventoryPaneContextMenu.transferIfNeeded(player, accessory)
+    local equipItemAction = ISEquipWeaponAction:new(player, accessory, 50, true, accessory:isTwoHandWeapon())
+    equipItemAction.stopOnWalk = true
+    equipItemAction.stopOnAim = true
+    ISTimedActionQueue.add(equipItemAction)
+    
+    -- move next to horse
     MountingUtility.pathfindToHorse(player, horse, mountPosition)
     local side = mountPosition.name
     
@@ -27,12 +35,6 @@ AttachmentsClient.equipAccessory = function(player, horse, accessory, slot, moun
     if oldAccessory then
         ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, slot, side))
     end
-    
-    -- equip the attachment in hands
-    local equipItemAction = ISEquipWeaponAction:new(player, accessory, 50, true, accessory:isTwoHandWeapon())
-    equipItemAction.stopOnWalk = true
-    equipItemAction.stopOnAim = true
-    ISTimedActionQueue.add(equipItemAction)
 
     -- equip the attachment on horse
     ISTimedActionQueue.add(HorseEquipGear:new(player, horse, accessory, slot, side))

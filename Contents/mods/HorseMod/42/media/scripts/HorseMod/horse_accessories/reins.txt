@@ -14,7 +14,7 @@ module HorseMod {
         Researchablerecipes = HorseMod.HorseReins,
     }	
     model HorseReins_Crude {
-        mesh = HorseMod/HorseReins,
+        mesh = HorseMod/Reins/Reins,
         texture = Items/Accessories/HorseReins_Crude,
         static = true,
         attachment world {
@@ -23,7 +23,7 @@ module HorseMod {
         }
     }
     model HorseReins_Crude_World {
-        mesh = HorseMod/HorseReins_Ground,
+        mesh = HorseMod/Reins/Reins_Ground,
         texture = Items/Accessories/HorseReins_Crude,
         static = true,
         attachment world {
@@ -31,7 +31,7 @@ module HorseMod {
         }
     }
     model HorseReins_Crude_Walking {
-        mesh = HorseMod/HorseReinsWalking,
+        mesh = HorseMod/Reins/ReinsWalking,
         texture = Items/Accessories/HorseReins_Crude,
         static = true,
         attachment world {
@@ -40,7 +40,7 @@ module HorseMod {
         }
     }
     model HorseReins_Crude_Troting {
-        mesh = HorseMod/HorseReinsTroting,
+        mesh = HorseMod/Reins/ReinsTroting,
         texture = Items/Accessories/HorseReins_Crude,
         static = true,
         attachment world {
@@ -49,7 +49,7 @@ module HorseMod {
         }
     }
     model HorseReins_Crude_Running {
-        mesh = HorseMod/HorseReinsRunning,
+        mesh = HorseMod/Reins/ReinsRunning,
         texture = Items/Accessories/HorseReins_Crude,
         static = true,
         attachment world {
@@ -70,7 +70,7 @@ module HorseMod {
         Researchablerecipes = HorseMod.HorseReins,
     }	
     model HorseReins_Brown {
-        mesh = HorseMod/HorseReins,
+        mesh = HorseMod/Reins/Reins,
         texture = Items/Accessories/HorseReins_Brown,
         static = true,
         attachment world {
@@ -79,7 +79,7 @@ module HorseMod {
         }
     }
     model HorseReins_Brown_World {
-        mesh = HorseMod/HorseReins_Ground,
+        mesh = HorseMod/Reins/Reins_Ground,
         texture = Items/Accessories/HorseReins_Brown,
         static = true,
         attachment world {
@@ -87,7 +87,7 @@ module HorseMod {
         }
     }
     model HorseReins_Brown_Walking {
-        mesh = HorseMod/HorseReinsWalking,
+        mesh = HorseMod/Reins/ReinsWalking,
         texture = Items/Accessories/HorseReins_Brown,
         static = true,
         attachment world {
@@ -96,7 +96,7 @@ module HorseMod {
         }
     }
     model HorseReins_Brown_Troting {
-        mesh = HorseMod/HorseReinsTroting,
+        mesh = HorseMod/Reins/ReinsTroting,
         texture = Items/Accessories/HorseReins_Brown,
         static = true,
         attachment world {
@@ -105,7 +105,7 @@ module HorseMod {
         }
     }
     model HorseReins_Brown_Running {
-        mesh = HorseMod/HorseReinsRunning,
+        mesh = HorseMod/Reins/ReinsRunning,
         texture = Items/Accessories/HorseReins_Brown,
         static = true,
         attachment world {
@@ -126,7 +126,7 @@ module HorseMod {
         Researchablerecipes = HorseMod.HorseReins,
     }	
     model HorseReins_Black {
-        mesh = HorseMod/HorseReins,
+        mesh = HorseMod/Reins/Reins,
         texture = Items/Accessories/HorseReins_Black,
         static = true,
         attachment world {
@@ -135,7 +135,7 @@ module HorseMod {
         }
     }
     model HorseReins_Black_World {
-        mesh = HorseMod/HorseReins_Ground,
+        mesh = HorseMod/Reins/Reins_Ground,
         texture = Items/Accessories/HorseReins_Black,
         static = true,
         attachment world {
@@ -143,7 +143,7 @@ module HorseMod {
         }
     }
     model HorseReins_Black_Walking {
-        mesh = HorseMod/HorseReinsWalking,
+        mesh = HorseMod/Reins/ReinsWalking,
         texture = Items/Accessories/HorseReins_Black,
         static = true,
         attachment world {
@@ -152,7 +152,7 @@ module HorseMod {
         }
     }
     model HorseReins_Black_Troting {
-        mesh = HorseMod/HorseReinsTroting,
+        mesh = HorseMod/Reins/ReinsTroting,
         texture = Items/Accessories/HorseReins_Black,
         static = true,
         attachment world {
@@ -161,7 +161,7 @@ module HorseMod {
         }
     }
     model HorseReins_Black_Running {
-        mesh = HorseMod/HorseReinsRunning,
+        mesh = HorseMod/Reins/ReinsRunning,
         texture = Items/Accessories/HorseReins_Black,
         static = true,
         attachment world {
@@ -182,7 +182,7 @@ module HorseMod {
         Researchablerecipes = HorseMod.HorseReins,
     }	
     model HorseReins_White {
-        mesh = HorseMod/HorseReins,
+        mesh = HorseMod/Reins/Reins,
         texture = Items/Accessories/HorseReins_White,
         static = true,
         attachment world {
@@ -191,7 +191,7 @@ module HorseMod {
         }
     }
     model HorseReins_White_World {
-        mesh = HorseMod/HorseReins_Ground,
+        mesh = HorseMod/Reins/Reins_Ground,
         texture = Items/Accessories/HorseReins_White,
         static = true,
         attachment world {
@@ -199,7 +199,7 @@ module HorseMod {
         }
     }
     model HorseReins_White_Walking {
-        mesh = HorseMod/HorseReinsWalking,
+        mesh = HorseMod/Reins/ReinsWalking,
         texture = Items/Accessories/HorseReins_White,
         static = true,
         attachment world {
@@ -208,7 +208,7 @@ module HorseMod {
         }
     }
     model HorseReins_White_Troting {
-        mesh = HorseMod/HorseReinsTroting,
+        mesh = HorseMod/Reins/ReinsTroting,
         texture = Items/Accessories/HorseReins_White,
         static = true,
         attachment world {
@@ -217,8 +217,46 @@ module HorseMod {
         }
     }
     model HorseReins_White_Running {
-        mesh = HorseMod/HorseReinsRunning,
+        mesh = HorseMod/Reins/ReinsRunning,
         texture = Items/Accessories/HorseReins_White,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+
+
+    model HorseReins_Rope {
+        mesh = HorseMod/Reins/RopeReins,
+        texture = WorldItems/Rope_Looped,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_Rope_Walking {
+        mesh = HorseMod/Reins/RopeReinsWalking,
+        texture = WorldItems/Rope_Looped,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_Rope_Troting {
+        mesh = HorseMod/Reins/RopeReinsTrotting,
+        texture = WorldItems/Rope_Looped,
+        static = true,
+        attachment world {
+            offset = -0.0000 0.0001 -0.0547,
+            rotate = -180 90 -90,
+        }
+    }
+    model HorseReins_Rope_Running {
+        mesh = HorseMod/Reins/RopeReinsRunning,
+        texture = WorldItems/Rope_Looped,
         static = true,
         attachment world {
             offset = -0.0000 0.0001 -0.0547,

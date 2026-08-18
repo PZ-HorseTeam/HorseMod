@@ -77,7 +77,8 @@
     "HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan": "Peau de Paint Tobiano (Avec fourrure)",
     "HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Medium": "Peau de Paint Tobiano moitié (Avec fourrure)",
     "HorseMod.HorseLeather_AmericanPaintTobiano_Fur_Tan_Small": "Peau de Paint Tobiano quart (Avec fourrure)",
-    "HorseMod.HorseLeather_AmericanQuarterBlueRoan_Full": "Peau de Quarter Gris fer (Non traitée)",
+    "HorseMod.HorseLeather_AmericanQuarterBlue
+  _Full": "Peau de Quarter Gris fer (Non traitée)",
     "HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur": "Peau de Quarter Gris fer (Avec fourrure)",
     "HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet": "Peau de Quarter Gris fer (Avec fourrure, humide)",
     "HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan": "Peau de Quarter Gris fer (Avec fourrure)",
@@ -186,5 +187,6 @@
     "HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan_Wet": "Cuir de poulain Pur-sang Cricket (Avec fourrure, humide)",
     "HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan": "Cuir de poulain Pur-sang Cricket (Avec fourrure)",
     "HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan_Small": "Cuir de poulain Pur-sang Cricket quart (Avec fourrure)",
-    "HorseMod.Magazine_SaddleUp": "Magazine: En selle !"
+    "HorseMod.Magazine_SaddleUp": "Magazine: En selle !",
+    "HorseMod.CricketHorse": "Cricket Le Cheval"
 }

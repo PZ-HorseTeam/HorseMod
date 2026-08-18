@@ -235,7 +235,7 @@ local AttachmentData = {
     ---Default mane items configuration.
     ---@type ManeDefinition
     MANE_DEFAULT = {
-        hex={"#6B5642"},
+        hex = {"#6B5642"},
         maneConfig = {
             ["ManeStart"] = "HorseMod.HorseManeStart",
             ["ManeMid1"] = "HorseMod.HorseManeMid",
@@ -327,6 +327,7 @@ AttachmentData.items = {
     ["HorseMod.HorseReins_Black"] = { ["Reins"] = {model = "HorseMod.HorseReins_Black"} },
     ["HorseMod.HorseReins_White"] = { ["Reins"] = {model = "HorseMod.HorseReins_White"} },
     ["HorseMod.HorseReins_Brown"] = { ["Reins"] = {model = "HorseMod.HorseReins_Brown"} },
+    ["Base.Rope"]                 = { ["Reins"] = {model = "HorseMod.HorseReins_Rope"} },
 
     -- packing
     ["Base.TentYellow_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,

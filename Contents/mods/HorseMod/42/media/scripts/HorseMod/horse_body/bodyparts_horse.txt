@@ -576,6 +576,16 @@ module HorseMod {
         WorldStaticModel = HorseSkull,
     }
 
+    item Foal_Skull {
+        DisplayCategory = AnimalPart,
+        Weight = 1.2,
+        ItemType = base:normal,
+        Icon = head/Skull_Horse,
+        Tags = base:animalskull,
+        StaticModel = FoalSkull,
+        WorldStaticModel = FoalSkull,
+    }
+
     item Horse_Hoof {
         DisplayCategory = AnimalPart,
         Weight = 0.5,

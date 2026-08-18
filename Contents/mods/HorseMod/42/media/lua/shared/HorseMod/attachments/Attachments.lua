@@ -124,6 +124,7 @@ end
 
 Attachments.predicateHorseAccessory = function(item)
     local fullType = item:getFullType()
+    print(fullType)
     return AttachmentData.items[fullType] ~= nil
 end
 
