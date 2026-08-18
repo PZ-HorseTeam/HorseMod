@@ -3,35 +3,34 @@ module HorseMod {
         Base
     }
 
+/* AMERICAN QUARTER PALOMINO */
     item Foal_Head_AmericanQuarterPalomino {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFoal_AmericanQuarterPalomino,
+        Icon = head/AmericanQuarterPalomino/Head_HorseFoal,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = FoalHead_AmericanQuarterPalomino,
         WorldStaticModel = FoalHead_AmericanQuarterPalomino,
     }
-
     item Mare_Head_AmericanQuarterPalomino {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFemale_AmericanQuarterPalomino,
+        Icon = head/AmericanQuarterPalomino/Head_HorseFemale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = HorseHead_AmericanQuarterPalomino,
         WorldStaticModel = HorseHead_AmericanQuarterPalomino,
     }
-
     item Stallion_Head_AmericanQuarterPalomino {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseMale_AmericanQuarterPalomino,
+        Icon = head/AmericanQuarterPalomino/Head_HorseMale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
@@ -39,35 +38,34 @@ module HorseMod {
         WorldStaticModel = HorseHead_AmericanQuarterPalomino,
     }
 
+/* AMERICAN PAINT TOBIANO */
     item Foal_Head_AmericanPaintTobiano {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFoal_AmericanPaintTobiano,
+        Icon = head/AmericanPaintTobiano/Head_HorseFoal,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = FoalHead_AmericanPaintTobiano,
         WorldStaticModel = FoalHead_AmericanPaintTobiano,
     }
-
     item Mare_Head_AmericanPaintTobiano {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFemale_AmericanPaintTobiano,
+        Icon = head/AmericanPaintTobiano/Head_HorseFemale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = HorseHead_AmericanPaintTobiano,
         WorldStaticModel = HorseHead_AmericanPaintTobiano,
     }
-
     item Stallion_Head_AmericanPaintTobiano {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseMale_AmericanPaintTobiano,
+        Icon = head/AmericanPaintTobiano/Head_HorseMale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
@@ -75,35 +73,34 @@ module HorseMod {
         WorldStaticModel = HorseHead_AmericanPaintTobiano,
     }
 
+/* AMERICAN PAINT OVERO */
     item Foal_Head_AmericanPaintOvero {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFoal_AmericanPaintOvero,
+        Icon = head/AmericanPaintOvero/Head_HorseFoal,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = FoalHead_AmericanPaintOvero,
         WorldStaticModel = FoalHead_AmericanPaintOvero,
     }
-
     item Mare_Head_AmericanPaintOvero {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFemale_AmericanPaintOvero,
+        Icon = head/AmericanPaintOvero/Head_HorseFemale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = HorseHead_AmericanPaintOvero,
         WorldStaticModel = HorseHead_AmericanPaintOvero,
     }
-
     item Stallion_Head_AmericanPaintOvero {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseMale_AmericanPaintOvero,
+        Icon = head/AmericanPaintOvero/Head_HorseMale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
@@ -111,35 +108,34 @@ module HorseMod {
         WorldStaticModel = HorseHead_AmericanPaintOvero,
     }
 
+/* APPALOOSA GRULLA BLANKET */
     item Foal_Head_AppaloosaGrullaBlanket {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFoal_AppaloosaGrullaBlanket,
+        Icon = head/AppaloosaGrullaBlanket/Head_HorseFoal,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = FoalHead_AppaloosaGrullaBlanket,
         WorldStaticModel = FoalHead_AppaloosaGrullaBlanket,
     }
-
     item Mare_Head_AppaloosaGrullaBlanket {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFemale_AppaloosaGrullaBlanket,
+        Icon = head/AppaloosaGrullaBlanket/Head_HorseFemale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = HorseHead_AppaloosaGrullaBlanket,
         WorldStaticModel = HorseHead_AppaloosaGrullaBlanket,
     }
-
     item Stallion_Head_AppaloosaGrullaBlanket {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseMale_AppaloosaGrullaBlanket,
+        Icon = head/AppaloosaGrullaBlanket/Head_HorseMale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
@@ -147,35 +143,34 @@ module HorseMod {
         WorldStaticModel = HorseHead_AppaloosaGrullaBlanket,
     }
 
+/* THOROUGHBRED BAY */
     item Foal_Head_ThoroughbredBay {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFoal_ThoroughbredBay,
+        Icon = head/ThoroughbredBay/Head_HorseFoal,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = FoalHead_ThoroughbredBay,
         WorldStaticModel = FoalHead_ThoroughbredBay,
     }
-
     item Mare_Head_ThoroughbredBay {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFemale_ThoroughbredBay,
+        Icon = head/ThoroughbredBay/Head_HorseFemale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = HorseHead_ThoroughbredBay,
         WorldStaticModel = HorseHead_ThoroughbredBay,
     }
-
     item Stallion_Head_ThoroughbredBay {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseMale_ThoroughbredBay,
+        Icon = head/ThoroughbredBay/Head_HorseMale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
@@ -183,35 +178,69 @@ module HorseMod {
         WorldStaticModel = HorseHead_ThoroughbredBay,
     }
 
+/* THOROUGHBRED CRICKET */
+    item Foal_Head_ThoroughbredCricket {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/ThoroughbredCricket/Head_HorseFoal,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_ThoroughbredCricket,
+        WorldStaticModel = FoalHead_ThoroughbredCricket,
+    }
+    item Mare_Head_ThoroughbredCricket {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/ThoroughbredCricket/Head_HorseFemale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_ThoroughbredCricket,
+        WorldStaticModel = HorseHead_ThoroughbredCricket,
+    }
+    item Stallion_Head_ThoroughbredCricket {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/ThoroughbredCricket/Head_HorseMale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_ThoroughbredCricket,
+        WorldStaticModel = HorseHead_ThoroughbredCricket,
+    }
+
+/* AMERICAN QUARTER BLUE ROAN */
     item Foal_Head_AmericanQuarterBlueRoan {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFoal_AmericanQuarterBlueRoan,
+        Icon = head/AmericanQuarterBlueRoan/Head_HorseFoal,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = FoalHead_AmericanQuarterBlueRoan,
         WorldStaticModel = FoalHead_AmericanQuarterBlueRoan,
     }
-
     item Mare_Head_AmericanQuarterBlueRoan {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFemale_AmericanQuarterBlueRoan,
+        Icon = head/AmericanQuarterBlueRoan/Head_HorseFemale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = HorseHead_AmericanQuarterBlueRoan,
         WorldStaticModel = HorseHead_AmericanQuarterBlueRoan,
     }
-
     item Stallion_Head_AmericanQuarterBlueRoan {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseMale_AmericanQuarterBlueRoan,
+        Icon = head/AmericanQuarterBlueRoan/Head_HorseMale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
@@ -219,35 +248,69 @@ module HorseMod {
         WorldStaticModel = HorseHead_AmericanQuarterBlueRoan,
     }
 
+/* AMERICAN QUARTER STRAWBERRY ROAN */
+    item Foal_Head_AmericanQuarterStrawberryRoan {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/AmericanQuarterStrawberryRoan/Head_HorseFoal,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = FoalHead_AmericanQuarterStrawberryRoan,
+    }
+    item Mare_Head_AmericanQuarterStrawberryRoan {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/AmericanQuarterStrawberryRoan/Head_HorseFemale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = HorseHead_AmericanQuarterStrawberryRoan,
+    }
+    item Stallion_Head_AmericanQuarterStrawberryRoan {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/AmericanQuarterStrawberryRoan/Head_HorseMale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = HorseHead_AmericanQuarterStrawberryRoan,
+    }
+
+/* APPALOOSA LEOPARD */
     item Foal_Head_AppaloosaLeopard {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFoal_AppaloosaLeopard,
+        Icon = head/AppaloosaLeopard/Head_HorseFoal,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = FoalHead_AppaloosaLeopard,
         WorldStaticModel = FoalHead_AppaloosaLeopard,
     }
-
     item Mare_Head_AppaloosaLeopard {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFemale_AppaloosaLeopard,
+        Icon = head/AppaloosaLeopard/Head_HorseFemale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = HorseHead_AppaloosaLeopard,
         WorldStaticModel = HorseHead_AppaloosaLeopard,
     }
-
     item Stallion_Head_AppaloosaLeopard {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseMale_AppaloosaLeopard,
+        Icon = head/AppaloosaLeopard/Head_HorseMale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
@@ -255,35 +318,34 @@ module HorseMod {
         WorldStaticModel = HorseHead_AppaloosaLeopard,
     }
 
+/* THOROUGHBRED FLEA-BITTEN GREY */
     item Foal_Head_ThoroughbredFleaBittenGrey {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFoal_ThoroughbredFleaBittenGrey,
+        Icon = head/ThoroughbredFleaBittenGrey/Head_HorseFoal,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = FoalHead_ThoroughbredFleaBittenGrey,
         WorldStaticModel = FoalHead_ThoroughbredFleaBittenGrey,
     }
-
     item Mare_Head_ThoroughbredFleaBittenGrey {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseFemale_ThoroughbredFleaBittenGrey,
+        Icon = head/ThoroughbredFleaBittenGrey/Head_HorseFemale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
         StaticModel = HorseHead_ThoroughbredFleaBittenGrey,
         WorldStaticModel = HorseHead_ThoroughbredFleaBittenGrey,
     }
-
     item Stallion_Head_ThoroughbredFleaBittenGrey {
         DisplayCategory = AnimalPart,
         Weight = 2.5,
         ItemType = base:food,
-        Icon = head/Head_HorseMale_ThoroughbredFleaBittenGrey,
+        Icon = head/ThoroughbredFleaBittenGrey/Head_HorseMale,
         DaysFresh = 5,
         DaysTotallyRotten = 7,
         Tags = base:animalhead,
@@ -291,6 +353,219 @@ module HorseMod {
         WorldStaticModel = HorseHead_ThoroughbredFleaBittenGrey,
     }
 
+/* AMERICAN QUARTER SEAL BAY */
+    item Foal_Head_AmericanQuarterSealBay {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/AmericanQuarterSealBay/Head_HorseFoal,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_AmericanQuarterSealBay,
+        WorldStaticModel = FoalHead_AmericanQuarterSealBay,
+    }
+    item Mare_Head_AmericanQuarterSealBay {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/AmericanQuarterSealBay/Head_HorseFemale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_AmericanQuarterSealBay,
+        WorldStaticModel = HorseHead_AmericanQuarterSealBay,
+    }
+    item Stallion_Head_AmericanQuarterSealBay {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/AmericanQuarterSealBay/Head_HorseMale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_AmericanQuarterSealBay,
+        WorldStaticModel = HorseHead_AmericanQuarterSealBay,
+    }
+
+/* THOROUGHBRED REVERSE BRINDLE */
+    item Foal_Head_ThoroughbredReverseBrindle {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/ThoroughbredReverseBrindle/Head_HorseFoal,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_ThoroughbredReverseBrindle,
+        WorldStaticModel = FoalHead_ThoroughbredReverseBrindle,
+    }
+    item Mare_Head_ThoroughbredReverseBrindle {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/ThoroughbredReverseBrindle/Head_HorseFemale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_ThoroughbredReverseBrindle,
+        WorldStaticModel = HorseHead_ThoroughbredReverseBrindle,
+    }
+    item Stallion_Head_ThoroughbredReverseBrindle {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/ThoroughbredReverseBrindle/Head_HorseMale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_ThoroughbredReverseBrindle,
+        WorldStaticModel = HorseHead_ThoroughbredReverseBrindle,
+    }
+
+/* MUSTANG BUCKSKIN DUN */
+    item Foal_Head_MustangBuckskinDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/MustangBuckskinDun/Head_HorseFoal,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_MustangBuckskinDun,
+        WorldStaticModel = FoalHead_MustangBuckskinDun,
+    }
+    item Mare_Head_MustangBuckskinDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/MustangBuckskinDun/Head_HorseFemale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_MustangBuckskinDun,
+        WorldStaticModel = HorseHead_MustangBuckskinDun,
+    }
+    item Stallion_Head_MustangBuckskinDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/MustangBuckskinDun/Head_HorseMale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_MustangBuckskinDun,
+        WorldStaticModel = HorseHead_MustangBuckskinDun,
+    }
+
+/* MUSTANG GRULLA DUN */
+    item Foal_Head_MustangGrullaDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/MustangGrullaDun/Head_HorseFoal,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_MustangGrullaDun,
+        WorldStaticModel = FoalHead_MustangGrullaDun,
+    }
+    item Mare_Head_MustangGrullaDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/MustangGrullaDun/Head_HorseFemale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_MustangGrullaDun,
+        WorldStaticModel = HorseHead_MustangGrullaDun,
+    }
+    item Stallion_Head_MustangGrullaDun {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/MustangGrullaDun/Head_HorseMale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_MustangGrullaDun,
+        WorldStaticModel = HorseHead_MustangGrullaDun,
+    }
+
+/* CAMARILLO WHITE */
+    item Foal_Head_CamarilloWhite {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/CamarilloWhite/Head_HorseFoal,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_CamarilloWhite,
+        WorldStaticModel = FoalHead_CamarilloWhite,
+    }
+    item Mare_Head_CamarilloWhite {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/CamarilloWhite/Head_HorseFemale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_CamarilloWhite,
+        WorldStaticModel = HorseHead_CamarilloWhite,
+    }
+    item Stallion_Head_CamarilloWhite {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/CamarilloWhite/Head_HorseMale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_CamarilloWhite,
+        WorldStaticModel = HorseHead_CamarilloWhite,
+    }
+
+/* ROCKY MOUNTAIN LIVER CHESTNUT */
+    item Foal_Head_RockyMountainLiverChestnut {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/RockyMountainLiverChestnut/Head_HorseFoal,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = FoalHead_RockyMountainLiverChestnut,
+        WorldStaticModel = FoalHead_RockyMountainLiverChestnut,
+    }
+    item Mare_Head_RockyMountainLiverChestnut {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/RockyMountainLiverChestnut/Head_HorseFemale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_RockyMountainLiverChestnut,
+        WorldStaticModel = HorseHead_RockyMountainLiverChestnut,
+    }
+    item Stallion_Head_RockyMountainLiverChestnut {
+        DisplayCategory = AnimalPart,
+        Weight = 2.5,
+        ItemType = base:food,
+        Icon = head/RockyMountainLiverChestnut/Head_HorseMale,
+        DaysFresh = 5,
+        DaysTotallyRotten = 7,
+        Tags = base:animalhead,
+        StaticModel = HorseHead_RockyMountainLiverChestnut,
+        WorldStaticModel = HorseHead_RockyMountainLiverChestnut,
+    }
+
+
+
+/* GENERIC */
     item Horse_Skull {
         DisplayCategory = AnimalPart,
         Weight = 1.2,
