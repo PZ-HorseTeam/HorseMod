@@ -287,6 +287,17 @@ module HorseMod
             scale = 0.5000,
         }
     }
+	model FoalSkull {
+        mesh = HorseMod/Horse_Skull,
+        static = true,
+        texture = Body/HorseMod/HorseSkeletonDry,
+        scale = 0.2,
+        attachment world {
+            offset = -0.0000 -0.0000 -0.0000,
+            rotate = 0.0000 -0.0000 0.0000,
+            scale = 0.5000,
+        }
+    }
 	model DungHorse {
         mesh = HorseMod/Dung_Horse,
         texture = WorldItems/DungHorse,

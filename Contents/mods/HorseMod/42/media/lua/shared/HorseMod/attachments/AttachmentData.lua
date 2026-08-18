@@ -243,6 +243,8 @@ local AttachmentData = {
     MANE_HEX_BY_BREED = {
         ["AmericanQuarterPalomino"] = {"#EADAB6"},
         ["AmericanQuarterBlueRoan"] = {"#19191C"},
+        ["AmericanQuarterStrawberryRoan"] = {"#78382B"},
+        ["AmericanQuarterSealBay"] = {"#1F1819"},
         
         ["AmericanPaintTobiano"] = {"#FBDEA7"},
         ["AmericanPaintOvero"] = {"#292524"},
@@ -252,12 +254,21 @@ local AttachmentData = {
         
         ["ThoroughbredBay"] = {"#140C08"},
         ["ThoroughbredFleaBittenGrey"] = {"#FCECC5"},
+        ["ThoroughbredCricket"] = {"#3C1C16"},
+        ["ThoroughbredReverseBrindle"] = {"#1F1819"},
+
+        ["MustangBuckskinDun"] = {"#33271A"},
+        ["MustangGrullaDun"] = {"#1A1916"},
+
+        ["CamarilloWhite"] = {"#FFF4CC"},
+
+        ["RockyMountainLiverChestnut"] = {"#A89F82"},
     },
 
     ---Default mane items configuration.
     ---@type ManeDefinition
     MANE_DEFAULT = {
-        hex={"#6B5642"},
+        hex = {"#6B5642"},
         maneConfig = {
             ["ManeStart"] = "HorseMod.HorseManeStart",
             ["ManeMid1"] = "HorseMod.HorseManeMid",
@@ -315,10 +326,18 @@ AttachmentData.items = {
     ["HorseMod.HorseSaddle_AmericanPaintOvero"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_AmericanQuarterBlueRoan"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_AmericanQuarterPalomino"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_AmericanQuarterStrawberryRoan"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_AmericanQuarterSealBay"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_AppaloosaGrullaBlanket"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_AppaloosaLeopard"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_ThoroughbredBay"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_ThoroughbredFleaBittenGrey"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_ThoroughbredCricket"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_ThoroughbredReverseBrindle"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_MustangBuckskinDun"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_MustangGrullaDun"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_CamarilloWhite"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_RockyMountainLiverChestnut"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_Western"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
 
     -- saddlebags
@@ -334,16 +353,25 @@ AttachmentData.items = {
     ["HorseMod.HorseSaddlebags_AmericanPaintOvero"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_AmericanQuarterBlueRoan"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_AmericanQuarterPalomino"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_AmericanQuarterStrawberryRoan"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_AmericanQuarterSealBay"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_AppaloosaGrullaBlanket"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_AppaloosaLeopard"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_ThoroughbredBay"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_ThoroughbredFleaBittenGrey"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_ThoroughbredCricket"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_ThoroughbredReverseBrindle"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_MustangBuckskinDun"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_MustangGrullaDun"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_CamarilloWhite"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_RockyMountainLiverChestnut"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
 
     -- reins
     ["HorseMod.HorseReins_Crude"] = { ["Reins"] = {model = "HorseMod.HorseReins_Crude"} },
     ["HorseMod.HorseReins_Black"] = { ["Reins"] = {model = "HorseMod.HorseReins_Black"} },
     ["HorseMod.HorseReins_White"] = { ["Reins"] = {model = "HorseMod.HorseReins_White"} },
     ["HorseMod.HorseReins_Brown"] = { ["Reins"] = {model = "HorseMod.HorseReins_Brown"} },
+    ["Base.Rope"]                 = { ["Reins"] = {model = "HorseMod.HorseReins_Rope"} },
 
     -- packing
     ["Base.TentYellow_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,

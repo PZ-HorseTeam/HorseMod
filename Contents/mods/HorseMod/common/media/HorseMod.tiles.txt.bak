@@ -391,6 +391,396 @@ tileset
 }
 tileset
 {
+    file = crafted_horse&foal_02
+    size = 8,8
+    id = 6
+    // crafted_horse&foal_02_0
+    tile
+    {
+        xy = 0,0
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_1
+    tile
+    {
+        xy = 1,0
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_2
+    tile
+    {
+        xy = 2,0
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_3
+    tile
+    {
+        xy = 3,0
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_4
+    tile
+    {
+        xy = 4,0
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_5
+    tile
+    {
+        xy = 5,0
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_6
+    tile
+    {
+        xy = 6,0
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_7
+    tile
+    {
+        xy = 7,0
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_8
+    tile
+    {
+        xy = 0,1
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_9
+    tile
+    {
+        xy = 1,1
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_10
+    tile
+    {
+        xy = 2,1
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_11
+    tile
+    {
+        xy = 3,1
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_12
+    tile
+    {
+        xy = 4,1
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_13
+    tile
+    {
+        xy = 5,1
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_14
+    tile
+    {
+        xy = 6,1
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_15
+    tile
+    {
+        xy = 7,1
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_16
+    tile
+    {
+        xy = 0,2
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_17
+    tile
+    {
+        xy = 1,2
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_18
+    tile
+    {
+        xy = 2,2
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_19
+    tile
+    {
+        xy = 3,2
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_20
+    tile
+    {
+        xy = 4,2
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_21
+    tile
+    {
+        xy = 5,2
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_22
+    tile
+    {
+        xy = 6,2
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_23
+    tile
+    {
+        xy = 7,2
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_24
+    tile
+    {
+        xy = 0,3
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_25
+    tile
+    {
+        xy = 1,3
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_26
+    tile
+    {
+        xy = 2,3
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_27
+    tile
+    {
+        xy = 3,3
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_28
+    tile
+    {
+        xy = 4,3
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_29
+    tile
+    {
+        xy = 5,3
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_30
+    tile
+    {
+        xy = 6,3
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_31
+    tile
+    {
+        xy = 7,3
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_32
+    tile
+    {
+        xy = 0,4
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_33
+    tile
+    {
+        xy = 1,4
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_34
+    tile
+    {
+        xy = 2,4
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_35
+    tile
+    {
+        xy = 3,4
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_36
+    tile
+    {
+        xy = 4,4
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_37
+    tile
+    {
+        xy = 5,4
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_38
+    tile
+    {
+        xy = 6,4
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_39
+    tile
+    {
+        xy = 7,4
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_40
+    tile
+    {
+        xy = 0,5
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_41
+    tile
+    {
+        xy = 1,5
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_42
+    tile
+    {
+        xy = 2,5
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_43
+    tile
+    {
+        xy = 3,5
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_44
+    tile
+    {
+        xy = 4,5
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_45
+    tile
+    {
+        xy = 5,5
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_46
+    tile
+    {
+        xy = 6,5
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_47
+    tile
+    {
+        xy = 7,5
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_48
+    tile
+    {
+        xy = 0,6
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_49
+    tile
+    {
+        xy = 1,6
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_50
+    tile
+    {
+        xy = 2,6
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_51
+    tile
+    {
+        xy = 3,6
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_52
+    tile
+    {
+        xy = 4,6
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_53
+    tile
+    {
+        xy = 5,6
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_54
+    tile
+    {
+        xy = 6,6
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_55
+    tile
+    {
+        xy = 7,6
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_56
+    tile
+    {
+        xy = 0,7
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_57
+    tile
+    {
+        xy = 1,7
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_58
+    tile
+    {
+        xy = 2,7
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_59
+    tile
+    {
+        xy = 3,7
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_60
+    tile
+    {
+        xy = 4,7
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_61
+    tile
+    {
+        xy = 5,7
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_62
+    tile
+    {
+        xy = 6,7
+        MaterialType = Fabric
+    }
+    // crafted_horse&foal_02_63
+    tile
+    {
+        xy = 7,7
+        MaterialType = Fabric
+    }
+}
+tileset
+{
     file = crafted_skins_drying_horse&foal
     size = 8,16
     id = 5
@@ -773,6 +1163,396 @@ tileset
         MaterialType = Fabric
     }
     // crafted_skins_drying_horse&foal_63
+    tile
+    {
+        xy = 7,7
+        MaterialType = Fabric
+    }
+}
+tileset
+{
+    file = crafted_skins_drying_horse&foal_02
+    size = 8,16
+    id = 7
+    // crafted_skins_drying_horse&foal_02_0
+    tile
+    {
+        xy = 0,0
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_1
+    tile
+    {
+        xy = 1,0
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_2
+    tile
+    {
+        xy = 2,0
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_3
+    tile
+    {
+        xy = 3,0
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_4
+    tile
+    {
+        xy = 4,0
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_5
+    tile
+    {
+        xy = 5,0
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_6
+    tile
+    {
+        xy = 6,0
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_7
+    tile
+    {
+        xy = 7,0
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_8
+    tile
+    {
+        xy = 0,1
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_9
+    tile
+    {
+        xy = 1,1
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_10
+    tile
+    {
+        xy = 2,1
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_11
+    tile
+    {
+        xy = 3,1
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_12
+    tile
+    {
+        xy = 4,1
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_13
+    tile
+    {
+        xy = 5,1
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_14
+    tile
+    {
+        xy = 6,1
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_15
+    tile
+    {
+        xy = 7,1
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_16
+    tile
+    {
+        xy = 0,2
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_17
+    tile
+    {
+        xy = 1,2
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_18
+    tile
+    {
+        xy = 2,2
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_19
+    tile
+    {
+        xy = 3,2
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_20
+    tile
+    {
+        xy = 4,2
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_21
+    tile
+    {
+        xy = 5,2
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_22
+    tile
+    {
+        xy = 6,2
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_23
+    tile
+    {
+        xy = 7,2
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_24
+    tile
+    {
+        xy = 0,3
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_25
+    tile
+    {
+        xy = 1,3
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_26
+    tile
+    {
+        xy = 2,3
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_27
+    tile
+    {
+        xy = 3,3
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_28
+    tile
+    {
+        xy = 4,3
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_29
+    tile
+    {
+        xy = 5,3
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_30
+    tile
+    {
+        xy = 6,3
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_31
+    tile
+    {
+        xy = 7,3
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_32
+    tile
+    {
+        xy = 0,4
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_33
+    tile
+    {
+        xy = 1,4
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_34
+    tile
+    {
+        xy = 2,4
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_35
+    tile
+    {
+        xy = 3,4
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_36
+    tile
+    {
+        xy = 4,4
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_37
+    tile
+    {
+        xy = 5,4
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_38
+    tile
+    {
+        xy = 6,4
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_39
+    tile
+    {
+        xy = 7,4
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_40
+    tile
+    {
+        xy = 0,5
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_41
+    tile
+    {
+        xy = 1,5
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_42
+    tile
+    {
+        xy = 2,5
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_43
+    tile
+    {
+        xy = 3,5
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_44
+    tile
+    {
+        xy = 4,5
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_45
+    tile
+    {
+        xy = 5,5
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_46
+    tile
+    {
+        xy = 6,5
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_47
+    tile
+    {
+        xy = 7,5
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_48
+    tile
+    {
+        xy = 0,6
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_49
+    tile
+    {
+        xy = 1,6
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_50
+    tile
+    {
+        xy = 2,6
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_51
+    tile
+    {
+        xy = 3,6
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_52
+    tile
+    {
+        xy = 4,6
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_53
+    tile
+    {
+        xy = 5,6
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_54
+    tile
+    {
+        xy = 6,6
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_55
+    tile
+    {
+        xy = 7,6
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_56
+    tile
+    {
+        xy = 0,7
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_57
+    tile
+    {
+        xy = 1,7
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_58
+    tile
+    {
+        xy = 2,7
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_59
+    tile
+    {
+        xy = 3,7
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_60
+    tile
+    {
+        xy = 4,7
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_61
+    tile
+    {
+        xy = 5,7
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_62
+    tile
+    {
+        xy = 6,7
+        MaterialType = Fabric
+    }
+    // crafted_skins_drying_horse&foal_02_63
     tile
     {
         xy = 7,7
@@ -2571,6 +3351,1804 @@ tileset
         Facing = S
         ForceSingleItem = 
         GroupName = Thoroughbred Flea-Bitten Grey Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+}
+tileset
+{
+    file = rugs_animals_foal_02
+    size = 8,16
+    id = 8
+    // rugs_animals_foal_02_0
+    tile
+    {
+        xy = 0,0
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_1
+    tile
+    {
+        xy = 1,0
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_2
+    tile
+    {
+        xy = 2,0
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_3
+    tile
+    {
+        xy = 3,0
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_4
+    tile
+    {
+        xy = 4,0
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_5
+    tile
+    {
+        xy = 5,0
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_6
+    tile
+    {
+        xy = 6,0
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_7
+    tile
+    {
+        xy = 7,0
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_8
+    tile
+    {
+        xy = 0,1
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_9
+    tile
+    {
+        xy = 1,1
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_10
+    tile
+    {
+        xy = 2,1
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_11
+    tile
+    {
+        xy = 3,1
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_12
+    tile
+    {
+        xy = 4,1
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_13
+    tile
+    {
+        xy = 5,1
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_14
+    tile
+    {
+        xy = 6,1
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_15
+    tile
+    {
+        xy = 7,1
+        CustomItem = HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_16
+    tile
+    {
+        xy = 0,2
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_17
+    tile
+    {
+        xy = 1,2
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_18
+    tile
+    {
+        xy = 2,2
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_19
+    tile
+    {
+        xy = 3,2
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_20
+    tile
+    {
+        xy = 4,2
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_21
+    tile
+    {
+        xy = 5,2
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_22
+    tile
+    {
+        xy = 6,2
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_23
+    tile
+    {
+        xy = 7,2
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_24
+    tile
+    {
+        xy = 0,3
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_25
+    tile
+    {
+        xy = 1,3
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_26
+    tile
+    {
+        xy = 2,3
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_27
+    tile
+    {
+        xy = 3,3
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_28
+    tile
+    {
+        xy = 4,3
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_29
+    tile
+    {
+        xy = 5,3
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_30
+    tile
+    {
+        xy = 6,3
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_31
+    tile
+    {
+        xy = 7,3
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_32
+    tile
+    {
+        xy = 0,4
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_33
+    tile
+    {
+        xy = 1,4
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_34
+    tile
+    {
+        xy = 2,4
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_35
+    tile
+    {
+        xy = 3,4
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_36
+    tile
+    {
+        xy = 4,4
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_37
+    tile
+    {
+        xy = 5,4
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_38
+    tile
+    {
+        xy = 6,4
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_39
+    tile
+    {
+        xy = 7,4
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_40
+    tile
+    {
+        xy = 0,5
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_41
+    tile
+    {
+        xy = 1,5
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_42
+    tile
+    {
+        xy = 2,5
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_43
+    tile
+    {
+        xy = 3,5
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_44
+    tile
+    {
+        xy = 4,5
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_45
+    tile
+    {
+        xy = 5,5
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_46
+    tile
+    {
+        xy = 6,5
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_47
+    tile
+    {
+        xy = 7,5
+        CustomItem = HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_48
+    tile
+    {
+        xy = 0,6
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_49
+    tile
+    {
+        xy = 1,6
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_50
+    tile
+    {
+        xy = 2,6
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_51
+    tile
+    {
+        xy = 3,6
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_52
+    tile
+    {
+        xy = 4,6
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_53
+    tile
+    {
+        xy = 5,6
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_54
+    tile
+    {
+        xy = 6,6
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_55
+    tile
+    {
+        xy = 7,6
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_56
+    tile
+    {
+        xy = 0,7
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_57
+    tile
+    {
+        xy = 1,7
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_58
+    tile
+    {
+        xy = 2,7
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_59
+    tile
+    {
+        xy = 3,7
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_60
+    tile
+    {
+        xy = 4,7
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_61
+    tile
+    {
+        xy = 5,7
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_62
+    tile
+    {
+        xy = 6,7
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_63
+    tile
+    {
+        xy = 7,7
+        CustomItem = HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_64
+    tile
+    {
+        xy = 0,8
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_65
+    tile
+    {
+        xy = 1,8
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_66
+    tile
+    {
+        xy = 2,8
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_67
+    tile
+    {
+        xy = 3,8
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_68
+    tile
+    {
+        xy = 4,8
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_69
+    tile
+    {
+        xy = 5,8
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_70
+    tile
+    {
+        xy = 6,8
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_71
+    tile
+    {
+        xy = 7,8
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_72
+    tile
+    {
+        xy = 0,9
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_73
+    tile
+    {
+        xy = 1,9
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_74
+    tile
+    {
+        xy = 2,9
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_75
+    tile
+    {
+        xy = 3,9
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_76
+    tile
+    {
+        xy = 4,9
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_77
+    tile
+    {
+        xy = 5,9
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_78
+    tile
+    {
+        xy = 6,9
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_79
+    tile
+    {
+        xy = 7,9
+        CustomItem = HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_80
+    tile
+    {
+        xy = 0,10
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_81
+    tile
+    {
+        xy = 1,10
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_82
+    tile
+    {
+        xy = 2,10
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_83
+    tile
+    {
+        xy = 3,10
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_84
+    tile
+    {
+        xy = 4,10
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_85
+    tile
+    {
+        xy = 5,10
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_86
+    tile
+    {
+        xy = 6,10
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_87
+    tile
+    {
+        xy = 7,10
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_88
+    tile
+    {
+        xy = 0,11
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_89
+    tile
+    {
+        xy = 1,11
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_90
+    tile
+    {
+        xy = 2,11
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_91
+    tile
+    {
+        xy = 3,11
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_92
+    tile
+    {
+        xy = 4,11
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_93
+    tile
+    {
+        xy = 5,11
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_94
+    tile
+    {
+        xy = 6,11
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_95
+    tile
+    {
+        xy = 7,11
+        CustomItem = HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_96
+    tile
+    {
+        xy = 0,12
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_97
+    tile
+    {
+        xy = 1,12
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_98
+    tile
+    {
+        xy = 2,12
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_99
+    tile
+    {
+        xy = 3,12
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_100
+    tile
+    {
+        xy = 4,12
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_101
+    tile
+    {
+        xy = 5,12
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_102
+    tile
+    {
+        xy = 6,12
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_103
+    tile
+    {
+        xy = 7,12
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_104
+    tile
+    {
+        xy = 0,13
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_105
+    tile
+    {
+        xy = 1,13
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_106
+    tile
+    {
+        xy = 2,13
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_107
+    tile
+    {
+        xy = 3,13
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_108
+    tile
+    {
+        xy = 4,13
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_109
+    tile
+    {
+        xy = 5,13
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_110
+    tile
+    {
+        xy = 6,13
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_111
+    tile
+    {
+        xy = 7,13
+        CustomItem = HorseMod.FoalLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_112
+    tile
+    {
+        xy = 0,14
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_113
+    tile
+    {
+        xy = 1,14
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_114
+    tile
+    {
+        xy = 2,14
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_115
+    tile
+    {
+        xy = 3,14
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_116
+    tile
+    {
+        xy = 4,14
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_117
+    tile
+    {
+        xy = 5,14
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_118
+    tile
+    {
+        xy = 6,14
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_119
+    tile
+    {
+        xy = 7,14
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_120
+    tile
+    {
+        xy = 0,15
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_121
+    tile
+    {
+        xy = 1,15
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_122
+    tile
+    {
+        xy = 2,15
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_123
+    tile
+    {
+        xy = 3,15
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_foal_02_124
+    tile
+    {
+        xy = 4,15
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_foal_02_125
+    tile
+    {
+        xy = 5,15
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_foal_02_126
+    tile
+    {
+        xy = 6,15
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 50
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_foal_02_127
+    tile
+    {
+        xy = 7,15
+        CustomItem = HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut Foal
         IsMoveAble = 
         MoveType = FloorRug
         PickUpWeight = 50
@@ -6609,6 +9187,4044 @@ tileset
         Facing = S
         ForceSingleItem = 
         GroupName = Thoroughbred Flea Bitten Grey
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+}
+tileset
+{
+    file = rugs_animals_horse_02
+    size = 8,40
+    id = 9
+    // rugs_animals_horse_02_0
+    tile
+    {
+        xy = 0,0
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_1
+    tile
+    {
+        xy = 1,0
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_2
+    tile
+    {
+        xy = 2,0
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_3
+    tile
+    {
+        xy = 3,0
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_4
+    tile
+    {
+        xy = 4,0
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_5
+    tile
+    {
+        xy = 5,0
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_6
+    tile
+    {
+        xy = 6,0
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_7
+    tile
+    {
+        xy = 7,0
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_8
+    tile
+    {
+        xy = 0,1
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_10
+    tile
+    {
+        xy = 2,1
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_11
+    tile
+    {
+        xy = 3,1
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_12
+    tile
+    {
+        xy = 4,1
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_13
+    tile
+    {
+        xy = 5,1
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_14
+    tile
+    {
+        xy = 6,1
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_15
+    tile
+    {
+        xy = 7,1
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_16
+    tile
+    {
+        xy = 0,2
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_17
+    tile
+    {
+        xy = 1,2
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_18
+    tile
+    {
+        xy = 2,2
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_20
+    tile
+    {
+        xy = 4,2
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_21
+    tile
+    {
+        xy = 5,2
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_22
+    tile
+    {
+        xy = 6,2
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_23
+    tile
+    {
+        xy = 7,2
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_24
+    tile
+    {
+        xy = 0,3
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_25
+    tile
+    {
+        xy = 1,3
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_26
+    tile
+    {
+        xy = 2,3
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_27
+    tile
+    {
+        xy = 3,3
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_28
+    tile
+    {
+        xy = 4,3
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_30
+    tile
+    {
+        xy = 6,3
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_31
+    tile
+    {
+        xy = 7,3
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_32
+    tile
+    {
+        xy = 0,4
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_33
+    tile
+    {
+        xy = 1,4
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_34
+    tile
+    {
+        xy = 2,4
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_35
+    tile
+    {
+        xy = 3,4
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_36
+    tile
+    {
+        xy = 4,4
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_37
+    tile
+    {
+        xy = 5,4
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_38
+    tile
+    {
+        xy = 6,4
+        CustomItem = HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Cricket
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_40
+    tile
+    {
+        xy = 0,5
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_41
+    tile
+    {
+        xy = 1,5
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_42
+    tile
+    {
+        xy = 2,5
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_43
+    tile
+    {
+        xy = 3,5
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_44
+    tile
+    {
+        xy = 4,5
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_45
+    tile
+    {
+        xy = 5,5
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_46
+    tile
+    {
+        xy = 6,5
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_47
+    tile
+    {
+        xy = 7,5
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_48
+    tile
+    {
+        xy = 0,6
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_50
+    tile
+    {
+        xy = 2,6
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_51
+    tile
+    {
+        xy = 3,6
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_52
+    tile
+    {
+        xy = 4,6
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_53
+    tile
+    {
+        xy = 5,6
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_54
+    tile
+    {
+        xy = 6,6
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_55
+    tile
+    {
+        xy = 7,6
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_56
+    tile
+    {
+        xy = 0,7
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_57
+    tile
+    {
+        xy = 1,7
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_58
+    tile
+    {
+        xy = 2,7
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_60
+    tile
+    {
+        xy = 4,7
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_61
+    tile
+    {
+        xy = 5,7
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_62
+    tile
+    {
+        xy = 6,7
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_63
+    tile
+    {
+        xy = 7,7
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_64
+    tile
+    {
+        xy = 0,8
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_65
+    tile
+    {
+        xy = 1,8
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_66
+    tile
+    {
+        xy = 2,8
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_67
+    tile
+    {
+        xy = 3,8
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_68
+    tile
+    {
+        xy = 4,8
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_70
+    tile
+    {
+        xy = 6,8
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_71
+    tile
+    {
+        xy = 7,8
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_72
+    tile
+    {
+        xy = 0,9
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_73
+    tile
+    {
+        xy = 1,9
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_74
+    tile
+    {
+        xy = 2,9
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_75
+    tile
+    {
+        xy = 3,9
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_76
+    tile
+    {
+        xy = 4,9
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_77
+    tile
+    {
+        xy = 5,9
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_78
+    tile
+    {
+        xy = 6,9
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Strawberry Roan
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_80
+    tile
+    {
+        xy = 0,10
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_81
+    tile
+    {
+        xy = 1,10
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_82
+    tile
+    {
+        xy = 2,10
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_83
+    tile
+    {
+        xy = 3,10
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_84
+    tile
+    {
+        xy = 4,10
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_85
+    tile
+    {
+        xy = 5,10
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_86
+    tile
+    {
+        xy = 6,10
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_87
+    tile
+    {
+        xy = 7,10
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_88
+    tile
+    {
+        xy = 0,11
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_90
+    tile
+    {
+        xy = 2,11
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_91
+    tile
+    {
+        xy = 3,11
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_92
+    tile
+    {
+        xy = 4,11
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_93
+    tile
+    {
+        xy = 5,11
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_94
+    tile
+    {
+        xy = 6,11
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_95
+    tile
+    {
+        xy = 7,11
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_96
+    tile
+    {
+        xy = 0,12
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_97
+    tile
+    {
+        xy = 1,12
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_98
+    tile
+    {
+        xy = 2,12
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_100
+    tile
+    {
+        xy = 4,12
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_101
+    tile
+    {
+        xy = 5,12
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_102
+    tile
+    {
+        xy = 6,12
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_103
+    tile
+    {
+        xy = 7,12
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_104
+    tile
+    {
+        xy = 0,13
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_105
+    tile
+    {
+        xy = 1,13
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_106
+    tile
+    {
+        xy = 2,13
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_107
+    tile
+    {
+        xy = 3,13
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_108
+    tile
+    {
+        xy = 4,13
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_110
+    tile
+    {
+        xy = 6,13
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_111
+    tile
+    {
+        xy = 7,13
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_112
+    tile
+    {
+        xy = 0,14
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_113
+    tile
+    {
+        xy = 1,14
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_114
+    tile
+    {
+        xy = 2,14
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_115
+    tile
+    {
+        xy = 3,14
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_116
+    tile
+    {
+        xy = 4,14
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_117
+    tile
+    {
+        xy = 5,14
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_118
+    tile
+    {
+        xy = 6,14
+        CustomItem = HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = American Quarter Seal Bay
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_120
+    tile
+    {
+        xy = 0,15
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_121
+    tile
+    {
+        xy = 1,15
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_122
+    tile
+    {
+        xy = 2,15
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_123
+    tile
+    {
+        xy = 3,15
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_124
+    tile
+    {
+        xy = 4,15
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_125
+    tile
+    {
+        xy = 5,15
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_126
+    tile
+    {
+        xy = 6,15
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_127
+    tile
+    {
+        xy = 7,15
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_128
+    tile
+    {
+        xy = 0,16
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_130
+    tile
+    {
+        xy = 2,16
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_131
+    tile
+    {
+        xy = 3,16
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_132
+    tile
+    {
+        xy = 4,16
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_133
+    tile
+    {
+        xy = 5,16
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_134
+    tile
+    {
+        xy = 6,16
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_135
+    tile
+    {
+        xy = 7,16
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_136
+    tile
+    {
+        xy = 0,17
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_137
+    tile
+    {
+        xy = 1,17
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_138
+    tile
+    {
+        xy = 2,17
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_140
+    tile
+    {
+        xy = 4,17
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_141
+    tile
+    {
+        xy = 5,17
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_142
+    tile
+    {
+        xy = 6,17
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_143
+    tile
+    {
+        xy = 7,17
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_144
+    tile
+    {
+        xy = 0,18
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_145
+    tile
+    {
+        xy = 1,18
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_146
+    tile
+    {
+        xy = 2,18
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_147
+    tile
+    {
+        xy = 3,18
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_148
+    tile
+    {
+        xy = 4,18
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_150
+    tile
+    {
+        xy = 6,18
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_151
+    tile
+    {
+        xy = 7,18
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_152
+    tile
+    {
+        xy = 0,19
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_153
+    tile
+    {
+        xy = 1,19
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_154
+    tile
+    {
+        xy = 2,19
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_155
+    tile
+    {
+        xy = 3,19
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_156
+    tile
+    {
+        xy = 4,19
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_157
+    tile
+    {
+        xy = 5,19
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_158
+    tile
+    {
+        xy = 6,19
+        CustomItem = HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Thoroughbred Reverse Brindle
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_160
+    tile
+    {
+        xy = 0,20
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_161
+    tile
+    {
+        xy = 1,20
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_162
+    tile
+    {
+        xy = 2,20
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_163
+    tile
+    {
+        xy = 3,20
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_164
+    tile
+    {
+        xy = 4,20
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_165
+    tile
+    {
+        xy = 5,20
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_166
+    tile
+    {
+        xy = 6,20
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_167
+    tile
+    {
+        xy = 7,20
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_168
+    tile
+    {
+        xy = 0,21
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_170
+    tile
+    {
+        xy = 2,21
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_171
+    tile
+    {
+        xy = 3,21
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_172
+    tile
+    {
+        xy = 4,21
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_173
+    tile
+    {
+        xy = 5,21
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_174
+    tile
+    {
+        xy = 6,21
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_175
+    tile
+    {
+        xy = 7,21
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_176
+    tile
+    {
+        xy = 0,22
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_177
+    tile
+    {
+        xy = 1,22
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_178
+    tile
+    {
+        xy = 2,22
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_180
+    tile
+    {
+        xy = 4,22
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_181
+    tile
+    {
+        xy = 5,22
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_182
+    tile
+    {
+        xy = 6,22
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_183
+    tile
+    {
+        xy = 7,22
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_184
+    tile
+    {
+        xy = 0,23
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_185
+    tile
+    {
+        xy = 1,23
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_186
+    tile
+    {
+        xy = 2,23
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_187
+    tile
+    {
+        xy = 3,23
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_188
+    tile
+    {
+        xy = 4,23
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_190
+    tile
+    {
+        xy = 6,23
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_191
+    tile
+    {
+        xy = 7,23
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_192
+    tile
+    {
+        xy = 0,24
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_193
+    tile
+    {
+        xy = 1,24
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_194
+    tile
+    {
+        xy = 2,24
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_195
+    tile
+    {
+        xy = 3,24
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_196
+    tile
+    {
+        xy = 4,24
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_197
+    tile
+    {
+        xy = 5,24
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_198
+    tile
+    {
+        xy = 6,24
+        CustomItem = HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Buckskin Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_200
+    tile
+    {
+        xy = 0,25
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_201
+    tile
+    {
+        xy = 1,25
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_202
+    tile
+    {
+        xy = 2,25
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_203
+    tile
+    {
+        xy = 3,25
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_204
+    tile
+    {
+        xy = 4,25
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_205
+    tile
+    {
+        xy = 5,25
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_206
+    tile
+    {
+        xy = 6,25
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_207
+    tile
+    {
+        xy = 7,25
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_208
+    tile
+    {
+        xy = 0,26
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_210
+    tile
+    {
+        xy = 2,26
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_211
+    tile
+    {
+        xy = 3,26
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_212
+    tile
+    {
+        xy = 4,26
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_213
+    tile
+    {
+        xy = 5,26
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_214
+    tile
+    {
+        xy = 6,26
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_215
+    tile
+    {
+        xy = 7,26
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_216
+    tile
+    {
+        xy = 0,27
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_217
+    tile
+    {
+        xy = 1,27
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_218
+    tile
+    {
+        xy = 2,27
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_220
+    tile
+    {
+        xy = 4,27
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_221
+    tile
+    {
+        xy = 5,27
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_222
+    tile
+    {
+        xy = 6,27
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_223
+    tile
+    {
+        xy = 7,27
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_224
+    tile
+    {
+        xy = 0,28
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_225
+    tile
+    {
+        xy = 1,28
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_226
+    tile
+    {
+        xy = 2,28
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_227
+    tile
+    {
+        xy = 3,28
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_228
+    tile
+    {
+        xy = 4,28
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_230
+    tile
+    {
+        xy = 6,28
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_231
+    tile
+    {
+        xy = 7,28
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_232
+    tile
+    {
+        xy = 0,29
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_233
+    tile
+    {
+        xy = 1,29
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_234
+    tile
+    {
+        xy = 2,29
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_235
+    tile
+    {
+        xy = 3,29
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_236
+    tile
+    {
+        xy = 4,29
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_237
+    tile
+    {
+        xy = 5,29
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_238
+    tile
+    {
+        xy = 6,29
+        CustomItem = HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Mustang Grulla Dun
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_240
+    tile
+    {
+        xy = 0,30
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_241
+    tile
+    {
+        xy = 1,30
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_242
+    tile
+    {
+        xy = 2,30
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_243
+    tile
+    {
+        xy = 3,30
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_244
+    tile
+    {
+        xy = 4,30
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_245
+    tile
+    {
+        xy = 5,30
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_246
+    tile
+    {
+        xy = 6,30
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_247
+    tile
+    {
+        xy = 7,30
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_248
+    tile
+    {
+        xy = 0,31
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_250
+    tile
+    {
+        xy = 2,31
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_251
+    tile
+    {
+        xy = 3,31
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_252
+    tile
+    {
+        xy = 4,31
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_253
+    tile
+    {
+        xy = 5,31
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_254
+    tile
+    {
+        xy = 6,31
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_255
+    tile
+    {
+        xy = 7,31
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_256
+    tile
+    {
+        xy = 0,32
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_257
+    tile
+    {
+        xy = 1,32
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_258
+    tile
+    {
+        xy = 2,32
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_260
+    tile
+    {
+        xy = 4,32
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_261
+    tile
+    {
+        xy = 5,32
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_262
+    tile
+    {
+        xy = 6,32
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_263
+    tile
+    {
+        xy = 7,32
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_264
+    tile
+    {
+        xy = 0,33
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_265
+    tile
+    {
+        xy = 1,33
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_266
+    tile
+    {
+        xy = 2,33
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_267
+    tile
+    {
+        xy = 3,33
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_268
+    tile
+    {
+        xy = 4,33
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_270
+    tile
+    {
+        xy = 6,33
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_271
+    tile
+    {
+        xy = 7,33
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_272
+    tile
+    {
+        xy = 0,34
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_273
+    tile
+    {
+        xy = 1,34
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_274
+    tile
+    {
+        xy = 2,34
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_275
+    tile
+    {
+        xy = 3,34
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_276
+    tile
+    {
+        xy = 4,34
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_277
+    tile
+    {
+        xy = 5,34
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_278
+    tile
+    {
+        xy = 6,34
+        CustomItem = HorseMod.HorseLeather_CamarilloWhite_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Camarillo White
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_280
+    tile
+    {
+        xy = 0,35
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_281
+    tile
+    {
+        xy = 1,35
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_282
+    tile
+    {
+        xy = 2,35
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_283
+    tile
+    {
+        xy = 3,35
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_284
+    tile
+    {
+        xy = 4,35
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_285
+    tile
+    {
+        xy = 5,35
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_286
+    tile
+    {
+        xy = 6,35
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_287
+    tile
+    {
+        xy = 7,35
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_288
+    tile
+    {
+        xy = 0,36
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = W
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_290
+    tile
+    {
+        xy = 2,36
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_291
+    tile
+    {
+        xy = 3,36
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_292
+    tile
+    {
+        xy = 4,36
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_293
+    tile
+    {
+        xy = 5,36
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_294
+    tile
+    {
+        xy = 6,36
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_295
+    tile
+    {
+        xy = 7,36
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_296
+    tile
+    {
+        xy = 0,37
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_297
+    tile
+    {
+        xy = 1,37
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_298
+    tile
+    {
+        xy = 2,37
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = N
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_300
+    tile
+    {
+        xy = 4,37
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_301
+    tile
+    {
+        xy = 5,37
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_302
+    tile
+    {
+        xy = 6,37
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_303
+    tile
+    {
+        xy = 7,37
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_304
+    tile
+    {
+        xy = 0,38
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_305
+    tile
+    {
+        xy = 1,38
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_306
+    tile
+    {
+        xy = 2,38
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_307
+    tile
+    {
+        xy = 3,38
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_308
+    tile
+    {
+        xy = 4,38
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = E
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,0
+    }
+    // rugs_animals_horse_02_310
+    tile
+    {
+        xy = 6,38
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,2
+    }
+    // rugs_animals_horse_02_311
+    tile
+    {
+        xy = 7,38
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,2
+    }
+    // rugs_animals_horse_02_312
+    tile
+    {
+        xy = 0,39
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,2
+    }
+    // rugs_animals_horse_02_313
+    tile
+    {
+        xy = 1,39
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,1
+    }
+    // rugs_animals_horse_02_314
+    tile
+    {
+        xy = 2,39
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,1
+    }
+    // rugs_animals_horse_02_315
+    tile
+    {
+        xy = 3,39
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 2,1
+    }
+    // rugs_animals_horse_02_316
+    tile
+    {
+        xy = 4,39
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 0,0
+    }
+    // rugs_animals_horse_02_317
+    tile
+    {
+        xy = 5,39
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
+        IsMoveAble = 
+        MoveType = FloorRug
+        PickUpWeight = 100
+        SpriteGridPos = 1,0
+    }
+    // rugs_animals_horse_02_318
+    tile
+    {
+        xy = 6,39
+        CustomItem = HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan
+        CustomName = Hide
+        Facing = S
+        ForceSingleItem = 
+        GroupName = Rocky Mountain Liver Chestnut
         IsMoveAble = 
         MoveType = FloorRug
         PickUpWeight = 100

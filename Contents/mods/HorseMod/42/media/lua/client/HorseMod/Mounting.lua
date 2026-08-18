@@ -22,27 +22,10 @@ function Mounting.mountHorse(player, horse, mountPosition)
         return
     end
 
-    local data = horse:getData()
-    -- TODO: check if this nil check is actually necessary
-    --  an animal's data *is* null by default,
-    --  but it seems like it might always gets initialised when the animal spawns
-    if data then
-        -- Detach from tree
-        local tree = data:getAttachedTree()
-        if tree then
-            data:setAttachedTree(nil) ---@diagnostic disable-line
-            -- sendAttachAnimalToTree(horse, player, tree, true)
-        end
-        -- Detach from any leading player
-        local leader = data:getAttachedPlayer()
-        if leader then
-            leader:getAttachedAnimals():remove(horse)
-            data:setAttachedPlayer(nil) ---@diagnostic disable-line
-            ---@FIXME that function got removed in B42.13.2
-            -- sendAttachAnimalToPlayer(horse, player, nil, true)  ---@diagnostic disable-line
-        end
+    --- start by detaching the player from the horse if they are already attached
+    if horse:getData():getAttachedPlayer() then
+        AnimalContextMenu.onDetachAnimal(horse, player)
     end
-
 
     --- pathfind to the mount position
     local pathfindAction = MountingUtility.pathfindToHorse(player, horse, mountPosition)
