@@ -164,9 +164,9 @@ function UrgentDismountAction:perform()
 end
 
 function UrgentDismountAction:complete()
-    if Mounts.getMount(self.character) == self.animal then
-        Mounts.removeMount(self.character)
-    end
+    -- if Mounts.getMount(self.character) == self.animal then
+    Mounts.removeMount(self.character, self:keepsRiderMounted())
+    -- end
 
     self:resetCharacterState()
     return true

@@ -208,10 +208,12 @@ local function removeMountID(player)
 end
 
 ---@param player IsoPlayer
-function Mounts.removeMount(player)
+---@param _horse_dead boolean? if true, the horse is already dead, so won't be available
+function Mounts.removeMount(player, _horse_dead)
     if not Mounts.hasMount(player) then
         return
     end
+    _horse_dead = _horse_dead == nil and false or _horse_dead
 
     local mountId = playerMountMap[player]
     removeMountID(player)
@@ -247,7 +249,7 @@ function Mounts.removeMount(player)
 
         -- used to reset the wander counter of the horse so it doesn't instantly wander off
         mount:setStateEventDelayTimer(mount:getBehavior():pickRandomWanderInterval())
-    elseif not IS_CLIENT then
+    elseif not IS_CLIENT and not _horse_dead then
         -- it should only be possible on multiplayer clients for the mount to be unloaded
         log("WEIRD: player %s dismounted unknown animal id=%d", player:getUsername(), mountId)
     end
