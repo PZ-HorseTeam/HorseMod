@@ -1,6 +1,10 @@
 local POPUP_HEIGHT = 120
 local CORE = getCore()
-local IS_CLIENT = isClient()
+local STAMP_KEY = "horsemod"
+local PLAYER_FLAG = "horseModOldSaveWarningSeen"
+
+local playerReady = false
+local popupShown = false
 
 local function make_popup(text, onclick)
     local width = getTextManager():MeasureStringX(UIFont.Small, text) + 20
@@ -21,20 +25,46 @@ local function make_popup(text, onclick)
     popup:addToUIManager()
 end
 
-local MAKE_NEW_SAVE_WARNING = false
+local function ackPopup()
+    local player = getPlayer()
+    if not player then return end
+    local pmd = player:getModData()
+    pmd[PLAYER_FLAG] = true
 
----Checks for the meatball issue by verifying that the horse's animation clips are properly loaded.
-local function check_meatball()
-    -- need to do it here bcs the other event is too early to show a UI
-    if MAKE_NEW_SAVE_WARNING then
-        local text = getText("IGUI_HorseMod_OldSaveWarning")
-        make_popup(text, function(dialog)
-            local modData = ModData.getOrCreate("horsemod")
-            modData.newGame = true
-        end)
+    if isClient() then
+        player:transmitModData()
+    elseif isServer() then
+        return
+    else
+        return
+    end
+end
+
+local function tryShowOldSaveWarning()
+    if not playerReady then return end
+    if popupShown then return end
+
+    local modData = ModData.getOrCreate(STAMP_KEY)
+    if modData.worldStamped == nil then return end
+    if modData.worldStamped == true then return end
+
+    local player = getPlayer()
+    if not player then return end
+    if player:getModData()[PLAYER_FLAG] == true then return end
+
+    if isClient() then
+        if not isAdmin() then return end
+    elseif isServer() then
+        return
+    else
     end
 
+    popupShown = true
+    local text = getText("IGUI_HorseMod_OldSaveWarning")
+    make_popup(text, ackPopup)
+end
 
+local function check_meatball()
     local animViewer = AnimationViewerState.checkInstance()
 
     local clips = animViewer:fromLua1("getClipNames", "HorseMod.Horse")
@@ -47,20 +77,36 @@ local function check_meatball()
     make_popup(text)
 end
 
-Events.OnGameStart.Add(check_meatball)
+local function onCreatePlayer()
+    playerReady = true
 
-
-local function check_new_game(newGame)
-    -- no popup in MP since individual users can't do anything about it
-    if IS_CLIENT then return end
-    local modData = ModData.getOrCreate("horsemod")
-    if newGame then
-        modData.newGame = true
-    elseif not modData.newGame then
-        -- this means that the save was created, then the mod was added later
-        MAKE_NEW_SAVE_WARNING = true
+    if isClient() then
+        ModData.request(STAMP_KEY)
+    elseif isServer() then
+    else
     end
+
+    tryShowOldSaveWarning()
 end
 
+Events.OnCreatePlayer.Add(onCreatePlayer)
 
-Events.OnInitGlobalModData.Add(check_new_game)
+local function onReceiveGlobalModData(tag, receivedTable)
+    if tag ~= STAMP_KEY then return end
+    if receivedTable then
+        local local_table = ModData.getOrCreate(tag)
+        for k, v in pairs(receivedTable) do
+            local_table[k] = v
+        end
+    end
+    tryShowOldSaveWarning()
+end
+
+Events.OnReceiveGlobalModData.Add(onReceiveGlobalModData)
+
+local function onGameStart()
+    tryShowOldSaveWarning()
+    check_meatball()
+end
+
+Events.OnGameStart.Add(onGameStart)

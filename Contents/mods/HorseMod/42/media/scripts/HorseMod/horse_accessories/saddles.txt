@@ -275,7 +275,61 @@ module HorseMod {
         static = true,
     }
 
-    /* HORSE: FLEA-BITTEN GREY */
+    /* HORSE: STRAWBERRY ROAN */
+	item HorseSaddle_AmericanQuarterStrawberryRoan {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_AmericanQuarterStrawberryRoan,
+        StaticModel = HorseSaddle_AmericanQuarterStrawberryRoan,
+        WorldStaticModel = HorseSaddle_World_AmericanQuarterStrawberryRoan,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_AmericanQuarterStrawberryRoan {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_AmericanQuarterStrawberryRoan,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_AmericanQuarterStrawberryRoan {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_AmericanQuarterStrawberryRoan,
+        static = true,
+    }
+
+    /* HORSE: AMERICAN QUARTER SEAL BAY */
+	item HorseSaddle_AmericanQuarterSealBay {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_AmericanQuarterSealBay,
+        StaticModel = HorseSaddle_AmericanQuarterSealBay,
+        WorldStaticModel = HorseSaddle_World_AmericanQuarterSealBay,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_AmericanQuarterSealBay {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_AmericanQuarterSealBay,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_AmericanQuarterSealBay {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_AmericanQuarterSealBay,
+        static = true,
+    }
+
+    /* HORSE: THOROUGHBRED FLEA-BITTEN GREY */
 	item HorseSaddle_ThoroughbredFleaBittenGrey {
         DisplayCategory = Accessory,
         Tags = horsemod:horseaccessory,
@@ -356,7 +410,7 @@ module HorseMod {
         static = true,
     }
 
-    /* HORSE: THOROUGHBRED */
+    /* HORSE: THOROUGHBRED BAY */
 	item HorseSaddle_ThoroughbredBay {
         DisplayCategory = Accessory,
         Tags = horsemod:horseaccessory,
@@ -380,6 +434,168 @@ module HorseMod {
     model HorseSaddle_World_ThoroughbredBay {
         mesh = HorseMod/HorseSaddle_Ground,
         texture = Items/Accessories/HorseSaddle_ThoroughbredBay,
+        static = true,
+    }
+
+    /* HORSE: THOROUGHBRED CRICKET */
+	item HorseSaddle_ThoroughbredCricket {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_ThoroughbredCricket,
+        StaticModel = HorseSaddle_ThoroughbredCricket,
+        WorldStaticModel = HorseSaddle_World_ThoroughbredCricket,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_ThoroughbredCricket {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_ThoroughbredCricket,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_ThoroughbredCricket {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_ThoroughbredCricket,
+        static = true,
+    }
+
+    /* HORSE: THOROUGHBRED REVERSE BRINDLE */
+	item HorseSaddle_ThoroughbredReverseBrindle {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_ThoroughbredReverseBrindle,
+        StaticModel = HorseSaddle_ThoroughbredReverseBrindle,
+        WorldStaticModel = HorseSaddle_World_ThoroughbredReverseBrindle,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_ThoroughbredReverseBrindle {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_ThoroughbredReverseBrindle,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_ThoroughbredReverseBrindle {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_ThoroughbredReverseBrindle,
+        static = true,
+    }
+
+    /* HORSE: MUSTANG BUCKSKIN DUN */
+	item HorseSaddle_MustangBuckskinDun {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_MustangBuckskinDun,
+        StaticModel = HorseSaddle_MustangBuckskinDun,
+        WorldStaticModel = HorseSaddle_World_MustangBuckskinDun,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_MustangBuckskinDun {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_MustangBuckskinDun,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_MustangBuckskinDun {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_MustangBuckskinDun,
+        static = true,
+    }
+
+    /* HORSE: MUSTANG GRULLA DUN */
+	item HorseSaddle_MustangGrullaDun {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_MustangGrullaDun,
+        StaticModel = HorseSaddle_MustangGrullaDun,
+        WorldStaticModel = HorseSaddle_World_MustangGrullaDun,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_MustangGrullaDun {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_MustangGrullaDun,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_MustangGrullaDun {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_MustangGrullaDun,
+        static = true,
+    }
+
+    /* HORSE: CAMARILLO WHITE */
+	item HorseSaddle_CamarilloWhite {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_CamarilloWhite,
+        StaticModel = HorseSaddle_CamarilloWhite,
+        WorldStaticModel = HorseSaddle_World_CamarilloWhite,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_CamarilloWhite {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_CamarilloWhite,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_CamarilloWhite {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_CamarilloWhite,
+        static = true,
+    }
+
+    /* HORSE: ROCKY MOUNTAIN LIVER CHESTNUT */
+	item HorseSaddle_RockyMountainLiverChestnut {
+        DisplayCategory = Accessory,
+        Tags = horsemod:horseaccessory,
+        ItemType = base:normal,
+        Weight = 5,
+        Icon = accessories/HorseSaddle_RockyMountainLiverChestnut,
+        StaticModel = HorseSaddle_RockyMountainLiverChestnut,
+        WorldStaticModel = HorseSaddle_World_RockyMountainLiverChestnut,
+        RequiresEquippedBothHands = true,
+        ReplaceInPrimaryHand = Horse_Saddle_Hands Horse_HoldingSaddle,
+        Researchablerecipes = HorseMod.HorseSaddle,
+    }
+	model HorseSaddle_RockyMountainLiverChestnut {
+        mesh = HorseMod/HorseSaddle,
+        texture = Items/Accessories/HorseSaddle_RockyMountainLiverChestnut,
+        static = true,
+        attachment Bip01_Prop1 {
+            scale = 0.8000,
+        }
+    }
+    model HorseSaddle_World_RockyMountainLiverChestnut {
+        mesh = HorseMod/HorseSaddle_Ground,
+        texture = Items/Accessories/HorseSaddle_RockyMountainLiverChestnut,
         static = true,
     }
 

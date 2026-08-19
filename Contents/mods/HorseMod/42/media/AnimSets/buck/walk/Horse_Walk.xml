@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_Walk</m_Name>
     <m_AnimName>Horse_Walk</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_BlendTime>0.75</m_BlendTime>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>

@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_Mounted_RunJump</m_Name>
     <m_AnimName>Horse_Gallop_Jump</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_ConditionPriority>20</m_ConditionPriority>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
     <m_deferredBoneAxis>Y</m_deferredBoneAxis>
