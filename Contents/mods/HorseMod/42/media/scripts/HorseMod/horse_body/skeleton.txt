@@ -1,0 +1,14 @@
+module HorseMod {
+	model HorseSkeleton {
+        mesh = HorseMod/Horse/Horse_Skeleton,
+        animationsMesh = HorseMod.Horse,
+        shader = animalEffect,
+        static = false,
+    }
+	model HorseSkeletonHeadless {
+        mesh = HorseMod/Horse/Horse_Skeleton_NoHead,
+        animationsMesh = HorseMod.Horse,
+        shader = animalEffect,
+        static = false,
+    }
+}
