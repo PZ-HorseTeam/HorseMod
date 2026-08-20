@@ -4,6 +4,7 @@
 local HorseManager = require("HorseMod/HorseManager")
 local Mounts = require("HorseMod/Mounts")
 local HorseUtils = require("HorseMod/Utils")
+local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
 
 
 
@@ -114,6 +115,8 @@ function MountingUtility.canMountHorse(player, horse)
     elseif Mounts.hasRider(horse) then
         return false, "ContextMenu_Horse_IsAlreadyRiding"
     elseif horse:isDead() then
+        return false, "ContextMenu_Horse_IsDead"
+    elseif horse:getVariableBoolean(AnimationVariable.DEATH) then
         return false, "ContextMenu_Horse_IsDead"
     elseif horse:isOnHook() then -- butcher hook
         return false
