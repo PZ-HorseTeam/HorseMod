@@ -50,6 +50,56 @@ module HorseMod
     }
 
 
+/* AMERICAN QUARTER STRAWBERRY ROAN */
+    model HorseHead_AmericanQuarterStrawberryRoan {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterStrawberryRoan,
+    }
+    model HorseHead_AmericanQuarterStrawberryRoanRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterStrawberryRoan_Rotting,
+    }
+    model FoalHead_AmericanQuarterStrawberryRoan {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterStrawberryRoan,
+        scale = 0.7,
+    }
+    model FoalHead_AmericanQuarterStrawberryRoanRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterStrawberryRoan_Rotting,
+        scale = 0.7,
+    }
+
+
+/* AMERICAN QUARTER SEAL BAY */
+    model HorseHead_AmericanQuarterSealBay {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterSealBay,
+    }
+    model HorseHead_AmericanQuarterSealBayRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterSealBay_Rotting,
+    }
+    model FoalHead_AmericanQuarterSealBay {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterSealBay,
+        scale = 0.7,
+    }
+    model FoalHead_AmericanQuarterSealBayRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_AmericanQuarterSealBay_Rotting,
+        scale = 0.7,
+    }
+
+
 /* AMERICAN PAINT TOBIANO */
     model HorseHead_AmericanPaintTobiano {
         mesh = HorseMod/Horse_Head,
@@ -175,6 +225,31 @@ module HorseMod
     }
 
 
+/* THOROUGHBRED CRICKET */
+    model HorseHead_ThoroughbredCricket {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredCricket,
+    }
+    model HorseHead_ThoroughbredCricketRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredCricket_Rotting,
+    }
+    model FoalHead_ThoroughbredCricket {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredCricket,
+        scale = 0.7,
+    }
+    model FoalHead_ThoroughbredCricketRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredCricket_Rotting,
+        scale = 0.7,
+    }
+
+
 /* THOROUGHBRED FLEA BITTEN GREY */
     model HorseHead_ThoroughbredFleaBittenGrey {
         mesh = HorseMod/Horse_Head,
@@ -196,6 +271,131 @@ module HorseMod
         mesh = HorseMod/Horse_Head,
         static = true,
         texture = Body/HorseMod/Horse_ThoroughbredFleaBittenGrey_Rotting,
+        scale = 0.7,
+    }
+
+
+/* THOROUGHBRED REVERSE BRINDLE */
+    model HorseHead_ThoroughbredReverseBrindle {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredReverseBrindle,
+    }
+    model HorseHead_ThoroughbredReverseBrindleRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredReverseBrindle_Rotting,
+    }
+    model FoalHead_ThoroughbredReverseBrindle {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredReverseBrindle,
+        scale = 0.7,
+    }
+    model FoalHead_ThoroughbredReverseBrindleRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_ThoroughbredReverseBrindle_Rotting,
+        scale = 0.7,
+    }
+
+
+/* MUSTANG BUCKSKIN DUN */
+    model HorseHead_MustangBuckskinDun {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_MustangBuckskinDun,
+    }
+    model HorseHead_MustangBuckskinDunRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_MustangBuckskinDun_Rotting,
+    }
+    model FoalHead_MustangBuckskinDun {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_MustangBuckskinDun,
+        scale = 0.7,
+    }
+    model FoalHead_MustangBuckskinDunRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_MustangBuckskinDun_Rotting,
+        scale = 0.7,
+    }
+
+
+/* MUSTANG GRULLA DUN */
+    model HorseHead_MustangGrullaDun {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_MustangGrullaDun,
+    }
+    model HorseHead_MustangGrullaDunRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_MustangGrullaDun_Rotting,
+    }
+    model FoalHead_MustangGrullaDun {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_MustangGrullaDun,
+        scale = 0.7,
+    }
+    model FoalHead_MustangGrullaDunRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_MustangGrullaDun_Rotting,
+        scale = 0.7,
+    }
+
+
+/* CAMARILLO WHITE */
+    model HorseHead_CamarilloWhite {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_CamarilloWhite,
+    }
+    model HorseHead_CamarilloWhiteRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_CamarilloWhite_Rotting,
+    }
+    model FoalHead_CamarilloWhite {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_CamarilloWhite,
+        scale = 0.7,
+    }
+    model FoalHead_CamarilloWhiteRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_CamarilloWhite_Rotting,
+        scale = 0.7,
+    }
+
+
+/* ROCKY MOUNTAIN LIVER CHESTNUT */
+    model HorseHead_RockyMountainLiverChestnut {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_RockyMountainLiverChestnut,
+    }
+    model HorseHead_RockyMountainLiverChestnutRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_RockyMountainLiverChestnut_Rotting,
+    }
+    model FoalHead_RockyMountainLiverChestnut {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_RockyMountainLiverChestnut,
+        scale = 0.7,
+    }
+    model FoalHead_RockyMountainLiverChestnutRotten {
+        mesh = HorseMod/Horse_Head,
+        static = true,
+        texture = Body/HorseMod/Horse_RockyMountainLiverChestnut_Rotting,
         scale = 0.7,
     }
 }

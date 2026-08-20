@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_Mounted_Walk</m_Name>
     <m_AnimName>Horse_Walk</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_ConditionPriority>11</m_ConditionPriority>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
     <m_EarlyTransitionOut>false</m_EarlyTransitionOut>

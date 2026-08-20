@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_aim</m_Name>
     <m_AnimName>Bob_Mounted_Saddle</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_BlendTime>0.30</m_BlendTime>
     <m_SpeedScale>IdleSpeed</m_SpeedScale>
     <m_maxTorsoTwist>90.00</m_maxTorsoTwist>

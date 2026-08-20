@@ -2,5 +2,6 @@
     "Sandbox_HorseMod": "Horse Mod",
     "Sandbox_HorseMod_WalkSpeed": "Horse Walk Speed",
     "Sandbox_HorseMod_GallopSpeed": "Horse Gallop Speed",
-    "Sandbox_HorseMod_StaminaMultiplier": "Stamina multiplier"
+    "Sandbox_HorseMod_StaminaMultiplier": "Stamina multiplier",
+    "Sandbox_HorseMod_RidingPainGrunt": "Riding pain grunts"
 }

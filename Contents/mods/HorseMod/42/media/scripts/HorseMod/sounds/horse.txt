@@ -1,0 +1,142 @@
+module HorseMod {
+
+    /* CONCRETE */
+    sound HorseGallopConcrete {
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/gallop-concrete.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorseWalkConcrete {
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/walk-concrete.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorseTrotConcrete {
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/trot-concrete.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    /* DIRT */
+    sound HorseGallopDirt {
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/gallop-dirt.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorseWalkDirt {
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/walk-dirt.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorseTrotDirt {
+        category = Animals,
+        loop = true,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/trot-dirt.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    /* ACTIONS & IDLES */
+    sound HorseDeath {
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/death.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorseEatingGrass {
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/eating-grass.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorseGallopTired {
+        category = Animals,
+        is3D = true,
+        loop = true,
+        clip {
+            file = media/sound/HorseMod/gallop-tired.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorseIdleSnort {
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/idle-snort.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorseMountSnort {
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/mount-snort.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorsePain {
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/pain.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+
+    sound HorseStressed {
+        category = Animals,
+        is3D = true,
+        clip {
+            file = media/sound/HorseMod/stressed.ogg,
+            distanceMin = 1,
+            distanceMax = 30,
+        }
+    }
+}

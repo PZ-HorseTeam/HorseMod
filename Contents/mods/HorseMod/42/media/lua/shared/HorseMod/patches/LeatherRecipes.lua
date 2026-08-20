@@ -20,6 +20,10 @@ local LeatherRecipes = {
         "HorseMod.HorseLeather_AmericanQuarterBlueRoan_Fur_Tan_Medium",
         "HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan",
         "HorseMod.HorseLeather_AmericanQuarterPalomino_Fur_Tan_Medium",
+        "HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan",
+        "HorseMod.HorseLeather_AmericanQuarterStrawberryRoan_Fur_Tan_Medium",
+        "HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan",
+        "HorseMod.HorseLeather_AmericanQuarterSealBay_Fur_Tan_Medium",
 
         -- Appaloosa
         "HorseMod.HorseLeather_AppaloosaGrullaBlanket_Fur_Tan",
@@ -32,6 +36,24 @@ local LeatherRecipes = {
         "HorseMod.HorseLeather_ThoroughbredBay_Fur_Tan_Medium",
         "HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan",
         "HorseMod.HorseLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Medium",
+        "HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan",
+        "HorseMod.HorseLeather_ThoroughbredCricket_Fur_Tan_Medium",
+        "HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan",
+        "HorseMod.HorseLeather_ThoroughbredReverseBrindle_Fur_Tan_Medium",
+
+        -- Mustang
+        "HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan",
+        "HorseMod.HorseLeather_MustangBuckskinDun_Fur_Tan_Medium",
+        "HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan",
+        "HorseMod.HorseLeather_MustangGrullaDun_Fur_Tan_Medium",
+
+        -- Camarillo
+        "HorseMod.HorseLeather_CamarilloWhite_Fur_Tan",
+        "HorseMod.HorseLeather_CamarilloWhite_Fur_Tan_Medium",
+
+        -- Rocky Mountain
+        "HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan",
+        "HorseMod.HorseLeather_RockyMountainLiverChestnut_Fur_Tan_Medium",
 
 
     -- Foal leathers
@@ -46,6 +68,10 @@ local LeatherRecipes = {
         "HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Small",
         "HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan",
         "HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Small",
+        "HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan",
+        "HorseMod.FoalLeather_AmericanQuarterStrawberryRoan_Fur_Tan_Small",
+        "HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan",
+        "HorseMod.FoalLeather_AmericanQuarterSealBay_Fur_Tan_Small",
 
         -- Appaloosa
         "HorseMod.FoalLeather_AppaloosaGrullaBlanket_Fur_Tan",
@@ -58,6 +84,24 @@ local LeatherRecipes = {
         "HorseMod.FoalLeather_ThoroughbredBay_Fur_Tan_Small",
         "HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan",
         "HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small",
+        "HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan",
+        "HorseMod.FoalLeather_ThoroughbredCricket_Fur_Tan_Small",
+        "HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan",
+        "HorseMod.FoalLeather_ThoroughbredReverseBrindle_Fur_Tan_Small",
+
+        -- Mustang
+        "HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan",
+        "HorseMod.FoalLeather_MustangBuckskinDun_Fur_Tan_Small",
+        "HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan",
+        "HorseMod.FoalLeather_MustangGrullaDun_Fur_Tan_Small",
+
+        -- Camarillo
+        "HorseMod.FoalLeather_CamarilloWhite_Fur_Tan",
+        "HorseMod.FoalLeather_CamarilloWhite_Fur_Tan_Small",
+
+        -- Rocky Mountain
+        "HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan",
+        "HorseMod.FoalLeather_RockyMountainLiverChestnut_Fur_Tan_Small",
     },
 
     ---The item full type used to identify the specific recipe input to patch.

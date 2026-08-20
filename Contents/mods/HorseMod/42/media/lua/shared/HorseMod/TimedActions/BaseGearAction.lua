@@ -27,7 +27,7 @@ end
 
 function BaseGearAction:update()
     self.character:faceThisObject(self.horse)
-    self.horse:getPathFindBehavior2():reset()
+    self.horse:stopAllMovementNow()
 end
 
 
