@@ -256,7 +256,7 @@ HorseDefinitions.ANIMALS_DATA = {
         -- MATING
         female = true,
         mate = "stallion",
-        pregnantPeriod = (9 * 30) + 10, -- 9 months and 10 days, same as cows
+        pregnantPeriod = 340, -- average horse gestation period (11 months)
     },
 }
 
