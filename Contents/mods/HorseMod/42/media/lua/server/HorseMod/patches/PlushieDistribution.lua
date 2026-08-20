@@ -50,7 +50,6 @@ for i = 1, #module.targetDistributions do
     -- find the weight of target source
     local weight
     for j = 1, #dist, 2 do
-        print(dist[j], dist[j + 1])
         if dist[j] == module.TARGET_SOURCE then
             weight = dist[j + 1]
             break
@@ -59,7 +58,6 @@ for i = 1, #module.targetDistributions do
 
     -- add the plushie at the end with its weight
     if weight then
-        print('HorseMod: Adding ' .. module.TO_ADD .. ' to distribution with weight ' .. tostring(weight))
         dist[#dist + 1] = module.TO_ADD
         dist[#dist + 1] = weight
     end
