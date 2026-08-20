@@ -1271,6 +1271,10 @@ function RidingMovement:followVertical(mount, deltaTime)
     -- Update mount's current square
     mount:setCurrent(best)
     mount:setMovingSquareNow()
+    -- setMovingSquareNow moves movingObjects membership, but getMovingObjectIndex()
+    -- reads the raw square field, so leave the two agreeing or the animal reads as
+    -- absent from its own square.
+    mount:setSquare(best)
 
     -- Refresh ramp grace period if on slope
     if squareIsRamp(best) then
@@ -1391,7 +1395,9 @@ function RidingMovement:update(input, deltaTime)
 
     self:updateSpeed(input, deltaTime)
 
-    local needsEngineMoving = isServer()
+    -- bMoving is a callback bound to isMoving(), and suppressMountedAnimalAI clears it
+    -- every tick; setting it true here made the two fight and flipped the action state
+    -- between buck/idle and buck/walk, restarting the mounted clip.
     local gallopActive
     if self.speed > 0 and not rider:getVariableBoolean(AnimationVariable.DISMOUNT_STARTED) then
         local moveAngle = MountedDirection.getMovementAngle(mount, self.direction)
@@ -1400,19 +1406,11 @@ function RidingMovement:update(input, deltaTime)
 
         gallopActive = input.run == true
         self.pair:setAnimationVariable(AnimationVariable.GALLOP, gallopActive)
-        -- mount:setMoving(true) only needed on the server
-        -- so animal sync sends the moving state to other clients
         setMountedMovementVariables(self.pair, true, gallopActive)
-        if needsEngineMoving then
-            mount:setMoving(true)
-        end
     else
         gallopActive = false
         self.pair:setAnimationVariable(AnimationVariable.GALLOP, false)
         setMountedMovementVariables(self.pair, false, false)
-        if needsEngineMoving then
-            mount:setMoving(false)
-        end
     end
 
     if gallopActive and not self.wasGalloping then
