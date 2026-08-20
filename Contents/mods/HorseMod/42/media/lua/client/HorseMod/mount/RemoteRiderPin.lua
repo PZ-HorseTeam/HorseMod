@@ -8,6 +8,7 @@ local RemoteRiderPin = {}
 
 local MAX_PIN_Z_DELTA = 2
 
+
 ---@param rider IsoPlayer
 local function keepRemoteRiderLocked(rider)
     if not rider:getIgnoreMovement() then
@@ -51,6 +52,10 @@ end
 ---@param rider IsoPlayer
 ---@param animal IsoAnimal
 function RemoteRiderPin.pinRiderToAnimal(rider, animal)
+    if Mounts.isInterpolated(rider) then
+        return
+    end
+
     if rider:isLocalPlayer() then
         return
     end

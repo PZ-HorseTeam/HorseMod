@@ -1,6 +1,7 @@
 ---@namespace HorseMod
 
 local spobjects = require("HorseMod/networking/spobjects")
+local netmetrics = require("HorseMod/networking/netmetrics")
 
 local IS_CLIENT = isClient()
 local IS_SERVER = isServer()
@@ -21,6 +22,10 @@ local ClientCommand = {}
 ---@param args T Arguments to send to the server.
 function ClientCommand:send(sender, args)
     assert(not IS_SERVER, "tried to send client command from server, name=" .. self.name)
+    if netmetrics.enabled then
+        netmetrics.recordSend(self.name, self.id, sender ~= nil, args)
+    end
+
     if sender then
         sendClientCommand(sender, MODULE, tostring(self.id), args)
     else
@@ -37,6 +42,10 @@ local ServerCommand = {}
 ---@param args T Arguments to send to the client(s).
 function ServerCommand:send(recipient, args)
     assert(not IS_CLIENT, "tried to send server command from client, name=" .. self.name)
+    if netmetrics.enabled then
+        netmetrics.recordSend(self.name, self.id, recipient ~= nil, args)
+    end
+
     if IS_SERVER then
         if recipient then
             sendServerCommand(recipient, MODULE, tostring(self.id), args)

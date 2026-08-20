@@ -31,7 +31,29 @@ local mountedAnimalLockTicks = {}
 ---@type table<IsoPlayer, integer>
 local lastDismountTimestamps = {}
 
+---Riders whose transform and locks are already driven every frame by the remote
+---interpolator. Re-running the generic mount sweep over them is duplicated work.
+---@type table<IsoPlayer, true>
+local interpolatedRiders = {}
+
 local Mounts = {}
+
+---@param rider IsoPlayer
+---@param isInterpolated boolean
+function Mounts.setInterpolated(rider, isInterpolated)
+    if isInterpolated then
+        interpolatedRiders[rider] = true
+    else
+        interpolatedRiders[rider] = nil
+    end
+end
+
+---@param rider IsoPlayer
+---@return boolean
+---@nodiscard
+function Mounts.isInterpolated(rider)
+    return interpolatedRiders[rider] == true
+end
 
 
 ---Triggered when a player mounts a horse.
@@ -44,11 +66,19 @@ Mounts.onDismount = Event.new--[[@<IsoPlayer, IsoAnimal?>]]()
 
 
 ---@readonly
-local LOCK_REFRESH_TICKS = 6000
+local LOCK_REFRESH_TICKS = 40
+
+---@readonly
+local WANDER_SUPPRESS_TIMER = 10000
 
 ---@param animal IsoAnimal
 local function refreshMountedAnimalBlock(animal)
-    animal:getBehavior():setBlockMovement(true)
+    local behavior = animal:getBehavior()
+    -- The engine expires the block once blockedFor reaches 8000 and only the false
+    -- branch resets that counter, so re-blocking alone lets vanilla wander resume,
+    -- path the horse and flip it into the walk action state mid-ride.
+    behavior:setBlockMovement(false)
+    behavior:setBlockMovement(true)
     mountedAnimalLockTicks[commands.getAnimalId(animal)] = 0
 end
 
@@ -86,9 +116,9 @@ local function syncMountedPlayerToAnimal(player, animal)
 end
 
 ---@param animal IsoAnimal
-local function setMountedAnimalLock(animal)
+---@param animalId integer
+local function setMountedAnimalLock(animal, animalId)
     -- Per-tick: only refresh the block-movement timeout
-    local animalId = commands.getAnimalId(animal)
     local ticks = mountedAnimalLockTicks[animalId]
     if not ticks then
         ticks = 0
@@ -116,6 +146,10 @@ local function suppressMountedAnimalAI(animal)
 
     animal:setVariable("bMoving", false)
     animal:setVariable("bPathfind", false)
+    -- vanilla wander fires on getStateEventDelayTimer() <= 0 and the timer is decremented
+    -- by an FPS-scaled multiplier, so clearing state per frame loses at low framerates.
+    -- Holding the timer far positive is a time budget: one write covers a whole frame.
+    animal:setStateEventDelayTimer(WANDER_SUPPRESS_TIMER)
 end
 
 ---@param animal IsoAnimal
@@ -205,6 +239,7 @@ local function removeMountID(player)
     playerMountMap[player] = nil
     mountPlayerMap[id] = nil
     mountedAnimalLockTicks[id] = nil
+    interpolatedRiders[player] = nil
 end
 
 ---@param player IsoPlayer
@@ -361,10 +396,25 @@ function Mounts.sendMounts(recipient)
     end
 end
 
+---Vanilla re-enters AnimalWalkState from inside the engine's own update, so clearing
+---the state once per frame loses the race. This is the cheap half of updateMounts,
+---run on the extra per-frame hooks; the full sweep still runs only once.
+local function pinMountedAnimals()
+    for player, mount in pairs(playerMountMap) do
+        local animal = commands.getAnimal(mount)
+        if animal then
+            suppressMountedAnimalAI(animal)
+        end
+    end
+end
+
 ---Keep mounted animals out of vanilla animal locomotion while riding owns transforms.
 local function updateMounts()
     for player, mount in pairs(playerMountMap) do
-        setMountedPlayerLock(player)
+        local interpolated = interpolatedRiders[player] == true
+        if not interpolated then
+            setMountedPlayerLock(player)
+        end
 
         local animal = commands.getAnimal(mount)
         if not animal then
@@ -372,13 +422,13 @@ local function updateMounts()
                 log("WEIRD: tried to update unknown animal id=%d player=%s", mount, player:getUsername())
             end
         else
-            setMountedAnimalLock(animal)
-            -- the vanilla state machine only ticks in SP and on the MP server.
-            -- Suppress alerted state there to stop Idle/Walk flipping near zombies
-            if not IS_CLIENT then
-                suppressMountedAnimalAI(animal)
+            setMountedAnimalLock(animal, mount)
+            -- Clients too: the block stops vanilla starting a new wander, this clears
+            -- bMoving if something already set it. Both are needed.
+            suppressMountedAnimalAI(animal)
+            if not interpolated then
+                syncMountedPlayerToAnimal(player, animal)
             end
-            syncMountedPlayerToAnimal(player, animal)
         end
     end
 end
@@ -393,16 +443,36 @@ local function dismountOnDeath(character)
     Mounts.removeMount(character)
 end
 
+local CLEANUP_INTERVAL_MS = 1000
+local lastCleanupStamp = 0
+
+---@type IsoPlayer[]
+local mountedScratch = {}
+local mountedScratchCount = 0
+
+---@type table<string, true>
+local onlineUsernameScratch = {}
+
 -- No reliable Lua event to use for detecting player disconnects
 -- So if player disconnects while riding we need to clean up mounts at regular intervals
 local function cleanupDisconnectedRiders()
-    local mounted
-    for player, _ in pairs(playerMountMap) do
-        mounted = mounted or {}
-        mounted[#mounted + 1] = player
+    local now = getTimestampMs()
+    if now - lastCleanupStamp < CLEANUP_INTERVAL_MS then
+        return
+    end
+    lastCleanupStamp = now
+
+    local previousCount = mountedScratchCount
+    mountedScratchCount = 0
+    for player in pairs(playerMountMap) do
+        mountedScratchCount = mountedScratchCount + 1
+        mountedScratch[mountedScratchCount] = player
+    end
+    for i = mountedScratchCount + 1, previousCount do
+        mountedScratch[i] = nil
     end
 
-    if not mounted then
+    if mountedScratchCount == 0 then
         return
     end
 
@@ -411,24 +481,31 @@ local function cleanupDisconnectedRiders()
         return
     end
 
-    local online = {}
+    for username in pairs(onlineUsernameScratch) do
+        onlineUsernameScratch[username] = nil
+    end
+
     for i = 0, onlinePlayers:size() - 1 do
         local p = onlinePlayers:get(i)
         if p then
-            online[p:getUsername()] = true
+            onlineUsernameScratch[p:getUsername()] = true
         end
     end
 
-    for _, player in ipairs(mounted) do
-        if not online[player:getUsername()] then
+    for i = 1, mountedScratchCount do
+        local player = mountedScratch[i]
+        if not onlineUsernameScratch[player:getUsername()] then
             Mounts.removeMount(player)
         end
     end
 end
 
 if IS_CLIENT then
+    -- The full sweep stays on one hook; only the cheap state pin needs the extra
+    -- coverage to beat vanilla back into idle within the same frame.
     Events.OnTickEvenPaused.Add(updateMounts)
-    Events.OnTick.Add(updateMounts)
+    Events.OnTick.Add(pinMountedAnimals)
+    Events.OnPlayerUpdate.Add(pinMountedAnimals)
 elseif IS_SERVER then
     Events.OnTickEvenPaused.Add(updateMounts)
     Events.OnTickEvenPaused.Add(cleanupDisconnectedRiders)
