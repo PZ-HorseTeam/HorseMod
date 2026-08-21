@@ -13,8 +13,12 @@ local MountingUtility = require("HorseMod/mounting/MountingUtility")
 local HorseManager = require("HorseMod/HorseManager")
 local RemoteMountInterp = require("HorseMod/mount/RemoteMountInterp")
 require("HorseMod/mount/RemoteRiderPin")
+local PendingRidingState = require("HorseMod/mount/PendingRidingState")
 local mountcommands = require("HorseMod/networking/mountcommands")
 local commands = require("HorseMod/networking/commands")
+local netmetrics = require("HorseMod/networking/netmetrics")
+local relevance = require("HorseMod/networking/relevance")
+local ridingcodec = require("HorseMod/networking/ridingcodec")
 
 
 ---@namespace HorseMod
@@ -97,6 +101,14 @@ end)
 ---@param player IsoPlayer
 ---@param dismountedAnimal IsoAnimal?
 Mounts.onDismount:add(function(player, dismountedAnimal)
+    HorseRiding.lastAppliedState[player] = nil
+    if dismountedAnimal then
+        PendingRidingState.clear(
+            ridingcodec.encodePlayerId(player),
+            commands.getAnimalId(dismountedAnimal)
+        )
+    end
+
     if not player:isLocalPlayer() then
         RemoteMountInterp.clear(player)
         return
@@ -106,6 +118,50 @@ Mounts.onDismount:add(function(player, dismountedAnimal)
         HorseRiding.removeMount(player)
     end
 end)
+
+---Newest riding-state sequence applied per rider, used to drop duplicate and
+---out-of-order snapshots. Command packets are reliable but not ordered.
+---@type table<IsoPlayer, {animal: integer, seq: integer}>
+HorseRiding.lastAppliedState = {}
+
+---@param args RidingStateArguments
+---@return boolean applied
+local function applyResolvedState(args)
+    local player = ridingcodec.decodePlayerId(args.character)
+    local animal = commands.getAnimal(args.animal)
+    if not player or not animal then
+        return false
+    end
+
+    local tracked = HorseRiding.lastAppliedState[player]
+    if tracked and tracked.animal == args.animal and args.seq <= tracked.seq then
+        if netmetrics.enabled then
+            netmetrics.count("riding.clientStaleRejected")
+        end
+        return true
+    end
+
+    if player:isLocalPlayer() then
+        local mount = HorseRiding.getMount(player)
+        if not mount then
+            return false
+        end
+        mount:applyAuthoritativeState(args)
+    else
+        RemoteMountInterp.push(player, animal, args)
+    end
+
+    if tracked and tracked.animal == args.animal then
+        tracked.seq = args.seq
+    else
+        HorseRiding.lastAppliedState[player] = {
+            animal = args.animal,
+            seq = args.seq,
+        }
+    end
+
+    return true
+end
 
 ---Update the horse riding for every mounts.
 local function updateMounts()
@@ -118,27 +174,28 @@ local function updateMounts()
             end
         end
     end
+
+    PendingRidingState.flush(applyResolvedState)
 end
 
 HorseManager.preUpdate:add(updateMounts)
 
----@param args RidingStateArguments
-local function applyRidingState(args)
-    local player = commands.getPlayer(args.character)
-    local animal = commands.getAnimal(args.animal)
-    if not player or not animal then
-        return
-    end
-
-    if player:isLocalPlayer() then
-        local mount = HorseRiding.getMount(player)
-        if mount then
-            mount:applyAuthoritativeState(args)
+---@param wire RidingStateWire
+local function applyRidingState(wire)
+    local args = ridingcodec.decode(wire)
+    if not args then
+        if netmetrics.enabled then
+            netmetrics.count("riding.clientDecodeRejected")
         end
         return
     end
 
-    RemoteMountInterp.push(player, animal, args)
+    if not applyResolvedState(args) then
+        PendingRidingState.store(args)
+        if netmetrics.enabled then
+            netmetrics.count("riding.clientPendingStored")
+        end
+    end
 end
 
 Events.OnInitGlobalModData.Add(function()
@@ -227,7 +284,13 @@ local function initHorseMod(_, player)
     player:setVariable(AnimationVariable.MOUNTING_HORSE, false)
 
     if isClient() then
-        mountcommands.RequestMounts:send(player, {})
+        PendingRidingState.clearAll()
+        mountcommands.RequestMounts:send(
+            player,
+            {
+                w = relevance.getLocalChunkGridWidth(),
+            }
+        )
     elseif isServer() then
         return
     else

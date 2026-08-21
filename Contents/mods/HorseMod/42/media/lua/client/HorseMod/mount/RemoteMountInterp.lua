@@ -31,8 +31,11 @@ local RemoteMountInterp = {}
 local MIN_INTERVAL = 0.02
 local MAX_INTERVAL = 0.5
 local EXTRAPOLATE_LIMIT = 1.1
-local STALE_SECONDS = 1.0
+-- Must stay well clear of the server's one second stationary heartbeat, or a
+-- single late packet stops a parked rider being reasserted.
+local STALE_SECONDS = 3.0
 local MOUNTED_TURN_DELTA = 0.65
+
 
 ---@type table<IsoPlayer, RemoteMountEntry>
 local entries = {}
@@ -103,7 +106,6 @@ local function applyAnimVars(rider, animal, args)
     rider:setVariable(AnimationVariable.TROT, trotting)
     rider:setVariable(AnimationVariable.JUMP, jumping)
 
-    MountedAnimationState.setSpeedVariables(rider, animal)
     MountedAnimationState.setMovementVariables(rider, animal, moving, galloping)
     MountedAnimationState.setTurnVariables(rider, animal, getTurnFromArgs(args))
     MountedAnimationState.setReinsVariable(rider, args.hasReins == true)
@@ -140,6 +142,8 @@ function RemoteMountInterp.push(rider, animal, args)
             lastArgs = args,
         }
         entries[rider] = entry
+        Mounts.setInterpolated(rider, true)
+        MountedAnimationState.setSpeedVariables(rider, animal)
         animal:setX(snapshot.x)
         animal:setY(snapshot.y)
         animal:setZ(snapshot.z)
@@ -172,7 +176,16 @@ function RemoteMountInterp.push(rider, animal, args)
     entry.timeSinceNext = 0
     entry.timeSinceAnyPush = 0
     entry.lastArgs = args
+    prepareRemoteMount(animal, args.speed > 0)
+    MountedAnimationState.setSpeedVariables(rider, animal)
     applyAnimVars(rider, animal, args)
+    RemoteRiderPin.pinRiderToPosition(
+        rider,
+        snapshot.x,
+        snapshot.y,
+        snapshot.z,
+        IsoDirections.fromIndex(snapshot.dir)
+    )
 end
 
 ---@param rider IsoPlayer
@@ -182,6 +195,7 @@ function RemoteMountInterp.clear(rider)
         MountedDirection.clear(entry.animal)
     end
     entries[rider] = nil
+    Mounts.setInterpolated(rider, false)
 end
 
 local function update()
@@ -194,6 +208,7 @@ local function update()
                 MountedDirection.clear(animal)
             end
             entries[rider] = nil
+            Mounts.setInterpolated(rider, false)
             break
         end
 
@@ -206,6 +221,10 @@ local function update()
 
         local target = entry.next
         local source = entry.prev or target
+
+        -- Every frame, not on a timer: the vanilla state machine clobbers these
+        -- continuously, and a remote rider reverts to on-foot animation the moment
+        -- they go unasserted.
         prepareRemoteMount(animal, target.speed > 0)
         applyAnimVars(rider, animal, entry.lastArgs)
 

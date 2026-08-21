@@ -49,9 +49,13 @@ local mountcommands = {}
 ---@field hasReins boolean
 
 ---@class RequestMountsArguments
+---Chunk grid width of the requesting client, used to approximate its relevance area.
+---@field w integer
 
+---Descriptive riding snapshot used inside the mod. It is converted to and from
+---the compact wire form by :lua:module:`HorseMod.networking.ridingcodec`.
 ---@class RidingStateArguments
----@field character integer|string
+---@field character integer
 ---@field animal integer
 ---@field seq integer
 ---@field x number
@@ -64,6 +68,7 @@ local mountcommands = {}
 ---@field jump boolean
 ---@field turn integer
 ---@field hasReins boolean
+---@field idleToRun boolean
 
 ---@class KickRequestArguments
 ---@field zombieId integer
@@ -77,7 +82,7 @@ local mountcommands = {}
 mountcommands.Mount = commands.registerServerCommand--[[@<MountArguments>]]("Mount")
 mountcommands.Dismount = commands.registerServerCommand--[[@<DismountArguments>]]("Dismount")
 mountcommands.SendMounts = commands.registerServerCommand--[[@<SendMountsArguments>]]("SendMounts")
-mountcommands.RidingState = commands.registerServerCommand--[[@<RidingStateArguments>]]("RidingState")
+mountcommands.RidingState = commands.registerServerCommand--[[@<RidingStateWire>]]("RidingState")
 mountcommands.UrgentDismount = commands.registerServerCommand--[[@<UrgentDismountArguments>]]("UrgentDismount")
 mountcommands.KickPerformed = commands.registerServerCommand--[[@<KickPerformedArguments>]]("KickPerformed")
 
