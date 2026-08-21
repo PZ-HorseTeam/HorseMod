@@ -67,13 +67,13 @@ function MountedAnimationState.setTurnVariables(rider, horse, turn)
     local turningRight = turn > 0
     local turning = turningLeft or turningRight
 
-    horse:setVariable("isTurningLeft", turningLeft)
-    horse:setVariable("isTurningRight", turningRight)
-    horse:setVariable("isTurning", turning)
+    horse:setVariable(AnimationVariable.IS_TURNING_LEFT, turningLeft)
+    horse:setVariable(AnimationVariable.IS_TURNING_RIGHT, turningRight)
+    horse:setVariable(AnimationVariable.IS_TURNING, turning)
 
-    rider:setVariable("isTurningLeft", turningLeft)
-    rider:setVariable("isTurningRight", turningRight)
-    rider:setVariable("isTurning", turning)
+    rider:setVariable(AnimationVariable.IS_TURNING_LEFT, turningLeft)
+    rider:setVariable(AnimationVariable.IS_TURNING_RIGHT, turningRight)
+    rider:setVariable(AnimationVariable.IS_TURNING, turning)
 end
 
 ---@param rider IsoPlayer

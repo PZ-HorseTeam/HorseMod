@@ -781,9 +781,9 @@ function RidingMovement:applyAuthoritativeState(args, snapDistanceSq)
         self.speed = args.speed
     end
 
-    self.pair:setAnimationVariable(AnimationVariable.GALLOP, args.gallop == true)
-    self.pair:setAnimationVariable(AnimationVariable.TROT, args.trot == true)
-    self.pair:setAnimationVariable(AnimationVariable.JUMP, args.jump == true)
+    pair:setAnimationVariable(AnimationVariable.GALLOP, args.gallop == true)
+    pair:setAnimationVariable(AnimationVariable.TROT, args.trot == true)
+    pair:setAnimationVariable(AnimationVariable.JUMP, args.jump == true)
     MountedAnimationState.setReinsVariable(pair.rider, args.hasReins == true)
     MountedAnimationState.setTurnVariables(pair.rider, mount, getStateTurn(args))
     setMountedMovementVariables(pair, args.speed > 0, args.gallop == true)
@@ -959,8 +959,8 @@ function RidingMovement:turn(input, deltaTime)
         self.turnAnimSign = turnSign
         self.turnAnimTime = TURN_ANIM_HOLD_SECONDS
     elseif self.turnAnimTime > 0 then
-        self.turnAnimTime = math.max(0, self.turnAnimTime - deltaTime)
-        if self.turnAnimTime == 0 then
+        self.turnAnimTime = self.turnAnimTime - deltaTime
+        if self.turnAnimTime <= 0 then
             self.turnAnimSign = 0
         end
     else
