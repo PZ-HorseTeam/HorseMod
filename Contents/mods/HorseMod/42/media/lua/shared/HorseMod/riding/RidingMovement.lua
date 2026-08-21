@@ -1137,7 +1137,7 @@ function RidingMovement:canJump()
         and self:getCurrentSpeed() > 6
         and not self.pair:getAnimationVariableBoolean(AnimationVariable.JUMP)
         and self.jumpCooldown <= 0
-        and not self.pair:getAnimationVariableBoolean(AnimationVariable.IS_TURNING)
+        and self.pair.mount:getVariableFloat(AnimationVariable.MOUNTED_TWIST, 0.0) == 0.0
 end
 
 -- Start a jump
