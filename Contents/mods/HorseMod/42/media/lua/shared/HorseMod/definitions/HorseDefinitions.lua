@@ -43,12 +43,18 @@ local HorseDefinitions = {
         textureMale = "HorseMod/Horse_{id}",
         rottenTexture = "HorseMod/Horse_{id}_Rotting",
         textureBaby = "HorseMod/Horse_{id}",
+
         invIconMale = "media/textures/Item_body/Horse_{id}_Foal.png",
         invIconFemale = "media/textures/Item_body/Horse_{id}_Foal.png",
         invIconBaby = "media/textures/Item_body/Horse_{id}_Foal.png",
-        invIconMaleDead = "media/textures/Item_body/Horse_{id}_Dead.png",
-        invIconFemaleDead = "media/textures/Item_body/Horse_{id}_Dead.png",
-        invIconBabyDead = "media/textures/Item_body/Horse_{id}_Foal_Dead.png",
+
+        invIconMaleDead = "media/textures/Item_body/Horse_{id}_Dead",
+        invIconFemaleDead = "media/textures/Item_body/Horse_{id}_Dead",
+        invIconBabyDead = "media/textures/Item_body/Horse_{id}_Foal_Dead",
+
+        invIconMaleSkel = "media/textures/Item_body/Horse_{id}_Foal_Dead",
+        invIconFemaleSkel = "media/textures/Item_body/Horse_{id}_Foal_Dead",
+        invIconBabySkel = "media/textures/Item_body/Horse_{id}_Foal_Dead",
     },
 
     ---Definitions for the horse avatar, used in UI elements which involves a display of the horse.
