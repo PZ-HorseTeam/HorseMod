@@ -67,7 +67,7 @@ end
 local function check_meatball()
     local animViewer = AnimationViewerState.checkInstance()
 
-    local clips = animViewer:fromLua1("getClipNames", "HorseMod.Horse")
+    local clips = animViewer:fromLua1("getClipNames", "HorseMod.Stallion")
     local size = clips:size()
     animViewer:fromLua0('exit')
 
