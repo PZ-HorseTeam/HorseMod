@@ -189,8 +189,8 @@ function Mount:cleanup()
     MountedAnimationState.setTurnVariables(self.pair.rider, self.pair.mount, 0)
 
     self.pair.rider:setVariable(AnimationVariable.MOUNTING_HORSE, false)
-    self.pair.rider:setVariable("isTurningLeft", false)
-    self.pair.rider:setVariable("isTurningRight", false)
+    self.pair.rider:setVariable(AnimationVariable.IS_TURNING_LEFT, false)
+    self.pair.rider:setVariable(AnimationVariable.IS_TURNING_RIGHT, false)
 
 end
 
@@ -207,6 +207,11 @@ function Mount.new(pair)
 
     pair:setAnimationVariable(AnimationVariable.RIDING_HORSE, true)
     pair:setAnimationVariable(AnimationVariable.TROT, false)
+    pair:setAnimationVariable(AnimationVariable.GALLOP, false)
+    pair:setAnimationVariable(AnimationVariable.IS_TURNING_LEFT, false)
+    pair:setAnimationVariable(AnimationVariable.IS_TURNING_RIGHT, false)
+    pair:setAnimationVariable(AnimationVariable.IS_TURNING, false)
+    
     rider:setAllowRun(false)
     rider:setAllowSprint(false)
     rider:setIgnoreMovement(true)
@@ -214,10 +219,6 @@ function Mount.new(pair)
     rider:setIgnoreAimingInput(true)
 
     rider:setTurnDelta(0.65)
-
-    rider:setVariable("isTurningLeft", false)
-    rider:setVariable("isTurningRight", false)
-    rider:setVariable("isTurning", false)
 
     local geneSpeed = mount:getUsedGene("speed"):getCurrentValue()
     MountedAnimationState.setSpeedVariables(rider, mount, geneSpeed)
