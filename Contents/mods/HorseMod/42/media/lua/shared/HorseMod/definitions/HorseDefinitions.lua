@@ -337,7 +337,6 @@ Events.OnGameBoot.Add(function()
         local breed = { name = id }
         for key, path in pairs(HorseDefinitions.PATHS) do
             local formattedPath = HorseUtils.formatTemplate(path, { id = id })
-            -- Texture.getSharedTexture(formattedPath)
             breed[key] = formattedPath
         end
         breeds[id] = breed
