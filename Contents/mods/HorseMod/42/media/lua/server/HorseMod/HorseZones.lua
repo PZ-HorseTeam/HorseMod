@@ -84,6 +84,29 @@ HorseZones.zones = {
     { x1 = 5552, y1 = 6507, x2 = 5581, y2 = 6505, name="horsemedium" },
     { x1 = 5546, y1 = 6507, x2 = 5617, y2 = 6505, name="horsemedium" },
 
+-- riverside horse stables
+    -- south part
+    { x1 = 7236, y1 = 5651, x2 = 7227, y2 = 5641 },
+    { x1 = 7230, y1 = 5652, x2 = 7221, y2 = 5659 },
+    { x1 = 7252, y1 = 5645, x2 = 7267, y2 = 561  },
+    { x1 = 7272, y1 = 5693, x2 = 7267, y2 = 5676, name="horsemedium" },
+    { x1 = 7201, y1 = 5615, x2 = 7247, y2 = 5601, name="horsemedium" },
+    { x1 = 7237, y1 = 5513, x2 = 7205, y2 = 5490, name="horsemedium" },
+
+    -- north part
+    { x1 = 7218, y1 = 5451, x2 = 7205, y2 = 5445 },
+    { x1 = 7220, y1 = 5440, x2 = 7205, y2 = 5429 },
+    { x1 = 7225, y1 = 5440, x2 = 7234, y2 = 5431 },
+    { x1 = 7244, y1 = 5417, x2 = 7240, y2 = 5424 },
+    { x1 = 7256, y1 = 5428, x2 = 7249, y2 = 5417, name="horsemedium" },
+
+-- west of westpoint
+    { x1 = 10028, y1 = 6627, x2 = 9994, y2 = 6605, name="horsemedium" },
+
+    { x1 = 10524, y1 = 7181, x2 = 10529, y2 = 7168 },
+    { x1 = 10524, y1 = 7167, x2 = 10536, y2 = 7159 },
+    { x1 = 10515, y1 = 7184, x2 = 10504, y2 = 7194 },
+
 -- horse fields
     -- middle of Echo Creek, Ekron and Irvington
     { x1 = 2259, y1 = 12456, x2 = 2285, y2 = 12419 },
@@ -231,6 +254,10 @@ HorseZones.zones = {
     { x1 = 12356, y1 = 2766, x2 = 12364, y2 = 2769 },
     { x1 = 12356, y1 = 2775, x2 = 12364, y2 = 2778 },
     { x1 = 12356, y1 = 2787, x2 = 12364, y2 = 2790 },
+
+-- south of LV
+    { x1 = 13930, y1 = 3585, x2 = 13915, y2 = 3595, name="horsemedium" },
+    { x1 = 14801, y1 = 3726, x2 = 14785, y2 = 3712, name="horsemedium" },
 }
 
 
