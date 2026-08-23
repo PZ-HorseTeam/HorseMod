@@ -114,10 +114,3 @@ local function onGameStart()
 end
 
 Events.OnGameStart.Add(onGameStart)
-
-
-Events.OnKeyKeepPressed.Add(function(key)
-    if key == Keyboard.KEY_R then
-        check_meatball()
-    end
-end)
