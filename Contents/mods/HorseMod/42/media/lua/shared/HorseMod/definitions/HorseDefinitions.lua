@@ -43,12 +43,18 @@ local HorseDefinitions = {
         textureMale = "HorseMod/Horse_{id}",
         rottenTexture = "HorseMod/Horse_{id}_Rotting",
         textureBaby = "HorseMod/Horse_{id}",
+
         invIconMale = "media/textures/Item_body/Horse_{id}_Foal.png",
         invIconFemale = "media/textures/Item_body/Horse_{id}_Foal.png",
         invIconBaby = "media/textures/Item_body/Horse_{id}_Foal.png",
-        invIconMaleDead = "media/textures/Item_body/Horse_{id}_Dead.png",
-        invIconFemaleDead = "media/textures/Item_body/Horse_{id}_Dead.png",
-        invIconBabyDead = "media/textures/Item_body/Horse_{id}_Foal_Dead.png",
+
+        invIconMaleDead = "media/textures/Item_body/Horse_{id}_Dead",
+        invIconFemaleDead = "media/textures/Item_body/Horse_{id}_Dead",
+        invIconBabyDead = "media/textures/Item_body/Horse_{id}_Foal_Dead",
+
+        invIconMaleSkel = "media/textures/Item_body/Horse_{id}_Foal_Dead",
+        invIconFemaleSkel = "media/textures/Item_body/Horse_{id}_Foal_Dead",
+        invIconBabySkel = "media/textures/Item_body/Horse_{id}_Foal_Dead",
     },
 
     ---Definitions for the horse avatar, used in UI elements which involves a display of the horse.
@@ -133,12 +139,11 @@ HorseDefinitions.ANIMALS_DATA = {
     ---Data applied to every horses, adult or not.
     _DEFAULT = {
         bodyModelSkel = "HorseMod.HorseSkeleton",
+        bodyModelSkelNoHead = "HorseMod.HorseSkeletonHeadless",
         textureSkeleton = "HorseMod/HorseSkeletonDry",
         textureSkeletonBloody = "HorseMod/HorseSkeletonBloody",
-        bodyModelSkelNoHead = "HorseMod.HorseSkeletonHeadless",
-        animset = "buck",
-        bodyModelHeadless = "HorseMod.HorseHeadless",
         textureSkinned = "HorseMod/HorseSkinned",
+        animset = "buck",
         ropeBone = "DEF_Neck1",
         shadoww = 1.5,
         shadowfm = 3,
@@ -197,9 +202,6 @@ HorseDefinitions.ANIMALS_DATA = {
 
     ---Adult horse specific data.
     _DEFAULT_ADULT = {
-        bodyModel = "HorseMod.Horse",
-        modelscript = "HorseMod.Horse",
-        carcassItem = "HorseMod.Horse",
         -- MATING
         babyType = "filly",
         minAgeForBaby = 12 * 30,
@@ -225,6 +227,8 @@ HorseDefinitions.ANIMALS_DATA = {
         bodyModel = "HorseMod.Foal",
         modelscript = "HorseMod.Foal",
         carcassItem = "HorseMod.Foal",
+        bodyModelHeadless = "HorseMod.FoalHeadless",
+
         -- BEHAVIOR
         idleEmoteChance = 600,
         eatFromMother = true,
@@ -246,6 +250,11 @@ HorseDefinitions.ANIMALS_DATA = {
 
     ---Stallion specific data.
     ["stallion"] = {
+        bodyModel = "HorseMod.Stallion",
+        modelscript = "HorseMod.Stallion",
+        carcassItem = "HorseMod.Stallion",
+        bodyModelHeadless = "HorseMod.StallionHeadless",
+
         -- MATING
         male = true,
         mate = "mare",
@@ -253,6 +262,11 @@ HorseDefinitions.ANIMALS_DATA = {
 
     ---Mare specific data.
     ["mare"] = {
+        bodyModel = "HorseMod.Mare",
+        modelscript = "HorseMod.Mare",
+        carcassItem = "HorseMod.Mare",
+        bodyModelHeadless = "HorseMod.MareHeadless",
+
         -- MATING
         female = true,
         mate = "stallion",

@@ -1,0 +1,148 @@
+module HorseMod {
+	model Mare
+    {
+        mesh = HorseMod/Horse/Mare,
+        animationsMesh = HorseMod.Horse,
+        shader = animalEffect,
+        static = false,
+
+        attachment saddle
+        {
+            offset = 0.0000 0.1528 0.0410,
+            rotate = 89.1355 0.4641 178.8851,
+            scale = 1.5102,
+            bone = DEF_Spine2,
+        }
+
+        attachment saddlebags
+        {
+            offset = -0.0000 -0.1000 -0.1600,
+            rotate = 90.0000 0.0000 180.0000,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
+
+        attachment tent
+        {
+            offset = -0.0000 -0.1800 -0.1000,
+            rotate = 90.0000 0.0000 180.0000,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
+
+        attachment sleepingBag
+        {
+            offset = -0.0000 -0.2800 -0.1000,
+            rotate = 90.0000 90.0000 180.0000,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
+
+        attachment lantern_right
+        {
+            offset = 0.31 0.61 0.1000,
+            rotate = 210 45 45,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
+
+        attachment lantern_left
+        {
+            offset = -0.31 0.61 0.1000,
+            rotate = 210 -45 -45,
+            scale = 1.5000,
+            bone = DEF_Spine2,
+        }
+
+        attachment head
+        {
+            offset = -0.0000 0.0003 -1.0616,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = Dummy01,
+        }
+
+        attachment reins
+        {
+            offset = 0.0000 0.1982 0.0539,
+            rotate = 45.0000 0.0000 180.0000,
+            scale = 1.0509,
+            bone = Bip01_Head,
+        }
+
+        attachment mountLeft
+        {
+            offset = 0.5987 0.0000 -0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = Dummy01,
+        }
+
+        attachment mountRight
+        {
+            offset = -0.5979 0.0000 -0.0006,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = Dummy01,
+        }
+
+        attachment deathPosition
+        {
+            offset = 0.5987 0.0000 -0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = Dummy01,
+        }
+
+        attachment maneStart
+        {
+            offset = 0.0000 -0.0000 -0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = DEF_ManeStart,
+        }
+
+        attachment maneMid1
+        {
+            offset = 0.0000 -0.0000 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = DEF_ManeMid1,
+        }
+
+        attachment maneMid2
+        {
+            offset = 0.0000 0.0000 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = DEF_ManeMid2,
+        }
+
+        attachment maneMid3
+        {
+            offset = 0.0000 0.0000 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = DEF_ManeMid3,
+        }
+
+        attachment maneMid4
+        {
+            offset = 0.0000 0.0000 0.0000,
+            rotate = 0.0000 0.0000 0.0000,
+            bone = DEF_ManeMid4,
+        }
+
+        attachment maneMid5
+        {
+            offset = 0.0000 0.0000 0.0000,
+            rotate = 0.0000 -0.0605 0.0000,
+            bone = DEF_ManeMid5,
+        }
+
+        attachment maneEnd
+        {
+            offset = 0.0000 -0.0141 -0.0007,
+            rotate = -0.0000 -0.0000 0.0000,
+            bone = DEF_ManeEnd,
+        }
+    }
+	model MareHeadless {
+		mesh = HorseMod/Horse/Mare_NoHead,
+		animationsMesh = HorseMod.Horse,
+		shader = animalEffect,
+		static = false,
+	}
+}

@@ -6,6 +6,7 @@ local AnimationVariable = {
     IS_HORSE = "isHorse",
     WALK = "HorseWalk",
     GALLOP = "HorseGallop",
+    GALLOPING = "HorseGalloping",
     TROT = "HorseTrot",
     JUMP = "HorseJump",
     DYING = "HorseDying",
@@ -19,6 +20,10 @@ local AnimationVariable = {
     IS_TURNING_LEFT = "isTurningLeft",
     IS_TURNING_RIGHT = "isTurningRight",
     IS_TURNING = "isTurning",
+
+    IS_RUNNING = "animalWalking",
+    IS_WALKING = "animalRunning",
+    WALKSTATE_RUN = "walkstateRun",
 
     -- Activates mounted player animations while true.
     -- albion: this should be controlled by Mounts only, please check with me first if you think your code needs to set it

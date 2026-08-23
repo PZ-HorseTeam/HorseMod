@@ -59,6 +59,7 @@ local function snapshotFromArgs(args)
         z = args.z,
         dir = math.floor(args.dir),
         speed = args.speed,
+        turn = args.turn,
     }
 end
 

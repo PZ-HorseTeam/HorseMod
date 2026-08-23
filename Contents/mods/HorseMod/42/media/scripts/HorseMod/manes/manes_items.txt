@@ -1,8 +1,4 @@
 module HorseMod {
-    imports {
-        Base
-    }
-
     /*@diagnostic-off:INVALID_TRANSLATION_KEY*/
     item HorseManeStart {
         DisplayCategory = Accessory,
