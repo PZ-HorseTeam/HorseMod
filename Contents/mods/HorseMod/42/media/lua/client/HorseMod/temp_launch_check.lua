@@ -1,4 +1,5 @@
-local POPUP_HEIGHT = 120
+local POPUP_WIDTH = 950
+local POPUP_HEIGHT = 450
 local CORE = getCore()
 local STAMP_KEY = "horsemod"
 local PLAYER_FLAG = "horseModOldSaveWarningSeen"
@@ -7,22 +8,25 @@ local playerReady = false
 local popupShown = false
 
 local function make_popup(text, onclick)
-    local width = getTextManager():MeasureStringX(UIFont.Small, text) + 20
+    -- local width = getTextManager():MeasureStringX(UIFont.Small, text) + 20
     -- i wanted to colour the text, but this doesn't use ISRichTextPanel :(
     -- yea and me I wanted to add an image to it HAAAAAAAAAAAAAAAAA
-    local popup = ISModalDialog:new(
-        (CORE:getScreenWidth() - width) / 2,
+    local popup = ISCollapsableModalRichText:new(
+        (CORE:getScreenWidth() - POPUP_WIDTH) / 2,
         (CORE:getScreenHeight() - POPUP_HEIGHT) / 2,
-        width,
+        POPUP_WIDTH,
         POPUP_HEIGHT,
         text,
         false,
         nil,
-        onclick
+        onclick,
+        0
     )
+    popup.backgroundColor = {r=0, g=0, b=0, a=0.8}
     popup:setAlwaysOnTop(true)
     popup:initialise()
     popup:addToUIManager()
+    setGameSpeed(0)
 end
 
 local function ackPopup()
@@ -64,7 +68,7 @@ local function tryShowOldSaveWarning()
     make_popup(text, ackPopup)
 end
 
-local function check_meatball()
+function check_meatball()
     local animViewer = AnimationViewerState.checkInstance()
 
     local clips = animViewer:fromLua1("getClipNames", "HorseMod.Stallion")
@@ -110,3 +114,10 @@ local function onGameStart()
 end
 
 Events.OnGameStart.Add(onGameStart)
+
+
+Events.OnKeyKeepPressed.Add(function(key)
+    if key == Keyboard.KEY_R then
+        check_meatball()
+    end
+end)
