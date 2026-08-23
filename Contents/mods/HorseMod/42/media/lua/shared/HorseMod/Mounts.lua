@@ -157,8 +157,8 @@ local function lockMountedAnimal(animal)
     refreshMountedAnimalBlock(animal)
     animal:stopAllMovementNow()
     animal:setDeferredMovementEnabled(false)
-    animal:setVariable("animalWalking", false)
-    animal:setVariable("animalRunning", false)
+    animal:setVariable(AnimationVariable.IS_WALKING, false)
+    animal:setVariable(AnimationVariable.IS_RUNNING, false)
     animal:setIsAlerted(false)
     local idleState = animal:getDefaultState()
     if not animal:isCurrentState(idleState) then
@@ -169,8 +169,8 @@ end
 ---@param animal IsoAnimal
 local function unlockMountedAnimal(animal)
     animal:stopAllMovementNow()
-    animal:setVariable("animalWalking", false)
-    animal:setVariable("animalRunning", false)
+    animal:setVariable(AnimationVariable.IS_WALKING, false)
+    animal:setVariable(AnimationVariable.IS_RUNNING, false)
     animal:setDeferredMovementEnabled(true)
     animal:getBehavior():setBlockMovement(false)
 end
@@ -237,8 +237,11 @@ end
 local function removeMountID(player)
     local id = playerMountMap[player]
     playerMountMap[player] = nil
-    mountPlayerMap[id] = nil
-    mountedAnimalLockTicks[id] = nil
+
+    if mountPlayerMap[id] == player then
+        mountPlayerMap[id] = nil
+        mountedAnimalLockTicks[id] = nil
+    end
     interpolatedRiders[player] = nil
 end
 
@@ -251,6 +254,8 @@ function Mounts.removeMount(player, _horse_dead)
     _horse_dead = _horse_dead == nil and false or _horse_dead
 
     local mountId = playerMountMap[player]
+
+    local wasCurrentRider = mountPlayerMap[mountId] == player
     removeMountID(player)
     lastDismountTimestamps[player] = getTimestampMs()
 
@@ -259,8 +264,8 @@ function Mounts.removeMount(player, _horse_dead)
     player:setVariable(AnimationVariable.GALLOP, false)
     player:setVariable(AnimationVariable.JUMP, false)
     player:setVariable(AnimationVariable.HAS_REINS, false)
-    player:setVariable(AnimationVariable.IS_RUNNING, false)
     player:setVariable(AnimationVariable.IS_WALKING, false)
+    player:setVariable(AnimationVariable.IS_RUNNING, false)
     player:setVariable(AnimationVariable.GALLOPING, false)
     player:setVariable(AnimationVariable.WALKSTATE_RUN, false)
     player:setVariable(AnimationVariable.IS_TURNING_LEFT, false)
@@ -271,7 +276,12 @@ function Mounts.removeMount(player, _horse_dead)
     player:setIgnoreInputsForDirection(false)
     player:setIgnoreAimingInput(false)
 
-    local mount = commands.getAnimal(mountId)
+    ---@type IsoAnimal?
+    local mount = nil
+    if wasCurrentRider then
+        mount = commands.getAnimal(mountId)
+    end
+
     if mount then
         mount:setDir(player:getDir())
         MountedAnimationState.setMovementVariables(player, mount, false, false)
@@ -284,7 +294,7 @@ function Mounts.removeMount(player, _horse_dead)
 
         -- used to reset the wander counter of the horse so it doesn't instantly wander off
         mount:setStateEventDelayTimer(mount:getBehavior():pickRandomWanderInterval())
-    elseif not IS_CLIENT and not _horse_dead then
+    elseif wasCurrentRider and not IS_CLIENT and not _horse_dead then
         -- it should only be possible on multiplayer clients for the mount to be unloaded
         log("WEIRD: player %s dismounted unknown animal id=%d", player:getUsername(), mountId)
     end
@@ -444,23 +454,39 @@ local function dismountOnDeath(character)
 end
 
 local CLEANUP_INTERVAL_MS = 1000
+-- The only reader of a dismount timestamp is the 1.5s remote re-mount guard, so
+-- anything older is dead weight that pins a departed IsoPlayer in memory.
+local DISMOUNT_STAMP_RETENTION_MS = 5000
 local lastCleanupStamp = 0
 
 ---@type IsoPlayer[]
 local mountedScratch = {}
 local mountedScratchCount = 0
 
----@type table<string, true>
-local onlineUsernameScratch = {}
+---@type table<integer|string, IsoPlayer>
+local onlinePlayerScratch = {}
 
--- No reliable Lua event to use for detecting player disconnects
--- So if player disconnects while riding we need to clean up mounts at regular intervals
-local function cleanupDisconnectedRiders()
+-- No reliable Lua event to use for detecting player disconnects, and on a client it
+-- builds a fresh IsoPlayer object every time someone reconnects, so a map keyed
+-- by the object doesn't work
+local function cleanupStaleRiders()
     local now = getTimestampMs()
     if now - lastCleanupStamp < CLEANUP_INTERVAL_MS then
         return
     end
     lastCleanupStamp = now
+
+    for player, stamp in pairs(lastDismountTimestamps) do
+        if now - stamp >= DISMOUNT_STAMP_RETENTION_MS then
+            lastDismountTimestamps[player] = nil
+        end
+    end
+
+    -- Released here rather than next to its refill: every path below can bail out
+    -- early, and holding the values would keep departed IsoPlayers referenced.
+    for id in pairs(onlinePlayerScratch) do
+        onlinePlayerScratch[id] = nil
+    end
 
     local previousCount = mountedScratchCount
     mountedScratchCount = 0
@@ -477,25 +503,20 @@ local function cleanupDisconnectedRiders()
     end
 
     local onlinePlayers = getOnlinePlayers()
-    if not onlinePlayers then
-        return
-    end
-
-    for username in pairs(onlineUsernameScratch) do
-        onlineUsernameScratch[username] = nil
-    end
 
     for i = 0, onlinePlayers:size() - 1 do
         local p = onlinePlayers:get(i)
         if p then
-            onlineUsernameScratch[p:getUsername()] = true
+            onlinePlayerScratch[commands.getPlayerId(p)] = p
         end
     end
 
     for i = 1, mountedScratchCount do
         local player = mountedScratch[i]
-        if not onlineUsernameScratch[player:getUsername()] then
+        ---@cast player IsoPlayer
+        if onlinePlayerScratch[commands.getPlayerId(player)] ~= player then
             Mounts.removeMount(player)
+            lastDismountTimestamps[player] = nil
         end
     end
 end
@@ -504,11 +525,15 @@ if IS_CLIENT then
     -- The full sweep stays on one hook; only the cheap state pin needs the extra
     -- coverage to beat vanilla back into idle within the same frame.
     Events.OnTickEvenPaused.Add(updateMounts)
+    -- clients forgets players who wander off and treats them as someone new
+    -- when they return which the server doesn't see
+    Events.OnTickEvenPaused.Add(cleanupStaleRiders)
     Events.OnTick.Add(pinMountedAnimals)
     Events.OnPlayerUpdate.Add(pinMountedAnimals)
+    Events.OnCharacterDeath.Add(dismountOnDeath)
 elseif IS_SERVER then
     Events.OnTickEvenPaused.Add(updateMounts)
-    Events.OnTickEvenPaused.Add(cleanupDisconnectedRiders)
+    Events.OnTickEvenPaused.Add(cleanupStaleRiders)
     Events.OnCharacterDeath.Add(dismountOnDeath)
 else
     Events.OnTick.Add(updateMounts)
@@ -537,13 +562,31 @@ if not IS_SERVER then
         end)
 
         client.registerCommandHandler(mountcommands.Dismount, function(args)
-            local player = commands.getPlayer(args.character)
-            if not player and type(args.animal) == "number" then
-                player = mountPlayerMap[args.animal]
+            local removed = false
+            local animalId = type(args.animal) == "number" and args.animal or nil
+
+            -- Whoever is keyed against the horse must be removed first: a reconnect
+            -- or a relevance timeout rebuilds the rider as a different IsoPlayer, so
+            -- resolving by character id alone would leave the stale one riding.
+            if animalId then
+                local keyed = mountPlayerMap[animalId]
+                if keyed then
+                    Mounts.removeMount(keyed)
+                    removed = true
+                end
             end
-            if player then
+
+            local player = commands.getPlayer(args.character)
+            -- Only release the named character from the horse the command names.
+            -- A late packet must not tear them off a horse they have since remounted.
+            if player and playerMountMap[player] ~= nil
+                and (animalId == nil or playerMountMap[player] == animalId)
+            then
                 Mounts.removeMount(player)
-            else
+                removed = true
+            end
+
+            if not removed then
                 log("received Dismount command for unknown player id=%s", tostring(args.character))
             end
         end)
