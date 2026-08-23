@@ -8,3 +8,6 @@ Contents/mods/HorseMod/42/media/lua/client/HorseMod/HorseTestingStuff.lua
 /steam_api64.dll
 /steam_appid.txt
 /SteamUploader.exe
+
+# python
+__pycache__/

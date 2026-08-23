@@ -4,9 +4,8 @@
 local HorseManager = require("HorseMod/HorseManager")
 local Mounts = require("HorseMod/Mounts")
 local HorseUtils = require("HorseMod/Utils")
+local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
 
-
-local MOUNTING_DISABLED = isClient() and not isDebugEnabled()
 
 
 local MountingUtility = {}
@@ -110,14 +109,14 @@ end
 ---@return string?
 ---@nodiscard
 function MountingUtility.canMountHorse(player, horse)
-    if MOUNTING_DISABLED then
-        return false, "IGUI_HorseMod_DisabledInMultiplayer"
-    elseif Mounts.hasMount(player) then
+    if Mounts.hasMount(player) then
         -- already mounted
         return false
     elseif Mounts.hasRider(horse) then
         return false, "ContextMenu_Horse_IsAlreadyRiding"
     elseif horse:isDead() then
+        return false, "ContextMenu_Horse_IsDead"
+    elseif horse:getVariableBoolean(AnimationVariable.DEATH) then
         return false, "ContextMenu_Horse_IsDead"
     elseif horse:isOnHook() then -- butcher hook
         return false
@@ -154,7 +153,7 @@ function MountingUtility.pathfindToHorse(player, horse, mountPosition)
     )
 
     -- stop the horse from moving
-    horse:getPathFindBehavior2():reset()
+    horse:stopAllMovementNow()
 
     ISTimedActionQueue.add(pathfindAction)
 

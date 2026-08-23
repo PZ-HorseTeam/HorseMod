@@ -1,10 +1,14 @@
 local mountcommands = require("HorseMod/networking/mountcommands")
+local soundcommands = require("HorseMod/networking/soundcommands")
 local commands = require("HorseMod/networking/commands")
 local Event = require("HorseMod/Event")
 local AnimationVariable = require("HorseMod/definitions/AnimationVariable")
+local MountedAnimationState = require("HorseMod/riding/MountedAnimationState")
+local MountedDirection = require("HorseMod/riding/MountedDirection")
 
 local IS_CLIENT = isClient()
 local IS_SERVER = isServer()
+
 
 ---@param text string
 ---@param ... any
@@ -13,16 +17,163 @@ local function log(text, ...)
 end
 
 
+local TEMP_VECTOR2 = Vector2.new()
+
 ---@type table<IsoPlayer, integer>
 local playerMountMap = {}
 
 ---@type table<integer, IsoPlayer>
 local mountPlayerMap = {}
 
+---@type table<integer, integer>
+local mountedAnimalLockTicks = {}
+
+---@type table<IsoPlayer, integer>
+local lastDismountTimestamps = {}
+
+---Riders whose transform and locks are already driven every frame by the remote
+---interpolator. Re-running the generic mount sweep over them is duplicated work.
+---@type table<IsoPlayer, true>
+local interpolatedRiders = {}
+
 local Mounts = {}
 
----Triggered when a player's mount changes.
-Mounts.onMountChanged = Event.new--[[@<IsoPlayer, IsoAnimal?>]]()
+---@param rider IsoPlayer
+---@param isInterpolated boolean
+function Mounts.setInterpolated(rider, isInterpolated)
+    if isInterpolated then
+        interpolatedRiders[rider] = true
+    else
+        interpolatedRiders[rider] = nil
+    end
+end
+
+---@param rider IsoPlayer
+---@return boolean
+---@nodiscard
+function Mounts.isInterpolated(rider)
+    return interpolatedRiders[rider] == true
+end
+
+
+---Triggered when a player mounts a horse.
+Mounts.onMount = Event.new--[[@<IsoPlayer, IsoAnimal>]]()
+
+---Triggered when a player dismounts a horse.
+---The animal parameter may be nil if the horse was killed or unloaded
+---before the dismount completed
+Mounts.onDismount = Event.new--[[@<IsoPlayer, IsoAnimal?>]]()
+
+
+---@readonly
+local LOCK_REFRESH_TICKS = 40
+
+---@readonly
+local WANDER_SUPPRESS_TIMER = 10000
+
+---@param animal IsoAnimal
+local function refreshMountedAnimalBlock(animal)
+    local behavior = animal:getBehavior()
+    -- The engine expires the block once blockedFor reaches 8000 and only the false
+    -- branch resets that counter, so re-blocking alone lets vanilla wander resume,
+    -- path the horse and flip it into the walk action state mid-ride.
+    behavior:setBlockMovement(false)
+    behavior:setBlockMovement(true)
+    mountedAnimalLockTicks[commands.getAnimalId(animal)] = 0
+end
+
+---@param player IsoPlayer
+local function setMountedPlayerLock(player)
+    if not player:getIgnoreMovement() then
+        player:setIgnoreMovement(true)
+    end
+
+    if not player:isIgnoreInputsForDirection() then
+        player:setIgnoreInputsForDirection(true)
+    end
+
+    if not player:isIgnoringAimingInput() then
+        player:setIgnoreAimingInput(true)
+    end
+
+    player:setAllowRun(false)
+    player:setAllowSprint(false)
+    player:setSneaking(false)
+    player:setIgnoreAutoVault(true)
+end
+
+---@param player IsoPlayer
+---@param animal IsoAnimal
+local function syncMountedPlayerToAnimal(player, animal)
+    player:setForceX(animal:getX())
+    player:setForceY(animal:getY())
+    player:setZ(animal:getZ())
+    -- Pin the rider to the horse's smoothed visual angle, not a cardinal IsoDirections snap
+    local direction = MountedDirection.toRiderDirection(animal:getDir())
+    local angle = MountedDirection.getMovementAngle(animal, direction)
+    TEMP_VECTOR2:setLengthAndDirection(angle, 1.0)
+    player:setTargetAndCurrentDirection(TEMP_VECTOR2:getX(), TEMP_VECTOR2:getY())
+end
+
+---@param animal IsoAnimal
+---@param animalId integer
+local function setMountedAnimalLock(animal, animalId)
+    -- Per-tick: only refresh the block-movement timeout
+    local ticks = mountedAnimalLockTicks[animalId]
+    if not ticks then
+        ticks = 0
+    end
+
+    ticks = ticks + 1
+    if ticks >= LOCK_REFRESH_TICKS then
+        refreshMountedAnimalBlock(animal)
+    else
+        mountedAnimalLockTicks[animalId] = ticks
+    end
+end
+
+---Suppress vanilla state flipping while mounted near zombies
+---@param animal IsoAnimal
+local function suppressMountedAnimalAI(animal)
+    if animal:isAlerted() then
+        animal:setIsAlerted(false)
+    end
+
+    local idleState = animal:getDefaultState()
+    if not animal:isCurrentState(idleState) then
+        animal:changeState(idleState)
+    end
+
+    animal:setVariable("bMoving", false)
+    animal:setVariable("bPathfind", false)
+    -- vanilla wander fires on getStateEventDelayTimer() <= 0 and the timer is decremented
+    -- by an FPS-scaled multiplier, so clearing state per frame loses at low framerates.
+    -- Holding the timer far positive is a time budget: one write covers a whole frame.
+    animal:setStateEventDelayTimer(WANDER_SUPPRESS_TIMER)
+end
+
+---@param animal IsoAnimal
+local function lockMountedAnimal(animal)
+    refreshMountedAnimalBlock(animal)
+    animal:stopAllMovementNow()
+    animal:setDeferredMovementEnabled(false)
+    animal:setVariable(AnimationVariable.IS_WALKING, false)
+    animal:setVariable(AnimationVariable.IS_RUNNING, false)
+    animal:setIsAlerted(false)
+    local idleState = animal:getDefaultState()
+    if not animal:isCurrentState(idleState) then
+        animal:changeState(idleState)
+    end
+end
+
+---@param animal IsoAnimal
+local function unlockMountedAnimal(animal)
+    animal:stopAllMovementNow()
+    animal:setVariable(AnimationVariable.IS_WALKING, false)
+    animal:setVariable(AnimationVariable.IS_RUNNING, false)
+    animal:setDeferredMovementEnabled(true)
+    animal:getBehavior():setBlockMovement(false)
+end
 
 ---@param player IsoPlayer
 ---@param id integer
@@ -52,9 +203,16 @@ function Mounts.addMount(player, animal)
 
     addMountID(player, commands.getAnimalId(animal))
 
-    animal:getBehavior():setBlockMovement(true)
-    animal:stopAllMovementNow()
+    setMountedPlayerLock(player)
+    lockMountedAnimal(animal)
     animal:setVariable(AnimationVariable.RIDING_HORSE, true)
+    player:setVariable(AnimationVariable.RIDING_HORSE, true)
+    player:setVariable(AnimationVariable.TROT, false)
+    MountedAnimationState.setSpeedVariables(player, animal)
+    MountedAnimationState.setMovementVariables(player, animal, false, false)
+    MountedAnimationState.setTurnVariables(player, animal, 0)
+    MountedAnimationState.setReinsVariable(player, false)
+    MountedDirection.set(player, animal, player:getDir())
 
     if IS_SERVER then
         mountcommands.Mount:send(
@@ -64,35 +222,79 @@ function Mounts.addMount(player, animal)
                 character = commands.getPlayerId(player),
             }
         )
+        -- broadcast the snort so remote clients hear the same
+        -- audio cue the local rider hears when mounting
+        soundcommands.HorseSoundOneShot:send(nil--[[@as IsoPlayer?]], {
+            animal = commands.getAnimalId(animal),
+            sound = "HorseMountSnort",
+        })
     end
 
-    Mounts.onMountChanged:trigger(player, animal)
+    Mounts.onMount:trigger(player, animal)
 end
 
 ---@param player IsoPlayer
 local function removeMountID(player)
     local id = playerMountMap[player]
     playerMountMap[player] = nil
-    mountPlayerMap[id] = nil
+
+    if mountPlayerMap[id] == player then
+        mountPlayerMap[id] = nil
+        mountedAnimalLockTicks[id] = nil
+    end
+    interpolatedRiders[player] = nil
 end
 
 ---@param player IsoPlayer
-function Mounts.removeMount(player)
+---@param _horse_dead boolean? if true, the horse is already dead, so won't be available
+function Mounts.removeMount(player, _horse_dead)
     if not Mounts.hasMount(player) then
         return
     end
+    _horse_dead = _horse_dead == nil and false or _horse_dead
 
     local mountId = playerMountMap[player]
-    removeMountID(player)
 
-    local mount = commands.getAnimal(mountId)
+    local wasCurrentRider = mountPlayerMap[mountId] == player
+    removeMountID(player)
+    lastDismountTimestamps[player] = getTimestampMs()
+
+    player:setVariable(AnimationVariable.RIDING_HORSE, false)
+    player:setVariable(AnimationVariable.TROT, false)
+    player:setVariable(AnimationVariable.GALLOP, false)
+    player:setVariable(AnimationVariable.JUMP, false)
+    player:setVariable(AnimationVariable.HAS_REINS, false)
+    player:setVariable(AnimationVariable.IS_WALKING, false)
+    player:setVariable(AnimationVariable.IS_RUNNING, false)
+    player:setVariable(AnimationVariable.GALLOPING, false)
+    player:setVariable(AnimationVariable.WALKSTATE_RUN, false)
+    player:setVariable(AnimationVariable.IS_TURNING_LEFT, false)
+    player:setVariable(AnimationVariable.IS_TURNING_RIGHT, false)
+    player:setVariable(AnimationVariable.IS_TURNING, false)
+    -- player:setVariable("isMoving", false)
+    player:setIgnoreMovement(false)
+    player:setIgnoreInputsForDirection(false)
+    player:setIgnoreAimingInput(false)
+
+    ---@type IsoAnimal?
+    local mount = nil
+    if wasCurrentRider then
+        mount = commands.getAnimal(mountId)
+    end
+
     if mount then
-        mount:getBehavior():setBlockMovement(false)
+        mount:setDir(player:getDir())
+        MountedAnimationState.setMovementVariables(player, mount, false, false)
+        MountedAnimationState.setTurnVariables(player, mount, 0)
+        unlockMountedAnimal(mount)
         mount:setVariable(AnimationVariable.RIDING_HORSE, false)
+        mount:setVariable(AnimationVariable.GALLOP, false)
+        mount:setVariable(AnimationVariable.TROT, false)
+        mount:setVariable(AnimationVariable.JUMP, false)
 
         -- used to reset the wander counter of the horse so it doesn't instantly wander off
         mount:setStateEventDelayTimer(mount:getBehavior():pickRandomWanderInterval())
-    elseif not IS_CLIENT then
+    elseif wasCurrentRider and not IS_CLIENT and not _horse_dead then
         -- it should only be possible on multiplayer clients for the mount to be unloaded
         log("WEIRD: player %s dismounted unknown animal id=%d", player:getUsername(), mountId)
     end
@@ -101,12 +303,13 @@ function Mounts.removeMount(player)
         mountcommands.Dismount:send(
             nil,
             {
-                character = commands.getPlayerId(player)
+                character = commands.getPlayerId(player),
+                animal = mountId
             }
         )
     end
 
-    Mounts.onMountChanged:trigger(player, nil)
+    Mounts.onDismount:trigger(player, mount)
 end
 
 ---@param player IsoPlayer
@@ -114,6 +317,19 @@ end
 ---@nodiscard
 function Mounts.hasMount(player)
     return playerMountMap[player] ~= nil
+end
+
+
+---@param player IsoPlayer
+---@param windowMs integer
+---@return boolean
+---@nodiscard
+function Mounts.wasRecentlyDismounted(player, windowMs)
+    local ts = lastDismountTimestamps[player]
+    if not ts then
+        return false
+    end
+    return (getTimestampMs() - ts) < windowMs
 end
 
 ---Returns a player's mount.
@@ -153,14 +369,76 @@ function Mounts.reset()
     end
 end
 
----Reapply block movement every tick because it has a timeout
-local function updateMounts()
+---@return table<integer|string, integer>
+---@nodiscard
+function Mounts.getSnapshot()
+    local mounts = {}
+    for player, animalId in pairs(playerMountMap) do
+        mounts[commands.getPlayerId(player)] = animalId
+    end
+
+    return mounts
+end
+
+---@param callback fun(player: IsoPlayer, animal: IsoAnimal)
+function Mounts.forEachLoadedMount(callback)
+    for player, animalId in pairs(playerMountMap) do
+        local animal = commands.getAnimal(animalId)
+        if animal then
+            callback(player, animal)
+        end
+    end
+end
+
+---@param recipient IsoPlayer?
+function Mounts.sendMounts(recipient)
+    if isClient() then
+        return
+    elseif isServer() then
+        mountcommands.SendMounts:send(
+            recipient,
+            {
+                mounts = Mounts.getSnapshot()
+            }
+        )
+    else
+        return
+    end
+end
+
+---Vanilla re-enters AnimalWalkState from inside the engine's own update, so clearing
+---the state once per frame loses the race. This is the cheap half of updateMounts,
+---run on the extra per-frame hooks; the full sweep still runs only once.
+local function pinMountedAnimals()
     for player, mount in pairs(playerMountMap) do
         local animal = commands.getAnimal(mount)
+        if animal then
+            suppressMountedAnimalAI(animal)
+        end
+    end
+end
+
+---Keep mounted animals out of vanilla animal locomotion while riding owns transforms.
+local function updateMounts()
+    for player, mount in pairs(playerMountMap) do
+        local interpolated = interpolatedRiders[player] == true
+        if not interpolated then
+            setMountedPlayerLock(player)
+        end
+
+        local animal = commands.getAnimal(mount)
         if not animal then
-            log("WEIRD: tried to update unknown animal id=%d player=%s", mount, player:getUsername())
+            if IS_SERVER then
+                log("WEIRD: tried to update unknown animal id=%d player=%s", mount, player:getUsername())
+            end
         else
-            animal:getBehavior():setBlockMovement(true)
+            setMountedAnimalLock(animal, mount)
+            -- Clients too: the block stops vanilla starting a new wander, this clears
+            -- bMoving if something already set it. Both are needed.
+            suppressMountedAnimalAI(animal)
+            if not interpolated then
+                syncMountedPlayerToAnimal(player, animal)
+            end
         end
     end
 end
@@ -175,7 +453,89 @@ local function dismountOnDeath(character)
     Mounts.removeMount(character)
 end
 
-if not isClient() then
+local CLEANUP_INTERVAL_MS = 1000
+-- The only reader of a dismount timestamp is the 1.5s remote re-mount guard, so
+-- anything older is dead weight that pins a departed IsoPlayer in memory.
+local DISMOUNT_STAMP_RETENTION_MS = 5000
+local lastCleanupStamp = 0
+
+---@type IsoPlayer[]
+local mountedScratch = {}
+local mountedScratchCount = 0
+
+---@type table<integer|string, IsoPlayer>
+local onlinePlayerScratch = {}
+
+-- No reliable Lua event to use for detecting player disconnects, and on a client it
+-- builds a fresh IsoPlayer object every time someone reconnects, so a map keyed
+-- by the object doesn't work
+local function cleanupStaleRiders()
+    local now = getTimestampMs()
+    if now - lastCleanupStamp < CLEANUP_INTERVAL_MS then
+        return
+    end
+    lastCleanupStamp = now
+
+    for player, stamp in pairs(lastDismountTimestamps) do
+        if now - stamp >= DISMOUNT_STAMP_RETENTION_MS then
+            lastDismountTimestamps[player] = nil
+        end
+    end
+
+    -- Released here rather than next to its refill: every path below can bail out
+    -- early, and holding the values would keep departed IsoPlayers referenced.
+    for id in pairs(onlinePlayerScratch) do
+        onlinePlayerScratch[id] = nil
+    end
+
+    local previousCount = mountedScratchCount
+    mountedScratchCount = 0
+    for player in pairs(playerMountMap) do
+        mountedScratchCount = mountedScratchCount + 1
+        mountedScratch[mountedScratchCount] = player
+    end
+    for i = mountedScratchCount + 1, previousCount do
+        mountedScratch[i] = nil
+    end
+
+    if mountedScratchCount == 0 then
+        return
+    end
+
+    local onlinePlayers = getOnlinePlayers()
+
+    for i = 0, onlinePlayers:size() - 1 do
+        local p = onlinePlayers:get(i)
+        if p then
+            onlinePlayerScratch[commands.getPlayerId(p)] = p
+        end
+    end
+
+    for i = 1, mountedScratchCount do
+        local player = mountedScratch[i]
+        ---@cast player IsoPlayer
+        if onlinePlayerScratch[commands.getPlayerId(player)] ~= player then
+            Mounts.removeMount(player)
+            lastDismountTimestamps[player] = nil
+        end
+    end
+end
+
+if IS_CLIENT then
+    -- The full sweep stays on one hook; only the cheap state pin needs the extra
+    -- coverage to beat vanilla back into idle within the same frame.
+    Events.OnTickEvenPaused.Add(updateMounts)
+    -- clients forgets players who wander off and treats them as someone new
+    -- when they return which the server doesn't see
+    Events.OnTickEvenPaused.Add(cleanupStaleRiders)
+    Events.OnTick.Add(pinMountedAnimals)
+    Events.OnPlayerUpdate.Add(pinMountedAnimals)
+    Events.OnCharacterDeath.Add(dismountOnDeath)
+elseif IS_SERVER then
+    Events.OnTickEvenPaused.Add(updateMounts)
+    Events.OnTickEvenPaused.Add(cleanupStaleRiders)
+    Events.OnCharacterDeath.Add(dismountOnDeath)
+else
     Events.OnTick.Add(updateMounts)
     Events.OnCharacterDeath.Add(dismountOnDeath)
 end
@@ -197,29 +557,60 @@ if not IS_SERVER then
                     addMountID(player, args.animal)
                 end
             else
-                log("received Mount command for unknown player id=%d", args.character)
+                log("received Mount command for unknown player id=%s", tostring(args.character))
             end
         end)
 
         client.registerCommandHandler(mountcommands.Dismount, function(args)
+            local removed = false
+            local animalId = type(args.animal) == "number" and args.animal or nil
+
+            -- Whoever is keyed against the horse must be removed first: a reconnect
+            -- or a relevance timeout rebuilds the rider as a different IsoPlayer, so
+            -- resolving by character id alone would leave the stale one riding.
+            if animalId then
+                local keyed = mountPlayerMap[animalId]
+                if keyed then
+                    Mounts.removeMount(keyed)
+                    removed = true
+                end
+            end
+
+            local player = commands.getPlayer(args.character)
+            -- Only release the named character from the horse the command names.
+            -- A late packet must not tear them off a horse they have since remounted.
+            if player and playerMountMap[player] ~= nil
+                and (animalId == nil or playerMountMap[player] == animalId)
+            then
+                Mounts.removeMount(player)
+                removed = true
+            end
+
+            if not removed then
+                log("received Dismount command for unknown player id=%s", tostring(args.character))
+            end
+        end)
+
+        -- Server broadcast urgent dismounts so all remote clients see rider fall off/die
+        client.registerCommandHandler(mountcommands.UrgentDismount, function(args)
             local player = commands.getPlayer(args.character)
             if player then
-                Mounts.removeMount(player)
+                player:setVariable(args.dismountType, true)
             else
-                log("received Dismount command for unknown player id=%d", args.character)
+                log("received UrgentDismount command for unknown player id=%s", tostring(args.character))
             end
         end)
 
         client.registerCommandHandler(mountcommands.SendMounts, function(args)
             Mounts.reset()
-    
+
             for playerId, animalId in pairs(args.mounts) do
                 local player = commands.getPlayer(playerId)
                 local animal = commands.getAnimal(animalId)
                 if not player then
                     log(
-                        "could not find player or animal sent by server, player=%d animal=%d",
-                        playerId,
+                        "could not find player or animal sent by server, player=%s animal=%d",
+                        tostring(playerId),
                         animalId
                     )
                 else

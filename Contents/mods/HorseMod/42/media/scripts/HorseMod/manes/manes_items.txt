@@ -1,8 +1,5 @@
 module HorseMod {
-    imports {
-        Base
-    }
-
+    /*@diagnostic-off:INVALID_TRANSLATION_KEY*/
     item HorseManeStart {
         DisplayCategory = Accessory,
         ItemType = base:normal,
@@ -12,6 +9,7 @@ module HorseMod {
         WorldStaticModel = HorseMod.HorseManeStart,
     }
 
+    /*@diagnostic-off:INVALID_TRANSLATION_KEY*/
     item HorseManeMid {
         DisplayCategory = Accessory,
         ItemType = base:normal,
@@ -21,6 +19,7 @@ module HorseMod {
         WorldStaticModel = HorseMod.HorseManeMid,
     }
 
+    /*@diagnostic-off:INVALID_TRANSLATION_KEY*/
     item HorseManeEnd {
         DisplayCategory = Accessory,
         ItemType = base:normal,

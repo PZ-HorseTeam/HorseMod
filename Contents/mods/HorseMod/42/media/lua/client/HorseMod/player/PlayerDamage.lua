@@ -1,5 +1,7 @@
 ---@namespace HorseMod
 
+local IS_CLIENT = isClient()
+
 local HorseDamage = require("HorseMod/horse/HorseDamage")
 local AnimationVariable = require('HorseMod/definitions/AnimationVariable')
 local Attachments = require("HorseMod/attachments/Attachments")
@@ -30,6 +32,10 @@ PlayerDamage.DMG_LAC_MAX = 1.3
 PlayerDamage.DMG_BIT_MIN = 1.8
 PlayerDamage.DMG_BIT_MAX = 3.2
 
+PlayerDamage.SOUND_GRUNT = "Exercise"
+PlayerDamage.MIN_TIME_GRUNT = 30.0
+PlayerDamage.MAX_TIME_GRUNT = 120.0
+
 
 ---@return ArrayList<IsoPlayer>
 ---@nodiscard
@@ -55,6 +61,11 @@ local function getPlayers()
     return players
 end
 
+local rand = newrandom()
+---@type BodyPartType[]
+local bodyPartsList = { BodyPartType.UpperLeg_L, BodyPartType.UpperLeg_R, BodyPartType.Groin }
+local lastGrunt = 0.0
+local nextGrunt = rand:random(PlayerDamage.MIN_TIME_GRUNT, PlayerDamage.MAX_TIME_GRUNT)
 
 ---@param player IsoPlayer
 function PlayerDamage.applyRidingPain(player)
@@ -72,11 +83,21 @@ function PlayerDamage.applyRidingPain(player)
     local rate = hasSaddle and PlayerDamage.PAIN_RATE_SADDLE or PlayerDamage.PAIN_RATE_BAREBACK
     local maxPain = hasSaddle and PlayerDamage.MAX_PAIN_SADDLE or PlayerDamage.MAX_PAIN_BAREBACK
     local bodyDamage = player:getBodyDamage()
+        local timeDelta = getGameTime():getTimeDelta()
 
-    rate = rate * getGameTime():getTimeDelta()
+    -- do a pain grunt every so often, but less often if the player has a saddle
+    if SandboxVars.HorseMod.RidingPainGrunt then
+        local nextGruntCurrent = hasSaddle and nextGrunt or nextGrunt / 2
+        lastGrunt = lastGrunt + timeDelta
+        if lastGrunt > nextGruntCurrent then
+            player:playerVoiceSound(PlayerDamage.SOUND_GRUNT)
+            lastGrunt = 0
+            nextGrunt = rand:random(PlayerDamage.MIN_TIME_GRUNT, PlayerDamage.MAX_TIME_GRUNT)
+        end
+    end
+    
+    rate = rate * timeDelta
 
-    ---@type BodyPartType[]
-    local bodyPartsList = { BodyPartType.UpperLeg_L, BodyPartType.UpperLeg_R, BodyPartType.Groin }
     for i = 1, #bodyPartsList do
         local partType = bodyPartsList[i]
         local part = bodyDamage:getBodyPart(partType)
@@ -95,7 +116,9 @@ local function addRidingPainToAllPlayers()
     end
 end
 
-Events.OnTick.Add(addRidingPainToAllPlayers)
+if not IS_CLIENT then
+    Events.OnTick.Add(addRidingPainToAllPlayers)
+end
 
 
 ---@param part BodyPart|nil
@@ -406,7 +429,8 @@ local lastAttack = {}
 ---@return nil
 function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
     local target = zombie:getTarget()
-    if not target or not instanceof(target, "IsoPlayer") or not Mounts.hasMount(target) then
+    local horse = Mounts.getMount(target)
+    if not target or not instanceof(target, "IsoPlayer") or not horse then
         return
     end
     ---@cast target IsoPlayer
@@ -424,8 +448,6 @@ function PlayerDamage.onZombieAttack_checkAndRedirect(zombie)
     end
     
     lastAttack[zombie] = getTimestampMs()
-
-    local horse = Mounts.getMount(target)
 
     HorseDamage.tryRedirectZombieHitToHorse(zombie, target, horse)
 

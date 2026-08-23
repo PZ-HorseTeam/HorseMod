@@ -7,6 +7,7 @@ local HorseEquipGear = require("HorseMod/TimedActions/HorseEquipGear")
 local HorseUnequipGear = require("HorseMod/TimedActions/HorseUnequipGear")
 local Mounts = require("HorseMod/Mounts")
 local MountingUtility = require("HorseMod/mounting/MountingUtility")
+local AttachmentData = require("HorseMod/attachments/AttachmentData")
 
 local AttachmentsClient = {}
 
@@ -18,6 +19,14 @@ local AttachmentsClient = {}
 ---@param slot AttachmentSlot
 ---@param mountPosition MountPosition
 AttachmentsClient.equipAccessory = function(player, horse, accessory, slot, mountPosition)
+    -- equip the attachment in hands
+    ISInventoryPaneContextMenu.transferIfNeeded(player, accessory)
+    local equipItemAction = ISEquipWeaponAction:new(player, accessory, 50, true, accessory:isTwoHandWeapon())
+    equipItemAction.stopOnWalk = true
+    equipItemAction.stopOnAim = true
+    ISTimedActionQueue.add(equipItemAction)
+    
+    -- move next to horse
     MountingUtility.pathfindToHorse(player, horse, mountPosition)
     local side = mountPosition.name
     
@@ -26,12 +35,6 @@ AttachmentsClient.equipAccessory = function(player, horse, accessory, slot, moun
     if oldAccessory then
         ISTimedActionQueue.add(HorseUnequipGear:new(player, horse, slot, side))
     end
-    
-    -- equip the attachment in hands
-    local equipItemAction = ISEquipWeaponAction:new(player, accessory, 50, true, accessory:isTwoHandWeapon())
-    equipItemAction.stopOnWalk = true
-    equipItemAction.stopOnAim = true
-    ISTimedActionQueue.add(equipItemAction)
 
     -- equip the attachment on horse
     ISTimedActionQueue.add(HorseEquipGear:new(player, horse, accessory, slot, side))
@@ -81,9 +84,9 @@ function AttachmentsClient.canChangeAttachments(character, animal)
         return false, "ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted"
     end
 
-    if Mounts.hasRider(animal) then
-        return false, "ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted"
-    end
+    -- if Mounts.hasRider(animal) then
+    --     return false, "ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted"
+    -- end
 
     return true
 end
@@ -96,7 +99,6 @@ end
 ---@param mountPosition MountPosition?
 function AttachmentsClient.addEquipOptions(context, player, accessories, horse, mountPosition)
     --- EQUIP OPTIONS
-    local uniques = {}
 
     local accessoriesCount = accessories:size()
 
@@ -104,12 +106,17 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
     local toAddOptionsTo = {}
     if accessoriesCount > 0 then
         -- early parse to cache uniques, with containers being considered uniques
+        local uniques = {}
         for i = 0, accessoriesCount - 1 do repeat
             local accessory = accessories:get(i)
+
+            -- skip if the accessory with the same name is already equipped
+            -- but never skip if it's a container, as containers are considered unique
             local displayName = accessory:getDisplayName()
-            if not accessory or not instanceof(accessory, "InventoryContainer")
+            if not instanceof(accessory, "InventoryContainer")
                 and uniques[displayName] then break end
-            ---@cast accessory InventoryContainer
+
+            -- store options and uniques
             uniques[displayName] = true
             table.insert(toAddOptionsTo, {
                 displayName = displayName, accessory = accessory
@@ -120,6 +127,8 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
         table.sort(toAddOptionsTo, function(a, b)
             return a.displayName < b.displayName
         end)
+
+        local hasMount = Mounts.hasRider(horse)
         
         -- parse and add options to individual items
         local uniqueCount = {} -- used to not list too many items of the same type
@@ -129,7 +138,8 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
             local displayName = accessoryData.displayName
 
             -- for each slot possibility, add an option
-            local slots = Attachments.getSlots(accessory:getFullType())
+            local fullType = accessory:getFullType()
+            local slots = Attachments.getSlots(fullType)
             for j = 1, #slots do repeat
                 local slot = slots[j]
 
@@ -174,13 +184,54 @@ function AttachmentsClient.addEquipOptions(context, player, accessories, horse, 
                     option.toolTip = tooltip
                 end
 
+                -- first check that a mount position exists
                 if not mountPosition then
                     option.notAvailable = true
                     local tooltip = ISWorldObjectContextMenu.addToolTip()
                     tooltip.description = getText("ContextMenu_Horse_NoMountPosition")
                     option.toolTip = tooltip
+
+                -- check if the accessory can be equipped with a rider on the horse
+                elseif hasMount and not Attachments.canEquipWithRider(accessory:getFullType(), slot) then
+                    option.notAvailable = true
+                    local tooltip = ISWorldObjectContextMenu.addToolTip()
+                    tooltip.description = getText("ContextMenu_Horse_CannotEquipWithRider")
+                    option.toolTip = tooltip
                 end
 
+                -- verify all the needed slots are occupied
+                local respectsRequirements, missing = Attachments.verifyRequirements(horse, fullType, slot)
+                if not respectsRequirements then
+                    ---@cast missing -nil remove nil from possibilities
+                    local requirementsAllOf = #missing.allOf > 0
+                    local requirementsOneOf = #missing.oneOf > 0
+
+                    -- main tooltip
+                    local txt = getText("ContextMenu_Horse_Requirements_Missing")
+                    
+                    -- allOf tooltip
+                    if requirementsAllOf then
+                        local allOfTxt = HorseUtils.formatTemplate(
+                            getText("ContextMenu_Horse_Requirements_AllOf"),
+                            {allOf = table.concat(missing.allOf, ", ")}
+                        )
+                        txt = txt .. "\n" .. allOfTxt
+                    end
+
+                    -- oneOf tooltip
+                    if requirementsOneOf then
+                        local oneOfTxt = HorseUtils.formatTemplate(
+                            getText("ContextMenu_Horse_Requirements_OneOf"),
+                            {oneOf = table.concat(missing.oneOf, ", ")}
+                        )
+                        txt = txt .. "\n" .. oneOfTxt
+                    end
+
+                    local tooltip = ISWorldObjectContextMenu.addToolTip()
+                    option.notAvailable = true
+                    tooltip.description = txt
+                    option.toolTip = tooltip
+                end
             until true end
         end
     end
@@ -202,6 +253,7 @@ function AttachmentsClient.addUnequipOptions(context, player, attachedItems, hor
         end)
 
         -- parse attachments and add unequip option
+        local toUnequipAll = {}
         for i = 1, #attachedItems do
             local attachment = attachedItems[i]
             local item = attachment.item
@@ -223,22 +275,53 @@ function AttachmentsClient.addUnequipOptions(context, player, attachedItems, hor
             )
             option.iconTexture = getTexture(getItemTextureName(item))
 
+            -- can't reach a position to unequip the attachment
             if not mountPosition then
                 option.notAvailable = true
                 local tooltip = ISWorldObjectContextMenu.addToolTip()
                 tooltip.description = getText("ContextMenu_Horse_NoMountPosition")
                 option.toolTip = tooltip
             end
+
+            -- verify this attachment is not the dependency of another attachment
+            local hasDependencies, dependentAttachments = Attachments.findDependentAttachments(horse, attachment.item, attachment.slot)
+            if hasDependencies then
+                -- retrieve all dependencies
+                local dependentAttachmentsNames = {}
+                local allOf = dependentAttachments.allOf
+                for j = 1, #allOf do
+                    local dependentAttachment = allOf[j]
+                    table.insert(dependentAttachmentsNames, getItemNameFromFullType(dependentAttachment.item))
+                end
+
+                local oneOf = dependentAttachments.oneOf
+                for j = 1, #oneOf do
+                    local dependentAttachment = oneOf[j]
+                    table.insert(dependentAttachmentsNames, getItemNameFromFullType(dependentAttachment.item))
+                end
+
+                -- format tooltip
+                local txt = HorseUtils.formatTemplate(
+                    getText("ContextMenu_Horse_Unequip_HasDependencies"),
+                    {dependentAttachments = table.concat(dependentAttachmentsNames, ", ")}
+                )
+                local tooltip = ISWorldObjectContextMenu.addToolTip()
+                tooltip.description = txt
+                option.notAvailable = true
+                option.toolTip = tooltip
+            else
+                table.insert(toUnequipAll, attachment)
+            end
         end
 
         -- unequip all option if more than one item is present
-        if #attachedItems > 1 then
+        if #toUnequipAll > 1 then
             local option = context:addOptionOnTop(
                 getText("ContextMenu_Horse_Unequip_All"),
                 player,
                 AttachmentsClient.unequipAllAccessory,
                 horse,
-                attachedItems,
+                toUnequipAll,
                 mountPosition
             )
 

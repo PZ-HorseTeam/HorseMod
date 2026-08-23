@@ -23,6 +23,10 @@ local reinsItems = {
     "HorseMod.HorseReins_White",
 }
 
+local magazineItems = {
+    "HorseMod.Magazine_SaddleUp",
+}
+
 local function addItems(dest, items, weight)
     for i = 1, #items do
         table_insert(dest, items[i])
@@ -68,6 +72,40 @@ local HorseItemsDistribution = {
         items = {},
     },
     WildWestGeneralStore = {
+        items = {},
+    },
+
+    BookstoreFashion = {
+        items = {},
+    },
+    CrateTailoring = {
+        items = {},
+    },
+    KitchenBook = {
+        items = {},
+    },
+    LibraryFashion = {
+        items = {},
+    },
+    MedievalBooks = {
+        items = {},
+    },
+    SafehouseArmor = {
+        items = {},
+    },
+    SafehouseArmor_Mid = {
+        items = {},
+    },
+    SafehouseArmor_Late = {
+        items = {},
+    },
+    SafehouseBookShelf = {
+        items = {},
+    },
+    SafehouseFireplace = {
+        items = {},
+    },
+    SafehouseFireplace_Late = {
         items = {},
     },
 }
@@ -129,6 +167,28 @@ addItems(HorseItemsDistribution.WildWestGeneralStore.items, saddleItems, 1.65)
 addItems(HorseItemsDistribution.WildWestGeneralStore.items, westernSaddleItems, 0.20)
 addItems(HorseItemsDistribution.WildWestGeneralStore.items, saddlebagItems, 1.4)
 addItems(HorseItemsDistribution.WildWestGeneralStore.items, reinsItems, 0.85)
+
+addItems(HorseItemsDistribution.BookstoreFashion.items, magazineItems, 1)
+
+addItems(HorseItemsDistribution.CrateTailoring.items, magazineItems, 0.5)
+
+addItems(HorseItemsDistribution.KitchenBook.items, magazineItems, 0.5)
+
+addItems(HorseItemsDistribution.LibraryFashion.items, magazineItems, 1)
+
+addItems(HorseItemsDistribution.MedievalBooks.items, magazineItems, 6)
+
+addItems(HorseItemsDistribution.SafehouseArmor.items, magazineItems, 1)
+
+addItems(HorseItemsDistribution.SafehouseArmor_Mid.items, magazineItems, 1)
+
+addItems(HorseItemsDistribution.SafehouseArmor_Late.items, magazineItems, 1)
+
+addItems(HorseItemsDistribution.SafehouseBookShelf.items, magazineItems, 1)
+
+addItems(HorseItemsDistribution.SafehouseFireplace.items, magazineItems, 0.1)
+
+addItems(HorseItemsDistribution.SafehouseFireplace_Late.items, magazineItems, 0.1)
 
 local ProceduralDistributions_list = ProceduralDistributions.list
 

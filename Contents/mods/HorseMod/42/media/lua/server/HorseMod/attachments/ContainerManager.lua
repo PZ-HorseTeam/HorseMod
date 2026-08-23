@@ -151,7 +151,9 @@ ContainerManager.initContainer = function(player, horse, slot, containerBehavior
     assert(containerItem:IsInventoryContainer(), "Invisible container ("..containerBehavior.worldItem..") used for "..accessory:getFullType().." isn't a container.")
     ---@cast containerItem InventoryContainer
 
-    containerItem:setName(accessory:getDisplayName())
+    if not isClient() and not isServer() then
+        containerItem:setName(accessory:getDisplayName())
+    end
     containerItem:setIcon(accessory:getIcon())
     local worldItem = containerItem:getWorldItem()
     local destContainer = containerItem:getItemContainer()

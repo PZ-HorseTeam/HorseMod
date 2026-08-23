@@ -2,6 +2,7 @@
 <animNode>
     <m_Name>Horse_WalkMounted</m_Name>
     <m_AnimName>Horse_Walk</m_AnimName>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_ConditionPriority>10</m_ConditionPriority>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
     <m_EarlyTransitionOut>false</m_EarlyTransitionOut>
@@ -95,11 +96,6 @@
         <m_TimePc>0</m_TimePc>
         <m_ParameterValue>GallopToIdlePlayer=false</m_ParameterValue>
     </m_Events>
-    <m_Conditions>
-        <m_Name>animalRunning</m_Name>
-        <m_Type>BOOL</m_Type>
-        <m_BoolValue>true</m_BoolValue>
-    </m_Conditions>
     <m_Conditions>
         <m_Name>HorseRiding</m_Name>
         <m_Type>BOOL</m_Type>

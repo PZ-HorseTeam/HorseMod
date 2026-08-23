@@ -2,7 +2,7 @@
 <animNode>
     <m_Name>Horse_death</m_Name>
     <m_AnimName>Horse_Death</m_AnimName>
-    <m_deferredBoneAxis>Y</m_deferredBoneAxis>
+    <m_useDeferredMovement>false</m_useDeferredMovement>
     <m_Looped>false</m_Looped>
     <m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
     <m_BlendTime>0.20</m_BlendTime>

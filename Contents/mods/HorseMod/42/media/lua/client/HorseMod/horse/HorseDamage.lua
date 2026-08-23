@@ -8,8 +8,8 @@ local HorseDamage = {}
 
 
 HorseDamage.ZOMBIE_DAMAGE_CHANCE = 100
-HorseDamage.ZOMBIE_DAMAGE_MIN = 0.3
-HorseDamage.ZOMBIE_DAMAGE_MAX = 0.6
+HorseDamage.ZOMBIE_DAMAGE_MIN = 0.1
+HorseDamage.ZOMBIE_DAMAGE_MAX = 0.3
 
 
 HorseDamage.HORSE_DEATH_KNOCKDOWN_RADIUS = 2.5

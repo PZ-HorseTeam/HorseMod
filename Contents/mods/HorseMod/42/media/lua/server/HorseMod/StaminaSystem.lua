@@ -22,7 +22,7 @@ function StaminaSystem:update(horses, delta)
 
         local staminaChange = 0.0
         if Mounts.hasRider(horse) then
-            if horse:getMovementSpeed() >= 0.01 then
+            if horse:getVariableBoolean(AnimationVariable.MOUNTED_MOVING) then
                 if horse:getVariableBoolean(AnimationVariable.GALLOP) then
                     staminaChange = StaminaChange.RUN
                 elseif horse:getVariableBoolean(AnimationVariable.TROT) then

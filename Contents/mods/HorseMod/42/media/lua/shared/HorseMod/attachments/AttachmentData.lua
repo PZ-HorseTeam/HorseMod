@@ -1,6 +1,5 @@
 ---@namespace HorseMod
 
-local HorseUtils = require("HorseMod/Utils")
 local Event = require("HorseMod/Event")
 
 
@@ -57,6 +56,16 @@ local Event = require("HorseMod/Event")
 ---@field worldItem string
 
 
+---Defines a light source that will follow the horse at the attachment point.
+---@class LightBehavior
+---
+---Hex color code for the light.
+---@field rgb {r: number, g: number, b: number}
+---
+---Light radius for the light source.
+---@field radius integer
+
+
 ---Defines an attachment item with its associated slots and extra data if needed.
 ---@class AttachmentDefinition
 ---
@@ -75,8 +84,17 @@ local Event = require("HorseMod/Event")
 ---Equip timed action behavior component.
 ---@field equipBehavior EquipBehavior? 
 ---
+---Light behavior component.
+---@field lightBehavior LightBehavior?
+---
 ---Whenever the player can reach from mount this attachment, always considered reachable by default. Notably used for containers.
 ---@field notReachableFromMount boolean?
+---
+---Whenever this attachment can be equipped when the horse has a rider. Defaults to `true`.
+---@field notEquipableWithRider boolean?
+---
+---List of attachment slots with equipment that this item requires to be equipped.
+---@field requirements {oneOf: AttachmentSlot[], allOf: AttachmentSlot[]}?
 
 
 ---A slots configuration for an InventoryItem full type holding the various configurations the item can take on different slots.
@@ -109,6 +127,7 @@ local AttachmentData = {
                     },
                     shouldHold = true,
                 },
+                notEquipableWithRider = true,
             },
         },
 
@@ -124,11 +143,40 @@ local AttachmentData = {
 
         ---Default tent attachment definition.
         ---@type ItemDefinition
-        TENT = { ["Tent"] = {} },
+        TENT = { 
+            ["Tent"] = {
+                requirements = {
+                    oneOf = {"Saddle", "Saddlebags"}, 
+                    allOf = {},
+                },
+            }, 
+        },
 
         ---Default sleeping bag attachment definition.
         ---@type ItemDefinition
-        SLEEPING_BAG = { ["SleepingBag"] = {} },
+        SLEEPING_BAG = { 
+            ["SleepingBag"] = {
+                requirements = {
+                    oneOf = {"Saddle", "Saddlebags"}, 
+                    allOf = {},
+                },
+            }, 
+        },
+
+        LANTERN = {
+            ["Lantern_left"] = {
+                lightBehavior = {
+                    rgb = {r=1, g=1, b=1},
+                    radius = 15,
+                },
+            },
+            ["Lantern_right"] = {
+                lightBehavior = {
+                    rgb = {r=1, g=1, b=1},
+                    radius = 15,
+                },
+            },
+        }
     },
 
     ---Sets attachment model points and mane properties for attachment slots.
@@ -140,6 +188,8 @@ local AttachmentData = {
         ["Saddlebags"] = {modelAttachment="saddlebags"},
         ["Tent"] = {modelAttachment="tent"},
         ["SleepingBag"] = {modelAttachment="sleepingBag"},
+        ["Lantern_right"] = {modelAttachment="lantern_right"},
+        ["Lantern_left"] = {modelAttachment="lantern_left"},
         ["Head"] = {modelAttachment="head"},
         ["Reins"] = {modelAttachment="reins"},
 
@@ -193,6 +243,8 @@ local AttachmentData = {
     MANE_HEX_BY_BREED = {
         ["AmericanQuarterPalomino"] = {"#EADAB6"},
         ["AmericanQuarterBlueRoan"] = {"#19191C"},
+        ["AmericanQuarterStrawberryRoan"] = {"#78382B"},
+        ["AmericanQuarterSealBay"] = {"#1F1819"},
         
         ["AmericanPaintTobiano"] = {"#FBDEA7"},
         ["AmericanPaintOvero"] = {"#292524"},
@@ -202,12 +254,21 @@ local AttachmentData = {
         
         ["ThoroughbredBay"] = {"#140C08"},
         ["ThoroughbredFleaBittenGrey"] = {"#FCECC5"},
+        ["ThoroughbredCricket"] = {"#3C1C16"},
+        ["ThoroughbredReverseBrindle"] = {"#1F1819"},
+
+        ["MustangBuckskinDun"] = {"#33271A"},
+        ["MustangGrullaDun"] = {"#1A1916"},
+
+        ["CamarilloWhite"] = {"#FFF4CC"},
+
+        ["RockyMountainLiverChestnut"] = {"#A89F82"},
     },
 
     ---Default mane items configuration.
     ---@type ManeDefinition
     MANE_DEFAULT = {
-        hex={"#6B5642"},
+        hex = {"#6B5642"},
         maneConfig = {
             ["ManeStart"] = "HorseMod.HorseManeStart",
             ["ManeMid1"] = "HorseMod.HorseManeMid",
@@ -241,6 +302,17 @@ local DEFAULT_ATTACHMENT_DEFS = AttachmentData.DEFAULT_ATTACHMENT_DEFS
 
 ---@type table<string, ItemDefinition>
 AttachmentData.items = {
+    -- manes
+    ["HorseMod.HorseManeStart"] = { ["ManeStart"] = {hidden = true} },
+    ["HorseMod.HorseManeMid"]   = {
+        ["ManeMid1"] = {hidden = true},
+        ["ManeMid2"] = {hidden = true},
+        ["ManeMid3"] = {hidden = true},
+        ["ManeMid4"] = {hidden = true},
+        ["ManeMid5"] = {hidden = true},
+    },
+    ["HorseMod.HorseManeEnd"]   = { ["ManeEnd"] = {hidden = true} },
+
     -- saddles
         -- vanilla animals
     ["HorseMod.HorseSaddle_Crude"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
@@ -254,10 +326,18 @@ AttachmentData.items = {
     ["HorseMod.HorseSaddle_AmericanPaintOvero"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_AmericanQuarterBlueRoan"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_AmericanQuarterPalomino"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_AmericanQuarterStrawberryRoan"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_AmericanQuarterSealBay"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_AppaloosaGrullaBlanket"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_AppaloosaLeopard"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_ThoroughbredBay"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_ThoroughbredFleaBittenGrey"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_ThoroughbredCricket"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_ThoroughbredReverseBrindle"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_MustangBuckskinDun"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_MustangGrullaDun"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_CamarilloWhite"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
+    ["HorseMod.HorseSaddle_RockyMountainLiverChestnut"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
     ["HorseMod.HorseSaddle_Western"] = DEFAULT_ATTACHMENT_DEFS.SADDLE,
 
     -- saddlebags
@@ -273,16 +353,25 @@ AttachmentData.items = {
     ["HorseMod.HorseSaddlebags_AmericanPaintOvero"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_AmericanQuarterBlueRoan"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_AmericanQuarterPalomino"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_AmericanQuarterStrawberryRoan"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_AmericanQuarterSealBay"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_AppaloosaGrullaBlanket"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_AppaloosaLeopard"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_ThoroughbredBay"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
     ["HorseMod.HorseSaddlebags_ThoroughbredFleaBittenGrey"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_ThoroughbredCricket"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_ThoroughbredReverseBrindle"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_MustangBuckskinDun"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_MustangGrullaDun"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_CamarilloWhite"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
+    ["HorseMod.HorseSaddlebags_RockyMountainLiverChestnut"] = DEFAULT_ATTACHMENT_DEFS.SADDLEBAGS,
 
     -- reins
     ["HorseMod.HorseReins_Crude"] = { ["Reins"] = {model = "HorseMod.HorseReins_Crude"} },
     ["HorseMod.HorseReins_Black"] = { ["Reins"] = {model = "HorseMod.HorseReins_Black"} },
     ["HorseMod.HorseReins_White"] = { ["Reins"] = {model = "HorseMod.HorseReins_White"} },
     ["HorseMod.HorseReins_Brown"] = { ["Reins"] = {model = "HorseMod.HorseReins_Brown"} },
+    ["Base.Rope"]                 = { ["Reins"] = {model = "HorseMod.HorseReins_Rope"} },
 
     -- packing
     ["Base.TentYellow_Packed"] = DEFAULT_ATTACHMENT_DEFS.TENT,
@@ -305,16 +394,14 @@ AttachmentData.items = {
     ["Base.SleepingBag_BluePlaid_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
     ["Base.SleepingBag_Spiffo_Packed"] = DEFAULT_ATTACHMENT_DEFS.SLEEPING_BAG,
 
-    -- manes
-    ["HorseMod.HorseManeStart"] = { ["ManeStart"] = {hidden = true} },
-    ["HorseMod.HorseManeMid"]   = {
-        ["ManeMid1"] = {hidden = true},
-        ["ManeMid2"] = {hidden = true},
-        ["ManeMid3"] = {hidden = true},
-        ["ManeMid4"] = {hidden = true},
-        ["ManeMid5"] = {hidden = true},
-    },
-    ["HorseMod.HorseManeEnd"]   = { ["ManeEnd"] = {hidden = true} },
+    -- lanterns
+    ["Base.Lantern_Hurricane"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Hurricane_Copper"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Hurricane_Forged"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Hurricane_Gold"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Hurricane_Silver"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_Propane"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
+    ["Base.Lantern_CraftedElectric"] = DEFAULT_ATTACHMENT_DEFS.LANTERN,
 }
 
 ---Triggered before attachment data is loaded.

@@ -1,6 +1,7 @@
 ---@namespace HorseMod
 
 local spobjects = require("HorseMod/networking/spobjects")
+local netmetrics = require("HorseMod/networking/netmetrics")
 
 local IS_CLIENT = isClient()
 local IS_SERVER = isServer()
@@ -21,6 +22,10 @@ local ClientCommand = {}
 ---@param args T Arguments to send to the server.
 function ClientCommand:send(sender, args)
     assert(not IS_SERVER, "tried to send client command from server, name=" .. self.name)
+    if netmetrics.enabled then
+        netmetrics.recordSend(self.name, self.id, sender ~= nil, args)
+    end
+
     if sender then
         sendClientCommand(sender, MODULE, tostring(self.id), args)
     else
@@ -37,6 +42,10 @@ local ServerCommand = {}
 ---@param args T Arguments to send to the client(s).
 function ServerCommand:send(recipient, args)
     assert(not IS_CLIENT, "tried to send server command from client, name=" .. self.name)
+    if netmetrics.enabled then
+        netmetrics.recordSend(self.name, self.id, recipient ~= nil, args)
+    end
+
     if IS_SERVER then
         if recipient then
             sendServerCommand(recipient, MODULE, tostring(self.id), args)
@@ -109,25 +118,48 @@ function commands.registerClientCommand(name)
 end
 
 ---@param player IsoPlayer
----@return integer
+---@return integer|string
 ---@nodiscard
 function commands.getPlayerId(player)
     if IS_SINGLEPLAYER then
         return player:getIndex()
     end
 
-    return player:getOnlineID()
+    -- On listen servers the host's onlineID is 0 which returns null for remote clients IDToPlayerMap.get(0)
+    -- so we use the player's username instead
+    return player:getUsername()
 end
 
----@param id integer
+---@param username string
+---@return IsoPlayer?
+---@nodiscard
+local function findPlayerByUsername(username)
+    local players = getOnlinePlayers()
+    if not players then
+        return nil
+    end
+
+    for i = 0, players:size() - 1 do
+        local player = players:get(i)
+        if player and player:getUsername() == username then
+            return player
+        end
+    end
+
+    return nil
+end
+
+---@param id integer|string
 ---@return IsoPlayer?
 ---@nodiscard
 function commands.getPlayer(id)
     if IS_SINGLEPLAYER then
+        ---@cast id integer
         return getSpecificPlayer(id)
     end
 
-    return getPlayerByOnlineID(id)
+    ---@cast id string
+    return findPlayerByUsername(id)
 end
 
 ---@param animal IsoAnimal
@@ -148,7 +180,7 @@ function commands.getAnimal(id)
     if IS_SINGLEPLAYER then
         return spobjects.animal:getObject(id)
     end
-    
+
     return getAnimal(id)
 end
 
