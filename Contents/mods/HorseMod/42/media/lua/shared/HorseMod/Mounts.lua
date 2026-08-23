@@ -157,8 +157,8 @@ local function lockMountedAnimal(animal)
     refreshMountedAnimalBlock(animal)
     animal:stopAllMovementNow()
     animal:setDeferredMovementEnabled(false)
-    animal:setVariable("animalWalking", false)
-    animal:setVariable("animalRunning", false)
+    animal:setVariable(AnimationVariable.WALKING, false)
+    animal:setVariable(AnimationVariable.RUNNING, false)
     animal:setIsAlerted(false)
     local idleState = animal:getDefaultState()
     if not animal:isCurrentState(idleState) then
@@ -169,8 +169,8 @@ end
 ---@param animal IsoAnimal
 local function unlockMountedAnimal(animal)
     animal:stopAllMovementNow()
-    animal:setVariable("animalWalking", false)
-    animal:setVariable("animalRunning", false)
+    animal:setVariable(AnimationVariable.WALKING, false)
+    animal:setVariable(AnimationVariable.RUNNING, false)
     animal:setDeferredMovementEnabled(true)
     animal:getBehavior():setBlockMovement(false)
 end
@@ -264,13 +264,13 @@ function Mounts.removeMount(player, _horse_dead)
     player:setVariable(AnimationVariable.GALLOP, false)
     player:setVariable(AnimationVariable.JUMP, false)
     player:setVariable(AnimationVariable.HAS_REINS, false)
-    player:setVariable("animalWalking", false)
-    player:setVariable("animalRunning", false)
-    player:setVariable("HorseGalloping", false)
-    player:setVariable("walkstateRun", false)
-    player:setVariable("isTurningLeft", false)
-    player:setVariable("isTurningRight", false)
-    player:setVariable("isTurning", false)
+    player:setVariable(AnimationVariable.WALKING, false)
+    player:setVariable(AnimationVariable.RUNNING, false)
+    player:setVariable(AnimationVariable.GALLOPING, false)
+    player:setVariable(AnimationVariable.WALKSTATE_RUN, false)
+    player:setVariable(AnimationVariable.IS_TURNING_LEFT, false)
+    player:setVariable(AnimationVariable.IS_TURNING_RIGHT, false)
+    player:setVariable(AnimationVariable.IS_TURNING, false)
     -- player:setVariable("isMoving", false)
     player:setIgnoreMovement(false)
     player:setIgnoreInputsForDirection(false)
@@ -503,9 +503,6 @@ local function cleanupStaleRiders()
     end
 
     local onlinePlayers = getOnlinePlayers()
-    if not onlinePlayers then
-        return
-local onlinePlayers = getOnlinePlayers()
 
     for i = 0, onlinePlayers:size() - 1 do
         local p = onlinePlayers:get(i)
@@ -528,6 +525,8 @@ if IS_CLIENT then
     -- The full sweep stays on one hook; only the cheap state pin needs the extra
     -- coverage to beat vanilla back into idle within the same frame.
     Events.OnTickEvenPaused.Add(updateMounts)
+    -- clients forgets players who wander off and treats them as someone new
+    -- when they return which the server doesn't see
     Events.OnTickEvenPaused.Add(cleanupStaleRiders)
     Events.OnTick.Add(pinMountedAnimals)
     Events.OnPlayerUpdate.Add(pinMountedAnimals)

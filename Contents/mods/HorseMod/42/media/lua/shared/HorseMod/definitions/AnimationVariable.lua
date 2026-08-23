@@ -10,6 +10,11 @@ local AnimationVariable = {
     JUMP = "HorseJump",
     DYING = "HorseDying",
     FALL_BACK = "HorseFallBack",
+    GALLOPING = "HorseGalloping",
+
+    WALKING = "animalWalking",
+    RUNNING = "animalRunning",
+    WALKSTATE_RUN = "walkstateRun",
 
     IS_TURNING_LEFT = "isTurningLeft",
     IS_TURNING_RIGHT = "isTurningRight",
