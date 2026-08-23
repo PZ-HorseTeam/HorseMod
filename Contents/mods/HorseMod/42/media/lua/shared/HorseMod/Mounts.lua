@@ -505,7 +505,7 @@ local function cleanupStaleRiders()
     local onlinePlayers = getOnlinePlayers()
     if not onlinePlayers then
         return
-    end
+local onlinePlayers = getOnlinePlayers()
 
     for i = 0, onlinePlayers:size() - 1 do
         local p = onlinePlayers:get(i)
