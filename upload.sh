@@ -23,8 +23,8 @@ if [[ ! -f "$PATCH_NOTE_PATH" ]]; then
 fi
 
 # make sure main branch is being uploaded
-git checkout main
-git pull
+# git checkout main
+# git pull
 
 
 MOD_TITLE="Horse Mod [B42.20+/MP]"
