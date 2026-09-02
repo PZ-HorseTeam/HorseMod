@@ -20,5 +20,12 @@
     "ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted": "Не могу сменить снаряжение верхом на лошади.",
     "ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted": "Не могу сменить снаряжение оседланной лошади.",
     "ContextMenu_Horse_HasRider": "Лошадь уже оседлана другим персонажем.",
-    "ContextMenu_FoodType_Horse": "Конина"
+    "ContextMenu_FoodType_Horse": "Конина",
+    "ContextMenu_Horse_Requirements_Missing": "У этого предмета есть ряд невыполненных требований.",
+    "ContextMenu_Horse_Requirements_AllOf": "Требуются следующие предметы: {allOf}",
+    "ContextMenu_Horse_Requirements_OneOf": "Требуется как минимум один из следующих предметов: {oneOf}",
+    "ContextMenu_Horse_Unequip_HasDependencies": "Невозможно снять предмет, так как от него зависят установленные модули. Сначала снимите следующие предметы: {dependentAttachments}.",
+    "ContextMenu_Horse_Slot_Lantern_left": "Фонарь слева",
+    "ContextMenu_Horse_Slot_Lantern_right": "Фонарь справа",
+    "ContextMenu_Horse_CannotEquipWithRider": "Этот предмет нельзя экипировать, пока на лошади есть всадник."
 }
