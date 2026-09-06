@@ -1,5 +1,7 @@
 {
     "Sandbox_HorseMod": "Horse Mod",
-    "Sandbox_HorseMod_WalkSpeed": "Скорость ходьбы лошади",
-    "Sandbox_HorseMod_StaminaMultiplier": "Множитель выносливости лошади"
+    "Sandbox_HorseMod_GallopSpeed": "Скорость галопа лошади",
+    "Sandbox_HorseMod_RidingPainGrunt": "Кряхтение при езде",
+    "Sandbox_HorseMod_StaminaMultiplier": "Множитель выносливости лошади",
+    "Sandbox_HorseMod_WalkSpeed": "Скорость ходьбы лошади"
 }
