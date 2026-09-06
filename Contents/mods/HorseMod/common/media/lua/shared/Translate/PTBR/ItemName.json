@@ -61,6 +61,7 @@
     "HorseMod.Horse_Steak": "Bife de Cavalo",
     "HorseMod.Horse_Loin": "Lombo de Cavalo",
     "HorseMod.Horse_Hoof": "Casco de Cavalo",
+    "HorseMod.Dung_Horse": "Esterco de Cavalo",
     "HorseMod.PotHorseGlue": "Panela de Cola de Cavalo",
     "HorseMod.PotForgedHorseGlue": "Panela Forjada de Cola de Cavalo",
     "HorseMod.HorseGlue": "Cola de Cavalo",
@@ -126,7 +127,6 @@
     "HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur": "Pele de Potro Quarto de Milha Americano Rosilho Azul (Com pelos)",
     "HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Wet": "Couro de Potro Quarto de Milha Americano Rosilho Azul (Com pelos, Molhado)",
     "HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan": "Couro de Potro Quarto de Milha Americano Rosilho Azul (Com pelos)",
-    "HorseMod.FoalLeather_AmericanQuarterBlueRoan_Fur_Tan_Small": "Metade do Couro de Potro Quarto de Milha Americano Rosilho Azul (Com pelos)",
     "HorseMod.FoalLeather_AmericanQuarterPalomino_Full": "Pele de Potro Quarto de Milha Americano Palomino (Não processada)",
     "HorseMod.FoalLeather_AmericanQuarterPalomino_Fur": "Pele de Potro Quarto de Milha Americano Palomino (Com pelos)",
     "HorseMod.FoalLeather_AmericanQuarterPalomino_Fur_Tan_Wet": "Couro de Potro Quarto de Milha Americano Palomino (Com pelos, Molhado)",
@@ -151,5 +151,6 @@
     "HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur": "Pele de Potro Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)",
     "HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Wet": "Couro de Potro Puro-Sangue Inglês Tordilho Mosqueado (Com pelos, Molhado)",
     "HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan": "Couro de Potro Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)",
-    "HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small": "Metade do Couro de Potro Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)"
+    "HorseMod.FoalLeather_ThoroughbredFleaBittenGrey_Fur_Tan_Small": "Metade do Couro de Potro Puro-Sangue Inglês Tordilho Mosqueado (Com pelos)",
+    "HorseMod.CricketHorse": "Cricket, O Cavalo"
 }
