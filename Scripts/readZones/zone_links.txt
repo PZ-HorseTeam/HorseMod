@@ -1,91 +1,108 @@
-https://pzmap.org?5554x6593   https://pzmap.org?5580x6591   Name: horsemedium
-https://pzmap.org?5587x6593   https://pzmap.org?5625x6591   Name: horsemedium
-https://pzmap.org?5554x6587   https://pzmap.org?5580x6585   Name: horsemedium
-https://pzmap.org?5587x6587   https://pzmap.org?5625x6585   Name: horsemedium   done
-https://pzmap.org?5552x6513   https://pzmap.org?5581x6511   Name: horsemedium
-https://pzmap.org?5546x6513   https://pzmap.org?5617x6511   Name: horsemedium
-https://pzmap.org?5552x6507   https://pzmap.org?5581x6505   Name: horsemedium
-https://pzmap.org?5546x6507   https://pzmap.org?5617x6505   Name: horsemedium   done
-https://pzmap.org?2259x12456  https://pzmap.org?2285x12419  Name: None   done
-https://pzmap.org?2270x12253  https://pzmap.org?2309x12290  Name: None   done
-https://pzmap.org?2429x12376  https://pzmap.org?2478x12426  Name: None   done
-https://pzmap.org?1532x12110  https://pzmap.org?1571x12075  Name: horsemedium   done
-https://pzmap.org?1601x12023  https://pzmap.org?1609x12017  Name: None   done
-https://pzmap.org?3007x13238  https://pzmap.org?3026x13245  Name: horsemedium   done
-https://pzmap.org?3003x14268  https://pzmap.org?3014x14271  Name: horsemedium   done
-https://pzmap.org?3690x14881  https://pzmap.org?3727x14909  Name: horsemedium   done
-https://pzmap.org?521x11784   https://pzmap.org?555x11752   Name: None   done
-https://pzmap.org?499x11603   https://pzmap.org?548x11650   Name: None   done
-https://pzmap.org?610x11638   https://pzmap.org?651x11678   Name: None   done
-https://pzmap.org?743x11596   https://pzmap.org?760x11631   Name: None   done
-https://pzmap.org?921x11290   https://pzmap.org?953x11262   Name: None   done
-https://pzmap.org?970x11199   https://pzmap.org?999x11170   Name: None   done
-https://pzmap.org?983x11058   https://pzmap.org?947x11008   Name: None   done
-https://pzmap.org?949x10891   https://pzmap.org?988x10855   Name: None   done
-https://pzmap.org?1537x11046  https://pzmap.org?1565x11011  Name: horsemedium   done
-https://pzmap.org?722x10786   https://pzmap.org?758x10748   Name: None   done
-https://pzmap.org?749x10664   https://pzmap.org?762x10674   Name: None   done
-https://pzmap.org?745x10554   https://pzmap.org?779x10579   Name: None   done
-https://pzmap.org?747x10165   https://pzmap.org?776x10135   Name: horsemedium   done
-https://pzmap.org?1819x9859   https://pzmap.org?1837x9837   Name: None   done
-https://pzmap.org?1857x9820   https://pzmap.org?1888x9852   Name: None   done
-https://pzmap.org?1226x9037   https://pzmap.org?1243x9054   Name: None   done
-https://pzmap.org?1298x9035   https://pzmap.org?1288x9048   Name: None   done
-https://pzmap.org?1252x9105   https://pzmap.org?1265x9121   Name: None   done
-https://pzmap.org?1282x9133   https://pzmap.org?1304x9154   Name: None   done
-https://pzmap.org?3780x10935  https://pzmap.org?3791x10955  Name: None   done
-https://pzmap.org?3792x11065  https://pzmap.org?3778x11028  Name: None   done
-https://pzmap.org?3821x11005  https://pzmap.org?3827x11011  Name: None   done
-https://pzmap.org?2046x11638  https://pzmap.org?2044x11645  Name: None   done
-https://pzmap.org?2311x11890  https://pzmap.org?2318x11892  Name: None   done
-https://pzmap.org?1232x12025  https://pzmap.org?1230x12032  Name: None   done
-https://pzmap.org?1416x12368  https://pzmap.org?1423x12370  Name: None   done
-https://pzmap.org?1880x12468  https://pzmap.org?1887x12470  Name: None   done
-https://pzmap.org?3133x12188  https://pzmap.org?3155x12172  Name: None   done
-https://pzmap.org?1606x9037   https://pzmap.org?1589x9040   Name: horselarge   done
-https://pzmap.org?1589x9048   https://pzmap.org?1606x9045   Name: horselarge   done
-https://pzmap.org?1589x9060   https://pzmap.org?1606x9063   Name: horselarge   done
-https://pzmap.org?1606x9068   https://pzmap.org?1589x9071   Name: horselarge   done
-https://pzmap.org?1740x10279  https://pzmap.org?1747x10280  Name: None   done
-https://pzmap.org?241x9839    https://pzmap.org?244x9822    Name: None   done
-https://pzmap.org?249x9839    https://pzmap.org?252x9822    Name: None   done
-https://pzmap.org?1405x10290  https://pzmap.org?1398x10288  Name: None   done
-https://pzmap.org?1398x10288  https://pzmap.org?1405x10290  Name: None   done
-https://pzmap.org?3547x8202   https://pzmap.org?3554x8204   Name: None   done
-https://pzmap.org?3554x8207   https://pzmap.org?3547x8210   Name: None   done
-https://pzmap.org?3561x8202   https://pzmap.org?3568x8204   Name: None   done
-https://pzmap.org?3561x8208   https://pzmap.org?3598x8210   Name: None   done
-https://pzmap.org?1261x7314   https://pzmap.org?1273x7317   Name: None   done
-https://pzmap.org?2416x5923   https://pzmap.org?2418x5916   Name: None   done
-https://pzmap.org?3694x14537  https://pzmap.org?3701x14539  Name: None   done
-https://pzmap.org?4390x14314  https://pzmap.org?4404x14293  Name: None   done
-https://pzmap.org?4349x14300  https://pzmap.org?4325x14283  Name: None   done
-https://pzmap.org?13035x2813  https://pzmap.org?13048x2816  Name: horsemedium   done
-https://pzmap.org?13029x2819  https://pzmap.org?13032x2834  Name: horsemedium   done
-https://pzmap.org?13035x2837  https://pzmap.org?13050x2840  Name: horsemedium   done
-https://pzmap.org?13611x4722  https://pzmap.org?13618x4723  Name: None   done
-https://pzmap.org?8553x8523   https://pzmap.org?8551x8518   Name: None   done
-https://pzmap.org?7130x9560   https://pzmap.org?7137x9562   Name: None   done
-https://pzmap.org?7142x9560   https://pzmap.org?7149x9561   Name: None   done
-https://pzmap.org?7132x9578   https://pzmap.org?7130x9573   Name: None   done
-https://pzmap.org?7089x9095   https://pzmap.org?7103x9098   Name: None   done
-https://pzmap.org?7108x9098   https://pzmap.org?7122x9096   Name: None
-https://pzmap.org?8622x8882   https://pzmap.org?8636x8879   Name: None
-https://pzmap.org?8600x8876   https://pzmap.org?8607x8878   Name: None
-https://pzmap.org?8852x9139   https://pzmap.org?8854x9132   Name: None
-https://pzmap.org?9258x7724   https://pzmap.org?9265x7726   Name: None
-https://pzmap.org?10469x10121 https://pzmap.org?10476x10123 Name: None
-https://pzmap.org?12400x9014  https://pzmap.org?12411x9026  Name: None
-https://pzmap.org?14296x4921  https://pzmap.org?14303x4923  Name: None
-https://pzmap.org?13911x4771  https://pzmap.org?13931x4753  Name: None
-https://pzmap.org?4058x10106  https://pzmap.org?4065x10108  Name: None
-https://pzmap.org?2409x10047  https://pzmap.org?2416x10049  Name: None
-https://pzmap.org?7854x14320  https://pzmap.org?7863x14318  Name: None
-https://pzmap.org?7347x6184   https://pzmap.org?7354x6186   Name: None
-https://pzmap.org?13707x3634  https://pzmap.org?13722x3623  Name: None
-https://pzmap.org?12334x2793  https://pzmap.org?12338x2775  Name: horselarge
-https://pzmap.org?12334x2760  https://pzmap.org?12338x2742  Name: horselarge
-https://pzmap.org?12356x2754  https://pzmap.org?12364x2757  Name: None
-https://pzmap.org?12356x2766  https://pzmap.org?12364x2769  Name: None
-https://pzmap.org?12356x2775  https://pzmap.org?12364x2778  Name: None
-https://pzmap.org?12356x2787  https://pzmap.org?12364x2790  Name: None
+horsemedium    https://pzmap.org?area=5554x6593-5580x6591
+horsemedium    https://pzmap.org?area=5587x6593-5625x6591
+horsemedium    https://pzmap.org?area=5554x6587-5580x6585
+horsemedium    https://pzmap.org?area=5587x6587-5625x6585
+horsemedium    https://pzmap.org?area=5552x6513-5581x6511
+horsemedium    https://pzmap.org?area=5546x6513-5617x6511
+horsemedium    https://pzmap.org?area=5552x6507-5581x6505
+horsemedium    https://pzmap.org?area=5546x6507-5617x6505
+None           https://pzmap.org?area=7236x5651-7227x5641
+None           https://pzmap.org?area=7230x5652-7221x5659
+None           https://pzmap.org?area=7252x5645-7267x561
+horsemedium    https://pzmap.org?area=7272x5693-7267x5676
+horsemedium    https://pzmap.org?area=7201x5615-7247x5601
+horsemedium    https://pzmap.org?area=7237x5513-7205x5490
+None           https://pzmap.org?area=7218x5451-7205x5445
+None           https://pzmap.org?area=7220x5440-7205x5429
+None           https://pzmap.org?area=7225x5440-7234x5431
+None           https://pzmap.org?area=7244x5417-7240x5424
+horsemedium    https://pzmap.org?area=7256x5428-7249x5417
+horsemedium    https://pzmap.org?area=10028x6627-9994x6605
+None           https://pzmap.org?area=10524x7181-10529x7168
+None           https://pzmap.org?area=10524x7167-10536x7159
+None           https://pzmap.org?area=10515x7184-10504x7194
+None           https://pzmap.org?area=2259x12456-2285x12419
+None           https://pzmap.org?area=2270x12253-2309x12290
+None           https://pzmap.org?area=2429x12376-2478x12426
+horsemedium    https://pzmap.org?area=1532x12110-1571x12075
+None           https://pzmap.org?area=1601x12023-1609x12017
+horsemedium    https://pzmap.org?area=3007x13238-3026x13245
+horsemedium    https://pzmap.org?area=3003x14268-3014x14271
+horsemedium    https://pzmap.org?area=3690x14881-3727x14909
+None           https://pzmap.org?area=521x11784-555x11752
+None           https://pzmap.org?area=499x11603-548x11650
+None           https://pzmap.org?area=610x11638-651x11678
+None           https://pzmap.org?area=743x11596-760x11631
+None           https://pzmap.org?area=921x11290-953x11262
+None           https://pzmap.org?area=970x11199-999x11170
+None           https://pzmap.org?area=983x11058-947x11008
+None           https://pzmap.org?area=949x10891-988x10855
+horsemedium    https://pzmap.org?area=1537x11046-1565x11011
+None           https://pzmap.org?area=722x10786-758x10748
+None           https://pzmap.org?area=749x10664-762x10674
+None           https://pzmap.org?area=745x10554-779x10579
+horsemedium    https://pzmap.org?area=747x10165-776x10135
+None           https://pzmap.org?area=1819x9859-1837x9837
+None           https://pzmap.org?area=1857x9820-1888x9852
+None           https://pzmap.org?area=1226x9037-1243x9054
+None           https://pzmap.org?area=1298x9035-1288x9048
+None           https://pzmap.org?area=1252x9105-1265x9121
+None           https://pzmap.org?area=1282x9133-1304x9154
+None           https://pzmap.org?area=3780x10935-3791x10955
+None           https://pzmap.org?area=3792x11065-3778x11028
+None           https://pzmap.org?area=3821x11005-3827x11011
+None           https://pzmap.org?area=2046x11638-2044x11645
+None           https://pzmap.org?area=2311x11890-2318x11892
+None           https://pzmap.org?area=1232x12025-1230x12032
+None           https://pzmap.org?area=1416x12368-1423x12370
+None           https://pzmap.org?area=1880x12468-1887x12470
+None           https://pzmap.org?area=3133x12188-3155x12172
+horselarge     https://pzmap.org?area=1606x9037-1589x9040
+horselarge     https://pzmap.org?area=1589x9048-1606x9045
+horselarge     https://pzmap.org?area=1589x9060-1606x9063
+horselarge     https://pzmap.org?area=1606x9068-1589x9071
+None           https://pzmap.org?area=1740x10279-1747x10280
+None           https://pzmap.org?area=241x9839-244x9822
+None           https://pzmap.org?area=249x9839-252x9822
+None           https://pzmap.org?area=1405x10290-1398x10288
+None           https://pzmap.org?area=1398x10288-1405x10290
+None           https://pzmap.org?area=3547x8202-3554x8204
+None           https://pzmap.org?area=3554x8207-3547x8210
+None           https://pzmap.org?area=3561x8202-3568x8204
+None           https://pzmap.org?area=3561x8208-3598x8210
+None           https://pzmap.org?area=1261x7314-1273x7317
+None           https://pzmap.org?area=2416x5923-2418x5916
+None           https://pzmap.org?area=3694x14537-3701x14539
+None           https://pzmap.org?area=4390x14314-4404x14293
+None           https://pzmap.org?area=4349x14300-4325x14283
+horsemedium    https://pzmap.org?area=13035x2813-13048x2816
+horsemedium    https://pzmap.org?area=13029x2819-13032x2834
+horsemedium    https://pzmap.org?area=13035x2837-13050x2840
+None           https://pzmap.org?area=13611x4722-13618x4723
+None           https://pzmap.org?area=8553x8523-8551x8518
+None           https://pzmap.org?area=7130x9560-7137x9562
+None           https://pzmap.org?area=7142x9560-7149x9561
+None           https://pzmap.org?area=7132x9578-7130x9573
+None           https://pzmap.org?area=7089x9095-7103x9098
+None           https://pzmap.org?area=7108x9098-7122x9096
+None           https://pzmap.org?area=8622x8882-8636x8879
+None           https://pzmap.org?area=8600x8876-8607x8878
+None           https://pzmap.org?area=8852x9139-8854x9132
+None           https://pzmap.org?area=9258x7724-9265x7726
+None           https://pzmap.org?area=10469x10121-10476x10123
+None           https://pzmap.org?area=12400x9014-12411x9026
+None           https://pzmap.org?area=14296x4921-14303x4923
+None           https://pzmap.org?area=13911x4771-13931x4753
+None           https://pzmap.org?area=4058x10106-4065x10108
+None           https://pzmap.org?area=2409x10047-2416x10049
+None           https://pzmap.org?area=7854x14320-7863x14318
+None           https://pzmap.org?area=7347x6184-7354x6186
+None           https://pzmap.org?area=13707x3634-13722x3623
+horselarge     https://pzmap.org?area=12334x2793-12338x2775
+horselarge     https://pzmap.org?area=12334x2760-12338x2742
+None           https://pzmap.org?area=12356x2754-12364x2757
+None           https://pzmap.org?area=12356x2766-12364x2769
+None           https://pzmap.org?area=12356x2775-12364x2778
+None           https://pzmap.org?area=12356x2787-12364x2790
+horsemedium    https://pzmap.org?area=13930x3585-13915x3595
+horsemedium    https://pzmap.org?area=14801x3726-14785x3712

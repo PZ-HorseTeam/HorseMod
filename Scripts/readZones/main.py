@@ -26,7 +26,7 @@ for zone, data in horse_zones.zones.items():
     name = data["name"]
 
     print(f"Zone: {zone}, Name: {name}, Coordinates: ({x1}, {y1}) to ({x2}, {y2})")
-    links.append(f"{MAP_SOFT_LINK}?{x1}x{y1}".ljust(30) + f"{MAP_SOFT_LINK}?{x2}x{y2}".ljust(30) + f"Name: {name}")
+    links.append(f"{name}".ljust(15) + f"{MAP_SOFT_LINK}?area={x1}x{y1}-{x2}x{y2}")
 
 OUTPUT_FILE = CURRENT_FOLDER / "zone_links.txt"
 with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
