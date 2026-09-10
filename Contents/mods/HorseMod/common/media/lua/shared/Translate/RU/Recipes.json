@@ -1,7 +1,7 @@
 {
-    "HorseSaddle": "Создать седло",
-    "HorseSaddlebags": "Создать седельную сумку",
-    "HorseReins": "Создать уздечку",
     "HorseGlue": "Приготовить смесь для мездрового клея в кастрюле",
-    "HorseGlueToWoodGlue": "Вылить мездровый клей из кастрюли"
+    "HorseGlueToWoodGlue": "Вылить мездровый клей из кастрюли",
+    "HorseReins": "Создать уздечку",
+    "HorseSaddle": "Создать седло",
+    "HorseSaddlebags": "Создать седельную сумку"
 }
