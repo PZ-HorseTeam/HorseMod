@@ -1,7 +1,7 @@
 {
-    "HorseGlue": "調理鍋に馬のにかわを作る",
-    "HorseGlueToWoodGlue": "馬のにかわを調理鍋から垂らす",
-    "HorseReins": "手綱を作る",
     "HorseSaddle": "鞍を作る",
-    "HorseSaddlebags": "鞍袋を作る"
+    "HorseSaddlebags": "鞍袋を作る",
+    "HorseReins": "手綱を作る",
+    "HorseGlue": "調理鍋に馬のにかわを作る",
+    "HorseGlueToWoodGlue": "馬のにかわを調理鍋から垂らす"
 }
