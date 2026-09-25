@@ -17,5 +17,6 @@
     "ContextMenu_Horse_IsAlreadyRiding": "既に騎乗中です。",
     "ContextMenu_Horse_CantChangeAttachmentsWhilePlayerMounted": "騎乗中は馬具を変更できません。",
     "ContextMenu_Horse_CantChangeAttachmentsWhileAnimalMounted": "騎乗中は馬具を変更できません。",
-    "ContextMenu_Horse_HasRider": "馬は既に別のキャラクターに騎乗されています。"
+    "ContextMenu_Horse_HasRider": "馬は既に別のキャラクターに騎乗されています。",
+    "ContextMenu_FoodType_Horse": "馬"
 }
